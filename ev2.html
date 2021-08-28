@@ -1,0 +1,1638 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0034)http://test.jabouzi.com/anastasia/ -->
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="C:/Users/jessf/Desktop/Ev/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="C:/Users/jessf/Desktop/Ev/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="C:/Users/jessf/Desktop/Ev/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="C:/Users/jessf/Desktop/Ev/compiled-4.8.7.min.css" rel="stylesheet">
+    <link href="C:/Users/jessf/Desktop/Ev/style.css" rel="stylesheet">
+    <link href="C:/Users/jessf/Desktop/Ev/fontastic.css" rel="stylesheet">
+    <link href="C:/Users/jessf/Desktop/Ev/jquery.animatedheadline.css" rel="stylesheet">
+    <link href="C:/Users/jessf/Desktop/Ev/font.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+
+    <script src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+
+        #home {
+            background: black;
+        }
+
+        #backimg {
+            position: absolute;
+            width: 100%;
+            height: 100%;background-color:black;
+            background-image: url(https://i.postimg.cc/KzVv6Mkc/22w.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: .2;
+        }
+        #back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        .particles-js-canvas-el { 
+            opacity: .3;
+            z-index: 9099;
+            position: absolute;
+        }
+
+
+        #divx {
+            opacity: 1;
+            font-family: Montserrat;
+            font-size: 5vw;
+            margin-top:-12%;
+            letter-spacing: 0.7em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #I {
+            opacity: 1;
+            animation: flickerI 2s linear reverse infinite;
+        }
+
+            #I::after {
+                content: '';
+                width: 150%;
+                -webkit-box-shadow: -35px 0px 60px 8px rgba(255,255,255,1);
+                -moz-box-shadow: -35px 0px 60px 8px rgba(255,255,255,1);
+                box-shadow: -35px 0px 60px 8px rgba(255,255,255,1);
+            }
+
+        #L, #G {
+            animation: flickerLG 2s linear reverse infinite;
+            position: relative;
+        }
+
+            #L::after,
+            #L::before {
+                content: ' ';
+                width: 100px;
+                height: 100px;
+                background: var(--white);
+                position: absolute;
+                top: -50%;
+                left: 100%;
+                border-radius: 100%;
+                opacity: 0.05;
+                filter: blur(10px);
+            }
+
+            #L::after {
+                width: 200px;
+                height: 200px;
+                top: -150%;
+                left: -5%;
+                opacity: 0.1;
+                filter: blur(10px);
+            }
+
+        #H {
+            animation: flickerH 2s linear reverse infinite
+        }
+
+        #T {
+            animation: flickerH 2s linear reverse infinite
+        }
+
+        #home {
+            overflow-x: hidden;
+        }
+
+        @keyframes flickerI {
+            0% {
+                opacity: 0.4;
+            }
+
+            5% {
+                opacity: 0.5;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            15% {
+                opacity: 0.85;
+            }
+
+            25% {
+                opacity: 0.5;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            35% {
+                opacity: 0.1;
+            }
+
+            40% {
+                opacity: 0.25;
+            }
+
+            45% {
+                opacity: 0.5;
+            }
+
+            60% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.85;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes flickerLG {
+            0% {
+                opacity: 0.19;
+            }
+
+            5% {
+                opacity: 0.2;
+            }
+
+            10% {
+                opacity: 0.25;
+            }
+
+            15% {
+                opacity: 0.35;
+            }
+
+            25% {
+                opacity: 0.2;
+            }
+
+            30% {
+                opacity: 0.4;
+            }
+
+            35% {
+                opacity: 0.1;
+            }
+
+            40% {
+                opacity: 0.25;
+            }
+
+            45% {
+                opacity: 0.2;
+            }
+
+            60% {
+                opacity: 0.4;
+            }
+
+            70% {
+                opacity: 0.35;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes flickerH {
+            0% {
+                opacity: 0.15;
+            }
+
+            5% {
+                opacity: 0.2;
+            }
+
+            10% {
+                opacity: 0.12;
+            }
+
+            15% {
+                opacity: 0.2;
+            }
+
+            25% {
+                opacity: 0.15;
+            }
+
+            30% {
+                opacity: 0.4;
+            }
+
+            35% {
+                opacity: 0.05;
+            }
+
+            40% {
+                opacity: 0.12;
+            }
+
+            45% {
+                opacity: 0.15;
+            }
+
+            60% {
+                opacity: 0.3;
+            }
+
+            70% {
+                opacity: 0.2;
+            }
+
+            80% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.18;
+            }
+
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes flickerT {
+            0% {
+                opacity: 0.01;
+            }
+
+            5% {
+                opacity: 0.05;
+            }
+
+            10% {
+                opacity: 0.03;
+            }
+
+            15% {
+                opacity: 0.1;
+            }
+
+            25% {
+                opacity: 0.07;
+            }
+
+            30% {
+                opacity: 0.1;
+            }
+
+            35% {
+                opacity: 0.05;
+            }
+
+            40% {
+                opacity: 0.06;
+            }
+
+            45% {
+                opacity: 0.1;
+            }
+
+            60% {
+                opacity: 0.;
+            }
+
+            70% {
+                opacity: 0.1;
+            }
+
+            80% {
+                opacity: 0.;
+            }
+
+            90% {
+                opacity: 0.0;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
+        }
+
+        #home {
+            mix-blend-mode: difference;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        #fog {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+        }
+
+        #home {
+            overflow-x: hidden;
+         
+        }
+
+        /* ---------- Fog ---------- */
+        .fogwrapper {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+            filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+        }
+
+        #foglayer_01, #foglayer_02, #foglayer_03 {
+            height: 100%;
+            position: absolute;
+            width: 200%;
+        }
+
+            #foglayer_01 .image01, #foglayer_01 .image02,
+            #foglayer_02 .image01, #foglayer_02 .image02,
+            #foglayer_03 .image01, #foglayer_03 .image02 {
+                float: left;
+                height: 100%;
+                width: 50%;
+            }
+
+        #foglayer_01 {
+            -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+            -moz-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+            animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+        }
+
+        #foglayer_02, #foglayer_03 {
+            -webkit-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+            -moz-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+            animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+        }
+
+        /* ---------- Moving Fog ---------- */
+        /*
+          'size: cover' || 'size: 100%'; results remain the same
+          'attachment: scroll' can be added or removed; results remain the same
+          'attachment: fixed' causing unexpected results in Chrome
+          'repeat-x' || 'no-repeat'; results remain the same
+        */
+        #foglayer_01 .image01, #foglayer_01 .image02 {
+            background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png") center center/cover no-repeat transparent;
+        }
+
+        #foglayer_02 .image01, #foglayer_02 .image02,
+        #foglayer_03 .image01, #foglayer_03 .image02 {
+            background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png") center center/cover no-repeat transparent;
+        }
+
+        /* ---------- Keyframe Layer 1 ---------- */
+        @-webkit-keyframes foglayer_01_opacity {
+            0% {
+                opacity: .3;
+            }
+
+            22% {
+                opacity: .7;
+            }
+
+            40% {
+                opacity: .48;
+            }
+
+            58% {
+                opacity: .6;
+            }
+
+            80% {
+                opacity: .36;
+            }
+
+            100% {
+                opacity: .3;
+            }
+        }
+
+        @-moz-keyframes foglayer_01_opacity {
+            0% {
+                opacity: .3;
+            }
+
+            22% {
+                opacity: .7;
+            }
+
+            40% {
+                opacity: .48;
+            }
+
+            58% {
+                opacity: .6;
+            }
+
+            80% {
+                opacity: .36;
+            }
+
+            100% {
+                opacity: .3;
+            }
+        }
+
+        @-o-keyframes foglayer_01_opacity {
+            0% {
+                opacity: .3;
+            }
+
+            22% {
+                opacity: .7;
+            }
+
+            40% {
+                opacity: .48;
+            }
+
+            58% {
+                opacity: .6;
+            }
+
+            80% {
+                opacity: .36;
+            }
+
+            100% {
+                opacity: .3;
+            }
+        }
+
+        @keyframes foglayer_01_opacity {
+            0% {
+                opacity: .3;
+            }
+
+            22% {
+                opacity: .7;
+            }
+
+            40% {
+                opacity: .48;
+            }
+
+            58% {
+                opacity: .6;
+            }
+
+            80% {
+                opacity: .36;
+            }
+
+            100% {
+                opacity: .3;
+            }
+        }
+        /* ---------- Keyframe Layer 2 ---------- */
+        @-webkit-keyframes foglayer_02_opacity {
+            0% {
+                opacity: .7;
+            }
+
+            25% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .3;
+            }
+
+            80% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: .7;
+            }
+        }
+
+        @-moz-keyframes foglayer_02_opacity {
+            0% {
+                opacity: .7;
+            }
+
+            25% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .3;
+            }
+
+            80% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: .7;
+            }
+        }
+
+        @-o-keyframes foglayer_02_opacity {
+            0% {
+                opacity: .7;
+            }
+
+            25% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .3;
+            }
+
+            80% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: .7;
+            }
+        }
+
+        @keyframes foglayer_02_opacity {
+            0% {
+                opacity: .7;
+            }
+
+            25% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .3;
+            }
+
+            80% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: .7;
+            }
+        }
+        /* ---------- Keyframe Layer 3 ---------- */
+        @-webkit-keyframes foglayer_03_opacity {
+            0% {
+                opacity: 1
+            }
+
+            27% {
+                opacity: .5;
+            }
+
+            52% {
+                opacity: .9;
+            }
+
+            68% {
+                opacity: .6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes foglayer_03_opacity {
+            0% {
+                opacity: 1
+            }
+
+            27% {
+                opacity: .5;
+            }
+
+            52% {
+                opacity: .9;
+            }
+
+            68% {
+                opacity: .6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes foglayer_03_opacity {
+            0% {
+                opacity: 1
+            }
+
+            27% {
+                opacity: .5;
+            }
+
+            52% {
+                opacity: .9;
+            }
+
+            68% {
+                opacity: .6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes foglayer_03_opacity {
+            0% {
+                opacity: 1
+            }
+
+            27% {
+                opacity: .5;
+            }
+
+            52% {
+                opacity: .9;
+            }
+
+            68% {
+                opacity: .6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        /* ---------- Keyframe moveMe ---------- */
+        @-webkit-keyframes foglayer_moveme {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -100%;
+            }
+        }
+
+        @-moz-keyframes foglayer_moveme {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -100%;
+            }
+        }
+
+        @-o-keyframes foglayer_moveme {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -100%;
+            }
+        }
+
+        @keyframes foglayer_moveme {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -100%;
+            }
+        }
+
+        @media only screen and (min-width: 280px) and (max-width: 767px) {
+            #foglayer_01 .image01, #foglayer_01 .image02,
+            #foglayer_02 .image01, #foglayer_02 .image02,
+            #foglayer_03 .image01, #foglayer_03 .image02 {
+                width: 100%;
+            }
+        }
+
+        
+        body {
+            background: black;
+            
+        }
+        canvas, html {
+            cursor: url(https://i.postimg.cc/7Y5cxPXR/1f534.png),auto;
+        }
+        #circle { mix-blend-mode:difference; 
+            width: 4vw;
+            height: 4vw;
+            border: .05vw solid silver;
+            position: fixed;
+            border-radius: 50%; z-index:999999999999999;
+        }
+
+        #app { opacity:.4;
+            font-family: Montserrat;
+            height: 10vh;
+            width: 100%; position:absolute; left:-1%;top:50%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        #wrapper {
+            text-align: center;
+        }
+
+
+        /* Our mixin positions a copy of our text
+directly on our existing text, while
+also setting content to the appropriate
+text set in the data-text attribute. */
+        .glitch {
+            
+            position: relative;
+            color: white;
+            font-size: 1vw;
+            letter-spacing: 0.1em;
+            /* Animation provies a slight random skew. Check bottom of doc
+  for more information on how to random skew. */
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+
+            .glitch::before {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                left: 2px;
+                text-shadow: -2px 0 #ff00c1;
+                /* Creates an initial clip for our glitch. This works in
+  a typical top,right,bottom,left fashion and creates a mask
+  to only show a certain part of the glitch at a time. */
+                clip: rect(44px, 450px, 56px, 0);
+                /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+  with an alternating animation to keep things fresh. */
+                animation: glitch-anim 5s infinite linear alternate-reverse;
+            }
+
+            .glitch::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                left: -2px;
+                text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+                animation: glitch-anim2 1s infinite linear alternate-reverse;
+            }
+        #myProgress {
+            width: 100%;
+            background-color: white;
+        }
+
+        #myBar {
+            width: 0%; 
+            height:.5vw; margin-top:4vw;
+            background-color: #808080;
+        }
+       
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(35px, 9999px, 3px, 0);
+                transform: skew(0.22deg);
+            }
+
+            5% {
+                clip: rect(28px, 9999px, 83px, 0);
+                transform: skew(0.23deg);
+            }
+
+            10% {
+                clip: rect(66px, 9999px, 6px, 0);
+                transform: skew(0.03deg);
+            }
+
+            15% {
+                clip: rect(4px, 9999px, 31px, 0);
+                transform: skew(0.16deg);
+            }
+
+            20% {
+                clip: rect(87px, 9999px, 90px, 0);
+                transform: skew(0.76deg);
+            }
+
+            25% {
+                clip: rect(50px, 9999px, 94px, 0);
+                transform: skew(0.47deg);
+            }
+
+            30% {
+                clip: rect(71px, 9999px, 7px, 0);
+                transform: skew(0.23deg);
+            }
+
+            35% {
+                clip: rect(56px, 9999px, 26px, 0);
+                transform: skew(0.03deg);
+            }
+
+            40% {
+                clip: rect(63px, 9999px, 68px, 0);
+                transform: skew(0.27deg);
+            }
+
+            45% {
+                clip: rect(56px, 9999px, 95px, 0);
+                transform: skew(0.64deg);
+            }
+
+            50% {
+                clip: rect(33px, 9999px, 10px, 0);
+                transform: skew(0.46deg);
+            }
+
+            55% {
+                clip: rect(17px, 9999px, 15px, 0);
+                transform: skew(1deg);
+            }
+
+            60% {
+                clip: rect(56px, 9999px, 56px, 0);
+                transform: skew(0.17deg);
+            }
+
+            65% {
+                clip: rect(37px, 9999px, 66px, 0);
+                transform: skew(0.6deg);
+            }
+
+            70% {
+                clip: rect(60px, 9999px, 95px, 0);
+                transform: skew(0.09deg);
+            }
+
+            75% {
+                clip: rect(61px, 9999px, 74px, 0);
+                transform: skew(0.46deg);
+            }
+
+            80% {
+                clip: rect(53px, 9999px, 50px, 0);
+                transform: skew(0.16deg);
+            }
+
+            85% {
+                clip: rect(42px, 9999px, 89px, 0);
+                transform: skew(0.76deg);
+            }
+
+            90% {
+                clip: rect(99px, 9999px, 38px, 0);
+                transform: skew(0.88deg);
+            }
+
+            95% {
+                clip: rect(50px, 9999px, 54px, 0);
+                transform: skew(0.06deg);
+            }
+
+            100% {
+                clip: rect(31px, 9999px, 73px, 0);
+                transform: skew(0.57deg);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(64px, 9999px, 57px, 0);
+                transform: skew(0.86deg);
+            }
+
+            5% {
+                clip: rect(60px, 9999px, 11px, 0);
+                transform: skew(0.49deg);
+            }
+
+            10% {
+                clip: rect(14px, 9999px, 76px, 0);
+                transform: skew(0.8deg);
+            }
+
+            15% {
+                clip: rect(6px, 9999px, 12px, 0);
+                transform: skew(0.15deg);
+            }
+
+            20% {
+                clip: rect(40px, 9999px, 55px, 0);
+                transform: skew(0.69deg);
+            }
+
+            25% {
+                clip: rect(27px, 9999px, 53px, 0);
+                transform: skew(0.27deg);
+            }
+
+            30% {
+                clip: rect(91px, 9999px, 62px, 0);
+                transform: skew(0.63deg);
+            }
+
+            35% {
+                clip: rect(36px, 9999px, 22px, 0);
+                transform: skew(0.23deg);
+            }
+
+            40% {
+                clip: rect(26px, 9999px, 75px, 0);
+                transform: skew(0.31deg);
+            }
+
+            45% {
+                clip: rect(60px, 9999px, 1px, 0);
+                transform: skew(0.92deg);
+            }
+
+            50% {
+                clip: rect(19px, 9999px, 56px, 0);
+                transform: skew(0.29deg);
+            }
+
+            55% {
+                clip: rect(54px, 9999px, 100px, 0);
+                transform: skew(0.81deg);
+            }
+
+            60% {
+                clip: rect(64px, 9999px, 94px, 0);
+                transform: skew(0.98deg);
+            }
+
+            65% {
+                clip: rect(46px, 9999px, 49px, 0);
+                transform: skew(0.33deg);
+            }
+
+            70% {
+                clip: rect(34px, 9999px, 59px, 0);
+                transform: skew(0.9deg);
+            }
+
+            75% {
+                clip: rect(63px, 9999px, 7px, 0);
+                transform: skew(0.98deg);
+            }
+
+            80% {
+                clip: rect(67px, 9999px, 42px, 0);
+                transform: skew(0.64deg);
+            }
+
+            85% {
+                clip: rect(6px, 9999px, 54px, 0);
+                transform: skew(0.09deg);
+            }
+
+            90% {
+                clip: rect(53px, 9999px, 36px, 0);
+                transform: skew(0.71deg);
+            }
+
+            95% {
+                clip: rect(73px, 9999px, 80px, 0);
+                transform: skew(0.42deg);
+            }
+
+            100% {
+                clip: rect(51px, 9999px, 64px, 0);
+                transform: skew(0.89deg);
+            }
+        }
+
+        @keyframes glitch-skew {
+            0% {
+                transform: skew(-2deg);
+            }
+
+            10% {
+                transform: skew(4deg);
+            }
+
+            20% {
+                transform: skew(-4deg);
+            }
+
+            30% {
+                transform: skew(-4deg);
+            }
+
+            40% {
+                transform: skew(5deg);
+            }
+
+            50% {
+                transform: skew(2deg);
+            }
+
+            60% {
+                transform: skew(4deg);
+            }
+
+            70% {
+                transform: skew(-4deg);
+            }
+
+            80% {
+                transform: skew(3deg);
+            }
+
+            90% {
+                transform: skew(3deg);
+            }
+
+            100% {
+                transform: skew(-2deg);
+            }
+        }
+
+
+        .pt-5 { z-index:99999999999999; position:absolute; top:70%; left:36%; opacity:.5;
+        }
+        .text-white { 
+        }
+        .scroll-downs { left:-3%;
+        }
+        #myTabContent {
+            position: absolute;
+            width: 100vw;
+            height: 11vw;
+            left: -36vw;
+            bottom: -48vw;
+            z-index: 9999999999999999;
+        }
+        #crdts { position:absolute;  height:12%; top:90%; width:100%; left:-1%;
+        }
+        #crtdgl { font-size:.8vw; letter-spacing:.2vw; text-transform:uppercase; position:absolute; opacity:.7; left:2%; top:-60%;
+        }
+        #backgif {
+            width: 100%;
+            height: 86.5%;
+            background: black;
+            position: absolute;
+            top: 106.5%;
+            left: 0;
+            animation: bak 40s infinite;
+        }
+        @keyframes bak {
+            0% {
+                background-image: url(https://i.postimg.cc/RVw6XR43/giphy.gif);
+                background-size: cover;
+            }
+
+            24.9% {
+                background-image: url(https://i.postimg.cc/RVw6XR43/giphy.gif);
+                background-size: cover;
+            }
+
+            25% {
+                background-image: url(https://i.postimg.cc/h4z77nY1/giphy-1.gif);
+                background-size: cover;
+            }
+
+            49.9% {
+                background-image: url(https://i.postimg.cc/h4z77nY1/giphy-1.gif);
+                background-size: cover;
+            }
+
+            50% {
+                background-image: url(https://i.postimg.cc/prCNL4Kh/9ce2dc5b0e3e1fa3ef8b7b6f8159954a.gif);
+                background-size: cover;
+            }
+
+            74.9% {
+                background-image: url(https://i.postimg.cc/prCNL4Kh/9ce2dc5b0e3e1fa3ef8b7b6f8159954a.gif);
+                background-size: cover;
+            }
+
+            75% {
+                background-image: url(https://i.postimg.cc/NfsK9D0Z/4e261bada3e4161c8ec989f7bc105160.gif);
+                background-size: cover;
+            }
+
+            100% {
+                background-image: url(https://i.postimg.cc/NfsK9D0Z/4e261bada3e4161c8ec989f7bc105160.gif);
+                background-size: cover;
+            }
+        }
+
+        .play { background:transparent; width:4vw; height:4vw; border:.3vw solid white; position:absolute;  top:.5vw; left:11%;
+        }
+        .pause{ background:transparent; width:4vw; height:4vw; border:.3vw solid white; position:absolute;  top:.5vw; left:17%;
+        }
+        body { overflow:auto
+        }
+        .play img, .pause img {
+            position: absolute;
+            filter: invert(100%);
+            width: 2vw;
+            top: .7vw;
+            left: .8vw;
+        }
+        #nih {
+            background: transparent;
+            width: 8vw;
+            height: 4vw;
+            border: .3vw solid white;
+            position: absolute;
+            top: .5vw;
+            left: 1%;
+        }
+        #crtdgl2 { font-size:1.6vw; left:12%; position:absolute; top:18%;
+        }
+
+    </style>
+  <script>
+      $(document).ready(loadx);
+
+      function loadx() {
+          audioElement.play();
+          $("#progressbar").progressbar({
+              value: 37
+          });
+      }
+
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/paper-core.min.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/simplex-noise.min.js"></script>
+  
+</head>
+
+
+<body>
+    <div id="circle">
+        <script>
+            var mouseX = window.innerWidth / 2,
+                mouseY = window.innerHeight / 2;
+
+            var circle = {
+                el: $('#circle'),
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                w: 45,
+                h: 45,
+                update: function () {
+                    l = this.x - this.w / 2;
+                    t = this.y - this.h / 2;
+                    this.el.css({
+                        'transform':
+                            'translate3d(' + l + 'px,' + t + 'px, 0)'
+                    });
+                }
+            }
+
+            
+            $(window).mousemove(function (e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            })
+
+            setInterval(move, 1000 / 60)
+            function move() {
+                circle.x = lerp(circle.x, mouseX, 0.1);
+                circle.y = lerp(circle.y, mouseY, 0.1);
+                circle.update()
+            }
+
+            function lerp(start, end, amt) {
+                return (1 - amt) * start + amt * end
+            }
+        </script>
+    </div>
+    <!-- HOME -->
+    <section id="home" class="ht-100">
+        <!-- Main navigation -->
+        <div id="back">
+            <div id="backimg">
+                <script>
+
+
+                    var moveForce = 18; // max popup movement in pixels
+                    var rotateForce = 13; // max popup rotation in deg
+                    $(document).mousemove(function (e) {
+                        var docX = $(document).width();
+                        var docY = $(document).height();
+
+                        var moveX = (e.pageX - docX / 2) / (docX / 2) * -moveForce;
+                        var moveY = (e.pageY - docY / 2) / (docY / 2) * -moveForce;
+
+                        var rotateY = (e.pageX / docX * rotateForce * 2) - rotateForce;
+                        var rotateX = -((e.pageY / docY * rotateForce * 2) - rotateForce);
+
+                        $('#backimg')
+                            .css('left', moveX + 'px')
+                            .css('top', moveY + 'px')
+                            .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
+
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="fog">
+            <div id="foglayer_01" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+            <div id="foglayer_02" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+            <div id="foglayer_03" class="fog">
+                <div class="image01"></div>
+                <div class="image02"></div>
+            </div>
+        </div>
+        <header class="waves-effect waves-light">
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+                <div class="container">
+                    <span>N</span>
+                    <span>I</span>
+                    <span>H</span>
+                    <span>I</span>
+                    <span>L</span>
+                    <!--Mobile Menu-->
+                    <div class="d-lg-none d-xl-none d-sm-none d-block d-md-none">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse"
+                                aria-controls="collapse" aria-expanded="true" aria-label="Toggle navigation">
+                            <span class="fas fa-bars fa-lg text-dark"> </span>
+                        </button>
+                    </div>
+                    <!--Mobile Menu-->
+                    <!--Desktop Menu-->
+                    <div class="d-sm-block d-none d-md-block d-lg-block d-xl-block">
+                        <ul class="nav smooth-scroll list-unstyled">
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#"> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#"> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#"> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#"> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#"> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-item" href="#">CONTACT</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Desktop Menu-->
+                </div>
+          
+
+
+            </nav>
+            <!--Navbar-->
+            <!-- Full Page Home -->
+            <div class="view streak dark-background streak-photo ht-100" id="particles-js">
+                <!-- Mask & flexbox options-->
+                <div class="mask d-flex justify-content-center align-items-center">
+                    <!-- Content -->
+                    <div class="container">
+                        <div class="text-center text-white">
+                            <!-- Name -->
+
+
+                            <div id="divx" class="popup">
+                                <span id="L">4</span>
+                                <span id="I">0</span>
+                                <span id="G">4</span>
+                                <span id="H"></span>
+                                <span id="T"></span>
+
+                            </div>
+                            <!-- Name -->
+                            <!-- Title -->
+                            <section class="animate-type">
+                                <div id="app">
+                                    <div id="wrapper">
+                                        <!-- Make sure data-text equals the text you put inside the tags. -->
+                                        <span class="glitch" data-text=" Disembodied, gasping, I tumbled">
+                                            Disembodied, gasping, I tumbled
+
+                                        </span><br />
+                                        <span class="glitch" data-text="In the flush of a thousand cold lights,">
+                                            In the flush of a thousand cold lights,
+
+                                        </span><br />
+                                        <span class="glitch" data-text="   Through this night">
+                                            Through this night
+
+                                        </span><br />
+                                        <span class="glitch" data-text="of neon,">
+                                            of neon,
+
+                                        </span><br />
+                                        <span class="glitch" data-text="That I'll never belong to....">
+                                            That I'll never belong to....
+
+                                        </span>
+
+
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Title -->
+                            <!-- Content -->
+                            <!-- Content -->
+                            <!-- scroll downs -->
+                           
+                                <div class="scroll-downs">
+                                    <div class="mousey">
+                                        <div class="scroller"></div>
+                                    </div>
+                                </div>
+                            
+                            <!-- scroll downs -->
+                        </div>
+                    </div>
+                    <!-- Content -->
+                </div>
+                <!-- Mask & flexbox options-->
+
+                <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="792" height="695">
+                </canvas>
+                <div class="pt-5">
+                    <ul class="social-icons list-inline">
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#" id="btn1"> <span id="I">1</span></a></li>
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#"><span id="I">2</span></a></li>
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#"><span id="I">3</span></a></li>
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#"><span id="I">4</span></a></li>
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#"><span id="I">5</span></a></li>
+                        <li class="list-inline-item"><a class="text-white btn btn-outline-light px-3 waves-effect waves-light" href="#"><span id="I">6</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Full Page Home -->
+        </header>
+        <!-- Main navigation -->
+    </section>
+    <!-- HOME -->
+    <!-- ABOUT -->
+    <section id="about" class="ht-100 py-2">
+        <div class="container">
+           
+            <!-- Section name -->
+          
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                  
+                </div>
+                <div id="backgif"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                  
+                    <hr>
+                    <div class="tab-content" id="myTabContent">
+                       
+                        <div id="nih">
+                            <span class="glitch" id="crtdgl2" data-text="NIHIL">
+                              
+                                .NEON
+                            </span>
+                        </div>
+                        <button onclick="move()" class="play"><img src="https://i.postimg.cc/QNPFJz7k/boton-de-play-4.png" /></button>
+
+                        <button onclick="pause()" class="pause"><img src="https://i.postimg.cc/T36Znn3b/simbolo-de-pausa.png" /></button>
+                        <!--<input type="button" value="click to toggle fullscreen" onclick="toggleFullScreen(document.body)">-->
+
+                        <div id="myProgress">
+                            <div id="myBar"></div>
+                        </div>
+
+                        <script>
+
+                            //function toggleFullScreen(elem) {
+                            //    // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                            //    if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) ||
+                            //        (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) ||
+                            //        (document.mozFullScreen !== undefined && !document.mozFullScreen) ||
+                            //        (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+                            //        if (elem.requestFullScreen) {
+                            //            elem.requestFullScreen();
+                            //        } else if (elem.mozRequestFullScreen) {
+                            //            elem.mozRequestFullScreen();
+                            //        } else if (elem.webkitRequestFullScreen) {
+                            //            elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                            //        } else if (elem.msRequestFullscreen) {
+                            //            elem.msRequestFullscreen();
+                            //        }
+                            //    } else {
+                            //        if (document.cancelFullScreen) {
+                            //            document.cancelFullScreen();
+                            //        } else if (document.mozCancelFullScreen) {
+                            //            document.mozCancelFullScreen();
+                            //        } else if (document.webkitCancelFullScreen) {
+                            //            document.webkitCancelFullScreen();
+                            //        } else if (document.msExitFullscreen) {
+                            //            document.msExitFullscreen();
+                            //        }
+                            //    }
+                            //}
+                            var interval;
+                            var width = 1;
+
+                            function move() {
+                                var elem = document.getElementById("myBar");
+
+                                clearInterval(interval);
+                                interval = setInterval(frame, 504);
+
+                                function frame() {
+                                    if (width >= 1000) {
+                                        width = 1;
+                                        clearInterval(interval);
+                                    } else {
+                                        width++;
+                                        elem.style.width = width + 'px';
+                                    }
+                                }
+                            } 
+                            function pause() {
+                                clearInterval(interval);
+                            }
+                            var audioElement = document.createElement('audio');
+                            audioElement.setAttribute('src', 'C:/Users/jessf/Desktop/Ev/Pulse_Surreal.mp3');
+                            audioElement.setAttribute('autoplay', 'autoplay');
+                            audioElement.load()
+                            $.get();
+                            audioElement.addEventListener("load", function () {
+                                audioElement.play();
+                            }, true);
+
+
+
+                            $('.play').click(function () {
+                                audioElement.play();
+                                $("#progressbar").progressbar({
+                                    value: 37
+                                });
+                            });
+
+
+                            $('.pause').click(function () {
+                                audioElement.pause();
+                            });
+
+
+
+                        </script>
+
+                        <div id="crdts">
+                            <span class="glitch" id="crtdgl" data-text=" Disembodied, gasping, I tumbledsdw_________------------292879XX87___!!GOD!!___">
+                                xEVANGELIST ".NEON" 1533252890  / XAT.COM® ALL RIGHTS© RESERVED 2021
+
+                            </span>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+    <!-- Index core JavaScript -->
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/index.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/bootstrap.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mdb.min.js"></script><div class="hiddendiv common"></div><div class="hiddendiv common"></div>
+    <!-- scripts -->
+    <script src="C:/Users/jessf/Desktop/Ev/particles.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/app.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/stats.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery.animatedheadline.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/main.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mdb-filter.min.js"></script>
+    <script>
+        // Basic filter
+        $('.filter-basic').mdbFilter();
+
+        // Draggable filter
+        $('.filter-draggable').mdbFilter({
+            draggable: true
+        });
+
+        // Filter with no gaps
+        $('.filter-fillgaps').mdbFilter({
+            draggable: true,
+            fillGaps: true
+        });
+
+        $('.filter-lightbox').mdbFilter();
+    </script>
+    <script>
+        $(function () {
+            $("#backimg").mgGlitch({
+                destroy: false, // set 'true' to stop the plugin
+                glitch: true, // set 'false' to stop glitching
+                scale: true, // set 'false' to stop scaling
+                blend: false, // set 'false' to stop glitch blending
+                blendModeType: 'normal', // select blend mode type
+                glitch1TimeMin: 600, // set min time for glitch 1 elem
+                glitch1TimeMax: 900, // set max time for glitch 1 elem
+                glitch2TimeMin: 10, // set min time for glitch 2 elem
+                glitch2TimeMax: 115, // set max time for glitch 2 elem
+            });
+        });
+    </script>
+
+
+
+</body>
