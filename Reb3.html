@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+ <style>
+     @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+     @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+
+     html {
+         font-family: 'Share Tech Mono', monospace;
+         background: linear-gradient(180deg, #2b0e10 0%, #07080d 100%) fixed;
+         overflow-y: scroll;
+        
+     }
+         html::-webkit-scrollbar { width:.01vw;
+         }
+     @keyframes text-blink {
+         from, to {
+             opacity: 1;
+         }
+
+         50% {
+             opacity: 0.5;
+         }
+     }
+     body {
+         animation: text-blink 0.01s steps(2) infinite;
+         /*font: .875em/1.6 'Inconsolata', monospace;*/
+         color: #db0e15;
+         font-weight: 400;
+         max-width: 28em;
+         padding: 1em;
+         margin: 5% 0;
+         color: #db0e15;
+         text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+     }
+
+     ::selection {
+         background: transparent;
+     }
+
+     ::-webkit-selection {
+         background: transparent;
+     }
+
+     ::-moz-selection {
+         background: transparent;
+     }
+
+     a {
+         text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+         color: #db0e15;
+     }
+
+         a:hover, a:focus {
+             background: black;
+             color: #db0e15;
+             text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+         }
+
+     h2 {
+         font-size: 1em;
+         font-weight: 400; opacity:.8;
+     }
+
+     p {
+         margin-bottom: 2em; opacity:.8;
+     }
+
+     abbr {
+         cursor: help;
+     }
+
+     ul {
+         list-style: none;
+         padding: 0;
+     }
+
+     li {
+         margin: 1em 0 0;
+     }
+
+     span {
+         display: block;
+         color: #db0e15;
+         text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+         line-height: 1;
+         animation: flashText 1s ease-out alternate infinite;
+     }
+     @keyframes flashText {
+         0% {
+             opacity: .3
+         }
+
+         100% {
+             opacity: 1
+         }
+     }
+
+     kbd {
+         font-family: 'Share Tech Mono', monospace;
+         border: 1px solid #db0e15;
+         box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+         text-transform: uppercase;
+         padding: 0 .2em;
+     }
+     #cod {
+         border: 1px solid #db0e15;
+         box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+     }
+     input[type="text"] {
+         max-width: 25em;
+         border: none;
+         font-family: inherit;
+         background: transparent;
+         padding: 0 .5em;
+     }
+
+         input[type="text"]:focus {
+             background: transparent;
+             color: #db0e15;
+             text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+             outline: none;
+         }
+     #cmd2 { animation-delay:.4s; animation-duration:.5s;
+     }
+     .command {
+         display: block;
+         max-width: 20em;
+         color: #db0e15;
+         text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+       
+         font-weight: 700;
+         margin: 2em 0;
+     }
+
+
+     section {
+         display: none;
+     }
+
+     .open {
+         display: block;
+     }
+     #cod { padding:.2vw;
+     }
+     #matrice {
+         width: 52%; text-align:center;
+         height: 1.6vw;
+         background: #db0e15; color:black; 
+     }
+     #fail {
+         background: #db0e15;
+         color: black; padding:.2vw; opacity:0;
+     }
+     #music {
+         position: fixed;
+         right: 1vw;
+         top: 1vw; height:2vw; 
+         border: 1px solid #db0e15;
+         box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+     }
+     #mus { margin:.3vw;
+     }
+ </style>
+   
+</head>
+<body>
+    <script>
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var audioBuffer, fuenteDeReproduccion;
+        var start = false;
+        var stop = true;
+
+        function solicitarAudio(url) {
+            var request = new XMLHttpRequest();
+            request.open("GET", url, true);
+            request.responseType = "arraybuffer";
+            request.onload = function () {
+                audioCtx.decodeAudioData(request.response, function (buffer) {
+                    audioBuffer = buffer;
+                });
+            };
+            request.send();
+        }
+
+        function reproducirAudio() {
+            fuenteDeReproduccion = audioCtx.createBufferSource();
+            fuenteDeReproduccion.buffer = audioBuffer;
+            fuenteDeReproduccion.playbackRate.value = 1;
+            fuenteDeReproduccion.connect(audioCtx.destination);
+            fuenteDeReproduccion.start(audioCtx.currentTime);
+        }
+
+        function detenerAudio() {
+            fuenteDeReproduccion.stop();
+        }
+
+        function audio() {
+            if (stop) {// si el audio está parado
+                start = true;
+                stop = false;
+                mus.innerHTML = "MUSIC ON";//detener
+                document.getElementById("music").style.opacity = "1";
+                reproducirAudio();
+            } else {// de lo contrario
+                stop = true;
+                start = false;
+                mus.innerHTML = "MUSIC OFF";//reproducir
+                detenerAudio()
+                document.getElementById("music").style.opacity = ".3";
+            }
+        }
+
+        solicitarAudio(
+            "https://xevangelist.github.io/evangelist/the-rebel-path.mp3"
+        );
+
+        // Utiliza el evento click para iniciar o detener la reproducción
+        music.addEventListener("click", audio, false);
+    </script>
+    <main>
+        <div id="music" onclick="audio();">
+            <p id="mus">MUSIC ON</p>
+        </div>
+
+        <section id="home">
+            <h2>A.I. QUADRA V tech 2.38 - HOST is up (0.025s latency)</h2>
+            <p>CLI - Welcome back to the Interface Simulation</p>
+            <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span></p>
+        </section>
+
+        <section id="about">
+            <h2><span>&raquo;About</span></h2>
+            <p>QUADRA V-TECH VER:2.38 INTERFACE SIMULATION.</p>
+            <p>
+                >> Initialize protocol colle28 (INIT.PROTOCOL.VEK[5.8])&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                .<br />
+                .<br />
+                colle28 iniatilizing... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                plase wait... &nbsp;&nbsp;&nbsp;<br />
+                Cheking A.I. integrity...<br />
+                Colle28 Protocol 05%.<br />
+                Colle28 Protocol 18%.<br />
+                Colle28 Protocol 33%.<br />
+                Colle28 Protocol 56%.<br />
+                Colle28 Protocol 79%.<br />
+                Colle28 Protocol 99%.<br />
+                <div id="matrice">protocol complete!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                &nbsp;&nbsp;&nbsp;
+
+                colle28 initialized: &nbsp;&nbsp;&nbsp;<br /><br /><br />
+            </p> <p>
+                "What a beatifull day to die!"<br />
+                Welcome to my terminal, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
+                jQuery Terminal: version 2.38.1 Copyright (c) 2019-2021 based in Cyberpunk2077<br />
+                by Nihil - xEvangelist:1533252890 WORK IN PROGRESS
+
+
+            </p>
+        </section>
+
+        <section id="compiler">
+            <h2><span>&raquo;Compiler</span></h2>
+
+            <p>Welcome to the QUADRA:Compiler V5.9</p>
+            <p>
+                Initializing D.E.C.A Boot A.I. V3.29 <br /><br />
+                script: Compiled successfully.<br />
+                hash: 1639550242517<br />
+                package: glitched-writer<br />
+                version: 2.0.29<br />
+                time: 644ms<br /><br />
+                <div id="matrice">Password Required</div><br />
+                Attempts Remaining:  0
+                <br />
+                ]BRATS$}!==)
+                VAULT>=\..AB
+                ODO))>!^.-TE
+                ACH|}/_)\)(>
+                LEASE{$"`"/G
+                LAZE[)+}`<MI STS>
+                    `:/--/=}
+                    /|=\<|ROOMS. )![({+<-?
+:_@'PIECE!)^
+<+'}+[@|)>)@
+[.?{<:$)*-`^
+\}``TAROT@/_
+:]?;_/)?^:>F
+ROZE!|/=*$\[
+^_BIOME\;+"{
+;*]+`']>>{)!
+="'=LEACH}@]
+>|@?](!;{?$>
+<]?:$_`=/-PR
+OSE`@_;^;TAN
+GO*{\_:)-{$_
+)":}<})}--){
+!\.-"$=.{@|.
+^)!:"-_[$@^^
+"TERMS|>+`#@
+=?=+[$"[^#.;
++++:"/_''(>H
+ALOS}\_{#=_)
+]'>;[:TEASE<
+``<_^]PLOTS'
+?*]^=@*$(:]-
+>CURSOR
+>Entry denied
+>Likeness=3
+>CURSOR
+>Entry denied
+>Likeness=3
+>[.+/]
+>Dud Removed
+><.+/>
+>Tries Reset
+CURSOR
+
+            </p>
+
+
+        </section>
+
+        <section id="terminal">
+
+            <h2><span>&raquo;Terminal</span></h2>
+            <script>
+    var n = 15000; var l = document.getElementById("nmr"); var tx = document.getElementById("fail")
+                window.setInterval(function () {
+                    l.innerHTML = n; if (n == "0") { n = 0; tx.style.opacity = "1"; }
+                    else { n--; }
+                }, 1000);
+
+            </script>
+            <p>
+                Breach time Remaing: <b id="nmr">30000</b> <br />
+                Secuence Reequired to upload: <b id="cod">5C</b>  <b id="cod">FF</b> <b id="cod">E9</b><br />
+                <div id="matrice">Matrice de code</div>
+                <br />
+                &nbsp; &nbsp;&nbsp;&nbsp;CD 55 BD  1C [] E9 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;FF [] 55  E9 CD F1 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;FD E9 1C  1C BD 55 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;BD F1 BD  FF E9 [] <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;E9 1C FD  55 CD CD <br /><br />
+                &nbsp;&nbsp;&nbsp; <b id="fail">FAILURE! RETURN HOME</b>
+
+                <div id="cunt"><div id="cunt2"></div></div>
+            </p>
+
+        </section>
+
+        <section id="media">
+            <h2>A.I. QUADRA V tech 2.38 - MEDIA LIST</h2>
+            <p>CLI - go to hell, only need one click!</p>
+            <p>|-----------------------------------| OK...</p>
+
+            <p>
+                <a>01... CHILDREN OF THE GRAY</a><br />
+                <a>02... CHEMICAL WHORE</a><br />
+                <a>03... PULSE/SURREAL</a><br />
+                <a>04... DON'T LEAVE THE ROOM</a><br />
+                <a>05... MINUSHMENCH</a><br />
+                <a>06... THE EERIE COLD</a><br />
+                <a>07... FAIBLESSE DE SENS</a><br />
+                <a>08... DEAD FLOWERS</a><br />
+            </p>
+
+
+        </section>
+
+        <section id="exit">
+            <h2><span>&raquo;Logout...</span></h2>
+            <p>
+                exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                Plase wait... &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                Deleting temporal archives... &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                <div id="matrice">Logout sucess!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                Close this window to exit
+
+            </p>
+
+        </section>
+        <section id="error">
+            <p>Command not found!<p>
+            <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span></p>
+        </section>
+
+        <section id="help">
+            <h2><span>&raquo;Help?</span></h2>
+            <p><span>Type [command] + <kbd>Enter</kbd></span></p>
+            <ul>
+                <li>'home' -- back to home</li>
+                <li>'about' -- What's this for</li>
+                <li>'compiler' -- just, do it</li>
+                <li>'terminal' -- access to terminal</li>
+                <li>'media' -- GO TO HELL</li>
+                <li>'help' -- displays this list</li>
+                <li>'exit' -- Logout the interface</li>
+            </ul>
+        </section>
+
+        <span id="cmd2" class="command">HYDRA:SYS:/$<input id="txxt" type="text"></span>
+    </main>
+    <script>
+      
+        (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+           
+
+        // Let's do it!!
+        $(document).ready(function () {
+          
+               
+            
+
+            $('.command').hide();
+            $('input[type="text"]').focus();
+            $('#home').addClass('open');
+            $('#home').textTyper({
+                speed: 20,
+                afterAnimation: function () {
+                    $('.command').fadeIn();
+                    $('input[type="text"]').focus();
+                    $('input[type="text"]').val('');
+                }
+            });
+
+            // get array of section ids, that exist in DOM
+            var sectionArray = [];
+            // We are using <section> here, you can use <div> or <article> if you want
+            $('section').each(function (i, e) {
+                //you can use e.id instead of $(e).attr('id')
+                sectionArray.push($(e).attr('id'));
+            });
+
+            // Debug
+            //console.log(sectionArray);
+
+
+
+            // Command Input------------------------------
+
+            $('input[type="text"]').keyup(function (e) {
+
+                if (e.which == 13) {// ENTER key pressed
+
+                    $('.command').hide();
+                    var destination = $('input[type="text"]').val();
+                  
+                       
+                        
+                    // Display section with id == destination and hide all others
+                    $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+                   
+                    // If destination does not match our array of section ids, display error section
+                    if ($.inArray(destination, sectionArray) == -1) {
+                        $('#error').addClass('open');
+                        $('#error').siblings().removeClass('open');
+                       
+                    }
+                   
+                    // All sections with class .open init textTyper
+                    $('.open').textTyper({
+                        speed: 20,
+                        afterAnimation: function () {
+                            $('.command').fadeIn();
+                            $('input[type="text"]').focus();
+                            $('input[type="text"]').val('');
+                           
+                        }
+                    });
+                    
+                }// end if ENTER key pressed
+
+            });// end keyup function
+
+            // End Command Input-----------------------------
+
+        });
+    </script>
+
+</body>
+
+</html>
