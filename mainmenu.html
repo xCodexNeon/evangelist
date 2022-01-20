@@ -1,0 +1,1019 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+        body {
+            background: black;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+        a {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+          /*  .cursor {
+                pointer-events: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                mix-blend-mode: difference;
+                z-index: 1000;
+            }*/
+        #main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        #menu {
+            width: 24%;
+            height: 100%;
+            position: absolute;
+            left: 8%;
+            box-shadow: 0 0 .4vw rgba(199,48,48.3);
+        }
+        #backgr {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(https://i.postimg.cc/P52XfZw4/stripes-black-red-lines-streaks-5120x2880-c2-000000-8b0000-l2-25-50-a-90-f-1.png); opacity:.1;   
+        }
+        #bakfil { width:100%; height:20%; backdrop-filter:blur(10px);
+        }
+        #a_menu { width:85%; height:50%; position:absolute;  top:40%; left:5%; overflow:hidden;
+        }
+
+        #m_s {
+            width: 100%;
+            height: 3vw;
+            position: absolute; 
+        }
+            #m_s:nth-child(2) { top:3.2vw;
+            }
+            #m_s:nth-child(3) {
+                top: 6.4vw;
+            }
+            #m_s:nth-child(4) {
+                top: 9.6vw;
+            }
+            #m_s:nth-child(5) {
+                top: 12.8vw;
+            }
+        #m_select {
+            width: 100%;
+            height: 3vw; 
+        }
+        #pol1 {
+            fill: transparent;
+            stroke: transparent;
+            stroke-width: 3; transition: ease-in .2s all;  
+        }
+        #m_s:hover #pol1 {
+            fill: rgb(10 2 2);
+            stroke: rgb(50,103,122);
+            box-shadow: 0 0 1vw rgb(50,103,122);
+            stroke-width: 3;
+            transition-delay: -.5s;
+        }
+        #m_s:hover #img_h {
+            transition-delay: -.5s;
+            animation: flicker 1s infinite;
+        }
+        #p_sel {
+            position: absolute;
+            color:rgba(199,48,48.3);
+            font-family: 1vw;
+            font-weight: bold;
+            letter-spacing: .2vw;
+            top: -.5vw;
+            left: 1vw;
+            transition: ease .2s all;
+        }
+          
+       #m_s:hover #p_sel {
+            color: rgb(50,103,122);
+        }
+        #c1 {
+            position: absolute; top:3%;
+            width: 50%; left:3%; transform:rotateZ(1deg);
+            height: 1.5vw;
+            border: .2vw solid rgba(199,48,48,.9); opacity:.5;
+        }
+        #c2 {
+            position: absolute;
+            top: 3.24%;
+            width: 10%;
+            left: 54.5%;
+            transform: rotateZ(1deg);
+            height: 1.5vw;
+            border: .2vw solid rgba(199,48,48,.9);
+            opacity: .5;
+        }
+        #c3 {
+            position: absolute;
+            top: 7.24%;
+            width: 1.6vw;
+            left: 3%;
+            transform: rotateZ(1deg);
+            height: 1.5vw;
+            border: .2vw solid rgba(199,48,48,.9);
+            opacity: .5;
+        }
+            #c3 img { width:1vw; position:absolute; left:.3vw; top:.2vw; opacity:.6;
+            }
+        #c4 {
+            position: absolute;
+            top: 7.31%;
+            width: 30%;
+            left: 12%;
+            transform: rotateZ(1deg);
+            height: 1.5vw;
+            border: .2vw solid rgba(199,48,48,.9);
+            opacity: .5;
+        }
+        #c5 {
+            position: absolute;
+            top: 3%;
+            width: 22%;
+            right:4%;
+            transform: rotateZ(-.7deg);
+            height: 1.8vw;
+            border: .2vw solid rgba(199,48,48,.9);
+            opacity: .5;
+        }
+        #t_1 { position:absolute; width:1vw; opacity:.8; height:.8vw; left:.5vw; top:.4vw;
+        }
+        #pc1 { font-size:.6vw; margin:auto;  letter-spacing:.05vw; margin-left:.5vw; margin-top:.3vw; animation:flicker4 2s infinite;
+        }
+        #pc2 {
+            font-size: .6vw;
+            margin: auto;
+            color: #FF5B5B;
+            letter-spacing: .05vw;
+            margin-left: .2vw;
+            margin-top: .3vw;
+        }
+        #pc4 { font-weight:bold;
+            font-size: .5vw;
+            margin: auto;
+            color:#f54141;
+            letter-spacing: .1vw; margin-left:.5vw;
+        }
+        #pc4-2 {
+            font-weight: bold;
+            font-size: .5vw;
+            margin: auto;
+            color: #f54141;
+            letter-spacing: .1vw;
+            margin-left: .5vw;
+        }
+        #p_1 {
+            position: absolute;
+            left: 50%;
+            top: 3.5%;
+            font-size: .4vw;
+            filter: contrast(150%);
+            color: rgba(199,48,48,1);
+            letter-spacing: .07vw;
+            transform: rotateZ(-.7deg);
+        }
+        #p_2 {
+            position: absolute;
+            left: 54%;
+            top: 5%;
+            font-size: .4vw;
+            filter: contrast(150%);
+            color: rgba(199,48,48,1);
+            letter-spacing: .07vw;
+            transform: rotateZ(-.7deg);
+        }
+        #pm_1 {
+            position: absolute;
+            left: 5%;
+            top: 77%;
+            font-size: .5vw;
+            /*filter: contrast(150%);*/
+            color: rgba(199,48,48,1);
+            letter-spacing: .1vw;
+        }
+        #pm_2 {
+            position: absolute;
+            left: 5%;
+            top: 77%; text-shadow: 0 0 .5vw #f54141;
+            font-size: 1.5vw;
+            /*filter: contrast(150%);*/
+            color: rgba(199,48,48,1);
+            letter-spacing: .1vw;
+        }
+        #pd_1, #pd_2, #pd_3 {
+            position: absolute;
+            left: 10%;
+            top: -20%;
+            font-size: .4vw;
+            filter: contrast(150%);
+            color: rgba(199,48,48,1);
+        }
+        #pd_1x, #pd_2x {
+            position: absolute;
+            left: 20%;
+            top: -10%;
+            font-size: .5vw; opacity:.9;
+            color:#FF5B5B;
+        }
+        #pd_2, #pd_2x { top:20%;
+        }
+        #pd_3 { top:40%;
+        }
+        @keyframes flicker4 {
+
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                color: rgba(199,48,48,.8);
+            }
+
+            20%, 24%, 55% {
+               
+                color: #FF5B5B;
+            }
+        } 
+        #xlog { position:absolute; width:160%; height:20%;  top:10%; left:-30%; filter:contrast(120%); transform:rotateZ(-2deg); opacity:.8;
+        }
+        #lo { position:absolute; width:100%; animation: flicker 2s infinite;
+        }
+        @keyframes flicker {
+
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity:1;
+            }
+
+            20%, 24%, 55%, 67% {
+               opacity:0.4;
+            }
+        }
+        #lo2 {
+            position: absolute;
+            width: 20%;
+            left: 60%;
+            top: 120%;
+            transform: rotateZ(2deg);
+            animation: flicker 2s infinite;
+        }
+        #img_h {
+            position: absolute;
+            width: 2vw;
+            right: 1.5vw;
+            top: .8vw;
+            opacity: 0;
+            transition: ease-in .2s all;
+        }
+        #bar {
+            position: absolute;
+            width: 90%;
+            height: 0;
+            left: 5%;
+            top: 80%;
+            border-bottom: .1vw solid rgba(199,48,48,.9);
+            opacity: .5;
+            box-shadow: 0 0 .4vw rgba(199,48,48.3);
+        }
+        #r_play { width:30%; height:10%; position:absolute; right:4%; bottom:6%; /*background:red;*/
+        }
+        #r_p {width:100%; height:2vw; position:absolute; border:.2vw solid rgb(50,103,122);
+        }
+        #t_3 { width:1.3vw; height:1.3vw; border:.21vw solid rgb(40 193 247); border-radius:2px; margin:.2vw;
+        }
+        #pt_3 {
+            color: rgb(40 193 247);
+            font-size: 1vw; position:absolute; top:-.7vw; font-weight:bold; left:.8vw;
+        }
+        #m_img {  position:absolute; width:1.7vw; left:84%; top:53%; 
+        }
+        #m_pimg { position:absolute; left:90%; top:28%;
+            text-shadow: 0 0 .5vw #f54141;
+            font-size: 1.2vw; font-weight:bold;
+            /*filter: contrast(150%);*/
+            color: rgba(199,48,48,1);
+            letter-spacing: .1vw;
+        }
+        #t_dt {
+            width: 17%;
+            height: 100%;
+            position: absolute; top:0;
+            border-left: .2vw solid rgb(50,103,122); right:0;
+        }
+        #t_db {
+            width: 8%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            border-left: .2vw solid rgb(50,103,122);
+            right: 17%;
+        }
+        #c_dt { width:1vw; position:absolute; top:.5vw; left:.5vw; transform:rotate(90deg);
+        }
+        #m_bars { width:10%; position:absolute; left:64%; height:100%; top:0;
+        }
+        .equilizer { position:absolute; top:-.3vw;  right:.8vw;
+            transform: rotate(180deg);
+        }
+
+        .bar {  
+            fill: rgb(40 193 247);
+            width: 1.5vw;
+            animation: equalize 4s 0s infinite;
+        }
+
+            .bar:nth-child(1) {
+                animation-delay: -1.9s;
+            }
+
+            .bar:nth-child(2) {
+                animation-delay: -2s;
+            }
+
+            .bar:nth-child(3) {
+                animation-delay: -2.3s;
+            }
+
+            .bar:nth-child(4) {
+                animation-delay: -2.4s;
+            }
+
+            .bar:nth-child(5) {
+                animation-delay: -2.1s;
+            }
+
+        @keyframes equalize {
+            0% {
+                height: 30px;
+            }
+
+            4% {
+                height: 25px;
+            }
+
+            8% {
+                height: 20px;
+            }
+
+            12% {
+                height: 15px;
+            }
+
+            16% {
+                height: 10px;
+            }
+
+            20% {
+                height: 15px;
+            }
+
+            24% {
+                height: 20px;
+            }
+
+            28% {
+                height: 5px;
+            }
+
+            32% {
+                height: 20px;
+            }
+
+            36% {
+                height: 30px;
+            }
+
+            40% {
+                height: 10px;
+            }
+
+            44% {
+                height: 20px;
+            }
+
+            48% {
+                height: 35px;
+            }
+
+            52% {
+                height: 15px;
+            }
+
+            56% {
+                height: 5px;
+            }
+
+            60% {
+                height: 15px;
+            }
+
+            64% {
+                height: 25px;
+            }
+
+            68% {
+                height: 30px;
+            }
+
+            72% {
+                height: 35px;
+            }
+
+            76% {
+                height: 40px;
+            }
+
+            80% {
+                height: 35px;
+            }
+
+            84% {
+                height: 30px;
+            }
+
+            88% {
+                height: 25px;
+            }
+
+            92% {
+                height: 30px;
+            }
+
+            96% {
+                height: 35px;
+            }
+
+            100% {
+                height: 40px;
+            }
+        }
+        #now { position:absolute; overflow:hidden; width:15%; left:50%; top:.7vw;
+        }
+            #now p {
+                font-size: .5vw; font-weight:bold; animation:flicker3 2s infinite; opacity:.8;
+               letter-spacing:.1vw;
+                letter-spacing: 0vw;
+            }
+        @keyframes flicker3 {
+
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                color: rgb(40 193 247);
+            }
+
+            20%, 24%, 55% {
+                color:rgb(50,103,122);
+            }
+        }
+        #g_th {
+            position: absolute;
+            left: 8%;
+            top:-1vw;
+            text-shadow: 0 0 .5vw #f54141;
+            font-size: 1.2vw;
+            font-weight: bold;
+            /*filter: contrast(150%);*/
+            color: rgba(199,48,48,1);
+            letter-spacing: .1vw;
+        }
+       
+
+        @keyframes scroll {
+            0% {
+                top:0;
+            }
+
+            50% {
+               top:-100%;
+            }
+
+           
+            100% {
+              top:0%;
+            }
+        }
+        @keyframes scroll2 {
+            0% {
+                bottom: 0;
+            }
+
+            50% {
+                bottom: -100%;
+            }
+
+            
+
+            100% {
+                bottom: 0%;
+            }
+        }
+
+        .slider { top:0; animation:scroll 60s infinite; opacity:.3;
+            z-index: 999;
+            background: url(https://i.postimg.cc/fLFjtGsB/triangulo.png);
+            /*box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);*/
+            height: 200%;
+            margin: auto; left:1%;
+            overflow: hidden;
+            position: absolute;
+            width: 10px;
+        }
+
+        .slider2 { transform:rotate(180deg); 
+            bottom: 0;
+            animation: scroll2 60s infinite;
+            opacity: .3;
+            z-index: 999;
+            background: url(https://i.postimg.cc/fLFjtGsB/triangulo.png);
+            /*box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);*/
+            height: 200%;
+            margin: auto;
+            right: 1%;
+            overflow: hidden;
+            position: absolute;
+            width: 10px;
+        }
+        #legend {
+            position: absolute;
+            left: 4%;
+            font-size: .45vw; top:95%;
+            color: rgba(199,48,48,1);
+            letter-spacing: .07vw;
+        }
+        #legend2 {
+            position: absolute;
+            left: 4%;
+            font-size: .45vw;
+            top: 96.6%;
+            color: rgba(199,48,48,1);
+            letter-spacing: .07vw;
+        }
+        #Main_play, _#M_N {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+            font-family: 'Oswald', sans-serif;
+        }
+        #In_mnu {
+            text-align: center;
+            position: absolute;
+            top: 60%;
+            width: 25%;
+            left: 37.5%;
+            transform: rotateZ(1deg);
+            height: 4vw; /*box-shadow: 0 0 .2vw #f54141;*/
+            border: .1vw solid #FF5B5B;
+            
+        }
+        #cub {
+            position: absolute;
+            top: 71%;
+            width: 20%;
+            left: 40%;
+            transform: rotateZ(1deg);
+            height: 2vw; /*box-shadow: 0 0 .2vw #f54141;*/
+            border: .1vw solid #FF5B5B;
+        }
+            #In_mnu span { margin-top:.5vw; animation:flicker4 1s infinite;
+                text-shadow: 0 0 .5vw #f54141;
+                font-size: 2.2vw;
+                font-weight: bold;
+                /*filter: contrast(150%);*/
+                /*color: rgba(199,48,48,1);*/
+                letter-spacing: .2vw; opacity:.7;
+            }
+            #In_mnu img { width:2.2vw; margin-top:.6vw;
+            }
+        #botbar {
+            width: 60%;
+            height: 0;
+            border-bottom: .1vw solid #FF5B5B;
+            position: absolute;
+            top: 80%;
+            left: 20%;
+            opacity: .3;
+        }
+        #m_int {
+            position: absolute;
+            left: 37.5%;
+            top: 57%;
+            font-size: .5vw; font-weight:bold;
+            color: #FF5B5B;
+            letter-spacing: .15vw;
+        }
+        #m_int2 {
+            position: absolute;
+            left: 40.5%;
+            top: 75%;
+            font-size: .5vw;
+            font-weight: bold;
+            color: #FF5B5B;
+            letter-spacing: .15vw;
+        }
+        #cub img { width:2vw; filter:contrast(140%); position:absolute; left:.8vw; top:.2vw;
+        }
+        #main { z-index:-1;  opacity:0;
+        }
+        #M_N:target #main { animation:toin 2s 1; animation-fill-mode:forwards;
+        }
+        #M_N:target #Main_play {
+            z-index:-1; opacity:0;
+        }
+        @keyframes tooff {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes toin {
+            from {
+                opacity: 0;
+            }
+
+            to { z-index:2;
+                opacity: 1;
+            }
+        }
+        .player { z-index:-2; position:absolute;
+        }
+        #makesound { position:absolute; z-index:-3;
+        }
+        
+    </style>
+        <!--<script>
+            const $cursor = document.querySelector("#cursor");
+
+            // Listeners
+            document.body.addEventListener("mousemove", onMouseMove);
+
+            // Move cursor
+            function onMouseMove(e) {
+                TweenMax.to($cursor, 0.1, {
+                    x: e.pageX - 5,
+                    y: e.pageY - 7
+                });
+            }
+
+    </script>-->
+</head>
+
+
+
+<body>
+    <div id="M_N">
+        <a id="a_in" href="#M_N" onclick="heartbeat.play();">
+            <div id="Main_play">
+                <p id="m_int">LOADING_MAINMENU 100%</p>
+                <div id="In_mnu">
+                    <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
+                </div>
+                <div id="cub">
+                    <img src="https://i.postimg.cc/ryCD760W/triangulo2.png" />
+                    <p id="pd_1x">/00442923402.39 NIGHT CITY CORP RECORD DATABASE 29 _3.44443/213 XC899</p>
+                    <p id="pd_2x">4422344223442233//0044223402.3900029 _3.800 </p>
+                </div>
+                <p id="m_int2">| ICL_HC 9_45000000048</p>
+                <div id="botbar"></div>
+            </div>
+        </a>
+
+        <div id="main">
+
+            <div class="player">
+                <script>
+                    $(document).ready(function () {
+                        var playing = false,
+                            artistname = $(".artist-name"),
+                            musicName = $(".music-name"),
+                            time = $(".time"),
+                            fillBar = $(".fillBar");
+
+                        let audioData = [];
+
+                        var song = new Audio();
+                        var CurrentSong = 0;
+                        window.onload = load();
+
+                        function load() {
+                            audioData = [
+
+                                {
+                                    name: "Children of the gray",
+                                    artist: "HYPOCRISY",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/cyberpunk-2077-main-menu-theme.mp3?raw=true"
+                                },
+                                {
+                                    name: "You Went So Silent",
+                                    artist: "Clouds",
+                                    src:
+                                        ""
+                                },
+                                {
+                                    name: "Dead Flowers",
+                                    artist: "Demon Hunter",
+                                    src:
+                                        ""
+                                }
+                            ];
+
+                            artistname.html(audioData[CurrentSong].artist);
+                            musicName.html(audioData[CurrentSong].name);
+                            song.src = audioData[CurrentSong].src;
+                        }
+
+                        function playSong() {
+                            var curSong = audioData[CurrentSong];
+                            artistname.html(curSong.artist);
+                            musicName.html(curSong.name);
+                            song.src = curSong.src;
+                            song.play();
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("img").addClass("active");
+                            $(".player-track").addClass("active");
+                        }
+
+                        song.addEventListener("timeupdate", function () {
+                            var position = (100 / song.duration) * song.currentTime;
+                            var current = song.currentTime;
+                            var duration = song.duration;
+                            var durationMinute = Math.floor(duration / 60);
+                            var durationSecond = Math.floor(duration - durationMinute * 60);
+                            var durationLabel = durationMinute + ":" + durationSecond;
+                            currentSecond = Math.floor(current);
+                            currentMinute = Math.floor(currentSecond / 60);
+                            currentSecond = currentSecond - currentMinute * 60;
+                            // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                            if (currentSecond < 10) {
+                                currentSecond = "0" + currentSecond;
+                            }
+                            var currentLabel = currentMinute + ":" + currentSecond;
+
+                            var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                            fillBar.css("width", position + "%");
+
+                            $(".time").html(indicatorLabel);
+                        });
+                        //////
+                        $("#a_in").click(function playOrPause() {
+                            if (song.paused) {
+                                song.play();
+                                playing = true;
+                                $("#play").addClass("fa-pause");
+                                $("#play").removeClass("fa-play");
+                                $("img").addClass("active");
+                                /* $("#bar1").addClass("br1");*/
+                              
+                            } else {
+                                song.pause();
+                                playing = false;
+                                $("#play").removeClass("fa-pause");
+                                $("#play").addClass("fa-play");
+                                $("img").removeClass("active");
+
+
+                            }
+                        });
+
+                        $("#prev").click(function prev() {
+                            CurrentSong--;
+                            if (CurrentSong < 0) {
+                                CurrentSong = 2;
+                            }
+                            playSong();
+                        });
+
+                        $("#next").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 2) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        });
+                    });
+
+                </script>
+               
+
+                <div class="player-control">
+                    <i id="play" class="fas fa-play"><img src="https://i.postimg.cc/mrdtCrpP/tocar.png" /></i>
+                </div>
+
+            </div>
+
+
+
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                    </div>
+
+                </div>
+            </div>
+            <div class="slider2">
+                <div class="slide-track">
+                    <div class="slide">
+                    </div>
+
+                </div>
+            </div>
+
+            <video autoplay="" loop="" muted="">
+                <source src="C:/Users/jessf/Desktop/Ev/back.mp4" type="video/mp4">
+                <script>
+                    $('video').coverVid(1920, 1080);
+                </script>
+
+
+            </video>
+            <p id="p_1">NIGHT CITY CORP RECORD DATABASE //00442923402.390002029 _3. 000T1T928388 000000 // __-9123/213</p>
+            <p id="p_2">T*//23402349236. 023423499244024 -204-2304-23423847 4829</p>
+            <div id="c5">
+                <img src="https://i.postimg.cc/131JdXmr/triangulo.png" id="t_1" />
+                <p id="pd_1">/00442923402.39 NIGHT CITY CORP RECORD DATABASE //004429234025.390002029 _3. 000T1T928388 000000 // __-9123/213</p>
+                <p id="pd_2">4422344223442233//0044223402.3900029 _3. 000T1T928388 000000 000T1T928388 000000 // __-9123/213123/2122123/2</p>
+                <p id="pd_3">NIGHT CITY CORP RECORD DATABASE //00442923402.390002029 _3. 4422344223442233000T1T928388 000000 // __-9123/213</p>
+            </div>
+
+            <div id="menu">
+
+                <div id="c1"><p id="pc1">A200000111FDD00000X4445 [*] 090475</p></div> <div id="c2"><p id="pc2">v74394</p></div>
+                <div id="c3"><img src="https://i.postimg.cc/508LGg6p/warning.png" /></div>
+                <div id="c4">
+                    <p id="pc4">4208992.1127.200 00</p>
+                    <p id="pc4-2">XX._________V.0001203</p>
+                </div>
+
+                <div id="backgr">
+                    <div id="glow"></div>
+                </div>
+                <div id="xlog">
+                    <img src="https://i.postimg.cc/ht8zbvQQ/image-1.png" id="lo" />
+                    <img src="https://i.postimg.cc/bYtp7MYq/2077.png" id="lo2" />
+                </div>
+               
+                <audio controls id="makesound">
+                    <source src="https://xevangelist.github.io/evangelist/click.mp3?raw=true"></source>
+                    <script>
+
+                        $(function () {
+                            //take id of the audio and make a variable
+                            var audio = $("#makesound")[0];
+
+                            //eventhandler on hover with play() function
+                            $(".ms1").mouseenter(function () {
+                                audio.play();
+                            });
+                            $(".ms2").mouseenter(function () {
+                                audio.play();
+                            });
+                            $(".ms3").mouseenter(function () {
+                                audio.play();
+                            });
+                            $(".ms4").mouseenter(function () {
+                                audio.play();
+                            });
+                            $(".ms5").mouseenter(function () {
+                                audio.play();
+                            });
+                            //additional eventhandler on button click
+                            $("#M_N").click(function () {
+                                audio.play();
+                                console.log(audio);
+                            });
+                        });
+
+                    </script>
+                </audio>
+                 
+
+                    <div id="a_menu">
+
+
+                        <a href="C:/Users/jessf/Desktop/Ev/reb1.html">
+                            <div id="m_s" class="ms1">
+                                <svg id="m_select">
+
+                                    <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                    <p id="p_sel">CONSOLE</p>
+                                    <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+
+                                </svg>
+                            </div>
+                        </a>
+                        <div id="m_s" class="ms2">
+                            <svg id="m_select">
+
+                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                <p id="p_sel">HOME</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </svg>
+                        </div>
+                        <div id="m_s" class="ms3">
+                            <svg id="m_select">
+
+                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                <p id="p_sel">ABOUT</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </svg>
+                        </div>
+                        <div id="m_s" class="ms4">
+                            <svg id="m_select">
+
+                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                <p id="p_sel">CREDITS</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </svg>
+                        </div>
+                        <div id="m_s" class="ms4">
+                            <svg id="m_select">
+
+                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                <p id="p_sel">QUIT GAME</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </svg>
+                        </div>
+                    </div>
+                    <p id="pm_1">TRN_TCLAS_800095</p>
+                    <div id="bar"></div>
+                    <p id="pm_2">1.02</p>
+                    <p id="legend">ONLY MKL 0X0001454 NIGHT CITY ON DEATHLINE PLEASE_ONCE_MTF</p>
+                    <p id="legend2">READ PROTOCOL 12x30004 OFT</p>
+                </div>
+
+                <div id="r_play">
+                    <div id="r_p">
+                        <div id="t_3"><p id="pt_3">3</p></div>
+                        <p id="g_th">
+                            Path of the rebel
+
+                        </p>
+                        <div id="now">
+                            <marquee direction="left" id="ejemplo">
+                                <span class="Apple-style-span" style="color: black; font-family:verdana">
+                                    <p>
+                                        NOW PLAYING SYSTEM INPUT 12//004429234025.390002029 _3. 000T1T928388 000000
+                                    </p>
+                                </span>
+                            </marquee>
+                        </div>
+
+                        <div id="m_bars">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+                                <g>
+                                    <title>Audio Equilizer</title>
+                                    <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                                    <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                                    <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                                </g>
+                            </svg>
+
+                        </div>
+                        <div id="t_db">
+                            <img src="https://i.postimg.cc/Xq9m171Z/contorno-cuadrado.png" id="c_dt" />
+                        </div>
+                        <div id="t_dt">
+                            <p id="pd_1" style="color: rgb(40 193 247);">NTR/IIPWHTHPST/-#72993100</p>
+                            <p id="pd_2" style="color: rgb(40 193 247);">//_VEREIDMCONTROL#12_1690</p>
+                            <p id="pd_3" style="color: rgb(40 193 247);">||DMOL011001_//_EM#BL00_//</p>
+                        </div>
+                    </div>
+                    <img id="m_img" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /> <p id="m_pimg">Select</p>
+                </div>
+            </div>
+
+</div>
+
+  
+
+
+
+</body>
+
+</html>
