@@ -14,7 +14,7 @@
     <script type="text/javascript" src="countdown.js"></script>
     <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="mgGlitch.min.js"></script>
-    <style>
+   <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
         body {
@@ -24,8 +24,10 @@
             overflow: hidden;
             cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
         }
-        a {
+        a  {
             cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+        #matrix a { cursor:none;
         }
           /*  .cursor {
                 pointer-events: none;
@@ -660,10 +662,1558 @@
         }
         .player { z-index:-2; position:absolute;
         }
-        #makesound { position:absolute; z-index:-3; opacity:0;
+        #makesound { position:absolute; z-index:-3;
+        }
+        #matrix { position:absolute; width:100%; height:100%; background:black; z-index:9999; overflow:hidden;
+        }
+        #Main_mtx {
+            position: absolute;
+            width: 90%;
+            height: 72%;
+            top: 14%;
+            left: 5%;
+            border: .1vw solid #a6db0c;
+            overflow: hidden;
+        }
+        #A_mtx {
+            position: absolute;
+            width: 25%;
+            height: 50%;
+            top: 19%;
+            left: 4%;
+            border: .1vw solid rgba(0,255,51,.2); border-radius:.2vw;
+        }
+        #firstcontact {
+            position: absolute;
+            width: 25%;
+            height: 50%;
+            top: 19%;
+            left: 4%; z-index:9;
+        }
+        #lin1, #lin2, #lin3 { width:0; height:100%; border-left:.1vw solid #a6db0c;  position:absolute;
+        }
+        #lin1 { left:0; animation:toleft1 15s infinite;
+        }
+        #lin2 {
+            left: 1.4%;
+            animation: toleft2 15s infinite;
+        }
+        #lin3 {
+            left: 2.8%;
+            animation: toleft3 15s infinite;
+        }
+        #lin4, #lin5, #lin6 {
+            width: 0;
+            height: 100%;
+            border-right: .1vw solid #a6db0c;
+            position: absolute;
+        }
+
+        #lin4 {
+            right: 0;
+            animation: toleft4 15s infinite;
+        }
+
+        #lin5 {
+            right: 1.4%;
+            animation: toleft5 15s infinite;
+        }
+
+        #lin6 {
+            right: 2.8%;
+            animation: toleft6 15s infinite;
+        }
+        @keyframes toleft1 {
+            0% {
+                left: 0;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            45% {
+                left: 0;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+            50% {
+                left: 4%;
+                opacity: .1;
+                border-left: .2vw solid #a6db0c;
+            }
+            55% {
+                left: 0;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            100% {
+                left: 0;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+        }
+        @keyframes toleft2 {
+            0% {
+                left: 1.4%;
+                
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            45% {
+                left: 1.4%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            50% {
+                left: 9%;
+                opacity: .1;
+                border-left: .2vw solid #a6db0c;
+            }
+
+            55% {
+                left: 1.4%;
+                
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            100% {
+                left: 1.4%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+        }
+
+        @keyframes toleft3 {
+            0% {
+                left: 2.8%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            45% {
+                left: 2.8%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            50% {
+                left: 17%;
+                opacity: .1;
+                border-left: .2vw solid #a6db0c;
+            }
+
+            55% {
+                left: 2.8%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+
+            100% {
+                left: 2.8%;
+                opacity: 1;
+                border-left: .1vw solid #a6db0c;
+            }
+        }
+
+        @keyframes toleft4 {
+            0% {
+                right: 0;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            45% {
+                right: 0;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            50% {
+                right: 4%;
+                opacity: .1;
+                border-right: .2vw solid #a6db0c;
+            }
+
+            55% {
+                right: 0;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            100% {
+                right: 0;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+        }
+
+        @keyframes toleft5 {
+            0% {
+                right: 1.4%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            45% {
+                right: 1.4%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            50% {
+                right: 9%;
+                opacity: .1;
+                border-right: .2vw solid #a6db0c;
+            }
+
+            55% {
+                right: 1.4%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            100% {
+                right: 1.4%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+        }
+
+        @keyframes toleft6 {
+            0% {
+                right: 2.8%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            45% {
+                right: 2.8%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            50% {
+                right: 17%;
+                opacity: .1;
+                border-right: .2vw solid #a6db0c;
+            }
+
+            55% {
+                right: 2.8%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+
+            100% {
+                right: 2.8%;
+                opacity: 1;
+                border-right: .1vw solid #a6db0c;
+            }
+        }
+
+        #A_mtx2 {
+            position: absolute;
+            width: 96%;
+            height: 94%;
+            top: 3%;
+            left: 1.5%;
+            border: .1vw solid /*#a6db0c*/ transparent;
+            font-family: 'Oswald', sans-serif;
+        }
+        #A_mtx3 {
+            position: absolute;
+            width: 98%;
+            height: 82%;
+            top: 16%; background:rgba(180,180,180,.1);
+            border: .1vw solid #a6db0c;
+            border-left: .25vw solid #a6db0c;
+            border-right: .25vw solid #a6db0c;
+            border-bottom: .25vw solid #a6db0c;
+        }
+        #Mat_1 {
+            width: 100%;
+            height: 2.7vw;
+            position: absolute;
+            /*background: rgba(137,213,26,.3);*/
+            top: .2vw;
+        }
+        #div_mt1, #div_mt2, #div_mt3, #div_mt4, #div_mt5 {
+            font-family: 'Oswald', sans-serif;
+            float: left;
+            width: 1.8vw;
+            height: 1.8vw;
+            /*background: red;*/
+            margin-left: .8vw;
+            margin-top: .3vw;
+        }
+            #div_mt1:first-child, #div_mt2:first-child, #div_mt3:first-child, #div_mt4:first-child, #div_mt5:first-child {
+                margin-left: 4vw;
+            }
+
+        #Mat_2 {
+            width: 100%;
+            top: 2.9vw;
+            height: 2.7vw;
+            position: absolute;
+            /*background: rgba(137,213,26,.3);*/
+        }
+        #Mat_3 {
+            width: 100%;
+            top: 5.6vw;
+            height: 2.7vw;
+            position: absolute;
+            /*background: rgba(137,213,26,.3);*/
+        }
+        #Mat_4 {
+            width: 100%;
+            top: 8.3vw;
+            height: 2.7vw;
+            position: absolute;
+            /*background: rgba(137,213,26,.3);*/
+        }
+        #Mat_5 {
+            width: 100%;
+            top: 11vw;
+            height: 2.7vw;
+            position: absolute;
+            /*  background: rgba(137,213,26,.3);*/
+        }
+       
+
+
+        /*img CORCHETE*/
+        #codX_img1-1, #codX_img1-2, #codX_img1-3, #codX_img1-4, #codX_img1-5,
+        #codX_img1-6, #codX_img1-7, #codX_img1-8, #codX_img1-9, #codX_img1-10,
+        #codX_img1-11, #codX_img1-12, #codX_img1-13, #codX_img1-14, #codX_img1-15,
+        #codX_img1-16, #codX_img1-17, #codX_img1-18, #codX_img1-19, #codX_img1-20,
+        #codX_img1-21, #codX_img1-22, #codX_img1-23, #codX_img1-24, #codX_img1-25{
+            width: 1.9vw;
+            opacity: 0;
+            position: relative;
+        }
+
+
+        #d_cod, #d_cod2, #d_cod3, #d_cod4, #cod_p5,
+        #cod_p6, #cod_p7, #cod_p8, #cod_p9, #cod_p10,
+        #cod_p11, #cod_p12, #cod_p13, #cod_p14, #cod_p15,
+        #cod_p16, #cod_p17, #cod_p18, #cod_p19, #cod_p20,
+        #cod_p21, #cod_p22, #cod_p23, #cod_p24, #cod_p25 {
+            width: 1.7vw;
+            margin-left: .05vw;
+            height: 1.75vw;
+        }
+
+        #cod_p, #cod_p2, #cod_p3, #cod_p4, #cod_p5,
+        #cod_p6, #cod_p7, #cod_p8, #cod_p9, #cod_p10,
+        #cod_p11, #cod_p12, #cod_p13, #cod_p14, #cod_p15,
+        #cod_p16, #cod_p17, #cod_p18, #cod_p19, #cod_p20,
+        #cod_p21, #cod_p22, #cod_p23, #cod_p24, #cod_p25 {
+            position: relative;
+            font-size: 1.2vw;
+            top: -3.4vw;
+            left: .25vw;
+            color: #a6db0c;
+            font-weight: bolder;
+            letter-spacing: .1vw;
+        }
+
+
+        .Mt_1:hover #cod_p, .Mt_1:hover #cod_p2, .Mt_1:hover #cod_p3, .Mt_1:hover #cod_p4, .Mt_1:hover #cod_p5,
+        .Mt_2:hover #cod_p6, .Mt_2:hover #cod_p7, .Mt_2:hover #cod_p8, .Mt_2:hover #cod_p9, .Mt_2:hover #cod_p10,
+        .Mt_2:hover #cod_p11, .Mt_2:hover #cod_p12, .Mt_2:hover #cod_p13, .Mt_2:hover #cod_p14, .Mt_2:hover #cod_p15,
+        .Mt_2:hover #cod_p16, .Mt_2:hover #cod_p17, .Mt_2:hover #cod_p18, .Mt_2:hover #cod_p19, .Mt_2:hover #cod_p20,
+        .Mt_2:hover #cod_p21, .Mt_2:hover #cod_p22, .Mt_2:hover #cod_p23, .Mt_2:hover #cod_p24, .Mt_2:hover #cod_p25 {
+            color: rgb(40 193 247);
+        }
+
+        .code_p:after {
+            content: '55';
+        }
+        .code_p2:after {
+            content: 'FF';
+        }
+        .code_p3:after {
+            content: 'D0';
+        }
+        .code_p4:after {
+            content: '55';
+        }
+        .code_p5:after {
+            content: 'BD';
+        }
+        .code_p6:after {
+            content: 'D0';
+        }
+        .code_p7:after {
+            content: 'C1';
+        }
+        .code_p8:after {
+            content: 'C1';
+        }
+        .code_p9:after {
+            content: 'FF';
+        }
+        .code_p10:after {
+            content: 'D0';
+        }
+        .code_p11:after {
+            content: 'BD';
+        }
+        .code_p12:after {
+            content: '7A';
+        }
+        .code_p13:after {
+            content: '7A';
+        }
+        .code_p14:after {
+            content: '55';
+        }
+        .code_p15:after {
+            content: 'C1';
+        }
+        .code_p16:after {
+            content: '7A';
+        }
+        .code_p17:after {
+            content: 'FF';
+        }
+        .code_p18:after {
+            content: 'D0';
+        }
+        .code_p19:after {
+            content: 'BD';
+        }
+        .code_p20:after {
+            content: 'BD';
+        }
+        .code_p21:after {
+            content: 'FF';
+        }
+        .code_p22:after {
+            content: 'FF';
+        }
+        .code_p23:after {
+            content: 'D0';
+        }
+        .code_p24:after {
+            content: 'BD';
+        }
+        .code_p25:after {
+            content: '7A';
+        }
+        #div_mt1, #div_mt2, #div_mt3, #div_mt4, #div_mt5 {
+            border: .1vw solid transparent;
+        }
+            #div_mt1:hover, #div_mt2:hover, #div_mt3:hover, #div_mt4:hover, #div_mt5:hover {
+                border: .1vw solid rgb(50,103,122);
+            }
+
+        /*MATRIZ LATERAL 1*/
+        #MtY_1{
+            position: absolute;
+            width: 0vw;
+            left: 3.5vw;
+            top: 0;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1_2 {
+            position: absolute;
+            width: 3vw;
+            left: 6.3vw;
+            top: 0;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1_3 {
+            position: absolute;
+            width: 3vw;
+            left: 9.1vw;
+            top: 0;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1_4 {
+            position: absolute;
+            width: 3vw;
+            left: 11.9vw;
+            top: 0;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1_5 {
+            position: absolute;
+            width: 3vw;
+            left: 14.7vw;
+            top: 0;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+       
+
+        /*MATRIZ LATERAL 2*/
+        #MtY_1-2 {
+            top: -2.7vw;
+            position: absolute;
+            width: 0vw;
+            left: 3.5vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1-2_2 {
+            top: -2.7vw;
+            position: absolute;
+            width: 0vw;
+            left: 6.3vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1-2_3 {
+            top: -2.7vw;
+            position: absolute;
+            width: 0vw;
+            left: 9.1vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1-2_4 {
+            top: -2.7vw;
+            position: absolute;
+            width: 0vw;
+            left: 11.9vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        #MtY_1-2_5 {
+            top:-2.7vw;
+            position: absolute;
+            width: 0vw;
+            left: 14.7vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        /*MATRIZ LATERAL 3*/
+        #MtY_1-3 {
+            top: -5.4vw;
+            position: absolute;
+            width: 0vw;
+            left: 3.5vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-3_2 {
+            top: -5.4vw;
+            position: absolute;
+            width: 0vw;
+            left: 6.3vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-3_3 {
+            top: -5.4vw;
+            position: absolute;
+            width: 0vw;
+            left: 9.1vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-3_4 {
+            top: -5.4vw;
+            position: absolute;
+            width: 0vw;
+            left: 11.9vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-3_5 {
+            top: -5.4vw;
+            position: absolute;
+            width: 0vw;
+            left: 14.7vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        /*MATRIZ LATERAL 4*/
+        #MtY_1-4 {
+            top: -8vw;
+            position: absolute;
+            width: 0vw;
+            left: 3.5vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-4_2 {
+            top: -8vw;
+            position: absolute;
+            width: 0vw;
+            left: 6.3vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-4_3 {
+            top: -8vw;
+            position: absolute;
+            width: 0vw;
+            left: 9.1vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-4_4 {
+            top: -8vw;
+            position: absolute;
+            width: 0vw;
+            left: 11.9vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-4_5 {
+            top: -8vw;
+            position: absolute;
+            width: 0vw;
+            left: 14.7vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+        /*MATRIZ LATERAL 5*/
+        #MtY_1-5 {
+            top: -10.8vw;
+            position: absolute;
+            width: 0vw;
+            left: 3.5vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-5_2 {
+            top: -10.8vw;
+            position: absolute;
+            width: 0vw;
+            left: 6.3vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-5_3 {
+            top: -10.8vw;
+            position: absolute;
+            width: 0vw;
+            left: 9.1vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-5_4 {
+            top: -10.8vw;
+            position: absolute;
+            width: 0vw;
+            left: 11.9vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+        #MtY_1-5_5 {
+            top: -10.8vw;
+            position: absolute;
+            width: 0vw;
+            left: 14.7vw;
+            height: 500%;
+            background: rgba(137,213,26,.0);
+        }
+
+
+
+        /*ACRIVAR MATRICES*/
+
+
+        #Mat_1:hover, #Mat_2:hover, #Mat_3:hover, #Mat_4:hover, #Mat_5:hover {
+            background: rgba(67,82,48,.3);
+        }
+        .Mt_1:hover #MtY_1, .Mt_1:hover #MtY_1_2, .Mt_1:hover #MtY_1_3, .Mt_1:hover #MtY_1_4, .Mt_1:hover #MtY_1_5,
+        .Mt_2:hover #MtY_1-2, .Mt_2:hover #MtY_1-2_2, .Mt_2:hover #MtY_1-2_3, .Mt_2:hover #MtY_1-2_4, .Mt_2:hover #MtY_1-2_5,
+        .Mt_3:hover #MtY_1-3, .Mt_3:hover #MtY_1-3_2, .Mt_3:hover #MtY_1-3_3, .Mt_3:hover #MtY_1-3_4, .Mt_3:hover #MtY_1-3_5,
+        .Mt_4:hover #MtY_1-4, .Mt_4:hover #MtY_1-4_2, .Mt_4:hover #MtY_1-4_3, .Mt_4:hover #MtY_1-4_4, .Mt_4:hover #MtY_1-4_5,
+        .Mt_5:hover #MtY_1-5, .Mt_5:hover #MtY_1-5_2, .Mt_5:hover #MtY_1-5_3, .Mt_5:hover #MtY_1-5_4, .Mt_5:hover #MtY_1-5_5 {
+            background: rgba(118,121,114,.3);
+            width: 3vw;
+            z-index: -1;
+        }
+
+
+
+
+        
+
+        .box {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+           top:0; left:0;
+        }
+
+        .circle {
+            width: 2vw;
+            height: 2vw;
+            position: absolute;
+            transform: translate3d(-50%,-50%,0);
+            transition: transform 0.2s cubic-bezier(.02,1.23,.79,1.08); 
+        }
+        .circle img{  width:2vw;
+        }
+        #plk { position:absolute; left:50%; color:white; font-size:2vw;
+        }
+        #neg { width:100%; height:100%; opacity:0; position:absolute; z-index:-3;
+        }
+       /* #pMostrarEj1:after {
+            content: '  ';
+        }*/
+
+        .div_code {
+         overflow:hidden;
+        }
+            .div_code:hover #back_h {
+                animation: backdrow 2s infinite;
+            }
+        #back_d {
+            position: absolute;
+            width: 1.75vw;
+            height: 1.75vw;
+            overflow: hidden;
+        }
+        #back_h { bottom:100%;
+            position: absolute;
+            width: 1.75vw;
+            height: 1.75vw;
+            background: rgba(25,50,0,.5);
+            background: linear-gradient(180deg, rgba(25,50,0,.3) 0%, rgba(0,255,51,.3) 100%);
             
         }
-        
+        #back_mtx {
+            width: 100%;
+            height: 100%;
+            position: absolute; bottom:100%;
+            background: rgba(25,50,0,.3);
+            background: linear-gradient(180deg, rgba(25,50,0,.3) 0%, rgba(0,255,51,.3) 100%);
+            animation: backdrow 2s infinite; z-index:-2;
+        }
+        #A_mtx { overflow:hidden; 
+           
+        }
+            #A_mtx:hover #back_mtx { animation:none;
+            }
+        @keyframes backdrow {
+            0% {
+                bottom: 100%;
+                opacity: 1;
+            }
+           60% {
+                bottom: 100%;
+                opacity: 1;
+            }
+
+            99% {
+                bottom: -100%;
+                opacity: 1;
+            }
+            100% {
+                bottom:-100%; opacity:0;
+            }
+        }
+        #vid2 { opacity:.1;
+        }
+        #poly_1 {  position:absolute; width:100.4%; height:16%; z-index:-1; 
+        }
+        #Mtx_cod { width:100%; height:100%; position:absolute; 
+        }
+        #Mtx_poly { fill:#a6db0c;
+        }
+        #mtx_i { position:absolute; width:1vw; opacity:.5; left:1vw; top:1vw;
+        }
+        #m_p_dc {
+            position: absolute;
+            font-size: 1vw;
+            letter-spacing: .1vw;  top:-.2vw;
+            left: 2.6vw;
+            font-family: 'Oswald', sans-serif;
+        }
+        #A_mtx { background:rgba(14,185,110,.1);
+        }
+            #A_mtx:hover {
+                border: .1vw solid transparent;
+                background: rgba(14,185,110,.0);
+            }
+        #net_back {
+            width: 23%;
+            height: 4%;
+            position: absolute;
+            top: 4.5%;
+            left: 0;
+            border-top: 0.14641288433382138vw solid #a6db0c;
+            border-bottom: 0.14641288433382138vw solid #a6db0c;
+            opacity: .8;
+            animation: in5 5s infinite; 
+        }
+        #net_let {
+            width: 23%;
+            height: 4%;
+            position: absolute;
+            top: 4.7%;
+            left: 0;
+            opacity: .8;
+        }
+        #nt_1:first-child {
+            margin-top: .6vw;
+        }
+        #nt_1 {
+            width: 100%;
+            height: 0.14641288433382138vw; background:#a6db0c;
+            margin-bottom: .2vw;
+        }
+        #net_b_1 { position:absolute; left:0%; width:6%; height:100%;
+        }
+        #net_b_3 { position:absolute; left:17%; width:15%; height:100%; 
+        }
+        #net_b_2 {
+            position: absolute;
+            right: 0%;
+            width: 55%;
+            height: 100%;
+        }
+        #l_tvh1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #a6db0c;
+            font-size: .95vw;
+            position: absolute;
+            letter-spacing: .1vw;
+            font-weight: bolder;
+            left: 8%;
+            top: 17%;
+        }
+        #l_tvh {
+            left: 32%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #a6db0c;
+            font-size: .95vw;
+            position: absolute;
+            letter-spacing: .1vw;
+            font-weight: bolder;
+            top: 17.2%;
+        }
+            #matrix {
+                --colors-bg--300: #1e181e;
+                --colors-bg--500: #191a1e;
+                --colors-primary--200: #f4908b;
+                --colors-primary--300: #ea6f69;
+                --colors-primary--500: #e8615a;
+                --colors-primary--600: #9c3230;
+                --colors-primary--700: #5e2122;
+                --colors-primary--800: #451717;
+                --colors-primary--900: #3c181a;
+                --colors-secondary--500: #2be4ea;
+                --colors-secondary--900: #295459;
+                --colors-tertiary--500: #fed33f;
+                --colors-on_bg--500: var(--colors-primary--500);
+                --colors-on_tertiary--500: var(--colors-bg--300);
+                --colors-on_primary--500: var(--colors-primary--200);
+                --colors-active--500: #2bfea0;
+                background-color: var(--colors-bg--500);
+                animation: backdrow2 10s infinite;
+                background-image: radial-gradient( ellipse at 0% 0%, #461616 0%, transparent 45% );
+                background-size: 125% 125%;
+                background-position-x: 0%;
+            }
+        @keyframes backdrow2 {
+            0% {
+                background-size: 125% 125%;
+            }
+
+            20% {
+                background-size: 112% 112%;
+            }
+            40% {
+                background-size: 100% 100%;
+            }
+            60% {
+                background-size: 112% 112%;
+            }
+            80% {
+                background-size: 200% 200%;
+            }
+            100% {
+                background-size: 112% 112%;
+            }
+        }
+        #back_lin { position:absolute; height:6%; width:100%; left:0; top:18.5%; background:rgba(67,82,48,.3);
+        }
+        #a_buff {position:absolute; height:7.6%; width:100%; border: .1vw solid #a6db0c; top:6%;
+        }
+        #let_rem {
+            position: absolute;
+            width: 25.3%;
+            height: 76%; 
+            border-top: .1vw solid rgba(166,219,12,.6);
+            left: 4%;
+            top: 12%;
+            border-radius: 0 0 0 .2vw;
+        }
+        #time {
+            position: absolute;
+            width: 17%;
+            height: 66%;
+            right: 0%;
+            top: 8%;
+            background: rgba(0,0,0,.3);
+            border: .1vw solid #a6db0c;
+        }
+        #text_rem {
+            position: absolute;
+            letter-spacing: .15vw; 
+            font-family: 'Oswald', sans-serif; font-size:1vw; color:#a6db0c; top:-.8vw; 
+        }
+        #nmr {
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1vw; letter-spacing:.1vw;
+            color: #a6db0c;
+            top: -1.4vw;
+            position: absolute; right:.3vw;
+        }
+        #firstcontact p {
+            font-family: 'Oswald', sans-serif;
+            font-size: .8vw;
+            letter-spacing: .1vw;
+            top: .8vw;
+            position: absolute;
+            right: 2vw;
+        }
+        .lblsec {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            letter-spacing: .1vw;
+            color:rgb(40 193 247); margin-left:.15vw;
+        }
+        #bufer { width:7.5%; height:83%; background:rgba(0,0,0,.6); left:32%; top:4%; border: .1vw solid #a6db0c;  position:absolute;
+        }
+        .div_buff { position:absolute; width:1.4vw; height: 1.4vw; border:.1vw dashed rgb(50,103,122);  top:.3vw; box-shadow: 0 0 .4vw rgba(40,193,247, .3);
+        }
+        #buf1 { left:.5vw;
+        }
+        #buf2 {
+            left: 2.4vw;
+        }
+        #buf3 {
+            left: 4.4vw;
+        }
+        #amtx_sus { 
+            position: absolute;
+            width: 25.5%;
+            height: 70%;
+            top: 19%;
+            left: 4%; z-index:-99; opacity:0;
+        }   
+        #A_mtx_1 { overflow:hidden;
+            position: absolute; left:45%;
+            width: 10%; /*100*/
+            height: 10%; /*80*/
+            background: #44DA78; border-radius: .5vw 0 1vw 0;
+           /* animation: backdrow3 1s 1;*/ 
+        }
+        @keyframes backdrow3 {
+            0% {
+                left: 10%;
+                height: 10%;
+                width: 10%;
+                left: 45%;
+            }
+
+            75% {
+                left: 0;
+                height: 10%;
+                width: 100%;
+            }
+
+            100% {
+                left: 0;
+                width: 100%;
+                height: 80%;
+               
+            }
+
+        }
+        @keyframes in3 {
+            10% {
+                opacity:0
+            }
+
+            30% {
+               opacity:1;
+            }
+
+            50% {
+                opacity: 0
+            }
+            90% {
+                opacity: 0
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        #poly_3 { width:45%; height:10%;  position:absolute; overflow:hidden; top:82%; right:0;
+        }
+        #poly_2 {
+            opacity: 0;
+            width: 100%;
+            height: 60%;
+            position: absolute;
+            overflow: hidden;
+            top: 10%; 
+        }
+        #Mtx_poly2 {
+            fill: #163825;
+            stroke: #57CA28;
+        }
+        #Mtx_poly3 {
+            fill: #163825;
+        }
+        #Mtx_cod2 { width:100%; height:100%; position:absolute;
+
+        }
+        #code_susses { width:92%; height:90%; position:absolute; top:5%;left:3%; overflow:hidden;
+        }
+            #code_susses p {
+                font-family: 'Oswald', sans-serif; 
+                font-size: .65vw; font-weight:100;
+                letter-spacing: .14vw;
+                color: #44DA78;
+                line-height:.25vw;
+            }
+        #pt_buf {
+            font-family: 'Oswald', sans-serif; position:absolute; color:#a6db0c; left:32%; font-size:1.1vw; top:-3vw; font-weight:bold; letter-spacing:.14vw;
+        }
+        #sus3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: .8vw; left:10%;
+            font-weight: 100;
+            letter-spacing: .14vw; position:absolute; 
+            color: #44DA78; top:0;
+        }
+        #deam_1 {
+            font-family: 'Oswald', sans-serif; position:absolute; left:30%; top:80%;  font-weight:bold;   
+            font-size: .8vw;
+            letter-spacing: .15vw;
+        }
+        #bar_time { position:absolute; width:100%; height:.3vw; top:90%; border-radius: 0 0 0 .3vw; overflow:hidden;
+        }
+        #bartime {position:absolute; width:100%; height:100%; background:#a6db0c;
+        }
+        @keyframes in4 {
+            0% {
+               width:100%;
+            }
+
+            100% {
+                width: 0%;
+            }
+        }
+        #amtx_sus {
+            z-index: -1; 
+        }
+        #req { position:absolute; left:32%; top:20%; width:65%; height:30%; border-right:.1vw solid #a6db0c; border-bottom:.1vw solid #a6db0c; z-index:-1;
+        }
+        #pol4 {
+            position: absolute; width:100%; height:20%; overflow:hidden;
+        }
+        #req_poly { stroke:#a6db0c; fill:transparent;
+        }
+        #Mtx_req { position:absolute; width:100%;
+        }
+        #img_as1 { width:1.1vw; height:1.1vw; position:absolute; border:.1vw solid #a6db0c; left:.9vw; top:.5vw;
+        }
+        #sec_p {
+            font-family: 'Oswald', sans-serif;
+            font-size: .9vw;
+            letter-spacing: .14vw;
+            color:#a6db0c; position:absolute; left:3vw; top:-.5vw;
+        }
+        #sec_req { width:99.9%; height:78.9%; position:absolute; top:20%; border-left:.1vw solid #a6db0c; border-top:.1vw solid #a6db0c;
+        }
+        #img_sec { width:3vw; height:3vw; position:absolute; left:40%; top:15%;
+        }
+        #p_sec1 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: .9vw; left:47%; top:.6vw;
+            letter-spacing: .15vw;
+            color: white;
+        }
+        #p_sec2 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: .85vw;
+            left: 47%;
+            top: 2vw;
+            letter-spacing: .15vw;
+            color: #a6db0c;
+        }
+        .div_buff1 {
+          
+            border: .1vw solid transparent;
+            /*box-shadow: 0 0 .4vw rgba(40,193,247, .3);*/
+        }
+
+
+        #buf1-1 {
+            left: 2vw;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            top: 1.6vw;
+            color: white;
+        }
+
+        #buf2-1 {
+            left: 5vw;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            top: 1.6vw;
+            color: white;
+        }
+
+        #buf3-1 {
+            left: 8vw;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            top: 1.6vw;color: white;
+        }
+        .div_buff1 {
+            border: .1vw solid #a6db0c;
+            box-shadow: 0 0 .4vw #a6db0c;
+        }
+        #bu_Req_1, #bu_Req_2, #bu_Req_3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2vw;
+            letter-spacing: .1vw;
+            
+            margin-left: .4vw;
+        }
+        .lblsec1 { color:#a6db0c;
+        }
+        #earth { width:2.5vw; position:absolute; left:3%; top:180%;
+        }
+        #points { width:20%; height:7%; position:absolute; top:3.2%; left:24%;   opacity:.6;
+        }
+        #point1 {
+            animation: in5 6s infinite;
+            animation-delay: 1s;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background: url(https://i.postimg.cc/C1r6jqF2/mas.png);
+            background-size: contain;
+        }
+        #point2 {
+            animation: in5 6s infinite;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: rotate(180deg);
+            background: url(https://i.postimg.cc/C1r6jqF2/mas.png);
+            background-size: contain;
+        }
+        #im_bf {
+            position: absolute;
+            width: 8%;
+            height: .3vw;
+            left: 32%;
+            top: -2.1vw;
+            border-radius: .2vw;
+            background: url(https://i.postimg.cc/nVYNRC3C/qr-code-PNG2.png); background-size:contain;
+        }
+        #yellow_Ad { width:40%; height:4%; position:absolute; left:44.5%; top:3%; background:#a6db0c; z-index:-1; animation:in5 5s infinite;
+        }
+        #ad1 {
+            position: absolute;
+            width: 14%;
+            height: 45%;
+            left: 101%;
+            background: url(https://i.postimg.cc/nVYNRC3C/qr-code-PNG2.png);
+            background-size: contain;
+            animation: in5 8s infinite;
+            animation-delay: .5s;
+        }
+        #ad2 {
+            position: absolute;
+            width: 14%;
+            top: 50%;
+            height: 5%;
+            left: 101%;
+            background: url(https://i.postimg.cc/nVYNRC3C/qr-code-PNG2.png);
+            background-size: contain;
+            animation: in5 8s infinite;
+        }
+        @keyframes in5 {
+            0% {
+                opacity:1;
+            }
+            55% { opacity:1;
+            }
+            60% {
+                opacity: 0;
+            }
+            80% {
+                opacity: 0;
+            }
+            85% { opacity:1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        #rd_cod {
+            position: absolute;
+            right: 5%;
+            width: 4%; opacity:.7;
+            height: .8vw;
+            top: 10%;
+            filter:contrast(60%);
+            background: url(https://i.postimg.cc/6qnn98pS/qr-code-PNG23.png);
+            background-size: contain;
+        }
+        #req_vod {
+            background: url(https://i.postimg.cc/nVYNRC3C/qr-code-PNG2.png);
+            background-size: contain;
+            width: 5%;
+            height: .6vw;
+            position: absolute;
+            right: 2.9%;
+            top: 51%;
+        }
+        #codbr {
+            background: url(https://i.postimg.cc/nVYNRC3C/qr-code-PNG2.png);
+            background-size: contain;
+            width: 15%;
+            height: .4vw;
+            position: absolute;
+            right: 2%;
+            top: -.15vw;
+        }
+        #sec_req { background:#171717;
+        }
+        #sec_req2 {
+            width: 94%;
+            border-radius: 0 0 .7vw 0;
+            left: 2%;
+            height: 0%; /*48.9*/
+                position: absolute;
+            overflow: hidden;
+            top: 25%;
+            background: #44DA78; 
+           /* animation:inst .5s 1; animation-fill-mode:forwards;*/
+
+        }
+        @keyframes inst {
+            0% {
+               height:0;
+            }
+
+            100% {
+                height: 48.9%;
+            }
+        }
+        #img_sec2 {
+            width: 3vw;
+            height: 3vw;
+            position: absolute;
+            left: 40%;
+            top: 15%;
+        }
+
+        #p_sec3 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: .9vw;
+            left: 47%;
+            top: .6vw;
+            letter-spacing: .15vw;
+            color: black;
+        }
+        #p_sec23 {
+            position: absolute; font-weight:bold;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            left: 3%;
+            top: .6vw;
+            letter-spacing: .15vw;
+            color: black;
+        }
+        #p_sec4 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: .85vw;
+            left: 47%;
+            top: 2vw;
+            letter-spacing: .15vw;
+            color: black;   
+        }
+
+
+        /*//////////////////*/
+
+
+        #atmx_fail {
+            position: absolute;
+            width: 25.5%;
+            height: 70%;
+            top: 19%;
+            left: 4%;
+            z-index: -99;
+            opacity: 0;
+        }
+
+        #A_mtx_2 { 
+            overflow: hidden;
+            position: absolute;
+            left: 45%; /*left:0;*/
+            width: 10%; /*100%;*/
+            height: 10%; /*80%;*/
+            background: #FF5B5B;
+            border-radius: .5vw 0 1vw 0;
+             /*animation: backdrow3 1s 1;*/
+        }
+        #poly_2-2 {
+            opacity: 0;
+            width: 100%;
+            height: 60%;
+            position: absolute;
+            overflow: hidden;
+            top: 10%;
+        }
+        #Mtx_cod_3 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        #Mtx_poly_2 {
+            fill: #331F1F;
+            stroke: #F32C2C;
+        }
+        #code_failed {
+            width: 92%;
+            height: 90%;
+            position: absolute;
+            top: 5%;
+            left: 3%;
+            overflow: hidden;
+        }
+
+            #code_failed p {
+                font-family: 'Oswald', sans-serif;
+                font-size: .65vw;
+                font-weight: 100;
+                letter-spacing: .14vw;
+                color:rgba(199,48,48.3);
+                line-height: .25vw;
+            }
+        #deam_2 {
+            font-family: 'Oswald', sans-serif;
+            position: absolute;
+            left: 30%;
+            top: 80%;
+            font-weight: bold;
+            font-size: .8vw;
+            letter-spacing: .15vw;
+        }
+        #poly_3-3 {
+            width: 45%;
+            height: 10%;
+            position: absolute;
+            overflow: hidden;
+            top: 82%;
+            right: 0;
+            
+        }
+        #poly_3 { 
+
+        }
+        #Mtx_poly_3 {
+            fill: #FF5B5B;
+        }
+        #sus3-3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: .8vw;
+            left: 10%;
+            font-weight: 100;
+            letter-spacing: .14vw;
+            position: absolute;
+           
+            top: 0;
+        }
+        #cod_rd_l {
+            font-family: 'Oswald', sans-serif;
+            color:#a6db0c;
+            font-size: .45vw; letter-spacing:.07vw;
+            left: 83%;
+            font-weight: 100;
+            /*letter-spacing: .14vw;*/
+            position: absolute;
+            top:9.5%;
+        }
+        #p_req_y { position:absolute; width:20%; height:10%; left:32%; top:50%; 
+        }
+            #p_req_y p {
+                font-family: 'Oswald', sans-serif;
+                color: #a6db0c;
+                font-size: .4vw; line-height:.5vw;
+                letter-spacing: .06vw;
+                left: 83%;
+                font-weight: 100;
+            }
+        #lin_codes { width:10%; height:2vw; position:absolute; left:90%; top:.3vw; opacity:.8;
+        }
+        #lin_codes2 {
+            height: 2vw;
+            position: absolute;
+            left: 12%;
+            top: -.4vw;
+            opacity: .8;
+        }
+            #lin_codes p {
+                font-family: 'Oswald', sans-serif;
+                color: #a6db0c;
+                font-size: .3vw;
+                letter-spacing: .01vw;
+                line-height: .3vw;
+                font-weight: 100;
+            }
+        #lin_codes2 p {
+            font-family: 'Oswald', sans-serif;
+            color: #a6db0c;
+            font-size: .4vw; letter-spacing:.01vw;
+            line-height: .4vw;
+            font-weight: 100;
+        }
+        #lin_codes3 {
+            height: 2vw;
+            position: absolute;
+            left: 38%;
+            top: -.4vw;
+            opacity: .8;
+        }
+        #lin_codesx {
+            height: 20%;
+            position: absolute;
+            left: 5%;
+            top: 86%;
+            opacity: .8;
+        }
+        #lin_codesx p {
+            font-family: 'Oswald', sans-serif;
+            color: #a6db0c;
+            font-size: .45vw;
+            letter-spacing: .1vw;
+            line-height: .6vw;
+            font-weight: 100;
+        }
+            #lin_codes3 p {
+                font-family: 'Oswald', sans-serif;
+                color: #a6db0c;
+                font-size: .4vw;
+                letter-spacing: .01vw;
+                line-height: .4vw;
+                font-weight: 100;
+            }
+        #let_upl {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            color: #a6db0c;
+            font-size: .45vw;
+            letter-spacing: .06vw;
+            left: 70%;
+            top: .8vw;
+            font-weight: 100;
+        }
+        #down_mtx2 { position:absolute;width:25.2%; height:10%;  top:68.8%; left:4%; z-index:-1;
+        }
+        #log_d { position:absolute; width:2vw; left:.5vw; height:1.3vw;
+        }
+        #plog_1 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            color: #a6db0c;
+            font-size: .45vw;
+            letter-spacing: .05vw;
+            left:.5vw;
+            top: 1vw;
+        }
+        #d_cb {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            color: #a6db0c;
+            font-size: .4vw;
+            letter-spacing: .06vw;
+            right:10%;
+            top: .8vw; top:0vw;
+        }
+        #mnu_mtx { position:absolute; width:24%; height:5%; top:87%; right:3.2%; z-index:999;
+        }
+            #mnu_mtx img { width:1.6vw; position:absolute; top:.5vw;
+            }
+            #mnu_mtx p { top:-.3vw;
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: #a6db0c;
+                font-size:.75vw; font-weight:bold;
+                letter-spacing: .1vw;
+            }
+        #im_c_1 { left:0;
+        }
+        #p_c_1 { left:2vw;
+        }
+        #im_c_2 {left:7vw; 
+        }
+        #p_c_2 {
+            left: 8.8vw;
+        }
+        #im_c_3 { left:15vw;
+        }
+        #p_c_3 {
+            left: 17vw;
+        }
+        #backik {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(https://static.wixstatic.com/media/20d3c1_dd7d3f38ae72443e994b6a851ea1aaaa~mv2.gif); filter:saturate(1500%) sepia(50%);
+            background-size: cover;
+            opacity: .03;
+        }
+        #a_r { width:7vw; height:2vw;  top:70%; left:22%; position:absolute; z-index:999;    
+        }
+        #a_non { cursor:none;
+        }
+        #matrix { z-index:-12; opacity:0; cursor:none;
+        }
+        #Inv:target #matrix { z-index:1; animation:toin 1s 1; animation-fill-mode:forwards;
+        }
+        #Inv:target #a_in, #M_N:target #a_in { opacity:0;
+        }
     </style>
         <!--<script>
             const $cursor = document.querySelector("#cursor");
@@ -683,9 +2233,18 @@
 </head>
 
 
-
-<body>
+  <div class="box" id="Inv">
+        <script>
+            $(document).on("click mousemove", ".box", function (e) {
+                var x = e.clientX;
+                var y = e.clientY;
+                var newposX = x - 20;
+                var newposY = y - 20; $(".circle").css("transform", "translate3d(" + newposX + "px," + newposY + "px,0px)");
+            });
+        </script>
+     
     <div id="M_N">
+
         <a id="a_in" href="#M_N" onclick="heartbeat.play();">
             <div id="Main_play">
                 <p id="m_int">LOADING_MAINMENU 100%</p>
@@ -790,7 +2349,7 @@
                                 $("#play").removeClass("fa-play");
                                 $("img").addClass("active");
                                 /* $("#bar1").addClass("br1");*/
-                              
+
                             } else {
                                 song.pause();
                                 playing = false;
@@ -820,7 +2379,7 @@
                     });
 
                 </script>
-               
+
 
                 <div class="player-control">
                     <i id="play" class="fas fa-play"><img src="https://i.postimg.cc/mrdtCrpP/tocar.png" /></i>
@@ -878,7 +2437,7 @@
                     <img src="https://i.postimg.cc/ht8zbvQQ/image-1.png" id="lo" />
                     <img src="https://i.postimg.cc/bYtp7MYq/2077.png" id="lo2" />
                 </div>
-               
+
                 <audio controls id="makesound">
                     <source src="https://xevangelist.github.io/evangelist/click.mp3?raw=true"></source>
                     <script>
@@ -912,30 +2471,33 @@
 
                     </script>
                 </audio>
-                 
-
-                    <div id="a_menu">
 
 
-                        <a href="Reb1.html">
-                            <div id="m_s" class="ms1">
-                                <svg id="m_select">
+                <div id="a_menu">
 
-                                    <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                    <p id="p_sel">CONSOLE</p>
-                                    <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                                </svg>
-                            </div>
-                        </a>
-                        <div id="m_s" class="ms2">
+                    <a href="reb1.html">
+                        <div id="m_s" class="ms1">
                             <svg id="m_select">
 
                                 <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">HOME</p>
+                                <p id="p_sel">CONSOLE</p>
                                 <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+
                             </svg>
                         </div>
+                    </a>
+                    <div id="m_s" class="ms2">
+                        <a href="#Inv">
+                            <svg id="m_select">
+
+                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
+                                <p id="p_sel">INVASION</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </svg>
+                        </a>
+                    </div>
+
                         <div id="m_s" class="ms3">
                             <svg id="m_select">
 
@@ -960,61 +2522,1596 @@
                                 <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                             </svg>
                         </div>
-                    </div>
-                    <p id="pm_1">TRN_TCLAS_800095</p>
-                    <div id="bar"></div>
-                    <p id="pm_2">1.02</p>
-                    <p id="legend">ONLY MKL 0X0001454 NIGHT CITY ON DEATHLINE PLEASE_ONCE_MTF</p>
-                    <p id="legend2">READ PROTOCOL 12x30004 OFT</p>
                 </div>
-
-                <div id="r_play">
-                    <div id="r_p">
-                        <div id="t_3"><p id="pt_3">3</p></div>
-                        <p id="g_th">
-                            Path of the rebel
-
-                        </p>
-                        <div id="now">
-                            <marquee direction="left" id="ejemplo">
-                                <span class="Apple-style-span" style="color: black; font-family:verdana">
-                                    <p>
-                                        NOW PLAYING SYSTEM INPUT 12//004429234025.390002029 _3. 000T1T928388 000000
-                                    </p>
-                                </span>
-                            </marquee>
-                        </div>
-
-                        <div id="m_bars">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
-                                <g>
-                                    <title>Audio Equilizer</title>
-                                    <rect class="bar" transform="translate(0,0)" y="15"></rect>
-                                    <rect class="bar" transform="translate(25,0)" y="15"></rect>
-                                    <rect class="bar" transform="translate(50,0)" y="15"></rect>
-                                </g>
-                            </svg>
-
-                        </div>
-                        <div id="t_db">
-                            <img src="https://i.postimg.cc/Xq9m171Z/contorno-cuadrado.png" id="c_dt" />
-                        </div>
-                        <div id="t_dt">
-                            <p id="pd_1" style="color: rgb(40 193 247);">NTR/IIPWHTHPST/-#72993100</p>
-                            <p id="pd_2" style="color: rgb(40 193 247);">//_VEREIDMCONTROL#12_1690</p>
-                            <p id="pd_3" style="color: rgb(40 193 247);">||DMOL011001_//_EM#BL00_//</p>
-                        </div>
-                    </div>
-                    <img id="m_img" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /> <p id="m_pimg">Select</p>
-                </div>
+                <p id="pm_1">TRN_TCLAS_800095</p>
+                <div id="bar"></div>
+                <p id="pm_2">1.02</p>
+                <p id="legend">ONLY MKL 0X0001454 NIGHT CITY ON DEATHLINE PLEASE_ONCE_MTF</p>
+                <p id="legend2">READ PROTOCOL 12x30004 OFT</p>
             </div>
 
+            <div id="r_play">
+                <div id="r_p">
+                    <div id="t_3"><p id="pt_3">3</p></div>
+                    <p id="g_th">
+                        Path of the rebel
+
+                    </p>
+                    <div id="now">
+                        <marquee direction="left" id="ejemplo">
+                            <span class="Apple-style-span" style="color: black; font-family:verdana">
+                                <p>
+                                    NOW PLAYING SYSTEM INPUT 12//004429234025.390002029 _3. 000T1T928388 000000
+                                </p>
+                            </span>
+                        </marquee>
+                    </div>
+
+                    <div id="m_bars">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128">
+                            <g>
+                                <title>Audio Equilizer</title>
+                                <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                                <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                                <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                            </g>
+                        </svg>
+
+                    </div>
+                    <div id="t_db">
+                        <img src="https://i.postimg.cc/Xq9m171Z/contorno-cuadrado.png" id="c_dt" />
+                    </div>
+                    <div id="t_dt">
+                        <p id="pd_1" style="color: rgb(40 193 247);">NTR/IIPWHTHPST/-#72993100</p>
+                        <p id="pd_2" style="color: rgb(40 193 247);">//_VEREIDMCONTROL#12_1690</p>
+                        <p id="pd_3" style="color: rgb(40 193 247);">||DMOL011001_//_EM#BL00_//</p>
+                    </div>
+                </div>
+                <img id="m_img" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /> <p id="m_pimg">Select</p>
+            </div>
+        </div>
+
+        <div id="matrix">
+            <div id="backik"></div>
+            <a id="a_non" href="#M_N"><div id="a_r"></div></a>
+            <div id="mnu_mtx">
+                <img id="im_c_1" src="https://i.postimg.cc/8zg2cDF8/controller-pad.png" /> <p id="p_c_1">NAVIGATION</p>
+                <img id="im_c_2" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /> <p id="p_c_2">SELECT CODE</p>
+                <a href="#M_N"> <img id="im_c_3" src="https://i.postimg.cc/134vyjBx/cancel.png" /></a> <p id="p_c_3">EXIT INTERFACE</p>
+            </div>
+            <div id="lin_codesx">
+                <p>
+                    INVATION PROTOCOL V5.90 xEVANGELIST  <br />
+                    PERMISSIONS HUTZ059999999- ZTDHHH2:X8888000<br />
+                    RIGHTS 20000049D<br />
+                </p>
+            </div>
+            <div class="circle"><img src="https://i.postimg.cc/FKyGnj8N/cur2.png" /></div>
+
+            <div id="net_back">
+                <div id="net_b_1">
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                </div>
+                <div id="net_b_2">
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                </div>
+                <img src="https://i.postimg.cc/6qN4bH54/earth-grid-symbol.png" id="earth" />
+            </div>
+            <div id="net_let">
+                <span id="l_tvh1">NET</span> <div id="net_b_3">
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                    <div id="nt_1"></div>
+                </div> <span id="l_tvh">TECH</span>
+            </div>
+
+            <div id="points">
+                <div id="point1"></div>
+                <div id="point2"></div>
+            </div>
+            <div id="yellow_Ad">
+                <div id="ad1"></div>
+                <div id="ad2"></div>
+
+            </div>
+            <div id="back_lin"></div>
+            <p id="cod_rd_l">EKNUMBER 6ZUZ-FFLH-9YLT-E327</p>
+            <div id="rd_cod"></div>
+            <div id="Main_mtx">
+
+                <div id="a_buff">
+                    <div id="let_rem">
+                        <p id="text_rem">BREACH TIME REMAING</p>
+                        <div id="time"><p id="nmr" class="nmrr">7500</p></div>
+                        <div id="bar_time">
+                            <div id="bartime"></div>
+                        </div>
+                    </div>
+                    <div id="im_bf"></div>
+                    <p id="pt_buf">BUFFER</p>
+                    <div id="bufer">
+                        <div class="div_buff" id="buf1"><label class="lblsec" id="pMostrarEj1"></label></div>
+                        <div class="div_buff" id="buf2"><label class="lblsec" id="pMostrarEj2"></label></div>
+                        <div class="div_buff" id="buf3"><label class="lblsec" id="pMostrarEj3"></label></div>
+                    </div>
+
+                </div>
+
+                <div id="lin1"></div>
+                <div id="lin2"></div>
+                <div id="lin3"></div>
+
+                <div id="lin4"></div>
+                <div id="lin5"></div>
+                <div id="lin6"></div>
+
+                <script>
+                    var atmx_sus = document.querySelector("#amtx_sus");
+                    var atmx_con = document.document.querySelector("#A_mtx_1");
+                    var poly_2 = document.document.querySelector("#poly_2");
+                    function countdown() {
+                        document.getElementById("firstcontact").style.zIndex = "-99";
+                        document.getElementById("bartime").style.animation = "in4 30s 1 linear";
+                        document.getElementById("bartime").style.animationFillMode = "forwards";
+
+                        var n = 7499; var t = -1; var l = document.getElementById("nmr"); var tx = document.getElementById("fail")
+
+
+                        window.setInterval(function () {
+                            l.innerHTML = n; if (n == "0") {
+                                n = 0; document.getElementById("atmx_fail").style.opacity = '1';
+                                document.getElementById("atmx_fail").style.zIndex = '-1';
+                                document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                //document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                //document.getElementById("p_sec23").textContent = ("FAILED");
+                                //document.getElementById("sec_req2").style.background = "#E86767";
+                                //document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                            }
+                            else { n--; }
+                        }, 1);
+                    };
+
+
+                </script>
+
+                <div id="req">
+                    <div id="pol4">
+                        <svg id="Mtx_req">
+
+                            <polygon points="10,0 900,0 900,900 0,900  0,10 " id="req_poly" />
+                            <img src="https://i.postimg.cc/gJsfrTcD/ass1.png" id="img_as1" />
+                            <p id="sec_p"> SECUENCE REQUIRED TO UPLOAD</p>
+                            <p id="let_upl">MODEL LINE &nbsp; &nbsp;&nbsp;&nbsp; IZLLAA</p>
+                            <div id="lin_codes">
+                                <p>
+                                    66777H TUZZLK<br />
+                                    /HUTZ059999999- ZTDHHH2 <br />
+                                    20000049D<br />
+                                    RFSRLLZRTYRFSRLLZRT
+                                </p>
+                            </div>
+                        </svg>
+                    </div>
+                    <div id="sec_req">
+                        <div id="buf1-1"><label id="bu_Req_1">55</label></div>
+                        <div id="buf2-1"><label id="bu_Req_2">FF</label></div>
+                        <div id="buf3-1"><label id="bu_Req_3">D0</label></div>
+
+                        <img src="https://i.postimg.cc/rmrpk8RD/padlock1.png" id="img_sec" /> <p id="p_sec1">PASSWORD</p> <p id="p_sec2">Get the password for the console</p>
+
+
+                    </div>
+                    <div id="sec_req2">
+
+                        <p id="p_sec23"></p> <img src="https://i.postimg.cc/rF2Y5WxD/22.png" id="img_sec2" /> <p id="p_sec3">PASSWORD</p> <p id="p_sec4">Get the password for the console</p>
+
+
+                    </div>
+                </div>
+                <div id="p_req_y">
+                    <p>
+                        CUSTOM GLITCHES ON US HULY AHEAD BASED ON THIS ANALYSIS <br />
+                        DOCUMENT/0/HUTZ059999-66777HTUZZLK ZTDHHH-220000049 <br />
+                        TYPE R: DYRFSRLLZRT
+                    </p>
+                </div>
+                <div id="req_vod"></div>
+                <div id="firstcontact" onclick="countdown();">
+                    <p>CLICK HERE TO START</p>
+                </div>
+
+
+
+                <div id="A_mtx">
+
+                    <div id="back_mtx"></div>
+                    <div id="A_mtx2">
+                        <div id="poly_1">
+                            <svg id="Mtx_cod">
+
+                                <polygon points="10,0 300,0 300,300 0,300  0,10 " id="Mtx_poly" />
+                                <img src="https://i.postimg.cc/ydz0X1TP/abstracto.png" id="mtx_i" />
+                                <p id="m_p_dc">MATRICE DE CODE</p>
+
+                            </svg>
+                        </div>
+                        <div id="A_mtx3">
+                            <div id="neg"></div>
+                            <script>
+                                var labelM1 = document.querySelector('#pMostrarEj1');
+                                var labelM2 = document.querySelector('#pMostrarEj2');
+                                var labelM3 = document.querySelector('#pMostrarEj3');
+                                labelM1.textContent = '';
+                                labelM2.textContent = '';
+                                labelM3.textContent = '';
+
+                            </script>
+                            <!--MATRIZ 1-->
+                            <div id="Mat_1">
+                                <div id="div_mt1" class="Mt_1"><div id="MtY_1"></div><div class="div_code" id="d_cod"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-1" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p" class="code_p"></p></div></div>
+                                <div id="div_mt1" class="Mt_1"><div id="MtY_1_2"></div><div class="div_code" id="d_cod2"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-2" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p2" class="code_p2"></p></div></div>
+                                <div id="div_mt1" class="Mt_1"><div id="MtY_1_3"></div><div class="div_code" id="d_cod3"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-3" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p3" class="code_p3"></p></div></div>
+                                <div id="div_mt1" class="Mt_1"><div id="MtY_1_4"></div><div class="div_code" id="d_cod4"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-4" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p4" class="code_p4"></p></div></div>
+                                <div id="div_mt1" class="Mt_1"><div id="MtY_1_5"></div><div class="div_code" id="d_cod5"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-5" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p5" class="code_p5"></p></div></div>
+                            </div>
+                            <script>
+                                $("#d_cod").on("click", function () {
+                                    $("#cod_p").removeClass("code_p");
+                                    document.getElementById("codX_img1-1").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("55");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("55");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("55");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+
+                                        $("#nmr").textContent = ("X");
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod2").on("click", function () {
+                                    $("#cod_p2").removeClass("code_p2");
+                                    document.getElementById("codX_img1-2").style.opacity = '1';
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("FF");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("FF");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("FF");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+                                    else {
+                                    }
+                                });
+                                $("#d_cod3").on("click", function () {
+                                    $("#cod_p3").removeClass("code_p3");
+                                    document.getElementById("codX_img1-3").style.opacity = '1';
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("D0");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("D0");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("D0");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.zIndex = '-1';
+                                            document.getElementById("A_mtx_1").style.animation = " backdrow3 1s 1";
+                                            document.getElementById("A_mtx_1").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animation = "in3 .5s 1";
+                                            document.getElementById("poly_2").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animationDelay = "1.4s";
+                                            document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                            document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                            document.getElementById("bartime").style.animationPlayState = "paused";
+                                            document.getElementById("p_sec23").textContent = ("INSTALLED");
+                                            document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                            document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                            document.getElementById("sec_req2").style.background = "#44DA78";
+                                        }
+                                    }
+                                    else {
+                                    }
+                                });
+                                $("#d_cod4").on("click", function () {
+                                    $("#cod_p4").removeClass("code_p4");
+                                    document.getElementById("codX_img1-4").style.opacity = '1';
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("55");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("55");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("55");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+                                    else {
+                                    }
+                                });
+                                $("#d_cod5").on("click", function () {
+                                    $("#cod_p5").removeClass("code_p5");
+                                    document.getElementById("codX_img1-5").style.opacity = '1';
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("BD");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("BD");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("BD");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+                                    else {
+                                    }
+                                });
+
+                            </script>
+                            <!--MATRIZ 2-->
+                            <div id="Mat_2">
+                                <div id="div_mt2" class="Mt_2"><div id="MtY_1-2"></div><div class="div_code" id="d_cod6"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-6" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p6" class="code_p6"></p></div></div>
+                                <div id="div_mt2" class="Mt_2"><div id="MtY_1-2_2"></div><div class="div_code" id="d_cod7"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-7" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p7" class="code_p7"></p></div></div>
+                                <div id="div_mt2" class="Mt_2"><div id="MtY_1-2_3"></div><div class="div_code" id="d_cod8"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-8" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p8" class="code_p8"></p></div></div>
+                                <div id="div_mt2" class="Mt_2"><div id="MtY_1-2_4"></div><div class="div_code" id="d_cod9"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-9" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p9" class="code_p9"></p></div></div>
+                                <div id="div_mt2" class="Mt_2"><div id="MtY_1-2_5"></div><div class="div_code" id="d_cod10"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-10" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p10" class="code_p10"></p></div></div>
+                            </div>
+                            <script>
+                                $("#d_cod6").on("click", function () {
+                                    $("#cod_p6").removeClass("code_p6");
+                                    document.getElementById("codX_img1-6").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("D0");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("D0");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("D0");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.zIndex = '-1';
+                                            document.getElementById("A_mtx_1").style.animation = " backdrow3 1s 1";
+                                            document.getElementById("A_mtx_1").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animation = "in3 .5s 1";
+                                            document.getElementById("poly_2").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animationDelay = "1.4s";
+                                            document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                            document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                            document.getElementById("bartime").style.animationPlayState = "paused";
+                                            document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                            document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                            document.getElementById("p_sec23").textContent = ("INSTALLED");
+                                            document.getElementById("sec_req2").style.background = "#44DA78";
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod7").on("click", function () {
+                                    $("#cod_p7").removeClass("code_p7");
+                                    document.getElementById("codX_img1-7").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("C1");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("C1");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("C1");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod8").on("click", function () {
+                                    $("#cod_p8").removeClass("code_p8");
+                                    document.getElementById("codX_img1-8").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("C1");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("C1");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("C1");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod9").on("click", function () {
+                                    $("#cod_p9").removeClass("code_p9");
+                                    document.getElementById("codX_img1-9").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("FF");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("FF");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("FF");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod10").on("click", function () {
+                                    $("#cod_p10").removeClass("code_p10");
+                                    document.getElementById("codX_img1-10").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("D0");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("D0");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("D0");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.zIndex = '-1';
+                                            document.getElementById("A_mtx_1").style.animation = " backdrow3 1s 1";
+                                            document.getElementById("A_mtx_1").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animation = "in3 .5s 1";
+                                            document.getElementById("poly_2").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animationDelay = "1.4s";
+                                            document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                            document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                            document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                            document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                            document.getElementById("p_sec23").textContent = ("INSTALLED");
+                                            document.getElementById("sec_req2").style.background = "#44DA78";
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                            </script>
+
+                            <!--MATRIZ 3-->
+                            <div id="Mat_3">
+                                <div id="div_mt3" class="Mt_3"><div id="MtY_1-3"></div><div class="div_code" id="d_cod11"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-11" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p11" class="code_p11"></p></div></div>
+                                <div id="div_mt3" class="Mt_3"><div id="MtY_1-3_2"></div><div class="div_code" id="d_cod12"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-12" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p12" class="code_p12"></p></div></div>
+                                <div id="div_mt3" class="Mt_3"><div id="MtY_1-3_3"></div><div class="div_code" id="d_cod13"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-13" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p13" class="code_p13"></p></div></div>
+                                <div id="div_mt3" class="Mt_3"><div id="MtY_1-3_4"></div><div class="div_code" id="d_cod14"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-14" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p14" class="code_p14"></p></div></div>
+                                <div id="div_mt3" class="Mt_3"><div id="MtY_1-3_5"></div><div class="div_code" id="d_cod15"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-15" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p15" class="code_p15"></p></div></div>
+                            </div>
+                            <script>
+                                $("#d_cod11").on("click", function () {
+                                    $("#cod_p11").removeClass("code_p11");
+                                    document.getElementById("codX_img1-11").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("BD");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("BD");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("BD");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod12").on("click", function () {
+                                    $("#cod_p12").removeClass("code_p12");
+                                    document.getElementById("codX_img1-12").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("7A");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("7A");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("7A");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod13").on("click", function () {
+                                    $("#cod_p13").removeClass("code_p13");
+                                    document.getElementById("codX_img1-13").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("7A");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("7A");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("7A");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod14").on("click", function () {
+                                    $("#cod_p14").removeClass("code_p14");
+                                    document.getElementById("codX_img1-14").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("55");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("55");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("55");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod15").on("click", function () {
+                                    $("#cod_p15").removeClass("code_p15");
+                                    document.getElementById("codX_img1-15").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("C1");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("C1");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("C1");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                            </script>
+
+                            <!--MATRIZ 4-->
+                            <div id="Mat_4">
+                                <div id="div_mt4" class="Mt_4"><div id="MtY_1-4"></div><div class="div_code" id="d_cod16"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-16" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p16" class="code_p16"></p></div></div>
+                                <div id="div_mt4" class="Mt_4"><div id="MtY_1-4_2"></div><div class="div_code" id="d_cod17"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-17" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p17" class="code_p17"></p></div></div>
+                                <div id="div_mt4" class="Mt_4"><div id="MtY_1-4_3"></div><div class="div_code" id="d_cod18"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-18" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p18" class="code_p18"></p></div></div>
+                                <div id="div_mt4" class="Mt_4"><div id="MtY_1-4_4"></div><div class="div_code" id="d_cod19"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-19" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p19" class="code_p19"></p></div></div>
+                                <div id="div_mt4" class="Mt_4"><div id="MtY_1-4_5"></div><div class="div_code" id="d_cod20"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-20" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p20" class="code_p20"></p></div></div>
+                            </div>
+                            <script>
+                                $("#d_cod16").on("click", function () {
+                                    $("#cod_p16").removeClass("code_p16");
+                                    document.getElementById("codX_img1-16").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("7A");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("7A");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("7A");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod17").on("click", function () {
+                                    $("#cod_p17").removeClass("code_p17");
+                                    document.getElementById("codX_img1-17").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("FF");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("FF");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("FF");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod18").on("click", function () {
+                                    $("#cod_p18").removeClass("code_p18");
+                                    document.getElementById("codX_img1-18").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("D0");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("D0");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("D0"); $("#pMostrarEj4").text("ok");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        //EL 18 ES LA CLAVE, HAY QUE CONDICIONAR ESTE IF EN CASO DE NEGACION, EN EL ULTIMO DEAMON EN CASO DE Error
+                                        //DE IGUAL MANERA HAY QUE NEGAR, AUNQUE QUEDE POR DETRAS EL CUADRO ROJO
+
+
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.zIndex = '-1';
+                                            document.getElementById("A_mtx_1").style.animation = " backdrow3 1s 1";
+                                            document.getElementById("A_mtx_1").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animation = "in3 .5s 1";
+                                            document.getElementById("poly_2").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animationDelay = "1.4s";
+                                            document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                            document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                            document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                            document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                            document.getElementById("p_sec23").textContent = ("INSTALLED");
+                                            document.getElementById("sec_req2").style.background = "#44DA78";
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod19").on("click", function () {
+                                    $("#cod_p19").removeClass("code_p19");
+                                    document.getElementById("codX_img1-19").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("BD");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("BD");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("BD");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod20").on("click", function () {
+                                    $("#cod_p20").removeClass("code_p20");
+                                    document.getElementById("codX_img1-20").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("BD");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("BD");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("BD");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                            </script>
+                            <!--MATRIZ 5-->
+                            <div id="Mat_5">
+                                <div id="div_mt5" class="Mt_5"><div id="MtY_1-5"></div><div class="div_code" id="d_cod21"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-21" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p21" class="code_p21"></p></div></div>
+                                <div id="div_mt5" class="Mt_5"><div id="MtY_1-5_2"></div><div class="div_code" id="d_cod22"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-22" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p22" class="code_p22"></p></div></div>
+                                <div id="div_mt5" class="Mt_5"><div id="MtY_1-5_3"></div><div class="div_code" id="d_cod23"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-23" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p23" class="code_p23"></p></div></div>
+                                <div id="div_mt5" class="Mt_5"><div id="MtY_1-5_4"></div><div class="div_code" id="d_cod24"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-24" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p24" class="code_p24"></p></div></div>
+                                <div id="div_mt5" class="Mt_5"><div id="MtY_1-5_5"></div><div class="div_code" id="d_cod25"><div id="back_d"><div id="back_h"></div></div><img id="codX_img1-25" src="https://i.postimg.cc/MZ495p7b/corch.png" /><p id="cod_p25" class="code_p25"></p></div></div>
+                            </div>
+                            <script>
+                                $("#d_cod21").on("click", function () {
+                                    $("#cod_p21").removeClass("code_p21");
+                                    document.getElementById("codX_img1-21").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("FF");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("FF");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("FF");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod22").on("click", function () {
+                                    $("#cod_p22").removeClass("code_p22");
+                                    document.getElementById("codX_img1-22").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("FF");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("FF");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("FF");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod23").on("click", function () {
+                                    $("#cod_p23").removeClass("code_p23");
+                                    document.getElementById("codX_img1-23").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("D0");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("D0");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("D0");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            document.getElementById("amtx_sus").style.opacity = '1';
+                                            document.getElementById("amtx_sus").style.zIndex = '-1';
+                                            document.getElementById("A_mtx_1").style.animation = " backdrow3 1s 1";
+                                            document.getElementById("A_mtx_1").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animation = "in3 .5s 1";
+                                            document.getElementById("poly_2").style.animationFillMode = "forwards";
+                                            document.getElementById("poly_2").style.animationDelay = "1.4s";
+                                            document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                            document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                            document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                            document.getElementById("sec_req2").style.animationFillMode = "forwards";
+                                            document.getElementById("p_sec23").textContent = ("INSTALLED");
+                                            document.getElementById("sec_req2").style.background = "#44DA78";
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod24").on("click", function () {
+                                    $("#cod_p24").removeClass("code_p24");
+                                    document.getElementById("codX_img1-24").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("BD");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("BD");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("BD");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                                $("#d_cod25").on("click", function () {
+                                    $("#cod_p25").removeClass("code_p25");
+                                    document.getElementById("codX_img1-25").style.opacity = '1';
+
+
+                                    if (labelM1.textContent == "") {
+                                        $("#pMostrarEj1").text("7A");
+                                        $("#buf1-1").addClass("div_buff1");
+                                        $("#bu_Req_1").addClass("lblsec1");
+                                    }
+                                    else if (labelM2.textContent == "") {
+                                        $("#pMostrarEj2").text("7A");
+                                        $("#buf2-1").addClass("div_buff1");
+                                        $("#bu_Req_2").addClass("lblsec1");
+                                    }
+                                    else if (labelM3.textContent == "") {
+                                        $("#pMostrarEj3").text("7A");
+                                        $("#buf3-1").addClass("div_buff1");
+                                        $("#bu_Req_3").addClass("lblsec1");
+                                        document.getElementById("neg").style.zIndex = '9';
+                                        document.getElementById("bartime").style.animationPlayState = "paused";
+                                        document.getElementById("sec_req2").style.animation = "inst .5s 1";
+                                        document.getElementById("p_sec23").textContent = ("FAILED");
+                                        document.getElementById("sec_req2").style.background = "#E86767";
+                                        document.getElementById("sec_req2").style.animationFillMode = "forwards"
+                                        document.getElementById("atmx_fail").style.opacity = '1';
+                                        document.getElementById("atmx_fail").style.zIndex = '-1';
+                                        document.getElementById("A_mtx_2").style.animation = " backdrow3 1s 1";
+                                        document.getElementById("A_mtx_2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animation = "in3 .5s 1";
+                                        document.getElementById("poly_2-2").style.animationFillMode = "forwards";
+                                        document.getElementById("poly_2-2").style.animationDelay = "1.4s";
+                                        document.getElementById("A_mtx2").style.animation = "tooff .3s 1";
+                                        document.getElementById("A_mtx2").style.animationFillMode = "forwards";
+                                        document.getElementById("A_mtx").style.background = "rgba(242,61,61,.1)";
+                                        if (labelM1.textContent == "55" && labelM2.textContent == "FF" && labelM3.textContent == "D0") {
+                                            $("#pMostrarEj4").text("ok");
+                                        }
+                                    }
+
+                                    else {
+
+                                    }
+
+
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="down_mtx2">
+                    <img id="log_d" src="https://i.postimg.cc/zDhXM25B/axd.png" /> <p id="plog_1">PR51GDOL<br />6522-A44</p>
+                    <div id="lin_codes2">
+                        <p>
+                            66777H TUZZLK<br />
+                            /HUTZ059999-HHH2 <br />
+                            20000033349D<br />
+                            RFSRLLZRTYRFSRLLZRT
+                        </p>
+                    </div>
+                    <div id="codbr"></div>
+                    <p id="d_cb">SYS-021</p>
+                    <div id="lin_codes3">
+                        <p>
+                            HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
+                            HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL
+                            <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;HSS440 &nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br />
+
+                        </p>
+                    </div>
+                </div>
+                <div id="atmx_fail">
+                    <div id="A_mtx_2">
+                        <div id="poly_2-2">
+                            <svg id="Mtx_cod_3">
+
+                                <polygon points="0,0 340,0 340,125 125,340  0,340" id="Mtx_poly_2" />
+                                <div id="code_failed">
+                                    <p>//TRIED_ROOT_1</p>
+                                    <p>//TRIED_ROOT_2</p>
+                                    <p>//TRIED_ROOT_3</p>
+                                    <p>//ROOT_FAILED</p>
+                                    <p>//REBOOT_ROOT</p>
+                                    <p>//ACCESSING...................................FAILED</p>
+                                    <p>//ACCESSING...................................FAILED</p>
+                                    <p>//ACCESSING...................................FAILED</p>
+                                    <p>//ACCESSING...................................FAILED</p>
+                                    <p>//ACCESSING...................................FAILED</p>
+                                </div>
+
+                            </svg>
+                        </div>
+
+                        <p id="deam_2">FULL_BUFFER</p>
+                    </div>
+                    <div id="poly_3-3">
+                        <svg id="Mtx_cod3-3">
+
+                            <polygon points="0,0 130,0 130,20 20,130  0,130" id="Mtx_poly_3" />
+                            <p id="sus3-3">EXIT INTERFACE</p>
+
+                        </svg>
+                    </div>
+                </div>
+                <div id="amtx_sus">
+                    <div id="A_mtx_1">
+                        <div id="poly_2">
+                            <svg id="Mtx_cod2">
+
+                                <polygon points="0,0 340,0 340,125 125,340  0,340" id="Mtx_poly2" />
+                                <div id="code_susses">
+                                    <p>//ROOT</p>
+                                    <p>//ACCESS_REQUEST</p>
+                                    <p>//COLLECTING PACKET_1.......................COMPLETE</p>
+                                    <p>//COLLECTING PACKET_2.......................COMPLETE</p>
+                                    <p>//COLLECTING PACKET_3.......................COMPLETE</p>
+                                    <p>//COLLECTING PACKET_4.......................COMPLETE</p>
+                                    <p>//LOGIN</p>
+                                    <p>//LOGIN_SUCCESS</p>
+                                    <p>//</p>
+                                    <p>//UPLOAD_IN_PROGRESS</p>
+                                    <p>//UPLOAD_COMPLETE</p>
+                                    <p>//PASSWORD_TO_CONSOLE: password</p>
+                                </div>
+
+                            </svg>
+                        </div>
+
+                        <p id="deam_1">ALL DAEMONS UPLOADED</p>
+                    </div>
+                    <a href="#M_N">
+                        <div id="poly_3">
+                            <svg id="Mtx_cod3">
+
+                                <polygon points="0,0 130,0 130,20 20,130  0,130" id="Mtx_poly3" />
+                                <p id="sus3">EXIT INTERFACE</p>
+
+
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
-  
-
-
-
-</body>
 
 </html>
