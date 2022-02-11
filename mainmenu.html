@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
     <meta charset="utf-8" />
     <title></title>
 
-   <script type="text/javascript" src="countdown.js"></script>
+    <script type="text/javascript" src="countdown.js"></script>
     <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="covervid.js"></script>
@@ -14,7 +14,7 @@
     <script type="text/javascript" src="countdown.js"></script>
     <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="mgGlitch.min.js"></script>
-   <style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
         body {
@@ -62,7 +62,7 @@
         }
         #bakfil { width:100%; height:20%; backdrop-filter:blur(10px);
         }
-        #a_menu { width:85%; height:50%; position:absolute;  top:40%; left:5%; overflow:hidden;
+        #a_menu { width:85%; height:50%; position:absolute;  top:40%; left:5%;
         }
 
         #m_s {
@@ -90,13 +90,7 @@
             stroke: transparent;
             stroke-width: 3; transition: ease-in .2s all;  
         }
-        #m_s:hover #pol1 {
-            fill: rgb(10 2 2);
-            stroke: rgb(50,103,122);
-            box-shadow: 0 0 1vw rgb(50,103,122);
-            stroke-width: 3;
-            transition-delay: -.5s;
-        }
+      
         #m_s:hover #img_h {
             transition-delay: -.5s;
             animation: flicker 1s infinite;
@@ -2214,6 +2208,34 @@
         }
         #Inv:target #a_in, #M_N:target #a_in { opacity:0;
         }
+        #plo_1 {
+            width: 95%;
+            height: 96%;
+            top: 2%;
+            position: absolute;
+            left: 1%;
+            clip-path: polygon(0 0, 100% 0, 100% 75%, 95% 100%, 0 100%);
+        }
+        #plo_1-1 {
+            width: 97%; 
+            position: absolute;
+        }
+        #m_s {
+            transition-delay: -1s;
+            clip-path: polygon(0 0, 100% 0, 100% 59%, 93% 100%, 0 100%);
+        }
+           
+           
+        #m_s { 
+        }
+        .x_pl {
+            opacity: 0;
+            transition-delay: -1s;
+        }
+        #m_s:hover .x_pl {
+            opacity: 1;
+            transition-delay: -1s;
+        }
     </style>
         <!--<script>
             const $cursor = document.querySelector("#cursor");
@@ -2230,10 +2252,13 @@
             }
 
     </script>-->
+    
 </head>
 
 
-  <div class="box" id="Inv">
+
+<body>
+    <div class="box" id="Inv">
         <script>
             $(document).on("click mousemove", ".box", function (e) {
                 var x = e.clientX;
@@ -2478,50 +2503,48 @@
 
                     <a href="Reb1.html">
                         <div id="m_s" class="ms1">
-                            <svg id="m_select">
+                            <img id="plo_1-1" class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                            <img id="plo_1"  class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
 
-                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">CONSOLE</p>
-                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            <p id="p_sel">CONSOLE</p>
+                            <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                            </svg>
+
                         </div>
                     </a>
                     <div id="m_s" class="ms2">
                         <a href="#Inv">
-                            <svg id="m_select">
+                            <img id="plo_1-1"  class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                            <img id="plo_1"  class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
+                            <p id="p_sel">INVASION</p>
+                            <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">INVASION</p>
-                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
-                            </svg>
                         </a>
                     </div>
 
-                        <div id="m_s" class="ms3">
-                            <svg id="m_select">
+                    <div id="m_s" class="ms3">
+                        <a href="Reb4-2.html">
+                            <img id="plo_1-1"  class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                            <img id="plo_1"  class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
+                            <p id="p_sel">TEST KIROSHI V2</p>
+                            <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">ABOUT</p>
-                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
-                            </svg>
-                        </div>
-                        <div id="m_s" class="ms4">
-                            <svg id="m_select">
+                        </a>
+                    </div>
+                    <div id="m_s" class="ms4">
+                        <img id="plo_1-1"  class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                        <img id="plo_1"  class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
+                        <p id="p_sel">PLAYER</p>
+                        <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">CREDITS</p>
-                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
-                            </svg>
-                        </div>
-                        <div id="m_s" class="ms4">
-                            <svg id="m_select">
+                    </div>
+                    <div id="m_s" class="ms4">
+                        <img id="plo_1-1"  class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                        <img id="plo_1"  class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
+                        <p id="p_sel">ABOUT</p>
+                        <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
-                                <polygon points="0,0 270,0 270,30 260,40  0,40 " id="pol1" />
-                                <p id="p_sel">QUIT GAME</p>
-                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
-                            </svg>
-                        </div>
+                    </div>
                 </div>
                 <p id="pm_1">TRN_TCLAS_800095</p>
                 <div id="bar"></div>
@@ -4113,5 +4136,9 @@
     </div>
 </div>
 
+
+
+
+</body>
 
 </html>
