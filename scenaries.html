@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+    <script type="text/javascript">
+        videojs.getPlayer('myPlayerID').ready(function () {
+            // Get a reference to the player
+            var myPlayer = this;
+
+            myPlayer.backgroundPlaylistRandom();
+        });
+    </script>
+    <style>
+       
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+        body {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0%;
+            top: 0;
+            background: black;
+            overflow: hidden;
+        }
+        a {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+        #main {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #cover { z-index:9; transition:all .5s ease;
+            width: 101%;
+            height: 101%;
+            position: absolute;
+            left: -1%;
+            top: -1%;
+        }
+
+        #maincover {
+            width: 100%;
+            height: 100%;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+        #loading { opacity:.7;
+            width: 33%;
+            height: 10%;
+            position: absolute;
+            right: 0;
+            top: 2%;
+            transform: rotateZ(-1deg);
+        }
+
+        .wrapper {
+            filter: contrast(140%);
+            width: 100%;
+            position: absolute;
+            height: 100%;
+        }
+
+            /*  .wrapper .progressCounter {
+               text-align: right;
+               font-size: 34px;
+               font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+           }*/
+
+            .wrapper .bar {
+                width: 80%;
+                box-shadow: 0 0 .3vw rgb(255,97,88);
+                height: .8vw;
+                background: transparent;
+                border: .2vw solid rgb(255,97,88);
+            }
+
+                .wrapper .bar .flexiblebar {
+                    height: 60%;
+                    margin-top: .35%;
+                    margin-left: 0%;
+                    background: rgb(255,97,88);
+                }
+
+        #letter {
+            position: absolute;
+            line-height: .3vw;
+            color: rgb(255,97,88);
+            font-family: 'Oswald', sans-serif;
+            font-size: .5vw;
+            letter-spacing: .1vw;
+            text-shadow: 0 0 .5vw rgb(255,97,88);
+        }
+
+        .bar {
+            margin-top: 8%;
+        }
+
+        #cd {
+            position: absolute;
+            width: 3.5vw;
+            height: 3.5vw;
+            border: .1vw solid rgb(255,97,88);
+            right: 1.2vw;
+            top: 0;
+            box-shadow: 0 0 .3vw rgb(255,97,88);
+        }
+
+        #circle {
+            width: 3vw;
+            height: 3vw;
+            border: .1vw solid rgb(255,97,88);
+            position: absolute;
+            top: .2vw;
+            left: .2vw;
+            /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
+            border-radius: 50%;
+        }
+
+        #blok1 {
+            width: 5vw;
+            height: 2.9vw;
+            position: absolute;
+            background: black;
+            top: .2vw;
+            left: -1vw;
+        }
+
+        #blok2 {
+            height: 5vw;
+            width: 2.9vw;
+            position: absolute;
+            background: black;
+            left: .2vw;
+            top: -1vw;
+        }
+
+        #circle img {
+            width: 82%;
+            margin: 10%;
+            animation: rotation 3s infinite linear;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(359deg);
+            }
+        }
+        .v1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110%;
+            height: 110%;
+        
+        }
+        #video1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #help1, #help2, #help3 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            color: #ff0000;
+            font-size: 1.5vw;
+            letter-spacing: .1vw;
+            left: 2.5%;
+            top: 88%; opacity:0;
+            transform: rotateZ(-1.2deg);
+        }
+        #help1 {
+            animation: in1 20s infinite;
+        }
+        #help2 {
+            animation: in2 20s infinite;
+        }
+        #help3 {
+            animation: in3 20s infinite;
+        }
+        @keyframes in1 {
+            0% {
+                opacity:0;
+            }
+            5% {
+                opacity: 1;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes in2 {
+            0% {
+                opacity: 0;
+            }
+            30% {
+                opacity: 0;
+            }
+            35% {
+                opacity: 1;
+            }
+
+            55% {
+                opacity: 1;
+            }
+
+            60% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes in3 {
+            0% {
+                opacity: 0;
+            }
+
+           
+            60% {
+                opacity: 0;
+            }
+            65% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        #prct { width:100%; height:100%; position:absolute; top:0; left:0; 
+        }
+        #hidd { position:absolute; width:6vw; height:3vw;  top:90%; left:43%; z-index:9;
+        }
+        #eye1, #eye2 { position:absolute; width:3vw; height:2vw;  position:absolute; left:1vw;
+        }
+        #eye2 { opacity:0; z-index:-2; filter:contrast(150%);
+        }
+        #imey1 { width:80%; margin-left:10%;
+        }
+        #main:target #cover { opacity:0;
+        }
+        #main:target #eye2 {
+            opacity: 1;
+            z-index: 2;
+        }
+       #main:target #eye1 {
+            opacity: 0;
+            z-index: -2;
+        }
+        #p_hid {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            color: rgb(255,97,88);
+            filter: contrast(250%);
+            font-size: .4vw;
+            top: 2vw;
+            /*letter-spacing: .1vw;*/
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="main">
+        <!--<video autoplay="" loop="" muted="">
+        <source src="C:/Users/jessf/Desktop/Ev/back.mp4" type="video/mp4">
+        <script>
+            $('video').coverVid(1920, 1080);
+        </script>
+
+
+    </video>-->
+        <div class="v1">
+            <video src="" id="video1" autoplay="" loop="" muted="">
+                <script>
+                    class MousePan {
+                        constructor(options) {
+                            this.resize = this.resize.bind(this);
+                            this.onMousemove = this.onMousemove.bind(this);
+                            this.tick = this.tick.bind(this);
+                            this.$wrapper = options.el;
+                            this.ease = options.ease || .08;
+                            this.init();
+                        }
+
+                        init() {
+                            this.position = {
+                                x: 0,
+                                y: 0
+                            };
+
+                            this.destination = {
+                                x: 0,
+                                y: 0
+                            };
+
+                            this.size = {
+                                x: 0,
+                                y: 0,
+                                offsetX: 0,
+                                offsetY: 0,
+
+                            };
+
+                            this.resize();
+                            this.bindEvents();
+                            this.tick();
+                        }
+
+                        resize() {
+                            this.setWrapperSize();
+                            this.setWrapperPosition();
+                        }
+
+                        bindEvents() {
+                            window.addEventListener('mousemove', this.onMousemove);
+                            window.addEventListener('resize', this.resize);
+                        }
+
+                        /**
+                         * Sets the wrapper size based on its taller and wider childrens
+                         */
+                        setWrapperSize() {
+                            this.size = [].slice.call(this.$wrapper.childNodes).reduce(this.getMaxSize);
+                            this.size.offsetX = this.size.w - window.innerWidth;
+                            this.size.offsetY = this.size.h - window.innerHeight;
+                            this.$wrapper.style.width = `${this.size.w}px`;
+                            this.$wrapper.style.height = `${this.size.h}px`;
+                        }
+
+                        /**
+                         * Returns the max width and height between two objects
+                         * @param  {[type]} acc [description]
+                         * @param  {[type]} cur [description]
+                         * @return {[type]}     [description]
+                         */
+                        getMaxSize(a, b) {
+                            a.w = a.nodeType !== undefined ? a.offsetWidth : a.w;
+                            a.h = a.nodeType !== undefined ? a.offsetHeight : a.h;
+                            a.w = a.w || 0;
+                            a.h = a.h || 0;
+                            const w = b.offsetWidth || 0;
+                            const h = b.offsetHeight || 0;
+                            return {
+                                w: Math.max(a.w, w),
+                                h: Math.max(a.h, h),
+                            };
+                        }
+
+                        /**
+                         * Centers wrapper
+                         * @return {[type]} [description]
+                         */
+                        setWrapperPosition() {
+                            this.destination.x = .5 * this.size.offsetX;
+                            this.destination.y = .5 * this.size.offsetY;
+                        }
+
+                        onMousemove(e) {
+                            const x = e.clientX;
+                            const y = e.clientY;
+                            // Map destination x to the overflowing width;
+                            this.destination.x = this.size.offsetX > 0 ? this.map(x, 0, window.innerWidth, 0, this.size.offsetX) : 0;
+                            // Map destination y to the overflowing height;
+                            this.destination.y = this.size.offsetY > 0 ? this.map(y, 0, window.innerHeight, 0, this.size.offsetY) : 0;
+                        }
+
+                        tick() {
+                            // Put motion in the displacement of the wrapper
+                            // Instead of setting position = destination
+                            // We add the distance between the destination and the position to the position
+                            this.movePosition();
+                            this.$wrapper.style.transform = `translate3d(-${this.position.x}px, -${this.position.y}px, 0)`;
+                            window.requestAnimationFrame(this.tick);
+                        }
+
+                        /**
+                         * Calculates the new position based on the distance between the destination and the current position
+                         * We add a percentage to add the easing effect
+                         * https://codepen.io/rachsmith/post/animation-tip-lerp
+                         * @return {[type]} [description]
+                         */
+                        movePosition() {
+                            this.position.x += (this.destination.x - this.position.x) * .08;
+                            this.position.y += (this.destination.y - this.position.y) * .08;
+                        }
+
+                        // Utils
+                        map(val, oldMin, oldMax, newMin, newMax) {
+                            return newMin + (val - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+                        }
+                    }
+                    new MousePan({
+                        el: document.querySelector('.v1'),
+                        ease: .20
+                    });
+
+                </script>
+
+            </video>
+
+        </div>
+    
+        <script>
+            $('video').coverVid(1920, 1080);
+
+        </script>
+        <!--<script>
+
+
+        var moveForce = 18; // max popup movement in pixels
+        var rotateForce = 13; // max popup rotation in deg
+        $(document).mousemove(function (e) {
+            var docX = $(document).width();
+            var docY = $(document).height();
+
+            var moveX = (e.pageX - docX / 2) / (docX / 2) * -moveForce;
+            var moveY = (e.pageY - docY / 2) / (docY / 2) * -moveForce;
+
+            var rotateY = (e.pageX / docX * rotateForce * 2) - rotateForce;
+            var rotateX = -((e.pageY / docY * rotateForce * 2) - rotateForce);
+
+            $('#video1')
+                .css('left', moveX + 'px')
+                .css('top', moveY + 'px')
+                .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
+
+        });
+    </script>-->
+        <script>
+
+            $(function () { // <- dont need this you already have it
+
+                // put all this towards the bottom after all the scroll magic stuff
+
+                // these are where you list your videos
+                // you can add as many as you need
+                var video1Sources = [
+                    "https://xevangelist.github.io/evangelist/1.mp4",
+                    "https://xevangelist.github.io/evangelist/2.mp4",
+                    "https://xevangelist.github.io/evangelist/3.mp4",
+                    "https://xevangelist.github.io/evangelist/4.mp4",
+                    "https://xevangelist.github.io/evangelist/5.mp4",
+                    "https://xevangelist.github.io/evangelist/6.mp4",
+                    "https://xevangelist.github.io/evangelist/7.mp4",
+                    "https://xevangelist.github.io/evangelist/8.mp4",
+                    "https://xevangelist.github.io/evangelist/9.mp4",
+                    "https://xevangelist.github.io/evangelist/10.mp4",
+                    "https://xevangelist.github.io/evangelist/11.mp4",
+                    "https://xevangelist.github.io/evangelist/12.mp4",
+                ];
+                // see this one only has 2!
+                var video2Sources = [
+                    "https://xevangelist.github.io/evangelist/1.mp4",
+                    "https://xevangelist.github.io/evangelist/2.mp4",
+                    "https://xevangelist.github.io/evangelist/3.mp4",
+                    "https://xevangelist.github.io/evangelist/4.mp4",
+                    "https://xevangelist.github.io/evangelist/5.mp4",
+                    "https://xevangelist.github.io/evangelist/6.mp4",
+                    "https://xevangelist.github.io/evangelist/7.mp4",
+                    "https://xevangelist.github.io/evangelist/8.mp4",
+                    "https://xevangelist.github.io/evangelist/9.mp4",
+                    "https://xevangelist.github.io/evangelist/10.mp4",
+                    "https://xevangelist.github.io/evangelist/11.mp4",
+                    "https://xevangelist.github.io/evangelist/12.mp4",
+                ];
+
+                // get a random url from each set
+                var rand1 = video1Sources[Math.floor(Math.random() * video1Sources.length)],
+                    rand2 = video2Sources[Math.floor(Math.random() * video1Sources.length)];
+
+                // set the srcs to the random videos
+                $("#video1").attr("src", rand1);
+
+                $("#video2").attr("src", rand2);
+            });
+        </script>
+        <div id="cover">
+            <img src="https://i.postimg.cc/sxVdmsdK/54bdf77a-b510-4d7d-b222-ab167708ce8d-mp4-000025692-1.png" id="maincover" />
+            <div id="prct"></div>
+            <div id="loading">
+                <div class="wrapper">
+                    <div id="letter">
+                        <p>(CCKS COMPRESSED)</p>
+                        <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
+                    </div>
+                    <div class="bar">
+
+                        <div class="flexiblebar" data-percent="100" data-delay="99"></div>
+                        <script>
+                            let flexiblebar = document.querySelector(".flexiblebar");
+                            let progressCounter = document.querySelector(".progressCounter");
+
+                            let count = 0;
+                            let delayTime =
+                                (0 * flexiblebar.dataset.delay) / flexiblebar.dataset.percent;
+
+                            flexiblebar.style.background = flexiblebar.dataset.bg;
+
+                            function progressBar() {
+                                count++;
+                                flexiblebar.style.width = `${count}%`;
+                                progressCounter.innerHTML = `${count}%`;
+                                if (count == flexiblebar.dataset.percent) {
+                                    clearInterval(stop);
+                                }
+                            }
+
+                            let stop = setInterval(() => {
+                                progressBar();
+                            }, delayTime);
+
+                        </script>
+                    </div>
+                    <div id="cd">
+                        <div id="blok1"></div>
+                        <div id="blok2"></div>
+                        <div id="circle">
+                            <img src="https://i.postimg.cc/jShdvhgc/1.png" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <p id="help1">HOVER TO BACKGROUND TO SEE DETAILS</p>
+            <p id="help2">PRESS F5 TO CHANGE BACKGROUND</p>
+            <a href="C:/Users/jessf/Desktop/Ev/Reb4-3.html"> <p id="help3">PRESS HERE TO RETURN HOME</p></a>
+        </div>
+        <div id="hidd">
+            <a href="#main"> <div id="eye1"><img src="https://i.postimg.cc/ncWzg1bt/view.png" id="imey1" /></div></a>
+            <a href="#">
+                <div id="eye2"><img src="https://i.postimg.cc/4dFkyB1f/hidden.png" id="imey1" /></div>
+            </a>
+                <p id="p_hid">VIEW_FULL_BACKGROUND 0xCC000 <br /> K-100000009 V1.000002</p>
+        </div>
+
+    </div>
+    <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+  
+</body>
+</html>
