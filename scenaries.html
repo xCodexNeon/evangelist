@@ -300,12 +300,12 @@
     </style>
 
 </head>
-
-<body>
+    
+<body onload=" chngevid();">
 
     <div id="main">
         <!--<video autoplay="" loop="" muted="">
-        <source src="back.mp4" type="video/mp4">
+        <source src="C:/Users/jessf/Desktop/Ev/back.mp4" type="video/mp4">
         <script>
             $('video').coverVid(1920, 1080);
         </script>
@@ -313,7 +313,7 @@
 
     </video>-->
         <div class="v1">
-            <video src="" id="video1" autoplay="" loop="" muted="">
+            <video src="" class="viid" id="video1" autoplay="" loop="" muted="">
                 <script>
                     class MousePan {
                         constructor(options) {
@@ -442,10 +442,15 @@
             </video>
 
         </div>
-    
+
         <script>
             $('video').coverVid(1920, 1080);
-
+            function PRess_R() {
+                tecla_R = event.keyCode;
+                if (tecla_R == 82) {chngevid();}
+                
+            }
+            window.onkeydown = PRess_R;
         </script>
         <!--<script>
 
@@ -470,7 +475,7 @@
         });
     </script>-->
         <script>
-
+            function chngevid() {
             $(function () { // <- dont need this you already have it
 
                 // put all this towards the bottom after all the scroll magic stuff
@@ -513,9 +518,10 @@
 
                 // set the srcs to the random videos
                 $("#video1").attr("src", rand1);
-
+               
                 $("#video2").attr("src", rand2);
             });
+            }
         </script>
         <div id="cover">
             <img src="https://i.postimg.cc/sxVdmsdK/54bdf77a-b510-4d7d-b222-ab167708ce8d-mp4-000025692-1.png" id="maincover" />
@@ -565,19 +571,19 @@
 
             </div>
             <p id="help1">HOVER TO BACKGROUND TO SEE DETAILS</p>
-            <p id="help2">PRESS F5 TO CHANGE BACKGROUND</p>
+            <p id="help2">PRESS "R" TO CHANGE BACKGROUND</p>
             <a href="Reb4-3.html"> <p id="help3">PRESS HERE TO RETURN HOME</p></a>
+
         </div>
         <div id="hidd">
             <a href="#main"> <div id="eye1"><img src="https://i.postimg.cc/ncWzg1bt/view.png" id="imey1" /></div></a>
             <a href="#">
                 <div id="eye2"><img src="https://i.postimg.cc/4dFkyB1f/hidden.png" id="imey1" /></div>
             </a>
-                <p id="p_hid">VIEW_FULL_BACKGROUND 0xCC000 <br /> K-100000009 V1.000002</p>
+            <p id="p_hid">VIEW_FULL_BACKGROUND 0xCC000 <br /> K-100000009 V1.000002</p>
         </div>
-
+       
     </div>
     <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
   
 </body>
-</html>
