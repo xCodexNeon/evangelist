@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+    <script type="text/javascript">
+        videojs.getPlayer('myPlayerID').ready(function () {
+            // Get a reference to the player
+            var myPlayer = this;
+
+            myPlayer.backgroundPlaylistRandom();
+        });
+    </script>
+    <style>
+       
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+        body {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0%;
+            top: 0;
+            background: black;
+            overflow: hidden;
+        }
+        a {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+
+        #about {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: -1%;
+            left: -1%;
+            z-index: -2;
+            opacity: 1;
+        }
+
+
+
+        #about_back {
+            opacity: 1;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            --colors-bg--300: #1e181e;
+            --colors-bg--500: #191a1e;
+            --colors-primary--200: #f4908b;
+            --colors-primary--300: #ea6f69;
+            --colors-primary--500: #e8615a;
+            --colors-primary--600: #9c3230;
+            --colors-primary--700: #5e2122;
+            --colors-primary--800: #451717;
+            --colors-primary--900: #3c181a;
+            --colors-secondary--500: #2be4ea;
+            --colors-secondary--900: #295459;
+            --colors-tertiary--500: #fed33f;
+            --colors-on_bg--500: var(--colors-primary--500);
+            --colors-on_tertiary--500: var(--colors-bg--300);
+            --colors-on_primary--500: var(--colors-primary--200);
+            --colors-active--500: #2bfea0;
+            background-color: var(--colors-bg--500);
+            animation: backdrow2 10s infinite;
+            background-image: radial-gradient( ellipse at 0% 0%, #461616 0%, transparent 30% );
+            background-size: 125% 125%;
+            background-position-x: 0%;
+            /*opacity:.95;*/
+        }
+
+        #vid1 {
+            z-index: -1;
+        }
+
+        #video4 {
+            opacity: .4;
+        }
+
+        #back_pol {
+            overflow-y: scroll;
+            width: 75%;
+            height: 90%;
+            left: 1%;
+            top: 2%;
+            border: 1.3vw solid rgba(199,48,48.3);
+            opacity: 1;
+            position: absolute;
+            z-index: 2;
+            clip-path: polygon(100% 27%, 99% 29%, 99% 72%, 100% 73%, 100% 100%, 0 100%, 0 61%, 1% 60%, 1% 12%, 0 11%, 0 0, 99% 0, 100% 2%);
+        }
+
+        #about {
+            font-family: 'Share Tech Mono', monospace;
+            /*background: linear-gradient(180deg, #2b0e10 0%, #07080d 100%) fixed;*/
+        }
+
+        #back_pol::-webkit-scrollbar {
+            width: .01vw;
+        }
+
+        @keyframes text-blink {
+            from, to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        main {
+            animation: text-blink 0.01s steps(2) infinite;
+            /*font: .875em/1.6 'Inconsolata', monospace;*/
+            color: #db0e15;
+            font-weight: 400;
+            padding: 1em;
+            margin: 5% 0;
+            color: #db0e15;
+            text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+        }
+
+        ::selection {
+            background: transparent;
+        }
+
+        ::-webkit-selection {
+            background: transparent;
+        }
+
+        ::-moz-selection {
+            background: transparent;
+        }
+
+        a {
+            text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+            color: #db0e15;
+        }
+
+            a:hover, a:focus {
+                background: black;
+                color: #db0e15;
+                text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+            }
+
+        h2 {
+            font-size: .75vw;
+            font-weight: 400;
+            opacity: .8;
+        }
+
+        #p_p_p {
+            line-height: .2vw;
+            letter-spacing: .05vw;
+            font-size: .75vw;
+            opacity: .8;
+        }
+
+        abbr {
+            cursor: help;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 1em 0 0;
+        }
+
+        #span_p, #cmd2 {
+            display: block;
+            color: #db0e15;
+            text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+            line-height: .2vw;
+            animation: flashText 1s ease-out alternate infinite;
+        }
+
+        @keyframes flashText {
+            0% {
+                opacity: .3
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        kbd {
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid #db0e15;
+            box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+            text-transform: uppercase;
+            padding: 0 .1vw;
+        }
+
+        #cod {
+            border: 1px solid #db0e15;
+            box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+        }
+
+        input[type="text"] {
+            max-width: 25em;
+            border: none;
+            font-family: inherit;
+            background: transparent;
+            padding: 0 .5em;
+        }
+
+            input[type="text"]:focus {
+                background: transparent;
+                color: #db0e15;
+                text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+                outline: none;
+            }
+
+        #cmd2 {
+            animation-delay: .4s;
+            animation-duration: .5s;
+        }
+
+        .command {
+            display: block;
+            max-width: 20em;
+            color: #db0e15;
+            text-shadow: 0 0 5px rgba(219, 14, 21, .8);
+            font-weight: 700;
+            margin: 2em 0;
+        }
+
+
+        section {
+            display: none;
+        }
+
+        .open {
+            display: block;
+        }
+
+        #btonm {
+            position: absolute;
+            width: 16%;
+            height: 8%;
+            right: 3%;
+            background: rgba(199,48,48.3);
+            top: 88%;
+            z-index: 8;
+            clip-path: polygon(0 0, 100% 0, 100% 79%, 93% 100%, 0 100%);
+        }
+
+        #p_id_btn {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2vw;
+            color: #2e2e2e;
+            letter-spacing: .1vW;
+            font-weight: bold;
+            top: -.3vw;
+            left: 10%;
+        }
+
+        #btonm:hover #p_id_btn {
+            color: yellow;
+        }
+        #main { position:absolute; top:-1%; left:-1%; width:100%; height:100%;
+        }
+       
+    </style>
+
+</head>
+
+<body >
+
+        <!--<video autoplay="" loop="" muted="">
+        <source src="C:/Users/jessf/Desktop/Ev/back.mp4" type="video/mp4">
+        <script>
+            $('video').coverVid(1920, 1080);
+        </script>
+
+
+    </video>-->
+        <div id="about">
+
+            <div id="about_back"></div>
+            <div id="back_pol">
+                <main>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.--::////:--.</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-/ydmNNNmmmmNNNmdy/-`</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.+dNNmyo/+shddhs+/oymNNd+.</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sNMdo-´&nbsp;.yNMMMMMMNy.&nbsp;`+omMNs.</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`+NMd/´&nbsp;&nbsp;&nbsp;&nbsp;hMMMMMMMMMMh&nbsp;&nbsp;&nbsp;&nbsp;`/dMN+`</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`yMNo´&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MMMMMMMMMMMM`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`oNMy`</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yMN/´.:/+:.`yMMMMMMMMMMy`./+/:.`/NMy</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+MM+/dNMMMMMdosmMMMMMMmsodMMMMMNd/+MM+</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`NMdoMMMMMMMMMMy`:hMMh:`yMMMMMMMMMModMN'</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:NMoNMMMMMMMMMMM.&nbsp;oMMo&nbsp;.MMMMMMMMMMMNoMM:</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MM/dMMMMMMMMMMm`&nbsp;oMMo&nbsp;`mMMMMMMMMMMd/MM/</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:MMo.hMMMMMMMMMh-&nbsp;oMMo&nbsp;.hMMMMMMMMMh.oMM:</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`NMd&nbsp;&nbsp;-ohddhssNMNsyMMysNMNsshddho-&nbsp;&nbsp;dMN'</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+MM+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sNMMMMMMNs`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+MM+</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yMM/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sNMMNs.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MMh</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+NMm/`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oMMo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`/mMN+</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.sNMmo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oMMo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-omMNs.</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+hMNmho/-.+dd+.-/ohNMMh+'</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'./sdmNNNNNNNNNNmds/.'</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''.-:////:-.''</p>
+                    <p id="p_p_p">&nbsp;</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;............`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`....`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;`.....``....</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:sdmNNNNs-&nbsp;&nbsp;&nbsp;mNNNNNNNNNNNm/&nbsp;&nbsp;`/ymNNNNm+`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mM+NNNmy:&nbsp;&nbsp;&nbsp;&nbsp;-sdmNNNNs-&nbsp;.&nbsp;NNN``:smNNd&nbsp;&nbsp;dddmNNNNh:</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;`yNMNhsohNMNs.&nbsp;NMMhssssssdMMd&nbsp;-dMMmyssdMMmo`&nbsp;///yyMMmyyy.&nbsp;`yNMNhsoyNMNy&nbsp;/MMMymMMNh&nbsp;+yNMNhsoyNMNh-</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;oMMd.&nbsp;&nbsp;&nbsp;&nbsp;-mMMo NMMo`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hhd&nbsp;dMMs`&nbsp;&nbsp;&nbsp;`/MMM-&nbsp;`:ymMMm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MMd.&nbsp;&nbsp;&nbsp;&nbsp;-mMM&nbsp;hMMMMNh+.&nbsp;&nbsp;/MMN-`&nbsp;&nbsp;&nbsp;.hMMh</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;yMMy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dMMo&nbsp;dMMNdo-`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NMM+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MMM:&nbsp;///./ymMMmy:&nbsp;`yMM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hMM&nbsp;hmMMMm+&nbsp;&nbsp;&nbsp;&nbsp;+MMm`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oMMh</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;-mMMh+:--`dMMo&nbsp;dNMmNMNdo-`&nbsp;&nbsp;&nbsp;&nbsp;+NMNy/---`MMM/&nbsp;MM+&nbsp;&nbsp;&nbsp;+yNMMMm&nbsp;smMM&nbsp;&nbsp;:--`hMM&nbsp;hmMMmMMNh+&nbsp;-dMMdo:--`oMMh</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;.smNMMMNsdMMo&nbsp;---.-odNMNdo-`&nbsp;&nbsp;:hmMMMMN/MMM:&nbsp;dMMMMMMMMMMMM&nbsp;s.smNMMMMyhMM&nbsp;s---`:smMMN&nbsp;dmNNMMMMdoMMh</p>
+                    <p id="p_p_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-////:://-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-//////.&nbsp;&nbsp;&nbsp;&nbsp;.:////-///``&nbsp;:///////////-&nbsp;&nbsp;`-////:://-&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;&nbsp;////&nbsp;&nbsp;&nbsp;::////-//:/</p>
+
+
+                    <section id="home">
+                        <h2>A.I. TERMINAL V tech 5.38 - HOST is up (0.025s latency)</h2>
+                        <p id="p_p_p">USERNAME: Guest </p>
+                        <p id="p_p_p">PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233 </p>
+                        <p id="p_p_p">Authenticatting credentials... 100% </p>
+                        <p id="p_p_p">Accessing File '/srd/slab/ara/:dt_000000319/falc_min'...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done!  </p>
+                        <p id="p_p_p"></p>
+                        <p id="p_p_p">Welcome, Choombas. You have gained acces to subprotocol functions. A mimetic self-replicating </p>
+                        <p id="p_p_p">flitch system whit a crash-priority-override cybernetic virus has been launched to hide your </p>
+                        <p id="p_p_p">unregistered access. You have 03:15:09:41 left until the server will reset. </p>
+                        <p id="p_p_p">You must crash the server before time is exceeded. Passphrase clues are limited and hidden.</p>
+                        <p id="p_p_p">This place was made by xEvangelist, based in Cyberpunk 2077.</p>
+                        <p id="p_p_p">Enjoy your stay! enjoy the experience, dont worry for the netrunners,</p>
+                        <p id="p_p_p">this places is like the hotel no tell... and remember: BE A LEGEND!</p>
+                        <p id="p_p_p">&nbsp;&nbsp;</p>
+                        <p id="p_p_p"><span id="span_p">Type 'exit' + <kbd>Enter</kbd> -- to return home.</span></p>
+                    </section>
+
+                    <section id="exit">
+
+                        <h2><span id="span_p">&raquo;Logout...</span></h2>
+                        <p id="p_p_p">
+                            exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;
+                        </p>
+                        <p id="p_p_p"> Plase wait...  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </p>
+                        <p id="p_p_p"> Deleting temporal archives.. &nbsp;&nbsp;&nbsp; </p>
+                        <p id="p_p_p"> <div id="matrice">Logout sucess!</div>&nbsp; &nbsp;&nbsp;&nbsp; </p>
+                        <p id="p_p_p">Press 'R' to close </p>
+
+
+
+                    </section>
+                    <section id="error">
+                        <p id="p_p_p">Denied! type 'exit' to return home<p>
+                    </section>
+
+                    <span id="cmd2" class="command">HYDRA:SYS:/$<input id="txxt" type="text"></span>
+                </main>
+                <script>
+
+                    (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+                    // Let's do it!!
+                    $(document).ready(function () {
+
+
+
+
+                        $('.command').hide();
+                        $('input[type="text"]').focus();
+                        $('#home').addClass('open');
+                        $('#home').textTyper({
+                            speed: 15,
+                            afterAnimation: function () {
+                                $('.command').fadeIn();
+                                $('input[type="text"]').focus();
+                                $('input[type="text"]').val('');
+                            }
+                        });
+
+                        // get array of section ids, that exist in DOM
+                        var sectionArray = [];
+                        // We are using <section> here, you can use <div> or <article> if you want
+                        $('section').each(function (i, e) {
+                            //you can use e.id instead of $(e).attr('id')
+                            sectionArray.push($(e).attr('id'));
+                        });
+
+                        // Debug
+                        //console.log(sectionArray);
+
+
+
+                        // Command Input------------------------------
+
+                        $('input[type="text"]').keyup(function (e) {
+
+                            if (e.which == 13) {// ENTER key pressed
+
+                                $('.command').hide();
+                                var destination = $('input[type="text"]').val();
+                                //if (destination == "error") {
+                                //    var url = "C:/Users/jessf/Desktop/Ev/reb2.html";
+                                //    $(location).attr('href', url); }
+
+
+                                // Display section with id == destination and hide all others
+                                $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+                                // If destination does not match our array of section ids, display error section
+                                if ($.inArray(destination, sectionArray) == -1) {
+                                    $('#error').addClass('open');
+                                    $('#error').siblings().removeClass('open');
+
+                                }
+
+                                // All sections with class .open init textTyper
+                                $('.open').textTyper({
+                                    speed: 20,
+                                    afterAnimation: function () {
+                                        $('.command').fadeIn();
+                                        $('input[type="text"]').focus();
+                                        $('input[type="text"]').val('');
+
+                                    }
+                                });
+
+                            }// end if ENTER key pressed
+
+                        });// end keyup function
+
+                        // End Command Input-----------------------------
+
+                    });
+                </script>
+            </div>
+            <script>
+                function PRess_R() {
+                    tecla_R = event.keyCode;
+                    if (tecla_R == 82) {
+                        var url = "C:/Users/jessf/Desktop/Ev/Reb4-3.html";
+                        $(location).attr('href', url);
+                    }
+
+                }
+                window.onkeydown = PRess_R;
+            </script> 
+        </div><a href="C:/Users/jessf/Desktop/Ev/Reb4-3.html">
+    <div id="btonm">
+        <p id="p_id_btn">>EXIT INTERFACE</p>
+
+    </div>
+</a>
+
+        <!--<script>
+
+
+        var moveForce = 18; // max popup movement in pixels
+        var rotateForce = 13; // max popup rotation in deg
+        $(document).mousemove(function (e) {
+            var docX = $(document).width();
+            var docY = $(document).height();
+
+            var moveX = (e.pageX - docX / 2) / (docX / 2) * -moveForce;
+            var moveY = (e.pageY - docY / 2) / (docY / 2) * -moveForce;
+
+            var rotateY = (e.pageX / docX * rotateForce * 2) - rotateForce;
+            var rotateX = -((e.pageY / docY * rotateForce * 2) - rotateForce);
+
+            $('#video1')
+                .css('left', moveX + 'px')
+                .css('top', moveY + 'px')
+                .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
+
+        });
+    </script>-->
+        
+    <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+  
+</body>
+</html>

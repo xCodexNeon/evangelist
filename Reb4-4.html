@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+   <style>
+       @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+       * {
+           box-sizing: border-box;
+           position: relative;
+       }
+       body { background:black;
+       }
+       p::selection, span::selection {
+           background: yellow;
+           color: blue;
+           text-shadow: 1px 1px #fff;
+       }
+
+       /*html,
+       body {
+           --colors-bg--300: #1e181e;
+           --colors-bg--500: #191a1e;
+           --colors-primary--200: #f4908b;
+           --colors-primary--300: #ea6f69;
+           --colors-primary--500: #e8615a;
+           --colors-primary--600: #9c3230;
+           --colors-primary--700: #5e2122;
+           --colors-primary--800: #451717;
+           --colors-primary--900: #3c181a;
+           --colors-secondary--500: #2be4ea;
+           --colors-secondary--900: #295459;
+           --colors-tertiary--500: #fed33f;
+           --colors-on_bg--500: var(--colors-primary--500);
+           --colors-on_tertiary--500: var(--colors-bg--300);
+           --colors-on_primary--500: var(--colors-primary--200);
+           --colors-active--500: #2bfea0;
+           --fonts-primary: "Rajdhani", sans-serif;
+           --fonts-secondary: "VT323", monospace;
+           --ui-glow: 0 0 5px var(--colors-primary--500);
+           --ui-glow-borders--500: 0 0 3px var(--colors-primary--500);
+           --ui-glow-color: currentcolor;
+           --ui-glow-text: -9px -6px 40px var(--ui-glow-color);
+           --ui-glow-text--dimmed: -9px -6px 40px var(--ui-glow-color);
+           --ui-elevation--1: 2px 2px 0 rgba(0, 0, 0, 0.8);
+           --ui-notch-amount: 1rem;
+           --ui-notch-hypotenuse: 22.627416px;*/ /* hypothenuse of --ui-notch-amount */
+           /*--ui-notch-path: polygon( 0 0, 100% 0, 100% calc(100% - var(--ui-notch-amount) + 2px), calc(100% - var(--ui-notch-amount) + 2px) 100%, 0 100% );
+           background-color: var(--colors-bg--500);
+           background-image: radial-gradient( ellipse at 33% 10%, #461616 0%, transparent 75% );
+           background-repeat: no-repeat;
+           color: var(--colors-on_bg--500);
+           font-family: var(--fonts-primary);
+           font-size: 100%;
+           line-height: 1.4;
+           margin: 0;
+           min-height: 100vh;
+       }*/
+       @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+       #loading { background:green; width:33%; height:10%; position:absolute; right:0; top:1%;
+       }
+       .wrapper { filter:contrast(210%);
+           width: 100%; 
+           position: absolute; height:100%;
+       }
+
+         /*  .wrapper .progressCounter {
+               text-align: right;
+               font-size: 34px;
+               font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+           }*/
+
+           .wrapper .bar {
+               width: 80%; box-shadow: 0 0 .3vw rgb(255,97,88);
+               height: .8vw;
+               background: transparent;
+               border: .2vw solid rgb(255,97,88);
+           }
+
+               .wrapper .bar .flexiblebar {
+                   height: 60%; margin-top:.35%;
+                   margin-left: 0%;
+                   background: rgb(255,97,88);
+               }
+       #letter {
+           position: absolute; line-height:.3vw;
+           color: rgb(255,97,88);
+           font-family: 'Oswald', sans-serif; 
+           font-size: .5vw; letter-spacing:.1vw;
+           text-shadow: 0 0 .5vw rgb(255,97,88);
+       }
+       .bar { margin-top:8%;
+       }
+       #cd {
+           position: absolute;
+           width: 3.5vw;
+           height: 3.5vw;
+           border: .1vw solid rgb(255,97,88);
+           right: 1.2vw;
+           top: 0;
+           box-shadow: 0 0 .3vw rgb(255,97,88);
+       }
+       #circle {
+           width: 3vw;
+           height: 3vw;
+           border: .1vw solid rgb(255,97,88); position:absolute; top:.2vw; left:.2vw;
+           /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
+           border-radius:50%;
+       }
+       #blok1 { width:5vw; height:2.9vw; position:absolute; background:black; top:.2vw; left:-1vw;
+       }
+       #blok2 {
+           height: 5vw;
+           width: 2.9vw;
+           position: absolute;
+           background: black;
+           left: .2vw;
+           top: -1vw;
+       }
+       #circle img {
+           width: 82%;
+           margin: 10%;
+           animation: rotation 3s infinite linear;
+       }
+       @keyframes rotation {
+           from {
+               transform: rotate(0deg);
+           }
+
+           to {
+               transform: rotate(359deg);
+           }
+       }
+   </style>
+</head>
+
+<body onload="redireccionarPagina();">
+    <script>
+        function redireccionarPagina() {
+            setTimeout("location.href='about.html'", 8000);
+
+        }
+    </script>
+    <div id="loading">
+        <div class="wrapper">
+            <div id="letter">
+                <p>(CCKS COMPRESSED)</p>
+                <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
+            </div>
+            <div class="bar">
+
+                <div class="flexiblebar" data-percent="100" data-delay="1"></div>
+                <script>
+                    let flexiblebar = document.querySelector(".flexiblebar");
+                    let progressCounter = document.querySelector(".progressCounter");
+
+                    let count = 0;
+                    let delayTime =
+                        (7000 * flexiblebar.dataset.delay) / flexiblebar.dataset.percent;
+
+                    flexiblebar.style.background = flexiblebar.dataset.bg;
+
+                    function progressBar() {
+                        count++;
+                        flexiblebar.style.width = `${count}%`;
+                        progressCounter.innerHTML = `${count}%`;
+                        if (count == flexiblebar.dataset.percent) {
+                            clearInterval(stop);
+                        }
+                    }
+
+                    let stop = setInterval(() => {
+                        progressBar();
+                    }, delayTime);
+
+                </script>
+            </div>
+            <div id="cd">
+                <div id="blok1"></div>
+                <div id="blok2"></div>
+                <div id="circle">
+                    <img src="https://i.postimg.cc/jShdvhgc/1.png" />
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+</body>
+
+</html>
