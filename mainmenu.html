@@ -2831,6 +2831,31 @@
             top: 85%;
             left: 60%;
         }
+        #mnus_pss, #mnus_pss2, #mnus_pss3 {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2vw;
+            text-shadow: 0 0 .5vw rgb(40 193 247);
+            color: rgb(40 193 247);
+            
+            top: 94%;
+        }
+        #mnus_pss {  left:3%;
+        }
+        #mnus_pss2 {
+            left: 36%;
+        }
+        #mnus_pss3 {
+            left: 69%;
+        }
+        #vid1 {
+            z-index: -1;
+        }
+
+        #video4 {
+            opacity: .4;
+        }
+       
     </style>
    
     
@@ -2838,7 +2863,7 @@
 
 
 
-<body onclick="digi()">
+<body id="bdy" onclick="digi()">
     <div class="box" id="Inv">
         <script>
             $(document).on("click mousemove", ".box", function (e) {
@@ -3014,7 +3039,16 @@
         <div id="M_N">
 
             <a id="a_in" href="#M_N" onclick="heartbeat.play();">
+
                 <div id="Main_play">
+                    <video id="video4" autoplay="" loop="" muted="">
+                        <source src="https://xevangelist.github.io/evangelist/Cyberpunk%202077%20-%20Title%20screen%20(ambient)%20(1).mp4" type="video/mp4">
+                        <script>
+                            $('#video4').coverVid(1920, 1080);
+                        </script>
+
+
+                    </video>
                     <p id="m_int">LOADING_MAINMENU 100%</p>
                     <div id="In_mnu">
                         <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
@@ -3049,10 +3083,10 @@
                     </div>
                 </div>
 
-                <video autoplay="" loop="" muted="">
-                    <source src="back.mp4" type="video/mp4">
+                <video id="vid1" autoplay="" loop="" muted="">
+                    <source src="https://xevangelist.github.io/evangelist/back.mp4" type="video/mp4">
                     <script>
-                        $('video').coverVid(1920, 1080);
+                        $('#vid1').coverVid(1920, 1080);
                     </script>
 
 
@@ -3128,11 +3162,15 @@
                                 $("#prev").mouseenter(function () {
                                     audio.play();
                                 });
+                                $("#btonm").mouseenter(function () {
+                                    audio.play();
+                                });
                                 //additional eventhandler on button click
                                 $("#M_N").click(function () {
                                     audio.play();
                                     console.log(audio);
                                 });
+
                             });
 
                         </script>
@@ -3182,11 +3220,12 @@
                             
                         </div>
                         <div id="m_s" class="ms4">
-                            <img id="plo_1-1" class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
-                            <img id="plo_1" class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
-                            <p id="p_sel">ABOUT</p>
-                            <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
-
+                            <a href="Reb4-4.html">
+                                <img id="plo_1-1" class="x_pl" src="https://i.postimg.cc/NfhHyBT5/dqw.png" />
+                                <img id="plo_1" class="x_pl" src="https://i.postimg.cc/yYzHgbNV/dqw.png" />
+                                <p id="p_sel">ABOUT</p>
+                                <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
+                            </a>
                         </div>
                     </div>
                     <p id="pm_1">TRN_TCLAS_800095</p>
@@ -4830,6 +4869,7 @@
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/X7WVKbg7/m1.png" /><img class="imgcont2" src="https://i.postimg.cc/pXkmcZkj/base1.png" /><img class="imgcont3" src="https://i.postimg.cc/pXkmcZkj/base1.png" /></div>
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/CxLStst3/m2.png" /><img class="imgcont2" src="https://i.postimg.cc/FHR7MLnB/base2.png" /><img class="imgcont3" src="https://i.postimg.cc/FHR7MLnB/base2.png" /></div>
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/sg6sRZCv/m3.png" /><img class="imgcont2" src="https://i.postimg.cc/kgpBqg0X/base3.png" /><img class="imgcont3" src="https://i.postimg.cc/kgpBqg0X/base3.png" /></div>
+               <p id="mnus_pss">90%</p><p id="mnus_pss2">70%</p><p id="mnus_pss3">40%</p>
                 </div>
                 <div id="menues2">
                     <div class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
@@ -4910,6 +4950,8 @@
                 </div>
 
             </div>
+
+         
         </div>
     </div>
 
