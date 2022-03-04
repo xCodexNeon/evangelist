@@ -2925,6 +2925,12 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/cyberpunk-2077-main-menu-theme.mp3?raw=true"
                         },
+                         {
+                            name: "RESIST AND DISORDER",
+                            artist: "Rezodrone",
+                            src:
+                                "https://xevangelist.github.io/evangelist/cyberpunk-2077-resist-and-disorder-by-rezodrone-jason-charles-miller-jamison-boaz.mp3?raw=true"
+                        },
                         {
                             name: "BLACK DOG",
                             artist: "SAMURAI",
@@ -3020,14 +3026,14 @@
                 $("#prev").click(function prev() {
                     CurrentSong--;
                     if (CurrentSong < 0) {
-                        CurrentSong = 5;
+                        CurrentSong = 6;
                     }
                     playSong();
                 });
 
                 $("#next").click(function next() {
                     CurrentSong++;
-                    if (CurrentSong > 5) {
+                    if (CurrentSong > 6) {
                         CurrentSong = 0;
                     }
                     playSong();
