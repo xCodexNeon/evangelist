@@ -2855,7 +2855,581 @@
         #video4 {
             opacity: .4;
         }
+
+        #mess {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -10; opacity:0;
+        }
+            #mess:target { z-index:10; opacity:1;
+            }
+
+        #messback {
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            --colors-bg--300: #1e181e;
+            --colors-bg--500: #191a1e;
+            --colors-primary--200: #f4908b;
+            --colors-primary--300: #ea6f69;
+            --colors-primary--500: #e8615a;
+            --colors-primary--600: #9c3230;
+            --colors-primary--700: #5e2122;
+            --colors-primary--800: #451717;
+            --colors-primary--900: #3c181a;
+            --colors-secondary--500: #2be4ea;
+            --colors-secondary--900: #295459;
+            --colors-tertiary--500: #fed33f;
+            --colors-on_bg--500: var(--colors-primary--500);
+            --colors-on_tertiary--500: var(--colors-bg--300);
+            --colors-on_primary--500: var(--colors-primary--200);
+            --colors-active--500: #2bfea0;
+            background-color: var(--colors-bg--500);
+            animation: backdrow2 10s infinite;
+            background-image: radial-gradient( ellipse at 0% 0%, #461616 0%, transparent 50% );
+            background-size: 125% 125%;
+            background-position-x: 0%;
+            /*opacity:.95;*/
+        }
+        #A_mss {
+            position: absolute;
+            width: 56%;
+            height: 53%;
+            left: 23%;
+            top: 29%;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+        #div_p_mess { width: 97%; height:6.5vw; margin-bottom:.6vw; 
+        }
+        #div_p_mess2 {
+            width: 47%; position:relative; left:71%;
+            height: 2.5vw;
+            margin-bottom: 3vw; 
+        } 
+        #p_mess {
+            position: relative;
+            font-family: 'Oswald', sans-serif; 
+            font-size: .8vw; letter-spacing:.1vw; top:-.8vw;
+            color: #ccdb0c;
+        }
+        #p_mess2 {
+            position: relative;
+            font-family: 'Oswald', sans-serif;
+            font-size: .8vw;
+            letter-spacing: .1vw;
+            top: -.8vw;
+            color: rgb(40 193 247);
+        }
+        #A_mss::-webkit-scrollbar {
+            width: .2vw; border-radius:.5vw;
+            background: transparent;
+        }
+        #A_mss::-webkit-scrollbar-thumb {
+            width: .1vw;
+            background: rgba(199,48,48.3);
+        }
+        #cont_p_mess { width:97%; height:5vw; background:#100101; border:.1vw solid #ccdb0c; border-radius:.2vw; position:relative;
+        }
+        #cont_p_mess2 {
+            width: 47%;
+            min-height: 10%;
+            background: rgba(40,193,247,.1);
+            border: .1vw solid rgb(40 193 247);
+            border-radius: .3vw;
+        }
+        #p_mess_cont {
+            position: relative; margin-top:1vw; margin-left:.3vw;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            letter-spacing: .15vw;
+            top: -.8vw;
+            color: #ccdb0c;
+        }
+        #p_mess_cont2 {
+            position: relative;
+            margin-top: 1vw;
+            margin-left: .3vw;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            letter-spacing: .15vw;
+            top: -.8vw;
+            color: rgb(40 193 247);
+        }
+        #btnadd, #textadd { position:relative; top:80%;
+        }
+        #textadd { left:30%;
+        }
+        #text_bak_a {
+            position: absolute;
+            width: 41%;
+            height: 5.5vw;
+            top: 87%;
+            left: 23%;
+            background: rgba(199,48,48.3);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 97% 100%, 0 100%);
+        }
+            #text_bak_a:hover #text_bak_in {
+                background: #170000;
+            }
+        #text_bak_in {
+            position: absolute;
+            width: 99.2%;
+            height: 96%;
+            top: 2%;
+            left: .4%; background:#080000;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 97% 100%, 0 100%);
+        }
+        
+        #textadd {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            text-decoration: none;
+            border: none;
+            color: rgb(40 193 247);
+            top: 0;
+            left: 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            letter-spacing: .1vw;padding:.3vw;
+        }
+        #mess_ind {
+            position: absolute;
+            width: 7%;
+            height: 2.5%;
+            top: 84.5%;
+            left: 23%;
+            background: rgba(199,48,48.3);
+            clip-path: polygon(0 18%, 5% 0, 78% 0, 100% 100%, 0 100%);
+        }
+        #p_mess_ind {
+            position:absolute; top:-.8vw; letter-spacing:.1vw;
+            font-family: 'Oswald', sans-serif; left:.5vw;
+            font-size: .8vw; color:#d5d10c;
+        }
+        #btn_bak_in {
+            position: absolute;
+            height: 4vw;
+            top: 87%;
+            width: 5.5vw;
+            left: 67%;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 80% 100%, 0 100%);
+            background: rgb(40 193 247);
+        }
+            #btn_bak_in:hover #btnadd { background:rgba(0,0,0,.8);
+            }
+        #btnadd {
+            position: absolute;
+            height: 96%;
+            top: 2%;
+            width: 97%;
+            left: 1%;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 80% 100%, 0 100%);
+            background:#080000;
+        }
+        #p_btn_se {
+            position: absolute;
+            top: -.8vw;
+            letter-spacing: .1vw;
+            font-family: 'Oswald', sans-serif;
+            left: .5vw;
+            font-size: 1vw;
+            color:rgb(40 193 247);
+        }
+        #mess_top { position:absolute; width:100%; height:11%; top:3%;
+        }
+        #bord_top {
+            position: absolute;
+            width: 96%; left:2%;
+            height: .2vw;
+            background: #f54141; box-shadow: 0 0 .5vw rgba(199,48,48.3);
+            top: 98%;
+        }
+        #bord_top2 {
+            position: absolute;
+            width: 100%;
+            height: .15vw;
+            background: #f54141;
+            box-shadow: 0 0 .5vw rgba(199,48,48.3);
+            top: 98%;
+        }
+        #mess_mnu {
+            position: absolute;  width:75%; left:2%; height:90%;
+        }
+            #mess_mnu p {
+                letter-spacing: .15vw;
+                font-family: 'Oswald', sans-serif;
+                 position:absolute;
+                
+            }
+        #p_mess_1 {
+            font-size: 1.2vw;
+            top: 1vw;
+            color: #f54141;
+            text-shadow: 0 0 1vw #f54141;
+        }
+        #p_mess_2 {
+            font-size: 1vw;
+            top: 1.5vw;
+            left: 44%;
+            color: rgba(199,48,48.3);
+            text-shadow: 0 0 1vw #f54141;
+        }
+        #p_mess_3 {
+            font-size: 1.3vw; left:52%;
+            top: 1vw; color:rgb(0 216 255); text-shadow: 0 0 1vw rgb(40 193 247); 
+        }
+        #p_mess_4 {
+            font-size: 1vw;
+            top: 1.5vw;
+            left: 67%;
+            color: rgba(199,48,48.3);
+            text-shadow: 0 0 1vw #f54141;
+        }
+        #p_mess_5 {
+            font-size: 1vw;
+            top: 1.5vw;
+            left: 75%;
+            color: rgba(199,48,48.3);
+            text-shadow: 0 0 1vw #f54141;
+        }
+        #p_mess_6 {
+            font-size: 1vw;
+            top: 1.5vw;
+            left: 85%;
+            color: rgba(199,48,48.3);
+            text-shadow: 0 0 1vw #f54141;
+        }
+            #p_mess_6:hover, #p_mess_5:hover, #p_mess_4:hover, #p_mess_2:hover {color:#e55f5f;
+            }
+        #user_mess { width:20%; height:82%;  position:absolute; left:2%; top:16%;
+        }
+        #user_top { position:absolute; width:100%; height:13%;
+        }
+        #us_top_mess { position:absolute;
+            font-size: 1.3vw; letter-spacing:.15vw;
+            top:-1vw; left:2%;
+            font-family: 'Oswald', sans-serif;
+            color: #FF5B5B;
+            text-shadow: 0 0 1vw #f54141;
+        }
+
+        #plus_back {
+            position: absolute;
+            height: 3.5vw;
+            width: 3.5vw; right:2%;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 80% 100%, 0 100%);
+            background: rgb(40 193 247);
+        }
+
+            #plus_back:hover #plus_back2 {
+                background: rgba(0,0,0,.8);
+            }
+
+        #plus_back2 {
+            position: absolute;
+            height: 96%;
+            top: 2%;
+            width: 97%;
+            left: 1%;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 80% 100%, 0 100%);
+            background: #080000;
+        }
+            #plus_back2 p {
+                position: absolute;
+                font-size: 3vw;
+                top:-3.7vw; left:1.1vw;
+                font-family: 'Oswald', sans-serif;
+                color: rgb(40 193 247);
+                text-shadow: 0 0 1vw rgb(40 193 247);
+            }
+        #nmbr_mss { width:1.6vw; height:1.6vw; top:2.4vw; position:absolute; left:61%; border:.1vw solid #d9db0c; border-radius:.3vw;
+        }
+            #nmbr_mss p {
+                position: absolute; left:.3vw;
+                font-size: .9vw; font-weight:bolder;
+                top: -.9vw;
+                font-family: 'Oswald', sans-serif;
+                color: #d9db0c;
+                text-shadow: 0 0 1vw rgb(40 193 247);
+            }
        
+        #mess_cont_mess {
+            position: absolute;
+            width: 100%;
+            height: 73.5%;
+            top: 26%;
+        }
+        #mess_contact {
+            
+            width: 100%;  height:3vw; margin-bottom:.5vw; position:relative;
+        }
+        #mess_contact-sub {
+            width: 90%; margin-left:10%;
+             
+            height: 3vw;
+            margin-bottom: .5vw;
+            position: relative;
+        }
+        #icon_mess_cont {position:absolute; width:7%; height:100%;
+        }
+            #icon_mess_cont img { width:100%; height:100%; position:absolute;
+            }
+        #content_mess_cont {
+            position: absolute;
+            width: 90%; left:10%;
+            height: 100%;
+        }
+        #cont_back {
+            width: 100%;
+            height: 100%;
+        }
+        #pointer { position:absolute; width:1vw; left:90%; top:1.3vw;
+        }
+        .icon1 { z-index:-1; opacity:0;
+        }
+        #mess_contact:hover .icon1 { z-index:9; opacity:1;
+        }
+        #p_mess_con {
+            position: absolute; font-weight:600; letter-spacing:.1vw;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            top: -.2vw;
+            left: 8%;
+            color: rgb(40 193 247);
+           
+        }
+        #mess_contact:hover #p_mess_con {
+            text-shadow: 0 0 .5vw rgb(40 193 247);
+        }
+        #nmbr_mss2 {
+            width: 2vw;
+            height: .7vw;
+            top: 1.1vw;
+            position: absolute;
+            left: 41%;
+            border: .1vw solid #d9db0c;
+            border-radius: .2vw;
+        }
+
+            #p_nmr_mess1{
+                position: absolute;
+                left: .3vw;
+                font-size: .8vw;
+                font-weight: bolder;
+                top: .1vw; left:68%;
+                font-family: 'Oswald', sans-serif;
+                color: #d9db0c;
+                text-shadow: 0 0 1vw rgb(40 193 247);
+            }
+        #p_nmr_mess2 {
+            position: absolute;
+            left:.2vw; letter-spacing:.1vw;
+            font-size: .53vw;
+            font-weight: bolder;
+            top: -.65vw;
+            font-family: 'Oswald', sans-serif;
+            color: #d9db0c;
+        }
+        #p_nmr_mess3 {
+            position: absolute;
+            left: .3vw;
+            font-size: .8vw;
+            font-weight: bolder;
+            top: .1vw;
+            left: 43%;
+            font-family: 'Oswald', sans-serif;
+            color: #d9db0c;
+        }
+        #p_nmr_mess4 {
+            position: absolute;
+            left: .3vw;
+            font-size: .8vw;
+            font-weight: bolder;
+            top: .1vw;
+            left: 49%;
+            font-family: 'Oswald', sans-serif;
+            color: #d9db0c;
+        }
+        #p_nmr_mess5 {
+            position: absolute;
+            left: .3vw;
+            font-size: .8vw;
+            font-weight: bolder;
+            top: .1vw;
+            left: 49%;
+            font-family: 'Oswald', sans-serif;
+            color: #d9db0c;
+        }
+        #mess_serch {
+            position: absolute;
+            width: 100%;
+            height: 3vw;
+            background: #f54141;
+            top: 16%;
+            clip-path: polygon(100% 0, 100% 61%, 93% 100%, 0 100%, 0 0);
+        }
+        #mess_serch2 {
+            position: absolute;
+            width: 99%; left:.5%;
+            height: 96%; top:2%;
+            background: #120202;
+            clip-path: polygon(100% 0, 100% 61%, 93% 100%, 0 100%, 0 0);
+        }
+        #text_serch {
+            position: absolute;
+            width: 83%;
+            background: red;
+            left: 15%;
+            height: 60%;
+            background: transparent;
+            text-decoration: none;
+            border: none;
+            color: rgb(40 193 247);
+            top: .5vw; overflow:hidden;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1vw;
+            letter-spacing: .1vw;
+            outline: none;
+            padding: .3vw;
+        }
+            #text_serch:focus{ border:none;
+            }
+        #mess_serch2 img { width:2vw; height:2vw; position:absolute; left:2%; top:.5vw;
+        }
+        #mess_semitop { 
+            position: absolute;
+            width: 56%;  left:23%;
+            height: 11%;
+            top: 15.7%;
+        }
+        #p_x_1 {
+            position: absolute;
+            font-size: .9vw;
+            font-weight: bolder;
+            top: 0vw; letter-spacing:.1vw;
+            font-family: 'Oswald', sans-serif;
+            color: #f54141;
+        }
+        #p_x_2 {
+            position: absolute;
+            font-size: 1vw;
+            font-weight: bolder;
+            top: 2vw;
+            letter-spacing: .2vw;
+            font-family: 'Oswald', sans-serif;
+            color: #FF5B5B;
+        }
+        #icon_top_mess { width:20%; height:50%; position:absolute; left:83.5%; top:50%;
+        }
+            #icon_top_mess img { width:2.6vw; height:1vw; filter:contrast(50%);
+            }
+        #p_img_icon {
+            position: absolute;
+            font-size: .4vw;
+            font-weight: bolder;
+            top: .8vw; line-height:.5vw;
+            letter-spacing: .15vw;
+            font-family: 'Oswald', sans-serif;
+            color: #FF5B5B;
+        }
+        #a_frds { width:17%; height:66%; position:absolute; right:3%; top:32%;
+        }
+        #Frds_ub {width:100%; height:2.5vw; background:rgb(20 1 1); position:absolute; border:.1vw solid #f54141; border-radius:.2vw;
+        }
+            #Frds_ub p {
+                color: rgb(40 193 247);
+                position:absolute; top:-.7vw;
+                font-family: 'Oswald', sans-serif; font-weight:600; left:.5vw;
+                font-size: 1.1vw;
+                letter-spacing: .1vw;
+            }
+            #Frds_ub:hover, #Frds_on:hover { background:rgb(40 0 0);
+            }
+        #Frds_on {
+            width: 100%;
+            height: 2.5vw;
+            background: rgb(20 1 1);
+            position: absolute;
+            border: .1vw solid #f54141;
+            border-radius: .2vw;top:35%;
+        }
+            #Frds_on p {
+                color: rgb(40 193 247);
+                position: absolute;
+                top: -.7vw;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 600;
+                left: .5vw;
+                font-size: 1.1vw;
+                letter-spacing: .1vw;
+            }
+
+        #Frds_on_f {
+            width: 90%;
+            left: 10%;
+            height: 2.5vw;
+            background: transparent;
+            position: absolute;
+            border: .1vw solid transparent;
+            border-radius: .2vw;
+            top: 44%;
+        }
+        #Frds_ub_f {
+            width: 90%;
+            left: 10%;
+            height: 2.5vw;
+            background: transparent;
+            position: absolute;
+            border: .1vw solid transparent;
+            border-radius: .2vw;
+            top: 10%;
+        }
+        button {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }
+        #Frds_ub_f:nth-child(2) {
+            top: 20%;
+        }
+            #Frds_on_f:nth-child(5) { top:53%;
+            }
+            #Frds_on_f:nth-child(6) {
+                top: 63%;
+            }
+            #Frds_on_f:nth-child(7) {
+                top: 73%;
+            }
+            #Frds_on_f:nth-child(8) {
+                top: 83%;
+            }
+            #Frds_on_f:nth-child(9) {
+                top: 93%;
+            }
+        #Frds_on_f:hover, #Frds_ub_f:hover {
+            border: .1vw solid #f54141;
+            background: rgb(20 1 1);
+            transition: all -1s ease;
+        }
+            #Frds_on_f p, #Frds_ub_f p {
+                color: rgb(40 193 247);
+                position: absolute;
+                top: -.2vw;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 600;
+                left: 2.5vw;
+                font-size: .85vw;
+                letter-spacing: .15vw;
+            }
+            #Frds_on_f img, #Frds_ub_f img { width:.6vw; height:.6vw; position:absolute; left:1vw; top:1vw;
+            }
     </style>
    
     
@@ -2925,11 +3499,11 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/cyberpunk-2077-main-menu-theme.mp3?raw=true"
                         },
-                         {
+                        {
                             name: "RESIST AND DISORDER",
-                            artist: "Rezodrone",
+                            artist: "REZODRONE",
                             src:
-                                "https://xevangelist.github.io/evangelist/cyberpunk-2077-resist-and-disorder-by-rezodrone-jason-charles-miller-jamison-boaz.mp3?raw=true"
+                                "cyberpunk-2077-resist-and-disorder-by-rezodrone-jason-charles-miller-jamison-boaz.mp3?raw=true"
                         },
                         {
                             name: "BLACK DOG",
@@ -3041,7 +3615,7 @@
             });
 
         </script>
-       
+        
         <div id="M_N">
 
             <a id="a_in" href="#M_N" onclick="heartbeat.play();">
@@ -3070,8 +3644,16 @@
             </a>
 
             <div id="main">
-
-               
+                <div id="codesp2">
+                    <p class="cpdw1">[&nbsp;&nbsp;00000000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="cpdw2">CDKSLUM000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="cpdw3">[OXOCTAC0000-OCXAK000000-|&nbsp;&nbsp;1&nbsp;&nbsp;%&nbsp;&nbsp;MBI]</p>
+                </div>
+                <div id="codesp3">
+                    <p class="cpdwt">▲</p>
+                    <p class="cpdwx">NO_0</p><br />
+                    <p class="cpdwt2">▼</p>
+                </div>
 
 
                 <div class="slider">
@@ -3223,7 +3805,7 @@
                                 <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
 
                             </a>
-                            
+
                         </div>
                         <div id="m_s" class="ms4">
                             <a href="Reb4-4.html">
@@ -4878,12 +5460,12 @@
                <p id="mnus_pss">90%</p><p id="mnus_pss2">70%</p><p id="mnus_pss3">40%</p>
                 </div>
                 <div id="menues2">
-                    <div class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                    <div class="Men_sel" id="Men_sel2"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/7ZxFbsPh/mitad.png" class="icon_ms" /><p class="p_ms_1_1">INVASION</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                    <div class="Men_sel" id="Men_sel3"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/HWMDN8PY/hexagono-1.png" class="icon_ms" /><p class="p_ms_1_1">KIROSHI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                    <div class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">PLAYER</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                    <a href="#M_N"> <div class="Men_sel" id="Men_sel5"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/3Nms0zD4/prioridad.png" class="icon_ms" /><p class="p_ms_1_1">RETURN</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div></a>
-                </div>
+                    <a href="#mess"> <div class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div></a>
+                        <div class="Men_sel" id="Men_sel2"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/7ZxFbsPh/mitad.png" class="icon_ms" /><p class="p_ms_1_1">INVASION</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                        <div class="Men_sel" id="Men_sel3"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/HWMDN8PY/hexagono-1.png" class="icon_ms" /><p class="p_ms_1_1">KIROSHI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                        <div class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">PLAYER</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                        <a href="#M_N"> <div class="Men_sel" id="Men_sel5"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/3Nms0zD4/prioridad.png" class="icon_ms" /><p class="p_ms_1_1">RETURN</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div></a>
+</div>
                 <div id="hour_dr">
                     <div id="hour_t">
                         <div id="t_img_1"></div><div id="t_img_2"></div><div id="t_img_3"></div><div id="t_img_4"></div>
@@ -4957,6 +5539,151 @@
 
             </div>
 
+
+            <div id="mess">
+                <div id="messback"></div>
+                <div class="slider" id="xslz">
+                    <div class="slide-track">
+                        <div class="slide">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="slider2" id="xslz">
+                    <div class="slide-track">
+                        <div class="slide">
+                        </div>
+
+                    </div>
+                </div>
+                <div id="codesp">
+                    <p class="cpdw">-</p>
+                    <p class="cpdw1">00100</p>
+                    <p class="cpdw2">10000</p>
+                    <p class="cpdw3">00001</p>
+                    <p class="cpdw4">10000</p>
+                    <p class="cpdw">-</p>
+                    <p class="cpdw5">01000</p>
+                    <p class="cpdw6">10000</p>
+                    <p class="cpdw7">00001</p>
+                    <p class="cpdw8">00010</p>
+                    <br />
+                    <p class="cpdw">-</p>
+                </div>
+                <div id="codesp2">
+                    <p class="cpdw1">[&nbsp;&nbsp;00000000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="cpdw2">CDKSLUM000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="cpdw3">[OXOCTAC0000-OCXAK000000-|&nbsp;&nbsp;1&nbsp;&nbsp;%&nbsp;&nbsp;MBI]</p>
+                </div>
+                <div id="codesp3">
+                    <p class="cpdwt">▲</p>
+                    <p class="cpdwx">NO_0</p><br />
+                    <p class="cpdwt2">▼</p>
+                </div>
+
+
+                <div id="mess_top">
+                    <div id="mess_mnu">
+                        <p id="p_mess_1">NIGHT CITY NETWARE</p> <a href="#Player_1"><p id="p_mess_2">RETURN</p></a>
+                        <p id="p_mess_3">MESSAGES</p><div id="nmbr_mss"><p>11</p></div>
+                                                     <a href="#M_N"><p id="p_mess_4">MENU</p></a>
+                                                     <a href="#Inv">
+                                                         <p id="p_mess_5">INVASION</p></a>
+                                                         <p id="p_mess_6">MAP</p>
+</div>
+                    <div id="bord_top"></div>
+                </div>
+                <div id="user_mess">
+                    <div id="user_top">
+                        <p id="us_top_mess">MESSAGES</p>
+                        <div id="plus_back"> <div id="plus_back2"><p>+</p></div></div>
+                        <div id="bord_top2"></div>
+
+                    </div>
+                    <div id="mess_serch">
+                        <div id="mess_serch2">
+                            <img src="https://i.postimg.cc/vBZHkvn4/lupa.png" />
+                            <textarea id="text_serch" placeholder="SEARCH"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="mess_cont_mess">
+                        <div id="mess_contact"><div id="icon_mess_cont"><img class="icon1" src="https://i.postimg.cc/kgGQqZZq/icon1.png" /><img class="icon2" src="https://i.postimg.cc/6QGCGZtP/icon2.png" /></div><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/BQq5wtB8/bass1.png" /> <p id="p_mess_con">BARTMOSS COLLECTIVE</p><p id="p_nmr_mess1">1</p></div></div>
+                        <div id="mess_contact"><div id="icon_mess_cont"><img src="https://i.postimg.cc/kgGQqZZq/icon1.png" /></div><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/c4X7qZFF/bass2.png" /><img id="pointer" src="https://i.postimg.cc/mgnQDjfM/point.png" /><p id="p_mess_con">ROGUE AMENDARIES </p></div></div>
+                        <div id="mess_contact-sub"><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/c4X7qZFF/bass2.png" /><p id="p_mess_con">NETRUNNER</p><div id="nmbr_mss2"><p id="p_nmr_mess2">REPLY</p></div></div></div>
+                        <div id="mess_contact-sub"><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/BQq5wtB8/bass1.png" /><p id="p_mess_con">CYBERPSYCHO</p></div></div>
+                        <div id="mess_contact"><div id="icon_mess_cont"><img class="icon1" src="https://i.postimg.cc/kgGQqZZq/icon1.png" /><img class="icon2" src="https://i.postimg.cc/6QGCGZtP/icon2.png" /></div><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/BQq5wtB8/bass1.png" /><p id="p_mess_con">COACH FRED</p><p id="p_nmr_mess3">3</p></div></div>
+                        <div id="mess_contact"><div id="icon_mess_cont"><img class="icon1" src="https://i.postimg.cc/kgGQqZZq/icon1.png" /><img class="icon2" src="https://i.postimg.cc/6QGCGZtP/icon2.png" /></div><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/BQq5wtB8/bass1.png" /><p id="p_mess_con">EVELYN PARKER</p><p id="p_nmr_mess4">4</p></div></div>
+                        <div id="mess_contact"><div id="icon_mess_cont"><img class="icon1" src="https://i.postimg.cc/kgGQqZZq/icon1.png" /><img class="icon2" src="https://i.postimg.cc/6QGCGZtP/icon2.png" /></div><div id="content_mess_cont"><img id="cont_back" src="https://i.postimg.cc/BQq5wtB8/bass1.png" /><p id="p_mess_con">JACKIE WELLES</p><p id="p_nmr_mess5">1</p></div></div>
+
+
+                    </div>
+                </div>
+
+                <div id="mess_semitop">
+                    <p id="p_x_1">NetWire_Seed: d869db7fe62fb07c25a0403ecaea55031744b5fb</p>
+                    <p  id="p_x_2"># WATSON </p>
+                    <div id="icon_top_mess"><img src="https://i.postimg.cc/QC17d38B/axd.png" /><p id="p_img_icon">PROTOCOL<br />6520-444</p></div><div id="r-p2">
+    <p>IMACC NAME: BLACKLARCH 4CL454</p>
+    <p>IMACC TYPE: KERNEL rSOLAT TAIMAT IMAGE</p>
+    <p>ICCKS COMPRESSED (Q)</p>
+    <p>LOAD ADRESS 0000x112244</p>
+</div>
+                    <div id="bord_top2"></div>
+                </div>
+                <div id="A_mss">
+                    <div id="div_p_mess"><div id="cont_p_mess"><p id="p_mess_cont">I got a gig lined up in Watson, no biggie. If you prove useful, expect more side gigs coming your way. I need a half-decent netrunner. Hit me up, provide credentials, eddies on completion.</p></div><p id="p_mess">Rogue Amendiares - 2 days ago</p></div>
+                    <div id="div_p_mess2"><div id="cont_p_mess2"><p id="p_mess_cont2">I'll be there</p></div><p id="p_mess2">xEvangelist - 2 days ago</p></div>
+
+
+                    <div id="div_p_mess">
+                        <div id="cont_p_mess">
+                            <p id="p_mess_cont">
+                                A motherfucking job, as expected.<br />
+                                Eddies on the way
+                            </p>
+                        </div><p id="p_mess">Rogue Amendiares - 1 day ago</p>
+                    </div>
+
+
+                </div>
+                <div id="a_frds">
+                    <div id="Frds_ub"><p>#&nbsp;&nbsp;Locations</p></div>
+                    <div id="Frds_ub_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;ORGTX</p></div>
+                    <div id="Frds_ub_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;NEOTOKYO</p></div>
+                    <div id="Frds_on"><p>#&nbsp;&nbsp;Contacts</p></div>
+
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/d1Y1qTfY/of.png" /><p>#&nbsp;&nbsp;ITAMI</p></div>
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;MECHANIZEDOLL</p></div>
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;NECESSARIUS</p></div>
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;KAGURA</p></div>
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/d1Y1qTfY/of.png" /><p>#&nbsp;&nbsp;DEPRECATED</p></div>
+                    <div id="Frds_on_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;PRINCESS</p></div>
+                </div>
+
+                <div id="mess_ind"><p id="p_mess_ind">MESSAGE:</p></div>
+                <div id="text_bak_a">
+                    <div id="text_bak_in">
+                        <textarea id="textadd" placeholder="C://>_"></textarea>
+                    </div>
+                </div>
+                <div id="btn_bak_in">
+                    <button id="btnadd" onclick="add_mess(); to_bot();"><p id="p_btn_se">SEND</p></button>
+                </div>
+                <script>
+                    function to_bot() {
+                        $("#A_mss").stop().animate({
+                            scrollTop: $("#search2").offset().top
+                        }, 2000);
+                    }
+
+                    function add_mess() {
+
+                        var textt = $('#textadd').val();
+                        $('#A_mss').append('<div id="div_p_mess"><div id="cont_p_mess"><p id="p_mess_cont">' + textt + '</p></div><p id="p_mess">UNKNOW GUEST V.122_0 - A FEW MOMENT AGO</p></div>');
+
+                    }</script>
+            </div>
          
         </div>
     </div>
