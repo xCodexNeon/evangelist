@@ -2237,6 +2237,7 @@
             transition-delay: -1s;
         }
          #Player_1:target { z-index:9; opacity:1;
+
         }
         #Player_1 {
             width: 100%;
@@ -2778,6 +2779,14 @@
             z-index: 2;
             transform: rotateZ(.5deg)
         }
+        #dte_2_x2 {
+            position: absolute;
+            width: 30%;
+            height: 5%;
+            left: 2%;
+            top: 10%;
+            z-index: 2;
+        }
         #p__psx {
             position: absolute;
             font-family: 'Oswald', sans-serif;
@@ -3045,6 +3054,12 @@
             color:rgb(40 193 247);
         }
         #mess_top { position:absolute; width:100%; height:11%; top:3%;
+        }
+        #mess_top2 {
+            position: absolute;
+            width: 100%;
+            height: 11%;
+            top: 0%;
         }
         #bord_top {
             position: absolute;
@@ -3430,15 +3445,111 @@
             }
             #Frds_on_f img, #Frds_ub_f img { width:.6vw; height:.6vw; position:absolute; left:1vw; top:1vw;
             }
+        #map {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            opacity: 0;
+        }
+
+            
+
+        #map_back {
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            --colors-bg--300: #1e181e;
+            --colors-bg--500: #191a1e;
+            --colors-primary--200: #f4908b;
+            --colors-primary--300: #ea6f69;
+            --colors-primary--500: #e8615a;
+            --colors-primary--600: #9c3230;
+            --colors-primary--700: #5e2122;
+            --colors-primary--800: #451717;
+            --colors-primary--900: #3c181a;
+            --colors-secondary--500: #2be4ea;
+            --colors-secondary--900: #295459;
+            --colors-tertiary--500: #fed33f;
+            --colors-on_bg--500: var(--colors-primary--500);
+            --colors-on_tertiary--500: var(--colors-bg--300);
+            --colors-on_primary--500: var(--colors-primary--200);
+            --colors-active--500: #2bfea0;
+            background-color: var(--colors-bg--500);
+            animation: backdrow2 10s infinite;
+            background-image: radial-gradient( ellipse at 0% 0%, #461616 0%, transparent 50% );
+            background-size: 125% 125%;
+            background-position-x: 0%;
+            /*opacity:.95;*/
+        }
+
+        .tiles { z-index:9;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; overflow:hidden;
+        }
+
+        .tile {
+            position: relative;
+            /*     float: left; */
+            width: 100%;
+            height: 100%;
+            /*     overflow: hidden; */
+        }
+
+        .photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            transition: transform 0.1s ease-out;
+        }
+        #cdvl { z-index:0;
+        }
+        #battr { position:absolute; width:38%; top:96%; left:1%;
+        }
+        #a_press_codes { position:absolute; width:45%; height:5%; left:54%; top:95%; 
+        }
+        .press_butt { position:relative;  margin-left:1.2vw; float:left;width:auto; height:100%;
+        }
+            .press_butt img { width:2vw; height:2vw; opacity:.7;
+            }
+        .press_butt p { text-shadow:0 0 1vw rgb(40 193 247);
+            color: rgb(40 193 247);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600; margin-top:-2vw;
+            margin-left: 2.5vw;
+            font-size: 1vw;
+            letter-spacing: .1vw;
+        }
+        #img_hjy { position:absolute; width:3vw; height:3vw; left:94.3%; top:30%; opacity:.5;
+        }
+        #map:target {
+            z-index: 9;
+            opacity: 1;
+        }
+        
     </style>
-   
+  
     
 </head>
 
 
 
 <body id="bdy" onclick="digi()">
-    <div class="box" id="Inv">
+    <div onclick="clickmap()" class="box" id="Inv">
+       
         <script>
             $(document).on("click mousemove", ".box", function (e) {
                 var x = e.clientX;
@@ -3463,15 +3574,15 @@
                     hour = hour - 12;
                     if (hour == 12) {
                         hour = checkTime(hour);
-                        document.getElementById("ttx").innerHTML = hour + ":" + minute  + " AM";
+                        document.getElementById("ttx").innerHTML = hour + ":" + minute + " AM";
                     }
                     else {
                         hour = checkTime(hour);
-                        document.getElementById("ttx").innerHTML = hour + ":" + minute  + " PM";
+                        document.getElementById("ttx").innerHTML = hour + ":" + minute + " PM";
                     }
                 }
                 else {
-                    document.getElementById("ttx").innerHTML = hour + ":" + minute  + " AM";;
+                    document.getElementById("ttx").innerHTML = hour + ":" + minute + " AM";;
                 }
                 var time = setTimeout(digi, 1000);
             }
@@ -3615,7 +3726,50 @@
             });
 
         </script>
-        
+        <script>
+
+            function clickmap() {
+             
+                $(".tile")
+                    // tile mouse actions
+                    .on("mouseover", function () {
+                        $(this)
+                            .children(".photo")
+                            .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+                    })
+                    .on("mouseout", function () {
+                        $(this).children(".photo").css({ transform: "scale(1)" });
+                    })
+                    .on("mousemove", function (e) {
+                        $(this)
+                            .children(".photo")
+                            .css({
+                                "transform-origin":
+                                    ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+                                    "% " +
+                                    ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+                                    "%"
+                            });
+                    })
+                    // tiles set up
+                    .each(function () {
+                        $(this)
+                            // add a photo container
+                            .append('<div class="photo"></div>')
+                            // some text just to show zoom level on current item in this example
+                            .append(
+                                '<div class="txt"><div class="x">' +
+                                $(this).attr("data-scale") +
+                                "x</div></div>"
+                            )
+                            // set up a background image for each tile based on data-image attribute
+                            .children(".photo")
+                            .css({ "background-image": "url(" + $(this).attr("data-image") + ")" });
+                    });
+            }
+           
+
+        </script>
         <div id="M_N">
 
             <a id="a_in" href="#M_N" onclick="heartbeat.play();">
@@ -5450,22 +5604,24 @@
                     <img src="https://i.postimg.cc/xdQKmfhM/clicker-del-mouse.png" id="img_psx2" /><p id="p_img_psx2">920</p>
                 </div>
                 <div id="dte_2_x">
-                   <p id="p__psx">49</p><p id="p_level">LEVEL</p><div id="barblue"></div>
+                    <p id="p__psx">49</p><p id="p_level">LEVEL</p><div id="barblue"></div>
                     <p id="p__psx2">37</p><p id="p_street">STREET CREED</p><div id="bargreen"></div>
                 </div>
                 <div id="menues">
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/X7WVKbg7/m1.png" /><img class="imgcont2" src="https://i.postimg.cc/pXkmcZkj/base1.png" /><img class="imgcont3" src="https://i.postimg.cc/pXkmcZkj/base1.png" /></div>
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/CxLStst3/m2.png" /><img class="imgcont2" src="https://i.postimg.cc/FHR7MLnB/base2.png" /><img class="imgcont3" src="https://i.postimg.cc/FHR7MLnB/base2.png" /></div>
                     <div class="conten"><img class="imgcont" src="https://i.postimg.cc/sg6sRZCv/m3.png" /><img class="imgcont2" src="https://i.postimg.cc/kgpBqg0X/base3.png" /><img class="imgcont3" src="https://i.postimg.cc/kgpBqg0X/base3.png" /></div>
-               <p id="mnus_pss">90%</p><p id="mnus_pss2">70%</p><p id="mnus_pss3">40%</p>
+                    <p id="mnus_pss">90%</p><p id="mnus_pss2">70%</p><p id="mnus_pss3">40%</p>
                 </div>
                 <div id="menues2">
                     <a href="#mess"> <div class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div></a>
-                        <div class="Men_sel" id="Men_sel2"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/7ZxFbsPh/mitad.png" class="icon_ms" /><p class="p_ms_1_1">INVASION</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                        <div class="Men_sel" id="Men_sel3"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/HWMDN8PY/hexagono-1.png" class="icon_ms" /><p class="p_ms_1_1">KIROSHI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                        <div class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">PLAYER</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                    <div class="Men_sel" id="Men_sel2"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/7ZxFbsPh/mitad.png" class="icon_ms" /><p class="p_ms_1_1">INVASION</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                    <div class="Men_sel" id="Men_sel3"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/HWMDN8PY/hexagono-1.png" class="icon_ms" /><p class="p_ms_1_1">KIROSHI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                    <a href="#map">
+                        <div class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">MAP</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                    </a>
                         <a href="#M_N"> <div class="Men_sel" id="Men_sel5"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/3Nms0zD4/prioridad.png" class="icon_ms" /><p class="p_ms_1_1">RETURN</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div></a>
-</div>
+                </div>
                 <div id="hour_dr">
                     <div id="hour_t">
                         <div id="t_img_1"></div><div id="t_img_2"></div><div id="t_img_3"></div><div id="t_img_4"></div>
@@ -5580,16 +5736,35 @@
                     <p class="cpdwx">NO_0</p><br />
                     <p class="cpdwt2">▼</p>
                 </div>
+                <div id="battr">
+                    <img src="https://i.postimg.cc/xChVw08c/cosa-bateria-llena.png" id="b_img_q" />
+                    <img src="https://i.postimg.cc/NFXvYW2b/blanco.png" id="b_img_q2" /><div id="r-p3">
+                        <p>IMACC NAME: BLACKLARCH 4CL454</p>
+                        <p>IMACC TYPE: TAIMAT IMAGE</p>
+                        <p>ICCKS COMPRESSED (Q) 444445555</p>
+                        <p>LOAD ADRESS 0000x112244-000000000000000</p>
+                    </div>
+                    <div id="lin_codes3-x">
+                        <p>
+                            HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                            HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;HSS440 &nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br>
 
+                        </p>
+                    </div>
+                </div>
 
                 <div id="mess_top">
                     <div id="mess_mnu">
                         <p id="p_mess_1">NIGHT CITY NETWARE</p> <a href="#Player_1"><p id="p_mess_2">RETURN</p></a>
                         <p id="p_mess_3">MESSAGES</p><div id="nmbr_mss"><p>11</p></div>
-                                                     <a href="#M_N"><p id="p_mess_4">MENU</p></a>
-                                                     <a href="#Inv">
-                                                         <p id="p_mess_5">INVASION</p></a>
-                                                         <p id="p_mess_6">MAP</p>
+                        <a href="#M_N"><p id="p_mess_4">MENU</p></a>
+                        <a href="#Inv">
+                            <p id="p_mess_5">INVASION</p>
+                        </a><a href="#map">
+    <p id="p_mess_6">MAP</p>
+</a>
 </div>
                     <div id="bord_top"></div>
                 </div>
@@ -5622,13 +5797,13 @@
 
                 <div id="mess_semitop">
                     <p id="p_x_1">NetWire_Seed: d869db7fe62fb07c25a0403ecaea55031744b5fb</p>
-                    <p  id="p_x_2"># WATSON </p>
+                    <p id="p_x_2"># WATSON </p>
                     <div id="icon_top_mess"><img src="https://i.postimg.cc/QC17d38B/axd.png" /><p id="p_img_icon">PROTOCOL<br />6520-444</p></div><div id="r-p2">
-    <p>IMACC NAME: BLACKLARCH 4CL454</p>
-    <p>IMACC TYPE: KERNEL rSOLAT TAIMAT IMAGE</p>
-    <p>ICCKS COMPRESSED (Q)</p>
-    <p>LOAD ADRESS 0000x112244</p>
-</div>
+                        <p>IMACC NAME: BLACKLARCH 4CL454</p>
+                        <p>IMACC TYPE: KERNEL rSOLAT TAIMAT IMAGE</p>
+                        <p>ICCKS COMPRESSED (Q)</p>
+                        <p>LOAD ADRESS 0000x112244</p>
+                    </div>
                     <div id="bord_top2"></div>
                 </div>
                 <div id="A_mss">
@@ -5648,6 +5823,7 @@
 
                 </div>
                 <div id="a_frds">
+
                     <div id="Frds_ub"><p>#&nbsp;&nbsp;Locations</p></div>
                     <div id="Frds_ub_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;ORGTX</p></div>
                     <div id="Frds_ub_f"><img src="https://i.postimg.cc/sX421gFZ/on.png" /><p>#&nbsp;&nbsp;NEOTOKYO</p></div>
@@ -5684,7 +5860,110 @@
 
                     }</script>
             </div>
-         
+
+            <div id="map">
+
+                <div id="map_back"></div>
+
+                <div class="tiles">
+                    <div id="cdvl" class="tile" data-scale="2.0" data-image="https://i.postimg.cc/Ss1y6pqS/RVKLaDI.jpg">
+                        <script>
+                           
+                            function PRess_V() {
+                                tecla_V = event.keyCode;
+                                tecla_C = event.keyCode;
+                                tecla_esC = event.keyCode;
+                                if (tecla_V == 86) {
+                                    document.getElementById("cdvl").style.zIndex = "100";
+                                   
+                                }
+                                else if (tecla_C == 67) { document.getElementById("cdvl").style.zIndex = "0"; }
+                                else if (tecla_esC == 27) {
+                                    var url = "#M_N";
+                                    $(location).attr('href', url); }
+                            }
+                            window.onkeydown = PRess_V
+                        </script>
+                    </div>
+
+                    <div id="a_press_codes">
+                        <div id="press_v" class="press_butt"><img src="https://i.postimg.cc/8zg2cDF8/controller-pad.png" /><p>NAVEGATION</p></div>
+                        <div id="press_c" class="press_butt"><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><p>FOCUS</p></div>
+                        <div id="press_x" class="press_butt"><img src="https://i.postimg.cc/FzJ5T2Ny/v.png" /><p>DELETE HUD</p></div>
+                        <div id="press_click" class="press_butt"><img src="https://i.postimg.cc/pTSMY2bV/c.png" /><p>RESTORE HUD</p></div>
+                        <div id="press_esc" class="press_butt"><img src="https://i.postimg.cc/7b8vdmZp/esc.png" /><p>RETURN</p></div>
+                    </div>
+
+                    <div id="dte_1_x">
+                        <img src="https://i.postimg.cc/1ttV0fHn/peso.png" id="img_psx" /><p id="p_img_psx">360/392</p>
+                        <img src="https://i.postimg.cc/xdQKmfhM/clicker-del-mouse.png" id="img_psx2" /><p id="p_img_psx2">920</p>
+                    </div>
+
+                    <div id="dte_2_x">
+                        <p id="p__psx">49</p><p id="p_level">LEVEL</p><div id="barblue"></div>
+                        <p id="p__psx2">37</p><p id="p_street">STREET CREED</p><div id="bargreen"></div>
+                    </div>
+                    <div id="mess_top2">
+                        <div id="mess_mnu">
+                            <a href="#Player_1"><p id="p_mess_2">RETURN</p></a>
+                            <p id="p_mess_3">NIGHTCITY MAP</p>
+                            <a href="#M_N"><p id="p_mess_4">MENU</p></a>
+                            <a href="#Inv">
+                                <p id="p_mess_5">INVASION</p>
+                            </a>
+                            <a href="#Player_1"><p id="p_mess_6">MESSAGES</p></a>
+                        </div>
+                        <div id="bord_top"></div>
+                    </div>
+                    <div id="codesp2">
+                        <p class="cpdw1">[&nbsp;&nbsp;00000000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p class="cpdw2">CDKSLUM000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p class="cpdw3">[OXOCTAC0000-OCXAK000000-|&nbsp;&nbsp;1&nbsp;&nbsp;%&nbsp;&nbsp;MBI]</p>
+                    </div>
+                    <div id="codesp3">
+                        <p class="cpdwt">▲</p>
+                        <p class="cpdwx">NO_0</p><br />
+                        <p class="cpdwt2">▼</p>
+                    </div>
+                    <div id="codesp">
+                        <p class="cpdw">-</p>
+                        <p class="cpdw1">00100</p>
+                        <p class="cpdw2">10000</p>
+                        <p class="cpdw3">00001</p>
+                        <p class="cpdw4">10000</p>
+                        <p class="cpdw">-</p>
+                        <p class="cpdw5">01000</p>
+                        <p class="cpdw6">10000</p>
+                        <p class="cpdw7">00001</p>
+                        <p class="cpdw8">00010</p>
+                        <br />
+                        <p class="cpdw">-</p>
+                    </div>
+                    <img id="img_hjy" src="https://i.postimg.cc/rpKD8wJM/hexagono-2.png" />
+                    <div id="battr">
+                        <img src="https://i.postimg.cc/xChVw08c/cosa-bateria-llena.png" id="b_img_q" />
+                        <img src="https://i.postimg.cc/NFXvYW2b/blanco.png" id="b_img_q2" /><div id="r-p3">
+                            <p>IMACC NAME: BLACKLARCH 4CL454</p>
+                            <p>IMACC TYPE: TAIMAT IMAGE</p>
+                            <p>ICCKS COMPRESSED (Q) 444445555</p>
+                            <p>LOAD ADRESS 0000x112244-000000000000000</p>
+                        </div>
+                        <div id="lin_codes3-x">
+                            <p>
+                                HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                                HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;HSS440 &nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
         </div>
     </div>
 
