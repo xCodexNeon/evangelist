@@ -1,0 +1,1142 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        #main, #main2, #T {
+            cursor: url(https://i.postimg.cc/Rh2ft0Hf/tumblr-inline-nrkb03fxct1ry72eo-75sq.png),auto;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(11,11,11,1);
+            margin: 0; top:0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            filter: inver(0%);
+        }
+
+
+
+        #imgbk {
+            position: absolute;
+            width: 100%;
+            z-index: 0;
+            top: 0;
+            transition: all 1s ease;
+          
+          
+        }
+
+            #imgbk img {
+                width: 100%;
+            }
+
+        .line {
+            margin: 0;
+            display: block;
+            float: left;
+            position: relative;
+            width: .76923076923076923076923076923077%;
+            height: 100%;
+            opacity: 0;
+            background: black;
+            background-clip: padding-box;
+            -webkit-transition: all 2s;
+            -webkit-transition-delay: 1s;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+            z-index: 3;
+        }
+
+            .line:hover {
+                -webkit-transition: padding 0.1s, top 0.1s;
+                -webkit-transition-delay: 0s;
+                opacity: 1;
+            }
+
+            .line:after {
+                position: absolute;
+                top: 0;
+                -webkit-filter: blur(2px);
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+            .line:before {
+                opacity: 0;
+            }
+
+            .line:hover:before {
+                background: red;
+            }
+       
+        #MainTex, #MainTex2 {
+            font-size: 1.9vw; filter:blur(.7px);
+            color: white;
+            position: absolute;
+            top: 43%;
+            left: 15%; letter-spacing:3.2vw;
+           font-family:'Yu Gothic';
+        }
+        #MainTex2 { left:49%;
+        }
+    #MainTex:before { content: 'NIHIL´S'; }
+    #MainTex2:before { content: 'SANCTUARY'; }
+
+        #btn, #btn2 {
+            position: absolute;
+            width: 1.5vw;
+            height: 1.5vw;
+            background: white;
+            left: 49.75%;
+            top: 94%;
+            border-radius: .2vw;
+            transform: rotate(45deg);
+            z-index: 999;
+            mix-blend-mode: difference;
+        }
+        #btn2 { z-index:990; opacity:0;
+        }
+
+        #T:target #btn2 { z-index:1000; opacity:1;
+        }
+        #T:target #btn { opacity:0;
+        }
+            #btn img {
+                width: .6vw;
+                filter: invert(100%);
+                transform: rotate(45deg); position:absolute;  animation: boun 2s infinite;
+            }
+        #btn2 img { 
+            width: .6vw;
+            filter: invert(100%);
+            transform: rotate(225deg);
+            position: absolute; 
+            animation: boun2 2s infinite;
+        }
+        @keyframes boun {
+            0% {
+                left:.5vw;
+                top:.5vw;
+            }
+
+            50% {
+               left: .8vw; top:.8vw;
+            }
+            100% {
+                left: .5vw;
+                top: .5vw;
+            }
+        }
+        @keyframes boun2 {
+            0% {
+               top:0vw; left:0vw;
+            }
+            50% {
+              top:.3vw; left:.3vw;
+            }
+
+            100% {
+               top:0vw; left:0vw;
+            }
+        }
+        #Menubar {
+            width: 100%;
+            font-family: 'Yu Gothic';
+            /*background: transparent;*/
+            height: 10%;
+            position: absolute;
+            top: 0;
+            transition: all 1s ease;
+        }
+        #T:target #Menubar {
+            top: 14%;
+            height: 8%;
+            background:black;
+            z-index:1000;
+        }
+        
+        #Menu {
+            position: absolute;
+            width: 10%;
+            height: 40%;
+            top: 25%;
+            left: 2%;
+            z-index: 9999;
+            mix-blend-mode: difference;
+           
+        }
+        #cros {
+            height: 110%;
+            position: absolute;
+            left: 0; 
+            transform: rotate(180deg);
+            filter: invert(100%);
+           
+        }
+        #T:target #smn { top:-.3vw;
+        }
+        #smn {
+            color: white;
+            letter-spacing: .45vw;
+            font-size: .8vw;
+            position: absolute;
+            left: 2.5vw;
+            top: .1vw;
+            transition: all 1s ease;
+        }
+        #br1 {
+            width: 75%;
+            height: .05vw;
+            background: white;
+            position: absolute;
+            left: 1.5vw;
+            top: 105%;
+        }
+        #br2 {
+            width: 0;
+            height: .15vw;
+            background: white;
+            position: absolute;
+            left: 1.5vw;
+            top: 98%;
+            transition: all 2s ease;
+        }
+        #Menu:hover #br2 { width:75%;
+        }
+        #Menu:hover #Optz {
+            opacity: 1;
+            left: -4vw;
+            animation-delay: .5s;
+        }
+        #Optz {
+            -webkit-transition: all 1s;
+            -webkit-transition-delay: 1.5s;
+            animation: opt2 1s 1;
+            z-index: 9;
+            width: 24vw;
+            height: 102vh;
+            
+            background: white;
+            overflow: hidden;
+            position: absolute;
+            left: -28vw;
+            top: -2vw;
+            /*border-right: 2vw solid #212121;*/
+        }
+
+        #Optimg {
+            width: 100%;
+            position: absolute;
+        }
+
+        #logC {
+            position: absolute;
+            height: 3.5vw;
+            top: 6vw;
+            transform: rotate(270deg);
+            left: 4vw;
+            opacity: 0; filter:invert(100%);
+            mix-blend-mode: difference;
+        }
+
+        #Nme2 {
+            filter: invert(100%);
+            mix-blend-mode: difference;
+            width: 0;
+            height: 2.5vw;
+            position: absolute;
+            top: 6.5vw;
+            left: 5vw;
+            color: black;
+            font-size: 2vw;
+            letter-spacing: 1.5vw;
+            font-family: 'Times New Roman';
+            overflow: hidden;
+            animation: name2 .5s 1;
+        }
+
+        #Menu:hover #logC {
+            animation: Gir 1s 1;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        #logC {
+            animation: Gir2 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        #Menu:hover #Nme2 {
+            animation: name1 .5s 1;
+            animation-delay: 2.7s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes name1 {
+            0% {
+                width: 0vw;
+            }
+
+            100% {
+                width: 12vw;
+            }
+        }
+
+        @keyframes name2 {
+            0% {
+                width: 12vw;
+            }
+
+            100% {
+                width: 0vw;
+            }
+        }
+
+        @keyframes Gir {
+            0% {
+                opacity: 0;
+                transform: rotate(270deg);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+                left: 4vw;
+                transform: rotate(180deg);
+            }
+
+            100% {
+                opacity: 1;
+                left: 14vw;
+                transform: rotate(180deg);
+            }
+        }
+
+        @keyframes Gir2 {
+            0% {
+                opacity: 1;
+                left: 14vw;
+                transform: rotate(180deg);
+            }
+
+            20% {
+                opacity: 1;
+                left: 4vw;
+                transform: rotate(180deg);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: rotate(270deg);
+            }
+        }
+
+       
+        .text, #Sl {
+            font-size: .7vw;
+            letter-spacing: .3vw;
+            color: black;
+            filter: invert(100%);
+            font-weight: bold;
+            left: 1vw;
+            mix-blend-mode: difference;
+            top: 1.1vw;
+            position: absolute;
+        }
+
+        .Adv {
+            width: .05vw;
+            height: 100%;
+            position: absolute;
+            background: #212121;
+            left: 2.5vw;
+            top: -.2vw;
+        }
+
+        .PDr, .PIz {
+            font-size: .6vw;
+            letter-spacing: .2vw;
+            color: black;
+            filter: invert(100%);
+            font-weight: bold;
+            left: .5vw;
+            mix-blend-mode: difference;
+            position: absolute;
+        }
+
+        .PDr {
+            left: 3vw;
+        }
+
+        .bkgbt {
+            position: absolute;
+            background: #212121;
+            width: 2.6vw;
+            height: 100%;
+            transition: all .5s ease;
+        }
+        #Afrd {
+            position: absolute;
+            top: 4%;
+            width: 1.8vw;
+            height: 10vw;
+            left: 92.5%;
+        }
+        .Rn {
+            width: 100%;
+            transition: all .5s ease;
+            height: 1.6666666666666666666666666666667vw;
+            margin: 0;
+            text-align: center;
+        }
+
+           
+
+            .Rn p {
+                margin: 0;
+                filter: blur(1px);
+                padding-top: .4vw;
+                font-size: .7vw;
+                letter-spacing: .2vw;
+            }
+
+        .xd {
+            color: white;
+        }
+
+        #My {
+            padding-top: .3vw;
+            margin-left: .1vw;
+            filter: blur(1.5px);
+            font-size: .9vw;
+            color: #f56262;
+        }
+        #main:target #bk3 {
+            left: 0;
+        }
+        .Px {
+            color: white;
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            position: absolute;
+          
+            transition: all 1s ease;
+            z-index: 999;
+            mix-blend-mode: difference;
+        }
+        .PD1 {
+            top: 30%;
+            position: absolute;
+            transition: all 1s ease;
+        }  
+        #T:target .PD1 { top:25%;
+        }
+        #Pp5 { right:8%;
+        }
+        #Pp4 { right:17%;
+        }
+        #Pp3 { right:24%;
+        }
+        #Pp2 {
+            right: 34%;
+        }
+        #Pp1 { right:41%;
+        }
+        
+        #p1:before {
+            content: 'HOME';
+        }
+        #Pp1:hover #p1:before {
+            animation: Sp1 .3s 1;
+            animation-fill-mode: forwards;
+        }
+       
+            #Pp1:hover #p1, #Pp2:hover #p2, #Pp3:hover #p3, #Pp4:hover #p4, #Pp5:hover #p5 {
+                letter-spacing: .3vw;
+            }
+    #p2:before { content: 'SYIMPHONY'; }
+
+        #Pp2:hover #p2:before {
+            animation: Sp2 .3s 1;
+            animation-fill-mode: forwards;
+        }
+        #p3:before {
+            content: 'ABOUT';
+        }
+
+        #Pp3:hover #p3:before {
+            animation: Sp3 .3s 1;
+            animation-fill-mode: forwards;
+        }
+        #p4 { white-space:nowrap;
+        }
+        #p4:before {
+            content: 'LADY PAIN';
+        }
+
+        #Pp4:hover #p4:before {
+            animation: Sp4 .3s 1;
+            animation-fill-mode: forwards;
+        }
+        #p5:before {
+            content: 'CONTACT';
+        }
+
+        #Pp5:hover #p5:before {
+            animation: Sp5 .3s 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes Sp1 {
+            0% {
+                content: 'XHTN';
+            }
+
+            20% {
+                content: 'GY7O';
+            }
+
+            40% {
+                content: 'LP1Z';
+            }
+
+            60% {
+                content: 'XMKL';
+            }
+
+            100% {
+                content: 'HELL';
+            }
+        }
+        @keyframes Sp2 {
+            0% {
+                content: '9KLP31DFX';
+            }
+
+            20% {
+                content: 'BMQX4H80I';
+            }
+
+            40% {
+                content: 'GLPQW17B8';
+            }
+
+            60% {
+                content: '87VMLXQ1';
+            }
+
+            100% { content: 'SACRILEGE'; }
+        }
+        @keyframes Sp3 {
+            0% {
+                content: 'KPWM3';
+            }
+
+            20% {
+                content: '6KQWX';
+            }
+
+            40% {
+                content: 'VMQ2D';
+            }
+
+            60% {
+                content: '56JKL';
+            }
+
+            100% {
+                content: 'DEMON';
+            }
+        }
+        @keyframes Sp4 {
+            0% {
+                content: '9KLP31DFX';
+            }
+
+            20% {
+                content: 'BMQX4H80I';
+            }
+
+            40% {
+                content: 'GLPQW17B8';
+            }
+
+            60% {
+                content: '87VMLXQ1';
+            }
+
+            100% {
+                content: 'PRIESTESS';
+            }
+        }
+        @keyframes Sp5 {
+            0% {
+                content: 'FRX4HTN';
+            }
+
+            20% {
+                content: '457YHJO';
+            }
+
+            40% {
+                content: '6000PQR';
+            }
+
+            60% {
+                content: '4CXMKL';
+            }
+
+            100% {
+                content: 'SINNER';
+            }
+        }
+        #De21 {
+            width: 15vw;
+            position: absolute;
+            top: 18%;
+            left: 17%;
+            font-size: .6vw;
+            letter-spacing: .1vw;
+            white-space: nowrap;
+            overflow: hidden;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+        }
+        #bkop { position:absolute; height:100%; left:-150%;
+        }
+        #Frds {
+            width: 2vw;
+            height: 100%;
+            background: #212121;
+            position: absolute;
+            right: 0;
+        }
+
+        #controls {
+            width: 100%;
+            height: 5.5vw;
+            bottom: 2vw;
+            position: absolute;
+            transition: all 1s ease;
+        }
+        #LogM {
+            position: absolute;
+            width: 6.5vw;
+            height: 2.8vw;
+            border: .3vw solid white;
+            left: 3%;
+            top: 1vw;
+        }
+        #play, #Next, #Max, #Minn { top:1vw;
+            position: absolute;
+            width: 2.8vw;
+            height: 2.8vw;
+            border: .3vw solid white;
+            left: 12%;
+        }
+        #Next { left:17%;
+        }
+        #Max { left:93%;
+        }
+        #Minn {
+            left: 93%; z-index:-1; opacity:0;
+        }
+        #main:target #Minn {
+            z-index: 1000;
+            opacity: 1;
+        }
+        #main:target #Max {
+            z-index: -1;
+            opacity: 0;
+        }
+        #play img { position:absolute; filter:invert(100%); width:1.4vw; top:.7vw; left:.8vw;
+        }
+        #Next img, #Mx1, #Mx2 {
+            position: absolute;
+            filter: invert(100%);
+            width: 1.4vw;
+            top: .7vw;
+            left: .8vw;
+        }
+        #main3 {
+            top: 200%;
+            transition: all 2s ease;
+            width: 100%;
+            height: 15%;
+            position: fixed;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            animation: bak 40s infinite;
+        }
+        @keyframes bak {
+            0% {
+                background-image: url(https://i.postimg.cc/RVw6XR43/giphy.gif);
+                background-size: cover;
+            }
+
+            24.9% {
+                background-image: url(https://i.postimg.cc/RVw6XR43/giphy.gif);
+                background-size: cover;
+            }
+
+            25% {
+                background-image: url(https://i.postimg.cc/h4z77nY1/giphy-1.gif);
+                background-size: cover;
+            }
+
+            49.9% {
+                background-image: url(https://i.postimg.cc/h4z77nY1/giphy-1.gif);
+                background-size: cover;
+            }
+
+            50% {
+                background-image: url(https://i.postimg.cc/prCNL4Kh/9ce2dc5b0e3e1fa3ef8b7b6f8159954a.gif);
+                background-size: cover;
+            }
+
+            74.9% {
+                background-image: url(https://i.postimg.cc/prCNL4Kh/9ce2dc5b0e3e1fa3ef8b7b6f8159954a.gif);
+                background-size: cover;
+            }
+
+            75% {
+                background-image: url(https://i.postimg.cc/tRNGkZ8q/giphy-3.gif);
+                background-size: cover;
+            }
+
+            100% {
+                background-image: url(https://i.postimg.cc/tRNGkZ8q/giphy-3.gif);
+                background-size: cover;
+            }
+        }
+
+        #main:target #main3 {
+            z-index: 1000;
+            top: 8%;
+            height: 92%;
+        }
+
+        #T:target #imgbk {
+            top: 12%;
+        }
+
+        #T:target #main2 {
+            top: -15%;
+        }
+
+        #T:target #main3 {
+            top: 85%;
+            z-index: 1000;
+        }
+        #Crt {
+            width: 100%;
+            background: black;
+            position: absolute;
+            height: 1vw;
+            bottom: 0;
+            transition: all 1s ease;
+        }
+        #main:target #controls { bottom:5vw;
+        }
+        #main:target #Crt { height:3vw;
+        }
+        #Lin1 { width:93.5%; height:.4vw; background:white; position:absolute; bottom:0vw; left:3%;
+        }
+        #lin2 { position:absolute; height:100%; width:0; background:#555555; animation: song 300s 1; animation-fill-mode:forwards;
+        }
+        @keyframes song {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+        #title { position:absolute; color:white; font-size:1.8vw; letter-spacing:.1vw; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; left:22%; 
+        }
+        #LogM p {
+            position: absolute;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:1.4vw; letter-spacing:.2vw; left:.4vw; top:-.9vw;
+        }
+        #Crt p {
+            position: absolute;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            left: 3vw;
+            top: .5vw;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        #main:target #Crt p { opacity:1;
+        }
+        #imglog img {
+            width: 4vw;
+            position: absolute;
+            top: 94.5%;
+            left: 1%;
+            filter: invert(100%);
+            z-index: 4;
+            mix-blend-mode: difference;
+        }
+        .menu{
+            z-index: 5;
+            text-transform: uppercase;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            pointer-events: none;
+            position: absolute;
+            top: 95.5%;
+            left: 2%;
+            mix-blend-mode: difference;
+        }
+
+        
+
+            .menu:hover {
+                pointer-events: all;
+            }
+
+        .label {
+            width: 2vw;
+            height: 2vw;
+            cursor: pointer;
+            position: absolute;
+            pointer-events: all;
+        }
+
+        .label2 {
+            right: 5vw;
+        }
+
+       
+       
+
+        .spacer {
+            display: inline-block;
+            width: 5vw;
+            margin-left: 1vw;
+            margin-right: 3vw;
+            vertical-align: middle;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .spacer:before {
+                content: "";
+                position: absolute;
+                border-bottom: .1vw solid #ffffff;
+                height: .1vw;
+                width: 0%;
+                transition: width 0.25s ease;
+                transition-delay: 0.7s;
+            }
+
+        .item {
+            text-align: right;
+            position: relative;
+            display: inline-block;
+            margin-right: 2vw;
+            top: 2vw;
+            opacity: 0;
+            transition: opacity 0.5s ease, top 0.5s ease;
+            transition-delay: 0;
+        }
+
+            .item span {
+                transform: scaleX(1);
+            }
+
+        #item1 {
+            /*transform: scaleX(-1);*/
+            margin-left: .5vw;
+            display: flex;
+        }
+
+            #item1:nth-child(2) {
+                margin-top: 2vw;
+            }
+
+        .Xsp {
+            transition: color 0.5s ease;
+            font-size: .6vw;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            letter-spacing: .15vw;
+        }
+
+        .item:hover .Xsp {
+            color: #8f3232;
+        }
+
+        .menu:hover .spacer:before, .menu2:hover .spacer:before {
+            width: 100%;
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item, .menu2:hover .item {
+            opacity: 1;
+            top: 0px;
+        }
+
+        .item:nth-child(1) {
+            transition-delay: 0.45s;
+        }
+
+        .item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .item:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .item:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+        .item:nth-child(7) {
+            transition-delay: 0.15s;
+        }
+
+        .item:nth-child(8) {
+            transition-delay: 0.1s;
+        }
+
+        .item:nth-child(9) {
+            transition-delay: 0.05s;
+        }
+
+        .item:nth-child(10) {
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item:nth-child(1) {
+            transition-delay: 0.25s;
+        }
+
+        .menu:hover .item:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .menu:hover .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .menu:hover .item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .menu:hover .item:nth-child(5) {
+            transition-delay: 0.45s;
+        }
+
+        .menu:hover .item:nth-child(6) {
+            transition-delay: 0.5s;
+        }
+
+        .menu:hover .item:nth-child(7) {
+            transition-delay: 0.55s;
+        }
+
+        .menu:hover .item:nth-child(8) {
+            transition-delay: 0.6s;
+        }
+
+        .menu:hover .item:nth-child(9) {
+            transition-delay: 0.65s;
+        }
+
+        .menu:hover .item:nth-child(10) {
+            transition-delay: 0.7s;
+        }
+        #subtext {
+            color: white;
+            mix-blend-mode: difference; position:absolute; top:50%; font-family:Arial; letter-spacing:.7vw; font-size:.9vw; left:37%;
+        }
+        #decs {
+            color: white;
+            mix-blend-mode: difference;
+            position: absolute;
+            letter-spacing: .1vw;
+            font-size: .7vw; top:58%; left:10%; 
+        }
+        #moun {
+            position: absolute;
+            width: 5vw;
+            top: 48%;
+            left: 40%; filter:invert(100%);
+            mix-blend-mode: difference; transform:rotate(180deg);
+        }
+        #vidcontrol {
+            top: 1vw;
+            position: absolute;
+            width: 2.8vw;
+            height: 2.8vw;
+            border: .3vw solid white;
+            left: 12%; opacity:0;
+        }
+        #main:target #Menubar {
+        
+            height: 10%; top:-1.5%;
+            background: black;
+            z-index: 1000;
+        }
+        #main:target #Optz { opacity:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"> <div id="T">
+
+                        <div id="main2">
+
+                            <div id="imgbk"> <img src="https://i.postimg.cc/dDcKRYVH/cap.png" /></div>
+
+                            <div id="Menubar">
+                                <a href="https://xat.com/Ebanjerisuto"> <div id="Pp1" class="PD1"><p class="Px" id="p1"></p></div></a>
+                                <a href="https://www.youtube.com/watch?v=xPIg7-4ObTY"> <div id="Pp2" class="PD1"><p class="Px" id="p2"></p></div></a>
+                                <div id="Pp3" class="PD1"><p class="Px" id="p3"></p></div>
+                                <a href="https://xat.me/damitaozcura">
+                                    <div id="Pp4" class="PD1"><p class="Px" id="p4"></p></div>
+                                </a>
+                                    <div id="Pp5" class="PD1"><p class="Px" id="p5"></p></div>
+
+                                    <div id="Menu">
+                                        <img id="cros" src="https://i.postimg.cc/BvX0wwc4/cross.png" /> <p id="smn">NIHIL XV</p> <div id="br1"></div><div id="br2"></div>
+
+
+
+                                        <div id="Optz">
+
+                                            <img id="bkop" src="https://i.postimg.cc/Znfg7hpV/yt1s-com-Ink-Drop-in-Water-1080p-The-Toob-Stock-Free-Stock-Footage-1080p-1.gif" />
+                                            <div id="Frds"></div>
+                                            <div id="Nme2">NIHIL</div> <img id="logC" src="https://i.postimg.cc/c1QyXYYg/resumen-3.png" />
+                                            <p id="De21">|xEVANGELIST / GOD / 1533252890|</p>
+
+
+                                            <p id="decs">
+                                                You've a cordial invitation... <br />
+                                                FROM THE HELL.
+                                                Burn yourself for a while!
+                                                <br />and enjoy the price for your sins.
+
+                                            </p>
+                                            <img src="https://i.postimg.cc/JzGFfP4q/cross-1.png" id="moun" />
+                                            <div id="Afrd">
+
+                                                <a href="https://xat.me/damitaozcura"><div class="Rn"><p id="My">⦿</p></div></a>
+                                                <a href="https://xat.me/Saeroyi"><div class="Rn"><p class="xd">⚪</p></div></a>
+                                                <a href="https://xat.me/MechanizeDoll"><div class="Rn"><p class="xd">⚪</p></div></a>
+                                                <a href="https://xat.me/zUnstoppable"><div class="Rn"><p class="xd">⚪</p></div></a>
+                                                <a href="https://xat.me/itami"><div class="Rn"><p class="xd">⚪</p></div></a>
+                                                <a href="https://xat.me/taiga"><div class="Rn"><p class="xd">⚪</p></div></a>
+
+                                            </div>
+                                            <div id="Abr2">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+</div>
+
+                            <span id="MainTex"></span> <span id="MainTex2"></span>
+                            <p id="subtext">FROM CHAOS TO ETERNITY</p>
+                            <a href="#T">
+                                <div id="btn">
+                                    <img src="https://i.postimg.cc/g0ZR3bSR/1.png" />
+                                </div>
+                            </a>   <a href="#">
+                                <div id="btn2">
+                                    <img src="https://i.postimg.cc/g0ZR3bSR/1.png" />
+                                </div>
+                            </a>
+                            <div id="imglog"><img src="https://i.postimg.cc/9FmQ1fMP/1.png" /></div>
+                            <div class="menu">
+                                <div class="label"></div>
+                                <div class="spacer"></div>
+                                <div class="item"><a href="https://xat.com/web_gear/chat/editprofile.php?email="><span class="Xsp">Edit</span></a></div>
+                                <div class="item"><a href="https://xat.wiki/Main_Page"><span class="Xsp">Wiki</span></a></div>
+                                <div class="item"><a href="https://forum.xat.com/"><span class="Xsp">Forum</span></a></div>
+                                <div class="item"><a href="https://xat.com/privacy.htmI"><span class="Xsp">Privacy</span></a></div>
+                                <div class="item"><a href="https://xat.com/terms.htmI"><span class="Xsp">Terms</span></a></div>
+                                <div class="item"><a href="https://xat.com/safety.htmI"><span class="Xsp">safety</span></a></div>
+                                <div class="item"><a href="https://xat.com/report#!user&UserName="><span class="Xsp">Inappropiate</span></a></div>
+                            </div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+                            <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+
+                        </div>
+    <div id="main3">
+        <div id="controls">
+            <div id="LogM"><p>CODEX</p></div>
+            <div id="play"><img src="https://i.postimg.cc/QNPFJz7k/boton-de-play-4.png" /></div> <div id="vidcontrol"></div>
+            <a href="https://www.youtube.com/watch?v=SLLYt-2SaZ8"><div id="Next"><img src="https://i.postimg.cc/rsvzydTY/next.png" /></div></a>
+            <p id="title">GOD OF A NEW WORLD - MYSIDIA</p>
+            <a href="#main"> <div id="Max"><img id="Mx1" src="https://i.postimg.cc/HW762fKT/expandir-vista.png" /></div></a>
+            <a href="#T"> <div id="Minn"><img id="Mx2" src="https://i.postimg.cc/2yvTSZv1/minimizar-5.png" /></div></a>
+            <div id="Lin1">
+                <div id="lin2"></div>
+            </div>
+        </div><div id="Crt">
+                  <p>XATSPACE BY xEVANGELIST / XAT.COM® ALL RIGHTS© RESERVED 2021 </p>
+        </div>
+        </div>
+       
+    </div>
+  
+
+</div>
+ 
+</body>
+</html>

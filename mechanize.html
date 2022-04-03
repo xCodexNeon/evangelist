@@ -1,0 +1,1050 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+        #main, body {
+           
+            width: 100%;
+            height: 100%;
+            background: black;
+            position: absolute;
+            margin: 0;
+            font-family: "Monument Extended", Arial, Helvetica, sans-serif;
+        }
+
+        #R, #B, #G, #P {
+            transition: all .5s ease;
+        }
+
+            /*targets*/
+            #R:target .spn,  #G:target .spn, #B:target .spn {
+                color: white;
+            }
+            /*letter*/
+            #R:target .CLeter {
+                color: #EA4141;
+            }
+            #P:target .CLeter {
+                color: #EAE541;
+            }
+
+            #G:target .CLeter {
+                color: #66EA76;
+            }
+
+            #B:target .CLeter {
+                color: #599DE7;
+            }
+            /*scroll*/
+            #R:target #ContGen::-webkit-scrollbar-thumb, #R:target #posts::-webkit-scrollbar-thumb {
+                background: linear-gradient(360deg, black 43%,#EA4141 43.1%, #EA4141 50%, #EA4141 56.9%, black 57%);
+            }
+            #P:target #ContGen::-webkit-scrollbar-thumb, #P:target #posts::-webkit-scrollbar-thumb {
+                background: linear-gradient(360deg, black 43%,#EAE541 43.1%, #EAE541 50%, #EAE541 56.9%, black 57%);
+            }
+            #G:target #ContGen::-webkit-scrollbar-thumb, #G:target #posts::-webkit-scrollbar-thumb {
+                background: linear-gradient(360deg, black 43%,#66EA76 43.1%, #66EA76 50%, #66EA76 56.9%, black 57%);
+            }
+            #B:target #ContGen::-webkit-scrollbar-thumb, #B:target #posts::-webkit-scrollbar-thumb {
+                background: linear-gradient(360deg, black 43%,#599DE7 43.1%, #599DE7 50%, #599DE7 56.9%, black 57%);
+            }
+          
+            /*backgrounds*/
+            #R:target .CBack {
+                background: #EA4141;
+            }
+
+            #P:target .CBack {
+                background: #EAE541;
+            }
+
+            #G:target .CBack {
+                background: #66EA76;
+            }
+
+            #B:target .CBack {
+                background: #599DE7;
+            }
+
+            /*borders*/
+            #R:target .BordC, #R:target #BordC {
+                border-color: #EA4141;
+               
+            }
+
+            #P:target .BordC, #P:target #BordC {
+                border-color: #EAE541;
+            }
+
+            #G:target .BordC, #G:target #BordC {
+                border-color: #66EA76;
+            }
+
+            #B:target .BordC, #B:target #BordC {
+                border-color: #599DE7;
+            }
+
+
+        #ContGen {
+            /*filter: invert(100%);*/
+            width: 100%;
+            position: absolute;
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+
+            #ContGen::-webkit-scrollbar {
+                width: .5vw;
+                background-color: black;
+                transition: all .5s ease;
+            }
+
+
+            #ContGen::-webkit-scrollbar-thumb {
+                transition: all .5s ease;
+                border-radius: .5vw;
+                /*background: lightgray;*/
+                border: .1vw solid black;
+                /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                background: linear-gradient(360deg, black 43%,darkgray 43.1%, darkgray 50%, darkgray 56.9%, black 57%);
+            }
+
+        /*#ContGen::-webkit-scrollbar-thumb:active {
+                    width: 1vw;
+                    background: linear-gradient(360deg, black 43%, #be4343 43.1%, #be4343 50%, #be4343 56.9%, black 57%);
+                }*/
+
+
+        #Back {
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: relative;
+            transform-style: inherit;
+            width: 100vw;
+            text-align: center;
+        }
+
+            #Back,
+            #Back:before {
+                background: 50% 50% / cover;
+            }
+
+                #Back::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    display: block;
+                    background: url(https://i.postimg.cc/r8ddS7fg/3035.jpg);
+                    background-size: cover;
+                    transform-origin: center center 0;
+                    transform: translateZ(-1px) scale(2);
+                    z-index: -1;
+                    min-height: 100vh;
+                }
+
+        #Cont {
+            z-index: 2;
+            position: absolute;
+            top: 120%;
+            height: 70%;
+            background: black;
+            font-weight: lighter;
+            padding: 40px;
+            width: 100%;
+            color: grey;
+        }
+
+        #Name {
+            width: 70%;
+            height: 20%;
+            left: 15%;
+            position: absolute;
+            top: 45%;
+            text-align: center;
+            color: white;
+        }
+
+        #Title {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        #Rnick {
+            letter-spacing: 1.2vw;
+            font-size: 4vw;
+            /*background: rgba(0,0,0,.1);*/ filter: blur(1px);
+            transition: all .5s ease;
+            font-weight:lighter;
+            text-shadow: .5vw .5vw .5vw black;
+        }
+
+            #Rnick:hover {
+                letter-spacing: 1.5vw;
+                filter: blur(0px);
+            }
+
+        #RnmeRnmb {
+            letter-spacing: .2vw;
+            font-size: .8vw;
+            text-shadow: .5vw .5vw .5vw black;
+        }
+            #RnmeRnmb:nth-child(3) { color:lightgray; letter-spacing:.15vw; font-size:.7vw;
+            }
+
+        #mnu {
+            position: absolute;
+            width: 25%; z-index:90;
+            height: 100%;
+            background: white;
+            left: -25%;
+            transition: all .5s ease; 
+        }
+            #mnu:hover #btn { background:white;
+            }
+            #mnu:hover #cog {
+                filter: invert(100%);
+            }
+         
+        #btn {
+            width: 3vw;
+            height: 3vw;
+            position: absolute;
+            left: 100%;
+            transition: all .5s ease; border-radius: 0 .5vw .5vw 0;
+        }
+
+            #btn img {
+                width: 2vw;
+                height: 2vw;
+                margin: .5vw;
+                border-radius: 50%;
+            }
+
+        #cog {
+            filter: contrast(10000%);
+        }
+
+        #R:target .ImgCl, #R:target #mnu:hover #cog {
+            filter: contrast(0%) sepia(1) hue-rotate(330deg) saturate(1700%) grayscale(60%);
+        }
+
+        #B:target .ImgCl, #B:target #mnu:hover #cog {
+            filter: contrast(0%) sepia(1) hue-rotate(20deg) saturate(1000%) invert(100%) grayscale(50%);
+        }
+
+        #G:target .ImgCl, #G:target #mnu:hover #cog {
+            filter: contrast(400%) sepia(1) hue-rotate(220deg) saturate(1500%) invert(100%)grayscale(50%) brightness(200%);
+        }
+
+        #G:target #logimg {
+            filter: contrast(900%) sepia(1) hue-rotate(220deg) saturate(9000%) invert(100%) grayscale(60%) brightness(200%);
+        }
+
+        #P:target .ImgCl, #P:target #mnu:hover #cog {
+            filter: contrast(40%) sepia(1) hue-rotate(20deg) saturate(1000%) grayscale(30%);
+        }
+
+        #mnu:hover {
+            left: 0;
+        }
+
+        #filter {
+            position: absolute;
+            width: 100%;
+            height: 120%;
+            background-image: url(https://i.postimg.cc/k56XK2Pq/original.gif);
+            opacity: 1;
+        }
+
+        #ImgPr {
+            position: absolute;
+            width: 9vw;
+            height: 9vw;
+            left: 15%;
+            background: white;
+            top: -6vw;
+            border-radius: 50%;
+            border: .5vw solid white;
+            overflow: hidden;
+        }
+
+            #ImgPr img {
+                width: 100%;
+            }
+
+        #PrfDt {
+            position: absolute;
+            width: 60%;
+            height: 8vw;
+            left: 25%;
+            top: -6vw;
+        }
+
+        #tt {
+            position: absolute;
+            left: 5%;
+            top: 35%;
+            font-size: 2vw;
+            color: white;
+            letter-spacing: .3vw;
+        }
+
+        #Amnu {
+            position: absolute;
+            top: 80%;
+            height: 20%;
+            width: 100%;
+        }
+
+        #Log {
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            left: 40%;
+            top: 15%;
+        }
+
+            #Log img {
+                width: 40%;
+                left: 30%;
+                position: absolute;
+            }
+
+        #cong {
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            left: 24.5%;
+            border-right: .1vw solid white;
+        }
+
+            #cong:hover #ConIm {
+                transform: rotate(90deg);
+            }
+
+        .Mnux:hover #ConIm2 {
+            transform: rotate(90deg);
+            left: 4%;
+        }
+
+        #cong:hover #ConIm:nth-child(2) {
+            top: 0;
+            left: 75%;
+        }
+
+        .Mnux:hover #ConIm2:nth-child(2) {
+            top: 0;
+        }
+
+        #TConf, #TConf2 {
+            color: white;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            margin: 0;
+            padding: .5vw;
+            transition: all .5s ease;
+        }
+
+        #TConf2 {
+            margin-left: 2vw;
+        }
+
+            #TConf:hover, #TConf2:hover {
+                letter-spacing: .15vw;
+            }
+
+        #ConIm {
+            width: 1vw;
+            height: 1vw;
+            position: absolute;
+            left: 75%;
+            top: 20%;
+            transition: all .5s ease;
+        }
+
+            #ConIm:nth-child(2) {
+                left: 79%;
+            }
+
+        #ConIm2 {
+            width: 1vw;
+            height: 1vw;
+            position: absolute;
+            left: 0;
+            transform: rotate(180deg);
+            top: 20%;
+            transition: all .5s ease;
+        }
+
+            #ConIm2:nth-child(2) {
+                left: 4%;
+            }
+
+        #ConfClrs {
+            width: 10vw;
+            height: 0vh;
+            background: rgba(255,255,255,.1);
+            position: absolute;
+            right: -1%;
+            border-right: .1vw solid white;
+            transition: all 1s ease;
+            overflow: hidden;
+        }
+
+        #cong:hover #ConfClrs {
+            height: 70vh;
+        }
+
+        #Sl {
+            position: absolute;
+            overflow: auto;
+        }
+
+        #Fr {
+            width: 9vw;
+            margin-top: 10%;
+            margin-left: .5vw;
+            border-bottom: .1vw solid white;
+            height: 4vw;
+        }
+
+            #Fr img {
+                width: 3vw;
+                border:.1vw solid white;
+            }
+
+       
+
+        .Mnux {
+            position: absolute;
+            margin-left: 1vw;
+            width: auto;
+            height: 100%;
+        }
+
+            .Mnux:nth-child(2) {
+                margin-left: 7vw;
+            }
+
+            .Mnux:nth-child(4) {
+                margin-left: 53.9vw;
+                border-left: .1vw solid white;
+            }
+
+        #btn1 {
+            position: absolute;
+            width: 10vw;
+            height: 3.5vw;
+            background: white;
+            left: 31%;
+            top: 16.5vw;
+            border-radius: 2vw;
+            transition: all .5s ease;
+        }
+
+            #btn1 span {
+                color: black;
+                font-size: .8vw; text-shadow: 0 0 .5vw black; font-weight:bold;
+            }
+
+
+        #sp2, #sp4 {
+            margin-right: .3vw;
+        }
+
+        #sp1:before {
+            content: 'G';
+        }
+
+        #sp2:before {
+            content: 'O ';
+        }
+
+        #sp3:before {
+            content: 'T';
+        }
+
+        #sp4:before {
+            content: 'O ';
+        }
+
+        #sp5:before {
+            content: 'H';
+        }
+
+        #sp6:before {
+            content: 'E';
+        }
+
+        #sp7:before {
+            content: 'L';
+        }
+
+        #sp8:before {
+            content: 'L';
+        }
+
+        #btn1:hover #sp1:before {
+            animation: Sp1 .4s infinite;
+        }
+
+        #btn1:hover #sp3::before {
+            animation: Sp3 .7s infinite;
+        }
+
+        #btn1:hover #sp4::before {
+            animation: Sp4 .2s infinite;
+        }
+
+        #btn1:hover #sp6::before {
+            animation: Sp6 .8s infinite;
+        }
+
+        #btn1:hover #sp7::before {
+            animation: Sp7 .4s infinite;
+        }
+
+        @keyframes Sp1 {
+            0% {
+                content: '9';
+            }
+
+            20% {
+                content: 'J';
+            }
+
+            40% {
+                content: '0';
+            }
+
+            60% {
+                content: 'R';
+            }
+
+            100% {
+                content: 'T';
+            }
+        }
+
+        @keyframes Sp3 {
+            0% {
+                content: 'K';
+            }
+
+            20% {
+                content: 'Z';
+            }
+
+            40% {
+                content: '5';
+            }
+
+            60% {
+                content: 'Q';
+            }
+
+            100% {
+                content: 'N';
+            }
+        }
+
+        @keyframes Sp4 {
+            0% {
+                content: 'L';
+            }
+
+            20% {
+                content: '7';
+            }
+
+            40% {
+                content: '2';
+            }
+
+            60% {
+                content: 'X';
+            }
+
+            100% {
+                content: 'V';
+            }
+        }
+
+        @keyframes Sp6 {
+            0% {
+                content: '3';
+            }
+
+            20% {
+                content: 'Z';
+            }
+
+            40% {
+                content: 'K';
+            }
+
+            60% {
+                content: 'B';
+            }
+
+            100% {
+                content: 'P';
+            }
+        }
+
+        @keyframes Sp7 {
+            0% {
+                content: '1';
+            }
+
+            20% {
+                content: 'G';
+            }
+
+            40% {
+                content: 'H';
+            }
+
+            60% {
+                content: '6';
+            }
+
+            100% {
+                content: 'M';
+            }
+        }
+
+        #btn2 {
+            position: absolute;
+            width: 9.6vw;
+            border: .2vw solid white;
+            height: 3.1vw;
+            left: 50%;
+            top: 16.5vw;
+            border-radius: 2vw;
+            transition: all .5s ease;
+        }
+        #spans { width:90%; height:1vw; position:absolute; top:1vw; left:5%; 
+        }
+      
+        #logmnu { width:8vw; position:absolute; top:5%; left:35%;
+        }
+        #Sub { position:absolute; color:white; letter-spacing:.3vw; font-size:.9vw; top:32%; left:44%;
+        }
+        #MnuRnm {
+            letter-spacing: .2vw;
+            font-size: .8vw;
+            text-shadow: .5vw .5vw .5vw black;
+            margin-top: 50%;
+            color: dimgray;
+        }
+        #Atheme { width:80%; left:8%; position:absolute;
+        }
+        #Axat {
+            width: 80%;
+            left: 8%; top:60%; 
+            position: absolute;
+        }
+        .cicl, .cicl2 {
+            border: .01vw solid black;
+            width: .9vw;
+            height: .9vw;
+            float: left;
+            margin-left: 1vw;
+            margin-top: 40%;
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        .cicl2 {
+            width: 1vw;
+            height: 1vw; background:black;
+            filter: blur(.5px);
+        }
+        #Nrm {
+            margin-left: 5.5vw;
+            background: white;
+          
+        }
+        #rd {
+            background: #EA4141;
+        }
+        #py {
+            background: #EAE541;
+        }
+        #bl {
+            background: #599DE7;
+        }
+        #gr {
+            background: #66EA76;
+        }
+        #fot { width:100%; height:5%; position:absolute; top:95%; background:rgba(0,0,0,.8);
+        }
+        #xt1 { margin-left:20%;
+        }
+        .cicl2 { overflow:hidden;
+        }
+        .cicl2 img { position:absolute; width:1vw; left:-.02vw;
+        }
+       
+        #Aforum::-webkit-scrollbar {
+            height: .3vw;
+            width: .2vw;
+            
+        }
+        #Aforum::-webkit-scrollbar-thumb {
+            background: #599DE7
+        }
+        #Aforum {
+            position: absolute;
+            width: 20vw;
+            height: 61%;
+            top: 25%;
+            left: 15%;
+            overflow:auto; overflow-x:hidden;
+          border-bottom:.2vw solid dimgray;
+        }
+        #Lpost { width:100%; height:15%;  margin-bottom:1vw; 
+        }
+        #Upost {
+            width: 80%;
+            height: 15%;
+            margin-bottom: 1vw;
+            margin-left: 20%;
+        }
+       #imgL { width:3vw; height:3vw; border:.1vw solid white; margin:.2vw;
+        } 
+        #TextAr { width:80%; height:15%; margin-left:20%;  position:absolute; margin-top:-18%;
+        }
+        #Ptit {
+            position: absolute;
+            font-size: .8vw;
+            color: #599DE7;
+            top: -20%; 
+            letter-spacing: .1vw;
+        }
+        #Pte {
+            position: absolute;
+            font-size: .6vw; letter-spacing:.1vw;
+            color: gray; margin-top:1vw;
+        }
+        #tim { position:absolute; font-size:.6vw; letter-spacing:.1vw; margin-top:18%;
+        }
+        #lik { color:#599DE7;
+        }
+        #imgLik { position:absolute; width:.8vw; left:40%; margin-top:16.6%;
+        }
+        #numlik {
+            position: absolute;
+            font-size: .6vw;
+            letter-spacing: .1vw;
+            margin-top: 18%; left:50%;
+        }
+        #apost {
+            position: absolute;
+            background: black;
+            width: 30%;
+            height: 90vh;
+            left: 46%;
+            top: -7%;
+        }
+        #posts::-webkit-scrollbar { width:.5vw;
+          background:black;
+        }
+        #posts::-webkit-scrollbar-thumb {
+            background: linear-gradient(360deg, black 43%,darkgray 43.1%, darkgray 50%, darkgray 56.9%, black 57%);
+        }
+        #posts { position:absolute; width:98%; height:96%; top:2%;  left:2%; overflow:auto;
+        }
+        #post { width:90%; height:auto; border-bottom:.1vw solid gray; margin-left:3%;  margin-bottom:10%;
+        }
+        #Postimg { width:80%; border-left:.5vw solid gray; margin-left:8%; border-radius:1vw .5vw 0 .2vw;
+        }
+        #Ded { font-size:.6vw; letter-spacing:.1vw; color:lightgray;
+        }
+        #Dtit { color:white; text-decoration:underline; font-size:.8vw; letter-spacing:.15vw;
+        }
+        #Amusic {
+            position: absolute;
+            width: 28%;
+            height: 10%;
+            top: 91%;
+            left: 15%;
+        }
+        #BrM { width:65%; height:60%; position:absolute; left:8%; top:27%;
+        }
+        #imgpl { width:3vw; height:3vw; border-radius:50%; position:absolute; background:white; top:20%;  overflow:hidden; filter:blur(1px) grayscale(10%); z-index:10;
+        }
+        #imgC {
+            width: 90%;
+            height: 90%; margin:5%;
+            background-image: url(https://i.postimg.cc/fRvK4vGC/boton-de-play-2.png); background-size:cover; 
+        }
+        #imgpl:hover #imgC {
+            background-image: url(https://i.postimg.cc/MGKYzQxS/pausa-1.png);
+            background-size: cover; cursor:pointer;
+        }
+        #abt:active #imgC {
+            background-image: url(https://i.postimg.cc/VLxTs4Hc/eliminar.png);
+            background-size: cover;
+        }
+        #abt:active #imgpl { background:red;
+        }
+        #Song { position:absolute; width:68%; height:1.2vw;  top:-1vw; overflow:hidden;
+        }
+            #Song p { font-size:.7vw;  position:absolute; top:-.4vw; letter-spacing:.1vw; animation:spin 8s infinite; color:white;
+            }
+                #Song p span { font-weight:bold;
+                }
+        @keyframes spin {
+            0% {
+               left:99%;
+            }
+            90% { left:-90%;
+            }
+            100% {
+              left:-99%;
+            }
+        }
+        #subttl { font-size:.7vw; letter-spacing:.1vw; color:white; text-shadow: .2vw .2vw .4vw black;
+        }
+        #Fti, #Fnm {
+            font-size: .75vw;
+            font-weight: bold;
+            position: absolute;
+            margin-top: -35%;
+            left: 4vw;
+        }
+        #Fnm {
+            margin-top: -20%;
+            font-size: .6vw; letter-spacing:.1vw;
+        }
+        a { text-decoration:none;
+        }
+        #hme {
+            font-weight: bold;
+            font-size: .8vw;
+            letter-spacing: .3vw;
+            transition: all .5s ease;
+        }
+        #btn2:hover #hme {
+            letter-spacing: .5vw;
+        }
+        #cog2 { position:absolute; width:2vw; left:5%; top:15%;
+        }
+        #Crdt { color:white; font-style:italic; letter-spacing:.15vw; font-size:.55vw; position:absolute; left:15%; top:.5vw; opacity:.5;
+        }
+    </style>
+</head>
+<body> 
+    <div id="main">
+        <div id="R">
+            <!--red-->
+
+            <div id="P">
+                <!--yellow-->
+
+                <div id="B">
+                    <!--blue-->
+                    <div id="G">
+                        <!--green-->
+                        <div id="ContGen">
+
+                            
+                            <div id="Back">
+                                <div id="filter"></div>
+                                <div id="mnu">
+                                    <div id="btn"><img id="cog" class="ImgCl" src="https://i.postimg.cc/85X2HHRY/93831206single-gear-cog-animation-1-2.gif" /></div>
+
+                                    <img id="logmnu" src="https://i.postimg.cc/FRXP7C9c/rombo.png" />
+                                    <p id="MnuRnm">
+                                        | Demanufacture |
+                                    </p>
+
+                                    <div id="Atheme">
+
+                                        <a href="#"><div class="cicl" id="Nrm"></div></a>
+                                        <a href="#R"><div class="cicl" id="rd"></div></a>
+                                        <a href="#P"><div class="cicl" id="py"></div></a>
+                                        <a href="#B"><div class="cicl" id="bl"></div></a>
+                                        <a href="#G"><div class="cicl" id="gr"></div></a>  <p id="MnuRnm">
+                                            | Select Your Theme |
+                                        </p>
+                                    </div>
+                                    <div id="Axat">
+
+                                        <a href="https://xat.com/web_gear/chat/editprofile.php?email="><div class="cicl2" id="xt1"> <img src="https://i.postimg.cc/SNBLkTmp/edit.png" /></div></a>
+
+
+                                        <a href="https://xat.wiki/Main_Page"><div class="cicl2"> <img src="https://i.postimg.cc/nL5PJKSj/3670367.png" /></div></a>
+                                        <a href="https://forum.xat.com/"><div class="cicl2"> <img src="https://i.postimg.cc/VkfTBkb6/126500.png" /></div></a>
+                                        <a href="https://xat.com/tools#!privacy"><div class="cicl2"> <img src="https://i.postimg.cc/QxftqVnY/can.png" /></div></a>
+                                        <a href="https://xat.com/tools#!terms"><div class="cicl2"><img src="https://i.postimg.cc/52jtK1h4/ter.png" /></div></a>
+                                        <a href="https://xat.com/report#!user&UserName="><div class="cicl2"><img src="https://i.postimg.cc/Cxc2vpj4/660252.png" /></div></a>
+                                        <p id="MnuRnm">
+                                            | Xat options |
+                                        </p>
+                                    </div>
+                                    <div id="fot">
+                                        <img id="cog2" class="ImgCl" src="https://i.postimg.cc/85X2HHRY/93831206single-gear-cog-animation-1-2.gif" /> <p id="Crdt">Xatspace by xEvangelist REV 1.0 Xat.com 2021</p>
+                                    </div>
+                                </div>
+
+                                <div id="Log">
+                                    <img id="logimg" class="ImgCl" src="https://i.postimg.cc/6qYGxqjq/rombo.png" />
+                                </div>
+                                <p id="Sub">
+                                    | Demanufacture |
+                                </p>
+                                <div id="Name">
+                                    <span id="Rnick" class="CLeter">MechanizeDoLL</span>
+
+
+                                    <p id="RnmeRnmb">
+                                        Lala | Shitposter | Alcoholic | Blissful
+                                    </p>
+                                    <p id="RnmeRnmb">Give me a reason 'Cause i got nothing to gain... So what am i doing now?.</p>
+                                    <a>
+                                        <div id="btn1" class="CBack">
+                                            <div id="spans">
+                                                <span class="spn" id="sp1"></span>
+                                                <span class="spn" id="sp2"></span>
+                                                <span class="spn" id="sp3"></span>
+                                                <span class="spn" id="sp4"></span>
+                                                <span class="spn" id="sp5"></span>
+                                                <span class="spn" id="sp6"></span>
+                                                <span class="spn" id="sp7"></span>
+                                                <span class="spn" id="sp8"></span>
+                                            </div>
+
+                                        </div>
+                                    </a>
+
+                                        <a>
+                                            <div id="btn2" class="BordC">
+                                                <div id="spans">
+                                                    <span id="hme">HOME</span>
+                                                </div>
+                                            </div>
+                                        </a>
+
+
+</div>
+                            </div>
+
+                            <div id="Cont">
+                                <div id="ImgPr" class="BordC"><img src="https://i.postimg.cc/bwjdSddF/Screenshot-6.png" /></div>
+                                <div id="PrfDt"><div id="TextTit"><span id="tt"  class="CLeter">MechanizeDoll</span> <span id="subttl">| Demanufacture - 291296788 |</span></div>
+                                                                                                                                   <div id="Amnu">
+                                                                                                                                       <div class="Mnux"> <p id="TConf"  class="CLeter">FIND ME</p></div>
+                                                                                                                                       <div class="Mnux"> <p id="TConf"  class="CLeter">MUSIC</p></div>
+                                                                                                                                       <div id="cong" class="BordC" >
+                                                                                                                                           <p id="TConf"  class="CLeter">SOCIAL</p><img id="ConIm" src="https://i.postimg.cc/g0ZR3bSR/1.png" /><img id="ConIm" src="https://i.postimg.cc/g0ZR3bSR/1.png" />
+
+                                                                                                                                           <div id="ConfClrs" class="BordC">
+                                                                                                                                               <div id="Sl">
+                                                                                                                                                   <div id="Fr" class="BordC">
+                                                                                                                                                       <a>
+                                                                                                                                                           <img class="BordC" src="https://i.postimg.cc/PxjWW7cz/0b4c5b621e4c4758023a28616eeef294.jpg" /> <p id="Fti" class="CLeter">xEvangelist</p> <p id="Fnm">1533252890</p>
+                                                                                                                                                       </a>
+                                                                                                                                                       </div>
+                                                                                                                                                   <div id="Fr" class="BordC">
+                                                                                                                                                       <a>
+                                                                                                                                                           <img class="BordC" src="https://i.postimg.cc/PxjWW7cz/0b4c5b621e4c4758023a28616eeef294.jpg" /> <p id="Fti" class="CLeter">xEvangelist</p> <p id="Fnm">1533252890</p>
+                                                                                                                                                       </a>
+                                                                                                                                                   </div>
+                                                                                                                                               </div>
+                                                                                                                                           </div>
+                                                                                                                                       </div>
+                                                                                                                                       <div class="Mnux" id="BordC"> <img id="ConIm2" src="https://i.postimg.cc/g0ZR3bSR/1.png" /><img id="ConIm2" src="https://i.postimg.cc/g0ZR3bSR/1.png" /> <a href="http://xat.me/i=1533252890"><p class="CLeter" id="TConf2">ABOUT THIS</p></a></div>
+
+
+
+                                                                                                                                   </div>
+                                
+                                </div>
+
+                                <div id="apost">
+                                    <div id="posts">
+                                        <div id="post" class="BordC">
+                                            <img id="Postimg" src="https://i.postimg.cc/Kc5mT2x8/tumblr-n5hdt0w-QR11s8adjoo1-500.gif" class="BordC" />
+                                            <p id="Ded">
+                                                You are the most bastard being who knows the most perverse secrets
+                                                in the world, but's not enough. You claim Be the goddess of this
+                                                rotten world, but you're just my fucking puppet. Of course,
+                                                you are better than many others, if not the best. Even so
+                                                you can call by my name if you need to destroy and dispel the
+                                                fucking "problem". Although I doubt it,
+                                                you are strong and better than this shit. but remember;
+                                                God there's only one and it is me. Remember your place.
+                                                Now: bow down to my name, for I am the God of this world
+                                            </p>
+                                            <p id="Dtit" class="CLeter">Nihil, xEvangelist</p>
+                                        </div>
+
+                                        <div id="post" class="BordC">
+                                            <img id="Postimg" src="https://i.postimg.cc/tTp9mnwr/Screenshot-1.png" class="BordC" />
+                                            <p id="Ded">Eres una gran amiga, una de las mejores en realidad, a pesar de que hay ciertas cosas que no estoy de acuerdo contigo, pero sabes que cada paso o acción que tomes siempre te apoyaré y lo sabes. Te quiero mucho bb, sigue mirando adelante y no dejes que nada te desanime ❤</p>
+                                            <p id="Dtit" class="CLeter">title</p>
+                                        </div>
+                                        <div id="post" class="BordC">
+                                            <img id="Postimg" src="https://i.postimg.cc/tTp9mnwr/Screenshot-1.png" class="BordC" />
+                                            <p id="Ded">Eres una gran amiga, una de las mejores en realidad, a pesar de que hay ciertas cosas que no estoy de acuerdo contigo, pero sabes que cada paso o acción que tomes siempre te apoyaré y lo sabes. Te quiero mucho bb, sigue mirando adelante y no dejes que nada te desanime ❤</p>
+                                            <p id="Dtit" class="CLeter">title</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="Aforum" class="BordC">
+                                    <div id="Lpost"><img id="imgL" src="https://i.postimg.cc/bwjdSddF/Screenshot-6.png" class="BordC" /> <div id="TextAr">
+                                        <p id="Ptit">MechanizeDoll</p>
+                                        <p id="Pte">Give me a reason 'Cause i got nothing to <br /> gain... So what am i doing now?.</p>
+                                             <span id="tim">09:46pm<span id="lik">. Like .</span></span>  <img id="imgLik" src="https://i.postimg.cc/rs1c74k6/me-gusta.png" /><span id="numlik">24</span>
+                                             </div></div>
+                                    <div id="Upost">
+                                        <img id="imgL" src="https://i.postimg.cc/Gmj88rWd/a07cb1d352c0c0ed97f89c4bd3b7f9c5.jpg" class="BordC" /> <div id="TextAr">
+                                            <p id="Ptit">xEvangelist</p>
+                                            <p id="Pte">This is so ridiculous...</p>
+                                            <span id="tim">09:46pm<span id="lik">. Like .</span></span>  <img id="imgLik" src="https://i.postimg.cc/rs1c74k6/me-gusta.png" /><span id="numlik">666</span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                                <div id="Amusic" >
+                                    <div id="Song"><p id="nme"><span class="CLeter">PLAYING:</span> Mourning Palace - Dimmu Borgir</p> </div>
+                                    <a id="abt"> <div id="imgpl" class="CBack" ><div id="imgC"></div></div></a> <img id="BrM"  src="https://u.cubeupload.com/Azhriell/unnamed.gif" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

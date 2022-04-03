@@ -1,0 +1,1665 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            cursor: url(https://i.postimg.cc/TwpV9T0d/pngwing-com.png),auto;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0; 
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        #main { background:black; 
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+            top: 0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            
+        }
+
+
+
+
+
+
+        .w {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            filter: grayscale(30%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+           
+            filter: contrast(110%);
+         
+            position: relative;
+            z-index: 5;
+        }
+
+        .i {
+            width: 2vw; 
+            height: 2vw; 
+            float: left;
+            position: relative;
+            z-index: 4;
+            padding: .6vw; opacity:0;
+            transition: all  1s linear;
+            background: rgba(66, 66, 66, 0.5) url("https://i.postimg.cc/4dQghDnf/l1.jpg") repeat fixed;
+           
+            border-radius: 0%;
+        }
+
+            .i:hover {
+                transition: all 0s linear;
+                filter: blur(10px) sepia(1) hue-rotate(330deg) saturate(1070%) ;
+                border-radius: 100%;
+                opacity: .4;
+                transform: rotate(0deg) scale(2);
+                z-index: 999;
+            }
+
+      
+        #backimg { opacity:.3;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            
+        }
+            #backimg img { width:100%; height:100%; opacity:.5;
+            }
+        #backfilt {
+            position: absolute; transition:1s ease all;
+            width: 100%;
+            opacity: .2;
+            filter: grayscale(100%);
+            height: 100%;
+            background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
+        }
+        #content {
+            width: 40%;
+            height: 10%;
+            position: absolute;
+            top: 92%;
+            left: 30%;
+        }
+        #img1 { position:absolute;  width:14vw; left:0;
+        }
+        #img2 {
+            position: absolute;
+            width: 9vw;
+            left: 12vw;
+        }
+        @keyframes entrance {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: .8;
+            }
+        }
+        .glitch {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            filter: blur(1px);
+            opacity: 0;
+            position: relative;
+            color: white;
+            font-size: .8vw;
+            letter-spacing: .4vw;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+        #g1 { animation:entrance 1s 1; animation-fill-mode:forwards;
+        }
+            #g1::before { content: '|xEVANGELIST / GOD / 1533252890|'; }
+            #g1::after { content: '|xEVANGELIST / GOD / 1533252890|'; }
+        #g0 {
+            letter-spacing: 0vw;
+            animation: entrance 1s 1;
+            animation-fill-mode: forwards;
+        }
+
+            #g0::before {
+                content: '|xEV__________/ GOD / 15332__________52890|';
+            }
+
+            #g0::after {
+                content: '|x__________EVANGELIST / G____________________0|';
+            }
+
+        #mnu:hover #g2 {
+            animation: entrance 1s 1;
+            animation-fill-mode: forwards;
+        }
+
+            #g2::before {
+                content: 'XX__WDD';
+            }
+
+            #g2::after {
+                content: 'TCMHEME';
+            }
+
+        .glitch::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            left: 2px;
+            text-shadow: -2px 0 #D11D1D;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+            .glitch::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                left: -2px;
+                text-shadow: -2px 0 #00fff9, 2px 2px #D11D1D;
+                animation: glitch-anim2 1s infinite linear alternate-reverse;
+            }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(75px, 9999px, 31px, 0);
+                transform: skew(0.89deg);
+            }
+
+            5% {
+                clip: rect(45px, 9999px, 36px, 0);
+                transform: skew(0.48deg);
+            }
+
+            10% {
+                clip: rect(85px, 9999px, 17px, 0);
+                transform: skew(0.36deg);
+            }
+
+            15% {
+                clip: rect(11px, 9999px, 60px, 0);
+                transform: skew(0.21deg);
+            }
+
+            20% {
+                clip: rect(33px, 9999px, 13px, 0);
+                transform: skew(0.69deg);
+            }
+
+            25% {
+                clip: rect(87px, 9999px, 78px, 0);
+                transform: skew(0.38deg);
+            }
+
+            30% {
+                clip: rect(35px, 9999px, 6px, 0);
+                transform: skew(0.6deg);
+            }
+
+            35% {
+                clip: rect(50px, 9999px, 96px, 0);
+                transform: skew(0.11deg);
+            }
+
+            40% {
+                clip: rect(63px, 9999px, 47px, 0);
+                transform: skew(0.09deg);
+            }
+
+            45% {
+                clip: rect(30px, 9999px, 89px, 0);
+                transform: skew(0.04deg);
+            }
+
+            50% {
+                clip: rect(35px, 9999px, 29px, 0);
+                transform: skew(0.61deg);
+            }
+
+            55% {
+                clip: rect(67px, 9999px, 62px, 0);
+                transform: skew(0.85deg);
+            }
+
+            60% {
+                clip: rect(20px, 9999px, 15px, 0);
+                transform: skew(0.66deg);
+            }
+
+            65% {
+                clip: rect(23px, 9999px, 3px, 0);
+                transform: skew(0.65deg);
+            }
+
+            70% {
+                clip: rect(9px, 9999px, 89px, 0);
+                transform: skew(0.04deg);
+            }
+
+            75% {
+                clip: rect(47px, 9999px, 63px, 0);
+                transform: skew(0.67deg);
+            }
+
+            80% {
+                clip: rect(51px, 9999px, 63px, 0);
+                transform: skew(0.63deg);
+            }
+
+            85% {
+                clip: rect(87px, 9999px, 70px, 0);
+                transform: skew(0.07deg);
+            }
+
+            90% {
+                clip: rect(11px, 9999px, 50px, 0);
+                transform: skew(0.26deg);
+            }
+
+            95% {
+                clip: rect(63px, 9999px, 25px, 0);
+                transform: skew(0.49deg);
+            }
+
+            100% {
+                clip: rect(43px, 9999px, 91px, 0);
+                transform: skew(0.6deg);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(77px, 9999px, 100px, 0);
+                transform: skew(0.67deg);
+            }
+
+            5% {
+                clip: rect(44px, 9999px, 59px, 0);
+                transform: skew(0.92deg);
+            }
+
+            10% {
+                clip: rect(63px, 9999px, 25px, 0);
+                transform: skew(0.18deg);
+            }
+
+            15% {
+                clip: rect(4px, 9999px, 64px, 0);
+                transform: skew(0.5deg);
+            }
+
+            20% {
+                clip: rect(5px, 9999px, 77px, 0);
+                transform: skew(1deg);
+            }
+
+            25% {
+                clip: rect(62px, 9999px, 85px, 0);
+                transform: skew(0.97deg);
+            }
+
+            30% {
+                clip: rect(70px, 9999px, 13px, 0);
+                transform: skew(0.1deg);
+            }
+
+            35% {
+                clip: rect(89px, 9999px, 68px, 0);
+                transform: skew(0.84deg);
+            }
+
+            40% {
+                clip: rect(92px, 9999px, 65px, 0);
+                transform: skew(0.09deg);
+            }
+
+            45% {
+                clip: rect(37px, 9999px, 51px, 0);
+                transform: skew(0.3deg);
+            }
+
+            50% {
+                clip: rect(7px, 9999px, 50px, 0);
+                transform: skew(0.48deg);
+            }
+
+            55% {
+                clip: rect(30px, 9999px, 46px, 0);
+                transform: skew(0.41deg);
+            }
+
+            60% {
+                clip: rect(51px, 9999px, 2px, 0);
+                transform: skew(0.04deg);
+            }
+
+            65% {
+                clip: rect(42px, 9999px, 9px, 0);
+                transform: skew(0.85deg);
+            }
+
+            70% {
+                clip: rect(38px, 9999px, 91px, 0);
+                transform: skew(0.03deg);
+            }
+
+            75% {
+                clip: rect(96px, 9999px, 52px, 0);
+                transform: skew(0.43deg);
+            }
+
+            80% {
+                clip: rect(61px, 9999px, 6px, 0);
+                transform: skew(0.23deg);
+            }
+
+            85% {
+                clip: rect(16px, 9999px, 21px, 0);
+                transform: skew(0.75deg);
+            }
+
+            90% {
+                clip: rect(17px, 9999px, 43px, 0);
+                transform: skew(0.79deg);
+            }
+
+            95% {
+                clip: rect(15px, 9999px, 88px, 0);
+                transform: skew(0.81deg);
+            }
+
+            100% {
+                clip: rect(39px, 9999px, 51px, 0);
+                transform: skew(0.47deg);
+            }
+        }
+
+        @keyframes glitch-skew {
+            0% {
+                transform: skew(0deg);
+            }
+
+            10% {
+                transform: skew(5deg);
+            }
+
+            20% {
+                transform: skew(-1deg);
+            }
+
+            30% {
+                transform: skew(2deg);
+            }
+
+            40% {
+                transform: skew(-4deg);
+            }
+
+            50% {
+                transform: skew(1deg);
+            }
+
+            60% {
+                transform: skew(2deg);
+            }
+
+            70% {
+                transform: skew(0deg);
+            }
+
+            80% {
+                transform: skew(-3deg);
+            }
+
+            90% {
+                transform: skew(3deg);
+            }
+
+            100% {
+                transform: skew(-2deg);
+            }
+        }
+
+        #d404 { position:absolute; width:100%; filter:contrast(120%) grayscale(20%);
+        }
+            #d404 img {
+                width: 40%;
+              
+            }
+        #blac { width:20%; background:black; position:absolute; height:30%; left:40%; top:65%;
+        }
+        #mnu {
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            background: #0e0e0e;
+            z-index: 999;
+            top: 0;
+            left: -20%;
+            transition: 1s all ease;
+            border-right: .1vw solid black;
+        }
+            #mnu:hover {
+                left: 0;
+                border-right: .1vw solid #f55656;
+                box-shadow: 0 0 3.5vw #fe2c2c;
+            }
+                #mnu:hover #cog1 { opacity:0;
+                }
+
+        #cog1 {
+            position: absolute;
+            height: 3vw;
+            width: 3vw;
+            top: 0;
+            transition: .5s all ease;
+            left: 100%;
+            overflow: hidden;
+        }
+            #cog1 img {
+                width: 60%;
+                margin: 15%;
+                animation: cog 3s infinite;
+                filter: contrast(0%) sepia(1) hue-rotate(330deg) saturate(3800%) grayscale(40%) ;
+            }
+        @keyframes cog {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            6% {
+                transform: rotate(0deg);
+            }
+
+            12% {
+                transform: rotate(45deg);
+            }
+
+            18% {
+                transform: rotate(45deg);
+            }
+
+            24% {
+                transform: rotate(90deg);
+            }
+
+            30% {
+                transform: rotate(90deg);
+            }
+
+            36% {
+                transform: rotate(135deg);
+            }
+
+            42% {
+                transform: rotate(135deg);
+            }
+
+            48% {
+                transform: rotate(180deg);
+            }
+
+            56% {
+                transform: rotate(180deg);
+            }
+
+            60% {
+                transform: rotate(225deg);
+            }
+
+            66% {
+                transform: rotate(225deg);
+            }
+
+            72% {
+                transform: rotate(270deg);
+            }
+
+            78% {
+                transform: rotate(270deg);
+            }
+
+            84% {
+                transform: rotate(315deg);
+            }
+
+            90% {
+                transform: rotate(315deg);
+            }
+
+            95% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    
+        #neonname { position:absolute; width:100%; height:10%; top:9%; font-family:'Segoe Script';
+        }
+        #s2 {
+            font-size: 3.5vw;
+            color: rgba(66, 66, 66, 0.5);
+            font-weight: lighter;
+            
+            animation: flicker3 1.5s infinite alternate;
+        }
+        #s1 {
+            font-size: 3.5vw;
+            color: #FFF;
+            font-weight: lighter;
+           
+            animation: flicker 1.5s infinite alternate;
+            color: #fff;
+        }
+        @keyframes flicker {
+
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        @keyframes flicker3 {
+
+            0%, 18%, 22%{
+                color:#FFF;
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+            20%, 24%, 55%, 100% {
+                color: rgba(66, 66, 66, 0.5);
+                text-shadow: none;
+            }
+        }
+        @keyframes backflicker {
+            
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                box-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 .7vw #FF0000, 0 0 2vw #FF0000, 0 0 3.8vw #FF0000, 0 0 4.5vw #FF0000, 0 0 5.3vw #FF0000, 0 0 6vw #FF0000;
+            }
+
+            20%, 24%, 55% {
+                box-shadow: none;
+            }
+        }
+        #controls { width:100%; height:1%; position:absolute;  top:40%;  z-index:999;
+        }
+        #cntmnu {
+            animation: flicker 1.5s infinite alternate;
+            color: white;
+            font-size: .6vw;
+            letter-spacing: .2vw;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            filter: blur(1px);
+        }
+
+            #cntmnu:after { content: 'NEON CITY'; }
+        #fle2 { /*#G*/
+            width: .8vw;
+            filter: invert(100%) blur(1px);
+            margin-left: .7vw;
+            margin-top: 1vw;
+            opacity: .7;
+        }
+        #fle1 { opacity:.7; /*#T*/
+            width: .8vw; transform:rotate(180deg);
+            filter: invert(100%) blur(1px);
+            margin-right: .7vw;
+            margin-top: 1vw;
+        }
+        #fle3 { /*#main*/
+            position: absolute;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            right: 20%;
+            margin-top: 5%; opacity:0;
+            
+        }
+        #fle4 {
+            position: absolute;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            left: 20%;
+            margin-top: 5%; opacity:0;
+        }
+        #fle5 {
+            position: absolute;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            left: 24%;
+            margin-top: 5%;
+            opacity: 0;
+        }
+        #fle6 {
+            position: absolute;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            right: 24%;
+            margin-top: 5%;
+            opacity: 0;
+        }
+        #fle7 {
+            position: absolute;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            left: 20%;
+            margin-top: 5%;
+            opacity: 0;
+        }
+        #fle8 {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+            width: 1vw;
+            background: red;
+            right: 20%;
+            margin-top: 5%;
+        }
+        #G:target #fle3 {
+            z-index: 999;
+        }
+
+        #G:target #fle4 {
+            z-index: 999;
+        }
+        #main:target #fle5 {
+            z-index: 999;
+        }
+        #main:target #fle6 {
+            z-index: 999;
+        }
+        #T:target #fle7 {
+            z-index: 999;
+        }
+
+        #T:target #fle8 {
+            z-index: 999;
+        }
+
+
+
+        a { cursor:alias;
+        }
+        #G:target #backfilt {
+            background-image: url(https://i.postimg.cc/Hn2Yp8M2/3c175dd2380da2128c3a99e559219b68.gif); opacity:.09; transform:rotate(-45deg); height:200%; width:100%; top:-50%;
+        }
+        #T:target #backfilt {
+            background-image: url(https://i.postimg.cc/bY64jRD5/532a270caf5b324c887edd98a5e706d5.gif);
+            opacity: .11;
+            background-size: contain;
+        }
+        #main:target #backfilt {
+            background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+            opacity: .1;
+        }
+
+        #G:target #cntmnu:after {
+            content: 'MELANCOLIC RAIN';
+        }
+        #T:target #cntmnu:after {
+            content: 'DRAMATIC GLITCH';
+        }
+        #main:target #cntmnu:after {
+            content: 'FALLING SNOW';
+        }
+        #G:target .i:hover {
+            transition: all 0s linear;
+            filter: blur(10px) sepia(1) hue-rotate(180deg) saturate(1070%);
+            border-radius: 100%;
+            opacity: .8;
+            transform: rotate(0deg) scale(2);
+            z-index: 999;
+        }
+        #T:target .i:hover {
+            transition: all 0s linear;
+            filter: blur(10px) sepia(1) hue-rotate(250deg) saturate(1070%);
+            border-radius: 100%;
+            opacity: .6;
+            transform: rotate(0deg) scale(2);
+            z-index: 999;
+        }
+        #main:target .i:hover {
+            transition: all 0s linear;
+            filter: blur(10px) sepia(1) hue-rotate(290deg) saturate(1070%);
+            border-radius: 100%;
+            opacity: .4;
+            transform: rotate(0deg) scale(2);
+            z-index: 999;
+        }
+        #msge { position:absolute; width:25%; height:30%;  left:37.5%; top:45%;
+        }
+        #mg1 {
+            animation: flicker5 2s infinite alternate;
+            animation-delay:.5s;
+            color: rgb(92, 92, 92);
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            filter: blur(1px);
+        }
+        #mg2 {
+           color: white;
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            filter: blur(1px);
+        }
+
+        #mus {
+            width: 0%;
+            height: .1vw;
+            background: white;
+            animation: backflicker 1.5s infinite alternate, line 200s 1;
+            animation-delay:0s, .2s;
+            left: 15%;
+            position: absolute;
+            top: 31%;
+        }
+        @keyframes line {
+            0% {
+               width:0;
+            }
+
+         
+
+            100% {
+                width:70%;
+            }
+        }
+        #desc {
+            position: absolute;
+            animation: flicker3 2s infinite alternate; animation-delay:.2s;
+            color: rgba(66, 66, 66, 0.5);
+            font-family: 'Malgun Gothic';
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            top: 18%; z-index:999;
+            left: 33%;
+        }
+        @keyframes flicker4 {
+
+            0%, 18%, 22% {
+                color: #FFF;
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+            20%, 24%, 55%, 100% {
+                color: rgb(92, 92, 92);
+                text-shadow: none;
+            }
+        }
+        @keyframes flicker5 {
+
+            20%, 24%, 55%, 100% {
+                color: #FFF;
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+        0%, 18%, 22% {
+            color: rgba(66, 66, 66, 0.5);
+            text-shadow: none;
+        }
+        }
+        @keyframes ply {
+
+            20%, 24%, 55%, 100% {
+               filter:grayscale(0%); opacity:1;
+            }
+
+            0%, 18%, 22% {
+                opacity: .5;
+                filter: grayscale(100%);
+            }
+        }
+        .titlesong {
+            position: absolute; top:-5%; left:22%;
+            font-family: 'Malgun Gothic';
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            animation: flicker5 2s infinite alternate;
+            animation-delay: .2s;
+            color: rgba(66, 66, 66, 0.5);
+        }
+        #ts2 {
+            left: 40%;
+            animation-delay: .7s;
+            animation: flicker3 2.5s infinite alternate;
+        }
+        #play {
+            position: absolute;
+            width: 1.5vw;
+            top: -15%;
+            left: 15%;
+            opacity: .5;
+            filter: grayscale(100%);
+            animation: ply 1.5s infinite alternate;
+        }
+        #inicio { position:absolute; width:4vw; height:4vw;  right:0; top:2vw;
+        }
+            .ini {top:1vw;
+                font-family:'Segoe UI' ; font-weight:bold; color:white; filter:blur(1px); position:absolute;
+                font-size: 2vw; width:2vw; height:2vw; float:left; opacity:0;
+            }
+        #i1 {
+            left: -4vw;
+            animation: entrance .5s 1, totop .5s 1, p2 .5s 1, p2-2 .5s 1, flicker4 2.5s infinite alternate;
+            animation-delay: 0s,0s,.7s, 1.2s;
+            animation-fill-mode: forwards;
+        }
+        #i2 {
+            left: -2vw;
+            animation: entrance .5s 1, totop .5s 1, p2 .5s 1, p2-1 .5s 1,flicker 2.5s infinite alternate;
+            ;
+            animation-delay: .1s, .1s, .7s, 1.2s;
+            animation-fill-mode: forwards;
+        }
+        #i3 {
+            left: 0;
+            animation: entrance .5s 1, totop .5s 1, p1 .5s 1, p1-1 .5s 1,flicker 2.5s infinite alternate;
+            animation-delay: .2s, .2s, .7s, 1.2s, .4s;
+            animation-fill-mode: forwards;
+        }
+        #i4 {
+            left: 2vw;
+            animation: entrance .5s 1, totop .5s 1, p1 .5s 1, p1-2 .5s 1, flicker 2.5s infinite alternate;
+            animation-delay: .3s, .2s, .7s, 1.2s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes totop {
+
+            100% {
+                top: 0;
+            }
+        }
+        @keyframes p1 {
+           
+            100% {
+                top: 1vw;
+            }
+        }
+        @keyframes p1-1 {
+
+            100% {
+                left:-2vw;
+            }
+        }
+        @keyframes p1-2 {
+
+            100% {
+                left: 0;
+            }
+        }
+        @keyframes p2 {
+
+            100% {
+               top: -1vw;
+            }
+        }
+        @keyframes p2-2 {
+
+            100% {
+                left: -2vw;
+            }
+        }
+        @keyframes p2-1 {
+
+            100% {
+                left: 0vw;
+            }
+        }
+        /*#main2 { animation:entre 3s 1;
+        }*/
+        @keyframes entre {
+            0% { opacity:0;
+            }
+            60% { opacity:0;
+            }
+            100% {
+                opacity:1;
+            }
+        }
+        #crdy { width:100%; background:#171717; bottom:0; height:5%; position:absolute;
+        }
+        #crdy2 {
+            width: 100%;
+            bottom:9%;
+            height: .1%;
+            position: absolute;
+        }
+            #crdy p { font-size:.5vw; letter-spacing:.1vw; color:white; font-family:Arial; margin-top:1.2vw;
+
+            }
+        #crdy2 span {
+            animation: flicker3 2.5s infinite alternate; color:rgba(66, 66, 66, 0.5); font-size:.8vw; letter-spacing:.2vw; margin-left:.5vw; animation-delay:.3s;
+        }
+        #logo {
+            position: absolute;
+            filter: invert(100%) blur(1px);
+            width: 4vw;
+            top: 95%;
+            left: 0;
+        }
+        #ytc { width:2vw; height:2vw; position:absolute; opacity:0; left:36%; top:90%;
+        }
+
+        #mg1:nth-child(2) { animation-delay:.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="T">
+            <div id="R">
+                <div id="G">
+                    <div id="inicio">
+                        <div class="ini" id="i1">E</div>
+                        <div class="ini" id="i2">V</div>
+                        <div class="ini"id="i3">X</div>
+                        <div class="ini" id="i4">N</div>
+                    </div>
+                    <div id="main2">
+
+                     
+
+                        <img src="https://i.postimg.cc/9FmQ1fMP/1.png" id="logo" />
+                        <div id="content">
+                           <img src="https://i.postimg.cc/ZYBLKx2M/193-1939656-report-abuse-red-neon-triangle-png.png" id="play" /> <span class="titlesong">PULSE/SURREAL -</span> <span id="ts2" class="titlesong">LANTLÔS</span>
+
+                            <p class="glitch" id="g0">
+
+                                ________________________________________________________________ <div id="mus"></div>
+                            </p>
+                            <p class="glitch" id="g1">
+                                |xEVANGELIST / GOD / 1533252890|
+                            </p>
+                        </div>
+
+                        <div id="d404">
+                            <img src="https://i.postimg.cc/yN2jYHbb/404-page.gif" />
+                            <div id="blac"></div>
+                        </div>
+                        <div id="msge">
+                            <span id="mg2"> Disembodied, </span> <span id="mg2"> gasping, </span> <span id="mg2"> I tumbled </span> <br />
+                            <span id="mg2"> In the flush </span> <br />
+                            <span id="mg2"> of a thousand </span>
+
+                            <span id="mg2"> cold lights, </span> <span id="mg2"> <br /> through this night </span> <br />
+
+                            <span id="mg1"> of neon, </span> <br />
+                            <span id="mg2"> That I'll never belong to... </span>
+                        </div>
+
+                        <div id="backfilt">
+
+                        </div>
+
+
+                        <div class="w">
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>   <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>   <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>   <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+                            <div class="i"></div>
+
+                        </div>
+
+                        <div id="ytc"></div>
+                        <div id="mnu">
+                            <div id="cog1"><img src="https://i.postimg.cc/k4bLcwSB/settings.png" /></div>
+                            <div id="neonname"><span id="s1">N</span><span id="s2">i</span><span id="s1">hil.</span></div>
+                            <a href="#"> <div id="desc">NEIGE DE MARS</div></a>
+
+
+                            <div class="w">
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+                                <div class="i"></div>
+
+                            </div>
+                            <div id="controls">
+                                <p class="glitch" id="g2">
+                                    THEME:
+                                </p>
+                                <a href="#T"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle1" /> </a>
+                                <a href="#"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle4" /> </a>
+                                <a href="#G"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle5" /> </a>
+                                <a href="#main"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle7" /> </a>
+
+                                <span id="cntmnu">  </span>
+
+
+                                <a href="#G"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle2" /> </a>
+                                <a href="#main"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle3" /> </a>
+                                <a href="#T"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle6" /> </a>
+                                <a href="#"><img src="https://i.postimg.cc/d13DNBTY/flecha-de-juego.png" id="fle8" /> </a>
+                            </div>
+                            <div id="crdy2"><span>.01</span><span>.02</span><span>.03</span><span>.04</span><span>.05</span><span>.06</span></div>
+                            <div id="crdy"><p>xEVANGELIST / XAT.COM® ALL RIGHTS© RESERVED 2021 </p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

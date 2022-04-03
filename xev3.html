@@ -1,0 +1,1090 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        #main { 
+            cursor: url(https://i.postimg.cc/Rh2ft0Hf/tumblr-inline-nrkb03fxct1ry72eo-75sq.png),auto;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: white;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            filter: inver(0%);
+        }
+
+
+
+
+
+
+
+
+
+        #imgbk {
+            position: absolute;
+            width:100%; left:25%;
+            z-index: 0;
+        }
+
+            #imgbk img {
+                width: 100%;
+            }
+
+        .line {
+            margin: 0;
+            display: block;
+            float: left;
+            position: relative;
+           width: .76923076923076923076923076923077%; height: 100%;
+            opacity: 0;
+            background: black;
+            background-clip: padding-box;
+            -webkit-transition: all 2s;
+            -webkit-transition-delay: 1s;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+            z-index: 3;
+        }
+
+            .line:hover {
+                -webkit-transition: padding 0.1s, top 0.1s;
+                -webkit-transition-delay: 0s;
+                opacity: 1;
+            }
+
+            .line:after {
+                position: absolute;
+                top: 0;
+                -webkit-filter: blur(2px);
+                left: 0;
+                bottom: 0;
+                right: 0;
+               
+            }
+
+            .line:before {
+                opacity: 0;
+            }
+
+            .line:hover:before {
+                background: red;
+            }
+        #MainTe {
+            position: absolute;
+            font-size: 1.8vw;
+            text-align: left;
+            top: 80%;
+            overflow: hidden;
+            letter-spacing: .1vw;
+            left: 46%;
+            text-shadow: .1vw .1vw .3vw dimgray;
+            z-index: 99;
+            mix-blend-mode: difference;
+            filter: invert(100%) blur(.7px);
+         
+        }
+
+
+
+        #mainbor {
+            position: absolute;
+            width: 1.5vw;
+            left: 59%;
+            top: 75.5%;
+            z-index: 99;
+            mix-blend-mode: difference;
+            filter: invert(100%);
+        }
+        .line-1 {
+            mix-blend-mode: difference;
+            filter: invert(100%) blur(.7px);
+            position: absolute;
+            left: 60.5%;
+            letter-spacing: .05vw;
+            text-shadow: .1vw .1vw .2vw dimgray;
+            top: 80.7%;
+            width: 19%;
+            margin: 0 auto;
+            font-size: 1.2vw;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        #De21 {
+            width: 15vw; 
+            position: absolute; top:18%; left:17%;
+            font-size: .6vw; letter-spacing:.1vw;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        /* Animation */
+      
+        #lnks {
+            z-index: 99;
+           
+            mix-blend-mode: difference;
+            width: 1.6vw;
+            height: 2vw;
+            position: absolute;
+            left:-2vw;
+            top: 1%; 
+            overflow: hidden;
+        }
+
+        .hs {
+            width: 100%;
+            height: .15vw;
+            background: black;
+            position: absolute;
+            border-radius: .5vw;
+        }
+
+        #h2 {
+            top: .35vw;
+        }
+
+        #h3 {
+            top: .75vw;
+        }
+
+        #lnks:hover #h1 {
+            animation: Slider1 1s 1;
+        }
+
+        #lnks:hover #h2 {
+            animation: Slider1 1s 1;
+            animation-delay: .3s;
+        }
+
+        #lnks:hover #h3 {
+            animation: Slider1 1s 1;
+            animation-delay: .6s;
+        }
+
+        @keyframes Slider1 {
+            0% {
+                left: 0%;
+            }
+
+            50% {
+                left: 100%;
+                opacity: 1;
+            }
+
+            50.1% {
+                opacity: 0;
+            }
+
+            50.2% {
+                left: -100%;
+            }
+
+            50.3% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 0%;
+            }
+        }
+        #Opt {
+            position: absolute;
+            top: 4%;
+            left: 4%;
+            width: 8vw;
+            height: 2vw;
+            z-index: 9;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+        }
+
+        .Bord2 {
+            width: 60%;
+            position: absolute;
+            width: 35%;
+            bottom: -.2vw;
+            background: black;
+            height: .05vw;
+            left: 20%;
+            transition: all .5s ease;
+        }
+        #Opt:hover .Bord2 {
+            width: 60%;
+        }
+
+        #lat1 {
+            position: absolute;
+            width: 1.3vw;
+            height: 0;
+            mix-blend-mode: difference;
+            z-index: 99;
+        }
+
+        #lat1 { /*transform:rotate(40deg); left:4.3vw; top:-.3vw;*/
+            left: 4.1vw;
+            top: -.64vw;
+            background-image: url(https://i.postimg.cc/ZRz1ZMmP/v.png);
+            background-size: cover;
+        }
+
+        @keyframes Brds {
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: 1.3vw;
+            }
+        }
+
+        #Opt {
+            opacity: 0;
+            animation: aprr 1s 1;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+
+            #Opt:hover #lat1 {
+                animation: Brds .5s 1;
+                animation-delay: .5s;
+                animation-fill-mode: forwards;
+            }
+
+        @keyframes opt1 {
+            0% {
+                left: -24vw;
+            }
+
+            100% {
+                left: -2vw;
+            }
+        }
+
+        @keyframes opt2 {
+            0% {
+                left: -2vw;
+            }
+
+            100% {
+                left: -24vw;
+            }
+        }
+
+        @keyframes aprr {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #Opt:hover #Optz {
+            opacity: 1;
+            left: -4vw;
+            animation-delay: .5s;
+        }
+
+        #Optz {
+            -webkit-transition: all 1s;
+            -webkit-transition-delay: 1.5s;
+            animation: opt2 1s 1;
+            z-index: 9;
+            width: 22vw;
+            height: 100vh;
+            background-image: url(https://i.postimg.cc/dVbWTN1h/bb.jpg);
+            background-size: cover;
+            position: absolute;
+            left: -28vw;
+            top: -2vw;
+            border-right: 2vw solid #212121;
+        }
+
+        #Optimg {
+            width: 100%;
+            position: absolute;
+        }
+
+        #logC {
+            position: absolute;
+            height: 3.5vw;
+            top: 6vw;
+            transform: rotate(270deg);
+            left: 4vw;
+            opacity: 0;
+        }
+
+        #Nme2 {
+            width: 0;
+            height: 2.5vw;
+            position: absolute;
+            top: 6.5vw;
+            left: 5vw;
+            color: black;
+            font-size: 2vw;
+            letter-spacing: 1.5vw;
+            overflow: hidden;
+            animation: name2 .5s 1;
+        }
+
+        #Opt:hover #logC {
+            animation: Gir 1s 1;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        #logC {
+            animation: Gir2 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        #Opt:hover #Nme2 {
+            animation: name1 .5s 1;
+            animation-delay: 2.7s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes name1 {
+            0% {
+                width: 0vw;
+            }
+
+            100% {
+                width: 12vw;
+            }
+        }
+
+        @keyframes name2 {
+            0% {
+                width: 12vw;
+            }
+
+            100% {
+                width: 0vw;
+            }
+        }
+
+        @keyframes Gir {
+            0% {
+                opacity: 0;
+                transform: rotate(270deg);
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+                left: 4vw;
+                transform: rotate(180deg);
+            }
+
+            100% {
+                opacity: 1;
+                left: 14vw;
+                transform: rotate(180deg);
+            }
+        }
+
+        @keyframes Gir2 {
+            0% {
+                opacity: 1;
+                left: 14vw;
+                transform: rotate(180deg);
+            }
+
+            20% {
+                opacity: 1;
+                left: 4vw;
+                transform: rotate(180deg);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: rotate(270deg);
+            }
+        }
+
+        .btn {
+            text-align: left;
+            position: absolute;
+            width: 17vw;
+            height: 3vw;
+            top: 13vw;
+            left: 2vw;
+        }
+
+       
+
+        #Abtn {
+            width: 5vw;
+            height: 1.8vw;
+            overflow: hidden;
+            border-radius: .5vw;
+            position: absolute;
+            left: 70%;
+            top: .5vw;
+            border: .1vw solid #212121;
+        }
+
+        .text, #Sl {
+            font-size: .7vw;
+            letter-spacing: .3vw;
+            color: black;
+            filter: invert(100%);
+            font-weight: bold;
+            left: 1vw;
+            mix-blend-mode: difference;
+            top: 1.1vw;
+            position: absolute;
+        }
+
+        .Adv {
+            width: .05vw;
+            height: 100%;
+            position: absolute;
+            background: #212121;
+            left: 2.5vw;
+            top: -.2vw;
+        }
+
+        .PDr, .PIz {
+            font-size: .6vw;
+            letter-spacing: .2vw;
+            color: black;
+            filter: invert(100%);
+            font-weight: bold;
+            left: .5vw;
+            mix-blend-mode: difference;
+            position: absolute;
+        }
+
+        .PDr {
+            left: 3vw;
+        }
+
+        .bkgbt {
+            position: absolute;
+            background: #212121;
+            width: 2.6vw;
+            height: 100%;
+            transition: all .5s ease;
+        }
+
+        /*main target= invert + fix // c:target = only fix // B:target =amimation off*/
+        #bk1 {
+            left: 0;
+        }
+
+        #C:target #bk1 {
+            left: 2.5vw;
+        }
+
+        #b:target #bk2 {
+            left: 0;
+        }
+
+        #b:target #bk1 {
+            left: 0;
+        }
+
+        #main:target #bk3 {
+            left: 0;
+        }
+
+        #main:target #bk1 {
+            left: 2.5vw;
+        }
+
+        #bk2 {
+            top: .05vw;
+            left: 2.5vw;
+        }
+
+        #bk3 {
+            left: 2.5vw;
+        }
+
+        #Afrd {
+            position: absolute;
+            top: 4%; 
+            width: 1.8vw;
+            height: 10vw;
+            left: 100.5%;
+        }
+
+        /*#Rune {
+            position: absolute;
+            width: 80%;
+            height: 2vw;
+            top: 80%;
+            left: 10%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }*/
+        
+        .Rn { 
+            width: 100%; transition:all .5s ease;
+            height: 1.6666666666666666666666666666667vw;
+            margin: 0;
+            text-align: center;
+        }
+            .Rn:hover { background:rgba(255,255,255,.1);
+            }
+            .Rn p { 
+                margin: 0; filter:blur(1px);
+                padding-top: .4vw;
+                font-size: .7vw;
+                letter-spacing: .2vw;
+            }
+        .xd {
+            color:white;
+        }
+        #My {
+            padding-top: .3vw; margin-left:.1vw;
+            filter: blur(1.5px);
+            font-size: .9vw;
+            color: #f56262;
+        }
+
+        #Musi {
+            color: black;
+        }
+
+        #Repr {
+            position: absolute;
+            width: 90%;
+            height: 15%;
+            top: 78%;
+            left: 5%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #ines {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            top: 60%;
+        }
+
+        #LinBk {
+            position: absolute;
+            width: 100%;
+            height: .2vw;
+            background: black;
+            top: 40%;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        #LinIn {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(darkgray 50%, dimgray 100% );
+            animation: letin 500s 1;
+        }
+
+        @keyframes letin {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        #T0, #Tf, #band, #Mtt {
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            top: 65%;
+            mix-blend-mode: difference;
+            filter: invert(100%);
+        }
+
+        #Tf {
+            right: 0;
+        }
+
+        #band {
+            top: -5%;
+            left: 45%;
+        }
+
+        #Mtt {
+            font-weight: bold; left:29%;
+            top: -20%;
+        }
+
+        .bt1 {
+            position: absolute;
+            width: 1vw;
+            top: 35%;
+        }
+
+        #retr {
+            left: 30%;
+        }
+
+        #adv {
+            right: 30%;
+        }
+
+        #play {
+            position: absolute;
+            width: 2.2vw;
+            top: 25%;
+            left: 44%;
+        }
+
+        .bt2 {
+            position: absolute;
+            top: 80%;
+        }
+
+        #ag {
+            left: 38%;
+            top: 77%;
+            width: 1.5vw;
+        }
+
+        #com {
+            width: 1vw;
+            left: 53%;
+        }
+        #main:target .line {  opacity:0;
+        }
+        #control {
+            width: 2vw;
+            height: 2vw;
+            opacity: 0;
+            position: absolute;
+            z-index: 999;
+            left: 45%;
+            top: 26%;
+        }
+        #Abr2 {
+            width: 100%;
+            height: 4vw;
+            top: 93vh;
+            position: absolute;
+            background: #212121;
+        }
+        #imglog img {
+            width: 4vw;
+            position: absolute;
+            top: 94.5%;
+            left: 1%;
+            filter: invert(100%);
+            z-index: 4;
+            mix-blend-mode: difference;
+        }
+
+        .menu, .menu2 {
+            z-index: 5;
+            text-transform: uppercase;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            pointer-events: none;
+            position: absolute;
+            top: 95.5%;
+            left: 2%;
+            mix-blend-mode: difference;
+        }
+
+        .menu2 {
+            top: 4%;
+            left: 92%;
+        }
+
+            .menu:hover, .menu2:hover {
+                pointer-events: all;
+            }
+
+        .label, .label2 {
+            width: 2vw;
+            height: 2vw;
+            cursor: pointer;
+            position: absolute;
+            pointer-events: all;
+        }
+
+        .label2 {
+            right: 5vw;
+        }
+
+        #lb1, #lb2, #lb3 {
+            width: 1.6vw;
+            margin: .3vw .2vw;
+            height: .3vw;
+            background: white;
+            transition: all .3s ease;
+        }
+
+        .menu2:hover #lb1 {
+            width: 1.2vw;
+            margin: .5vw .4vw 0 .4vw;
+            height: .4vw;
+        }
+
+        .menu2:hover #lb2 {
+            width: 1.2vw;
+            margin: 0 .4vw;
+            height: .4vw;
+        }
+
+        .menu2:hover #lb3 {
+            width: 1.2vw;
+            margin: 0 .4vw .5vw .4vw;
+            height: .4vw;
+        }
+
+        .spacer {
+            display: inline-block;
+            width: 5vw;
+            margin-left: 1vw;
+            margin-right: 3vw;
+            vertical-align: middle;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .spacer:before {
+                content: "";
+                position: absolute;
+                border-bottom: .1vw solid #ffffff;
+                height: .1vw;
+                width: 0%;
+                transition: width 0.25s ease;
+                transition-delay: 0.7s;
+            }
+
+        .item {
+            text-align: right;
+            position: relative;
+            display: inline-block;
+            margin-right: 2vw;
+            top: 2vw;
+            opacity: 0;
+            transition: opacity 0.5s ease, top 0.5s ease;
+            transition-delay: 0;
+        }
+
+            .item span {
+                transform: scaleX(1);
+            }
+
+        #item1 {
+            /*transform: scaleX(-1);*/
+            margin-left: .5vw;
+            display: flex;
+        }
+
+            #item1:nth-child(2) {
+                margin-top: 2vw;
+            }
+
+        .Xsp {
+            transition: color 0.5s ease;
+            font-size: .6vw;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            letter-spacing: .15vw;
+        }
+
+        .item:hover .Xsp {
+            color: #8f3232;
+        }
+
+        .menu:hover .spacer:before, .menu2:hover .spacer:before {
+            width: 100%;
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item, .menu2:hover .item {
+            opacity: 1;
+            top: 0px;
+        }
+
+        .item:nth-child(1) {
+            transition-delay: 0.45s;
+        }
+
+        .item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .item:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .item:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+        .item:nth-child(7) {
+            transition-delay: 0.15s;
+        }
+
+        .item:nth-child(8) {
+            transition-delay: 0.1s;
+        }
+
+        .item:nth-child(9) {
+            transition-delay: 0.05s;
+        }
+
+        .item:nth-child(10) {
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item:nth-child(1) {
+            transition-delay: 0.25s;
+        }
+
+        .menu:hover .item:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .menu:hover .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .menu:hover .item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .menu:hover .item:nth-child(5) {
+            transition-delay: 0.45s;
+        }
+
+        .menu:hover .item:nth-child(6) {
+            transition-delay: 0.5s;
+        }
+
+        .menu:hover .item:nth-child(7) {
+            transition-delay: 0.55s;
+        }
+
+        .menu:hover .item:nth-child(8) {
+            transition-delay: 0.6s;
+        }
+
+        .menu:hover .item:nth-child(9) {
+            transition-delay: 0.65s;
+        }
+
+        .menu:hover .item:nth-child(10) {
+            transition-delay: 0.7s;
+        }
+        #LogCr { width:6vw; position:absolute; top:12%; left:65%;
+        }
+        #Mus, #Mus1, #Mus2 {
+            z-index: 3;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+            width: 4vw;
+            height: 2vw;
+            position: absolute;
+            top: 17vw;
+            left:18%;
+        }
+        #Musi {
+            position: absolute;
+            top: 0;
+            font-weight: bold;
+            letter-spacing: .15vw;
+            left: 10%;
+            font-size: .7vw;
+        }
+        .Bord {
+            z-index: 3;
+            mix-blend-mode: difference;
+            position: absolute;
+            width: 50%;
+            bottom: -.2vw;
+            background: black;
+            height: .05vw;
+            left: 25%;
+            transition: all .5s ease;
+        }
+
+        #Mus:hover .Bord, #Mus1:hover .Bord, #Mus2:hover .Bord {
+            width: 100%;
+            left: 0;
+        }
+        #Mus1 {
+            left: 38%;
+        }
+
+        #Mus2 {
+            left: 60%;
+        }
+        #pent {
+            width: 4vw;
+            position: absolute;
+            left: .75%;
+            top: 1%; z-index:9;
+           
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <div id="imgbk"> <img src="https://i.postimg.cc/Znfg7hpV/yt1s-com-Ink-Drop-in-Water-1080p-The-Toob-Stock-Free-Stock-Footage-1080p-1.gif" /></div>
+
+
+        <div id="MainTe">xEVANGELIST</div><img id="mainbor" src="https://i.postimg.cc/brfWdqp9/Captura.png" /> <p class="line-1" id="anim-typewriter">AUTUMN'S GRIEF - 1533252890</p>
+        <img src="https://i.postimg.cc/VL7ykXS2/3.png" id="pent" />
+        <div id="Opt">
+            <div id="lnks">
+                <div id="h1" class="hs"></div>
+                <div id="h2" class="hs"></div>
+                <div id="h3" class="hs"></div>
+            </div>
+
+            <div id="Optz">
+
+                <!--<img id="LogCr" src="https://i.postimg.cc/G246Psxm/2333.png" />-->
+
+                <div id="Nme2">NIHIL</div> <img id="logC" src="https://i.postimg.cc/c1QyXYYg/resumen-3.png" />
+                <p id="De21">|xEVANGELIST / GOD / 1533252890|</p>
+                <div class="btn" id="btn1">
+                    <span class="text">ANIMATION</span>   <div id="Abtn"> <div class="bkgbt" id="bk1"></div> <a href="#"> <p class="PIz">ON</p></a><div class="Adv"></div><a href="#main"><p class="PDr">OFF</p> </a> </div>
+                </div>
+                <a href="#">
+                    <div id="Mus">
+                        <p id="Musi">MUSIC</p>
+
+                        <div class="Bord"></div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="Mus1">
+                        <p id="Musi">-HOME</p>
+
+                        <div class="Bord"></div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="Mus2">
+                        <p id="Musi">ABOUT</p>
+
+                        <div class="Bord"></div>
+                    </div>
+                </a>
+                <div id="Afrd">
+
+                    <a href="https://xat.me/damitaozcura"><div class="Rn"><p id="My">⦿</p></div></a>
+                    <a href="https://xat.me/Saeroyi"><div class="Rn"><p class="xd">⚪</p></div></a>
+                    <a href="https://xat.me/MechanizeDoll"><div class="Rn"><p class="xd">⚪</p></div></a>
+                    <a href="https://xat.me/zUnstoppable"><div class="Rn"><p class="xd">⚪</p></div></a>
+                    <a href="https://xat.me/itami"><div class="Rn"><p class="xd">⚪</p></div></a>
+                    <a href="https://xat.me/taiga"><div class="Rn"><p class="xd">⚪</p></div></a>
+
+                </div> <div id="Repr">
+                    <p id="Mtt">Elegant and perverse</p>
+                    <p id="band">Arsis</p>
+                    <img id="play" src="https://i.postimg.cc/zfyS5wLC/play-button.png" />
+                    <img id="retr" class="bt1" src="https://i.postimg.cc/D0Jcgrhf/444.png" />
+                    <img id="adv" class="bt1" src="https://i.postimg.cc/br79FZYx/boton-reproducir-siguiente.png" />
+                    <div id="ines">
+                        <div id="LinBk"> <div id="LinIn"></div></div>
+                    </div>
+                    <p id="T0">0:00</p> <p id="Tf">7:14</p>
+                    <img id="ag" class="bt2" src="https://i.postimg.cc/y6hVnwfR/3736241.png" />
+                    <img id="com" class="bt2" src="https://i.postimg.cc/mZPxqK2k/replay.png" />
+                    <div id="control"></div>
+                </div>
+                <div id="Abr2">
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div id="imglog"><img src="https://i.postimg.cc/9FmQ1fMP/1.png" /></div>
+        <div class="menu">
+            <div class="label"></div>
+            <div class="spacer"></div>
+            <div class="item"><a href="https://xat.com/web_gear/chat/editprofile.php?email="><span class="Xsp">Edit</span></a></div>
+            <div class="item"><a href="https://xat.wiki/Main_Page"><span class="Xsp">Wiki</span></a></div>
+            <div class="item"><a href="https://forum.xat.com/"><span class="Xsp">Forum</span></a></div>
+            <div class="item"><a href="https://xat.com/privacy.htmI"><span class="Xsp">Privacy</span></a></div>
+            <div class="item"><a href="https://xat.com/terms.htmI"><span class="Xsp">Terms</span></a></div>
+            <div class="item"><a href="https://xat.com/safety.htmI"><span class="Xsp">safety</span></a></div>
+            <div class="item"><a href="https://xat.com/report#!user&UserName="><span class="Xsp">Inappropiate</span></a></div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+
+
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+        <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>   <div class="line"></div>
+
+
+
+    </div>
+
+</body>
+</html>

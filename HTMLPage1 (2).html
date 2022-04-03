@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        #main {
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-image: url(https://j.gifs.com/ygdDrX.gif);
+            margin: 0;
+            top: 0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            filter: inver(0%);
+        }
+        #filter { z-index:999;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-image: url(https://i.postimg.cc/C1JK12BK/unnamed.gif);
+            filter: grayscale(100%);
+            opacity: .2;
+        }
+      
+        #mainimg {
+            position: absolute;
+            width: 30vw;
+            height: 30vw;
+            top: 25%;
+            left: 35%;
+        }
+            #mainimg img { width:100%;
+            }
+    </style>
+</head>
+<body>
+    <div id="main">
+
+        <div id="mainimg"><img src="https://i.postimg.cc/BQ2nPt1y/tumblr-d6ef633eaacfd852d0828b5d38c621ac-32113e1b-500.gif" /></div>
+      
+        <div id="filter"></div>
+
+
+    </div>
+</body>
+</html>

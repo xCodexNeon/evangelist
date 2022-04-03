@@ -1,0 +1,678 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            background: #fff;
+        }
+
+        body {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background: lightgray;
+            font-family: Arial;
+            cursor: url(https://i.postimg.cc/Rh2ft0Hf/tumblr-inline-nrkb03fxct1ry72eo-75sq.png),zoom-in;
+        }
+
+        #Mleft {
+            background: lightgray;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #Prof { position:absolute; width:15%; height:50%; top:7%; left:2%;
+        }
+        #Name {position:absolute; width:92%; height:10%;  left:4%;
+        }
+        #Pic { position:absolute; width:100%; height:90%; top:10%; 
+        }
+        #brds, #Mpic { position:absolute; width:92%; height:96%; top:2%; left:4%; 
+        }
+        #Mpic { background:black;
+        }
+        #br1, #br2 {
+            position: absolute;
+            background: gray;
+            right: 0;
+            transition: all .5s ease;
+            bottom: 0;
+        }
+
+        #br3, #br4 {
+            position: absolute;
+            background: gray;
+            left: 0;
+            transition: all .5s ease;
+            top: 0;
+        }
+        #bz1, #bz2 {
+            position: absolute;
+            background: gray;
+            left: 0;
+            transition: all .5s ease;
+            bottom: 0;
+        }
+
+        #bz3, #bz4 {
+            position: absolute;
+            background: gray;
+            right: 0;
+            transition: all .5s ease;
+            top: 0;
+        }
+        #br1, #br3 {
+            height: 1vw;
+            width: .05vw;
+        }
+
+        #br2, #br4 {
+            width: 1vw;
+            height: .05vw;
+        }
+        #bz1, #bz3 {
+            height: 1vw;
+            width: .05vw;
+        }
+
+        #bz2, #bz4 {
+            width: 1vw;
+            height: .05vw;
+        }
+        #Prof:hover #br1, #Prof:hover #br3, #Prof:hover #bz3, #Prof:hover #bz1 {
+            height: 4vw;
+        }
+        #Prof:hover #br2, #Prof:hover #br4, #Prof:hover #bz2, #Prof:hover #bz4 {
+            width:4vw;
+        }
+        #icns {
+            position: absolute;
+            width: 10%;
+            height: 49%;
+            top: 7%;
+            left: 17%; overflow:hidden;
+        }
+        #icn { position:absolute; width:6%; height:3%;  right:1.5%; top:2%; 
+        }
+        #icn2 { position:absolute; left:36.7%; margin-top:.5%; 
+        }
+        #Amn { position:absolute; left:27%; width:71%; height:90%; top:7%;  overflow:auto;
+        }
+
+            #Amn::-webkit-scrollbar {
+                width: 1vw;
+                background-color: black;
+            }
+
+
+            #Amn::-webkit-scrollbar-thumb {
+                border-radius: .5vw;
+                /*background: lightgray;*/
+                border: .1vw solid black;
+                /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                background: linear-gradient(360deg, black 43%,darkgray 43.1%, darkgray 50%, darkgray 56.9%, black 57%);
+            }
+
+                #Amn::-webkit-scrollbar-thumb:active {
+                    width: 1vw;
+                    background: linear-gradient(360deg, black 43%, #be4343 43.1%, #be4343 50%, #be4343 56.9%, black 57%);
+                }
+
+        #Mpic img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .vnt {
+            display: block;
+            float: left;
+            width: 1.5vw;
+            height: 1.5vw;
+            margin-left: .2vw;
+            border: .05vw solid darkgray;
+        }
+            .vnt img { width:60%; height:60%; margin-left:20%; margin-top:20%; opacity:.6;
+            }
+            .vnt:hover { background:darkgray;
+            }
+        .btns {
+            width: 80%;
+            height: 2vw;
+            position: absolute;
+            bottom: 2%;
+            left: -60%;
+            transition: all .5s ease;
+        }
+            .btns:hover { left:0; background:darkgray;
+            }
+                .btns:hover img { opacity:1;
+                }
+        #Btn4 {
+            bottom: 3vw;
+        }
+        #Btn3 {
+            bottom: 5.5vw;
+        }
+        #Btn2 {
+            bottom: 8vw;
+        }
+        #Btn1 {
+            bottom: 10.5vw;
+        }
+       
+        #dts { position:absolute; width:20%; height:35%; bottom:3%; left:2.5%;  
+        }
+        .Pimg { width:1.9vw; height:1.9vw; position:absolute; right:0; border:.05vw solid darkgray; background:lightgray;
+        }
+        .Aimg { width:60%; height:60%; position:absolute; left:20%; top:20%; 
+        }
+            .Aimg img {
+                width: 100%;
+                height: 100%;
+                opacity: .5;
+            }
+        #vr1, #vr2 {
+            position: absolute;
+            width: 1vw;
+            height: 94%;
+            border-top: .05vw solid gray;
+            border-bottom: .05vw solid gray;
+            transition: all .5s ease; z-index:2;
+        }
+        #vr1 { border-left:.05vw solid gray;
+        }
+        #vr2 {
+            right: 0;
+            border-right: .05vw solid gray;
+        }
+        #Prof:hover #vr1, #Prof:hover #vr2 {
+            width: 4vw;
+        }
+        #rnme { position:absolute; width:80%; left:10%; height:80%; top:10%; 
+        }
+        .nme {
+            position: absolute;
+            font-size: 1vw;
+            letter-spacing: .2vw;
+            color: dimgray;
+            transition: all .5s ease;
+        }
+        #N3 {
+            background: lightgray;
+            height: 78%;
+            overflow: hidden;
+            width: 80%;
+            
+            z-index: 2;
+            top: 1%;
+            transition: all .5s ease;
+        }
+        #N2 {
+            top: 1%;
+            height: 99%;
+            background: lightgray;
+            
+            z-index: 1;
+           
+        }
+        #N1 {
+            z-index: 3;
+            background: lightgray;
+            top: 1%;
+            height: 99%;
+        }
+        #Name:hover #N1 { opacity:0;
+        }
+        #Name:hover #N1 {
+            opacity: 0;
+        }
+        #Name #N2 {
+            left: .8%;
+            color: black;
+        }
+        #Name #N3 {
+            left: -.8%;
+            color: black;
+        }
+        .Abtn { position:absolute; height:100%; width:70%;  left:5%;
+        }
+            .Abtn p {
+                color: dimgray;
+                letter-spacing: .1vw;
+                font-size: .7vw;
+                transition: all .5s ease;
+            }
+                .Abtn p:hover { letter-spacing:.15vw; color:white;
+                }
+        #post {
+            width: 45%;
+            height: auto;
+            margin-bottom: 10%;background:white;
+        }
+        #Firm { width:100%; background:#171717; height:5vw;
+        }
+        #Aimgp { width:75%;  margin-left:5%;  border:.05vw solid darkgray;  
+        }
+        .PstImg { width:96%; margin:2%;
+        }
+        #Ptit {
+          
+            color: gray;
+            font-size: 1vw;
+            letter-spacing: .2vw;
+            padding: 1vw;
+            transition: all .5s ease;  margin-left:.5vw;
+        }
+        #post:hover #Ptit { letter-spacing:.25vw; color:#be4343;
+        }
+        #ImF { width:4vw; height:4vw; border:.04vw solid lightgray; position:absolute; left:1.5vw; margin-top:.4vw;
+        }
+            #ImF img { margin:5%; width:90%;
+            }
+        #Im { font-size:.7vw; color:white; letter-spacing:.15vw; position:absolute; left:9%; margin-top:.5vw;
+        }
+            #Im:hover { color:#be4343;
+            }
+       #tx {
+            font-size: .5vw;
+            color: darkgray;
+            letter-spacing: .1vw;
+            position: absolute;
+            left: 9%; width:25%;
+            margin-top: 2.5vw; 
+        }
+        #rgn {
+            font-size: .5vw;
+            color: #be4343;
+            letter-spacing: .1vw;
+            position: absolute;
+            left: 37%; opacity:.7;
+            width: 25%;
+            margin-top: 4vw;
+        }
+
+        #Ar { font-size:.6vw; color:dimgray; letter-spacing:.1vw; width:78%; margin-left:5%; margin-top:1vw; margin-bottom:1vw;
+        }
+        #bbr { position:absolute; width:1vw; height:100%; border:.05vw solid gray; overflow:hidden;
+        }
+        #bbr2 {
+            position: absolute;
+            width: .6vw;
+            left: .2vw;
+            height: 0;
+            bottom: 2%;
+            background: linear-gradient(darkgray, dimgray, #171717);
+            transition: all .5s ease;
+        }
+        #dts:hover #bbr2 {
+            height: 96%;
+        }
+        #Bimg { position:absolute; width:5vw; height:5vw; border:.05vw solid gray; bottom:-.5%; left:1.5vw;
+        }
+        #Bimg img { width:4.4vw; height:4.4vw; margin:.3vw;
+        }
+        #Atxt {
+            position: absolute;
+            width: 60%;
+            height: 5vw;
+            border: .05vw solid gray;
+            bottom: -.5%;
+            left: 7vw; overflow:hidden;
+        }
+        #Atxt p{ padding:.5vw; color:dimgray; font-size:.45vw; letter-spacing:.05vw;
+        }
+            #Atxt b { position:absolute; right:5%; font-size:.5vw; letter-spacing:.1vw; color:#be4343; opacity:.7;
+            }
+        #Mnme {
+            font-size: 1.2vw;
+            letter-spacing: .15vw;
+            color: gray;
+            left: 1.5vw;
+            position: absolute;
+            transition: all .5s ease;
+        }
+        #tf {
+            position: absolute;
+            left: 1.5vw;
+            top: 1.5vw;
+            width: 80%;
+            height: 40%;
+            transition: all .5s ease;
+        }
+        .dtss {
+            font-size: .65vw;
+            color: dimgray;
+            letter-spacing: .2vw;
+            margin-top: .5vw;
+            transition: all .5s ease;
+        }
+        #gt {
+            font-size: .55vw;
+        }
+        #Mnme:hover { letter-spacing:.3vw;
+        }
+        .dtss:hover { letter-spacing:.3vw;
+        }
+        #Repr {
+            position: absolute;
+            width: 25%;
+            height: 13%;
+            bottom: 3%;
+            right: 5%;
+            background: #171717;
+        }
+        #vid { width:5.5vw; height:5.5vw; border:.05vw solid lightgray; position:absolute; left:.5vw; top:.45vw;
+        }
+        #vid2 { overflow:hidden; width:90%; height:90%; margin:5%; background:gray;
+        }
+        #Esp { position:absolute; width:65%; height:60%;  left:35%; bottom:.5vw; 
+        }
+            #Esp img { width:100%;
+            }
+        #pl { position:absolute; width:2.5vw; height:2.5vw; left:27%; bottom:.5vw; opacity:.6; border-radius:.3vw;
+        }
+            #pl:hover { opacity:1; background:#be4343;
+            }
+        #plT, #plS {
+            position: absolute;
+            left: 27%;
+            color: gray;
+            letter-spacing: .1vw;
+        }
+        #plT { font-size:.7vw; 
+        }
+        #plS { font-size:.55vw; top:1vw;
+        }
+        #Social { position:absolute; width:13%; height:40%; left:70%; top:10%;
+        }
+        #ntb { position:absolute; right:2vw; width:4.4vw; height:2vw; 
+        }
+        .bny {
+            width: 1.7vw;
+            height: 1.7vw;
+            position: absolute;
+            border: .05vw solid gray;
+        }
+            
+        #btnMax {
+            top: -.05vw;
+            left: .55vw;
+        }
+        #btnMin {
+            left: 2.6vw;
+            top: -.05vw;
+        }
+        #btnClos {
+            left: 4.4vw;
+            position: absolute;
+            left: 83%;
+        }
+            #btnClos:target { width:0; overflow:hidden; opacity:0;
+            }
+            #btnMax:target #SocCont {
+                height:18vw; 
+            }
+        .imgbt { position:absolute; width:60%; margin:20%; opacity:.6;
+        }
+        .Dimg { width:100%; height:100%; position:absolute; background:#171717;
+        }
+            .Dimg:hover { background:gray;
+            }
+        #SocCont {
+            transition: all .5s ease;
+            position: absolute;
+            width: 12.5vw;
+            height: 2vw;
+            background: #171717;
+            left: -6.7vw;
+            top: 2vw;
+            overflow:hidden; 
+        }
+        #nm { width:100%; height:2vw; position:absolute; text-align:center; z-index:10; background:#171717;
+        }
+            #nm p {
+                color: lightgray;
+                font-size: .8vw;
+                letter-spacing: .2vw;
+                margin-top: .5vw;
+                transition: all .5s ease;
+            }
+        #SocCont:hover #pnm {
+            color: #be4343;
+        }
+        #btnMax:target #pnm {
+            letter-spacing: .3vw;
+            color: #be4343;
+        }
+        #btnMax:target #MnSl { opacity:1;
+        }
+        #MnSl { z-index:8;
+            width: 90%; border:.05vw solid lightgray;
+            height: 15.2vw;
+            position: absolute;
+            top:2vw;
+            left: .5vw;
+            opacity: 0;
+        }
+        #Alink { width:92%; height:90%; margin:5%; overflow:auto;
+        }
+        .Link { width:90%; height:3vw; border:.05vw solid lightgray; margin-bottom:.5vw; 
+        }
+        #Alink::-webkit-scrollbar {
+            width: .5vw;
+            background-color: lightgray;
+        }
+
+
+        #Alink::-webkit-scrollbar-thumb {
+            border-radius: .5vw;
+            /*background: lightgray;*/
+            border: .1vw solid lightgray;
+            /*-webkit-box-shadow: inset 0 0 6px gray;*/
+            background: linear-gradient(360deg, lightgray 43%,black 43.1%, black 50%, black 56.9%, lightgray 57%);
+        }
+        .Link:hover .lkimg { background:gray;
+        }
+        .lkimg {
+            width:2.4vw; height:2.4vw; margin-top:.2vw; margin-left:.2vw; border:.05vw solid lightgray;
+        }
+            .lkimg img { width:60%; margin:20%;
+            }
+        .Link:hover .nik { letter-spacing:.15vw; color:#be4343;
+        }
+        .Link:hover .Reg { color:white;
+        }
+        .Lkp {
+            width: 60%;
+            height: 70%;
+            margin-top: -25%;
+            left: 35%;
+            background: red;
+            position: relative; 
+        }
+        .nik, .Reg {
+            position: relative;
+            color: lightgray;
+            font-size: .6vw;
+            letter-spacing: .1vw;
+            left: 35%;
+            margin-top: -15%;
+            width: 1%;
+            transition: all .5s ease;
+        }
+        .Reg { margin-top:-7%; font-size:.5vw; color:gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="Mleft">
+        <div id="icn">
+            <div class="vnt"><img src="https://i.postimg.cc/prJ3fChz/menos.png" /></div>
+            <div class="vnt"><img src="https://i.postimg.cc/W4fNrNLT/minimizar-3.png" /></div>
+            <div class="vnt"><img src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+        </div>
+        <div id="Prof">
+
+            <div id="Name">
+                <div id="vr1"></div>
+                <div id="vr2"></div>
+                <div id="rnme">
+                    <div class="nme" id="N1"><p>xEvangelist</p></div>
+
+                    <div class="nme" id="N2"><p>xEvangelist</p></div>
+                    <div class="nme" id="N3"><p>xEvangelist</p></div>
+                </div>
+            </div>
+
+            <div id="Pic">
+                <div id="brds">
+                    <div id="bz1"></div><div id="bz2"></div><div id="bz3"></div><div id="bz4"></div>
+                    <div id="br1"></div><div id="br2"></div><div id="br3"></div><div id="br4"></div>
+
+                    <div id="Mpic"><img src="https://u.cubeupload.com/Azhriell/3dcvidarealidadesdesmot.jpg" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="icns">
+            <div id="Btn1" class="btns">
+                <div class="Abtn"><p>Find Me</p></div><div class="Pimg"><div class="Aimg"><img src="https://u.cubeupload.com/Azhriell/aviondepapel.png" /></div></div>
+            </div>
+            <div id="Btn2" class="btns"><div class="Abtn"><p>Suggestion?</p></div><div class="Pimg"><div class="Aimg"><img src="https://i.postimg.cc/265dNtTG/3193061.png" /></div></div></div>
+            <div id="Btn3" class="btns"><div class="Abtn"><p>01/08/21</p></div><div class="Pimg"><div class="Aimg"><img src="https://u.cubeupload.com/Azhriell/cargando.png" /></div></div></div>
+            <div id="Btn4" class="btns"><div class="Abtn"><p>Edit this</p></div><div class="Pimg"><div class="Aimg"><img src="https://i.postimg.cc/brfxksBt/4.pngs" /></div></div></div>
+            <div id="Btn5" class="btns"><div class="Abtn"><p>About...</p></div><div class="Pimg"><div class="Aimg"><img src="https://i.postimg.cc/qqc8L4PZ/5.png" /></div></div></div>
+        </div>
+        <div id="Amn">
+            <div id="post">
+                <div id="icn2">
+                    <div class="vnt"><img src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                    <div class="vnt"><img src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                    <div class="vnt"><img src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                </div>
+                <p id="Ptit">Speak now</p>
+                <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+
+                <div id="Ar">
+                    my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
+                    A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
+                    Tell me, what do you see?  A lifelessness hindered today
+
+                    <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
+                </div>
+                <div id="Firm">
+                    <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
+                    <b id="Im">@Reiizzue</b>
+                    <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
+                    <b id="rgn">xEvangelist</b>
+                </div>
+            </div>
+            <div id="post">
+                <div id="icn2">
+                    <div class="vnt"><img src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                    <div class="vnt"><img src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                    <div class="vnt"><img src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                </div>
+                <p id="Ptit">Will open </p>
+                <div id="Aimgp"> <img class="PstImg" src="https://i.postimg.cc/DzcgMrrY/tumblr-osxjyn-X2-It1vaa7r6o1-400.jpg" /></div>
+
+                <div id="Ar">
+                    your eyes from the illusion, you are not above me, but you are not a fool, because you know the horrible things of which I am capable. Now in your mind, you are mine, you are caught in the web and our fun is only beginning, I'm benevolent and in every darkness that wring you, I will stand in front of the light and give you my hand like my lost lamb. Your godess will always light your way.
+                </div>
+                <div id="Firm">
+                    <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/2b12.jpg" /></div>
+                    <b id="Im">@Lala</b>
+                    <div id="tx">𝑺𝒄𝒉𝒊𝒛𝒐𝒑𝒉𝒓𝒆𝒏𝒊𝒄...</div>
+                    <b id="rgn">Mechanizedoll</b>
+                </div>
+            </div>
+            <div id="post">
+                <div id="icn2">
+                    <div class="vnt"><img src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                    <div class="vnt"><img src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                    <div class="vnt"><img src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                </div>
+                <p id="Ptit">trying to reach you, </p>
+                <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/3c3497d6955189a94791.jpg" /></div>
+
+                <div id="Ar">
+                     trying to understand you and get closer, be part of your routine and get into your life, whether you want it or not, I'll be there knocking on your door until you agree. I appreciate you.
+                </div>
+                <div id="Firm">
+                    <div id="ImF"><img src="https://i.postimg.cc/PqdcJrK9/54.png" /></div>
+                    <b id="Im">@Nya</b>
+                    <div id="tx">...</div>
+                    <b id="rgn">NierT</b>
+                </div>
+            </div>
+        </div>
+        <div id="Repr">
+            <div id="vid"><div id="vid2"></div></div>
+            <p id="plT">Monologue</p>
+            <p id="plS">Moments in grace</p>
+            <img id="pl" src="https://i.postimg.cc/C5PsBJt7/pl.png" />
+            <div id="Esp"><img src="https://u.cubeupload.com/Azhriell/unnamed.gif" /></div>
+        </div>
+        <div id="dts">
+            <div id="bbr"><div id="bbr2"></div></div>
+            <b id="Mnme">@Reiizzue</b>
+            <div id="tf">
+                <p class="dtss">xEvangelist</p>
+                <p class="dtss" id="gt">1409430936</p>
+                <p class="dtss">.</p>
+            </div>
+
+            <div id="Bimg"><img src="https://u.cubeupload.com/Azhriell/2f7916ca6b3a6582eda6.png" /></div>
+            <div id="Atxt">
+                <p>
+                    𝒀𝒐𝒖'𝒍𝒍 𝒏𝒆𝒗𝒆𝒓 𝒇𝒊𝒏𝒅 𝒓𝒆𝒅𝒆𝒎𝒑𝒕𝒊𝒐𝒏 𝒏𝒐 𝒎𝒂𝒕𝒕𝒆𝒓 𝒘𝒉𝒂𝒕 𝒕𝒉𝒆 𝒄𝒐𝒔𝒕.
+                    𝑻𝒉𝒊𝒔 𝒊𝒔 𝒕𝒉𝒆 𝒑𝒓𝒊𝒄𝒆 𝒐𝒇 𝒃𝒆𝒍𝒊𝒆𝒇.
+                </p>
+                <b>xEvangelist</b>
+            </div>
+        </div>
+
+        <div id="Social">
+            <div id="btnClos" class="bny">
+                <a href="#btnClos"> <div class="Dimg"><img src="https://i.postimg.cc/YSYT0tDF/2.png" class="imgbt" /></div> </a>
+
+                    <div id="ntb">
+
+                        <div id="btnMax" class="bny">
+                            <a href="#btnMax"> <div class="Dimg"><img src="https://i.postimg.cc/K8ddm1fF/3.png" class="imgbt" /></div> </a><div id="SocCont">
+                                <div id="nm"><p id="pnm">Social links</p></div>
+
+                            <div id="MnSl">
+                                <div id="Alink">
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/0Q6mx7gf/55.png" /></div><p class="nik">Priestess</p><p class="Reg">DamitaOzcura</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/rwCNYGcR/2.png" /> </div><p class="nik">Queen</p><p class="Reg">Itami</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/yNLX7VDV/6.png" /></div><p class="nik">Genesis</p><p class="Reg">Deprecated</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/jjx4VWdg/4.png" /></div><p class="nik">Judgment</p><p class="Reg">Mechanizedoll</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/SxpGr10p/3.png" /> </div><p class="nik">l'étoile</p><p class="Reg">NierT</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/63SrGYVg/7.png" /></div><p class="nik">Divinitatem</p><p class="Reg">Taiga</p></div>
+                                    <div class="Link"><div class="lkimg"><img src="https://i.postimg.cc/TYb9nM49/1.png" /> </div><p class="nik">Blackbird</p><p class="Reg">zSunshinee</p></div>
+                                </div>
+
+                            </div>
+                            </div>
+
+                        </div>
+                        <div id="btnMin" class="bny">
+                            <a href="#"> <div class="Dimg"><img src="https://i.postimg.cc/4xKDC6zB/1.png" class="imgbt" /></div> </a>
+                            
+                        </div>
+                    </div>
+               
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+</html>

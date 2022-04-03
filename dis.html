@@ -1,0 +1,647 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        #main { font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            cursor: url(https://i.postimg.cc/Rh2ft0Hf/tumblr-inline-nrkb03fxct1ry72eo-75sq.png),auto;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: white;
+            margin: 0;
+            overflow: hidden;
+        }
+        #Ileft { position:absolute; width:20%; height:100%; background:black;
+        }
+        #ibar {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            left: 75%;
+            background: linear-gradient(-45deg, #C95385, #C95E53);
+        }
+        #iEq { position:absolute; width:4.2vw; height:3.5vw; background:white; left:-.4vw;
+        }
+            #iEq img { position:absolute; width:1.5vw; left:1.25vw; top:1vw;
+            }
+        #iback {
+            position: absolute;
+            width: 73%;
+            height: 87%;
+            background: #171717; top:8%;
+        }
+        #bar1 {
+            position: absolute;
+            width: 77.5%;
+            height: 4vw;
+            background: white;
+            top:5vw;
+        }
+        .bar {
+            width: 73%;
+            position: absolute;
+            height: 4vw;
+            background: #1E1E1E; transition:all 1s ease;
+           
+        }
+        #bar2 {
+            top: 9.5vw;
+        }
+        #main:target #bar2 {
+            top: 18.5vw;
+        } 
+        #bar3 {
+            top: 14vw;
+        }
+        #main:target #bar3 {
+            top: 23vw;
+        } 
+        #bar4 { top:18.5vw;
+        }
+        #main:target #bar4 {
+            top: 27.5vw;
+        } 
+        #bar5 { top:23vw;
+        }
+        #main:target #bar5 {
+            top: 32vw;
+        } 
+        #bar6 {
+            top: 27.5vw;
+        }
+        #main:target #bar6 {
+            top: 36.5vw;
+        } 
+        #Mnimg { position:absolute; width:4vw; left:.3vw;  height:4vw;
+        }
+        #Repr { filter:invert(100%);
+            position: absolute;
+            width: 68%;
+            height: 12%;
+            top: 82%;
+            left: 2.5%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #ines {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            top: 60%;
+        }
+
+        #LinBk {
+            position: absolute;
+            width: 100%;
+            height: .2vw;
+            background: black;
+            top: 40%;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        #LinIn {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(darkgray 50%, dimgray 100% );
+            animation: letin 500s 1;
+        }
+
+        @keyframes letin {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        #T0, #Tf, #band, #Mtt {
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            top: 65%;
+        }
+
+        #Tf {
+            right: 0;
+        }
+
+        #band {
+            top: -5%;
+            left: 37%;
+        }
+
+        #Mtt {
+            font-weight: bold;
+            left: 34%;
+            top: -20%;
+        }
+
+        .bt1 {
+            position: absolute;
+            width: 1vw;
+            top: 35%;
+        }
+
+        #retr {
+            left: 30%;
+        }
+
+        #adv {
+            right: 30%;
+        }
+
+        #play {
+            position: absolute;
+            width: 2vw;
+            top: 25%;
+            left: 43%;
+        }
+        .bt2 {
+            position: absolute;
+            top: 80%;
+        }
+
+        #ag {
+            left: 38%;
+            top: 77%;
+            width: 1.5vw;
+        }
+
+        #com {
+            width: 1vw;
+            left: 53%;
+        }
+
+
+        #control {
+            width: 2vw;
+            height: 2vw;
+            opacity: 0;
+            position: absolute;
+            z-index: 999;
+            left: 45%;
+            top: 26%;
+        }
+        #lkn2 {
+            width: 1vw;
+            height: 1vw;
+            position: absolute;
+            right: .5vw; z-index:-1;
+            top: 2.8vw;
+        }
+        #lkn {
+            width: 1vw;
+            height: 1vw;
+            position: absolute;
+            right: .5vw; transition: all .5s ease;
+            top: 2.8vw;
+            animation: bounce 2s infinite;
+            background-image: url(https://i.postimg.cc/DZpCxgxK/ordenar-abajo-1.png); background-size:cover;
+        }
+        #main:target #lkn { transform:rotate(180deg);
+        }
+        #main:target #lkn2 {
+           z-index:99;
+        }
+        @keyframes bounce {
+            0% {
+                top:2.8vw;
+            }
+
+            50% {
+                top: 3vw;
+            }
+            100% {
+                top: 2.8vw;
+            }
+        }
+        #Dtes {
+            width: 70%;
+            position: absolute;
+            height: 8.5vw;
+            background: #1E1E1E;
+            top: 9.5vw;
+            -webkit-transition: all 1s;
+            -webkit-transition-delay: .5s;
+            left: 2%; opacity:0;
+        }
+        #main:target #Dtes { opacity:1;
+        }
+        #Ime { position:absolute; left:20%; height:100%; width:15%; 
+        }
+        #MainImg { position:absolute; width:100%; height:31%;
+        }
+        #mainBar { text-align:center;
+            position: absolute;
+            width: 100%;
+            height: 7%; top:30%; background:#171717;
+        }
+            #mainBar p { color:white; font-size:.8vw; letter-spacing:.5vw; padding-top:.5vw; filter:blur(.7px); animation:opp 3s infinite;
+            }
+        @keyframes opp {
+            0% {
+                filter: blur(.4px);
+            }
+
+            33% {
+                filter: blur(1px);
+            }
+            66% {
+                filter: blur(.7px);
+            }
+            100% {
+                filter: blur(.5px);
+            }
+        }
+        .icon { position:absolute; width:2vw; height:2vw;   left:1.5vw;
+        }
+        #ic1 {
+            top: 10%;
+        }
+        #ic2 { top:16%;
+        }
+        #ic3 { top:22%;
+        }
+        #ic4 { top:28%;
+        }
+        #ic5 { top:34%;
+        }
+        .inv { filter:invert(100%); width:1.5vw; margin-left:.25vw;
+        }
+        .inv2 {
+            width: 1.5vw;
+            margin-left: .25vw;
+        }
+        .inv3 {
+            width: 2.2vw;
+            filter: invert(100%);
+        }
+        #Xop { /*opacity:0;*/
+            width: 3vw;
+            height: 0vw;
+            position: absolute;
+            left: -.5vw;
+            overflow: hidden;
+            -webkit-transition: all 1s;
+            -webkit-transition-delay: .5s;
+        }
+        #ic5:hover #Xop { height:15vw;
+        }
+        #tr {
+            width: 1.5vw;
+            transform: rotate(180deg);
+            position: absolute;
+            top: 0;
+            left: .75vw; z-index:99;
+            filter: invert(100%);
+        }
+        #Opt { height:93%; position:absolute; top:7%; background:white; width:100%; border-radius:.2vw;
+        }
+        .icon2 { position:absolute; width:1.5vw; left:.75vw;
+        }
+        #y1 { top:1vw;
+        }
+        #y2 { top:3.5vw;
+        }
+        #y3 { top:6vw; filter:invert(100%);
+        }
+        #y4 {
+            top: 8.5vw;
+            filter: invert(100%);
+        }
+        #y5 {
+            top: 11vw;
+        }
+        .ip {
+            color: gray;
+            background: white; font-weight:bold;
+            letter-spacing: .15vw;
+            font-size: .5vw;
+            position: absolute;
+            z-index: 99;
+            border-radius: .2vw;
+            top: -10%;
+            left: 110%;
+            overflow: hidden;
+            opacity: 0;
+            -webkit-transition: all 1s;
+            -webkit-transition-delay: .2s;
+
+        }
+        .icon:hover .ip {
+            opacity: 1;
+        }
+        #Rbar { width:15%; position:absolute; height:100%;  right:0;
+        }
+        #MainImgBar { position:absolute; width:65%; height:66%; top:18%; background:#171717; box-shadow:.2vw .2vw .5vw #171717;
+        }
+        #imgs {
+            position: absolute;
+            width: 55%;
+            height: 100%;
+        }
+        .im { width:5.5vw; height:5.5vw; background:green; margin-bottom:.1vw;
+
+        }
+            .im img { width:100%;
+            }
+        .T { text-transform:uppercase; font-size:.7vw; letter-spacing:.3vw; color:white; position:absolute;  transform:rotate(270deg); top:87%; font-weight:bold; opacity:.3; text-align:left;
+        }
+        #t1 { left:-.3vw; top:90%;
+        }
+        #t2 {
+            left:.5vw; top:89.1%;
+        }
+        #t3 {
+            left: .7vw;
+        }
+        #Atex { width:8vw; height:3vw;  position:absolute; left:5vw; top:1vw;
+        }
+        #Fp, #Fp1{
+            color:gray; font-size:.7vw; letter-spacing:.15vw; text-transform:uppercase; font-weight:bold;
+        }
+        #Fp1 { color:white;
+        }
+        #Sp, #Sp1 { font-size:.6vw; letter-spacing:.1vw; margin-top:-.5vw;
+        }
+        #Sp1 { color:gray;
+        }
+        #etiq { position:absolute; width:20%; height:30%;  left:38%; top:50%; overflow:hidden;
+        }
+        .Hsh {
+            width: auto;
+            height: auto;
+            background: linear-gradient(-45deg, #C95385, #C95E53);
+            padding: .4vw;
+            color: white;
+            margin-left:.1vw;
+            margin-bottom: 1vw; font-size:.9vw; letter-spacing:.1vw;
+        }
+        #MnDte { position:absolute; width:90%; height:40%; top:40%; left:5%;
+        }
+        .min { width:100%; height:14%; border-bottom:.1vw dashed gray;
+        }
+        .Nmber, .Text2, .Text { position:absolute; font-size:.8vw; letter-spacing:.1vw; color:gray; margin-top:7%;
+        }
+        .Nmber { left:0; color:black;
+        }
+        .Text { right:0; font-weight:bold;
+        }
+        #Bio {
+            width: 11%;
+            height: 17%;
+            position: absolute;
+            left: 38%;
+            top: 18%;
+        }
+        #Atx { width:30%; height:27%;
+            position: absolute;
+            left: 52%;
+            top: 17%; overflow:hidden; border-right:.1vw solid gray;
+        }
+            #Atx p { color:gray; font-size:.9vw; letter-spacing:.1vw; position:absolute;
+
+            }
+        #Bio b {
+            font-size: .9vw;
+            letter-spacing: .15vw;
+            color: gray;
+        }
+        #Bio p { font-size:.65vw; letter-spacing:.2vw; color:darkgray; margin-left:2vw;
+        }
+        #Fp13 { margin-top:2vw;
+        }
+        #bar23 { background:red; position:absolute; left:55%; top:85%;
+        }
+        .T2 {
+            text-transform: uppercase;
+            font-size: .8vw;
+            letter-spacing: .3vw;
+            color: white;
+            position: absolute;
+            transform: rotate(270deg);
+            top: 90%;
+            font-weight: bold;
+            opacity: .5;
+            text-align: right;
+        }
+
+        #t12 { top:1.3vw;
+            left: -.7vw;
+        }
+
+        #t24 {
+            top: 1.5vw;
+            left: 1vw;
+        }
+        #fot { width:75%; height:4%; top:96%; position:absolute; 
+        }
+        #cog2 {
+            position: absolute;
+            width: 2vw;
+            left: 2%;
+            
+        }
+
+        #Crdt {
+            color: #fff;
+            letter-spacing: .2vw;
+            font-size: .5vw;
+            position: absolute;
+            left: 19%;
+            opacity: .5
+        }
+        #nick { position:absolute; width:75%; height:6%; top:1%; text-align:center; opacity:.8; animation:opp 3s infinite;
+        }
+            #nick p { color:white; font-size:.9vw; letter-spacing:.3vw;
+            }
+        #Ski {
+            position: absolute;
+            left: 8vw;
+            font-size: .7vw; top:.5vw;
+            color: white;
+            letter-spacing: .3vw;
+        }
+        .Red { position:absolute;  width:6vw; height:1.8vw; right:0; bottom:0;
+        }
+           #Rt1 { bottom:2vw;
+            }
+            .Red:nth-child(3) {
+                bottom: 4vw;
+            }
+            .Red img { filter:invert(100%); width:1.4vw; position:absolute; bottom:.2vw;
+
+            }
+            .Red p { position:absolute; color:white; font-size:.55vw; letter-spacing:.15vw; left:1.6vw; bottom:-.4vw; 
+            }
+        #minicon { position:absolute; width:7vw; height:7vw; left:.4vw; top:1.2vw;
+        }
+        #MainImg {
+            position: absolute;
+            width: 15vw;
+            height: 31%;
+        } 
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="Ileft">
+            <div id="nick"> <p>  Skyrakerx - VII-980
+
+</p></div>
+            <div id="ibar">
+
+                <div id="iEq"><img src="https://i.postimg.cc/QdgX99M3/simbolo-x.png" /></div>
+
+                <a  href="#"> <div class="icon" id="ic1"><img src="https://i.postimg.cc/yYLCtkP1/hashtag.png" class="inv" /> <p class="ip" id="p1">Home</p></div></a>
+                <a  href="https://xat.com/web_gear/chat/editprofile.php?email="> <div class="icon" id="ic2"><img src="https://i.postimg.cc/VLfcKjXZ/editar-3.png" class="inv" /><p class="ip" id="p1">Edit</p></div></a>
+                <a  href="#"> <div class="icon" id="ic3"><img src="https://i.postimg.cc/05dsGtKJ/reproductor-de-video.png" class="inv" /><p class="ip" id="p1">Music</p></div> </a>
+                <a  href="https://xat.me/xEvangelist"> <div class="icon" id="ic4"><img src="https://i.postimg.cc/DwdYWmPK/11.png" class="inv2" /><p class="ip" id="p1">About</p></div> </a>
+                <div class="icon" id="ic5">
+                    <img src="https://i.postimg.cc/9FmQ1fMP/1.png" class="inv3" /><p class="ip" id="p1">Options</p>
+
+                    <div id="Xop">
+                        <img src="https://i.postimg.cc/DZpCxgxK/ordenar-abajo-1.png" id="tr" />
+                        <div id="Opt">
+                            <a href="#">  <img class="icon2" id="y1" src="https://i.postimg.cc/nL5PJKSj/3670367.png" /></a>
+                            <a  href="#">  <img class="icon2" id="y2" src="https://i.postimg.cc/VkfTBkb6/126500.png" /></a>
+                            <a  href="#">  <img class="icon2" id="y3" src="https://i.postimg.cc/QxftqVnY/can.png" /></a>
+                            <a  href="#">  <img class="icon2" id="y4" src="https://i.postimg.cc/52jtK1h4/ter.png" /></a>
+                            <a  href="#">  <img class="icon2" id="y5" src="https://i.postimg.cc/Cxc2vpj4/660252.png" /></a>
+                        </div>
+                    </div>
+                </div> <!--xat-->
+
+                <p id="t1" class="T">COLD</p>
+                <p id="t2" class="T">NIGHT</p>
+                <p id="t3" class="T">WINTER01</p>
+            </div>
+
+            <div id="iback"></div>
+            <div id="bar1">
+                <img id="Mnimg" src="https://i.postimg.cc/YqMkc23D/12.jpg" /> <div id="Atex"><p id="Fp">Disspear</p> <p id="Sp">zPotatoChips/164379262</p></div> <a href="#main"><div id="lkn"></div></a> <a href="#"><div id="lkn2"></div></a>
+            </div>
+            <div id="Dtes">
+                <img src="https://i.postimg.cc/mZ7JCkYW/1523119562-Da-MW2qt-W0-AAz0v5.gif" id="minicon" /> <p id="Ski">Skyrakerx</p>
+                <div class="Red"><img src="https://i.postimg.cc/wj2wFsvn/facebook-1.png" /><p>/Skyrakerx</p></div>
+                <div class="Red" id="Rt1"><img src="https://i.postimg.cc/g2mMvKYv/logotipo-de-twitter-sobre-fondo-negro.png" /><p>/Skyrakerx</p></div>
+                <div class="Red"><img src="https://i.postimg.cc/rppQHFRs/tumblr-1.png" /><p>/Skyrakerx</p></div>
+            </div>
+            <div id="bar2" class="bar"> <img id="Mnimg" src="https://i.postimg.cc/J0s1czPx/unnam4ed.png" /> <div id="Atex"><p id="Fp1">Nihil</p> <p id="Sp1">xEvangelist/164379262</p></div></div>
+            <div id="bar3" class="bar"><img id="Mnimg" src="https://i.postimg.cc/J7Y0y9PK/tumblr-mqh1t0-BKyb1ry0hnvo3-500.jpg" /> <div id="Atex"><p id="Fp1">Nihil</p> <p id="Sp1">xEvangelist/164379262</p></div></div>
+            <div id="bar4" class="bar"><img id="Mnimg" src="https://i.postimg.cc/J7Y0y9PK/tumblr-mqh1t0-BKyb1ry0hnvo3-500.jpg" /> <div id="Atex"><p id="Fp1">Nihil</p> <p id="Sp1">xEvangelist/164379262</p></div></div>
+            <div id="bar5" class="bar"><img id="Mnimg" src="https://i.postimg.cc/J7Y0y9PK/tumblr-mqh1t0-BKyb1ry0hnvo3-500.jpg" /> <div id="Atex"><p id="Fp1">Nihil</p> <p id="Sp1">xEvangelist/164379262</p></div></div>
+            <div id="bar6" class="bar"><img id="Mnimg" src="https://i.postimg.cc/J7Y0y9PK/tumblr-mqh1t0-BKyb1ry0hnvo3-500.jpg" /> <div id="Atex"><p id="Fp1">Nihil</p> <p id="Sp1">xEvangelist/164379262</p></div></div>
+
+            <div id="Repr">
+                <p id="Mtt">Like a stone</p>
+                <p id="band">Audioslave</p>
+                <img id="play" src="https://i.postimg.cc/zfyS5wLC/play-button.png" />
+                <img id="retr" class="bt1" src="https://i.postimg.cc/D0Jcgrhf/444.png" />
+                <img id="adv" class="bt1" src="https://i.postimg.cc/br79FZYx/boton-reproducir-siguiente.png" />
+                <div id="ines">
+                    <div id="LinBk"> <div id="LinIn"></div></div>
+                </div>
+                <p id="T0">0:00</p> <p id="Tf">7:14</p>
+                <img id="ag" class="bt2" src="https://i.postimg.cc/y6hVnwfR/3736241.png" />
+                <img id="com" class="bt2" src="https://i.postimg.cc/mZPxqK2k/replay.png" />
+                <div id="control"></div>
+            </div>
+            <div id="fot">
+                <img id="cog2" class="ImgCl" src="https://i.postimg.cc/85X2HHRY/93831206single-gear-cog-animation-1-2.gif" />
+                <p id="Crdt">POWERED BY xEVANGELIST <br /> [.REV 1.0][XAT.COM 2021]</p>
+            </div>
+        </div>
+
+        <div id="Ime">
+            <img src="https://i.postimg.cc/ZYLcx3bq/Captura.png"  id="MainImg"/>
+            <div id="mainBar">
+                <p>FALLING SNOW</p>
+            </div>
+
+            <div id="MnDte">
+                <div class="min"><p class="Nmber">efwefewfe</p></div>
+                <div class="min"><span class="Nmber">ONE.3</span> <span class="Text">efwefewfe</span></div>
+                <div class="min"><span class="Nmber">0.TWO</span> <span class="Text">efwefewfe</span></div>
+                <div class="min"><span class="Nmber">THREE.1</span> <span class="Text">efwefewfe</span></div>
+                <div class="min"><span class="Nmber">.0FOUR</span> <span class="Text">efwefewfe</span></div>
+                <div class="min"><span class="Nmber">FIVE.2</span> <span class="Text">efwefewfe</span></div>
+
+            </div>
+        </div>
+
+        <div id="etiq">
+            <span class="Hsh">#Egocentric</span>   <span class="Hsh">#Sadness</span> <span class="Hsh">#Godess</span> <br /><br />
+            <span class="Hsh">#God</span><span class="Hsh">#Monster</span> <span class="Hsh">#Desolation</span> <br /><br />
+            <span class="Hsh">#Egocentric</span>   <span class="Hsh">#Sadness</span> <span class="Hsh">#Godess</span> <br /><br />
+            <span class="Hsh">#Godess</span><span class="Hsh">#Monster</span> <span class="Hsh">#Desolation</span> <br /><br />
+            <span class="Hsh">#Egocentric</span>   <span class="Hsh">#Sadness</span> <span class="Hsh">#God</span> <br /><br />
+        </div>
+
+        <div id="Bio">
+            <b>BIOGRAPHY</b>
+            <p id="Fp13">Untitled</p>
+            <p>Untitled</p>
+            <p>Untitled</p>
+            <p>Untitled</p>
+        </div>
+
+        <div id="Atx">
+            <p>
+                𝐷'𝑜𝑢̀ 𝑗𝑒 𝑣𝑖𝑒𝑛𝑠 𝑙𝑒 𝑡𝑒𝑚𝑝𝑠 𝑛'𝑒𝑥𝑖𝑠𝑡𝑒 𝑝𝑎𝑠,
+                𝐿𝑒𝑠 𝑠𝑒𝑐𝑜𝑛𝑑𝑒𝑠 𝑑𝑒𝑣𝑖𝑒𝑛𝑛𝑒𝑛𝑡 𝑑𝑒𝑠 𝘩𝑒𝑢𝑟𝑒𝑠,
+                𝐿𝑒𝑠 𝑎𝑛𝑛𝑒́𝑒𝑠 𝑑𝑒 𝑐𝑜𝑢𝑟𝑡𝑠 𝑖𝑛𝑠𝑡𝑎𝑛𝑡 𝑠𝑖𝑡𝑜̂𝑡 𝑒𝑛𝑣𝑜𝑙𝑒́𝑠
+                𝐸𝑡 𝑛𝑜𝑠 𝑚𝑜𝑡𝑠 𝑡𝑟𝑜𝑚𝑝𝑒𝑢𝑟𝑠 𝑠𝑜𝑛𝑡 𝑟𝑒𝑚𝑝𝑙𝑎𝑐𝑒́𝑠
+                𝑃𝑎𝑟 𝑙𝑎 𝑚𝑢𝑠𝑖𝑞𝑢𝑒 𝑒𝑡 𝑙𝑒𝑠 𝑐𝑜𝑢𝑙𝑒𝑢𝑟𝑠
+                𝑄𝑢𝑖 𝑓𝑙𝑜𝑡𝑡𝑒𝑛𝑡 𝑐𝑜𝑚𝑚𝑒𝑠 𝑑𝑒𝑠 𝑝𝑎𝑟𝑓𝑢𝑚𝑠 𝑑𝑎𝑛𝑠 𝑙'𝑎𝑖𝑟 𝑎𝑚𝑏𝑟𝑒́
+
+                "𝑁'𝑎𝑖𝑒 𝑐𝑟𝑎𝑖𝑛𝑡𝑒, 𝑎̀ 𝑝𝑟𝑒́𝑠𝑒𝑛𝑡 𝑡𝑜𝑢𝑡 𝑒𝑠𝑡 𝑓𝑖𝑛𝑖
+                𝐵𝑟𝑖𝑠𝑒 𝑙𝑒𝑠 𝑐𝘩𝑎𝑖̂𝑛𝑒𝑠 𝑑𝑒 𝑡𝑒𝑠 𝑝𝑒𝑢𝑟𝑠 𝑚𝑜𝑟𝑡𝑒𝑙𝑙𝑒𝑠
+                𝑃𝑜𝑢𝑟 𝑎̀ 𝑗𝑎𝑚𝑎𝑖𝑠 𝑒𝑛 𝑒̂𝑡𝑟𝑒 𝑙𝑖𝑏𝑒́𝑟𝑒́
+                𝐸𝑡 𝑟𝑒𝑡𝑟𝑜𝑢𝑣𝑒𝑟 𝑙𝑎 𝑞𝑢𝑖𝑒́𝑡𝑢𝑑𝑒 𝑝𝑎𝑠𝑠𝑒́𝑒.
+                𝑁'𝑎𝑖𝑒 𝑐𝑟𝑎𝑖𝑛𝑡𝑒, 𝑎̀ 𝑝𝑟𝑒́𝑠𝑒𝑛𝑡 𝑡𝑜𝑢𝑡 𝑒𝑠𝑡 𝑓𝑖𝑛𝑖
+                𝐿𝑎𝑖𝑠𝑠𝑒 𝑐𝑜𝑢𝑙𝑒𝑟 𝑡𝑒𝑠 𝑙𝑎𝑟𝑚𝑒𝑠 𝑢𝑛𝑒 𝑑𝑒𝑟𝑛𝑖𝑒̀𝑟𝑒 𝑓𝑜𝑖𝑠
+                𝑃𝑜𝑢𝑟 𝑎̀ 𝑗𝑎𝑚𝑎𝑖𝑠 𝑒𝑛 𝑒̂𝑡𝑟𝑒 𝑙𝑖𝑏𝑒́𝑟𝑒́
+                𝐸𝑡 𝑟𝑒𝑗𝑜𝑖𝑛𝑠 𝑙𝑒 𝑚𝑜𝑛𝑑𝑒 𝑑'𝑜𝑢̀ 𝑡𝑢 𝑣𝑖𝑒𝑛𝑠."
+            </p>
+        </div>
+        <div id="Rbar">
+            <div id="MainImgBar">
+                <div id="imgs">
+                    <div class="im"><img src="https://i.postimg.cc/7YPZ5CY7/1691fd3315ecbdc48b45024f98f29485.jpg" /></div>
+                    <div class="im"><img src="https://i.postimg.cc/RFcZHKH1/293653c6a57a4912103c2e4043f0debf.jpg" /></div>
+                    <div class="im"><img src="https://i.postimg.cc/sxmfnzKv/tumblr-pdws88tbe81w365fl-500.jpg" /></div>
+                    <div class="im"><img src="https://i.postimg.cc/3NYJCNXs/tumblr-f9e4c42936a41173f076e1388c1ecb57-b08042f1-400.jpg" /></div>
+                    <div class="im"><img src="https://i.postimg.cc/gcH0cydm/tumblr-5f38aec8e86456a05d68669818611fc9-437e6c99-1280.jpg" /></div>
+                    <div class="im"><img src="https://i.postimg.cc/Jnwh0PG4/9cbf8ac758ef9ed39f7476412e6fc581.jpg" /></div>
+                </div> <div id="bar23">
+    <p id="t12" class="T2">SWEET</p>
+    <p id="t24" class="T2">SNOW</p>
+</div>
+              
+            </div>
+        </div>
+    </div>
+</body>
+</html>

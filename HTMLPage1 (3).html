@@ -1,0 +1,806 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #main {
+           cursor:crosshair;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: black;
+            margin: 0;
+            top: 0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            /*filter: invert(100%);*/
+        }
+     
+        #filter {
+            z-index: 999;
+            width: 110%;
+            height: 100%; left:-10%;
+            position: absolute;
+            background-image: url(https://i.postimg.cc/C1JK12BK/unnamed.gif);
+            filter: grayscale(100%);
+            opacity: .15; animation:fil 20s infinite;
+        }
+        @keyframes fil {
+            0% {
+               left:-10%;
+            }
+
+            50% { left:0%;
+            }
+           100% {
+                left: -10%;
+            }
+
+           
+        }
+        #maintext {
+            position: absolute;
+            width: 30%;
+            height: 40%;
+            top: 30%;
+            left: 35%;
+        }
+
+        #maintext {
+            color: white;
+        }
+
+        .guion {
+            filter: blur(1px);
+            font-size: 3vw;
+            padding: 0;
+            margin: 0;
+        }
+
+        #regname {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 2vw;
+        }
+
+            #regname p {
+                font-size: 1.3vw;
+                letter-spacing: 1vw;
+                margin-top: 1.1vw;
+                filter: blur(1px);
+            }
+
+        #desc1 {
+            font-size: .75vw;
+            font-weight: bold;
+            filter: blur(1px);
+            margin-top: 4vw;
+            letter-spacing: .4vw;
+        }
+
+        #cub {
+            position: absolute;
+            width: 20%;
+            height: 30%;
+            top: 66%;
+            left: 40%;
+        }
+
+            #cub p {
+                font-size: .5vw;
+                font-weight: bold;
+                filter: blur(1px);
+                letter-spacing: .3vw;
+            }
+
+        #controls {
+            width: 5%;
+            height: 80%;
+            position: absolute;
+            right: 8%;
+            top: 10%;
+        }
+
+        .circle {
+            width: 2.6vw;
+            height: 2.6vw;
+            border-radius: 50%;
+            border: .1vw solid white;
+            left: 1vw;
+            position: absolute;
+            filter: blur(1px);
+        }
+
+        #mnu1 {
+            top: 5%;
+        }
+
+        #mnu2 {
+            top: 45%;
+        }
+
+        #mnu3 {
+            bottom: 5%;
+        }
+        #mnu4 {
+            bottom: 2%; left:1%;
+        }
+        #im4 {
+            width: 2vw;
+            margin: .2vw; margin-top:.7vw;
+        }
+        .circle img {
+            filter: invert(100%);
+        }
+       
+
+        #im1, #im3 {
+            width: 1vw;
+            margin: .8vw; 
+        }
+        #im3 {
+            filter: invert(0%);
+            width: 1.6vw;
+            margin: .5vw;
+        }
+        #im2 {
+            width: 2vw; transition:.5s all ease;
+            margin: .3vw;
+        }
+
+        #Um {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #mnuBr {
+            width: 3vw;
+            height: 3vw;
+            top: 46%;
+            position: absolute;
+            right: 9%;
+            border-radius: 50%;
+            z-index: 999;
+        }
+            #mnuBr:hover #ctrl { opacity:1;
+            }
+        #mnubr2 {
+            width: 3vw;
+            height: 3vw;
+            bottom:14%;
+            position: absolute;
+            right: 9%; 
+            border-radius: 50%;
+            z-index: 999;
+        }
+            #mnubr2:hover #ctrl2 {
+                opacity: 1;
+            }
+        #mnubr3 { 
+            width: 3vw;
+            height: 3vw;
+            top: 14%;
+            position: absolute;
+            right: 9%;
+            border-radius: 50%;
+            z-index: 999;
+        }
+            #mnubr3:hover #ctrl3 { opacity:1;
+            }
+            /*---------------*/
+            #ctrl { transition:.5s all ease;
+            position: absolute;
+            width: 12vw;
+            height: 2vw;
+            top: 3vw; opacity:0;
+            left: -4.5vw;
+            filter: blur(1px);
+        }
+        #ctrl2 {
+            transition: .5s all ease;
+            position: absolute;
+            width: 12vw;
+            height: 3vw;
+            top: 3vw; opacity:0;
+            left: -4.5vw;
+            filter: blur(1px);
+        }
+     
+        #min, #min2, #min3, #min4 {
+            color: white;
+            font-size: 1.5vw;
+            position: absolute;
+            width: 1.4vw;
+            height: 1.4vw;
+            border-radius: 50%;
+            top: 0vw;
+            z-index: 10;
+        }
+
+       
+
+        #max, #max2, #max3, #max4 {
+            font-size: 1vw;
+            color: white;
+            position: absolute;
+            width: 1.4vw;
+            height: 1.4vw;
+            border-radius: 50%;
+            right: 0;
+            top: .25vw;
+            z-index: 10;
+        }
+        #min2, #max2 {
+            z-index: 9;
+            opacity: 0;
+        }
+        #min3, #max3 {
+            z-index: 8;
+            opacity: 0;
+        }
+        #min4, #max4 {
+            z-index: 7;
+            opacity: 0;
+        }
+        #line {
+            width: 60%;
+            height: .2vw;
+            background: darkgray;
+            left: 20%;
+            position: absolute;
+            top: 45%;
+        }
+
+        #circ {
+            width: 1vw;
+            height: 1vw;
+            border-radius: 50%;
+            position: absolute;
+            background: white;
+            top: -.4vw;
+            left: 45%; transition:.5s ease all;
+        }
+
+        /*#m3 |-- ---*/
+        #m3:target #im2 {
+            transform: rotate(-90deg);
+        }
+        #m3:target #filter { opacity:0;
+        }
+        #m3:target #circ {
+            left: 0%;
+        }
+        #m3:target #min4 { z-index:1999; 
+        }
+        #m3:target #min4 {
+            color: #8f3232;
+        }
+        #m3:target #max {
+            z-index: -1;
+            opacity: 0;
+        }
+
+        #m3:target #max4 {
+            opacity: 1;
+            z-index: 11;
+        }
+        /*# normal --- | ---*/
+
+
+
+        /*# m6 -|- ---*/
+        #m6:target #im2 {
+            transform: rotate(-45deg);
+        }
+        #m6:target #filter {
+            opacity: .13;
+        }
+        #m6:target #circ {
+            left: 25%;
+        }
+        #m6:target #max {
+            z-index: -1;
+            opacity: 0;
+        }
+        #m6:target #max3 {
+            opacity: 1; z-index:10;
+        }
+        #m6:target #min {
+            z-index: -1;
+            opacity: 0;
+        }
+        #m6:target #min4 {
+            opacity: 1;
+            z-index: 10;
+        }
+        /*#m5 --- -|- */
+        #m5:target #im2 { transform:rotate(45deg);
+        }
+        #m5:target #filter {
+            opacity: .18;
+        }
+        #m5:target #circ {
+            left: 65%;
+        }
+
+        #m5:target #min {
+            z-index: -1;
+            opacity: 0;
+        }
+
+        #m5:target #min2 {
+            opacity: 1;
+        }
+        #m5:target #max {
+            z-index: -1;
+            opacity: 0;
+        }
+        #m5:target #max2 { opacity:1;
+        }
+        /*#m4 --- --|*/
+        #m4:target #im2 {
+            transform: rotate(90deg);
+        }
+        #m4:target #filter {
+            opacity: .20;
+        }
+        #m4:target #max2 { z-index:10;
+        }
+        #m4:target #circ {
+            left: 95%;
+        }
+        #m4:target #min {
+            z-index: -1;
+            opacity: 0;
+        }
+        #m4:target #min3 {
+            opacity: 1; z-index:10;
+        }
+        #m4:target #max2 { color:#8f3232;
+        }
+
+        #play {
+            width: 1.8vw;
+            height: 1.8vw; position:absolute; top:0;
+            border: .2vw solid white;
+        }
+            #play img {
+                width: 1.2vw; margin:.3vw;
+                height: 1.2vw; filter:invert(100%);
+            }
+        #Rline { position:absolute; width:74%; height:.4vw;  top:.9vw; left:22%; border:.05vw solid white;
+        }
+        #Rln { position:absolute; width:0%; height:100%; background:#2e2d2d; animation: line 300s 1; animation-fill-mode:forwards;
+        }
+        @keyframes line {
+            0% {
+               width:0%;
+            }
+
+
+            100% {
+                width: 100%;
+            }
+        }
+        #NmeSng { position:absolute; color:white; letter-spacing:.1vw; font-size:.55vw; left:22%; bottom:.6vw;
+        }
+        .menu2 {
+            z-index: 5; 
+            text-transform: uppercase;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            pointer-events: none;
+            position: absolute;
+            top: 94%;
+            left: 2vw;
+            mix-blend-mode: difference; z-index:9999;   
+        }
+        .menu {
+            text-transform: uppercase;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            pointer-events: none;
+            position: absolute;
+            top: 94%;
+            left: 2vw;
+            mix-blend-mode: difference;
+            z-index: 9999;
+        }
+            .menu:hover .spacer:before, .menu2:hover .spacer:before {
+                width: 100%;
+                transition-delay: 0s;
+            }
+
+            .menu:hover .item, .menu2:hover .item {
+                opacity: 1;
+                top: 0px;
+            }
+        .menu2 {
+            top: 2%;
+            left: 1vw;
+        }
+
+            .menu:hover, .menu2:hover {
+                pointer-events: all;
+            }
+
+        .label, .label2 {
+            width: 2vw;  left:-.5vw; top:.5vw;
+            height: 2vw; 
+            cursor: pointer;
+            position: absolute;
+            pointer-events: all;
+        }
+
+      
+
+        .spacer {
+            display: inline-block;
+            width: 5vw; 
+            margin-left: 1vw;
+            margin-right: 3vw;
+            vertical-align: middle;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .spacer:before {
+                content: "";
+                position: absolute;
+                border-bottom: .1vw solid gray; filter:blur(1px);
+                height: .1vw;
+                width: 0%;
+                transition: width 0.25s ease;
+                transition-delay: 0.7s;
+            }
+
+        .item {
+            position: relative;
+            display: inline-block;
+            margin-right: 2vw;
+            top: 2vw;
+            opacity: 0;
+            transition: opacity 0.5s ease, top 0.5s ease;
+            transition-delay: 0;
+            margin-left: -1.5vw;
+            display: flex;
+        }
+        
+
+
+        .Xsp {
+            transition: color 0.5s ease;
+            font-size: .55vw; filter:blur(1px);
+            color: gray;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            letter-spacing: .1vw;
+        }
+
+        .item:hover .Xsp {
+            color: #8f3232;
+        }
+
+        .menu:hover .spacer:before, .menu2:hover .spacer:before {
+            width: 100%;
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item, .menu2:hover .item {
+            opacity: 1;
+            top: 0px;
+        }
+
+        .item:nth-child(1) {
+            transition-delay: 0.45s;
+        }
+
+        .item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .item:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .item:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+        .item:nth-child(7) {
+            transition-delay: 0.15s;
+        }
+
+        .item:nth-child(8) {
+            transition-delay: 0.1s;
+        }
+
+        .item:nth-child(9) {
+            transition-delay: 0.05s;
+        }
+
+        .item:nth-child(10) {
+            transition-delay: 0s;
+        }
+
+        .menu:hover .item:nth-child(1) {
+            transition-delay: 0.25s;
+        }
+
+        .menu:hover .item:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .menu:hover .item:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .menu:hover .item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .menu:hover .item:nth-child(5) {
+            transition-delay: 0.45s;
+        }
+
+        .menu:hover .item:nth-child(6) {
+            transition-delay: 0.5s;
+        }
+
+        .menu:hover .item:nth-child(7) {
+            transition-delay: 0.55s;
+        }
+
+        .menu:hover .item:nth-child(8) {
+            transition-delay: 0.6s;
+        }
+
+        .menu:hover .item:nth-child(9) {
+            transition-delay: 0.65s;
+        }
+
+        .menu:hover .item:nth-child(10) {
+            transition-delay: 0.7s;
+        }
+        #item0 { margin-top:3vw;
+        }
+        .act:active { color:#8f3232;
+        }
+        .item2 {
+            position: relative;
+            display: inline-block;
+            margin-right: 2vw;
+            top: 2vw;
+            opacity: 0;
+            transition: opacity 0.5s ease, top 0.5s ease;
+            transition-delay: 0;
+        }
+        .item2:hover .Xsp {
+            color: #8f3232;
+        }
+        .menu:hover .item2, .menu2:hover .item {
+            opacity: 1;
+            top: 0px;
+        }
+        .item2:nth-child(1) {
+            transition-delay: 0.45s;
+        }
+
+        .item2:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .item2:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .item2:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .item2:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .item2:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+        .item2:nth-child(7) {
+            transition-delay: 0.15s;
+        }
+        .menu:hover .item2:nth-child(1) {
+            transition-delay: 0.25s;
+        }
+
+        .menu:hover .item2:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .menu:hover .item2:nth-child(3) {
+            transition-delay: 0.35s;
+        }
+
+        .menu:hover .item2:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .menu:hover .item2:nth-child(5) {
+            transition-delay: 0.45s;
+        }
+
+        .menu:hover .item2:nth-child(6) {
+            transition-delay: 0.5s;
+        }
+
+        .menu:hover .item2:nth-child(7) {
+            transition-delay: 0.55s;
+        }
+        .menu:hover .item2:nth-child(8) {
+            transition-delay: 0.6s;
+        }
+
+        .menu:hover .item2:nth-child(9) {
+            transition-delay: 0.65s;
+        }
+        #crdy p { bottom:-1%; position:absolute; left:34%;
+            animation: flicker  2.5s infinite alternate;
+            color: rgba(66, 66, 66, 0.5);
+            font-size: .8vw;  z-index:9999;
+            letter-spacing: .2vw;
+            margin-left: .5vw;
+            animation-delay: .3s;
+        }
+
+        @keyframes flicker {
+
+            0%, 18%, 22% {
+                color: #FFF;
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+            20%, 24%, 55%, 100% {
+                color: rgba(66, 66, 66, 0.5);
+                text-shadow: none;
+            }
+        }
+        #com { width:2vw; height:2vw; opacity:0;  position:absolute; background:red; left:83.5%; top:86%; z-index:999;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="m1">
+            <div id="m2">
+                <div id="m3">
+                    <div id="m4">
+                        <div id="m5">
+                            <div id="m6">
+                                <div id="Um">
+                                    <div id="mnu4" class="circle"> <img id="im4" src="https://i.postimg.cc/9FmQ1fMP/1.png" /></div>
+
+                                    <div id="maintext">
+                                        <p class="guion" id="g1">-</p>
+                                        <div id="regname"><p>MR.COBAIN</p></div>
+                                        <p class="guion" id="g2">-</p>
+
+                                        <p id="desc1">A REAL-TIME DIGITAL EXPERIENCE BT</p>
+
+                                        <div id="cub">
+                                            <p>ULTRANOIR</p>
+
+                                            <p>ᔓᔓᔓ🔲ᔓᔓᔓ</p>
+                                            <p>CODEXII</p>
+                                        </div>
+                                    </div>
+                                    <div id="controls">
+                                        <div id="mnu1" class="circle"> <img id="im1" src="https://i.postimg.cc/CxMYNSLk/menu.png" /></div>
+                                        <div id="mnu2" class="circle"> <img id="im2" src="https://i.postimg.cc/HkSmvRVK/brightness.png" /></div>
+                                        <div id="mnu3" class="circle"> <img id="im3" src="https://i.postimg.cc/02qD99qT/equalizer.gif" /></div>
+                                    </div>
+
+                                    <div id="filter"></div>
+
+                                    <div id="mnuBr">
+                                        <div id="ctrl">
+                                            <div id="min"><a class="act" href="#m6">-</a></div>
+                                            <div id="min2"><a class="act" href="#">-</a></div>
+                                            <div id="min3"><a class="act" href="#m5">-</a></div>
+                                            <div id="min4"><a class="act" id="mnz4" href="#m3">-</a></div>
+
+                                            <div id="line"><div id="circ"></div></div>
+
+
+
+                                            <div id="max"><a class="act" href="#m5">✚</a></div>
+                                            <div id="max2"><a class="act" href="#m4">✚</a></div>
+                                            <div id="max3"><a class="act" href="#">✚</a></div>
+                                            <div id="max4"><a class="act" href="#m6">✚</a></div>
+                                        </div>
+                                    </div>
+                                    <div id="mnubr2">
+                                        <div id="ctrl2">
+                                            <div id="play"><img src="https://i.postimg.cc/rsvzydTY/next.png" /></div>
+                                            <div id="Rline">
+                                                <div id="Rln"></div>
+                                            </div>
+                                            <div id="NmeSng">COWBOY/BEBOP</div>
+                                        </div>
+                                    </div>
+                                    <div id="mnubr3">
+                                        <div class="menu2">
+                                            <div class="label2"> </div>
+
+                                            <div class="item" id="item0"><a href="https://xat.me/i=414592708"><span class="Xsp">AILU</span></a></div>
+                                            <div class="item" id="item1"><a href="http://xat.me/SraLavigne"><span class="Xsp">IZA</span></a></div>
+                                            <div class="item" id="item1"><a href="https://xat.me/Keiou"><span class="Xsp">DAMI</span></a></div>
+                                            <div class="item" id="item1"><a href="https://xat.me/Nymphia"><span class="Xsp">DIANA</span></a></div>
+                                            <div class="item" id="item1"><a href="http://xat.me/OnigiriQueen"><span class="Xsp">DAY</span></a></div>
+                                            <div class="item" id="item1"><a href="http://xat.me/RainbowKanojo"><span class="Xsp">PAME</span></a></div>
+                                            <div class="item" id="item1"><a href="https://xat.me/MechanizeDoll"><span class="Xsp">LALA</span></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="menu">
+                                        <div class="label"></div>
+                                        <div class="spacer"></div>
+                                        <div class="item2"><a href="https://xat.com/web_gear/chat/editprofile.php?email="><span class="Xsp">Edit</span></a></div>
+                                        <div class="item2"><a href="https://xat.wiki/Main_Page"><span class="Xsp">Wiki</span></a></div>
+                                        <div class="item2"><a href="https://forum.xat.com/"><span class="Xsp">Forum</span></a></div>
+                                        <div class="item2"><a href="https://xat.com/privacy.htmI"><span class="Xsp">Privacy</span></a></div>
+                                        <div class="item2"><a href="https://xat.com/terms.htmI"><span class="Xsp">Terms</span></a></div>
+                                        <div class="item2"><a href="https://xat.com/safety.htmI"><span class="Xsp">safety</span></a></div>
+                                        <div class="item2"><a href="https://xat.com/report#!user&UserName="><span class="Xsp">Inappropiate</span></a></div>
+                                    </div>
+
+                                </div>
+                                <a href="https://xat.me/xEvangelist">  <div id="crdy"><p>xEVANGELIST  / XAT.COM® ALL RIGHTS© RESERVED 2021  </p></div></a>
+                                <div id="com"> [youtube:20:20:6Hj6hPqKiS4:autoplay=1&loop=1&start=0&version=3]</div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</body>
+</html>

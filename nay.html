@@ -1,0 +1,1296 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #main {
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background:gray;
+            
+            margin: 0;
+            top: 0;
+            overflow: hidden;
+            text-align: center;
+            transition: all 1s ease;
+            /*filter: invert(100%);*/
+        }
+
+
+        #menu {
+            position: absolute;
+            width: 100%;
+            background:#262626;
+            height: 12%;
+            z-index: 10;
+        }
+        #selectr {
+            width: 6vw;
+            height: 150%;
+            position: absolute;
+            background: #d03838;
+            left: 4%; transition:.5s all ease;
+        }
+        #m4:target #Maintrgt{ height:100%; 
+        }
+        #m4:target #selectr {
+            left:14.7%; height:110%; 
+        }
+        #m4:target #triangle {
+            opacity: 1;
+        }
+        #m4:target #img1{
+            filter: invert(0%);
+        }
+        #m4:target #sp1 { letter-spacing:.3vw;
+            filter: invert(100%);
+        }
+        #m4:target #mign { width:4vw; left:1vw;
+        }
+        #m4:target #Mainnick { font-size:1vw; letter-spacing:1vw; margin-top:4.8vw;
+        }
+
+
+        #m3:target #Maintrgt {
+            height: 100%;
+        }
+        #m3:target #selectr {
+            left: 23.5%;
+            height: 110%;
+        }
+
+        #m3:target #triangle {
+            opacity: 1;
+        }
+
+        #m3:target #img2 {
+            filter: invert(0%);
+        }
+
+        #m3:target #sp2 {
+            letter-spacing: .3vw;
+            filter: invert(100%);
+        }
+
+        #m3:target #mign {
+            width: 4vw;
+            left: 1vw;
+        }
+
+        #m3:target #Mainnick {
+            font-size: 1vw;
+            letter-spacing: 1vw;
+            margin-top: 4.8vw;
+        }
+
+
+        #m2:target #Maintrgt {
+            height: 100%;
+        }
+
+        #m2:target #selectr {
+            left: 32.7%;
+            height: 110%;
+        }
+
+        #m2:target #triangle {
+            opacity: 1;
+        }
+
+        #m2:target #img3 {
+            filter: invert(0%);
+        }
+
+        #m2:target #sp3 {
+            letter-spacing: .3vw;
+            filter: invert(100%);
+        }
+
+        #m2:target #mign {
+            width: 4vw;
+            left: 1vw;
+        }
+
+        #m2:target #Mainnick {
+            font-size: 1vw;
+            letter-spacing: 1vw;
+            margin-top: 4.8vw;
+        }
+
+
+
+        #Mainnick {
+            transition: .5s all ease;
+            color: white;
+            font-size: 1.5vw;
+            letter-spacing: .15vw;
+            font-family: 'Agency FB';
+            margin-top: 7.2vw;
+            font-weight: bolder;
+        }
+
+        #submenu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+        }
+        #Maintrgt { width:6vw; height:150%; position:absolute; left:4%;
+        }
+            #Maintrgt img { filter:invert(100%); width:6vw; top:.5vw; position:absolute; left:0;  transition: .5s all ease;
+            }
+        #img1, #sp1, #mign, #img2, #sp2, #img3, #sp3 {
+            transition: .5s all ease;
+        }
+
+       
+        .menus { width:5vw; height:2vw;  left:15%; position:absolute; top:50%;
+        }
+            .menus img { position:absolute; right:0; bottom:.2vw; width:.5vw; filter:invert(100);
+            }
+            .menus span { color:white; font-size:1vw; letter-spacing:.2vw; font-family:'Agency FB';  
+            }
+        #menu2 { left:24%;
+        }
+        #menu3 { left:33%;
+        }
+
+        #triangle {
+            width: 0;
+            height: 0;
+            top: 100%;
+            position: absolute; opacity:0;
+            border-right: 3vw solid transparent;
+            border-bottom: 3vw solid transparent;
+            border-left: 3vw solid transparent;
+            border-top: 1.5vw solid #f62e2e;
+        }
+        #cont {
+            position: absolute;
+            width: 100%;
+            background: #d03838;
+            height: 64.5%;
+            top: 12%;
+            border-bottom:.5vw solid #262626;
+        }
+        #m4:target #Rot { left:-100%;
+        }
+        #m3:target #Rot {
+            left: -200%;
+        }
+        #m2:target #Rot {
+            left: -300%;
+        }
+        
+        #Rot {
+            position: absolute;
+            width: 400%;
+            height: 100%; left:0;
+            transition: .5s all ease;
+        }
+        #mainIm { position:absolute; width:60%; height:100%; background:#171717; overflow:hidden;
+        }
+        .imgMain { width:25%; height:100%; position:absolute; 
+        }
+        #Mimg1 {
+            left: 0;
+           
+        }
+        #m1:target #Mimg1 {
+            animation: blurx 3s 1;
+        }
+        #Mimg2 { left:25%;
+        }
+        #m4:target #Mimg2 {
+            animation: blurx 3s 1;
+        }
+        #Mimg3 {
+            left: 50%;
+        }
+        #m3:target #Mimg3 {
+            animation: blurx 3s 1;
+        }
+        #Mimg4 {
+            left: 75%;
+        }
+        #m2:target #Mimg4 {
+            animation: blurx 3s 1;
+        }
+        .menus span:hover { color:#f62e2e;
+        }
+        @keyframes blurx {
+            0% {
+                filter: blur(3px);
+            }
+
+
+
+            100% {
+                filter: blur(0px);
+            }
+        }
+        #posts, #Friends, #music {
+            position: absolute; z-index:-1;
+            width: 40%; right:0; opacity:0;
+            height: 100%; overflow:hidden;
+        
+        }
+        #About {
+            position: absolute; 
+            width: 40%;
+            right: 0;
+            opacity: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+        #m4:target #posts { opacity:1; z-index:5;
+        }
+        #m3:target #Friends {
+            opacity: 1;
+            z-index: 5;
+        }
+        #m4:target #About, #m3:target #About, #m2:target #About {
+            opacity: 0;
+        }
+        #postCont {
+            position: absolute;
+            width: 100%;
+            height: 200%;
+        }
+        #postIntro p, #FriendIntro p, #aboutIntro p{ color:white; font-family:'Agency FB'; position:absolute; font-weight:bold; filter:blur(.5px); opacity:0;
+        }
+       
+        
+        #postIntro { z-index:10; background:#f62e2e;
+            position: absolute; 
+            width: 100%;
+            height: 50%;
+        }
+       
+        #PPost1 { transform:rotate(270deg); font-size:2.2vw; letter-spacing:.4vw; bottom:5%; position:absolute; 
+        }
+        #m4:target #PPost1 { animation:entrance .5s 1; animation-fill-mode:forwards;
+        }
+       
+        #PPost3 {
+            position: absolute;
+            transform: rotate(270deg);
+            font-size: 6.2vw;
+            letter-spacing: 1.2vw;
+            left: -9%;
+           bottom:2%;
+        }
+        #m4:target #PPost3 {
+            animation: entrance .5s 1;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+        }
+
+        #PPost2 {
+            
+            font-size: 2.2vw;
+            letter-spacing: 1.2vw;
+            top: -3%; right:2%;
+            position: absolute;
+        }
+        #m3:target #PPost2 {
+            animation: entrance .5s 1;
+            animation-fill-mode: forwards;
+        }
+        #PPost4 {
+            position: absolute;
+            transform: rotate(90deg);
+            font-size: 6.2vw;
+            letter-spacing: 1.4vw;
+            right:-22%;
+            top:25%;
+        }
+
+        #m3:target #PPost4 {
+            animation: entrance .5s 1;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+        }
+
+        #PPost5 {
+          
+            font-size: 6.2vw;
+            letter-spacing: 1.2vw;
+            top: -20%;
+            left: 2%;
+            position: absolute;
+        }
+        #m1:target #PPost5 {
+            animation: entrance .5s 1;
+            animation-delay: .2s;
+            animation-fill-mode: forwards;
+        }
+        #PPost6 {
+            font-size: 3.2vw;
+            transform: rotate(90deg);
+            letter-spacing: .8vw;
+            top: -4%;
+            left: 50%;
+            position: absolute;
+        }
+        #m1:target #PPost6 {
+            animation: entrance .5s 1;
+            animation-delay: .7s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes entrance {
+            0% {
+               opacity:0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        #Apost { width:70%; height:90%;  position:absolute; top:7.5%; left:25%; overflow:auto; opacity:0;
+        }
+        #m4:target #Apost {
+            animation: entrance .5s 1;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+        #Apost::-webkit-scrollbar, #aFri::-webkit-scrollbar {
+            width: .3vw;
+            background-color: transparent;
+        }
+
+
+        #Apost::-webkit-scrollbar-thumb, #aFri::-webkit-scrollbar-thumb {
+            background-color: white;
+        } 
+        #pub { margin-bottom:2vw;
+            width: 95%;
+            height: auto;
+            background: #f35656;
+            box-shadow: .2vw .2vw .5vw #262626;
+            border-radius: .4vw;
+        }
+       
+        #pub img
+        {
+            width:90%;  margin-top:.5vw; box-shadow:.2vw .2vw .5vw #262626;
+        }
+        .ppost { color:white; font-family:'Agency FB'; 
+        }
+        #tit { font-size:1vw;  letter-spacing:.3vw;
+        }
+        #Subt { font-size:.7vw; letter-spacing:.1vw; font-family:Arial;
+        }
+        #bar {
+            letter-spacing: .2vw;
+            font-size: 1.5vw;
+            font-weight: bold;
+            -webkit-text-stroke:  .05vw #262626; filter:blur(1px);
+        }
+        #credit { font-size:.7vw; letter-spacing:.2vw; margin-bottom:1vw;
+        }
+        #aboutIntro p {
+            opacity:1; z-index:2;
+        }
+        #m1:target #aboutIntro p { opacity:0;
+        }
+
+
+
+        #aFri {
+            width: 74%;
+            height: 88%;
+            position: absolute;
+            top: 4%;
+            left: 3%;
+            overflow: auto;
+            direction: rtl;
+        }
+        #foot { width:100%; background:#262626; bottom:0; position:absolute; height:2vw;
+        }
+        #xatlog { height:4vw; width:4vw; position:absolute; background:#262626; bottom:0; 
+        }
+            #xatlog img { width:3.4vw; position:absolute; left:.3vw; top:1vw; filter:invert(100%);
+            }
+        #crdy p {
+            animation: flicker5 1.5s infinite alternate;
+            color: rgba(66, 66, 66, 0.5);
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            margin-left: .5vw;
+            animation-delay: .3s;
+        }
+        @keyframes flicker5 {
+
+            20%, 24%, 55%, 100% {
+                color: #FFF;
+                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+            }
+
+            0%, 18%, 22% {
+                color: rgba(66, 66, 66, 0.5);
+                text-shadow: none;
+            }
+        }
+        #m2:target #music {
+            animation: entrance .5s 1; animation-delay:.5s;
+            z-index: 5;
+            animation-fill-mode: forwards;
+        }
+        #aFri { opacity:0;
+        }
+        #m3:target #aFri {
+            animation: entrance .5s 1;
+            animation-delay: 1s;
+            z-index: 5;
+            animation-fill-mode: forwards;
+        }
+        #album { position:absolute; width:90%; height:65%; top:7%; left:5%;  overflow:hidden;
+                 
+        }
+        #imgback1 { width:100%; position:absolute; height:100%; transform:scale(1.3); filter:blur(1.5px); left:0;
+        }
+        #imgfont { width:21.5vw; height:21.5vw; position:absolute; left:22%;
+        }
+        #backf { width:96%; height:94%; position:absolute; left:2%; top:3%; background:#262626;
+        }
+        #Repr { 
+            filter: invert(100%);
+            position: absolute;
+            width: 90%;
+            height: 18%;
+            top: 77%;
+            left: 5%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #ines {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            top: 60%;
+        }
+
+        #LinBk {
+            position: absolute;
+            width: 100%;
+            height: .2vw;
+            background: black;
+            top: 40%;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        #LinIn {
+            position: absolute;
+            width: 100%;
+            height: 100%; filter:invert(100%);
+            background: linear-gradient(#f62e2e 50%, dimgray 100% );
+            animation: letin 500s 1;
+        }
+
+        @keyframes letin {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        #T0, #Tf, #band, #Mtt {
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            top: 65%;
+        }
+
+        #Tf {
+            right: 0;
+        }
+
+        #band {
+            width: 100%;
+            top: 7%;
+        }
+
+        #Mtt {
+            font-weight: bold;
+            width:100%;  top:-10%;
+        }
+
+        .bt1 {
+            position: absolute;
+            width: 1vw;
+            top: 35%;
+        }
+
+        #retr {
+            left: 40%;
+        }
+
+        #adv {
+            right: 40%;
+        }
+
+        #play {
+            position: absolute;
+            width: 2vw;
+            top: 25%;
+            left: 47%;
+        }
+
+        .bt2 {
+            position: absolute;
+            top: 80%;
+        }
+
+        #ag {
+            left: 43%;
+            top: 77%;
+            width: 1.5vw;
+        }
+
+        #com {
+            width: 1vw;
+            left: 53%;
+        }
+
+        #control { 
+            width: 2vw;
+            height: 2vw;
+            opacity: 0;
+            position: absolute;
+            z-index: 9999;
+            left: 47%;
+            top: 26%;
+        }
+        #aboutinf { width:80%; height:80%; position:absolute;  top:2%; left:15%;
+        }
+        #imgfon { position:absolute; border-radius:0 0 0 60vw; width:40vw; height:40vw; background:red; top:-20%; left:30%; overflow:hidden; border:.6vw solid white; filter:blur(1px);
+        }
+        #imgpst {position:absolute; width:40vw; height:40vw; left:0;
+        }
+        #Ared { width:80%; height:10%;  position:absolute; left:2%; bottom:2%;
+        }
+        #nmereg { color:darkgray; position:absolute; left:2%; font-size:1.1vw; letter-spacing:.1vw; top:25%;
+        }
+        #nmenum {
+            color: darkgray;
+            position: absolute;
+            left: 2%;
+            font-size: .8vw;
+            letter-spacing: .25vw;
+            top: 30%;
+        }
+        .red { width:2vw; height:2vw; position:absolute; filter:invert(100%); top:1vw;
+        }
+        .red:nth-child(1) { left:0;
+        }
+            .red:nth-child(2) { left:30%;
+            }
+            .red:nth-child(3) {left:60%;
+            }
+        #fri {
+            position: relative;
+            overflow: hidden;
+            width: 70%;
+            height: 5vw;
+            background: #f35656;
+            margin-bottom: 2.5vw;
+            margin-right: 5%;
+            border-radius: .5vw;
+            box-shadow: .2vw .2vw .5vw #262626;
+        }
+        #fimg1 { overflow:hidden;
+            width: 6vw; border:.2vw solid white; filter:blur(1px);
+            height: 6vw;
+            position: absolute;
+            background: red;
+            border-radius: 0 0 10vw 0;
+            top: -.5vw;
+            left: -1%;
+        }
+        #fimg1 img { width:100%; height:100%;
+        }
+        #fname { color:white; font-size:.6vw; letter-spacing:.2vw; position:absolute; left:35%; top:7%;
+        }
+        #fdesc {
+            color: darkgray;
+            font-size: .6vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            left: 30%; width:65%;
+            top: 22%;
+        }
+        #bar2 {
+            letter-spacing: .2vw;
+            font-size: 1.5vw;
+            font-weight: bold; position:absolute; bottom:-5%;
+            -webkit-text-stroke: .05vw #262626; width:80%; left:20%;
+            filter: blur(1px);
+        }
+        #cirl { position:absolute; left:2%; width:15%; height:5%;  top:35%;
+        }
+        .c1 { width:.8vw; height:.8vw; background:gray; float:left; margin-right:1vw; border-radius:50%; filter:blur(1px); opacity:.7;
+        }
+        #Ared span { color:white; position:absolute; letter-spacing:.2vw; font-size:.7vw; bottom:10%;
+        }
+        #sp11 { left:8%;
+        }
+        #sp22 { left:38%;
+        }
+        #sp33 {left:68%;
+        }
+        #m1:target #aboutinf, #m1:target #aboutIntro span, #m1:target #Ared, #m1:target #cirl {
+            opacity: 0;
+        }
+        #m1:target #aboutinf, #m1:target #aboutIntro span, #m1:target #Ared, #m1:target#cirl {
+            animation: entrance .5s 1;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+        #submenu2 { width:35%; height:100%;  right:0; position:absolute;
+        }
+        #cdro1 { position:absolute; right:0; height:100%; width:12%; background:dimgray;
+        }
+        #cdro2 { z-index:999;
+            position: absolute;
+            right: 0;
+            height: 40%;
+            width: 40%;
+            background: dimgray;
+        }
+            #cdro2 p { color:white; font-size:.7vw; letter-spacing:.2vw; margin-right:20%; transition:.5s all ease;
+            }
+                #pl:hover { letter-spacing:.3vw;
+                }
+                #fd {
+                    position: absolute;
+                    width: .6vw;
+                    transform: rotate(90deg);
+                    left: 65%;
+                    top: 35%;
+                    animation: ltop 2s infinite;
+                }
+        @keyframes ltop {
+            0% {
+                top: 35%;
+            }
+
+           33% {
+                top: 40%;
+            }
+            66% {
+                top: 30%;
+            }
+            100% {
+                top:35%;
+            }
+        }
+        #serch { position:absolute; width:40%; height:35%;  top:5%; left:19%; z-index:999;
+        }
+        #boxsrh {
+            position: absolute;
+            width: 70%; overflow:hidden;
+            background: dimgray;
+            height: 100%;
+            text-align: left;
+            -webkit-user-modify: read-write;
+        }
+        #btnrd { position:absolute; height:100%; right:0%; width:28%; background:#d03838;
+        }
+        #boxsrh p{ color:white; font-size:.7vw; letter-spacing:.2vw; font-style:italic; padding-left:.5vw; 
+        }
+        #barmen { width:90%; left:5%; height:5%; position:absolute; top:81%; background:#3b3b3b; z-index:999;
+        }
+        #barmmu {
+            width: 10%;
+            height: 70%;
+            top: -70%;
+            right: 2%;
+            position: absolute;
+            background: #3b3b3b;
+        }
+        #icon { filter:invert(100%); width:1.5vw; height:1.5vw; position:absolute; right:80%; bottom:15%;
+        }
+        #com1 { overflow:hidden; width:25%; height:20%; background:#171717; bottom:20%; left:22%; position:absolute; border-radius:1vw; color:white; letter-spacing:.15vw; font-size:.55vw; filter:blur(.5px);
+        }
+        #spp { margin-top:.3vw;
+        }
+            #spp span { color:#d03838;
+            }
+        #cube3 { width:20%; height:30%; background:#d03838; position:absolute; bottom:15%; left:50%;
+        }
+        #txt2 { color:white; font-size:.8vw; letter-spacing:.2vw; margin-top:.5vw;  animation:ent 1s infinite;
+        }
+        @keyframes ent {
+            0% {
+                opacity:0;
+            }
+            48.9% {
+                opacity: 0;
+            }
+            49% {
+                opacity: 1;
+            }
+
+            99% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        #btnrd img { position:absolute; filter:invert(100%); width:1.5vw; top:.2vw; left:1.2vw;
+        }
+        #sep { width:100%; height:.1vw; position:absolute; top:50%; border-bottom:dashed .2vw dimgray; filter:blur(.5px);
+        }
+        #ecu, #ecu2, #ecu3, #ecu4, #ecu5, #ecu6 {
+            width: 15%;
+            height: 20%;
+            position: absolute;
+            left: 5%;
+            top: 80%;
+            transform: rotate(180deg);
+            opacity: .7;
+            filter: grayscale(100%) contrast(400%) invert(100%);
+        }
+        #ecu2 { left:20%; 
+        }
+        #ecu3 {
+            left: 35%;
+        }
+        /*#ecu4 {
+            left: 50%;
+        }
+        #ecu5 {
+            left: 65%;
+        }
+        #ecu6 {
+            left: 80%;
+        }*/
+        #mess { width:44%; right:5%; height:8%; background:#3b3b3b; bottom:5%; position:absolute; text-align:left;
+        }
+        #barmmu span {
+            color: white;
+            font-size: 1.5vw;
+            margin: .5vw;
+            font-weight: bold;
+        }
+
+        #m1:target #k1, #m4:target #k2, #m3:target #k3, #m2:target #k4 {
+            color: dimgray;
+        }
+        #k1 {
+            color: dimgray;
+        }
+        #main { font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        #mlk { color:white; font-size:1.2vw; font-weight:bold; filter:blur(1px); padding-left:.5vw; 
+        }
+        #ml {
+            background: #d03838;
+            color: white; left:.5vw;
+            font-size: .7vw;
+            font-weight: bold;
+            filter: blur(.7px);
+            padding-right: .5vw;
+            padding-left: .5vw;
+            letter-spacing: .15vw;
+            position: relative;
+            top: -1.6vw;
+        }
+        #ref { position:absolute; width:63%; left:35%; height:60%; top:30%; 
+        }
+        .vl {
+            width: 2vw;
+            height: 2vw;
+            background: #d03838;
+            margin-right: .7vw;
+            float: left;
+            filter: blur(1px);
+        }
+            .vl:nth-child(2) {
+                filter: grayscale(10%);
+            }
+            .vl:nth-child(3) {
+                filter: grayscale(20%);
+            }
+            .vl:nth-child(4) {
+                filter: grayscale(30%);
+            }
+            .vl:nth-child(5) {
+                filter: grayscale(40%);
+            }
+            .vl:nth-child(6) {
+                filter: grayscale(50%);
+            }
+            .vl:nth-child(7) {
+                filter: grayscale(60%);
+            }
+            .vl:nth-child(8) {
+                filter: grayscale(70%);
+            }
+            .vl:nth-child(9) {
+                filter: grayscale(85%);
+            }
+
+            .vl:last-child { filter:grayscale(100%);
+            }
+        #m1 { opacity:0;
+        }
+        #m1 {
+            animation: entrance 1s 5.5s;
+            animation-fill-mode: forwards;
+        }
+        #loadpage {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #f33c3c;
+            animation: zind 1s 5.5s;
+            animation-fill-mode: forwards;
+        }
+
+        #LD {
+            left: 0;
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: #f33c3c;
+            animation: topse 1s 5s;
+            animation-fill-mode: forwards;
+        }
+
+        #LI {
+            position: absolute;
+            width: 50%;
+            left: 50%;
+            height: 100%;
+            background: #f33c3c;
+            animation: topde 1s 5s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes zind {
+            0% {
+                z-index: 99999;
+                background: #f33c3c;
+            }
+
+            100% {
+                z-index: -1;
+                background: transparent;
+            }
+        }
+
+        @keyframes topse {
+            0% {
+                left: 0%;
+            }
+
+            50% {
+                left: 0%;
+            }
+
+            100% {
+                left: -50%;
+            }
+        }
+
+        @keyframes opk {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes topde {
+            0% {
+                left: 0%;
+            }
+
+            50% {
+                left: 0%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        #imglod {
+            position: absolute;
+            width: 10vw;
+            top: 47%;
+            left: 47%;
+            filter: blur(1px);
+        }
+
+        #imglod2 {
+            position: absolute;
+            width: 10vw;
+            top: 47%;
+            filter: blur(2px) sepia(1) hue-rotate(330deg) saturate(070%);
+            left: 47%;
+        }
+
+        .tocero {
+            animation: opk .5s 5s;
+            animation-fill-mode: forwards;
+        }
+
+        #ptoc {
+            color: white;
+            font-size: 2vw;
+            font-weight: bold;
+            position: relative;
+            top: 65%;
+            left: 2%;
+            letter-spacing: .2vw;
+            filter: blur(2px);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="loadpage">
+
+
+            <div id="LD">
+
+            </div>
+            <div id="LI">
+
+            </div>
+            <img class="tocero" src="https://i.postimg.cc/sfWD8kYF/loading.gif" id="imglod" />
+            <img class="tocero" src="https://i.postimg.cc/tJz0bNR6/lg-ring-loading-gif.gif" id="imglod2" />
+            <p class="tocero" id="ptoc">LOADING</p>
+        </div>
+        <div id="m1">
+            <div id="m2">
+                <div id="m3">
+                    <div id="m4">
+
+                        <div id="menu">
+                            <div id="submenu2">
+                                <div id="cdro1"></div>
+                                <div id="cdro2"><a href="https://xat.com/web_gear/chat/editprofile.php?email="><p id="pl">LOGIN/EDIT</p></a><img id="fd" src="https://i.postimg.cc/Vk0W3CGZ/flecha-correcta.png" /></div>
+                                <div id="serch">
+                                    <div id="boxsrh"><p id="txt">SEARCH...</p></div>
+                                    <div id="btnrd">
+                                        <img src="https://i.postimg.cc/m25khPgG/lupa.png" />
+                                    </div>
+                                </div>
+                                <img id="icon" src="https://i.postimg.cc/rwxnztNd/comentario.png" />
+                                <div id="com1"><p id="spp">103K KLT-45 <span>[]</span> 001</p></div>
+                                <div id="cube3"><p id="txt2">ONLINE</p></div>
+                            </div>
+                            <div id="selectr">
+                                <div id="triangle"></div>
+                            </div>
+                            <div id="submenu">
+                                <a href="#m1">
+                                    <div id="Maintrgt">
+                                        <img id="mign" src="https://i.postimg.cc/2ySsmPkG/abstracto.png" />
+                                        <p id="Mainnick">NISHI</p>
+                                    </div>
+                                </a>
+
+                                <a href="#m4">
+                                    <div id="menu1" class="menus">
+                                        <span id="sp1">POSTS</span>
+                                        <img id="img1" src="https://i.postimg.cc/2SxvPJt3/niveles.png" />
+                                    </div>
+
+                                </a>
+                                <a href="#m3">
+                                    <div id="menu2" class="menus">
+                                        <span id="sp2">FRIENDs</span>
+                                        <img id="img2" src="https://i.postimg.cc/2SxvPJt3/niveles.png" />
+                                    </div>
+
+                                </a> <a href="#m2">
+                                    <div id="menu3" class="menus">
+                                        <span id="sp3">MUSIC</span>
+                                        <img id="img3" src="https://i.postimg.cc/2SxvPJt3/niveles.png" />
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div id="cont">
+                            <div id="mainIm">
+                                <div id="Rot">
+                                    <img id="Mimg1" class="imgMain" src="https://i.postimg.cc/N0x1h0d3/wp2762997.jpg" />
+                                    <img id="Mimg2" class="imgMain" src="https://i.postimg.cc/DfC3vdWZ/tumblr-nmb9mxf8v-T1u1mutio1-1280.png" />
+                                    <img id="Mimg3" class="imgMain" src="https://i.postimg.cc/4y2DWsCt/tumblr-507f60556e7b58ab8b6df3826f9630f1-77bac32e-2048.jpg" />
+
+                                    <img id="Mimg4" class="imgMain" src="https://i.postimg.cc/HnLG0jNd/687474703a2f2f73342e666176696d2e636f6d2f6f7269672f3135303232372f626c61636b2d616e642d77686974652d6772.jpg" />
+                                </div>
+
+
+                            </div>
+                            <div id="About">
+
+                                <div id="aboutIntro">
+
+                                    <p id="PPost5">ABOUT</p>
+                                    <p id="PPost6">ME:</p>
+
+                                    <div id="aboutinf">
+                                        <div id="imgfon">
+                                            <img src="https://u.cubeupload.com/Azhriell/yj.jpg" id="imgpst" />
+                                        </div>
+
+                                    </div>
+                                    <span id="nmereg">NAYELYS / NAYI</span>
+                                    <span id="nmenum">1522135253</span>
+                                    <div id="Ared">
+                                        <img class="red" src="https://i.postimg.cc/wj2wFsvn/facebook-1.png" />
+                                        <img class="red" src="https://i.postimg.cc/g2mMvKYv/logotipo-de-twitter-sobre-fondo-negro.png" />
+                                        <img class="red" src="https://i.postimg.cc/rppQHFRs/tumblr-1.png" /> <span id="sp11">/NAYELIS</span><span id="sp22">/NAYELIS</span><span id="sp33">/NAYELIS</span>
+                                    </div>
+                                    <div id="cirl">
+                                        <div class="c1"></div>
+                                        <div class="c1"></div>
+                                        <div class="c1"></div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div id="posts">
+                                <div id="postCont">
+                                    <div id="postIntro">
+
+                                        <p id="PPost1">THE</p>
+                                        <p id="PPost3">POSTS</p>
+
+                                        <div id="Apost">
+                                            <div id="pub">
+
+                                                <img src="https://i.postimg.cc/DfC3vdWZ/tumblr-nmb9mxf8v-T1u1mutio1-1280.png" /> <br />
+                                                <b id="tit" class="ppost">TITLE OF POST</b> <br />
+                                                <span id="Subt" class="ppost">SUBTITLE OF POST</span><br />
+                                                <span id="bar" class="ppost">-------------------------</span><br />
+                                                <span id="credit" class="ppost">CREDITS / USER / 0000000</span>
+                                            </div>
+                                            <div id="pub">
+
+                                                <img src="https://i.postimg.cc/DfC3vdWZ/tumblr-nmb9mxf8v-T1u1mutio1-1280.png" /> <br />
+                                                <b id="tit" class="ppost">TITLE OF POST</b> <br />
+                                                <span id="Subt" class="ppost">SUBTITLE OF POST</span><br />
+                                                <span id="bar" class="ppost">-------------------------</span><br />
+                                                <span id="credit" class="ppost">CREDITS / USER / 0000000</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="Friends">
+
+                                <div id="FriendIntro">
+
+                                    <p id="PPost2">THE</p>
+                                    <p id="PPost4">FRIENDs</p>
+                                    <div id="aFri">
+                                        <a href="#">
+                                            <div id="fri">
+                                                <div id="fimg1">
+                                                    <img src="https://u.cubeupload.com/Azhriell/c652.jpg" />
+                                                </div>
+                                                <span id="fname">xEVANGELIST/1533252890</span>
+                                                <span id="fdesc">
+                                                    "Disembodied, gasping, I tumbled
+                                                    In the flush of a thousand cold lights,
+                                                    through this night of neon,
+                                                    That I'll never belong to..."
+                                                </span><br />
+                                                <span id="bar2" class="ppost">-----------------------</span><br />
+
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div id="fri">
+                                                <div id="fimg1">
+                                                    <img src="https://u.cubeupload.com/Azhriell/c652.jpg" />
+                                                </div>
+                                                <span id="fname">xEVANGELIST/1533252890</span>
+                                                <span id="fdesc">
+                                                    "Disembodied, gasping, I tumbled
+                                                    In the flush of a thousand cold lights,
+                                                    through this night of neon,
+                                                    That I'll never belong to..."
+                                                </span><br />
+                                                <span id="bar2" class="ppost">-----------------------</span><br />
+
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div id="fri">
+                                                <div id="fimg1">
+                                                    <img src="https://u.cubeupload.com/Azhriell/c652.jpg" />
+                                                </div>
+                                                <span id="fname">xEVANGELIST/1533252890</span>
+                                                <span id="fdesc">
+                                                    "Disembodied, gasping, I tumbled
+                                                    In the flush of a thousand cold lights,
+                                                    through this night of neon,
+                                                    That I'll never belong to..."
+                                                </span><br />
+                                                <span id="bar2" class="ppost">-----------------------</span><br />
+
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div id="fri">
+                                                <div id="fimg1">
+                                                    <img src="https://u.cubeupload.com/Azhriell/c652.jpg" />
+                                                </div>
+                                                <span id="fname">xEVANGELIST/1533252890</span>
+                                                <span id="fdesc">
+                                                    "Disembodied, gasping, I tumbled
+                                                    In the flush of a thousand cold lights,
+                                                    through this night of neon,
+                                                    That I'll never belong to..."
+                                                </span><br />
+                                                <span id="bar2" class="ppost">-----------------------</span><br />
+
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div id="fri">
+                                                <div id="fimg1">
+                                                    <img src="https://u.cubeupload.com/Azhriell/c652.jpg" />
+                                                </div>
+                                                <span id="fname">xEVANGELIST/1533252890</span>
+                                                <span id="fdesc">
+                                                    "Disembodied, gasping, I tumbled
+                                                    In the flush of a thousand cold lights,
+                                                    through this night of neon,
+                                                    That I'll never belong to..."
+                                                </span><br />
+                                                <span id="bar2" class="ppost">-----------------------</span><br />
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div id="music">
+                                <div id="backf">
+                                    <div id="Repr">
+
+
+                                        <div id="Mtt">The Eerie Cold</div>
+
+
+                                        <div id="band">
+                                            Shining – The Eerie Cold
+                                        </div> <img id="play" src="https://i.postimg.cc/zfyS5wLC/play-button.png">
+                                        <img id="retr" class="bt1" src="https://i.postimg.cc/D0Jcgrhf/444.png">
+                                        <img id="adv" class="bt1" src="https://i.postimg.cc/br79FZYx/boton-reproducir-siguiente.png">
+
+
+                                        <div id="ines">
+
+
+                                            <div id="LinBk">
+
+
+                                                <div id="LinIn">&nbsp;</div>
+                                            </div>
+                                        </div> <p id="T0">0:00</p>
+
+                                        <p id="Tf">5:51</p> <img id="ag" class="bt2" src="https://i.postimg.cc/y6hVnwfR/3736241.png">
+                                        <img id="com" class="bt2" src="https://i.postimg.cc/mZPxqK2k/replay.png">
+
+                                        <div id="control">
+                                            [youtube:20:20:jh5iinG-CtE:autoplay=1&loop=1&start=0&version=3]
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="album">
+                                    <img id="imgback1" src="https://i.postimg.cc/0rgfdfLx/258060-emp.jpg" />
+                                    <img id="imgfont" src="https://i.postimg.cc/0rgfdfLx/258060-emp.jpg" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div id="barmen">
+                            <div id="barmmu">
+                                <a href="#m1"><span id="k1">1</span></a><a href="#m4"><span id="k2">2</span></a>
+                                <a href="#m3"><span id="k3">3</span></a><a href="#m2"><span id="k4">4</span></a>
+                            </div><div id="sep"></div>
+                        </div>
+                        <img id="ecu" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />
+                        <img id="ecu2" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />
+                        <img id="ecu3" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />
+                        <!--<img id="ecu4" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />
+                    <img id="ecu5" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />
+                    <img id="ecu6" src="https://i.postimg.cc/Y9WZNy13/5dac85a365b2d91b4c0e4360-equalizer-gif-6.gif" />-->
+                        <div id="mess">
+                            <p id="mlk">HOLOGRAPHIC SOUL</p> <span id="ml">1522135253|NAYI|RKL-9</span>
+
+                            <div id="ref">
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div>
+                                <div class="vl"></div><div class="vl"></div>
+                            </div>
+                        </div>
+
+                        <div id="foot">
+                            <div id="xatlog"> <img src="https://i.postimg.cc/9FmQ1fMP/1.png" /></div>
+                            <a href="https://xat.me/xEvangelist">  <div id="crdy"><p>xEVANGELIST / XAT.COM® ALL RIGHTS© RESERVED 2021 </p></div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
