@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -1006,34 +1006,40 @@
                     audioData = [
 
                         {
+                            name: "RADIO OFF",
+                            artist: "RADIO OFF",
+                            src:
+                                ""
+                        },
+                        {
                             name: "BLACKBIRD",
                             artist: "ALTER BRIDGE",
                             src:
                                 "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
                         },
                         {
-                            name: "RESIST AND DISORDER",
-                            artist: "REZODRONE",
+                            name: "BROKEN WINGS",
+                            artist: "ALTER BRIDGE",
                             src:
-                                "cyberpunk-2077-resist-and-disorder-by-rezodrone-jason-charles-miller-jamison-boaz.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
                         },
                         {
-                            name: "BLACK DOG",
-                            artist: "SAMURAI",
+                            name: "SHINING STAR",
+                            artist: "RHAPSODY",
                             src:
-                                "https://xevangelist.github.io/evangelist/black-dog.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/rhapsody-of-fire-shining-star.mp3?raw=true"
                         },
                         {
-                            name: "CHIPPIN'IN",
-                            artist: "SAMURAI",
+                            name: "DEAD FLOWERS",
+                            artist: "DEMONHUNTER",
                             src:
-                                "https://xevangelist.github.io/evangelist/samurai-chippin-in-cyberpunk-2077-ost.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/demon-hunter-dead-flowers.mp3?raw=true"
                         },
                         {
-                            name: "A LIKE SUPREME",
-                            artist: "SAMURAI",
+                            name: "OPEN YOUR EYES",
+                            artist: "ALTER BRIDGE",
                             src:
-                                "https://xevangelist.github.io/evangelist/cyberpunk-2077-a-like-supreme-by-samurai-refused.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/alter-bridge-open-your-eyes.mp3?raw=true"
                         },
                         {
                             name: "NEVER FADE AWAY",
@@ -1041,12 +1047,7 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/cyberpunk-2077-never-fade-away-by-samurai-refused.mp3"
                         },
-                        {
-                            name: "RADIO OFF",
-                            artist: "RADIO OFF",
-                            src:
-                                ""
-                        }
+                       
                     ];
 
                     artistname.html(audioData[CurrentSong].artist);
@@ -1241,7 +1242,7 @@
         <a href="#"> <div class="bn"><img src="https://i.postimg.cc/ncbX8bGW/tttt.png" /></div></a>
         <a href="#"> <div class="bn"><img src="https://i.postimg.cc/w3McKVF4/mus.png" /></div></a>
     </div>-->
-                    <img id="pimg" src="https://u.cubeupload.com/Azhriell/1517802618492jpg.jpg" />
+                    <img id="pimg" src="" />
                     <div id="At"><p>>> Woodswallow~</p></div>
                     <div id="desc">
                         <p>
@@ -1269,16 +1270,19 @@
                     // scripts.js
                    function randomimg() { 
                     // Random Number Generator
-                    var maxRand = 3;
+                    var maxRand = 6;
                     var randNum = Math.floor(Math.random() * maxRand);
                     console.log(randNum);
 
                     // Get Body, Change Class to `bg0`, `bg1` or `bg2`
                    
                     // Store images
-                    var img0 = "http://unsplash.it/200/?random";
-                    var img1 = "http://unsplash.it/200/?random";
-                    var img2 = "http://unsplash.it/200/?random";
+                       var img0 = "https://i.postimg.cc/hvqMgJCk/240914603-383629273365207-9033738796044435506-n.jpg";
+                       var img1 = "https://i.postimg.cc/5yqgtxT6/240941128-383629386698529-2036679020339852104-n.jpg";
+                       var img2 = "https://i.postimg.cc/59wng3yb/240958649-383629356698532-9137199875721011770-n.jpg";
+                       var img3 = "https://i.postimg.cc/x1d50VR1/f2l1akpa01z61.png";
+                       var img4 = "https://i.postimg.cc/rFMgPrRW/tumblr-9c7635ad4b01cb0e33c414274d815df2-af698497-540.jpg";
+                       var img5 = "https://i.postimg.cc/5Ngpd28r/x90565vc01z61.jpg";
                     // Chnage image
                     $("#pimg").attr("src", eval("img" + randNum));
                    }
@@ -1399,14 +1403,14 @@
                             <div id="cont2">
                                 <div id="pl1">
                                     <p class="link1">LINK 01</p>
-                                    <p class="link1">LINK 01</p>
-                                    <p class="link1">LINK 01</p>
-                                    <p class="link1">LINK 01</p>
+                                    <p class="link1">LINK 03</p>
+                                    <p class="link1">LINK 05</p>
+                                    <p class="link1">LINK 07</p>
                                     </div>
-                                <div id="pl2"><p class="link2">LINK 01</p>
-                                              <p class="link2">LINK 01</p>
-                                              <p class="link2">LINK 01</p>
-                                              <p class="link2">LINK 01</p></div>
+                                <div id="pl2"><p class="link2">LINK 02</p>
+                                              <p class="link2">LINK 04</p>
+                                              <p class="link2">LINK 06</p>
+                                              <p class="link2">LINK 08</p></div>
                                
                             </div>
                         </div>
@@ -1455,7 +1459,7 @@
                                 </script>
 
                             </button> <div id="bar-ret"></div>
-                                      <a href=""><p id="old">>>Old Xatspace</p></a>
+                                      <a href="https://xevangelist.github.io/evangelist/Reb4.html"><p id="old">>>Old Xatspace</p></a>
                         </div>
 
                     </div>
