@@ -15,979 +15,1239 @@
     <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="mgGlitch.min.js"></script>
  <style>
-     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-     @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-     body {
-         background: black;
-         width: 100%;
-         height: 100%;
-         overflow: hidden;
-         /*cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;*/
-     }
-     /* a  {
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+        body {
+            background: lightgray;
+            width: 100%; 
+            height: 100%;
+            overflow: hidden;
+            /*cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;*/
+        }
+        /* a  {
             cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
         }*/
 
-     #main {
-         position: absolute;
-         width: 100%;
-         background:lightgray;
-         height: 100%;
-         overflow: hidden;
-         top: 0;
-         left: 0;
-         font-family: 'Oswald', sans-serif;
-     }
-
-     #main1 {
-         position: absolute;
-         width: 40%;
-         background: #171717;
-         height: 100%;
-         overflow: hidden;
-         top: 0;
-         left: 0;
-     }
-     #main1-d { z-index:9;
-         position: absolute;
-         width: 100%;
-         background: #171717;
-         height: 100%;
-         overflow: hidden;
-         top: 0;
-         left: 0;
-     }
-     #main2 {
-         overflow: hidden;
-         position: absolute;
-         width: 60%;
-         background: lightgray;
-         height: 100%;
-         overflow: hidden;
-         top: 0;
-         left: 40%;
-     }
-     #main2-d { z-index:9;
-         position: absolute;
-         width: 100%;
-         background: lightgray;
-         height: 100%;
-         overflow: hidden;
-         top: 0;
-     }
-     #log1 {
-         position: absolute;
-         height: 12vw;
-         mix-blend-mode: difference;
-         right: 0;
-         top: 25%;
-         filter: invert(100%);
-     }
-     #log2 {
-         position: absolute;
-         filter: invert(100%);
-         height: 12vw;
-         mix-blend-mode: difference;
-         left: 0;
-         top: 23%;
-     }
-     #lt_c {
-         position: absolute;
-         width: 1.8vw;
-         height: 3.5vw; border:.35vw solid #171717; right:10%; top:6%;
-         border-radius: .5vw;
-     }
-     #firmimg { position:absolute; width:2vw; height:4.2vw; top:-.3vw; left:-.1vw;
-     }
-     #maintitle { left:64%; position:absolute; top:50%; text-shadow:.1vw .1vw .5vw black;
-         font-family: 'Poiret One', cursive;
-         mix-blend-mode: difference; letter-spacing:.6vw;
-         font-size: 6.5vw; filter:invert(100%);
-     }
-     #maintitle2 {
-         text-shadow: .2vw .2vw .5vw black;
-         right: 66%;
-         position: absolute;
-         top: 53%; /*font-weight:bold;*/
-         font-family: 'Poiret One', cursive;
-         mix-blend-mode: difference;
-         letter-spacing: .6vw;
-         font-size: 6.5vw;
-         filter: invert(100%);
-     }
-     .toup { animation: t-up 2s 1; animation-fill-mode:forwards;
-     }
-     .toupdown {
-         animation: t-up-dw 2s 1;
-         animation-fill-mode: forwards;
-     }
-     @keyframes t-up {
-
-         0% { top:0;
-         }
-         100% { top:-100%;
-         }
-     }
-     @keyframes t-up-dw {
-
-         0% {
-             top: -100%;
-         }
-
-         100% {
-             top: 0%;
-         }
-     }
-
-
-     .toup2 {
-         animation: t-up2 2s 1;
-         animation-fill-mode: forwards;
-     }
-
-     .toupdown2 {
-         animation: t-up-dw2 2s 1;
-         animation-fill-mode: forwards;
-     }
-
-     @keyframes t-up2 {
-
-         0% {
-             top: 100%;
-         }
-
-         100% {
-             top: 0%;
-         }
-     }
-
-     @keyframes t-up-dw2 {
-
-         0% {
-             top: 0%;
-         }
-
-         100% {
-             top: 100%;
-         }
-     }
-     #darkmodeon {
-         position: absolute;
-         width: 2vw;
-         height: 5vw;
-         background: #171717;
-         right: 0;
-         top: 47%;
-         border-radius: .4vw 0 0 .4vw;
-         text-align: center; align-content:center;
-     }
-         #darkmodeon p { position:relative;
-             /*text-shadow: .2vw .2vw .5vw black;*/
-             margin-top:.5vw;
-             font-family: 'Poiret One', cursive;
-             mix-blend-mode: difference;
-             
-             font-size: 1.5vw;
-             filter: invert(100%);
-         }
-     #btn-dark {
-         position: absolute;
-         width: 2vw;
-         height: 5vw;
-         background: transparent;
-         right: 0;
-         top: 0;
-         border-radius: .4vw 0 0 .4vw;
-         text-align: center;
-         align-content: center;
-     }
-     #btn-light {
-         position: absolute;
-         width: 2vw;
-         height: 5vw;
-         background: transparent;
-         right: 0;
-         top: 0;
-         border-radius: .4vw 0 0 .4vw;
-         text-align: center;
-         align-content: center;
-        
-     }
-     .body-dark {
-         animation: flicker4 2s 1;
-         animation-fill-mode: forwards;
-     }
-     .body-light {
-         animation: flicker5 2s 1;
-         animation-fill-mode: forwards;
-     }
-     @keyframes flicker4 {
-
-          53%, 57%, 100% {
-            filter:invert(100%);
-         }
-
-         20%, 24%, 55% {
-             filter: invert(0%);
-         }
-     }
-     @keyframes flicker5 {
-
-         53%, 57%, 100% {
-             filter: invert(0%);
-         }
-
-         20%, 24%, 55% {
-             filter: invert(100%);
-         }
-     }
-     .btnup { z-index:-1;
-     }
-     .btndw {
-         z-index: 10;
-     }
-     #back_stat { position:absolute; width:100%; height:100%;
-     }
-     #back_stat2 { background:lightgray;
-         position: absolute;
-         width: 100%;
-         height: 100%;
-     }
-     #bkg1 {
-         position: absolute; top:0; opacity:.05;
-         width: 100%;
-         height: 100%;
-         background-image: url(https://i.postimg.cc/TP5KKCxx/Bruised-Partial-Katydid-size-restricted.gif);
-     }
-
-     #p_t1 {
-         font-family: 'Times New Roman';
-         /*font-family: 'Poiret One', cursive;*/ right: 8%;
-         top: 14%;
-         position: absolute;
-         font-size: .8vw;
-         color: black;
-         letter-spacing: .1vw;
-     }
-
-     #p_t2 {
-         font-family: 'Times New Roman';
-         /*font-family: 'Poiret One', cursive;*/ right: 10%;
-         top: 16%;
-         position: absolute;
-         font-size: .7vw;
-         color: black;
-         letter-spacing: .1vw;
-     }
-
-     #p_t3 {
-         text-transform: uppercase;
-         font-family: 'Poiret One', cursive;
-         right: 8%;
-         top: 30%;
-         position: absolute;
-         font-size: 3vw;
-         color: black;
-         letter-spacing: .1vw;
-     }
-
-     #p_t4 {
-         text-transform: uppercase;
-         font-family: 'Poiret One', cursive;
-         right: 8%;
-         top: 40%;
-         position: absolute;
-         font-size: 3vw;
-         color: black;
-         letter-spacing: .1vw;
-     }
-
-     #p_t5 {
-         text-transform: uppercase;
-         font-family: 'Poiret One', cursive;
-         right: 8%;
-         top: 50%;
-         position: absolute;
-         font-size: 3vw;
-         color: black;
-         letter-spacing: .1vw;
-     }
-
-     #p_t6 {
-         font-family: 'Oswald', sans-serif;
-         /*font-family: 'Poiret One', cursive;*/ right: 13%;
-         top: 90%;
-         position: absolute;
-         font-size: .6vw;
-         color: #171717;
-         letter-spacing: .1vw;
-     }
-
-     #p_t7 {
-         font-family: 'Oswald', sans-serif;
-         /*font-family: 'Poiret One', cursive;*/ right: 13%;
-         top: 91.5%;
-         position: absolute;
-         font-size: .6vw;
-         color: #171717;
-         letter-spacing: .1vw;
-     }
-
-     #icongif {
-         filter: grayscale(100%) contrast(200%) brightness(-50%);
-         width: 1.3vw;
-         position: absolute;
-         right: 9%;
-         top: 91.5%;
-     }
-     #prfl { 
-         position: absolute;
-         width: 32%;
-         height: 55%;
-         top: 8%;
-         left: 7%;
-     }
-
-     #btns {
-         width: 100%;
-         height: 10%;
-         margin-bottom: 20px;
-     }
-
-     .bn {
-         width: 20%;
-         height: 80%;
-         margin-left: 4%;
-         margin-top: 2%;
-         background: lightgray;
-         display: block;
-         float: left;
-         border-radius: 10px;
-     }
-
-     
-
-         .bn img, .bn2 img {
-             width: 40%;
-             height: 45%;
-             margin-top: 25%;
-             margin-left: 30%;
-         }
-
-     #pimg{
-         width: 80%;
-         height: auto;
-         margin-left: 10%;
-         border: 4px solid lightgray;
-     }
-
-
-
-     #At {
-         background: lightgray;
-         width: 100%;
-         height: 10%;
-         border-radius: 10px 10px 0 0;
-         text-align: center;
-     }
-
-     
-
-         #At p {
-             color: #171717;
-             font-size: 10px;
-             letter-spacing: 1px;
-             padding: 12px;
-             font-family: Consolas;
-         }
-
-        
-
-     #desc p {
-         padding: 12px;
-         font-family: Consolas;
-         color: dimgray;
-         font-size: 8px;
-     }
-
-     #desc {
-         width: 90%;
-         margin-left: 5%;
-         height: 26%;
-     }
-
-     #Tdm {
-         color: lightgray;
-         width: 95%;
-         height: 5%;
-         border: 4px solid lightgray;
-         transition: all 1s ease;
-     }
-
-
-
-         #Tdm:hover {
-             background: lightgray;
-         }
-
-   
-     #Tdm:hover span {
-         color: white;
-         letter-spacing: 4px;
-     }
-
-     #Tdm2:hover span {
-         color: black;
-         letter-spacing: 4px;
-     }
-
-     #Tdm span, #Tdm2 span {
-         font-size: 11px;
-         margin-left: 20%;
-         letter-spacing: 2px;
-         transition: all 1s ease;
-     }
-
-     #Frds {
-         position: absolute;
-         width: 35%;
-         height: 5%;
-         left: -25%;
-         top: 15%;
-         transition: all .5s ease;
-     }
-
-     #frd, #frd2 {
-         position: absolute;
-         width: 50%;
-         height: 1000%;
-         background: darkgray;
-         border-radius: 10px;
-         overflow: auto;
-         border-bottom: 2px solid black;
-     }
-
-     #frd2 {
-         border-bottom: 2px solid lightgray;
-         background: #292929;
-     }
-
-     #Frds:hover {
-         left: 5%;
-     }
-
-     #Fr {
-         margin-bottom: 5%;
-         width: 80%;
-         height: 15%;
-         margin-left: 10%;
-         background: lightgray;
-         border-radius: 10px 10px 0 0;
-         border-top: 5px solid black;
-     }
-
-         #Fr:nth-child(1) {
-             margin-top: 15%;
-         }
-
-         #Fr:last-child {
-             margin-bottom: 15%;
-         }
-
-     #reg {
-         text-align: center;
-         color: dimgray;
-         position: absolute;
-         width: 50%;
-         left: 25%;
-         height: 10%;
-         font-size: 10px;
-         margin: 0;
-     }
-     #perf-1 { width:.01vw; height:90%; background:lightgray; position:absolute; top:5%; left:46%;
-     }
-     
-     #btn-up { position:absolute; z-index:2
-     }
-     #R_plyr { 
-         position: absolute;
-         z-index: 2;
-         width: 30vw;
-         height: 17%;
-         left:48%;
-         top: 76%;
-     }
-
-     #dt_rp {
-         width: 72%;
-         right: 3%;
-         height: 40%;
-         position: absolute;
-     }
-
-         #dt_rp img {
-             width: 100%;
-             position: absolute;
-             opacity: .6;
-         }
-
-     #mor_rpy {
-         width: 100%;
-         top: 75%;
-         height: 25%;
-         position: absolute;
-     }
-
-     .player {
-         z-index: 9;
-     }
-
-     .player-control {
-         position: absolute;
-         top: 0;
-         left: 0;
-     }
-
-     #prev {
-         cursor: pointer;
-         position: absolute;
-         width: 2vw; 
-         height: 1vw;
-         left: 0;
-         z-index: 3;
-         top: -2.6vw;
-     }
-
-     #next {
-         cursor: pointer;
-         position: absolute;
-         width: 2vw;
-         height: 1vw;
-         left: 2vw;
-         top: -2.6vw;
-     }
-
-         #next p, #prev p {
-             position: absolute;
-             font-family: 'Oswald', sans-serif;
-             color: rgb(246, 97, 97);
-             letter-spacing: .1vw;
-             text-shadow: 0 0 1vw #171717;
-             font-size: 1.2vw;
-             top: -.5vw;
-         }
-
-     #namesong {
-         position: absolute;
-         width: 88%;
-         height: 70%;
-         top: 50%;
-         color: lightgray;
-         left: -34%;
-         font-family: 'Poiret One', cursive;
-         letter-spacing: .1vw;
-         font-size: 1vw;
-     }
-
-     
-     #name_sng {
-         position: relative;
-         float: left;
-     }
-
-     .progress-bar {
-         width: 34vw;
-         transform: rotateZ(-.2deg);
-         background: lightgray;
-         height: .3vw;
-         position: relative;
-     }
-
-     .fillBar {
-         background: #292929;;
-         width: 0;
-         height: .3vw;
-     }
-
-     #AT_time {
-         width: 5vw;
-         height: 1vw;
-         top: 0vw;
-         position: absolute;
-     }
-
-         #AT_time p {
-             position: absolute;
-             font-family: 'Oswald', sans-serif;
-             letter-spacing: .1vw;
-             font-size: .8vw;
-             color: lightgray;
-         }
-
-     .time {
-         position: absolute;
-         left: 4vw;
-         top: 1vw;
-         font-family: 'Oswald', sans-serif;
-         letter-spacing: .1vw;
-         font-size: .7vw;
-         width: 2vw;
-         overflow: hidden;
-         color: dimgray;
-     }
-
-     #cd_1 {
-         width: 8vw;
-         height: 1.3vw;
-         border: .1vw solid rgba(199,48,48.3);
-         position: absolute;
-         left: 21vw;
-         top: .3vw;
-         overflow: hidden;
-     }
-
-     #cd_2 {
-         width: 4.7vw;
-         height: 1.3vw;
-         border: .1vw solid rgba(199,48,48.3);
-         position: absolute;
-         left: 29vw;
-         top: .3vw;
-     }
-
-     .artist-name {
-         position: absolute;
-         left: .1vw;
-         top: -2.7vw;
-         font-family: 'Oswald', sans-serif;
-         letter-spacing: .1vw;
-         font-size: .6vw;
-         color: rgba(199,48,48.3);
-     }
-
-     #cd_2 p {
-         position: absolute;
-         font-family: 'Oswald', sans-serif;
-         top: 10%;
-         letter-spacing: .05vw;
-         font-size: .4vw;
-         left: .4vw;
-         color: rgba(199,48,48.3);
-         line-height: .5vw;
-     }
-     
-     #prgr2 { left:-50.1vw; top:1vw; background:#171717;
-     } #fill2 {
-         left: -50.1vw;
-         top: 1vw;
-         background: lightgray;
-     }
-     #main2_2 { position:absolute; width:100%; height:100%;
-     }
-     #a_post { position:absolute; width:50vw; height:67%;  left:60%; top:7%;
-     }
-     #a_post2 {
-         position: absolute;
-         width: 50vw;
-         height: 67%;
-         left: -26.5%;
-         top: 9%;
-     } #posts {
-            position:absolute;
-            width:100%;
-            height:85%;
-            overflow:auto;
+        #main {
+            animation:t-entrance 3s 1; animation-fill-mode:forwards;
+            position: absolute;
+            width: 100%; opacity:0;
+            background: lightgray;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            font-family: 'Oswald', sans-serif;
         }
-           
+        @keyframes t-entrance {
+
+            0% {
+               opacity:0;
+            }
+            20% { opacity:0;
+            }
+            100% {
+                opacity:1;
+            }
+        }
+        #main1 {
+            position: absolute;
+            width: 40%;
+            background: #171717;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        #main1-d {
+            z-index: 9;
+            position: absolute;
+            width: 100%;
+            background: #171717;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        #main2 {
+            overflow: hidden;
+            position: absolute;
+            width: 60%;
+            background: lightgray;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 40%;
+        }
+
+        #main2-d {
+            z-index: 9;
+            position: absolute;
+            width: 100%;
+            background: lightgray;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+        }
+
+        #log1 {
+            position: absolute;
+            height: 12vw;
+            mix-blend-mode: difference;
+            right: 0;
+            top: 25%;
+            filter: invert(100%);
+        }
+
+        #log2 {
+            position: absolute;
+            filter: invert(100%);
+            height: 12vw;
+            mix-blend-mode: difference;
+            left: 0;
+            top: 23%;
+        }
+
+        #lt_c {
+            position: absolute;
+            width: 1.8vw;
+            height: 3.5vw;
+            border: .35vw solid #171717;
+            right: 10%;
+            top: 6%;
+            border-radius: .5vw;
+        }
+
+        #firmimg {
+            position: absolute;
+            width: 2vw;
+            height: 4.2vw;
+            top: -.3vw;
+            left: -.1vw;
+        }
+
+        #maintitle {
+            left: 64%;
+            position: absolute;
+            top: 50%;
+            text-shadow: .1vw .1vw .5vw black;
+            font-family: 'Poiret One', cursive;
+            mix-blend-mode: difference;
+            letter-spacing: .6vw;
+            font-size: 6.5vw;
+            filter: invert(100%);
+        }
+
+        #maintitle2 {
+            text-shadow: .2vw .2vw .5vw black;
+            right: 66%;
+            position: absolute;
+            top: 53%; /*font-weight:bold;*/
+            font-family: 'Poiret One', cursive;
+            mix-blend-mode: difference;
+            letter-spacing: .6vw;
+            font-size: 6.5vw;
+            filter: invert(100%);
+        }
+
+        .toup {
+            animation: t-up 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .toupdown {
+            animation: t-up-dw 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes t-up {
+
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: -100%;
+            }
+        }
+
+        @keyframes t-up-dw {
+
+            0% {
+                top: -100%;
+            }
+
+            100% {
+                top: 0%;
+            }
+        }
+
+
+        .toup2 {
+            animation: t-up2 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .toupdown2 {
+            animation: t-up-dw2 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes t-up2 {
+
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: 0%;
+            }
+        }
+
+        @keyframes t-up-dw2 {
+
+            0% {
+                top: 0%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        #darkmodeon {
+            position: absolute;
+            width: 2vw;
+            height: 5vw;
+            background: #171717;
+            right: 0;
+            top: 47%;
+            border-radius: .4vw 0 0 .4vw;
+            text-align: center;
+            align-content: center;
+        }
+
+            #darkmodeon p {
+                position: relative;
+                /*text-shadow: .2vw .2vw .5vw black;*/
+                margin-top: .5vw;
+                font-family: 'Poiret One', cursive;
+                mix-blend-mode: difference;
+                font-size: 1.5vw;
+                filter: invert(100%);
+            }
+
+        #btn-dark {
+            position: absolute;
+            width: 2vw;
+            height: 5vw;
+            background: transparent;
+            right: 0;
+            top: 0;
+            border-radius: .4vw 0 0 .4vw;
+            text-align: center;
+            align-content: center;
+        }
+
+        #btn-light {
+            position: absolute;
+            width: 2vw;
+            height: 5vw;
+            background: transparent;
+            right: 0;
+            top: 0;
+            border-radius: .4vw 0 0 .4vw;
+            text-align: center;
+            align-content: center;
+        }
+
+        .body-dark {
+            animation: flicker4 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .body-light {
+            animation: flicker5 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes flicker4 {
+
+            53%, 57%, 100% {
+                filter: invert(100%);
+            }
+
+            20%, 24%, 55% {
+                filter: invert(0%);
+            }
+        }
+
+        @keyframes flicker5 {
+
+            53%, 57%, 100% {
+                filter: invert(0%);
+            }
+
+            20%, 24%, 55% {
+                filter: invert(100%);
+            }
+        }
+
+        .btnup {
+            z-index: -1;
+        }
+
+        .btndw {
+            z-index: 10;
+        }
+
+        #back_stat {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #back_stat2 {
+            background: lightgray;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #bkg1 {
+            position: absolute;
+            top: 0;
+            opacity: .05;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://i.postimg.cc/TP5KKCxx/Bruised-Partial-Katydid-size-restricted.gif);
+        }
+
+        #p_t1 {
+            font-family: 'Times New Roman';
+            /*font-family: 'Poiret One', cursive;*/ right: 8%;
+            top: 14%;
+            position: absolute;
+            font-size: .8vw;
+            color: black;
+            letter-spacing: .1vw;
+        }
+
+        #p_t2 {
+            font-family: 'Times New Roman';
+            /*font-family: 'Poiret One', cursive;*/ right: 10%;
+            top: 16%;
+            position: absolute;
+            font-size: .7vw;
+            color: black;
+            letter-spacing: .1vw;
+        }
+
+        #p_t3 {
+            text-transform: uppercase;
+            font-family: 'Poiret One', cursive;
+            right: 8%;
+            top: 30%;
+            position: absolute;
+            font-size: 3vw;
+            color: black;
+            letter-spacing: .1vw;
+        }
+
+        #p_t4 {
+            text-transform: uppercase;
+            font-family: 'Poiret One', cursive;
+            right: 8%;
+            top: 40%;
+            position: absolute;
+            font-size: 3vw;
+            color: black;
+            letter-spacing: .1vw;
+        }
+
+        #p_t5 {
+            text-transform: uppercase;
+            font-family: 'Poiret One', cursive;
+            right: 8%;
+            top: 50%;
+            position: absolute;
+            font-size: 3vw;
+            color: black;
+            letter-spacing: .1vw;
+        }
+
+        #p_t6 {
+            font-family: 'Oswald', sans-serif;
+            /*font-family: 'Poiret One', cursive;*/ right: 13%;
+            top: 90%;
+            position: absolute;
+            font-size: .6vw;
+            color: #171717;
+            letter-spacing: .1vw;
+        }
+
+        #p_t7 {
+            font-family: 'Oswald', sans-serif;
+            /*font-family: 'Poiret One', cursive;*/ right: 13%;
+            top: 91.5%;
+            position: absolute;
+            font-size: .6vw;
+            color: #171717;
+            letter-spacing: .1vw;
+        }
+
+        #icongif {
+            filter: grayscale(100%) contrast(200%) brightness(-50%);
+            width: 1.3vw;
+            position: absolute;
+            right: 9%;
+            top: 91.5%;
+        }
+
+        #prfl {
+            position: absolute;
+            width: 32%;
+            height: 55%;
+            top: 8%;
+            left: 7%;
+        }
+
+        #btns {
+            width: 100%;
+            height: 10%;
+            margin-bottom: 20px;
+        }
+
+        .bn {
+            width: 20%;
+            height: 80%;
+            margin-left: 4%;
+            margin-top: 2%;
+            background: lightgray;
+            display: block;
+            float: left;
+            border-radius: 10px;
+        }
+
+
+
+            .bn img, .bn2 img {
+                width: 40%;
+                height: 45%;
+                margin-top: 25%;
+                margin-left: 30%;
+            }
+
+        #pimg {
+            width: 80%;
+            height: auto;
+            margin-left: 10%;
+            border: 4px solid lightgray;
+        }
+
+
+
+        #At {
+            background: lightgray;
+            width: 100%;
+            height: 10%;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+
+
+            #At p {
+                color: #171717;
+                font-size: 10px;
+                letter-spacing: 1px;
+                padding: 12px;
+                font-family: Consolas;
+            }
+
+
+
+        #desc p {
+            padding: 12px;
+            font-family: Consolas;
+            color: dimgray;
+            font-size: 8px;
+        }
+
+        #desc {
+            width: 90%;
+            margin-left: 5%;
+            height: 26%;
+        }
+
+        #Tdm {
+            color: lightgray;
+            width: 95%;
+            height: 5%;
+            border: 4px solid lightgray;
+            transition: all 1s ease;
+        }
+
+
+
+            #Tdm:hover {
+                background: lightgray;
+            }
+
+
+                #Tdm:hover span {
+                    color: white;
+                    letter-spacing: 4px;
+                }
+
+        #Tdm2:hover span {
+            color: black;
+            letter-spacing: 4px;
+        }
+
+        #Tdm span, #Tdm2 span {
+            font-size: 11px;
+            margin-left: 20%;
+            letter-spacing: 2px;
+            transition: all 1s ease;
+        }
+
+        #Frds {
+            position: absolute;
+            width: 35%;
+            height: 5%;
+            left: -25%;
+            top: 15%;
+            transition: all .5s ease;
+        }
+
+        #frd, #frd2 {
+            position: absolute;
+            width: 50%;
+            height: 1000%;
+            background: darkgray;
+            border-radius: 10px;
+            overflow: auto;
+            border-bottom: 2px solid black;
+        }
+
+        #frd2 {
+            border-bottom: 2px solid lightgray;
+            background: #292929;
+        }
+
+        #Frds:hover {
+            left: 5%;
+        }
+
+        #Fr {
+            margin-bottom: 5%;
+            width: 80%;
+            height: 15%;
+            margin-left: 10%;
+            background: lightgray;
+            border-radius: 10px 10px 0 0;
+            border-top: 5px solid black;
+        }
+
+            #Fr:nth-child(1) {
+                margin-top: 15%;
+            }
+
+            #Fr:last-child {
+                margin-bottom: 15%;
+            }
+
+        #reg {
+            text-align: center;
+            color: dimgray;
+            position: absolute;
+            width: 50%;
+            left: 25%;
+            height: 10%;
+            font-size: 10px;
+            margin: 0;
+        }
+
+        #perf-1 {
+            width: .01vw;
+            height: 90%;
+            background: lightgray;
+            position: absolute;
+            top: 5%;
+            left: 46%;
+        }
+
+        #btn-up {
+            position: absolute;
+            z-index: 2
+        }
+
+        #R_plyr {
+            position: absolute;
+            z-index: 2;
+            width: 30vw;
+            height: 17%;
+            left: 48%;
+            top: 76%;
+        }
+
+        #dt_rp {
+            width: 72%;
+            right: 3%;
+            height: 40%;
+            position: absolute;
+        }
+
+            #dt_rp img {
+                width: 100%;
+                position: absolute;
+                opacity: .6;
+            }
+
+        #mor_rpy {
+            width: 100%;
+            top: 75%;
+            height: 25%;
+            position: absolute;
+        }
+
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: rgb(246, 97, 97);
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1.2vw;
+                top: -.5vw;
+            }
+
+        #namesong {
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: lightgray;
+            left: -34%;
+            font-family: 'Poiret One', cursive;
+            letter-spacing: .1vw;
+            font-size: 1vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 34vw;
+            transform: rotateZ(-.2deg);
+            background: lightgray;
+            height: .3vw;
+            position: relative;
+        }
+
+        .fillBar {
+            background: #292929;
+            ;
+            width: 0;
+            height: .3vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 0vw;
+            position: absolute;
+        }
+
+            #AT_time p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .1vw;
+                font-size: .8vw;
+                color: lightgray;
+            }
+
+        .time {
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .7vw;
+            width: 2vw;
+            overflow: hidden;
+            color: dimgray;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            position: absolute;
+            left: .1vw;
+            top: -2.7vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: rgba(199,48,48.3);
+        }
+
+        #cd_2 p {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
+
+        #prgr2 {
+            left: -50.1vw;
+            top: 1vw;
+            background: #171717;
+        }
+
+        #fill2 {
+            left: -50.1vw;
+            top: 1vw;
+            background: lightgray;
+        }
+
+        #main2_2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #a_post {
+            position: absolute;
+            width: 50vw;
+            height: 67%;
+            left: 60%;
+            top: 7%;
+        }
+
+        #a_post2 {
+            position: absolute;
+            width: 50vw;
+            height: 67%;
+            left: -26.5%;
+            top: 9%;
+        }
+
+        #posts {
+            position: absolute;
+            width: 100%;
+            height: 85%;
+            overflow: auto;
+        }
+
         #post {
             width: 80%;
             height: auto;
         }
+
         #Acr {
-            position:absolute;
-            left:3%;
-            font-size:10px;
-            color:gray;
-            letter-spacing:1px;
+            position: absolute;
+            left: 3%;
+            font-size: 10px;
+            color: gray;
+            letter-spacing: 1px;
         }
-        #imgx { 
-            width:100%;
-            height:auto;
-            border:.3vw solid black;
+
+        #imgx {
+            width: 100%;
+            height: auto;
+            border: .3vw solid black;
         }
-     #imgx1 {
-         width: 100%;
-         height: auto;
-         border: .3vw solid lightgray;
-     }
-        
+
+        #imgx1 {
+            width: 100%;
+            height: auto;
+            border: .3vw solid lightgray;
+        }
+
         #Atext {
-            width:97%;
-            margin-left:3%;
-            width:auto;
+            width: 97%;
+            margin-left: 3%;
+            width: auto;
         }
-     #titl {
-         font-family: 'Poiret One', cursive;
-         font-size: 1vw;
-         color: darkgray;
-         letter-spacing: .1vw;
-         text-decoration: underline;
-     }
+
+        #titl {
+            font-family: 'Poiret One', cursive;
+            font-size: 1vw;
+            color: darkgray;
+            letter-spacing: .1vw;
+            text-decoration: underline;
+        }
+
             #titl:after {
-                color:black;
-                content:":";
+                color: black;
+                content: ":";
             }
-     #Ng, #Ng2 {
-         font-family: 'Poiret One', cursive;
-         color: white;
-         font-size: .7vw;
-         letter-spacing: .1vw; margin-left:1vw;
-         border-left: .1vw solid dimgray;
-     }
-     #Ng3 {
-         font-family: 'Poiret One', cursive;
-         color: black;
-         font-size: .7vw;
-         letter-spacing: .1vw;
-         margin-left: 1vw;
-         border-left: .1vw solid dimgray;
-     }
-            /*#Ng:before, #Ng2:before {
+
+        #Ng, #Ng2 {
+            font-family: 'Poiret One', cursive;
+            color: white;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            margin-left: 1vw;
+            border-left: .1vw solid dimgray;
+        }
+
+        #Ng3 {
+            font-family: 'Poiret One', cursive;
+            color: black;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            margin-left: 1vw;
+            border-left: .1vw solid dimgray;
+        }
+        /*#Ng:before, #Ng2:before {
                 content: "      ";
             }*/
         #hash, #numbrs {
-            color:darkgray;
-            font-size:8px;
-            letter-spacing:1px;
-            margin-top:5%;
+            color: darkgray;
+            font-size: 8px;
+            letter-spacing: 1px;
+            margin-top: 5%;
         }
+
         #numbrs {
-            font-size:11px;
-            margin-right:60%;
+            font-size: 11px;
+            margin-right: 60%;
         }
+
         #rtl {
-            width:100%;
-            height:auto;
+            width: 100%;
+            height: auto;
         }
-     .icns { filter:invert(100%);
-         float: right;
-         display: block;
-         width: 1.2vw;
-         height: 1.2vw;
-         margin-left: 2%;
-     }
+
+        .icns {
+            filter: invert(100%);
+            float: right;
+            display: block;
+            width: 1.2vw;
+            height: 1.2vw;
+            margin-left: 2%;
+        }
+
         #brd {
-            width:80%;
-            margin-left:10%;
-            border-top:1px solid darkgray;
-            margin-top:3%;
+            width: 80%;
+            margin-left: 10%;
+            border-top: 1px solid darkgray;
+            margin-top: 3%;
         }
-     #btn-up11 { width:1.7vw; height:1.7vw; border-radius:50%; background:#171717; top:63%; right:8%; position:absolute; cursor:pointer;
-     }
-         #btn-up11 img { position:absolute; width:1.2vw; left:.1vw; top:.1vw; filter:invert(100%);
-         }
-     #open {
-         text-align: right; 
-         height: 1.7vw;
-         width: 3.5vw;
-         position: absolute;
-         right: 12%;
-         top: 63%;
-         border-right: .1vw solid dimgray;
-     }
-         #open p { position:relative; text-align:right;
-             color: black; font-weight:bold;
-             font-size: .6vw;
-             letter-spacing: .1vw;
-         }
-     #pp1 { top:-.8vw;
-     }
-     #pp2 { top:-1.4vw
-     }
-     #imgsw { width:2vw; height:1.7vw; position:absolute; right:18%; top:63%;
-     }
-     #darkmodeon, #btn-dark, #btn-light { cursor:pointer;
-     }
-     .noinvert { filter:invert(0%); transition-delay:1s;
-     }
-     .yinvert {
-         filter: invert(100%);
-         transition-delay: 1s;
-     }
-     #imgprueba {
-         border: 7.5px solid white;
-         border-radius: 25px;
-         margin: 5% 40%;
-         position: absolute;
-         z-index: 10;
-     }
-     #btn-up3 { border:none; z-index:2;
-         width: 2vw;
-         height: 2vw;background:#171717;
-         top: 76%;
-         left:65%;
-         position: absolute;
-         cursor: pointer;
-     }
-     #imgform { width:2vw; position:absolute; filter:invert(100%);top:0;left:0;
-     }
-     #imgformp { mix-blend-mode:difference; filter:invert();
-         font-size:1.3vw;
-         position: absolute; left:.34vw;
-         animation:float 3s infinite;
-        
-         
-     }
-     @keyframes float {
 
-         0% {
-             top:-1.6vw;
-         }
-         50% {
-             top: -.6vw;
-         }
-         100% {
-             top: -1.6vw;
-         }
+      
 
-         
-     }
-     #dats { position:absolute; width:30%; height:70%; top:8%; right:8%;  
-     }
-     #dat1 { overflow:hidden;
-         position: absolute;
-         width: 100%;
-         height: 19%;
-         border-radius: .3vw;
-         box-shadow: .1vw .1vw .5vw #A9A9A9;
-     }
-     #dat2 {
-         overflow: hidden;
-         top: 21%;
-         border-radius: .3vw;
-         position: absolute;
-         width: 100%;
-         height: 25%;
-         box-shadow: .1vw .1vw .5vw #A9A9A9;
-     }
-     #dat3 {
-         overflow: hidden;
-         top: 48%;
-         box-shadow: .1vw .1vw .5vw #A9A9A9;
-         border-radius: .3vw;
-         position: absolute;
-         width: 100%;
-         height: 35%;
-     }
-     #dat4 {
-         overflow: hidden;
-         top: 85%;
-         box-shadow: .1vw .1vw .5vw #A9A9A9;
-         border-radius: .3vw;
-         position: absolute;
-         width: 100%;
-         height: 15%;
-     }
-     #a_cur {position:absolute; width:100%; height:2vw; background:darkgray;
-     }
-     #a_cur2 {
-         margin-bottom:2vw;
-         width: 100%;
-         height: 2vw;
-         background: lightgray;
-     }
-     #A-icons2 {
-         position: absolute;
-         width: 50%;
-         height: 80%;
-         top: 4%;
-         right: -9%;
-     }
-     #A-icons { position:absolute; width:30%; height:80%; top:15%; right:-2%; 
-     }
-     .minicon { width:1vw; height:1vw; float:left; margin-left:.3vw; border:.1vw solid dimgray; border-radius:.2vw; background:#c6c6c6;
-     }
-         .minicon img { width:.7vw; position:relative; top:-.5vw;left:.15vw;
-         }
-     #p_tit {
-         font-family: 'Poiret One', cursive;
-         color: white; margin-left:.5vw;
-         font-size: .7vw;
-         letter-spacing: .1vw;
-     }
-     #p_titc { top:.7vw;
-         font-family: 'Poiret One', cursive;
-         color: black; position:relative;
-         margin-left: .5vw;
-         font-size: 1vw;
-         letter-spacing: .1vw;
-     }
-     .link1, .link2 { line-height:.6vw;
-         cursor: pointer;
-         color: dimgray;
-         font-size: .7vw;
-         letter-spacing: .2vw;
-     }
-     .link2 {  left:50%;  top:20%;
-     }
-     #pl1 { position:absolute; width:35%; height:70%;  top:25%; left:15%;
-     }
-     #pl2 {
-         position: absolute;
-         width: 35%;
-         height: 70%;
-         top: 25%;
-         left: 51%;
-     }
-     #btn-up44 {
-         /*transform: rotate(180deg);*/
-         filter: invert(100%);
-         border: none;
-         z-index: 2;
-         width: 2vw;
-         height: 2vw;background:transparent;
-         top: 50%;
-         left: 5%;
-         position: absolute;
-         cursor: pointer;
-     }
-     #btn-up77 {
-         transform: rotate(180deg);
-         filter: invert(0%);
-         border: none;
-         z-index: 2;
-         width: 2vw;
-         height: 2vw;
-         background: transparent;
-         top: 63%;
-         left: 11%;
-         position: absolute;
-         cursor: pointer;
-     }
-     #bar-ret { position:absolute; width:.1vw; height:2.4vw; background:dimgray; left:25%; top:45%;
-     }
-     #old { position:absolute;
-         left: 38%;
-         top: 51%;
-         font-family: 'Poiret One', cursive;
-         color: black;
-         cursor: pointer;
-         margin-left: .5vw;
-         font-size: .7vw;
-         letter-spacing: .1vw;
-     }
-     #icons_c { position:absolute; width:80%; height:40%;   top:50%; left:10%;
-     }
-         #icons_c img { width:1.7vw; height:1.7vw; float:left; margin-left:1vw;
-         }
- </style>
+          /*  #btn-up11 img {
+                position: absolute;
+                width: 1.2vw;
+                left: .1vw;
+                top: .1vw;
+                filter: invert(100%);
+            }*/
+
+        #open {
+            text-align: right;
+            height: 1.7vw;
+            width: 3.5vw;
+            position: absolute;
+            right: 12%;
+            top: 63%;
+            border-right: .1vw solid dimgray;
+        }
+
+            #open p {
+                position: relative;
+                text-align: right;
+                color: black;
+                font-weight: bold;
+                font-size: .6vw;
+                letter-spacing: .1vw;
+            }
+
+        #pp1 {
+            top: -.8vw;
+        }
+
+        #pp2 {
+            top: -1.4vw
+        }
+
+        #imgsw {
+            width: 2vw;
+            height: 1.7vw;
+            position: absolute;
+            right: 18%;
+            top: 63%;
+        }
+
+        #darkmodeon, #btn-dark, #btn-light {
+            cursor: pointer;
+        }
+
+        .noinvert {
+            filter: invert(0%);
+            transition-delay: 1s;
+        }
+
+        .yinvert {
+            filter: invert(100%);
+            transition-delay: 1s;
+        }
+
+        #imgprueba {
+            border: 7.5px solid white;
+            border-radius: 25px;
+            margin: 5% 40%;
+            position: absolute;
+            z-index: 10;
+        }
+
+        #btn-up3 {
+            border: none;
+            z-index: 2;
+            width: 2vw;
+            height: 2vw;
+            background: #171717;
+            top: 76%;
+            left: 65%;
+            position: absolute;
+            cursor: pointer;
+        }
+        #btn-up11 {
+            top: 63%;
+            right: 8%;
+           transform:rotate(180deg);
+            filter: invert(100%);
+            border: none;
+            z-index: 2;
+            width: 2vw;
+            height: 2vw;
+            background: transparent;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #imgform {
+            width: 2vw;
+            position: absolute;
+            filter: invert(100%);
+            top: 0;
+            left: 0;
+        }
+
+        #imgformp {
+            mix-blend-mode: difference;
+            filter: invert();
+            font-size: 1.3vw;
+            position: absolute;
+            left: .34vw;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+
+            0% {
+                top: -1.6vw;
+            }
+
+            50% {
+                top: -.6vw;
+            }
+
+            100% {
+                top: -1.6vw;
+            }
+        }
+
+        #dats {
+            position: absolute;
+            width: 30%;
+            height: 70%;
+            top: 8%;
+            right: 8%;
+        }
+
+        #dat1 {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 19%;
+            border-radius: .3vw;
+            box-shadow: .1vw .1vw .5vw #A9A9A9;
+        }
+
+        #dat2 {
+            overflow: hidden;
+            top: 21%;
+            border-radius: .3vw;
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            box-shadow: .1vw .1vw .5vw #A9A9A9;
+        }
+
+        #dat3 {
+            overflow: hidden;
+            top: 48%;
+            box-shadow: .1vw .1vw .5vw #A9A9A9;
+            border-radius: .3vw;
+            position: absolute;
+            width: 100%;
+            height: 35%;
+        }
+
+        #dat4 {
+            overflow: hidden;
+            top: 85%;
+            box-shadow: .1vw .1vw .5vw #A9A9A9;
+            border-radius: .3vw;
+            position: absolute;
+            width: 100%;
+            height: 15%;
+        }
+
+        #a_cur {
+            position: absolute;
+            width: 100%;
+            height: 2vw;
+            background: darkgray;
+        }
+
+        #a_cur2 {
+            margin-bottom: 2vw;
+            width: 100%;
+            height: 2vw;
+            background: lightgray;
+        }
+
+        #A-icons2 {
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            top: 4%;
+            right: -9%;
+        }
+
+        #A-icons {
+            position: absolute;
+            width: 30%;
+            height: 80%;
+            top: 15%;
+            right: -2%;
+        }
+
+        .minicon {
+            width: 1vw;
+            height: 1vw;
+            float: left;
+            margin-left: .3vw;
+            border: .1vw solid dimgray;
+            border-radius: .2vw;
+            background: #c6c6c6;
+        }
+
+            .minicon img {
+                width: .7vw;
+                position: relative;
+                top: -.5vw;
+                left: .15vw;
+            }
+
+        #p_tit {
+            font-family: 'Poiret One', cursive;
+            color: white;
+            margin-left: .5vw;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+        }
+
+        #p_titc {
+            top: .7vw;
+            font-family: 'Poiret One', cursive;
+            color: black;
+            position: relative;
+            margin-left: .5vw;
+            font-size: 1vw;
+            letter-spacing: .1vw;
+        }
+
+        .link1, .link2 {
+            line-height: .6vw;
+            cursor: pointer;
+            color: dimgray;
+            font-size: .7vw;
+            letter-spacing: .2vw;
+        }
+
+        .link2 {
+            left: 50%;
+            top: 20%;
+        }
+
+        #pl1 {
+            position: absolute;
+            width: 35%;
+            height: 70%;
+            top: 25%;
+            left: 15%;
+        }
+
+        #pl2 {
+            position: absolute;
+            width: 35%;
+            height: 70%;
+            top: 25%;
+            left: 51%;
+        }
+
+        #btn-up44 {
+            /*transform: rotate(180deg);*/
+            filter: invert(100%);
+            border: none;
+            z-index: 2;
+            width: 2vw;
+            height: 2vw;
+            background: transparent;
+            top: 50%;
+            left: 5%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #btn-up77 {
+            transform: rotate(180deg);
+            filter: invert(0%);
+            border: none;
+            z-index: 2;
+            width: 2vw;
+            height: 2vw;
+            background: transparent;
+            top: 63%;
+            left: 11%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #bar-ret {
+            position: absolute;
+            width: .1vw;
+            height: 2.4vw;
+            background: dimgray;
+            left: 25%;
+            top: 45%;
+        }
+
+        #old {
+            position: absolute;
+            left: 38%;
+            top: 51%;
+            font-family: 'Poiret One', cursive;
+            color: black;
+            cursor: pointer;
+            margin-left: .5vw;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+        }
+
+        #icons_c {
+            position: absolute;
+            width: 80%;
+            height: 40%;
+            top: 50%;
+            left: 10%;
+        }
+
+            #icons_c img {
+                width: 1.7vw;
+                height: 1.7vw;
+                float: left;
+                margin-left: 1vw;
+            }
+
+        #back_black {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.9);
+        }
+
+        .dat4 {
+            background: lightgray;
+        }
+
+        .dt4 {
+            z-index: 9;
+        }
+
+        .dtt4 {
+            z-index: -1;
+        }
+    </style>
+   
 </head>
 
 
 
-<body >
+<body  >
     <script>
             $(document).ready(function () {
                 var playing = false,
@@ -1263,39 +1523,41 @@
 </div>
 
 
-        <div id="main2" >
+        <div id="main2">
             <div id="main2-d">
-               <script>
+                <script>
                     // BEHAVIORAL
                     // scripts.js
-                   function randomimg() { 
-                    // Random Number Generator
-                    var maxRand = 6;
-                    var randNum = Math.floor(Math.random() * maxRand);
-                    console.log(randNum);
+                    function randomimg() {
+                        // Random Number Generator
+                        var maxRand = 6;
+                        var randNum = Math.floor(Math.random() * maxRand);
+                        console.log(randNum);
 
-                    // Get Body, Change Class to `bg0`, `bg1` or `bg2`
-                   
-                    // Store images
-                       var img0 = "https://i.postimg.cc/hvqMgJCk/240914603-383629273365207-9033738796044435506-n.jpg";
-                       var img1 = "https://i.postimg.cc/5yqgtxT6/240941128-383629386698529-2036679020339852104-n.jpg";
-                       var img2 = "https://i.postimg.cc/59wng3yb/240958649-383629356698532-9137199875721011770-n.jpg";
-                       var img3 = "https://i.postimg.cc/x1d50VR1/f2l1akpa01z61.png";
-                       var img4 = "https://i.postimg.cc/rFMgPrRW/tumblr-9c7635ad4b01cb0e33c414274d815df2-af698497-540.jpg";
-                       var img5 = "https://i.postimg.cc/5Ngpd28r/x90565vc01z61.jpg";
-                    // Chnage image
-                    $("#pimg").attr("src", eval("img" + randNum));
-                   }
+                        // Get Body, Change Class to `bg0`, `bg1` or `bg2`
+
+                        // Store images
+                        var img0 = "https://i.postimg.cc/hvqMgJCk/240914603-383629273365207-9033738796044435506-n.jpg";
+                        var img1 = "https://i.postimg.cc/5yqgtxT6/240941128-383629386698529-2036679020339852104-n.jpg";
+                        var img2 = "https://i.postimg.cc/59wng3yb/240958649-383629356698532-9137199875721011770-n.jpg";
+                        var img3 = "https://i.postimg.cc/x1d50VR1/f2l1akpa01z61.png";
+                        var img4 = "https://i.postimg.cc/rFMgPrRW/tumblr-9c7635ad4b01cb0e33c414274d815df2-af698497-540.jpg";
+                        var img5 = "https://i.postimg.cc/5Ngpd28r/x90565vc01z61.jpg";
+                        // Chnage image
+                        $("#pimg").attr("src", eval("img" + randNum));
+                    }
                 </script>
 
                 <button id="btn-up11" onclick="part1updown2()">
-                    <img src="https://i.postimg.cc/VvkBcYZm/plus.png" />
+
                     <script>
                         function part1updown2() {
                             $("#main2-d").removeClass("toup2");
                             $("#main2-d").addClass("toupdown2");
                         }
                     </script>
+                    <img id="imgform" src="https://i.postimg.cc/FHZwQxZ4/triangulo-invertido.png" />
+                    <p id="imgformp">▲</p>
                 </button>
                 <div id="open"><p id="pp1">open your</p><p id="pp2">way ─➤</p></div>
                 <img src="https://i.postimg.cc/HsHKN5tC/sw-allow-bird-flying-silhouette.png" id="imgsw" />
@@ -1361,17 +1623,45 @@
 
 
             </div>
+            <div id="back_black">
+                <div id="dats">
 
-            
+                    <div id="dat4" class="dat4">
+                        <div id="a_cur">
+                            <p id="p_tit">Continue...?</p>
+
+                            <div id="A-icons">
+                                <div class="minicon"><img src="https://i.postimg.cc/QMn59HDz/cuadricula.png" /></div>
+                                <div class="minicon"><img src="https://i.postimg.cc/FRdSjNsH/maximizar.png" /></div>
+                                <div class="minicon"><img src="https://i.postimg.cc/KYYB8t6L/cerrar.png" /></div>
+                            </div>
+                        </div>
+                        <button id="btn-up44" onclick="eraseconf()">
+                            <img id="imgform" src="https://i.postimg.cc/FHZwQxZ4/triangulo-invertido.png" />
+                            <p id="imgformp">▲</p>
+                            <script>
+                                function eraseconf() {
+                                    $("#back_black").removeClass("dt4");
+                                    $("#back_black").addClass("dtt4");
+                                }
+                            </script>
+
+                        </button> <div id="bar-ret"></div>
+                        <a href="https://xevangelist.github.io/evangelist/Reb4.html"><p id="old">>>Ar u sure?</p></a>
+                    </div>
+
+                </div>
+            </div>
+
+
             <div id="back_stat2">
-                
-                
+
                 <div id="bkg1">
 
-</div>
+                </div>
                 <div id="main2_2">
 
-                 
+
 
                     <div id="dats">
                         <div id="dat1">
@@ -1384,10 +1674,10 @@
                                 </div>
                             </div>
                             <div id="icons_c">
-                                <img src="https://i.postimg.cc/zGBD3yHh/casa.png"/>
-                                <img  src="https://i.postimg.cc/c4dLy9sX/email.png"/>
+                                <img src="https://i.postimg.cc/zGBD3yHh/casa.png" />
+                                <img src="https://i.postimg.cc/c4dLy9sX/email.png" />
                                 <img src="https://i.postimg.cc/y8b1R70b/clip-de-papel.png" />
-                                <img  src="https://i.postimg.cc/FFyH65QY/calendario.png"/>
+                                <img src="https://i.postimg.cc/FFyH65QY/calendario.png" />
                                 <img src="https://i.postimg.cc/FsGs9yzm/menu.png" />
                             </div>
                         </div>
@@ -1406,12 +1696,14 @@
                                     <p class="link1">LINK 03</p>
                                     <p class="link1">LINK 05</p>
                                     <p class="link1">LINK 07</p>
-                                    </div>
-                                <div id="pl2"><p class="link2">LINK 02</p>
-                                              <p class="link2">LINK 04</p>
-                                              <p class="link2">LINK 06</p>
-                                              <p class="link2">LINK 08</p></div>
-                               
+                                </div>
+                                <div id="pl2">
+                                    <p class="link2">LINK 02</p>
+                                    <p class="link2">LINK 04</p>
+                                    <p class="link2">LINK 06</p>
+                                    <p class="link2">LINK 08</p>
+                                </div>
+
                             </div>
                         </div>
                         <div id="dat3">
@@ -1459,7 +1751,14 @@
                                 </script>
 
                             </button> <div id="bar-ret"></div>
-                                      <a href="https://xevangelist.github.io/evangelist/Reb4.html"><p id="old">>>Old Xatspace</p></a>
+                            <button id="btnconfirm" onclick="intrconf()"><p id="old">>>Old Xatspace</p><script>
+                                function intrconf() {
+                                    $("#back_black").removeClass("dtt4");
+                                    $("#back_black").addClass("dt4");
+                                    /* $("#dat4").addClass("toup2");*/
+                                }
+                            </script></button>
+                            
                         </div>
 
                     </div>
@@ -1515,7 +1814,7 @@
                         </div>
                     </div>
                 </div>
-               
+
             </div>
 
         </div>
@@ -1523,5 +1822,6 @@
     </div>
 
 </body>
+
 
 </html>
