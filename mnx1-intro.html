@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+ <style>
+     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+     body {
+         font-family: 'Poiret One', cursive;
+         background: black;
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+         /*cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;*/
+     }
+     /* a  {
+            cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+        }*/
+
+     #main { background:white;
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+         top: 0;
+         left: 0;
+     }
+     .browser-screen-loading-content {
+         text-align: center;
+         height: 2em;
+         max-width: 100%;
+         position: absolute;
+         top: 0;
+         right: 0;
+         bottom: 3em;
+         left: 0;
+         margin: auto;
+     }
+
+     .loading-dots {
+         margin-left: -1.5em;
+         opacity: 0;
+         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+         filter: alpha(opacity=0);
+         -webkit-animation: loading-dots-fadein 0.5s linear forwards;
+         -moz-animation: loading-dots-fadein 0.5s linear forwards;
+         -o-animation: loading-dots-fadein 0.5s linear forwards;
+         -ms-animation: loading-dots-fadein 0.5s linear forwards;
+         animation: loading-dots-fadein 0.5s linear forwards;
+     }
+
+         .loading-dots i {
+             width: 0.5em;
+             height: 0.5em;
+             display: inline-block;
+             vertical-align: middle;
+             background: #e0e0e0;
+             -webkit-border-radius: 50%;
+             border-radius: 50%;
+             margin: 0 0.125em;
+             -webkit-animation: loading-dots-middle-dots 0.5s linear infinite;
+             -moz-animation: loading-dots-middle-dots 0.5s linear infinite;
+             -o-animation: loading-dots-middle-dots 0.5s linear infinite;
+             -ms-animation: loading-dots-middle-dots 0.5s linear infinite;
+             animation: loading-dots-middle-dots 0.5s linear infinite;
+         }
+
+         .loading-dots.dark-gray i {
+             background: #707070;
+         }
+
+         .loading-dots i:first-child {
+             -webkit-animation: loading-dots-first-dot 0.5s infinite;
+             -moz-animation: loading-dots-first-dot 0.5s linear infinite;
+             -o-animation: loading-dots-first-dot 0.5s linear infinite;
+             -ms-animation: loading-dots-first-dot 0.5s linear infinite;
+             animation: loading-dots-first-dot 0.5s linear infinite;
+             opacity: 0;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: alpha(opacity=0);
+             -webkit-transform: translate(-1em);
+             -moz-transform: translate(-1em);
+             -o-transform: translate(-1em);
+             -ms-transform: translate(-1em);
+             transform: translate(-1em);
+         }
+
+         .loading-dots i:last-child {
+             -webkit-animation: loading-dots-last-dot 0.5s linear infinite;
+             -moz-animation: loading-dots-last-dot 0.5s linear infinite;
+             -o-animation: loading-dots-last-dot 0.5s linear infinite;
+             -ms-animation: loading-dots-last-dot 0.5s linear infinite;
+             animation: loading-dots-last-dot 0.5s linear infinite;
+         }
+     #letter {
+         position: absolute;
+         line-height: .3vw; font-weight:bold;
+         color: black; top:54%;left:43.5%; z-index:10;
+         font-size: .7vw;
+         letter-spacing: .1vw;
+     }
+
+     @-moz-keyframes loading-dots-fadein {
+         100% {
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-webkit-keyframes loading-dots-fadein {
+         100% {
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-o-keyframes loading-dots-fadein {
+         100% {
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @keyframes loading-dots-fadein {
+         100% {
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-moz-keyframes loading-dots-first-dot {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-webkit-keyframes loading-dots-first-dot {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-o-keyframes loading-dots-first-dot {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @keyframes loading-dots-first-dot {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+             opacity: 1;
+             -ms-filter: none;
+             filter: none;
+         }
+     }
+
+     @-moz-keyframes loading-dots-middle-dots {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+         }
+     }
+
+     @-webkit-keyframes loading-dots-middle-dots {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+         }
+     }
+
+     @-o-keyframes loading-dots-middle-dots {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+         }
+     }
+
+     @keyframes loading-dots-middle-dots {
+         100% {
+             -webkit-transform: translate(1em);
+             -moz-transform: translate(1em);
+             -o-transform: translate(1em);
+             -ms-transform: translate(1em);
+             transform: translate(1em);
+         }
+     }
+
+     @-moz-keyframes loading-dots-last-dot {
+         100% {
+             -webkit-transform: translate(2em);
+             -moz-transform: translate(2em);
+             -o-transform: translate(2em);
+             -ms-transform: translate(2em);
+             transform: translate(2em);
+             opacity: 0;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: alpha(opacity=0);
+         }
+     }
+
+     @-webkit-keyframes loading-dots-last-dot {
+         100% {
+             -webkit-transform: translate(2em);
+             -moz-transform: translate(2em);
+             -o-transform: translate(2em);
+             -ms-transform: translate(2em);
+             transform: translate(2em);
+             opacity: 0;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: alpha(opacity=0);
+         }
+     }
+
+     @-o-keyframes loading-dots-last-dot {
+         100% {
+             -webkit-transform: translate(2em);
+             -moz-transform: translate(2em);
+             -o-transform: translate(2em);
+             -ms-transform: translate(2em);
+             transform: translate(2em);
+             opacity: 0;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: alpha(opacity=0);
+         }
+     }
+
+     @keyframes loading-dots-last-dot {
+         100% {
+             -webkit-transform: translate(2em);
+             -moz-transform: translate(2em);
+             -o-transform: translate(2em);
+             -ms-transform: translate(2em);
+             transform: translate(2em);
+             opacity: 0;
+             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+             filter: alpha(opacity=0);
+         }
+     }
+     #loader { position:absolute; width:25%; left:37.5%; top:20%;
+     }
+     #div-m { top:25%;
+     }
+
+ </style>
+</head>
+
+
+
+<body onload="redireccionarPagina();">
+    <div id="main">
+        <script>
+            function redireccionarPagina() {
+                setTimeout("location.href='mnx1.html'", 8000);
+
+            }
+        </script>
+        <div id="loading">
+            <div class="wrapper">
+                <div id="letter">
+                    
+                    <span>LOAD ADRESS: 00001124400-</span><span class="progressCounter"></span>
+                </div>
+                <div class="bar">
+
+                    <div class="flexiblebar" data-percent="100" data-delay="1"></div>
+                    <script>
+                        let flexiblebar = document.querySelector(".flexiblebar");
+                        let progressCounter = document.querySelector(".progressCounter");
+
+                        let count = 0;
+                        let delayTime =
+                            (7000 * flexiblebar.dataset.delay) / flexiblebar.dataset.percent;
+
+                        flexiblebar.style.background = flexiblebar.dataset.bg;
+
+                        function progressBar() {
+                            count++;
+                            flexiblebar.style.width = `${count}%`;
+                            progressCounter.innerHTML = `${count}%`;
+                            if (count == flexiblebar.dataset.percent) {
+                                clearInterval(stop);
+                            }
+                        }
+
+                        let stop = setInterval(() => {
+                            progressBar();
+                        }, delayTime);
+
+                    </script>
+                </div>
+                <div id="cd">
+                    <div id="blok1"></div>
+                    <div id="blok2"></div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <div id="div-m" class="browser-screen-loading-content">
+            <div class="loading-dots dark-gray">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+        <img id="loader" src="https://i.postimg.cc/hvssYKrw/wave-loader.gif" />
+    </div>
+
+</body>
+
+</html>
