@@ -20,10 +20,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
-        body { opacity:0;
-            animation:t-entrance 3s 1; animation-fill-mode:forwards;
+        body {
+            animation: t-entrance 3s 1;
+            animation-fill-mode: forwards;
             background: lightgray;
-            width: 100%; 
+            width: 100%;
             height: 100%;
             overflow: hidden;
             /*cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;*/
@@ -33,9 +34,9 @@
         }*/
 
         #main {
-          
+           
             position: absolute;
-            width: 100%; 
+            width: 100%; opacity:1;
             background: lightgray;
             height: 100%;
             overflow: hidden;
@@ -54,7 +55,7 @@
                 opacity:1;
             }
         }
-        #main1 { 
+        #main1 {
             position: absolute;
             width: 40%;
             background: #171717;
@@ -75,7 +76,7 @@
             left: 0;
         }
 
-        #main2 { 
+        #main2 {
             overflow: hidden;
             position: absolute;
             width: 60%;
@@ -320,15 +321,14 @@
             height: 100%;
         }
 
-        #bkg1 {
+        #bkg1, #bkg11 {
             position: absolute;
             top: 0;
-            opacity: .05;
             width: 100%;
             height: 100%;
-            background-image: url(https://i.postimg.cc/TP5KKCxx/Bruised-Partial-Katydid-size-restricted.gif);
+           
         }
-
+       
         #p_t1 {
             font-family: 'Times New Roman';
             /*font-family: 'Poiret One', cursive;*/ right: 8%;
@@ -474,15 +474,15 @@
 
 
         #desc p {
-            padding: 12px;
-            font-family: Consolas;
-            color: dimgray;
-            font-size: 8px;
+            
+            font-family: Consolas; line-height:1.2vw;
+            color: darkgray;
+            font-size: .65vw;
         }
 
-        #desc {
+        #desc { margin-left:6%;
             width: 90%;
-            margin-left: 5%;
+            text-align:center;
             height: 26%;
         }
 
@@ -1135,8 +1135,8 @@
             line-height: .6vw;
             cursor: pointer;
             color: dimgray;
-            font-size: .7vw;
-            letter-spacing: .2vw;
+            font-size: .7vw; text-transform:uppercase;
+            letter-spacing: .1vw;
         }
 
         .link2 {
@@ -1183,7 +1183,7 @@
             height: 2vw;
             background: transparent;
             top: 63%;
-            left: 11%;
+            left: 20.2%;
             position: absolute;
             cursor: pointer;
         }
@@ -1209,7 +1209,7 @@
             letter-spacing: .1vw;
         }
 
-        #icons_c {
+        #icons_c { cursor:pointer; opacity:.7;
             position: absolute;
             width: 80%;
             height: 40%;
@@ -1242,158 +1242,189 @@
         .dtt4 {
             z-index: -1;
         }
+        .bkg11 {
+            opacity: .05;
+            background-image: url(https://i.postimg.cc/TP5KKCxx/Bruised-Partial-Katydid-size-restricted.gif);
+        }
+
+        .bkg12 {
+            opacity: .1;
+            background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
+        }
+
+        .bkg13 {
+            background-image: url(https://i.postimg.cc/Hn2Yp8M2/3c175dd2380da2128c3a99e559219b68.gif);
+            opacity: .09; 
+        }
+
+        .bkg14 {
+            opacity: .06;
+            background-image: url(https://i.postimg.cc/bY64jRD5/532a270caf5b324c887edd98a5e706d5.gif);
+        }
+
+        .bkg15 {
+            opacity: .05;
+            background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+        }
     </style>
    
 </head>
 
 
 
-<body  >
+<body id="bdy" >
+    
     <script>
-            $(document).ready(function () {
-                var playing = false,
-                    artistname = $(".artist-name"),
-                    musicName = $(".music-name"),
-                    time = $(".time"),
-                    fillBar = $(".fillBar");
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
 
-                let audioData = [];
+            let audioData = [];
 
-                var song = new Audio();
-                var CurrentSong = 0;
-                window.onload = load();
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
 
-                function load() {
-                    audioData = [
+            function load() {
+                audioData = [
 
-                        {
-                            name: "RADIO OFF",
-                            artist: "RADIO OFF",
-                            src:
-                                ""
-                        },
-                        {
-                            name: "BLACKBIRD",
-                            artist: "ALTER BRIDGE",
-                            src:
-                                "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
-                        },
-                        {
-                            name: "BROKEN WINGS",
-                            artist: "ALTER BRIDGE",
-                            src:
-                                "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
-                        },
-                        {
-                            name: "SHINING STAR",
-                            artist: "RHAPSODY",
-                            src:
-                                "https://xevangelist.github.io/evangelist/rhapsody-of-fire-shining-star.mp3?raw=true"
-                        },
-                        {
-                            name: "DEAD FLOWERS",
-                            artist: "DEMONHUNTER",
-                            src:
-                                "https://xevangelist.github.io/evangelist/demon-hunter-dead-flowers.mp3?raw=true"
-                        },
-                        {
-                            name: "OPEN YOUR EYES",
-                            artist: "ALTER BRIDGE",
-                            src:
-                                "https://xevangelist.github.io/evangelist/alter-bridge-open-your-eyes.mp3?raw=true"
-                        },
-                        {
-                            name: "NEVER FADE AWAY",
-                            artist: "SAMURAI",
-                            src:
-                                "https://xevangelist.github.io/evangelist/cyberpunk-2077-never-fade-away-by-samurai-refused.mp3"
-                        },
-                       
-                    ];
+                    {
+                        name: "RADIO OFF",
+                        artist: "RADIO OFF",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "BLACKBIRD",
+                        artist: "ALTER BRIDGE",
+                        src:
+                            "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
+                    },
+                    {
+                        name: "BROKEN WINGS",
+                        artist: "ALTER BRIDGE",
+                        src:
+                            "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
+                    },
+                    {
+                        name: "SHINING STAR",
+                        artist: "RHAPSODY",
+                        src:
+                            "https://xevangelist.github.io/evangelist/rhapsody-of-fire-shining-star.mp3?raw=true"
+                    },
+                    {
+                        name: "DEAD FLOWERS",
+                        artist: "DEMONHUNTER",
+                        src:
+                            "https://xevangelist.github.io/evangelist/demon-hunter-dead-flowers.mp3?raw=true"
+                    },
+                    {
+                        name: "OPEN YOUR EYES",
+                        artist: "ALTER BRIDGE",
+                        src:
+                            "https://xevangelist.github.io/evangelist/alter-bridge-open-your-eyes.mp3?raw=true"
+                    },
+                    {
+                        name: "NEVER FADE AWAY",
+                        artist: "SAMURAI",
+                        src:
+                            "https://xevangelist.github.io/evangelist/cyberpunk-2077-never-fade-away-by-samurai-refused.mp3"
+                    },
 
-                    artistname.html(audioData[CurrentSong].artist);
-                    musicName.html(audioData[CurrentSong].name);
-                    song.src = audioData[CurrentSong].src;
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
                 }
+                var currentLabel = currentMinute + ":" + currentSecond;
 
-                function playSong() {
-                    var curSong = audioData[CurrentSong];
-                    artistname.html(curSong.artist);
-                    musicName.html(curSong.name);
-                    song.src = curSong.src;
+                var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
                     song.play();
+                    playing = true;
                     $("#play").addClass("fa-pause");
                     $("#play").removeClass("fa-play");
                     $("p").addClass("active");
-                    $(".player-track").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
                 }
-
-                song.addEventListener("timeupdate", function () {
-                    var position = (100 / song.duration) * song.currentTime;
-                    var current = song.currentTime;
-                    var duration = song.duration;
-                    var durationMinute = Math.floor(duration / 60);
-                    var durationSecond = Math.floor(duration - durationMinute * 60);
-                    var durationLabel = durationMinute + ":" + durationSecond;
-                    currentSecond = Math.floor(current);
-                    currentMinute = Math.floor(currentSecond / 60);
-                    currentSecond = currentSecond - currentMinute * 60;
-                    // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
-                    if (currentSecond < 10) {
-                        currentSecond = "0" + currentSecond;
-                    }
-                    var currentLabel = currentMinute + ":" + currentSecond;
-
-                    var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
-
-                    fillBar.css("width", position + "%");
-
-                    $(".time").html(indicatorLabel);
-                });
-                //////
-                $("#a_in").click(function playOrPause() {
-                    if (song.paused) {
-                        song.play();
-                        playing = true;
-                        $("#play").addClass("fa-pause");
-                        $("#play").removeClass("fa-play");
-                        $("p").addClass("active");
-                        /* $("#bar1").addClass("br1");*/
-
-                    } else {
-                        song.pause();
-                        playing = false;
-                        $("#play").removeClass("fa-pause");
-                        $("#play").addClass("fa-play");
-                        $("p").removeClass("active");
-
-
-                    }
-                });
-
-                $("#prev").click(function prev() {
-                    CurrentSong--;
-                    if (CurrentSong < 0) {
-                        CurrentSong = 6;
-                    }
-                    playSong();
-                });
-
-                $("#next").click(function next() {
-                    CurrentSong++;
-                    if (CurrentSong > 6) {
-                        CurrentSong = 0;
-                    }
-                    playSong();
-                });
             });
 
-        </script>
-    <div id="main">
-        <div id="main1">
-            <div id="main1-d"> 
-                <button id="btn-up3" onclick="part1up(); randomimg();">
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 6;
+                }
+                playSong();
+            });
 
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 6) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+    <div id="main" >
+
+        <div id="main1">
+            <div id="main1-d">
+                <button id="btn-up3" onclick="part1up(); randomimg(); addclf();">
+                    <script>
+                        function addclf() {
+                            /*$("#bkg1").removeClass("toupdown");*/
+                            $("#bkg1").addClass("bkg11");
+                        }
+                    </script>
                     <script>
                         function part1up() {
                             $("#main1-d").removeClass("toupdown");
@@ -1406,7 +1437,7 @@
                 <img id="log1" src="https://i.postimg.cc/28bD8Hgw/p1.png" />
                 <p id="maintitle">BLACKBIIRD</p>
             </div>
-           
+
             <div id="back_stat">
                 <button id="btn-up77" onclick="part1updown()">
                     <script>
@@ -1431,13 +1462,14 @@
                         <img id="imgx1" src="https://i.postimg.cc/Cx6HWMdS/tumblr-n8yfbbvv-Y11t58f5mo1-1280.jpg" />
                         <div id="Atext">
                             <p id="titl">My Sweet Decadance</p>
-                            <p id="Ng"> There are no forces to go to the bars but there is no strength to stop drinking
+                            <p id="Ng">
+                                There are no forces to go to the bars but there is no strength to stop drinking
                                 There is no longer any strength to hold on anything  My whole world is not mine, dumb
                                 No desire to cry  I don't feel alive I'm tired of long insomnia
                                 I'm tired of sad verses
                                 I'm tired of appearing normal
                                 I'm tired, I'm tired, I'm tired, I'm tired
-                               
+
                             </p>
                             <p id="hash">#BlackBiird #Psychonaut4</p>
                             <div id="rtl">
@@ -1449,7 +1481,7 @@
 
                 <div id="R_plyr">
                     <div id="dt_rp">
-                        
+
                         <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
                     </div>
 
@@ -1487,44 +1519,54 @@
 
 
                 <div id="prfl">
-                        <div id="a_cur2">
-                            <p id="p_titc">BlackBiird</p>
+                    <div id="a_cur2">
+                        <p id="p_titc">BlackBiird</p>
 
-                            <div id="A-icons2">
-                                <div class="minicon"><img src="https://i.postimg.cc/QMn59HDz/cuadricula.png" /></div>
-                                <div class="minicon"><img src="https://i.postimg.cc/FRdSjNsH/maximizar.png" /></div>
-                                <div class="minicon"><img src="https://i.postimg.cc/KYYB8t6L/cerrar.png" /></div>
-                            </div>
+                        <div id="A-icons2">
+                            <div class="minicon"><img src="https://i.postimg.cc/QMn59HDz/cuadricula.png" /></div>
+                            <div class="minicon"><img src="https://i.postimg.cc/FRdSjNsH/maximizar.png" /></div>
+                            <div class="minicon"><img src="https://i.postimg.cc/KYYB8t6L/cerrar.png" /></div>
                         </div>
-                      
+                    </div>
+
                     <!--<div id="btns">
-        <div class="bn" onclick="randomimg()"><img src="https://i.postimg.cc/nVBDhYTM/ffff.png" /></div>
-        <a href="#"><div class="bn"><img src="https://i.postimg.cc/Qx7gt662/3.png" /></div></a>
-        <a href="#"> <div class="bn"><img src="https://i.postimg.cc/ncbX8bGW/tttt.png" /></div></a>
-        <a href="#"> <div class="bn"><img src="https://i.postimg.cc/w3McKVF4/mus.png" /></div></a>
-    </div>-->
+                        <div class="bn" onclick="randomimg()"><img src="https://i.postimg.cc/nVBDhYTM/ffff.png" /></div>
+                        <a href="#"><div class="bn"><img src="https://i.postimg.cc/Qx7gt662/3.png" /></div></a>
+                        <a href="#"> <div class="bn"><img src="https://i.postimg.cc/ncbX8bGW/tttt.png" /></div></a>
+                        <a href="#"> <div class="bn"><img src="https://i.postimg.cc/w3McKVF4/mus.png" /></div></a>
+                    </div>-->
                     <img id="pimg" src="" />
                     <div id="At"><p>>> Woodswallow~</p></div>
                     <div id="desc">
                         <p>
-                            Ascend, may you find no resistance
-                            Know that you made such a difference
-                            And all you leave behind will live to the end
-                            The cycle of suffering goes on
-                            But the memories of you stay strong
-                            Someday I too will fly and find you again
+
+
+                            Swallow | ˣˣᵛᶥᶥ | Rain <br />
+
+
+                            † 𝖲𝗂𝗅𝗅𝖾𝗇𝗍 ‧ 𝖤𝗀𝗈𝖼𝖾𝗇𝗍𝗋𝗂𝖼 ‧ 𝖠𝗉𝖺𝗍𝗁𝖾𝗍𝗂𝖼 ‧  <br />‧ 𝖨𝗇𝖽𝗂𝖿𝖿𝖾𝗋𝖾𝗇𝗍 ‧ 𝖱𝖾𝖺𝗅𝗂𝗌𝗍𝗂𝖼 ‧ 𝖣𝗂𝗋𝖾𝖼𝗍 ‧  <br />‧ 𝖮𝖻𝖾𝖼𝗍𝗂𝗏𝖾 ‧ 𝖭𝖾𝗎𝗍𝗋𝖺𝗅 ‧ 𝖤𝗀𝗈𝗍𝗂𝗌𝗍𝗂𝖼𝖺𝗅 ‧ <br />
+                            ‧ <br />
+                            𝖤𝗅𝖾𝗀𝖺𝗇𝗍 & 𝖯𝖾𝗋𝗏𝖾𝗋𝗌𝖾
+
+
                         </p>
                     </div>
 
                 </div>
 
             </div>
-            
-           
-</div>
+
+
+        </div>
 
 
         <div id="main2">
+            <script>
+                function addcl() {
+                    /*$("#bkg1").removeClass("toupdown");*/
+                    $("#bkg11").addClass("bkg11");
+                }
+            </script>
             <div id="main2-d">
                 <script>
                     // BEHAVIORAL
@@ -1549,7 +1591,7 @@
                     }
                 </script>
 
-                <button id="btn-up11" onclick="part1updown2()">
+                <button id="btn-up11" onclick="part1updown2(); addcl();">
 
                     <script>
                         function part1updown2() {
@@ -1657,7 +1699,7 @@
 
             <div id="back_stat2">
 
-                <div id="bkg1">
+                <div id="bkg11">
 
                 </div>
                 <div id="main2_2">
@@ -1667,7 +1709,7 @@
                     <div id="dats">
                         <div id="dat1">
                             <div id="a_cur">
-                                <p id="p_tit">NAVIGATE</p>
+                                <p id="p_tit">THEME</p>
                                 <div id="A-icons">
                                     <div class="minicon"><img src="https://i.postimg.cc/QMn59HDz/cuadricula.png" /></div>
                                     <div class="minicon"><img src="https://i.postimg.cc/FRdSjNsH/maximizar.png" /></div>
@@ -1675,11 +1717,74 @@
                                 </div>
                             </div>
                             <div id="icons_c">
-                                <img src="https://i.postimg.cc/zGBD3yHh/casa.png" />
-                                <img src="https://i.postimg.cc/c4dLy9sX/email.png" />
-                                <img src="https://i.postimg.cc/y8b1R70b/clip-de-papel.png" />
-                                <img src="https://i.postimg.cc/FFyH65QY/calendario.png" />
-                                <img src="https://i.postimg.cc/FsGs9yzm/menu.png" />
+                                <img id="btnc1" onclick="addcl1();" src="https://i.postimg.cc/pTcT8f25/abstract-shape.png" />
+                                <img id="btnc2" onclick="addcl2();" src="https://i.postimg.cc/LsH6bC5Z/pattern.png" />
+                                <img id="btnc3" onclick="addcl3();" src="https://i.postimg.cc/44MyxQLr/shape-design.png" />
+                                <img id="btnc4" onclick="addcl4();" src="https://i.postimg.cc/Vv3kZz0Y/shape-design-1.png" />
+                                <img id="btnc5"onclick="addcl5();" src="https://i.postimg.cc/k4gGB1dd/geometric-shape.png" />
+
+                                <script>
+                                    function addcl1() {
+                                        $("#bkg11").removeClass("bkg12");
+                                        $("#bkg11").removeClass("bkg13");
+                                        $("#bkg11").removeClass("bkg14");
+                                        $("#bkg11").removeClass("bkg15");
+                                        $("#bkg11").addClass("bkg11");
+                                        $("#bkg1").removeClass("bkg12");
+                                        $("#bkg1").removeClass("bkg13");
+                                        $("#bkg1").removeClass("bkg14");
+                                        $("#bkg1").removeClass("bkg15");
+                                        $("#bkg1").addClass("bkg11");
+                                    }
+                                    function addcl2() {
+                                        $("#bkg11").removeClass("bkg11");
+                                        $("#bkg11").removeClass("bkg13");
+                                        $("#bkg11").removeClass("bkg14");
+                                        $("#bkg11").removeClass("bkg15");
+                                        $("#bkg11").addClass("bkg12");
+                                        $("#bkg1").removeClass("bkg11");
+                                        $("#bkg1").removeClass("bkg13");
+                                        $("#bkg1").removeClass("bkg14");
+                                        $("#bkg1").removeClass("bkg15");
+                                        $("#bkg1").addClass("bkg12");
+                                    }
+                                    function addcl3() {
+                                        $("#bkg11").removeClass("bkg11");
+                                        $("#bkg11").removeClass("bkg12");
+                                        $("#bkg11").removeClass("bkg14");
+                                        $("#bkg11").removeClass("bkg15");
+                                        $("#bkg11").addClass("bkg13");
+                                        $("#bkg1").removeClass("bkg11");
+                                        $("#bkg1").removeClass("bkg12");
+                                        $("#bkg1").removeClass("bkg14");
+                                        $("#bkg1").removeClass("bkg15");
+                                        $("#bkg1").addClass("bkg13");
+                                    }
+                                    function addcl4() {
+                                        $("#bkg11").removeClass("bkg11");
+                                        $("#bkg11").removeClass("bkg12");
+                                        $("#bkg11").removeClass("bkg13");
+                                        $("#bkg11").removeClass("bkg15");
+                                        $("#bkg11").addClass("bkg14");
+                                        $("#bkg1").removeClass("bkg11");
+                                        $("#bkg1").removeClass("bkg12");
+                                        $("#bkg1").removeClass("bkg13");
+                                        $("#bkg1").removeClass("bkg15");
+                                        $("#bkg1").addClass("bkg14");
+                                    }
+                                    function addcl5() {
+                                        $("#bkg11").removeClass("bkg11");
+                                        $("#bkg11").removeClass("bkg12");
+                                        $("#bkg11").removeClass("bkg14");
+                                        $("#bkg11").removeClass("bkg13");
+                                        $("#bkg11").addClass("bkg15");
+                                        $("#bkg1").removeClass("bkg11");
+                                        $("#bkg1").removeClass("bkg12");
+                                        $("#bkg1").removeClass("bkg14");
+                                        $("#bkg1").removeClass("bkg13");
+                                        $("#bkg1").addClass("bkg15");
+                                    }
+                                </script>
                             </div>
                         </div>
                         <div id="dat2">
@@ -1693,16 +1798,16 @@
                             </div>
                             <div id="cont2">
                                 <div id="pl1">
-                                    <p class="link1">LINK 01</p>
-                                    <p class="link1">LINK 03</p>
-                                    <p class="link1">LINK 05</p>
-                                    <p class="link1">LINK 07</p>
+                                    <p class="link1">La Papesse</p>
+                                    <p class="link1">L'Impératrice</p>
+                                    <p class="link1">L'Étoile</p>
+                                    <p class="link1">La justice</p>
                                 </div>
                                 <div id="pl2">
-                                    <p class="link2">LINK 02</p>
-                                    <p class="link2">LINK 04</p>
-                                    <p class="link2">LINK 06</p>
-                                    <p class="link2">LINK 08</p>
+                                    <p class="link2">Le Jugement</p>
+                                    <p class="link2">L'Amoureux</p>
+                                    <p class="link2">La Mort</p>
+                                    <p class="link2">Tempérance</p>
                                 </div>
 
                             </div>
@@ -1717,7 +1822,7 @@
                                 </div>
                                 <div id="desc">
                                     <p>
-                                        The willow, it weeps today
+                                       
                                         A breeze from the distance is calling your name
                                         Unfurl your black wings and wait
                                         Across the horizon, it's coming to sweep you away
@@ -1752,14 +1857,17 @@
                                 </script>
 
                             </button> <div id="bar-ret"></div>
-                            <button id="btnconfirm" onclick="intrconf()"><p id="old">>>Old Xatspace</p><script>
-                                function intrconf() {
-                                    $("#back_black").removeClass("dtt4");
-                                    $("#back_black").addClass("dt4");
-                                    /* $("#dat4").addClass("toup2");*/
-                                }
-                            </script></button>
-                            
+                            <button id="btnconfirm" onclick="intrconf()">
+                                <p id="old">>>Old Xatspace</p>
+                                <script>
+                                    function intrconf() {
+                                        $("#back_black").removeClass("dtt4");
+                                        $("#back_black").addClass("dt4");
+                                        /* $("#dat4").addClass("toup2");*/
+                                    }
+                                </script>
+                            </button>
+
                         </div>
 
                     </div>
@@ -1823,6 +1931,5 @@
     </div>
 
 </body>
-
 
 </html>
