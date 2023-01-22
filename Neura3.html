@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+        .wrapper {
+            position: relative;
+            background-color: black;
+            color: white;
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+            .wrapper:after {
+                content: "ERROR 404";
+                font-family: "Press Start 2P", cursive;
+                font-size: 70px;
+                position: absolute;
+                top: 10%;
+                bottom: 0;
+                left: 0;
+                right: 35%;
+                text-align: center;
+                width: 550px;
+                margin: auto;
+                opacity: 0;
+                color: white;
+                animation: glitch-1 2s linear infinite;
+            }
+
+        @media screen and (max-width: 959px) {
+            .wrapper:after {
+                width: 150px;
+                font-size: 40px;
+            }
+        }
+
+        .wrapper:before {
+            content: "ERROR 404";
+            font-family: "Press Start 2P", cursive;
+            font-size: 60px;
+            position: absolute;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            right: 35%;
+            text-align: center;
+            width: 550px;
+            margin: auto;
+            opacity: 0;
+            color: white;
+            animation: glitch-2 1s linear infinite;
+            z-index: 1;
+        }
+
+        @media screen and (max-width: 959px) {
+            .wrapper:before {
+                width: 150px;
+                font-size: 30px;
+            }
+        }
+
+        .wrapper .error {
+            font-family: "Press Start 2P", cursive;
+            width: 100%;
+            margin: 15vh auto;
+            animation: glitch-3 3s linear infinite;
+            font-size: clamp(14px, 2vw, 20px);
+            z-index: 1;
+        }
+
+        .wrapper .fnf {
+            position: absolute;
+            top: 75%;
+            bottom: 0;
+            left: 20px;
+            right: -10%;
+            margin: auto;
+            width: 200px;
+            height: 60px;
+            z-index: -1;
+            text-align: center;
+            animation: glitch-3 1s linear infinite;
+        }
+
+            .wrapper .fnf:before {
+                content: "FILE NOT FOUND";
+                position: absolute;
+                top: 20px;
+                bottom: 0;
+                left: 40px;
+                right: 100px;
+                margin: auto;
+                width: 800px;
+                font-family: "Press Start 2P", cursive;
+                font-size: 35px;
+                text-align: center;
+                opacity: 0;
+                animation: glitch-2 0.5s linear infinite;
+            }
+
+        @media screen and (max-width: 959px) {
+            .wrapper .fnf:before {
+                width: 200px;
+                font-size: 25px;
+            }
+        }
+
+        .wrapper .fnf:after {
+            content: "FILE NOT FOUND";
+            position: absolute;
+            top: 20px;
+            bottom: 0;
+            left: 40px;
+            right: 0;
+            margin: auto;
+            width: 800px;
+            font-family: "Press Start 2P", cursive;
+            font-size: 35px;
+            text-align: center;
+            opacity: 0;
+            animation: glitch-1 1s linear infinite;
+        }
+
+        @media screen and (max-width: 959px) {
+            .wrapper .fnf:after {
+                width: 200px;
+                font-size: 25px;
+            }
+        }
+
+        .wrapper .wrap {
+            width: fit-content;
+            margin: auto;
+        }
+
+            .wrapper .wrap code {
+                color: white;
+                line-height: 1.22222222;
+            }
+
+                .wrapper .wrap code span.comment {
+                    color: #666666;
+                }
+
+                .wrapper .wrap code span.blue {
+                    color: #6089b4;
+                }
+
+                .wrapper .wrap code span.red {
+                    color: #c44349;
+                }
+
+                .wrapper .wrap code span.yellow {
+                    color: #bda33f;
+                }
+
+                .wrapper .wrap code span.green {
+                    color: #8e9c39;
+                }
+
+        .wrapper .clone {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wrapper .clone_offsetter {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper input {
+            position: relative;
+            all: unset;
+            width: fit-content;
+            z-index: 300;
+            cursor: help;
+            transition: 0.17s;
+        }
+
+            .wrapper input:hover {
+                color: #c44349;
+                animation: glitch-3 1s linear infinite;
+            }
+
+        @keyframes glitch {
+            0%, 3%, 5%, 42%, 44%, 100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+
+            4.3% {
+                opacity: 1;
+                transform: scaleY(1.7);
+            }
+
+            43% {
+                opacity: 1;
+                transform: scaleX(1.5);
+            }
+        }
+
+        @keyframes glitch-1 {
+            0%, 20%, 40%, 60%, 70%, 90% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.5;
+                left: -6px;
+            }
+
+            80% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.6;
+                left: 2px;
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 40%, 60%, 70%, 90% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.5;
+                left: 6px;
+            }
+
+            80% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.6;
+                left: -2px;
+            }
+        }
+
+        @keyframes glitch-3 {
+            0%, 3%, 5%, 42%, 44%, 100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+
+            4.3% {
+                opacity: 1;
+                transform: scaleY(4);
+            }
+
+            43% {
+                opacity: 1;
+                transform: scaleX(10) rotate(60deg);
+            }
+        }
+        body { background:black; position:absolute; overflow:hidden; width:100%; height:100%;
+        }
+        html::-webkit-scrollbar { color:black; width:0;
+        }
+        .wrapper::-webkit-scrollbar { color:black;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+
+
+<body id="bdy">
+    <div class="wrapper">
+        <script>
+           var MAX_HORIZONTAL_SLICE_HEIGHT = 5;
+            var MAX_VERTICAL_SLICE_WIDTH = 8;
+            var HORIZONTAL_AMPLITUDE = 40;
+            var VERTICAL_AMPLITUDE = 15;
+
+            var container, cnt_inner, btn, total_H, total_W, reached_H, reached_W;
+
+            function glitch() {
+                // basic reset
+                container.innerHTML = cnt_inner;
+                reached_H = 0;
+                reached_W = 0;
+
+                // setting horizontal slices
+                while (reached_H < total_H) {
+                    //create multiple divs
+                    var clone = document.createElement("div");
+                    clone.className = "clone horizontal";
+                    clone.innerHTML = "<div class = 'clone_offsetter'>" + cnt_inner + "</div>";
+
+                    var cloned = clone.getElementsByTagName("input")[0];
+
+                    // avoid elements with the smae id
+                    cloned.id = "";
+
+                    var offsetter = clone.getElementsByClassName("clone_offsetter")[0];
+
+                    container.appendChild(clone);
+
+                    var slice_H = Math.ceil(MAX_HORIZONTAL_SLICE_HEIGHT * Math.random());
+                    var slice_ML = Math.ceil(HORIZONTAL_AMPLITUDE * Math.random());
+
+                    if (Math.random() > 0.45) {
+                        slice_ML = slice_ML * -1;
+                    }
+
+                    clone.style.marginTop = reached_H + "px";
+                    offsetter.style.marginTop = "-" + reached_H + "px";
+                    clone.style.height = slice_H + "px";
+
+                    // Storing the value first instead of immediately setting the marginLeft allows the clone's CSS transition properties to be taken into account
+                    clone.glitch_ML = slice_ML + "px";
+
+                    reached_H += slice_H;
+                }
+
+                // repeat for the vertical slices
+                while (reached_W < total_W) {
+                    var clone = document.createElement("div");
+                    clone.className = "clone vertical";
+                    clone.innerHTML = "<div class = 'clone_offsetter'>" + cnt_inner + "</div>";
+
+                    var cloned = clone.getElementsByTagName("input")[0];
+                    cloned.id = "";
+
+                    var offsetter = clone.getElementsByClassName("clone_offsetter")[0];
+
+                    container.appendChild(clone);
+
+                    var slice_W = Math.ceil(MAX_VERTICAL_SLICE_WIDTH * Math.random());
+                    var slice_MT = Math.ceil(VERTICAL_AMPLITUDE * Math.random());
+
+                    if (Math.random() > 0.45) {
+                        slice_MT = slice_MT * -1;
+                    }
+
+                    clone.style.marginLeft = reached_W + "px";
+                    offsetter.style.marginLeft = "-" + reached_W + "px";
+                    clone.style.width = slice_W + "px";
+
+                    clone.glitch_MT = slice_MT + "px";
+
+                    reached_W += slice_W;
+                }
+
+                // set margins
+                var all_H_clones = container.getElementsByClassName("clone horizontal");
+                var all_V_clones = container.getElementsByClassName("clone vertical");
+
+                // A few millisecs of delay between appendChild() and this phase are enough to give the elements a 0px 0px margin first, from which the CSS transition can be started
+                setTimeout(function () {
+                    for (var i = 0; i < all_H_clones.length; i++) {
+                        all_H_clones[i].style.marginLeft = all_H_clones[i].glitch_ML;
+                    }
+                    for (var i = 0; i < all_V_clones.length; i++) {
+                        all_V_clones[i].style.marginTop = all_V_clones[i].glitch_MT;
+                    }
+                }, 50);
+
+                //second timeout to give a broken effect before redirecting to a homepage
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, "3500");
+            }
+
+            window.onload = function () {
+                container = document.getElementById("container");
+                cnt_inner = container.innerHTML;
+                total_H = container.offsetHeight;
+                total_W = container.offsetWidth;
+                btn = document.getElementById("the_button");
+                btn.addEventListener("click", glitch);
+
+                if (MAX_HORIZONTAL_SLICE_HEIGHT > total_H) {
+                    MAX_HORIZONTAL_SLICE_HEIGHT = total_H;
+                }
+
+                if (MAX_VERTICAL_SLICE_WIDTH > total_W) {
+                    MAX_VERTICAL_SLICE_WIDTH = total_W;
+                }
+            };
+
+        </script>
+        <div id="container">
+
+            <div class="error">
+                <div class="wrap">
+                    <div class="404">
+<pre><code>
+<span class="red">&lt;!</span><span>DOCTYPE html</span><span class="red">&gt;</span>
+                        <span class="blue">&lt;html <span class="yellow">lang=</span><span class="green">"en"</span>&gt;</span>
+                        <span class="blue">&lt;body <span class="yellow">class=</span><span class="green">"broken"</span>&gt;</span>
+
+                        <span>ERROR 404! 
+      FILE NOT FOUND!</span>
+      
+                        <span class="comment">&lt;!-- page not found,
+      time to go.--&gt;</span>
+                
+                        <a href="Neuraloading3.html"> <span class="red">&gt;</span> <input id="the_button" type="button" value="back home." /></a>
+
+                        <span class="blue">&nbsp;&lt;/body&gt;</span>
+                        <span class="blue">&lt;/html&gt;</span>
+  </code></pre>
+                    </div>
+                </div>
+                <span class="fnf"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

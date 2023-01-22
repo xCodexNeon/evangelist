@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <style>
+        html, body {
+            position:absolute; width:100%; height:100%; overflow:hidden;
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+
+        h1 {
+            margin: 0;
+            line-height: 100vh;
+            text-align: center;
+            font-family: "Helvetica Neue", sans-serif;
+            font-size: 1vw;
+            color: white;
+        }
+
+            h1 span {
+                display: inline-block;
+            }
+
+            h1.position-1 span:nth-child(1) {
+                transform: rotate(180deg);
+            }
+
+            h1.position-2 span:nth-child(2) {
+                transform: rotate(180deg);
+            }
+
+            h1.position-3 span:nth-child(3) {
+                transform: rotate(180deg);
+            }
+
+            h1.position-4 span:nth-child(4) {
+                transform: rotate(180deg);
+            }
+
+            h1.position-5 span:nth-child(5) {
+                transform: rotate(180deg);
+            }
+            h1.position-6 span:nth-child(6) {
+                transform: rotate(180deg);
+            }
+
+            h1.position-7 span:nth-child(7) {
+                transform: rotate(180deg);
+            }
+        #main { position:absolute; width:10vw; height:5vw;top:42%; right:3%;
+        }
+        a { color:white; text-decoration:none;
+        }
+    </style>
+</head>
+
+
+
+<body id="bdy" onload="redireccionarPagina();">
+    <script>
+        function redireccionarPagina() {
+            setTimeout("location.href='Neura3.html'", 3000);
+
+        }
+    </script>
+    <div id="main">
+        <h1>
+            <script>
+                // Creepy....
+                const h1 = document.getElementsByTagName("h1")[0];
+
+                setInterval(() => {
+                    const randomNumber = Math.floor(Math.random() * 7) + 1;
+                    h1.className = `position-${randomNumber}`;
+                }, 70);
+
+            </script>
+            <span>L</span>
+            <span>O</span>
+            <span>A</span>
+            <span>D</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+        </h1>
+    </div>
+
+
+</body>
+
+</html>

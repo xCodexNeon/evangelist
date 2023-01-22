@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            position: absolute;
+            width: 100%;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+
+
+<body id="bdy">
+    <canvas id="canvasID">
+        <script>
+            /*
+An explanation of what this does:
+
+A grid of "pixels" is generated based on the data supplied in the screenDimensions and pixelSize variables. For example, the default setting x:80 & y:45 generates an 80 by 45 grid. 
+
+pixelSize generates smaller or larger "pixels", but it's hard to tell because the canvas is stretched to fit the whole screen. Change that in the .css to see the effect.
+
+The locations of these "pixels" are stored in the "pixels" array by the "calcPixelLocations" function. 
+
+Each pixel will have three subpixels: one for the red channel, one for the green channel, and one for the blue channel. We can control the amount of color in each subpixel.
+
+The "calcGradientRGB" function determines RGB values from the initial hex values we supply. It does this for two colors so we can draw a gradient between them. The RGB values for each color will need to be split among the 3 channels of each pixel's subpixels.
+
+The "assignPixelColor" function then cycles through every pixel and assigns colors to each of their 3 subpixels. It only assigns them, it does not draw or render anything yet.
+
+Then the "draw" function fills in every subpixel with the colors we previously assigned. This is where the colors actually are rendered.
+
+You can change channels by clicking or pressing space. 
+Channels are: 
+  1) complimentary colors
+  2) triadic colors
+  3) square colors
+  4) rainbow colors
+  5) random colors
+  6) random colors + static
+*/
+
+            //screen settings
+            const screenDimensions = { x: 80, y: 45 }; //width and height
+            //for 16:9 aspect ratio = 32/18, 48/27, 64/36, 80/45, 96/54, 128/72, etc
+            const totalPixels = screenDimensions.x * screenDimensions.y; //ex: 80x45 = 3600 pixels
+            const pixelSize = 9; // works best if multiple of 3 (each pixel has 3 subpixels)
+            let pixels = []; //stores location of each pixel: pixels[0].x, pixels[0].y
+            let pixelBorder = true; //a border around each pixel to simulate a real screen
+            const refreshRate = 100; //milliseconds
+
+            //glitchy settings
+            let errorPixels = false; //occasionally render glitchy pixels (NEEDS WORK, keep false for now)
+            let colorVariationDefault = 12; //the colors can vary by this amount (0-255)
+            let colorVariation = colorVariationDefault; //used to reset to initial value
+
+            //channel variables
+            let changingChannel = false; //will prevent changing channels while already changing channels
+            let currentChannel = 0; //arbitrary value for what channel is being shown. channels will be used to display different color gradients.
+
+            //screen message settings
+            let screenMessage = "CLICK OR PRESS SPACE";
+            let screenMessageVisible = true;
+            let screenMessageTimeout; //will be used to hide the screen message after a few seconds
+
+            //rainbow mode settings & variables
+            let rainbowMode = false; //will cycle through all 360 hues of HSL colors hsl(0-360, 100, 50)
+            let rainbowHSLColor = 0; //the current hue of HSL color used for color1 during rainbowMode
+
+            //default starting colors. pressing space will gen random colors
+            let color1 = { hex: "#22c1c3" };
+            let color2 = { hex: "#992dfd" };
+
+            //set up canvas
+            let canvas = document.getElementById("canvasID");
+            let ctx = canvas.getContext("2d");
+
+            //scale canvas to "screen size"
+            function resizeCanvas() {
+                ctx.canvas.height = screenDimensions.y * pixelSize; //alternate: ctx.canvas.height = window.innerHeight;
+                ctx.canvas.width = screenDimensions.x * pixelSize; //alternate: ctx.canvas.width = window.innerWidth;
+            }
+
+            //on page load -> execute these functions
+            window.onload = function () {
+                resizeCanvas(); //scale canvas to "screen" size
+                calcPixelLocations(); //determine location of each pixel
+                calcGradientRGB(); //determine RGB colors from supplied hex colors
+                draw(); //draw the TV!
+            };
+
+            ///function to determine where each pixel will be
+            function calcPixelLocations() {
+                pixels = [];
+                //based on the screen size and pixel size, determine location of each pixel
+                for (let y = 0; y < screenDimensions.y; y++) {
+                    for (let x = 0; x < screenDimensions.x; x++) {
+                        pixels.push({ x: x * pixelSize, y: y * pixelSize });
+                    }
+                }
+            }
+
+            //calculate RGB values from hex colors
+            /* Note: This function is only used for calculating a gradient between two colors.
+            If you were displaying a video, there would be no need for this function.
+            */
+            function calcGradientRGB() {
+                Object.assign(color1, hexToRgb(color1.hex));
+                Object.assign(color2, hexToRgb(color2.hex));
+            }
+
+            //each pixel will have 3 subpixels: one each for red, green, and blue. we assign them colors here.
+            function assignPixelColor() {
+                //if enabled, rainbow mode chooses color1 and color2 from hues in the HSL color wheel
+                if (rainbowMode === true) {
+                    color1.hex = hslToHex((0 + rainbowHSLColor) % 360, 100, 50); //changing hue...
+                    color2.hex = hslToHex((50 + rainbowHSLColor) % 360, 100, 50); //saturation and lightness are left alone
+                    rainbowHSLColor = (rainbowHSLColor + 3) % 360; //skip by 3 hues so it cycles faster
+                    //we've chosen hex colors for color1 and color2, now assign them RGB values
+                    calcGradientRGB();
+                }
+                for (let i = 0; i < totalPixels; i++) {
+                    /*
+                    This is where all the magic happens and we assign color to each pixel. 
+                    The basic formula is:
+                      pixels[i].r = 0-255
+                      pixels[i].g = 0-255 
+                      pixels[i].b = 0-255
+                      
+                    If you had an array storing all the pixel data from a decoded gif you could apply it here.
+                    
+                    Hypothetical code for playing a decoded gif:
+                       "f" represents the current frame #
+                      pixels[i].r = gifData.colorTable[ gifData[f].pixelData[i] ][0] //red
+                      pixels[i].g = gifData.colorTable[ gifData[f].pixelData[i] ][1] //green
+                      pixels[i].b = gifData.colorTable[ gifData[f].pixelData[i] ][2] //blue
+                    */
+
+                    //the following three assignments are for calcuating the color gradients
+                    //asign red color to red subpixel
+                    if (color1.r < color2.r) {
+                        pixels[i].r =
+                            color1.r +
+                            Math.round((i / totalPixels) * Math.abs(color1.r - color2.r)) -
+                            getRandom(-colorVariation, colorVariation); //random color variation
+                    } else {
+                        pixels[i].r =
+                            color1.r -
+                            Math.round((i / totalPixels) * Math.abs(color1.r - color2.r)) -
+                            getRandom(-colorVariation, colorVariation);
+                    }
+
+                    //assign green color
+                    if (color1.g < color2.g) {
+                        pixels[i].g =
+                            color1.g +
+                            Math.round((i / totalPixels) * Math.abs(color1.g - color2.g)) -
+                            getRandom(-colorVariation, colorVariation);
+                    } else {
+                        pixels[i].g =
+                            color1.g -
+                            Math.round((i / totalPixels) * Math.abs(color1.g - color2.g)) -
+                            getRandom(-colorVariation, colorVariation);
+                    }
+
+                    //assign blue color
+                    if (color1.b < color2.b) {
+                        pixels[i].b =
+                            color1.b +
+                            Math.round((i / totalPixels) * Math.abs(color1.b - color2.b)) -
+                            getRandom(-colorVariation, colorVariation); //getRandom(0, 255);
+                    } else {
+                        pixels[i].b =
+                            color1.b -
+                            Math.round((i / totalPixels) * Math.abs(color1.b - color2.b)) -
+                            getRandom(-colorVariation, colorVariation); //getRandom(0, 255);
+                    }
+
+                    //occasionally mess up a pixel (this needs work; don't use)
+                    //I think it would be better to do this outside of a loop so we use less CPU
+                    if (errorPixels === true) {
+                        if (getRandom(1, 100000) === 1) {
+                            pixels[i].r = 255 - pixels[i].r;
+                            pixels[i].g = 255 - pixels[i].g;
+                            pixels[i].b = 255 - pixels[i].b;
+                        }
+                    }
+                }
+            }
+
+            //draw the screen!
+            function draw() {
+                assignPixelColor(); //figure out how each pixel (and its subpixels) will be colored
+
+                //cycle through each pixel and color it
+                for (let i = 0; i < pixels.length; i++) {
+                    //cycle through each pixel's subpixels (RGB) and set fill color
+                    for (let j = 0; j < 3; j++) {
+                        if (j === 0) {
+                            //red subpixel
+                            ctx.fillStyle = `rgb(${pixels[i].r}, 0, 0)`;
+                        } else if (j === 1) {
+                            //green subpixel
+                            ctx.fillStyle = `rgb(0, ${pixels[i].g}, 0)`;
+                        } else if (j === 2) {
+                            //blue subpixel
+                            ctx.fillStyle = `rgb(0, 0, ${pixels[i].b})`;
+                        }
+
+                        //color each pixel's subpixels
+                        ctx.fillRect(
+                            pixels[i].x + (pixelSize / 3) * j,
+                            pixels[i].y,
+                            pixelSize / 3,
+                            pixelSize
+                        );
+
+                        //if you wanted to color the entire pixel (instead of just subpixels):
+                        //ctx.fillRect(pixels[i].x, pixels[i].y, pixelSize, pixelSize);
+                    }
+
+                    //this draws a line around each pixel. just for effect. it's not necessary
+                    if (pixelBorder === true) {
+                        ctx.beginPath();
+                        ctx.lineWidth = "1";
+                        ctx.strokeStyle = "rgba(0, 0, 0, 0.3)";
+                        ctx.rect(pixels[i].x, pixels[i].y, pixelSize, pixelSize);
+                        ctx.stroke();
+                    }
+                }
+
+                //display the screen message after channel is changed (not during)
+                if (screenMessageVisible === true && changingChannel === false) {
+                    ctx.fillStyle = "rgba(255,225,255,0.75)";
+                    ctx.font = `${pixelSize * 4}px Arial`;
+                    ctx.shadowColor = "rgba(255,255,255,.75)";
+                    ctx.shadowBlur = 6;
+                    ctx.fillText(screenMessage, pixelSize, pixelSize * 4 - 1);
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            //call draw function every X ms
+            //use requestAnimationFrame() instead?
+            setInterval(function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                draw();
+            }, refreshRate);
+
+            //change the channel (user clicks or press space)
+            function changeChannel() {
+                changingChannel = true; //will prevent channel being changed while this executes
+                //temporarily increase color variation to produce "changing channel effect"
+                colorVariation = colorVariationDefault + 100;
+
+                //cause increased color variation for x milliseconds
+                setTimeout(() => {
+                    if (currentChannel != 0) {
+                        //static channel, keep colorVariation high
+                        colorVariation = colorVariationDefault; //return value to initial
+                    }
+                    changingChannel = false;
+                    screenMessageVisible = true;
+                }, 500);
+
+                //cycle through what "channel" we are on. 6 channels total.
+                currentChannel = (currentChannel + 1) % 6;
+
+                if (currentChannel === 1) {
+                    //complimentary colors
+                    screenMessage = "01 COMPLIMENTARY COLORS";
+                    let randomHue = getRandom(0, 359);
+                    let randomSaturation = getRandom(85, 100);
+                    let randomBrightness = getRandom(40, 60);
+                    color1.hex = hslToHex(randomHue, randomSaturation, randomBrightness);
+                    color2.hex = hslToHex(
+                        (randomHue + 180) % 360,
+                        randomSaturation,
+                        randomBrightness
+                    );
+                    calcGradientRGB();
+                } else if (currentChannel == 2) {
+                    //triadic colors
+                    screenMessage = "02 TRIADIC COLORS";
+                    let randomHue = getRandom(0, 359);
+                    let randomSaturation = getRandom(85, 100);
+                    let randomBrightness = getRandom(40, 60);
+                    color1.hex = hslToHex(randomHue, randomSaturation, randomBrightness);
+                    color2.hex = hslToHex(
+                        (randomHue + 120) % 360,
+                        randomSaturation,
+                        randomBrightness
+                    );
+                    calcGradientRGB();
+                } else if (currentChannel === 3) {
+                    //square colors
+                    screenMessage = "03 SQUARE COLORS";
+                    let randomHue = getRandom(0, 359);
+                    let randomSaturation = getRandom(85, 100);
+                    let randomBrightness = getRandom(40, 60);
+                    color1.hex = hslToHex(randomHue, randomSaturation, randomBrightness);
+                    color2.hex = hslToHex(
+                        (randomHue + 90) % 360,
+                        randomSaturation,
+                        randomBrightness
+                    );
+                    calcGradientRGB();
+                } else if (currentChannel === 4) {
+                    //rainbow mode
+                    screenMessage = "04 RAINBOW";
+                    rainbowMode = true;
+                } else if (currentChannel === 5) {
+                    //random mode
+                    screenMessage = "05 RANDOM";
+                    rainbowMode = false;
+                    color1 = { hex: randomHexColor() };
+                    color2 = { hex: randomHexColor() };
+                    calcGradientRGB(); //update color1.hex and color2.hex with RGB info
+                } else {
+                    //random & static mode
+                    screenMessage = "06 STATIC";
+                    color1 = { hex: randomHexColor() };
+                    color2 = { hex: randomHexColor() };
+                    calcGradientRGB(); //update color1.hex and color2.hex with RGB info
+                }
+
+                //if the channel is changed, reset the timer (so the message doesn't disappear)
+                if (screenMessageVisible === true) {
+                    clearTimeout(screenMessageTimeout);
+                }
+
+                //set timer to hide message after X ms
+                screenMessageTimeout = setTimeout(() => {
+                    screenMessageVisible = false;
+                }, 3000);
+            }
+
+            //random number
+            function getRandom(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            function randomHexColor() {
+                return (
+                    "#" +
+                    Math.floor(Math.random() * 16777215)
+                        .toString(16)
+                        .padStart(6, "0")
+                );
+            }
+
+            //example: hexToRgb(#00FF00).g = 255
+            function hexToRgb(hex) {
+                let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result
+                    ? {
+                        r: parseInt(result[1], 16),
+                        g: parseInt(result[2], 16),
+                        b: parseInt(result[3], 16)
+                    }
+                    : null;
+            }
+
+            //change channel by pressing space or clicking
+            document.body.onkeydown = function (e) {
+                if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+                    if (changingChannel === false) {
+                        //if channel is already changing, let it finish
+                        changeChannel();
+                    }
+                }
+            };
+            canvas.onclick = function () {
+                if (changingChannel === false) {
+                    //if channel is already changing, let it finish
+                    changeChannel();
+                }
+            };
+
+            //convert hsl to hex. example: hslToHex(360, 100, 50) = "#ff0000"
+            //I have no idea how this works. Found on stackoverflow.
+            function hslToHex(h, s, l) {
+                l /= 100;
+                const a = (s * Math.min(l, 1 - l)) / 100;
+                const f = (n) => {
+                    const k = (n + h / 30) % 12;
+                    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+                    return Math.round(255 * color)
+                        .toString(16)
+                        .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+                };
+                return `#${f(0)}${f(8)}${f(4)}`;
+            }
+
+        </script>
+    </canvas>
+</body>
+
+</html>
