@@ -1,0 +1,1420 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/vue.global.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+        body {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: black;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        #main {
+            width: 101%;
+            height: 101%;
+            position: absolute;
+            background: black;
+            top: -1%;
+            left: -1%;
+            overflow: hidden;
+        }
+
+        #backg {
+            position: absolute;
+            width: 77%;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+
+        #back {
+            position: absolute;
+            width: 110%;
+            height: 150%;
+            left: -5%;
+            top: -25%;
+        }
+
+        #backimg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            background-image: url(https://wallpapercave.com/wp/wp7147181.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: .6;
+        }
+
+        #back2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            background-image: url(https://wallpapercave.com/wp/wp7147181.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: .6;
+        }
+
+        #leftmenu {
+            position: absolute;
+            width: 23%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: 10;
+        }
+
+        #cuberight {
+            position: absolute;
+            width: 13vw;
+            height:7vw;
+            left: 100%;
+            background: white;
+        }
+
+        #imgprf {
+            position: absolute;
+            width: 5vw;
+            height: 5vw;
+            border: .3vw solid #a79574;
+            border-radius: 50%;
+            right: -2.5vw;
+            bottom: 7%;
+            overflow: hidden;
+        }
+
+            #imgprf img {
+                width: 100%;
+            }
+
+        #mnuup {
+            position: absolute;
+            width: 42%;
+            height: 3%;
+            letter-spacing: .3vw;
+            color: white;
+            font-size: .8vw;
+            right: 5%;
+            top: 5.5%;
+            z-index: 12;
+            font-family: 'Oswald', sans-serif;
+        }
+
+            #mnuup span {
+                margin-left: 2vw;
+                transition: all .5s ease;
+            }
+
+                #mnuup span:hover {
+                    color: #f64d4d;
+                }
+        #btn1 {
+            left: 68%;
+            top: -20%;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            background: transparent;
+            border: .1vw solid transparent;
+            transition: all .5s ease;
+        }
+            #btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover {
+                border: .1vw solid #f64d4d;
+            }
+        #btn2 {
+            left: 77%;
+            top: -20%;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            background: transparent;
+            border: .1vw solid transparent;
+            transition: all .5s ease;
+        }
+        #btn3 {
+            left: 86%;
+            top: -20%;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            background: transparent;
+            border: .1vw solid transparent;
+            transition: all .5s ease;
+        }
+        #btn4 {
+            left: 95%;
+            top: -20%;
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            background: transparent;
+            border: .1vw solid transparent;
+            transition: all .5s ease;
+        }
+            #btn1 img, #btn2 img, #btn3 img, #btn4 img { width:1.2vw; margin:.4vw; filter:invert(100%);
+            }
+        #textrigh {
+            font-family: 'Poiret One', cursive;
+            font-weight: bold; position:absolute; right:-16.8%; transform:rotate(270deg); color:white; font-size:1vw; letter-spacing:.3vw; top:12vw;
+        }
+        #idtext { font-weight:bolder;
+            font-family: 'Poiret One', cursive;
+              width:10vw;
+            position: absolute;
+            left:115%;
+            color: white;
+            font-size: .9vw;
+            letter-spacing: .2vw;
+            bottom:12%;
+        }
+        #iddesc {
+            font-family: 'Poiret One', cursive;
+             
+            width: 10vw;
+            position: absolute;
+            left: 115%;
+            color: white;
+            font-size: .6vw;
+            letter-spacing: .2vw;
+            bottom: 10%;
+        }
+        #auid {
+            mix-blend-mode: difference;
+            z-index: 11;
+            font-family: 'Poiret One', cursive;
+            position: absolute;
+            width: 33vw;
+            height: 8vw;
+            top: -2.4vw;
+            left: 2%;
+        }
+
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            z-index: 999999999999999;
+            top: 110%;
+            right: 12%;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: white;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1vw;
+            }
+
+        #namesong {
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: lightgray;
+            left: 0%;
+            letter-spacing: .1vw;
+            font-size: 1vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: lightgray;
+            height: .2vw;
+            position: absolute;
+            top: 80%;
+        }
+
+        .fillBar {
+            background: #292929;
+            ;
+            width: 0;
+            height: .3vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 41%;
+            right: 2%;
+            position: absolute;
+        }
+
+            #AT_time p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .1vw;
+                font-size: .8vw;
+                color: lightgray;
+            }
+
+        .time {
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .7vw;
+            width: 2vw;
+            overflow: hidden;
+            color: white;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            position: absolute;
+            left: .1vw;
+            top: 90%;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: lightgray;
+        }
+
+        #cd_2 p {
+            position: absolute;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
+        #p_t6 {
+            font-family: 'Oswald', sans-serif;
+            /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+            top: 93%;
+            position: absolute;
+            font-size: .6vw;
+            color: white;
+            letter-spacing: .1vw;
+        }
+
+        #p_t7 {
+            font-family: 'Oswald', sans-serif;
+            /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+            top: 94.5%;
+            position: absolute;
+            font-size: .6vw;
+            color: white;
+            letter-spacing: .1vw;
+        }
+
+        #icongif {
+            filter: grayscale(100%) contrast(200%);
+            width: 1.3vw;
+            position: absolute;
+            right: 1%;
+            top: 94.5%;
+        }
+
+        html a {
+            text-decoration: none;
+            color: white;
+        }
+        #aboutme { position:absolute; width:20vw; height:20vw; background:red; z-index:11;
+        }
+        #draggable { cursor:grab;
+            border-radius: 1vw;
+            border: .1vw solid #F6D6FD;
+            z-index: 11;
+            background: rgba(255,255,255, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            left: 65.5%;
+            top: 10%;
+            width: 30%;
+            height: 45%;
+            /*opacity:0;*/
+            font-size: 2rem;
+            user-select: none;
+        }
+      
+            #draggable::selection { cursor:grabbing;
+            }
+        .aboutme {animation: t-entrance 1s 1; animation-fill-mode:forwards;
+        }
+        @keyframes t-entrance {
+
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        #closeadd { color:#171717; font-size:1vw; border:.1vw solid white;  width:1vw; height:1vw; background:rgba(255,255,255,.5); position:absolute; top:2%; right:2%; border-radius: 0 .5vw 0 0;
+        }
+            #closeadd p {
+                margin-top:-20%;
+                text-align: center;
+                font-family: 'Poiret One', cursive;
+            }
+
+        #draggable-elem { overflow:hidden;
+            /*opacity: 0;*/
+            cursor: grab;
+            border-radius: 1vw;
+            border: .1vw solid #F6D6FD;
+            z-index: 11;
+            background: rgba(255,255,255, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            left: 38%;
+            top: 10%;
+            width: 26%;
+            height: 85%;
+            /*opacity:0;*/
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        a {
+            color: #ffffff;
+            display: block;
+            width: 20em;
+            padding: 0.7em 0;
+            text-align: center;
+            background-color: #231041;
+            font-family: "Poppins", sans-serif;
+            border-radius: 0.3em;
+            text-decoration: none;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            bottom: 2em;
+            z-index: 1;
+        }
+
+        .fab {
+            color: #ff0000;
+        }
+
+        @media screen and (max-width: 500px) {
+            #draggable-elem {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+    <style>
+
+        .gradientbg {
+            z-index: -2;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: var(--background-gradient);
+            transform: rotate();
+            animation: gradient 15s linear infinite;
+        }
+
+        .grained {
+            display: none;
+            z-index: 1000;
+            background: url("../img/gained.png");
+            height: 300%;
+            width: 300%;
+            opacity: 1;
+            top: -100%;
+            pointer-events: none;
+            position: fixed;
+            animation: grain 8s steps(10) infinite;
+        }
+
+
+
+        .texto {position:absolute;
+            transform: rotate(270deg);
+            transition: var(--transition-duration);
+            height: 100vh;
+            font-family: 'Poiret One', cursive; font-weight:bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            left:30%; bottom:-5%;
+        }
+
+            .texto h1 {
+                font-weight: bold;
+                margin: 0;
+                letter-spacing: -0.15rem;
+                font-size: 2.5vw;
+                letter-spacing: .3vw;
+            }
+
+                .texto h1 .container {
+                    margin: 1rem;
+                    position: relative;
+                }
+
+                    .texto h1 .container .word {
+                        text-rendering: optimizeLegibility !important;
+                        white-space: pre;
+                        left: 50%;
+                        transform: translate(-50%, -10%);
+                        opacity: 0;
+                        display: block;
+                        top: 0;
+                        position: absolute;
+                    }
+
+            .texto p {
+                margin: 1rem 0;
+                color: var(--contrast-color);
+            }
+
+        a.botao {
+            transition: var(--transition-duration);
+            position: absolute;
+            bottom: 4rem;
+            left: 50%;
+            transform: translate(-50%, 20%);
+            padding: 1.3rem;
+            font-size: 1.3rem;
+            border: 2px solid var(--general-color);
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+            a.botao:hover {
+                background: var(--general-color);
+                color: var(--background);
+            }
+
+        p.footer {
+            transition: var(--transition-duration);
+            font-size: 0.6em;
+            position: absolute;
+            bottom: 1px;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%);
+            display: none;
+            padding: 0 2rem;
+            width: 100vw;
+        }
+
+        @media screen and (min-height: 300px) {
+            :root {
+                font-size: 13px;
+            }
+        }
+
+        @media screen and (min-height: 900px) {
+            :root {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (min-height: 1200px) {
+            :root {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            :root {
+                font-size: 24px;
+            }
+
+            .grained {
+                display: block;
+            }
+
+            p.footer {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 3rem;
+            }
+
+                nav .logo {
+                    height: 1.1rem;
+                }
+
+                nav p {
+                    display: block;
+                }
+
+            .texto {
+                height: 85vh;
+            }
+
+            a.botao {
+                font-size: 0.8rem;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        @media screen and (min-width: 1500px) {
+            nav {
+                padding: 1rem 4.5rem;
+            }
+        }
+
+        .letter {
+            text-rendering: optimizeLegibility !important;
+            display: inline-block;
+            position: relative;
+            transform: translateZ(25px);
+            transform-origin: 50% 50% 25px;
+        }
+
+            .letter.out {
+                transform: rotateX(90deg);
+                transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+
+            .letter.behind {
+                transform: rotateX(-90deg);
+            }
+
+            .letter.in {
+                transform: rotateX(0deg);
+                transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        #descc { font-size:.9vw; letter-spacing:.2vw; color:gray; margin-left:-100%;
+        }
+        @-webkit-keyframes opacity {
+            0%, 100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes change {
+            0%, 12.66%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            16.66%, 29.32% {
+                transform: translate3d(0, -25%, 0);
+            }
+
+            33.32%, 45.98% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            49.98%, 62.64% {
+                transform: translate3d(0, -75%, 0);
+            }
+
+            66.64%, 79.3% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            83.3%, 95.96% {
+                transform: translate3d(0, -25%, 0);
+            }
+        }
+
+        @-o-keyframes opacity {
+            0%, 100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes change {
+            0%, 12.66%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            16.66%, 29.32% {
+                transform: translate3d(0, -25%, 0);
+            }
+
+            33.32%, 45.98% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            49.98%, 62.64% {
+                transform: translate3d(0, -75%, 0);
+            }
+
+            66.64%, 79.3% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            83.3%, 95.96% {
+                transform: translate3d(0, -25%, 0);
+            }
+        }
+
+        @-moz-keyframes opacity {
+            0%, 100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes change {
+            0%, 12.66%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            16.66%, 29.32% {
+                transform: translate3d(0, -25%, 0);
+            }
+
+            33.32%, 45.98% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            49.98%, 62.64% {
+                transform: translate3d(0, -75%, 0);
+            }
+
+            66.64%, 79.3% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            83.3%, 95.96% {
+                transform: translate3d(0, -25%, 0);
+            }
+        }
+
+        @keyframes opacity {
+            0%, 100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes change {
+            0%, 12.66%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            16.66%, 29.32% {
+                transform: translate3d(0, -25%, 0);
+            }
+
+            33.32%, 45.98% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            49.98%, 62.64% {
+                transform: translate3d(0, -75%, 0);
+            }
+
+            66.64%, 79.3% {
+                transform: translate3d(0, -50%, 0);
+            }
+
+            83.3%, 95.96% {
+                transform: translate3d(0, -25%, 0);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position-y: 100vh;
+            }
+
+            100% {
+                background-position-y: -100vh;
+            }
+        }
+
+        @keyframes grain {
+            0% {
+                -webkit-transform: translate(-10%, 10%);
+                -moz-transform: translate(-10%, 10%);
+                transform: translate(-10%, 10%);
+            }
+
+            10% {
+                -webkit-transform: translate(-25%, 0%);
+                -moz-transform: translate(-25%, 0%);
+                transform: translate(-25%, 0%);
+            }
+
+            20% {
+                -webkit-transform: translate(-30%, 10%);
+                -moz-transform: translate(-30%, 10%);
+                transform: translate(-30%, 10%);
+            }
+
+            30% {
+                -webkit-transform: translate(-30%, 30%);
+                -moz-transform: translate(-30%, 30%);
+                transform: translate(-30%, 30%);
+            }
+
+            40% {
+                -webkit-transform: translate();
+                -moz-transform: translate();
+                transform: translate();
+            }
+
+            50% {
+                -webkit-transform: translate(-15%, 10%);
+                -moz-transform: translate(-15%, 10%);
+                transform: translate(-15%, 10%);
+            }
+
+            60% {
+                -webkit-transform: translate(-20%, 20%);
+                -moz-transform: translate(-20%, 20%);
+                transform: translate(-20%, 20%);
+            }
+
+            70% {
+                -webkit-transform: translate(-5%, 20%);
+                -moz-transform: translate(-5%, 20%);
+                transform: translate(-5%, 20%);
+            }
+
+            80% {
+                -webkit-transform: translate(-25%, 5%);
+                -moz-transform: translate(-25%, 5%);
+                transform: translate(-25%, 5%);
+            }
+
+            90% {
+                -webkit-transform: translate(-30%, 25%);
+                -moz-transform: translate(-30%, 25%);
+                transform: translate(-30%, 25%);
+            }
+
+            100% {
+                -webkit-transform: translate(-10%, 10%);
+                -moz-transform: translate(-10%, 10%);
+                transform: translate(-10%, 10%);
+            }
+        }
+    </style>
+
+    
+</head>
+
+
+<body>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "RADIO OFF",
+                        artist: "RADIO OFF",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "MINUSMENSCH",
+                        artist: "LANTLOS  (Only the best part)",
+                        src:
+                            "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+                    },
+                    {
+                        name: "THE EERIE COLD",
+                        artist: "SHINING",
+                        src:
+                            "https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
+                    },
+                    {
+                        name: "PULSE / SURREAL",
+                        artist: "LANTLOS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                    },
+                    {
+                        name: "TOO LATE TO CALL AN AMBULANCE",
+                        artist: "PSYCHONAOUT 4",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
+                    },
+                    {
+                        name: "THE GREAT COLD DEATH OF HEART",
+                        artist: "AGALOCH",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
+                    },
+                    {
+                        name: "THE HIDDEN LAKE OF THE FOREST",
+                        artist: "AUTUMN NOSTALGIE",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
+                    },
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 6;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 6) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+    <div id="main" onload="randomimg();">
+        <div id="backg">
+            <div id="back">
+                <div id="back2"></div>
+                <div id="backimg">
+                    <script>
+
+
+                        var moveForce = 10; // max popup movement in pixels
+                        var rotateForce = 7; // max popup rotation in deg
+                        $(document).mousemove(function (e) {
+                            var docX = $(document).width();
+                            var docY = $(document).height();
+
+                            var moveX = (e.pageX - docX / 2) / (docX / 2) * -moveForce;
+                            var moveY = (e.pageY - docY / 2) / (docY / 2) * -moveForce;
+
+                            var rotateY = (e.pageX / docX * rotateForce * 2) - rotateForce;
+                            var rotateX = -((e.pageY / docY * rotateForce * 2) - rotateForce);
+
+                            $('#backimg')
+                                .css('left', moveX + 'px')
+                                .css('top', moveY + 'px')
+                                .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
+
+                        });
+                    </script>
+                    <script>
+                        // Basic filter
+                        $('.filter-basic').mdbFilter();
+
+                        // Draggable filter
+                        $('.filter-draggable').mdbFilter({
+                            draggable: true
+                        });
+
+                        // Filter with no gaps
+                        $('.filter-fillgaps').mdbFilter({
+                            draggable: true,
+                            fillGaps: true
+                        });
+
+                        $('.filter-lightbox').mdbFilter();
+                    </script>
+                    <script>
+                        $(function () {
+                            $("#backimg").mgGlitch({
+                                destroy: false, // set 'true' to stop the plugin
+                                glitch: true, // set 'false' to stop glitching
+                                scale: true, // set 'false' to stop scaling
+                                blend: false, // set 'false' to stop glitch blending
+                                blendModeType: 'normal', // select blend mode type
+                                glitch1TimeMin: 600, // set min time for glitch 1 elem
+                                glitch1TimeMax: 900, // set max time for glitch 1 elem
+                                glitch2TimeMin: 10, // set min time for glitch 2 elem
+                                glitch2TimeMax: 115, // set max time for glitch 2 elem
+                            });
+                        });
+                    </script>
+                    <script>
+
+                        // ...
+                        function random(min, max) {
+                            return Math.floor(Math.random() * (max - min + 1) + min);
+                        }
+
+                        var spec = {
+                            backgrounds: [
+                                'https://i.postimg.cc/h4JtDyT3/1280x800-995325-anime-girls-twintails-Wand-pastel-lolita-fashion.jpg',
+                                'https://i.postimg.cc/T3xdcTSZ/anime-girl-and-ubrella-art.jpg',
+                                'https://i.postimg.cc/9QBW8vHz/anime-anime-girls-white-hair-dress-butterflies-white-eyes-1943533.png',
+                                'https://i.postimg.cc/9QBW8vHz/anime-anime-girls-white-hair-dress-butterflies-white-eyes-1943533.png',
+                                'https://i.postimg.cc/3rPJdXZr/anime-girl-3-wallpaper-1280x800.jpg',
+                                'https://i.postimg.cc/sD7fSMnY/papers-co-bl84-art-anime-girl-white-cry-31-wallpaper.jpg'
+
+                            ]
+                        };
+
+                        var i = random(0, spec.backgrounds.length - 1);
+                        var b = spec.backgrounds[i];
+                        $('#backimg').css('background-image', 'url("' + b + '")');
+                        $('#back2').css('background-image', 'url("' + b + '")');
+                        // ...
+
+                    </script>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="mnuup">
+            <span onclick="addfirm();">MORE</span>
+            <span>SOCIAL</span>
+            <span>DISCOVER</span>
+
+            <span onclick="addabout();">ABOUT</span>
+
+            <script>
+                function addabout() { $("#draggable").addClass("aboutme") }
+                function addfirm() { $("#draggable-elem").addClass("aboutme") }
+            </script>
+            <div id="aicons">
+                <div id="btn1">
+                    <img src="https://i.postimg.cc/zBy4k5vK/twitter-sign.png" />
+                </div>
+                <div id="btn2">
+                    <img src="https://i.postimg.cc/zBy4k5vK/twitter-sign.png" />
+                </div>
+                <div id="btn3">
+                    <img src="https://i.postimg.cc/zBy4k5vK/twitter-sign.png" />
+                </div>
+                <div id="btn4">
+                    <img src="https://i.postimg.cc/zBy4k5vK/twitter-sign.png" />
+                </div>
+            </div>
+
+            <p id="textrigh">Necessarius@Gmail.com</p>
+        </div>
+
+        <div id="auid">
+            <div id="R_plyr">
+                <div id="dt_rp">
+
+                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                </div>
+
+                <div id="mor_rpy">
+
+                    <div class="player">
+
+                        <div class="player-track">
+                            <div id="titles">
+
+                            </div>
+
+
+
+                            <div class="progress-bar">
+                                <div class="fillBar"></div>
+                            </div>
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div class="artist-name"></div>
+
+                        </div>
+
+                        <div class="player-control">
+                            <div id="prev" class="fas fa-backward"><p>◄</p></div>
+
+                            <div id="next" class="fas fa-forward"><p>►</p></div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="crdts">
+            <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
+            <p id="p_t7">1533252890 | contact | xat.com</p>
+            <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+        </div>
+
+        <div id="draggable">
+            <script>
+                var isMouseDown,
+                    initX,
+                    initY,
+                    height = draggable.offsetHeight,
+                    width = draggable.offsetWidth;
+
+                draggable.addEventListener("mousedown", function (e) {
+                    isMouseDown = true;
+                    document.body.classList.add("no-select");
+                    initX = e.offsetX;
+                    initY = e.offsetY;
+                });
+
+                document.addEventListener("mousemove", function (e) {
+                    if (isMouseDown) {
+                        var cx = e.clientX - initX,
+                            cy = e.clientY - initY;
+                        if (cx < 0) {
+                            cx = 0;
+                        }
+                        if (cy < 0) {
+                            cy = 0;
+                        }
+                        if (window.innerWidth - e.clientX + initX < width) {
+                            cx = window.innerWidth - width;
+                        }
+                        if (e.clientY > window.innerHeight - height + initY) {
+                            cy = window.innerHeight - height;
+                        }
+                        draggable.style.left = cx + "px";
+                        draggable.style.top = cy + "px";
+                    }
+                });
+
+                draggable.addEventListener("mouseup", function () {
+                    isMouseDown = false;
+                    document.body.classList.remove("no-select");
+                });
+
+            </script>
+            <div id="closeadd" onclick="remabout();"><p>x</p></div>
+            <script>
+                function remabout() { $("#draggable").removeClass("aboutme") }
+            </script>
+        </div>
+
+        <div id="draggable-elem">
+            <script>
+                let draggableElem = document.getElementById("draggable-elem");
+                let initialX = 0,
+                    initialY = 0;
+                let moveElement = false;
+                //events object
+                let events = {
+                    mouse: {
+                        down: "mousedown",
+                        move: "mousemove",
+                        up: "mouseup"
+                    },
+                    touch: {
+                        down: "touchstart",
+                        move: "touchmove",
+                        up: "touchend"
+                    }
+                };
+                let deviceType = "";
+                //Detect touch device
+                const isTouchDevice = () => {
+                    try {
+                        //We try to create TouchEvent (it would fail for desktops and throw error)
+                        document.createEvent("TouchEvent");
+                        deviceType = "touch";
+                        return true;
+                    } catch (e) {
+                        deviceType = "mouse";
+                        return false;
+                    }
+                };
+                isTouchDevice();
+                // start(mouse down/touch start)
+                draggableElem.addEventListener(events[deviceType].down, (e) => {
+                    e.preventDefault();
+                    //initial x and y points
+                    initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+                    initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+                    // start movement
+                    moveElement = true;
+                });
+                // Move
+                draggableElem.addEventListener(events[deviceType].move, (e) => {
+                    //if movement==true then set top and left to new X and y while removing any offset
+                    if (moveElement) {
+                        e.preventDefault();
+                        let newX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+                        let newY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+                        draggableElem.style.top = draggableElem.offsetTop - (initialY - newY) + "px";
+                        draggableElem.style.left =
+                            draggableElem.offsetLeft - (initialX - newX) + "px";
+                        initialX = newX;
+                        initialY = newY;
+                    }
+                });
+                //mouse up/touch end
+                draggableElem.addEventListener(
+                    events[deviceType].up,
+                    (stopMovement = (e) => {
+                        //stop movement
+                        moveElement = false;
+                    })
+                );
+                draggableElem.addEventListener("mouseleave", stopMovement);
+                document.addEventListener(events[deviceType].up, (e) => {
+                    moveElement = false;
+                });
+
+            </script>
+            <div id="closeadd" onclick="remabout2();"><p>x</p></div>
+            <script>
+                function remabout2() { $("#draggable-elem").removeClass("aboutme") }
+            </script>
+        </div>
+
+        <div id="leftmenu">
+            <div id="cuberight"></div>
+            <div id="imgprf">
+                <img src="https://i.pinimg.com/236x/bf/6b/69/bf6b69e844bc8ec92af37e14686cfd08.jpg" />
+            </div>
+            <span id="idtext">Necessarius&nbsp;|&nbsp;Chris</span>
+            <span id="iddesc">Zoey&nbsp;|&nbsp;1533252890</span>
+            <div id="text_a">
+
+                <div class="gradientbg"></div>
+
+                <div class="grained"></div>
+
+
+
+                <div class="texto">
+
+                    <h1>
+
+                        <span class="container">
+                            <span class="word">We both keep our secrets</span>
+                            <span class="word escrit">We're both, oh so blue</span>
+                            <span class="word">My heart is full of darkness</span>
+                            <span class="word">I know that yours is too</span>
+                        </span>
+                    </h1>
+                    <p id="descc">The Blue and the gray...♫</p>
+                    <script>
+                        var words = document.getElementsByClassName("word");
+                        var wordArray = [];
+                        var currentWord = 0;
+
+                        words[currentWord].style.opacity = 1;
+                        for (var i = 0; i < words.length; i++) {
+                            splitLetters(words[i]);
+                        }
+
+                        function changeWord() {
+                            var cw = wordArray[currentWord];
+                            var nw =
+                                currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+                            for (var i = 0; i < cw.length; i++) {
+                                animateLetterOut(cw, i);
+                            }
+
+                            for (var i = 0; i < nw.length; i++) {
+                                nw[i].className = "letter behind";
+                                nw[0].parentElement.style.opacity = 1;
+                                animateLetterIn(nw, i);
+                            }
+
+                            currentWord = currentWord == wordArray.length - 1 ? 0 : currentWord + 1;
+                        }
+
+                        function animateLetterOut(cw, i) {
+                            setTimeout(function () {
+                                cw[i].className = "letter out";
+                            }, i * 45);
+                        }
+
+                        function animateLetterIn(nw, i) {
+                            setTimeout(function () {
+                                nw[i].className = "letter in";
+                            }, 340 + i * 45);
+                        }
+
+                        function splitLetters(word) {
+                            var content = word.innerHTML;
+                            word.innerHTML = "";
+                            var letters = [];
+                            for (var i = 0; i < content.length; i++) {
+                                var letter = document.createElement("span");
+                                letter.className = "letter";
+                                letter.innerHTML = content.charAt(i);
+                                word.appendChild(letter);
+                                letters.push(letter);
+                            }
+
+                            wordArray.push(letters);
+                        }
+
+                        changeWord();
+                        setInterval(changeWord, 3500);
+
+                    </script>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
