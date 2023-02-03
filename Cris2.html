@@ -89,7 +89,7 @@
         #cuberight {
             position: absolute;
             width: 13vw;
-            height:7vw;
+            height: 7vw;
             left: 100%;
             background: white;
         }
@@ -130,6 +130,7 @@
                 #mnuup span:hover {
                     color: #f64d4d;
                 }
+
         #btn1 {
             left: 68%;
             top: -20%;
@@ -141,9 +142,11 @@
             border: .1vw solid transparent;
             transition: all .5s ease;
         }
+
             #btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover {
                 border: .1vw solid #f64d4d;
             }
+
         #btn2 {
             left: 77%;
             top: -20%;
@@ -155,6 +158,7 @@
             border: .1vw solid transparent;
             transition: all .5s ease;
         }
+
         #btn3 {
             left: 86%;
             top: -20%;
@@ -166,6 +170,7 @@
             border: .1vw solid transparent;
             transition: all .5s ease;
         }
+
         #btn4 {
             left: 95%;
             top: -20%;
@@ -177,25 +182,39 @@
             border: .1vw solid transparent;
             transition: all .5s ease;
         }
-            #btn1 img, #btn2 img, #btn3 img, #btn4 img { width:1.2vw; margin:.4vw; filter:invert(100%);
+
+            #btn1 img, #btn2 img, #btn3 img, #btn4 img {
+                width: 1.2vw;
+                margin: .4vw;
+                filter: invert(100%);
             }
+
         #textrigh {
             font-family: 'Poiret One', cursive;
-            font-weight: bold; position:absolute; right:-16.8%; transform:rotate(270deg); color:white; font-size:1vw; letter-spacing:.3vw; top:12vw;
-        }
-        #idtext { font-weight:bolder;
-            font-family: 'Poiret One', cursive;
-              width:10vw;
+            font-weight: bold;
             position: absolute;
-            left:115%;
+            right: -16.8%;
+            transform: rotate(270deg);
+            color: white;
+            font-size: 1vw;
+            letter-spacing: .3vw;
+            top: 12vw;
+        }
+
+        #idtext {
+            font-weight: bolder;
+            font-family: 'Poiret One', cursive;
+            width: 10vw;
+            position: absolute;
+            left: 115%;
             color: white;
             font-size: .9vw;
             letter-spacing: .2vw;
-            bottom:12%;
+            bottom: 12%;
         }
+
         #iddesc {
             font-family: 'Poiret One', cursive;
-             
             width: 10vw;
             position: absolute;
             left: 115%;
@@ -204,6 +223,7 @@
             letter-spacing: .2vw;
             bottom: 10%;
         }
+
         #auid {
             mix-blend-mode: difference;
             z-index: 11;
@@ -352,6 +372,7 @@
             color: rgba(199,48,48.3);
             line-height: .5vw;
         }
+
         #p_t6 {
             font-family: 'Oswald', sans-serif;
             /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
@@ -384,9 +405,17 @@
             text-decoration: none;
             color: white;
         }
-        #aboutme { position:absolute; width:20vw; height:20vw; background:red; z-index:11;
+
+        #aboutme {
+            position: absolute;
+            width: 20vw;
+            height: 20vw;
+            background: red;
+            z-index: 11;
         }
-        #draggable { cursor:grab;
+
+        #draggable {
+            cursor: grab;
             border-radius: 1vw;
             border: .1vw solid #F6D6FD;
             z-index: 11;
@@ -399,19 +428,25 @@
             top: 10%;
             width: 30%;
             height: 39%;
-            opacity:0;
+            opacity: 0;
+            z-index: -1;
             font-size: 2rem;
             user-select: none;
         }
-      
-            #draggable::selection { cursor:grabbing;
+
+            #draggable::selection {
+                cursor: grabbing;
             }
-        .aboutme {animation: t-entrance 1s 1; animation-fill-mode:forwards;
+
+        .aboutme {
+            animation: t-entrance 1s 1;
+            animation-fill-mode: forwards;
         }
+
         @keyframes t-entrance {
 
             0% {
-                z-index:-1;
+                z-index: -1;
                 opacity: 0;
             }
 
@@ -425,21 +460,34 @@
                 opacity: 1;
             }
         }
-        #closeadd { cursor:pointer; z-index:10;
-            
-            color:#171717; font-size:1vw; border:.1vw solid white;  width:1vw; height:1vw; background:rgba(255,255,255,.5); position:absolute; top:2%; right:2%; border-radius: 0 .5vw 0 0;
+
+        #closeadd {
+            cursor: pointer;
+            z-index: 10;
+            color: #171717;
+            font-size: 1vw;
+            border: .1vw solid white;
+            width: 1vw;
+            height: 1vw;
+            background: rgba(255,255,255,.5);
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            border-radius: 0 .5vw 0 0;
         }
 
             #closeadd:active {
                 background: rgba(243,135,135,.5);
             }
+
             #closeadd p {
-                margin-top:-20%;
+                margin-top: -20%;
                 text-align: center;
                 font-family: 'Poiret One', cursive;
             }
 
-        #draggable-elem { overflow:hidden;
+        #draggable-elem {
+            overflow: hidden;
             opacity: 0;
             cursor: grab;
             border-radius: 1vw;
@@ -451,15 +499,18 @@
             justify-content: center;
             position: fixed;
             left: 38%;
-            top: 10%; z-index:-1;
+            top: 10%;
+            z-index: -1;
             width: 26%;
             height: 85%;
             /*opacity:0;*/
             font-size: 2rem;
             user-select: none;
         }
-        #draggable:active, #draggable-elem:active { cursor:grabbing;
-        }
+
+            #draggable:active, #draggable-elem:active {
+                cursor: grabbing;
+            }
 
         a {
             color: #ffffff;
@@ -488,6 +539,7 @@
                 font-size: 14px;
             }
         }
+
         #a_post {
             position: absolute;
             width: 90%;
@@ -496,35 +548,33 @@
             overflow: auto;
             font-family: "Poppins", sans-serif;
         }
-        #a_post::-webkit-scrollbar, #text::-webkit-scrollbar {
-            width: 1px;
-            background-color: transparent;
-        }
 
-        #a_post::-webkit-scrollbar-thumb, #text::-webkit-scrollbar-thumb {
-            width: 1px;
-            background-color: lightgray;
-        }
+            #a_post::-webkit-scrollbar, #text::-webkit-scrollbar {
+                width: 1px;
+                background-color: transparent;
+            }
+
+            #a_post::-webkit-scrollbar-thumb, #text::-webkit-scrollbar-thumb {
+                width: 1px;
+                background-color: lightgray;
+            }
 
         #post {
             width: 90%;
             height: auto;
             margin-left: 5%;
+            color: #171717;
             margin-bottom: 20%;
-            
         }
 
-            #post:nth-child(2) {
-                margin-top: 50%;
-            }
+            
 
         #PstIm {
             width: 100%;
             border-radius: 5px;
         }
 
-        #post span {
-           
+        #sp_t {
             text-shadow: .1vw .1vw .2vw black;
             color: white;
             font-size: 1vw;
@@ -533,7 +583,7 @@
             transition: all 1s ease;
         }
 
-            #post span:hover {
+            #sp_t:hover {
                 letter-spacing: 3px;
                 color: #8f3232;
             }
@@ -553,11 +603,13 @@
             color: lightgray;
         }
 
-        #post p { mix-blend-mode:difference;
-            padding: 5px;
-            letter-spacing: 1px;
-            font-size: .8vw;
-            color: white;
+        #post_p {
+            /*mix-blend-mode: difference;*/
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-weight: bold;
+            font-size: .65vw;
+            color: #171717;
             /*-webkit-user-modify:read-write;*/
         }
 
@@ -569,13 +621,20 @@
 
         #brd {
             width: 100%;
-            border-top: 1px solid darkgray;
+            border-top: 1px solid #171717;
             margin-top: 5%;
         }
+
         #p_title_post {
             color: dimgray;
-            font-family: "Poppins", sans-serif; position:absolute; font-size:.9vw; letter-spacing:.1vw; top:0%; left:5%;
+            font-family: "Poppins", sans-serif;
+            position: absolute;
+            font-size: .9vw;
+            letter-spacing: .1vw;
+            top: 0%;
+            left: 5%;
         }
+
         #Aimgp {
             user-select: none;
             width: 10vw;
@@ -585,7 +644,8 @@
             left: 5%;
         }
 
-            #Aimgp img { user-select: none;
+            #Aimgp img {
+                user-select: none;
                 border: .3vw solid #c8c7c7;
                 width: 100%;
                 height: 100%;
@@ -601,7 +661,8 @@
             position: absolute;
             width: 32%;
             height: 6%;
-            top: 65%; z-index:99;
+            top: 65%;
+            z-index: 99;
             left: 5%;
             border-left: .6vw solid #171717;
             border-right: .6vw solid #171717;
@@ -619,10 +680,13 @@
 
                 #Mpr:hover p {
                     color: lightgray;
-                    letter-spacing: .3vw; left:-3%;
+                    letter-spacing: .3vw;
+                    left: -3%;
                 }
 
-            #Mpr p { position:absolute; left:18%;
+            #Mpr p {
+                position: absolute;
+                left: 18%;
                 font-family: "Poppins", sans-serif;
                 color: #171717;
                 margin: 1%;
@@ -630,10 +694,11 @@
                 font-size: .7vw;
                 transition: all 1s ease;
             }
+
         #Atxtex {
             font-family: "Poppins", sans-serif;
             position: absolute;
-            top: 5%; 
+            top: 5%;
             left: 45%;
             height: 53%;
             width: 53%;
@@ -648,6 +713,7 @@
             margin-left: 5%;
             letter-spacing: .05vw;
         }
+
         #etix {
             font-size: .6vw;
             letter-spacing: .1vw;
@@ -655,10 +721,20 @@
             left: 5%;
             bottom: 0;
         }
-        #prot { width:100%; height:100%; position:absolute; top:0; left:0; z-index:9;
+
+        #prot {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
         }
-        #mnuup { cursor:pointer;
+
+        #mnuup {
+            cursor: pointer;
         }
+
         #Ask {
             position: absolute;
             top: 55%;
@@ -694,6 +770,7 @@
         #btnM:hover #Ocnts {
             height: 80%;
         }
+
         #vid {
             width: 90%;
             height: 80%;
@@ -819,25 +896,28 @@
 
 
 
-        .texto {position:absolute;
+        .texto {
+            position: absolute;
             transform: rotate(270deg);
             transition: var(--transition-duration);
             height: 100vh;
-            font-family: 'Poiret One', cursive; font-weight:bold;
+            font-family: 'Poiret One', cursive;
+            font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             text-align: center;
-            left:30%; bottom:-5%;
+            left: 30%;
+            bottom: -2%;
         }
 
             .texto h1 {
                 font-weight: bold;
                 margin: 0;
                 letter-spacing: -0.15rem;
-                font-size: 2.5vw;
-                letter-spacing: .3vw;
+                font-size: 2.1vw;
+                letter-spacing: .2vw;
             }
 
                 .texto h1 .container {
@@ -976,8 +1056,14 @@
                 transform: rotateX(0deg);
                 transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
-        #descc { font-size:.9vw; letter-spacing:.2vw; color:gray; margin-left:-100%;
+
+        #descc {
+            font-size: .9vw;
+            letter-spacing: .2vw;
+            color: gray;
+            margin-left: -100%;
         }
+
         @-webkit-keyframes opacity {
             0%, 100% {
                 opacity: 0;
@@ -1200,8 +1286,200 @@
             }
         }
     </style>
+  
+    <style>
 
-    
+        .glitch {
+            font-family: 'Poiret One', cursive;
+            top: 73%;
+            left: 10%;
+            filter: grayscale(70%);
+            color: #FFF;
+            position: absolute;
+            color: lightgray;
+            mix-blend-mode: lighten;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+        }
+
+        .glitch--v1:before {
+            -webkit-animation: glitch--v2 2.2s linear;
+            animation: glitch--v2 2.2s linear;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-delay: 0.115s;
+            animation-delay: 0.115s;
+        }
+
+        .glitch--v1:after {
+            -webkit-animation: glitch-anim-1 2s linear;
+            animation: glitch-anim-1 2s linear;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-delay: 0.055s;
+            animation-delay: 0.055s;
+        }
+
+        .glitch--v2:before {
+            -webkit-animation: glitch-anim-1 1.4s ease;
+            animation: glitch-anim-2 1.4s ease;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-delay: 0.315s;
+            animation-delay: 0.315s;
+        }
+
+        .glitch--v2:after {
+            -webkit-animation: glitch--v2 1.2s linear;
+            animation: glitch--v2 1.2s linear;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-delay: 0.55s;
+            animation-delay: 0.55s;
+        }
+
+        .glitch:after, .glitch:before {
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: #000;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .glitch:before {
+            left: -2px;
+            text-shadow: 3px 0 rgba(252, 77, 122, 0.75);
+        }
+
+        .glitch:after {
+            left: 2px;
+            text-shadow: -3px 0 rgba(51, 60, 255, 0.8);
+        }
+
+        @-webkit-keyframes glitch--v2 {
+            0% {
+                clip: rect(9px, 9999px, 11px, 0);
+            }
+
+            15% {
+                clip: rect(11px, 9999px, 38px, 0);
+            }
+
+            30% {
+                clip: rect(1px, 9999px, 26px, 0);
+            }
+
+            50% {
+                clip: rect(0, 0, 0, 0);
+            }
+
+            70% {
+                clip: rect(23px, 9999px, 36px, 0);
+            }
+
+            80% {
+                clip: rect(0, 0, 0, 0);
+            }
+
+            100% {
+                clip: rect(9px, 9999px, 11px, 0);
+            }
+        }
+
+        @keyframes glitch--v2 {
+            0% {
+                clip: rect(9px, 9999px, 11px, 0);
+            }
+
+            15% {
+                clip: rect(11px, 9999px, 38px, 0);
+            }
+
+            30% {
+                clip: rect(1px, 9999px, 26px, 0);
+            }
+
+            50% {
+                clip: rect(0, 0, 0, 0);
+            }
+
+            70% {
+                clip: rect(23px, 9999px, 36px, 0);
+            }
+
+            80% {
+                clip: rect(0, 0, 0, 0);
+            }
+
+            100% {
+                clip: rect(9px, 9999px, 11px, 0);
+            }
+        }
+
+        @-webkit-keyframes glitch-anim-1 {
+            0% {
+                top: 4px;
+                left: 3px;
+                clip: rect(36px, 9999px, 44px, 0);
+            }
+
+            20% {
+                clip: rect(42px, 9999px, 147px, 0);
+            }
+
+            40% {
+                clip: rect(4px, 9999px, 100px, 0);
+            }
+
+            60% {
+                clip: rect(71px, 9999px, 108px, 0);
+            }
+
+            80% {
+                clip: rect(90px, 9999px, 140px, 0);
+            }
+
+            100% {
+                top: 1px;
+                left: 0;
+                clip: rect(128px, 9999px, 78px, 0);
+            }
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                top: 4px;
+                left: 3px;
+                clip: rect(36px, 9999px, 44px, 0);
+            }
+
+            20% {
+                clip: rect(42px, 9999px, 147px, 0);
+            }
+
+            40% {
+                clip: rect(4px, 9999px, 100px, 0);
+            }
+
+            60% {
+                clip: rect(71px, 9999px, 108px, 0);
+            }
+
+            80% {
+                clip: rect(90px, 9999px, 140px, 0);
+            }
+
+            100% {
+                top: 1px;
+                left: 0;
+                clip: rect(128px, 9999px, 78px, 0);
+            }
+        }
+    </style>
+
 </head>
 
 
@@ -1441,13 +1719,14 @@
         <div id="mnuup">
             <span onclick="addfirm();">MORE</span>
             <span>SOCIAL</span>
-            <span>DISCOVER</span>
+            <span onclick="adddisc();">DISCOVER</span>
 
             <span onclick="addabout();">ABOUT</span>
 
             <script>
                 function addabout() { $("#draggable").addClass("aboutme") }
                 function addfirm() { $("#draggable-elem").addClass("aboutme") }
+                function adddisc() { $(".box").addClass("aboutme") }
             </script>
             <div id="aicons">
                 <div id="btn1">
@@ -1464,7 +1743,7 @@
                 </div>
             </div>
 
-            <p id="textrigh">Necessarius@Gmail.com</p>
+            <p id="textrigh">xat.me/Necessarius</p>
         </div>
 
         <div id="auid">
@@ -1562,20 +1841,19 @@
             <script>
                 function remabout() { $("#draggable").removeClass("aboutme") }
             </script>
-            <div id="Aimgp"><img src="https://i.postimg.cc/G24kwhFc/1273327.jpg" /></div>
+            <div id="Aimgp"><img src="https://i.pinimg.com/originals/f8/60/1c/f8601cb751ad5a9f62221b06497f4cd2.jpg" /></div>
             <div id="Mpr"><p>Necessarius</p></div>
             <div id="Atxtex">
                 <p id="Ltxtx">
 
-                    Instill the fear into the hearts of all who dare defy me.
-                    A question growing slim upon the seas of change below
-                    Be true to my will and Bow down to my name:
+                    Donde fuiste tan feliz, siempre regresarás Aunque confundas dolor con la felicidad Y ya no seas ni tú mismo, pero pienses en ti mismo
+
                     <b style="color:#8f3232;">
                         <br /> <br />
-                        For I am the God of this world
+                        Y eso matará
                     </b>
                 </p>
-                <b id="etix"><span style="color:gray;">Cris </span>/<span style="color:black;"> 1533252890 </span>/<span style="color:#8f3232;"> CodeXXV</span> </b>
+                <b id="etix"><span style="color:gray;">Chris </span>|<span style="color:black;"> Maths teacher </span>|<span style="color:#8f3232;"> Arg</span> </b>
 
             </div>
 
@@ -1658,24 +1936,125 @@
             </script>
             <div id="a_post">
                 <div id="post">
-                    <img src="https://i.postimg.cc/VvvDDYpQ/227original.jpg" id="PstIm">
-                    <span>Listen</span> <img id="PstIcn" src="https://i.postimg.cc/yxGnGMCJ/ojo-1.png"><b id="bv">59</b>
-                    <p>
-                        when the prophet speaks to you; killing, <b style="color:gray">In the name of God</b><br>
-                        Passion, twisting faith into violence: <b style="color:gray">In the name of God</b><br>
-                        Straight is the path, leading to your salvation,
-                        Slaying the weak, Ethnic elimination,
-                        Any day we'll all be swept away.
-                        You'll be saved...
-                        <b style="color:dimgray"> As long as you obey</b>
-                    </p>
-                    <b id="hst">#InTheNameOfGod #xCrimsonRain #Faith</b>
+                    <style>
+                        #Neura_ti {
+                            width: 100%;
+                            height: 30vw;
+                            background: #171717;
+                        }
+
+                        #imgpr {
+                            position: absolute;
+                            width: 70%;
+                            border: .7vw solid #808080;
+                            left: 12%;
+                            top: 5%;
+                        }
+
+                        #titlez {
+                            font-size: .9vw;
+                            color: #808080;
+                            position: absolute;
+                            right: 12%;
+                            top: 47%;
+                        }
+
+                        #back_neig {
+                            position: absolute;
+                            width: 90%;
+                            height: 30vw;
+                            background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
+                            opacity: .2;
+                        }
+
+                        #i_p {
+                            color: darkgray;
+                            font-size: .6vw;
+                            position: absolute;
+                            width: 80%;
+                            top: 55%;
+                            left: 10%;
+                            letter-spacing: .05vw;
+                        }
+
+                        #i_s {
+                            font-size: .6vw;
+                            position: absolute;
+                            width: 80%;
+                            top: 100%;
+                            left: 0%;
+                        }
+                    </style>
+                    <script>
+                        setInterval(function () {
+                            $(".glitch").toggleClass("glitch--v1");
+                            setTimeout(function () {
+                                $(".glitch").toggleClass("glitch--v2");
+                            }, 100);
+                        }, 8000);
+
+                    </script>
+                    <!--<script>
+                    $.fn.parallax = function (resistance, mouse) {
+                        $el = $(this);
+                        TweenLite.to($el, 0.2, {
+                            x: -((mouse.clientX - window.innerWidth / 2) / resistance),
+                            y: -((mouse.clientY - window.innerHeight / 2) / resistance)
+                        });
+                    };
+
+                    $(document).mousemove(function (e) {
+                        $("#back_neig").parallax(-30, e);
+                    });
+
+
+                </script>-->
+                    <div id="Neura_ti">
+                        <img id="imgpr" src="https://i.postimg.cc/2jxLW4Pt/desmotivaciones-lantlos-imagenes-2.jpg" />
+                        <p id="titlez">𝑁𝑒𝑖𝑔𝑒 𝑑𝑒 𝑚𝑎𝑟𝑠</p>
+                        <p id="i_p">
+
+                            Il fait froid la neige malvenue tombe en de particules impalpables elle vient mourir sur mes vêtements comme sur une peau nue autour de moi tout n'est que noir et blanc
+                            <br />
+                            Je tourbillonne autour de mon axe et j'ai peur de m'arrêter réalisant la distance qui nous sépare
+                            <br />
+                            Tout me parait si lointain ceci n'est pas ma vie mais le film de ma vie cette sensation m'échappe est ce juste un sentiment? la réalité ne serait-elle pas ce sentiment?
+                            <br />
+                            <span id="i_s" style="color:#ee7575"> Alors, qui suis-je?   Qui es-tu?  Et où sommes nous?</span>
+                        </p>
+                        <h2 data-text="SGIR/NAETRUSNHEAI" class="glitch glitch--v1">GRIS/NEURASTHENIA</h2>
+
+                        <div id="back_neig"></div>
+                    </div>
+
+
+                    <div id="brd"></div>
+                </div>
+                <div id="post">
+                    <img src="https://i.pinimg.com/originals/a8/9d/50/a89d500cf7bcc8678182802e0b56b8f7.jpg" id="PstIm">
+                    <span id="sp_t">Mi Querido Trapito Favorito</span> <img id="PstIcn" src="https://i.postimg.cc/yxGnGMCJ/ojo-1.png"><b id="bv">59</b>
+                                                                                                                                      <p id="post_p">
+
+                                                                                                                                          Hemos pasado por mucho a través de estos años, nos hemos distanciado y separado
+                                                                                                                                          en muchas ocasiones, sin embargo quiero que sepas que así como siempre que
+                                                                                                                                          vuelvo, sé que puedo confiar en ti, tú también puedes confiar en mí y contarme
+                                                                                                                                          tus problemas. Recuerda que la verdadera amistad resiste el tiempo, la distancia y
+                                                                                                                                          el silencio, y a pesar de que no siempre puedo darte toda mi atención, si me pides
+                                                                                                                                          ayuda ahí estaré para apoyarte en lo que pueda sea poco o mucho, eres un muchacho
+                                                                                                                                          muy inteligente con grandes sentimientos que ha sabido salir adelante a pesar de
+                                                                                                                                          sus errores pero recuerda que seguimos aprendiendo, así que deja de culparte por todo
+                                                                                                                                          y sigue siendo tú mientras te conviertes en mejor persona.
+                                                                                                                                          Te quiero y te aprecio mucho <br /><br />
+                                                                                                                                          De: La Abhy super mega-ultra pro<br />
+                                                                                                                                          Para: El trapito manco de Chris
+                                                                                                                                      </p>
+                                                                                                                 <b id="hst" style="color:#dc5a5a">#Aby #AhriWithHeaL #276479585</b>
                     <div id="brd"></div>
                 </div>
                 <div id="post">
                     <img src="https://i.postimg.cc/VvvDDYpQ/227original.jpg" id="PstIm">
-                    <span>Listen</span> <img id="PstIcn" src="https://i.postimg.cc/yxGnGMCJ/ojo-1.png"><b id="bv">59</b>
-                    <p>
+                    <span id="sp_t">Listen</span> <img id="PstIcn" src="https://i.postimg.cc/yxGnGMCJ/ojo-1.png"><b id="bv">59</b>
+                    <p id="post_p">
                         when the prophet speaks to you; killing, <b style="color:gray">In the name of God</b><br>
                         Passion, twisting faith into violence: <b style="color:gray">In the name of God</b><br>
                         Straight is the path, leading to your salvation,
@@ -1691,11 +2070,82 @@
 
         </div>
 
+        <div class="box">
+            <script>
+                (() => {
+                    class Box {
+                        constructor() {
+                            this.box = document.querySelector(".box");
+                            this.handleMouseDown = this.handleMouseDown.bind(this);
+                            this.handleMouseUp = this.handleMouseUp.bind(this);
+                            this.handleMouseMove = this.handleMouseMove.bind(this);
+                        }
+
+                        handleMouseDown() {
+                            this.box.style.cursor = "move";
+                            this.box.addEventListener("mouseup", this.handleMouseUp);
+                            document.body.addEventListener("mousemove", this.handleMouseMove);
+                            document.body.addEventListener("mouseleave", this.handleMouseUp);
+                        }
+
+                        handleMouseUp() {
+                            this.box.style.cursor = "default";
+                            document.body.removeEventListener("mousemove", this.handleMouseMove);
+                            document.body.removeEventListener("mouseleave", this.handleMouseUp);
+                        }
+
+                        handleMouseMove(e) {
+                            const boxRect = this.box.getBoundingClientRect();
+                            this.box.style.top = `${boxRect.top + e.movementY}px`;
+                            this.box.style.left = `${boxRect.left + e.movementX}px`;
+                        }
+
+                        init() {
+                            this.box.addEventListener("mousedown", this.handleMouseDown);
+                        }
+                    }
+
+
+                    const box = new Box();
+                    box.init();
+                })();
+            </script>
+            <style>
+                .box {
+                    cursor: grab;
+                    border-radius: 1vw;
+                    border: .1vw solid #F6D6FD;
+                    z-index: 11;
+                    background: rgba(255,255,255, .5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: fixed;
+                    left: 65.5%;
+                    top: 56%;
+                    width: 30%;
+                    height: 39%; /*
+                    opacity: 0;
+                    z-index: -1;*/
+                    font-size: 2rem;
+                    user-select: none;
+                }
+
+                    .box::selection {
+                        cursor: grabbing;
+                    }
+            </style>
+            <div id="closeadd" onclick="remabout3();"><p>x</p></div>
+            <script>
+                function remabout3() { $(".box").removeClass("aboutme") }
+            </script>
+        </div>
+
         <div id="leftmenu">
             <div id="cuberight"></div>
             <!--<div id="Ask">
-                <div id="brA"><p>search<span id="lk">|</span> </p></div><div id="icA"> <img src="https://i.postimg.cc/mgSgkGHQ/2s2.png" /></div>
-            </div>-->
+            <div id="brA"><p>search<span id="lk">|</span> </p></div><div id="icA"> <img src="https://i.postimg.cc/mgSgkGHQ/2s2.png" /></div>
+        </div>-->
             <div id="imgprf">
                 <img src="https://i.pinimg.com/236x/bf/6b/69/bf6b69e844bc8ec92af37e14686cfd08.jpg" />
             </div>
@@ -1714,13 +2164,15 @@
                     <h1>
 
                         <span class="container">
-                            <span class="word">We both keep our secrets</span>
-                            <span class="word escrit">We're both, oh so blue</span>
-                            <span class="word">My heart is full of darkness</span>
-                            <span class="word">I know that yours is too</span>
+                            <span class="word">Recuerdo la primera vez que reíste</span>
+
+                            <span class="word escrit">y las ganas que me dieron</span>
+                            <span class="word">Que se me ocurriera un chiste</span>
+                            <span class="word">¿Cómo van a convencerme...</span>
+                            <span class="word">De que la magia no existe?</span>
                         </span>
                     </h1>
-                    <p id="descc">The Blue and the gray...♫</p>
+                    <p id="descc">Un dia más y otro...♫</p>
                     <script>
                         var words = document.getElementsByClassName("word");
                         var wordArray = [];
