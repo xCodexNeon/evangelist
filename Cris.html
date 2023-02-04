@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/vue.global.js"></script>
+
+  <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+      *,
+      *::before,
+      *::after {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+
+      html {
+          font-size: 62.5%;
+      }
+
+      body {
+          font-family: "Open Sans", sans-serif;
+          background-image: url("https://i.postimg.cc/Gphj2Vqh/black-wallpaper-20091514274843-1536x864-1.jpg");
+          font-size: 1.8rem;
+      }
+
+      .container {
+          background: rgba(43, 43, 43, 0.8);
+          width: 60%;
+          height: 35rem;
+          margin: 0 auto;
+          margin-top: 20rem;
+          display: flex;
+          align-items: center;
+          position: relative;
+      }
+
+      .signup-container,
+      .signin-container {
+          padding: 5rem;
+      }
+
+      .signin-container {
+          text-align: right;
+      }
+
+      h2 {
+          color: #fff;
+          margin: 1rem 0;
+      }
+
+      p {
+          color: #ddd;
+          font-size: 1.3rem;
+          margin: 1rem 0;
+      }
+
+      .forgot__password-container {
+          margin-bottom: 1rem;
+          font-size: 1.3rem;
+      }
+
+      button {
+          padding: 1rem 2rem;
+          border: none;
+          color: rgb(24, 24, 24);
+          background: #ddd;
+          cursor: pointer;
+          border-radius: 2px;
+          outline: none;
+          transition: all 0.3s;
+      }
+
+          button:hover {
+              background: #fff;
+          }
+
+          button:active {
+              transform: translatey(2px);
+          }
+
+      .overlay {
+          position: absolute;
+          top: -2rem;
+          left: 0;
+          width: 50%;
+          transition: all 1s;
+      }
+
+      .form-container {
+          background: rgba(255,255,255,.8);
+          padding: 5rem;
+          height: 40rem;
+          border-radius: 4px;
+          width: 100%;
+          transition: all 1s;
+      }
+
+      h3 {
+          color: rgb(65, 65, 65);
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          text-align: center;
+      }
+
+      a {
+          text-decoration: none;
+          color: #1ec47b;
+      }
+
+          a:hover {
+              color: #0fb66e;
+          }
+
+      .input-container {
+          margin: 1.5rem 0;
+      }
+
+      input {
+          padding: 1rem 2.4rem;
+          border-radius: 2px;
+          border: 1px solid rgb(128, 128, 128);
+          outline: none;
+          width: 100%;
+      }
+
+      .form-button {
+          background:#f14747;
+          color: #fff;
+          outline: none;
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.22);
+      }
+
+          .form-button:hover {
+              background: #0fb66e;
+          }
+
+      .signup-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+      }
+
+      .signin-form {
+          position: absolute;
+          top: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          z-index: -1;
+          opacity: 0;
+      }
+
+      .slide-right {
+          left: 50%;
+      }
+
+      .slide-left {
+          left: 0;
+      }
+
+      .social-container {
+          text-align: center;
+      }
+
+          .social-container a {
+              border: 1px solid #dddddd;
+              border-radius: 50%;
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0 5px;
+              height: 4rem;
+              width: 4rem;
+          }
+      #cont1 { opacity:0;
+      }
+      #attempts2 { color:#f14747; font-size:.9vw;
+      }
+
+  </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="signin-container" id="cont1">
+            <h2>Already have a permissions?</h2>
+            <p>
+                This xatspace is private, Only users who have an invitation can access it
+            </p>
+            <button id="login">Return</button>
+        </div>
+        <div class="signin-container">
+            <h2>Already have a permissions?</h2>
+            <p>
+                This xatspace is private, Only users who have an invitation can access it
+            </p>
+            <p id="attempts2">  </p>
+            <p id="attempts">Attempts: 3</p>
+            <button id="login">Return</button>
+        </div>
+        <div class="overlay" id="slide">
+            <div class="form-container signup-form">
+                <form action="">
+                    <h3>Invitation code</h3>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social">
+                            <i class="fab fa-google-plus-g"></i>
+                        </a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" value="Necessarius" readonly="true" />
+                    </div>
+                    <div class="input-container">
+                        <input id="password" type="text" placeholder="Invitation pass" />
+                    </div>
+
+
+                    <button class="form-button" onclick="comprobarClave()" type="button">
+                        Access
+                        <script>
+                            var x = 3;
+                            function comprobarClave() {
+                                clave1 = document.getElementById("password").value;
+
+                                if (clave1 == "password") {
+                                    var url = "Cris2.html";
+                                    $(location).attr('href', url);
+                                }
+                                else {/* document.getElementById("accd").textContent = "ACCESS DENIED";*/
+                                    x--;
+                                    document.getElementById("attempts").textContent = "Attempts: " + x;
+                                    if (x == 2) {
+                                        document.getElementById("attempts").textContent = "Attempts: " + x;
+                                        document.getElementById("attempts2").textContent = "Bad Pass! Sure u're invited?";
+                                    }
+                                    if (x == 1) {
+                                        document.getElementById("attempts").textContent = "Attempts: " + x;
+                                        document.getElementById("attempts2").textContent = "You'll be redirected. Last chance!";
+                                    }
+                                    if (x == 0) {
+                                        document.getElementById("attempts2").textContent = "Bye!";
+                                        var url = "https://google.com";
+                                        $(location).attr('href', url);
+                                    }
+                                    else { }
+                                }
+
+                            }
+                        </script>
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div id="crdts">
+        <style>
+            #p_t6 { mix-blend-mode:difference;
+                font-family: 'Oswald', sans-serif;
+                /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+                top: 93%;
+                position: absolute;
+                font-size: .6vw;
+                color: white;
+                letter-spacing: .1vw;
+            }
+
+            #p_t7 {
+                mix-blend-mode: difference;
+                font-family: 'Oswald', sans-serif;
+                /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+                top: 94.5%;
+                position: absolute;
+                font-size: .6vw;
+                color: white;
+                letter-spacing: .1vw;
+            }
+
+            #icongif {
+                mix-blend-mode: difference;
+                filter: grayscale(100%) contrast(200%);
+                width: 1.3vw;
+                position: absolute;
+                right: 1%;
+                top: 94.5%;
+            }
+        </style>
+        <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
+        <p id="p_t7">1533252890 | contact | xat.com</p>
+        <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+    </div>
+</body>
+</html>
