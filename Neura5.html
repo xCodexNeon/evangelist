@@ -1,0 +1,1010 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onclick="reproducirAudio();" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+  
+    
+    <script>
+        function PRess_R() {
+            tecla_R = event.keyCode;
+            if (tecla_R == 82) {
+                var url = "Neuraloading3.html";
+                $(location).attr('href', url);
+            }
+
+        }
+        window.onkeydown = PRess_R;
+    </script>
+   <style>
+       @charset "UTF-8";
+
+       * {
+           font-family: monospace;
+           letter-spacing: 1px;
+       }
+
+       body {
+           background-color: black;
+       }
+
+       .sample {
+           position: fixed;
+           top: 0;
+           right: 0;
+           padding: 1em 2em;
+           text-align: right;
+       }
+
+           .sample span {
+               color: #47D1FF;
+           }
+
+           .sample p {
+               color: white;
+           }
+
+           .sample a {
+               color: #00ff00;
+           }
+
+               .sample a:hover {
+                   opacity: 0.5;
+               }
+
+       .converterApp {
+           display: block;
+           position: relative;
+           top: 45vh;
+           width: 650px;
+           margin: 0 auto;
+           transform: translateY(-50%);
+       }
+
+       .title {
+           width: 100%;
+           position: relative;
+       }
+
+           .title:before {
+               content: "HEaR YoUR miNd ™";
+               color: #00ff00;
+               font-weight: normal;
+               width: 100%;
+               text-align: center;
+               position: absolute;
+               top: 0;
+               left: 0;
+               -webkit-animation: title-glitch 2s ease-in;
+               animation: title-glitch 2s ease-in;
+               -webkit-animation-iteration-count: infinite;
+               animation-iteration-count: infinite;
+           }
+
+       .disclaimer {
+           color: #a6a6a6;
+           width: 650px;
+           box-sizing: border-box;
+           margin: 0 auto 1em;
+           font-size: 16px;
+           line-height: 24px;
+           text-align: center;
+           box-sizing: border-box;
+           padding: 1.5em;
+           -webkit-animation: blur-flicker 6s ease-in;
+           animation: blur-flicker 6s ease-in;
+           -webkit-animation-iteration-count: infinite;
+           animation-iteration-count: infinite;
+       }
+
+           .disclaimer strong {
+               font-weight: normal;
+               color: #47D1FF;
+           }
+
+           .disclaimer span {
+               font-size: 12px;
+               color: gray;
+           }
+
+       .textbox {
+           -webkit-animation: console 20s ease-in;
+           animation: console 20s ease-in;
+           -webkit-animation-iteration-count: infinite;
+           animation-iteration-count: infinite;
+           display: block;
+           box-sizing: border-box;
+           width: 650px;
+           height: 30vh;
+           margin: 0 auto;
+           color: #00ff00;
+           background: black;
+           padding: 1em;
+           border: 1px solid white;
+           box-shadow: 10px 10px 10px #00cc00;
+       }
+
+       .btn {
+           transform: translateX(45%) translateY(-50%);
+           filter: blur(1px);
+           display: block;
+           border: 2px solid white;
+           background: black;
+           color: #47D1FF;
+           text-align: center;
+           font-size: 2em;
+           padding: 0.25em 0.5em;
+           position: absolute;
+           right: 0;
+           cursor: pointer;
+           outline: 0;
+       }
+
+           .btn:hover {
+               color: #00ff00;
+               filter: blur(2px);
+               -webkit-animation: shake-right 1s ease-in;
+               animation: shake-right 1s ease-in;
+               -webkit-animation-iteration-count: infinite;
+               animation-iteration-count: infinite;
+           }
+
+           .btn span {
+               font-size: 12px;
+               position: relative;
+               top: -7px;
+           }
+
+       .binary {
+           display: block;
+           position: absolute;
+           width: 900px;
+           top: 0;
+           left: 0;
+           background: black;
+       }
+
+           .binary + .binary {
+               left: auto;
+               right: 0;
+           }
+
+       .num-string {
+           display: block;
+           float: left;
+           background: black;
+           height: 100vh;
+       }
+
+           .num-string:before {
+               content: "0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0";
+               color: #003300;
+               display: block;
+               width: 15px;
+               text-align: center;
+               -webkit-animation: binary 1s ease-in;
+               animation: binary 1s ease-in;
+               -webkit-animation-iteration-count: infinite;
+               animation-iteration-count: infinite;
+           }
+
+       .corner-decoration {
+           display: block;
+           position: fixed;
+           bottom: 0;
+           left: 0;
+           width: 20px;
+           height: 20px;
+           background-color: #00ff00;
+           opacity: 0.4;
+       }
+
+           .corner-decoration:after {
+               content: " ";
+               position: fixed;
+               bottom: 0;
+               left: 0;
+               display: block;
+               width: 100vw;
+               height: 4px;
+               background-color: #00ff00;
+           }
+
+       .num-string:nth-child(1) {
+           margin-top: -3px;
+       }
+
+       .num-string:nth-child(2) {
+           margin-top: -22px;
+       }
+
+       .num-string:nth-child(3) {
+           margin-top: -12px;
+       }
+
+       .num-string:nth-child(4) {
+           margin-top: -20px;
+       }
+
+       .num-string:nth-child(5) {
+           margin-top: -30px;
+       }
+
+       .num-string:nth-child(6) {
+           margin-top: -18px;
+       }
+
+       .num-string:nth-child(7) {
+           margin-top: -84px;
+       }
+
+       .num-string:nth-child(8) {
+           margin-top: -16px;
+       }
+
+       .num-string:nth-child(9) {
+           margin-top: -63px;
+       }
+
+       .num-string:nth-child(10) {
+           margin-top: -90px;
+       }
+
+       .num-string:nth-child(11) {
+           margin-top: -99px;
+       }
+
+       .num-string:nth-child(12) {
+           margin-top: -72px;
+       }
+
+       .num-string:nth-child(13) {
+           margin-top: -143px;
+       }
+
+       .num-string:nth-child(14) {
+           margin-top: -168px;
+       }
+
+       .num-string:nth-child(15) {
+           margin-top: -45px;
+       }
+
+       .num-string:nth-child(16) {
+           margin-top: -176px;
+       }
+
+       .num-string:nth-child(17) {
+           margin-top: -153px;
+       }
+
+       .num-string:nth-child(18) {
+           margin-top: -72px;
+       }
+
+       .num-string:nth-child(19) {
+           margin-top: -171px;
+       }
+
+       .num-string:nth-child(20) {
+           margin-top: -240px;
+       }
+
+       .num-string:nth-child(21) {
+           margin-top: -252px;
+       }
+
+       .num-string:nth-child(22) {
+           margin-top: -110px;
+       }
+
+       .num-string:nth-child(23) {
+           margin-top: -23px;
+       }
+
+       .num-string:nth-child(24) {
+           margin-top: -120px;
+       }
+
+       .num-string:nth-child(25) {
+           margin-top: -300px;
+       }
+
+       .num-string:nth-child(26) {
+           margin-top: -286px;
+       }
+
+       .num-string:nth-child(27) {
+           margin-top: -189px;
+       }
+
+       .num-string:nth-child(28) {
+           margin-top: -140px;
+       }
+
+       .num-string:nth-child(29) {
+           margin-top: -29px;
+       }
+
+       .num-string:nth-child(30) {
+           margin-top: -360px;
+       }
+
+       .num-string:nth-child(31) {
+           margin-top: -372px;
+       }
+
+       .num-string:nth-child(32) {
+           margin-top: -192px;
+       }
+
+       .num-string:nth-child(33) {
+           margin-top: -66px;
+       }
+
+       .num-string:nth-child(34) {
+           margin-top: -68px;
+       }
+
+       .num-string:nth-child(35) {
+           margin-top: -105px;
+       }
+
+       .num-string:nth-child(36) {
+           margin-top: -216px;
+       }
+
+       .num-string:nth-child(37) {
+           margin-top: -111px;
+       }
+
+       .num-string:nth-child(38) {
+           margin-top: -38px;
+       }
+
+       .num-string:nth-child(39) {
+           margin-top: -117px;
+       }
+
+       .num-string:nth-child(40) {
+           margin-top: -40px;
+       }
+
+       .num-string:nth-child(41) {
+           margin-top: -451px;
+       }
+
+       .num-string:nth-child(42) {
+           margin-top: -336px;
+       }
+
+       .num-string:nth-child(43) {
+           margin-top: -473px;
+       }
+
+       .num-string:nth-child(44) {
+           margin-top: -264px;
+       }
+
+       .num-string:nth-child(45) {
+           margin-top: -135px;
+       }
+
+       .num-string:nth-child(46) {
+           margin-top: -184px;
+       }
+
+       .num-string:nth-child(47) {
+           margin-top: -376px;
+       }
+
+       .num-string:nth-child(48) {
+           margin-top: -144px;
+       }
+
+       .num-string:nth-child(49) {
+           margin-top: -196px;
+       }
+
+       .num-string:nth-child(50) {
+           margin-top: -200px;
+       }
+
+       .num-string:nth-child(51) {
+           margin-top: -306px;
+       }
+
+       .num-string:nth-child(52) {
+           margin-top: -468px;
+       }
+
+       .num-string:nth-child(53) {
+           margin-top: -159px;
+       }
+
+       .num-string:nth-child(54) {
+           margin-top: -540px;
+       }
+
+       .num-string:nth-child(55) {
+           margin-top: -550px;
+       }
+
+       .num-string:nth-child(56) {
+           margin-top: -560px;
+       }
+
+       .num-string:nth-child(57) {
+           margin-top: -456px;
+       }
+
+       .num-string:nth-child(58) {
+           margin-top: -290px;
+       }
+
+       .num-string:nth-child(59) {
+           margin-top: -708px;
+       }
+
+       .num-string:nth-child(60) {
+           margin-top: -360px;
+       }
+
+       @-webkit-keyframes binary {
+           0% {
+               content: "0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0";
+           }
+
+           10% {
+               content: "0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 1";
+           }
+
+           20% {
+               content: "1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0";
+           }
+
+           30% {
+               content: "0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 1";
+           }
+
+           40% {
+               content: "1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 1";
+           }
+
+           50% {
+               content: "0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0";
+           }
+
+           60% {
+               content: "1 1 0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0";
+           }
+
+           70% {
+               content: "0 0 1 1 0 1 1 0 1 0 0 1 1 0 1 0 0 1";
+           }
+
+           80% {
+               content: "0 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 1";
+           }
+
+           90% {
+               content: "1 1 0 1 1 1 0 0 1 1 1 0 0 1 0 0 0 1 1";
+           }
+       }
+
+       @keyframes binary {
+           0% {
+               content: "0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 1 0";
+           }
+
+           10% {
+               content: "0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 1";
+           }
+
+           20% {
+               content: "1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0";
+           }
+
+           30% {
+               content: "0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 1";
+           }
+
+           40% {
+               content: "1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 1";
+           }
+
+           50% {
+               content: "0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0";
+           }
+
+           60% {
+               content: "1 1 0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0";
+           }
+
+           70% {
+               content: "0 0 1 1 0 1 1 0 1 0 0 1 1 0 1 0 0 1";
+           }
+
+           80% {
+               content: "0 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 1";
+           }
+
+           90% {
+               content: "1 1 0 1 1 1 0 0 1 1 1 0 0 1 0 0 0 1 1";
+           }
+       }
+
+       @-webkit-keyframes shake-right {
+           0%, 49%, 56% {
+               right: -3px;
+           }
+
+           50%, 55% {
+               right: 3px;
+           }
+       }
+
+       @keyframes shake-right {
+           0%, 49%, 56% {
+               right: -3px;
+           }
+
+           50%, 55% {
+               right: 3px;
+           }
+       }
+
+       @-webkit-keyframes blur-flicker {
+           0%, 23%, 26% {
+               -webkit-filter: blur(0px);
+           }
+
+           20%, 25% {
+               -webkit-filter: blur(1px);
+           }
+
+           22% {
+               -webkit-filter: blur(6px);
+           }
+
+           24% {
+               -webkit-filter: blur(6px);
+           }
+       }
+
+       @keyframes blur-flicker {
+           0%, 23%, 26% {
+               filter: blur(0px);
+           }
+
+           20%, 25% {
+               filter: blur(1px);
+           }
+
+           22% {
+               filter: blur(6px);
+           }
+
+           24% {
+               filter: blur(6px);
+           }
+       }
+
+       @-webkit-keyframes title-glitch {
+           0%, 50%, 61% {
+               content: "HEaR YoUR miNd ™";
+               -webkit-transform: translateX(0px);
+               -webkit-filter: blur(1px);
+           }
+
+           51%, 60% {
+               content: "rArH ™ oRuY inDm ";
+               -webkit-transform: translateX(-10px);
+               -webkit-filter: blur(5px);
+           }
+       }
+
+       @keyframes title-glitch {
+           0%, 50%, 61% {
+               content: "HEaR YoUR miNd ™";
+               transform: translateX(0px);
+               filter: blur(1px);
+           }
+
+           51%, 60% {
+               content: "rArH ™ oRuY inDm ";
+               transform: translateX(-10px);
+               filter: blur(5px);
+           }
+       }
+
+       @-webkit-keyframes console {
+           0%, .3%, .9%, 40%, 42% {
+               -webkit-transform: translateX(0px) translateY(0px);
+               -webkit-filter: blur(0px);
+           }
+
+           .4%, .8% {
+               -webkit-transform: translateX(-100px) translateY(0px);
+               -webkit-filter: blur(5px);
+           }
+
+           40.1%, 40.7% {
+               -webkit-transform: translateX(120px) translateY(-50px);
+               -webkit-filter: blur(5px);
+           }
+
+           40.8%, 41.9% {
+               -webkit-transform: translateX(40px) translateY(150px);
+               -webkit-filter: blur(5px);
+           }
+       }
+
+       @keyframes console {
+           0%, .3%, .9%, 40%, 42% {
+               transform: translateX(0px) translateY(0px);
+               filter: blur(0px);
+           }
+
+           .4%, .8% {
+               transform: translateX(-100px) translateY(0px);
+               filter: blur(5px);
+           }
+
+           40.1%, 40.7% {
+               transform: translateX(120px) translateY(-50px);
+               filter: blur(5px);
+           }
+
+           40.8%, 41.9% {
+               transform: translateX(40px) translateY(150px);
+               filter: blur(5px);
+           }
+       }
+
+       @-webkit-keyframes matrix {
+           0% {
+               background-size: 20vh 1vh;
+               background-position: 0 0;
+           }
+
+           50% {
+               background-size: 20vh 4vh;
+               background-position: 0 130px;
+           }
+
+           100% {
+               background-size: 20vh 1vh;
+               background-position: 0 130px;
+           }
+       }
+
+       @keyframes matrix {
+           0% {
+               background-size: 20vh 1vh;
+               background-position: 0 0;
+           }
+
+           50% {
+               background-size: 20vh 4vh;
+               background-position: 0 130px;
+           }
+
+           100% {
+               background-size: 20vh 1vh;
+               background-position: 0 130px;
+           }
+       }
+       html {
+           filter: saturate(100%)  hue-rotate(130deg)  ;
+       }
+   </style>
+ 
+</head>
+
+
+<body>
+  
+    <div class='binary'>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+    </div>
+    <div class='binary'>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+        <div class='num-string'></div>
+    </div>
+    <div class='corner-decoration'></div>
+    <section class='converterApp'>
+        <h1 class='title'>HEaR YoUR miNd</h1>
+        <p class='disclaimer'>
+           Hear your <strong>regreats scream in pain</strong> or <strong>sing with delight</strong>! <br /><span>(note: you can break if the feeling is intense/some other edge cases).
+            <br />Press "R" to return</span>
+        </p>
+        <textarea class='textbox' id='text2parse'><!DOCTYPE html>
+        <html>
+        <head>
+  </head>
+        <body>
+        <h1 id="Broken">hello everyone</h1>
+        <div></div>
+        <div class="one"></div>
+        <p class="What the fuck am I doing here">this is a<br> Neurasthenia</p>
+  </body>
+  </html></textarea>
+        <button class='btn' id='playBtn'>
+            :&#9658;
+            <script>
+                (function () {
+                    // Audio Context
+                    var AudioController, audioCtx, generateMusic, html2tones, kit, node2tone, playBtn, trackTiming, waveForNode;
+
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                    trackTiming = {
+                        'sine': 0,
+                        'square': 0,
+                        'sawtooth': 0,
+                        'triangle': 0
+                    };
+
+                    /*
+                          Handles Playing Notes
+                    */
+                    AudioController = class AudioController {
+                        constructor() { }
+
+                        playTone(wave, freq, start, stop, gain) {
+                            var gainNode, tone;
+                            if (wave !== 'silent') {
+                                gainNode = audioCtx.createGain();
+                                gainNode.value = gain;
+                                gainNode.connect(audioCtx.destination);
+                                tone = audioCtx.createOscillator();
+                                tone.connect(gainNode);
+                                tone.type = wave;
+                                tone.frequency.value = freq;
+                                tone.start(start);
+                                return tone.stop(start + stop);
+                            }
+                        }
+
+                    };
+
+                    // Generates the specifics for a notes sound, timing and duration
+                    /*
+                    @TODO Split into 4 tracks, each with its own timing/overlay
+                       maybe look at number of classes and if there is an ID?
+                    @TODO Determin Duration of note
+                    */
+                    node2tone = function (node, totalNodes) {
+                        var freq, gain, wave;
+                        if (node.tagName === 'parsererror') {
+                            document.getElementById('text2parse').value = "parse error";
+                        }
+                        wave = waveForNode(node);
+                        if (wave === 'silent') {
+                            trackTiming['sine'] += 0.25;
+                            trackTiming['square'] += 0.25;
+                            trackTiming['sawtooth'] += 0.25;
+                            trackTiming['triangle'] += 0.25;
+                        } else {
+                            //yes this is some random algorithm
+                            freq = Math.abs((1500 - (Math.abs(node.childNodes.length - node.tagName.length) + 1) * 400) % 1500) + (100 * (trackTiming[wave] * 4) % 1500) + ((totalNodes * 10) % 300);
+                            gain = (node.innerHTML.length % 25) / 100;
+                            trackTiming[wave] += 0.5;
+                        }
+                        //passes note
+                        return [wave, freq, audioCtx.currentTime + trackTiming[wave] - 0.5, trackTiming[wave] + 0.25, gain];
+                    };
+
+                    waveForNode = function (node) {
+                        if (node.id.length) {
+                            return 'square';
+                        } else if (node.classList.length > 1) {
+                            return 'sawtooth';
+                        } else if (node.classList.length === 1) {
+                            return 'sine';
+                        } else if (node.innerHTML.length > 200) {
+                            return 'triangle';
+                        } else {
+                            return "silent";
+                        }
+                    };
+
+
+                    // Converts a html text into value sets for notes
+                    html2tones = function (html) {
+                        var DOM, domNodes, i, parser, tones;
+                        tones = [];
+                        parser = new DOMParser();
+                        // fixes for some common broken DOM things
+                        html = html.replace(/<![^>]*>/g, "");
+                        html = html.replace(/<meta[^>]*>/g, "");
+                        html = html.replace(/<link[^>]*>/g, "");
+                        html = html.replace(/<link[^>]*\/>/g, "");
+                        html = html.replace(/<br>/g, "<br />");
+                        DOM = parser.parseFromString(html, "text/xml");
+                        domNodes = DOM.getElementsByTagName("*");
+                        i = 0;
+                        while (i < domNodes.length) {
+                            tones[i] = node2tone(domNodes[i], domNodes.length);
+                            i++;
+                        }
+                        return tones;
+                    };
+
+
+                    // Reads in textarea calls to parsers and plays notes
+                    generateMusic = function () {
+                        var i, note, results, tones;
+                        trackTiming = {
+                            'sine': 0,
+                            'square': 0,
+                            'sawtooth': 0,
+                            'triangle': 0
+                        };
+                        tones = html2tones(document.getElementById('text2parse').value);
+                        i = 0;
+                        results = [];
+                        while (i < tones.length) {
+                            note = tones[i];
+                            kit.playTone(note[0], note[1], note[2], note[3], note[4]);
+                            results.push(i++);
+                        }
+                        return results;
+                    };
+
+                    kit = new AudioController();
+
+                    playBtn = document.getElementById('playBtn');
+
+                    playBtn.addEventListener("click", generateMusic, false);
+
+                    /*
+                  ## these articles were super useful
+                  - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave
+                  - https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBiquadFilter
+                  - https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+                  - http://stackoverflow.com/questions/20156888/what-are-the-parameters-for-createperiodicwave-in-google-chrome
+                  - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
+                   */
+
+                }).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiPGFub255bW91cz4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQWU7RUFBQTtBQUFBLE1BQUEsZUFBQSxFQUFBLFFBQUEsRUFBQSxhQUFBLEVBQUEsVUFBQSxFQUFBLEdBQUEsRUFBQSxTQUFBLEVBQUEsT0FBQSxFQUFBLFdBQUEsRUFBQTs7RUFDZixRQUFBLEdBQVcsSUFBQSxDQUFNLE1BQU0sQ0FBQyxZQUFQLElBQXVCLE1BQU0sQ0FBQyxrQkFBcEMsQ0FBQSxDQUFBOztFQUNYLFdBQUEsR0FBYztJQUFDLE1BQUEsRUFBUyxDQUFWO0lBQWEsUUFBQSxFQUFXLENBQXhCO0lBQTJCLFVBQUEsRUFBYSxDQUF4QztJQUEyQyxVQUFBLEVBQWE7RUFBeEQsRUFGQzs7Ozs7RUFPVCxrQkFBTixNQUFBLGdCQUFBO0lBRUMsV0FBYSxDQUFBLENBQUEsRUFBQTs7SUFFYixRQUFVLENBQUMsSUFBRCxFQUFPLElBQVAsRUFBYSxLQUFiLEVBQW9CLElBQXBCLEVBQTBCLElBQTFCLENBQUE7QUFDWCxVQUFBLFFBQUEsRUFBQTtNQUFFLElBQUcsSUFBQSxLQUFRLFFBQVg7UUFDQyxRQUFBLEdBQVcsUUFBUSxDQUFDLFVBQVQsQ0FBQTtRQUNYLFFBQVEsQ0FBQyxLQUFULEdBQWlCO1FBQ2pCLFFBQVEsQ0FBQyxPQUFULENBQWlCLFFBQVEsQ0FBQyxXQUExQjtRQUVBLElBQUEsR0FBTyxRQUFRLENBQUMsZ0JBQVQsQ0FBQTtRQUNQLElBQUksQ0FBQyxPQUFMLENBQWEsUUFBYjtRQUNBLElBQUksQ0FBQyxJQUFMLEdBQVk7UUFDWixJQUFJLENBQUMsU0FBUyxDQUFDLEtBQWYsR0FBdUI7UUFDdkIsSUFBSSxDQUFDLEtBQUwsQ0FBVyxLQUFYO2VBQ0EsSUFBSSxDQUFDLElBQUwsQ0FBVSxLQUFBLEdBQVEsSUFBbEIsRUFWRDs7SUFEUzs7RUFKWCxFQVBlOzs7Ozs7OztFQStCZixTQUFBLEdBQVksUUFBQSxDQUFDLElBQUQsRUFBTyxVQUFQLENBQUE7QUFDWixRQUFBLElBQUEsRUFBQSxJQUFBLEVBQUE7SUFBQyxJQUFHLElBQUksQ0FBQyxPQUFMLEtBQWdCLGFBQW5CO01BQ0MsUUFBUSxDQUFDLGNBQVQsQ0FBd0IsWUFBeEIsQ0FBcUMsQ0FBQyxLQUF0QyxHQUE4QyxjQUQvQzs7SUFFQSxJQUFBLEdBQU8sV0FBQSxDQUFZLElBQVo7SUFDUCxJQUFHLElBQUEsS0FBUSxRQUFYO01BQ0MsV0FBVyxDQUFDLE1BQUQsQ0FBWCxJQUF1QjtNQUN2QixXQUFXLENBQUMsUUFBRCxDQUFYLElBQXlCO01BQ3pCLFdBQVcsQ0FBQyxVQUFELENBQVgsSUFBMkI7TUFDM0IsV0FBVyxDQUFDLFVBQUQsQ0FBWCxJQUEyQixLQUo1QjtLQUFBLE1BQUE7O01BT0MsSUFBQSxHQUFPLElBQUksQ0FBQyxHQUFMLENBQVUsQ0FBQyxJQUFBLEdBQU8sQ0FBQyxJQUFJLENBQUMsR0FBTCxDQUFTLElBQUksQ0FBQyxVQUFVLENBQUMsTUFBaEIsR0FBeUIsSUFBSSxDQUFDLE9BQU8sQ0FBQyxNQUEvQyxDQUFBLEdBQXdELENBQXpELENBQUEsR0FBK0QsR0FBdkUsQ0FBQSxHQUE4RSxJQUF4RixDQUFBLEdBQWlHLENBQUMsR0FBQSxHQUFJLENBQUMsV0FBVyxDQUFDLElBQUQsQ0FBWCxHQUFrQixDQUFuQixDQUFKLEdBQTRCLElBQTdCLENBQWpHLEdBQXNJLENBQUMsQ0FBQyxVQUFBLEdBQWEsRUFBZCxDQUFBLEdBQW9CLEdBQXJCO01BQzdJLElBQUEsR0FBTyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBZixHQUF3QixFQUF6QixDQUFBLEdBQStCO01BQ3RDLFdBQVcsQ0FBQyxJQUFELENBQVgsSUFBcUIsSUFUdEI7S0FIRDs7V0FjQyxDQUFDLElBQUQsRUFBTyxJQUFQLEVBQWEsUUFBUSxDQUFDLFdBQVQsR0FBdUIsV0FBVyxDQUFDLElBQUQsQ0FBbEMsR0FBeUMsR0FBdEQsRUFBMkQsV0FBVyxDQUFDLElBQUQsQ0FBWCxHQUFvQixJQUEvRSxFQUFxRixJQUFyRjtFQWZXOztFQWlCWixXQUFBLEdBQWMsUUFBQSxDQUFDLElBQUQsQ0FBQTtJQUNiLElBQUcsSUFBSSxDQUFDLEVBQUUsQ0FBQyxNQUFYO0FBQ0MsYUFBTyxTQURSO0tBQUEsTUFFSyxJQUFJLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBZixHQUF3QixDQUE1QjtBQUNKLGFBQU8sV0FESDtLQUFBLE1BRUEsSUFBSSxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQWYsS0FBeUIsQ0FBN0I7QUFDSixhQUFPLE9BREg7S0FBQSxNQUVBLElBQUksSUFBSSxDQUFDLFNBQVMsQ0FBQyxNQUFmLEdBQXdCLEdBQTVCO2FBQ0osV0FESTtLQUFBLE1BQUE7YUFHSixTQUhJOztFQVBRLEVBaERDOzs7O0VBNkRmLFVBQUEsR0FBYSxRQUFBLENBQUMsSUFBRCxDQUFBO0FBQ2IsUUFBQSxHQUFBLEVBQUEsUUFBQSxFQUFBLENBQUEsRUFBQSxNQUFBLEVBQUE7SUFBQyxLQUFBLEdBQVE7SUFDUixNQUFBLEdBQVMsSUFBSSxTQUFKLENBQUEsRUFEVjs7SUFHQyxJQUFBLEdBQU8sSUFBSSxDQUFDLE9BQUwsQ0FBYSxXQUFiLEVBQTBCLEVBQTFCO0lBQ1AsSUFBQSxHQUFPLElBQUksQ0FBQyxPQUFMLENBQWEsY0FBYixFQUE2QixFQUE3QjtJQUNQLElBQUEsR0FBTyxJQUFJLENBQUMsT0FBTCxDQUFhLGNBQWIsRUFBNkIsRUFBN0I7SUFDUCxJQUFBLEdBQU8sSUFBSSxDQUFDLE9BQUwsQ0FBYSxnQkFBYixFQUErQixFQUEvQjtJQUNQLElBQUEsR0FBTyxJQUFJLENBQUMsT0FBTCxDQUFhLE9BQWIsRUFBc0IsUUFBdEI7SUFDUCxHQUFBLEdBQU0sTUFBTSxDQUFDLGVBQVAsQ0FBdUIsSUFBdkIsRUFBNkIsVUFBN0I7SUFDTixRQUFBLEdBQVcsR0FBRyxDQUFDLG9CQUFKLENBQXlCLEdBQXpCO0lBQ1gsQ0FBQSxHQUFJO0FBQ0osV0FBTSxDQUFBLEdBQUksUUFBUSxDQUFDLE1BQW5CO01BQ0MsS0FBSyxDQUFDLENBQUQsQ0FBTCxHQUFXLFNBQUEsQ0FBVSxRQUFRLENBQUMsQ0FBRCxDQUFsQixFQUF1QixRQUFRLENBQUMsTUFBaEM7TUFDWCxDQUFBO0lBRkQ7V0FHQTtFQWZZLEVBN0RFOzs7O0VBK0VmLGFBQUEsR0FBZ0IsUUFBQSxDQUFBLENBQUE7QUFDaEIsUUFBQSxDQUFBLEVBQUEsSUFBQSxFQUFBLE9BQUEsRUFBQTtJQUFDLFdBQUEsR0FBYztNQUFDLE1BQUEsRUFBUyxDQUFWO01BQWEsUUFBQSxFQUFXLENBQXhCO01BQTJCLFVBQUEsRUFBYSxDQUF4QztNQUEyQyxVQUFBLEVBQWE7SUFBeEQ7SUFDZCxLQUFBLEdBQVEsVUFBQSxDQUFXLFFBQVEsQ0FBQyxjQUFULENBQXdCLFlBQXhCLENBQXFDLENBQUMsS0FBakQ7SUFDUixDQUFBLEdBQUk7QUFDSjtXQUFNLENBQUEsR0FBSSxLQUFLLENBQUMsTUFBaEI7TUFDQyxJQUFBLEdBQU8sS0FBSyxDQUFDLENBQUQ7TUFDWixHQUFHLENBQUMsUUFBSixDQUFhLElBQUksQ0FBQyxDQUFELENBQWpCLEVBQXNCLElBQUksQ0FBQyxDQUFELENBQTFCLEVBQStCLElBQUksQ0FBQyxDQUFELENBQW5DLEVBQXdDLElBQUksQ0FBQyxDQUFELENBQTVDLEVBQWlELElBQUksQ0FBQyxDQUFELENBQXJEO21CQUNBLENBQUE7SUFIRCxDQUFBOztFQUplOztFQVVoQixHQUFBLEdBQU0sSUFBSSxlQUFKLENBQUE7O0VBQ04sT0FBQSxHQUFVLFFBQVEsQ0FBQyxjQUFULENBQXdCLFNBQXhCOztFQUNWLE9BQU8sQ0FBQyxnQkFBUixDQUF5QixPQUF6QixFQUFrQyxhQUFsQyxFQUFpRCxLQUFqRDs7RUEzRmU7Ozs7Ozs7O0FBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIjIEF1ZGlvIENvbnRleHRcbmF1ZGlvQ3R4ID0gbmV3ICgod2luZG93LkF1ZGlvQ29udGV4dCBvciB3aW5kb3cud2Via2l0QXVkaW9Db250ZXh0KSlcbnRyYWNrVGltaW5nID0geydzaW5lJyA6IDAsICdzcXVhcmUnIDogMCwgJ3Nhd3Rvb3RoJyA6IDAsICd0cmlhbmdsZScgOiAwfVxuXG4jIyNcblx0SGFuZGxlcyBQbGF5aW5nIE5vdGVzXG4jIyNcbmNsYXNzIEF1ZGlvQ29udHJvbGxlclxuIFxuXHRjb25zdHJ1Y3RvcjogLT5cblx0XHRcblx0cGxheVRvbmU6ICh3YXZlLCBmcmVxLCBzdGFydCwgc3RvcCwgZ2FpbikgLT5cblx0XHRpZiB3YXZlICE9ICdzaWxlbnQnXG5cdFx0XHRnYWluTm9kZSA9IGF1ZGlvQ3R4LmNyZWF0ZUdhaW4oKVxuXHRcdFx0Z2Fpbk5vZGUudmFsdWUgPSBnYWluXG5cdFx0XHRnYWluTm9kZS5jb25uZWN0IGF1ZGlvQ3R4LmRlc3RpbmF0aW9uXG5cblx0XHRcdHRvbmUgPSBhdWRpb0N0eC5jcmVhdGVPc2NpbGxhdG9yKClcblx0XHRcdHRvbmUuY29ubmVjdCBnYWluTm9kZVxuXHRcdFx0dG9uZS50eXBlID0gd2F2ZVxuXHRcdFx0dG9uZS5mcmVxdWVuY3kudmFsdWUgPSBmcmVxXG5cdFx0XHR0b25lLnN0YXJ0KHN0YXJ0KVxuXHRcdFx0dG9uZS5zdG9wKHN0YXJ0ICsgc3RvcClcblxuIyBHZW5lcmF0ZXMgdGhlIHNwZWNpZmljcyBmb3IgYSBub3RlcyBzb3VuZCwgdGltaW5nIGFuZCBkdXJhdGlvblxuIyMjXG5AVE9ETyBTcGxpdCBpbnRvIDQgdHJhY2tzLCBlYWNoIHdpdGggaXRzIG93biB0aW1pbmcvb3ZlcmxheVxuICAgbWF5YmUgbG9vayBhdCBudW1iZXIgb2YgY2xhc3NlcyBhbmQgaWYgdGhlcmUgaXMgYW4gSUQ/XG5AVE9ETyBEZXRlcm1pbiBEdXJhdGlvbiBvZiBub3RlXG4jIyNcblxubm9kZTJ0b25lID0gKG5vZGUsIHRvdGFsTm9kZXMpIC0+XG5cdGlmIG5vZGUudGFnTmFtZSA9PSAncGFyc2VyZXJyb3InXG5cdFx0ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RleHQycGFyc2UnKS52YWx1ZSA9IFwicGFyc2UgZXJyb3JcIlxuXHR3YXZlID0gd2F2ZUZvck5vZGUgbm9kZVxuXHRpZiB3YXZlID09ICdzaWxlbnQnXG5cdFx0dHJhY2tUaW1pbmdbJ3NpbmUnXSArPSAwLjI1XG5cdFx0dHJhY2tUaW1pbmdbJ3NxdWFyZSddICs9IDAuMjVcblx0XHR0cmFja1RpbWluZ1snc2F3dG9vdGgnXSArPSAwLjI1XG5cdFx0dHJhY2tUaW1pbmdbJ3RyaWFuZ2xlJ10gKz0gMC4yNVxuXHRlbHNlXG5cdFx0I3llcyB0aGlzIGlzIHNvbWUgcmFuZG9tIGFsZ29yaXRobVxuXHRcdGZyZXEgPSBNYXRoLmFicygoKDE1MDAgLSAoTWF0aC5hYnMobm9kZS5jaGlsZE5vZGVzLmxlbmd0aCAtIG5vZGUudGFnTmFtZS5sZW5ndGgpKyAxICkgKiA0MDApICUgMTUwMCkpICsgKDEwMCoodHJhY2tUaW1pbmdbd2F2ZV0qNCkgJSAxNTAwKSArICgodG90YWxOb2RlcyAqIDEwKSAlIDMwMClcblx0XHRnYWluID0gKG5vZGUuaW5uZXJIVE1MLmxlbmd0aCAlIDI1KSAvIDEwMFxuXHRcdHRyYWNrVGltaW5nW3dhdmVdICs9IDAuNVxuXHQjcGFzc2VzIG5vdGVcblx0W3dhdmUsIGZyZXEsIGF1ZGlvQ3R4LmN1cnJlbnRUaW1lICsgdHJhY2tUaW1pbmdbd2F2ZV0tMC41LCB0cmFja1RpbWluZ1t3YXZlXSArIDAuMjUsIGdhaW5dIFxuXG53YXZlRm9yTm9kZSA9IChub2RlKSAtPlxuXHRpZiBub2RlLmlkLmxlbmd0aFxuXHRcdHJldHVybiAnc3F1YXJlJ1xuXHRlbHNlIGlmIChub2RlLmNsYXNzTGlzdC5sZW5ndGggPiAxKVxuXHRcdHJldHVybiAnc2F3dG9vdGgnXG5cdGVsc2UgaWYgKG5vZGUuY2xhc3NMaXN0Lmxlbmd0aCA9PSAxKVxuXHRcdHJldHVybiAnc2luZSdcblx0ZWxzZSBpZiAobm9kZS5pbm5lckhUTUwubGVuZ3RoID4gMjAwKVxuXHRcdCd0cmlhbmdsZSdcblx0ZWxzZVxuXHRcdFwic2lsZW50XCJcblx0XG4jIENvbnZlcnRzIGEgaHRtbCB0ZXh0IGludG8gdmFsdWUgc2V0cyBmb3Igbm90ZXNcbmh0bWwydG9uZXMgPSAoaHRtbCkgLT5cdFxuXHR0b25lcyA9IFtdXG5cdHBhcnNlciA9IG5ldyBET01QYXJzZXIoKVxuXHQjIGZpeGVzIGZvciBzb21lIGNvbW1vbiBicm9rZW4gRE9NIHRoaW5nc1xuXHRodG1sID0gaHRtbC5yZXBsYWNlKC88IVtePl0qPi9nLCBcIlwiKVxuXHRodG1sID0gaHRtbC5yZXBsYWNlKC88bWV0YVtePl0qPi9nLCBcIlwiKVxuXHRodG1sID0gaHRtbC5yZXBsYWNlKC88bGlua1tePl0qPi9nLCBcIlwiKVxuXHRodG1sID0gaHRtbC5yZXBsYWNlKC88bGlua1tePl0qXFwvPi9nLCBcIlwiKVxuXHRodG1sID0gaHRtbC5yZXBsYWNlKC88YnI+L2csIFwiPGJyIC8+XCIpXG5cdERPTSA9IHBhcnNlci5wYXJzZUZyb21TdHJpbmcgaHRtbCwgXCJ0ZXh0L3htbFwiXG5cdGRvbU5vZGVzID0gRE9NLmdldEVsZW1lbnRzQnlUYWdOYW1lKFwiKlwiKVxuXHRpID0gMFxuXHR3aGlsZSBpIDwgZG9tTm9kZXMubGVuZ3RoXG5cdFx0dG9uZXNbaV0gPSBub2RlMnRvbmUoZG9tTm9kZXNbaV0sIGRvbU5vZGVzLmxlbmd0aClcblx0XHRpKytcblx0dG9uZXNcblx0XG4jIFJlYWRzIGluIHRleHRhcmVhIGNhbGxzIHRvIHBhcnNlcnMgYW5kIHBsYXlzIG5vdGVzXG5nZW5lcmF0ZU11c2ljID0gLT5cdFxuXHR0cmFja1RpbWluZyA9IHsnc2luZScgOiAwLCAnc3F1YXJlJyA6IDAsICdzYXd0b290aCcgOiAwLCAndHJpYW5nbGUnIDogMH1cblx0dG9uZXMgPSBodG1sMnRvbmVzKGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0ZXh0MnBhcnNlJykudmFsdWUpXG5cdGkgPSAwXG5cdHdoaWxlIGkgPCB0b25lcy5sZW5ndGhcblx0XHRub3RlID0gdG9uZXNbaV1cblx0XHRraXQucGxheVRvbmUgbm90ZVswXSwgbm90ZVsxXSwgbm90ZVsyXSwgbm90ZVszXSwgbm90ZVs0XVxuXHRcdGkrK1xuXHRcblx0XG5raXQgPSBuZXcgQXVkaW9Db250cm9sbGVyKClcbnBsYXlCdG4gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGxheUJ0bicpXG5wbGF5QnRuLmFkZEV2ZW50TGlzdGVuZXIoXCJjbGlja1wiLCBnZW5lcmF0ZU11c2ljLCBmYWxzZSlcblxuIyMjXG4jIyB0aGVzZSBhcnRpY2xlcyB3ZXJlIHN1cGVyIHVzZWZ1bFxuLSBodHRwczovL2RldmVsb3Blci5tb3ppbGxhLm9yZy9lbi1VUy9kb2NzL1dlYi9BUEkvT3NjaWxsYXRvck5vZGUvc2V0UGVyaW9kaWNXYXZlXG4tIGh0dHBzOi8vZGV2ZWxvcGVyLm1vemlsbGEub3JnL2VuLVVTL2RvY3MvV2ViL0FQSS9BdWRpb0NvbnRleHQvY3JlYXRlQmlxdWFkRmlsdGVyXG4tIGh0dHBzOi8vZGV2ZWxvcGVyLm1vemlsbGEub3JnL2VuLVVTL2RvY3MvV2ViL0FQSS9XZWJfQXVkaW9fQVBJL1VzaW5nX1dlYl9BdWRpb19BUElcbi0gaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy8yMDE1Njg4OC93aGF0LWFyZS10aGUtcGFyYW1ldGVycy1mb3ItY3JlYXRlcGVyaW9kaWN3YXZlLWluLWdvb2dsZS1jaHJvbWVcbi0gaHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL09zY2lsbGF0b3JOb2RlXG4jIyMiXX0=
+//# sourceURL=coffeescript
+            </script>
+        </button>
+    </section>
+   
+
+</body>
+</html>
