@@ -1,17 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
     <meta charset="utf-8" />
     <title></title>
 
-      <script type="text/javascript" src="countdown.js"></script>
-    <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="covervid.js"></script>
-    <script type="text/javascript" src="covervid.min.js"></script>
-    <script type="text/javascript" src="Gruntfile.js"></script>
-    <script type="text/javascript" src="countdown.js"></script>
     <script type="text/javascript" src="TweenMax.min.js"></script>
     <script type="text/javascript" src="mgGlitch.min.js"></script>
     <style>
@@ -37,32 +31,7 @@
 <body id="bdy">
     <canvas id="canvasID">
         <script>
-            /*
-An explanation of what this does:
-
-A grid of "pixels" is generated based on the data supplied in the screenDimensions and pixelSize variables. For example, the default setting x:80 & y:45 generates an 80 by 45 grid. 
-
-pixelSize generates smaller or larger "pixels", but it's hard to tell because the canvas is stretched to fit the whole screen. Change that in the .css to see the effect.
-
-The locations of these "pixels" are stored in the "pixels" array by the "calcPixelLocations" function. 
-
-Each pixel will have three subpixels: one for the red channel, one for the green channel, and one for the blue channel. We can control the amount of color in each subpixel.
-
-The "calcGradientRGB" function determines RGB values from the initial hex values we supply. It does this for two colors so we can draw a gradient between them. The RGB values for each color will need to be split among the 3 channels of each pixel's subpixels.
-
-The "assignPixelColor" function then cycles through every pixel and assigns colors to each of their 3 subpixels. It only assigns them, it does not draw or render anything yet.
-
-Then the "draw" function fills in every subpixel with the colors we previously assigned. This is where the colors actually are rendered.
-
-You can change channels by clicking or pressing space. 
-Channels are: 
-  1) complimentary colors
-  2) triadic colors
-  3) square colors
-  4) rainbow colors
-  5) random colors
-  6) random colors + static
-*/
+      
 
             //screen settings
             const screenDimensions = { x: 80, y: 45 }; //width and height
@@ -83,7 +52,7 @@ Channels are:
             let currentChannel = 0; //arbitrary value for what channel is being shown. channels will be used to display different color gradients.
 
             //screen message settings
-            let screenMessage = "CLICK OR PRESS SPACE";
+            let screenMessage = "CLICK OR PRESS SPACE, RETURN 'R'";
             let screenMessageVisible = true;
             let screenMessageTimeout; //will be used to hide the screen message after a few seconds
 
@@ -292,7 +261,7 @@ Channels are:
 
                 if (currentChannel === 1) {
                     //complimentary colors
-                    screenMessage = "01 COMPLIMENTARY COLORS";
+                    screenMessage = "01 ANXIETY";
                     let randomHue = getRandom(0, 359);
                     let randomSaturation = getRandom(85, 100);
                     let randomBrightness = getRandom(40, 60);
@@ -305,7 +274,7 @@ Channels are:
                     calcGradientRGB();
                 } else if (currentChannel == 2) {
                     //triadic colors
-                    screenMessage = "02 TRIADIC COLORS";
+                    screenMessage = "02 INSOMNIA";
                     let randomHue = getRandom(0, 359);
                     let randomSaturation = getRandom(85, 100);
                     let randomBrightness = getRandom(40, 60);
@@ -318,7 +287,7 @@ Channels are:
                     calcGradientRGB();
                 } else if (currentChannel === 3) {
                     //square colors
-                    screenMessage = "03 SQUARE COLORS";
+                    screenMessage = "03 ANOREXY";
                     let randomHue = getRandom(0, 359);
                     let randomSaturation = getRandom(85, 100);
                     let randomBrightness = getRandom(40, 60);
@@ -331,7 +300,7 @@ Channels are:
                     calcGradientRGB();
                 } else if (currentChannel === 4) {
                     //rainbow mode
-                    screenMessage = "04 RAINBOW";
+                    screenMessage = "04 WEAKNESS";
                     rainbowMode = true;
                 } else if (currentChannel === 5) {
                     //random mode
@@ -342,7 +311,7 @@ Channels are:
                     calcGradientRGB(); //update color1.hex and color2.hex with RGB info
                 } else {
                     //random & static mode
-                    screenMessage = "06 STATIC";
+                    screenMessage = "06 DELUSION";
                     color1 = { hex: randomHexColor() };
                     color2 = { hex: randomHexColor() };
                     calcGradientRGB(); //update color1.hex and color2.hex with RGB info
@@ -391,6 +360,12 @@ Channels are:
                     if (changingChannel === false) {
                         //if channel is already changing, let it finish
                         changeChannel();
+                    }
+                }
+                if (e.key == "R" || e.code == "R" || e.keyCode == 82) {
+                    if (changingChannel === false) {
+                        var url = "Neuraloading3.html";
+                        $(location).attr('href', url);
                     }
                 }
             };
