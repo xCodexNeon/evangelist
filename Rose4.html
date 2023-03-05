@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -8,6 +8,7 @@
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="TweenMax.min.js"></script>
     <script type="text/javascript" src="vue.global.js"></script>
+   
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
@@ -20,9 +21,154 @@
             width: 100%;
             height: 100%;
         }
+        #auid {
+            position: absolute;
+            width: 25%;
+            height: 10%;
+            bottom: 3%;
+            left: 7.5%;
+        }
 
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            z-index: 999999999999999;
+            top: 120%;
+            right: 12%;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                color: dimgray;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1vw;
+            }
+
+        #namesong { font-weight:bold;
+            font-family: 'Poiret One', cursive;
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: #e24d4d;
+            left: 0%;
+            letter-spacing: .1vw;
+            font-size: .9vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: dimgray;
+            height: .2vw;
+            position: absolute;
+            top: 80%;
+        }
+
+        .fillBar {
+            background:darkgray;
+            
+            width: 0;
+            height: .2vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 35%;
+            right: 2%;
+            position: absolute;
+        }
+
+            #AT_time p {
+                font-weight: bold;
+                position: absolute;
+                letter-spacing: .1vw;
+                font-size: .7vw;
+                color: dimgray;
+            }
+
+        .time {
+            font-family: 'Poiret One', cursive;
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            width: 2vw;
+            overflow: hidden;
+            color: gray;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            font-weight: bold;
+            font-family: 'Poiret One', cursive;
+            position: absolute;
+            left: .1vw;
+            top: 90%;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: dimgray;
+        }
+
+        #cd_2 p {
+            position: absolute;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
         #main {
-            border-radius: 1vw;
+           
             left: -1%;
             top: -1%;
             overflow: hidden;
@@ -43,7 +189,7 @@
             position: absolute;
          
         }
-        #menu { position:absolute; width:55%; height:70%; left:7%; top:20%; 
+        #menu { position:absolute; width:55%; height:70%; left:7%; top:20%;  opacity:0;
         }
         #men1, #men2, #men3, #men4, #men5 {
             width: 19%;
@@ -347,13 +493,26 @@
                 z-index: 2;
             }
         }
-        #bak { transition:all 3s ease;
+        #bak {
+            transition: all 3s ease;
+            opacity: 0;
+           
+        }
+        .bk1 {
+            animation: t-img1-3 3s 1;
+            animation-fill-mode: forwards;
         }
         .on-img1 {
             animation: t-img1 3s 1;
             animation-fill-mode: forwards;
         }
+       
         .menufade { animation: t-menufade 3s 1; animation-fill-mode:forwards;
+        }
+        .menuintro0 {
+            animation: t-menuintro 3s 1;
+            animation-delay: 1.5s;
+            animation-fill-mode: forwards;
         }
         .menuintro {
             animation: t-menuintro 3s 1;
@@ -372,6 +531,26 @@
 
 
             100% {
+                right: -50%;
+                opacity: 0;
+            }
+        }
+        @keyframes imgentr {
+
+            0% {z-index:2;
+                right: -5%;
+                opacity: 1;
+            }
+
+            20% {
+                z-index: 2;
+                right: -5%;
+                opacity: 1;
+            }
+
+
+            100% {
+                z-index: -2;
                 right: -50%;
                 opacity: 0;
             }
@@ -404,16 +583,45 @@
             width: 55%;
             height: 70%;
             left: 7%;
-            top: 20%;
+            top: 20%;  
         }
-        #menu3 {
-            opacity:0; z-index:-2;
+        #menu2 {
+            opacity: 0;
+            z-index: -2;
             position: absolute;
             width: 55%;
             height: 70%;
             left: 7%;
             top: 20%;
-            /*background: red;*/ 
+        }
+
+        #menu3 {
+            opacity: 0;
+            z-index: -2;
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
+        }
+        #menu4 {
+            opacity: 0;
+            z-index: -2;
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
+        }
+
+        #menu5 {
+            opacity: 0;
+            z-index: -2;
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
         }
         .bak1 {
             animation: t-img1-3 3s 1;
@@ -423,7 +631,11 @@
             animation: t-img1-3 3s 1;
             animation-fill-mode: forwards;
         }
-        #bak3, #bak1 {
+        .bakentr {
+            animation: imgentr 3s 1;
+            animation-fill-mode: forwards;
+        }
+        #bak3, #bak1, #bak2-2, #bak4, #bak5 {
             transition: all 3s ease;
             opacity: 0;
             z-index: -3;
@@ -433,7 +645,11 @@
             bottom: 0;
             position: absolute;
         }
-        #firm { position:absolute; width:16vw; transform:rotate(20deg);
+        #firm { position:absolute; width:16vw; transform:rotate(20deg); left:50%; bottom:0;
+        }
+        #retr:hover { color:#e24d4d;
+        }
+        #mainfirst { position:absolute; width:100%; height:100%;
         }
     </style>
     
@@ -441,49 +657,439 @@
 
 
 <body>
-   
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "RADIO OFF",
+                        artist: "RADIO OFF",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "MINUSMENSCH",
+                        artist: "LANTLOS  (Only the best part)",
+                        src:
+                            "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+                    },
+                    {
+                        name: "THE EERIE COLD",
+                        artist: "SHINING",
+                        src:
+                            "https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
+                    },
+                    {
+                        name: "PULSE / SURREAL",
+                        artist: "LANTLOS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                    },
+                    {
+                        name: "TOO LATE TO CALL AN AMBULANCE",
+                        artist: "PSYCHONAOUT 4",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
+                    },
+                    {
+                        name: "THE GREAT COLD DEATH OF HEART",
+                        artist: "AGALOCH",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
+                    },
+                    {
+                        name: "THE HIDDEN LAKE OF THE FOREST",
+                        artist: "AUTUMN NOSTALGIE",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
+                    },
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 6;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 6) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+    
     <div id="main">
         <!--<img id="firm" src="https://i.postimg.cc/2j9WyGjd/w.png" />-->
 
-        <img id="bak" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" />
-        <img id="bak1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" />
+        <img id="bak" class="bk1" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" /> <!--main section-->
+        <img id="bak1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" /><!--aboutme section-->
+        <img id="bak2-2" src="https://i.postimg.cc/jqw43WZt/raiden-shogun-genshin-impact-drawn-by-mizuchi-mizuchi7118-sample-764eeaa29617d72a34a2151bb983ce7e.jpg" /><!--friends section-->
+        <img id="bak3" src="https://i.postimg.cc/v8gG10DM/aniyuki-genshin-impact-raiden-shogun-13.png" /><!--posts section-->
+        <img id="bak4" src="https://i.postimg.cc/CLbHYW32/aniyuki-genshin-impact-raiden-shogun-21.png" /><!--change section-->
+        <img id="bak5" src="https://i.postimg.cc/8k2B210W/aniyuki-genshin-impact-raiden-shogun-9-1.png" /><!--home section-->
 
 
-        <img id="bak3" src="https://i.postimg.cc/v8gG10DM/aniyuki-genshin-impact-raiden-shogun-13.png" />
+        <div id="crdts">
+            <style>
+                #crdts {
+                    z-index: 999999999999999;
+                    mix-blend-mode: difference;
+                    width: 30%;
+                    height: 5%;
+                    position: absolute;
+                    top: 94%;
+                    right: 1%;
+                }
+
+                #p_t6 {
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ right: 1.7vw;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                    opacity: .8;
+                }
+
+                #p_t7 {
+                    opacity: .8;
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ right: 1.7vw;
+                    top: .8vw;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                }
+
+                #icongif {
+                    mix-blend-mode: difference;
+                    filter: grayscale(100%) contrast(200%);
+                    width: 1.3vw;
+                    position: absolute;
+                    right: 0%;
+                    top: .8vw;
+                }
+            </style>
+            <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
+            <p id="p_t7">1533252890 | contact | xat.com</p>
+            <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+        </div>
+
         <div id="log">
             <img src="https://i.postimg.cc/kXWNYZdJ/rose.png" id="logrose" />
             <b>ROSE</b>
             <p>| 呛水 | 10000051</p>
         </div>
         <div id="menu1">
-            <img id="firm" src="https://i.postimg.cc/d1MLH3WN/frame0.jpg" />
+            <img id="firm" src="https://i.postimg.cc/d1MLH3WN/frame0.jpg" /><div id="arnum">
+                <p id="retr" onclick="Returnmenu1();">叹朔口弓</p>
+                <b>RETURN</b>
+            </div>
         </div>
         <div id="menu2">
-
+            <div id="arnum">
+                <p id="retr" onclick="Returnmenu2();">叹朔口弓</p>
+                <b>RETURN</b>
+            </div>
+           
         </div>
         <div id="menu3">
-
+            <div id="arnum">
+                <p id="retr" onclick="Returnmenu3();">叹朔口弓</p>
+                <b>RETURN</b>
+            </div>
+           
         </div>
         <div id="menu4">
-
+            <div id="arnum">
+                <p id="retr" onclick="Returnmenu4();">叹朔口弓</p>
+                <b>RETURN</b>
+            </div>
         </div>
         <div id="menu5">
-
+            <div id="arnum">
+                <p id="retr" onclick="Returnmenu5();">叹朔口弓</p>
+                <b>RETURN</b>
+            </div>
         </div>
-        <div id="menu">
+        <div id="menu" class="menuintro0">
             <script>
-                function Fademenu() {
+
+
+
+                function Returnmenu1() {
                     //$("#menu").removeClass("tofade");
+                    $("#menu").removeClass("menufade");
+                    $("#menu1").removeClass("menuintro");
+                    $("#bak").removeClass("on-img1");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak3").removeClass("bak3-1");
+                    $("#bak4").removeClass("bak3-1");
+                    $("#bak5").removeClass("bak3-1");
+
+
+                    $("#menu1").addClass("menufade");
+                    $("#menu").addClass("menuintro");
+                    $("#bak1").addClass("bakentr");
+                    $("#bak").addClass("bak3-1");
+
+
+
+                }
+                function Returnmenu2() {
+                    //$("#menu").removeClass("tofade");
+                    $("#menu").removeClass("menufade");
+                    $("#menu2").removeClass("menuintro");
+                    $("#bak").removeClass("on-img1");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak2-2").removeClass("bak3-1");
+                    $("#bak3").removeClass("bak3-1");
+                    $("#bak4").removeClass("bak3-1");
+                    $("#bak5").removeClass("bak3-1");
+
+                    $("#menu2").addClass("menufade");
+                    $("#menu").addClass("menuintro");
+                    $("#bak2-2").addClass("bakentr");
+                    $("#bak").addClass("bak3-1");
+
+
+
+                } function Returnmenu3() {
+                    //$("#menu").removeClass("tofade");
+                    $("#menu").removeClass("menufade");
+                    $("#menu2").removeClass("menuintro");
+                    $("#menu3").removeClass("menuintro");
+                    $("#menu4").removeClass("menuintro");
+                    $("#menu5").removeClass("menuintro");
+                    $("#bak").removeClass("on-img1");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak2-2").removeClass("bak3-1");
+                    $("#bak3").removeClass("bak3-1");
+                    $("#bak4").removeClass("bak3-1");
+                    $("#bak5").removeClass("bak3-1");
+
+                   
+                    $("#menu3").addClass("menufade");
+                    $("#menu").addClass("menuintro");
+                    $("#bak3").addClass("bakentr");
+                    $("#bak").addClass("bak3-1");
+
+
+
+                }
+                function Returnmenu4() {
+                    //$("#menu").removeClass("tofade");
+                    $("#menu").removeClass("menufade");
+                    $("#menu2").removeClass("menuintro");
+                    $("#menu3").removeClass("menuintro");
+                    $("#menu4").removeClass("menuintro");
+                    $("#menu5").removeClass("menuintro");
+                    $("#bak").removeClass("on-img1");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak2-2").removeClass("bak3-1");
+                    $("#bak3").removeClass("bak3-1");
+                    $("#bak4").removeClass("bak3-1");
+                    $("#bak5").removeClass("bak3-1");
+
+
+                    $("#menu4").addClass("menufade");
+                    $("#menu").addClass("menuintro");
+                    $("#bak4").addClass("bakentr");
+                    $("#bak").addClass("bak3-1");
+
+
+
+                }
+                function Returnmenu5() {
+                    //$("#menu").removeClass("tofade");
+                    $("#menu").removeClass("menufade");
+                    $("#menu2").removeClass("menuintro");
+                    $("#menu3").removeClass("menuintro");
+                    $("#menu4").removeClass("menuintro");
+                    $("#menu5").removeClass("menuintro");
+                    $("#bak").removeClass("on-img1");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak2-2").removeClass("bak3-1");
+                    $("#bak3").removeClass("bak3-1");
+                    $("#bak4").removeClass("bak3-1");
+                    $("#bak5").removeClass("bak3-1");
+
+
+                    $("#menu5").addClass("menufade");
+                    $("#menu").addClass("menuintro");
+                    $("#bak5").addClass("bakentr");
+                    $("#bak").addClass("bak3-1");
+
+
+
+                }
+                function Fademenu() {
+                    $("#bak").removeClass("bk1");
+                    
+                    $("#menu1").removeClass("menufade");
+                    $("#menu").removeClass("menuintro0");
+                    $("#menu").removeClass("menuintro");
+                    $("#bak1").removeClass("bakentr");
+                    $("#bak").removeClass("bak3-1");
+                    $("#bak2-2").removeClass("bak3-1");
+
                     $("#menu").addClass("menufade");
                     $("#menu1").addClass("menuintro");
+
                     $("#bak").addClass("on-img1");
                     $("#bak1").addClass("bak3-1");
                 }
+                function Fademenu2() {
+
+                    $("#menu").removeClass("menuintro");
+                    $("#menu1").removeClass("menuintro");
+                    $("#menu").removeClass("menuintro0");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak").removeClass("bak3-1");
+                    $("#bak").removeClass("bk1");
+                    $("#bak2-2").removeClass("bakentr");
+
+                    $("#menu2").addClass("menuintro");
+                    $("#menu").addClass("menufade");
+                    $("#bak").addClass("on-img1");
+                    $("#bak2-2").addClass("bak3-1");
+
+                }
+
+
                 function Fademenu3() {
-                    //$("#bak3").removeClass("bak3");
+
+                    $("#menu").removeClass("menuintro");
+                    $("#menu").removeClass("menuintro0");
+                    $("#menu1").removeClass("menuintro");
+                    $("#menu2").removeClass("menuintro");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak").removeClass("bak3-1");
+                    $("#bak").removeClass("bk1");
+                    $("#bak3").removeClass("bakentr");
+
+
+                    $("#menu3").addClass("menuintro");
                     $("#menu").addClass("menufade");
                     $("#bak").addClass("on-img1");
                     $("#bak3").addClass("bak3-1");
+
+                }
+                function Fademenu4() {
+
+                    $("#menu").removeClass("menuintro");
+                    $("#menu").removeClass("menuintro0");
+                    $("#menu1").removeClass("menuintro");
+                    $("#menu2").removeClass("menuintro");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak").removeClass("bak3-1");
+                    $("#bak").removeClass("bk1");
+                    $("#bak4").removeClass("bakentr");
+
+                    $("#menu4").addClass("menuintro");
+                    $("#menu").addClass("menufade");
+                    $("#bak").addClass("on-img1");
+                    $("#bak4").addClass("bak3-1");
+
+                } function Fademenu5() {
+
+                    $("#menu").removeClass("menuintro");
+                    $("#menu").removeClass("menuintro0");
+                    $("#menu1").removeClass("menuintro");
+                    $("#menu2").removeClass("menuintro");
+                    $("#bak1").removeClass("bak3-1");
+                    $("#bak").removeClass("bak3-1");
+                    $("#bak").removeClass("bk1");
+                    $("#bak5").removeClass("bakentr");
+
+                    $("#menu5").addClass("menuintro");
+                    $("#menu").addClass("menufade");
+                    $("#bak").addClass("on-img1");
+                    $("#bak5").addClass("bak3-1");
 
                 }
             </script>
@@ -498,7 +1104,7 @@
                     <b>SECTION 0.0</b>
                 </div>
             </div>
-            <div id="men2">
+            <div id="men2" onclick="Fademenu2();">
                 <div id="big"><p id="lett">音</p></div>  <div id="subtext">
                     <div id="pleft-1"><b>Friends:</b></div><div id="pleft2">
                         <p>燥救子尸</p>
@@ -515,14 +1121,14 @@
                     <b>SECTION 0.2</b>
                 </div>
             </div>
-            <div id="men4">
+            <div id="men4" onclick="Fademenu4();">
                 <div id="big"><p id="lett">要</p></div>  <div id="subtext"><div id="pleft-3"><b>Change:</b></div><div id="pleft2"><p>颁晚土水</p></div></div>
                 <img id="art5" src="https://i.postimg.cc/nh8hLFMx/pngfind-com-black-lines-png-1609438.png" /> <div id="arnum">
                     <p>敬水尸</p>
                     <b>SECTION 0.3</b>
                 </div>
             </div>
-            <div id="men5">
+            <div id="men5" onclick="Fademenu5();">
                 <div id="big"><p id="lett">来</p></div>  <div id="subtext"><div id="pleft-4"><b>Home:</b></div><div id="pleft2"><p>行水</p></div></div>
                 <img id="art5" src="https://i.postimg.cc/15VzPnmM/pngfind-com-leaf-clip-art-png-6028589.png" /> <div id="arnum">
                     <p>铠显口人</p>
@@ -531,48 +1137,47 @@
             </div>
 
         </div>
-        <div id="crdts">
-            <style>
-                #crdts {
-                }
+        <div id="auid">
+            <div id="R_plyr">
+                <div id="dt_rp">
 
-                #p_t6 {
-                    mix-blend-mode: difference;
-                    font-family: 'Oswald', sans-serif;
-                    /*font-family: 'Poiret One', cursive;*/ left: 2.5%;
-                    top: 94%;
-                    position: absolute;
-                    font-size: .6vw;
-                    color: white;
-                    letter-spacing: .1vw;
-                    opacity: .6;
-                }
+                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                </div>
 
-                #p_t7 {
-                    opacity: .6;
-                    mix-blend-mode: difference;
-                    font-family: 'Oswald', sans-serif;
-                    /*font-family: 'Poiret One', cursive;*/ left: 2.5%;
-                    top: 95.4%;
-                    position: absolute;
-                    font-size: .6vw;
-                    color: white;
-                    letter-spacing: .1vw;
-                }
+                <div id="mor_rpy">
 
-                #icongif {
-                    mix-blend-mode: difference;
-                    filter: grayscale(100%) contrast(200%);
-                    width: 1.3vw;
-                    position: absolute;
-                    left: 1%;
-                    top: 95%;
-                }
-            </style>
-            <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
-            <p id="p_t7">1533252890 | contact | xat.com</p>
-            <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+                    <div class="player">
+
+                        <div class="player-track">
+                            <div id="titles">
+
+                            </div>
+
+
+
+                            <div class="progress-bar">
+                                <div class="fillBar"></div>
+                            </div>
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div class="artist-name"></div>
+
+                        </div>
+
+                        <div class="player-control">
+                            <div id="prev" class="fas fa-backward"><p>◄</p></div>
+
+                            <div id="next" class="fas fa-forward"><p>►</p></div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+
     </div>
 
 </body>
