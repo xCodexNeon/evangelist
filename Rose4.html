@@ -1,0 +1,585 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/vue.global.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/pixi.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/rgbShiftSlider.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+        body {
+            overflow: hidden;
+            background: lightgray;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            border-radius: 1vw;
+            left: -1%;
+            top: -1%;
+            overflow: hidden;
+            background: white;
+            position: absolute;
+            width: 101%;
+            height: 101%;
+            /*background-image: url(https://i.postimg.cc/DZ5HGZBN/baal-raiden-shogun-hd-genshin-impact-7.jpg);
+            background-size: contain;*/
+        }
+        /*#firm {filter:invert(100%) ; transform:rotate(17deg); position:absolute; mix-blend-mode:difference; width:15vw; bottom:5%;right:3%;
+        }*/
+        #bak {
+            width: auto; 
+            height: 90%;
+            right:-5%;
+            bottom:0;
+            position: absolute;
+         
+        }
+        #menu { position:absolute; width:55%; height:70%; left:7%; top:20%; 
+        }
+        #men1, #men2, #men3, #men4, #men5 {
+            width: 19%;
+            height: 100%;
+            float: left; 
+            transition: all .5s ease;
+            border-top: .05vw solid transparent;
+            border-left: .05vw solid transparent;
+            border-right: .05vw solid transparent;
+        }
+            #men1:hover {
+                border-top: .05vw solid #d8d8d8;
+                border-left: .05vw solid #d8d8d8;
+                border-right: .05vw solid #d8d8d8;
+            }
+
+            #men2:hover {
+                border-top: .05vw solid #d8d8d8;
+                border-left: .05vw solid #d8d8d8;
+                border-right: .05vw solid #d8d8d8;
+            }
+            #men3:hover {
+                border-top: .05vw solid #d8d8d8;
+                border-left: .05vw solid #d8d8d8;
+                border-right: .05vw solid #d8d8d8;
+            }
+            #men4:hover {
+                border-top: .05vw solid #d8d8d8;
+                border-left: .05vw solid #d8d8d8;
+                border-right: .05vw solid #d8d8d8;
+            }
+            #men5:hover {
+                border-top: .05vw solid #d8d8d8;
+                border-left: .05vw solid #d8d8d8;
+                border-right: .05vw solid #d8d8d8;
+            }
+            #men1:hover #big { color:white; background:#171717;  top:-2.5%;
+            }
+            #men2:hover #big {
+                color: white;
+                background: #171717;
+                top: -2.5%;
+            }
+            #men3:hover #big {
+                color: white;
+                background: #171717;
+                top: -2.5%;
+            }
+            #men4:hover #big {
+                color: white;
+                background: #171717;
+                top: -2.5%;
+            }
+            #men5:hover #big {
+                color: white;
+                background: #171717;
+                top: -2.5%;
+            }
+        #big {
+            border-radius: 50%;
+            font-size: 5vw;
+            width: 5vw;
+            height: 5vw;
+            margin: auto;
+            position: relative;
+            left: -1%;
+            top: -8%;
+            transition: all .5s ease;
+        }
+        #lett { position:absolute; 
+        }
+        #men1:hover #lett {
+            top: -2.5vw;
+            font-size: 3vw;
+            left: 1vw;
+        }
+        #men1:hover #pleft b, #men2:hover #pleft-1 b, #men3:hover #pleft-2 b, #men4:hover #pleft-3 b,#men5:hover #pleft-4 b {
+            color: #ff0000;
+        }
+        #men2:hover #lett {
+            top: -2.5vw;
+            font-size: 3vw;
+            left: 1vw;
+        }
+        #men3:hover #lett {
+            top: -2.5vw;
+            font-size: 3vw;
+            left: 1vw;
+        }
+        #men4:hover #lett {
+            top: -2.5vw;
+            font-size: 3vw;
+            left: 1vw;
+        }
+        #men5:hover #lett {
+            top: -2.5vw;
+            font-size: 3vw;
+            left: 1vw;
+        }
+        #subtext { position:relative; width:3vw; height:10vw;  left:72%; top:-8%;
+        }
+        #pleft { position:absolute; width:1.4vw; height:10vw; left:0; top:0;
+        }
+        #pleft2 {
+           
+            width: 1.4vw; left:1.4vw; top:0;
+            height: 10vw;
+            position: absolute;
+        }
+        #pleft b {
+            letter-spacing: .1vw;
+            font-size: 1vw;
+            position: absolute;
+            left: -1.6vw;
+            top: 3.2vw;
+            font-family: 'Poiret One', cursive;
+            transform: rotate(-270deg);
+            transition: all .5s ease;
+        }
+        #pleft-1 b {
+            letter-spacing: .1vw;
+            font-size: 1vw;
+            position: absolute;
+            left: -1vw;
+            top: 2.6vw;
+            font-family: 'Poiret One', cursive;
+            transform: rotate(-270deg);
+            transition: all .5s ease;
+        }
+        #pleft-2 b {
+            letter-spacing: .1vw;
+            font-size: 1vw;
+            position: absolute;
+            left: -.3vw;
+            top: 2vw;
+            font-family: 'Poiret One', cursive;
+            transform: rotate(-270deg);
+            transition: all .5s ease;
+        }
+        #pleft-3 b {
+            letter-spacing: .1vw;
+            font-size: 1vw;
+            position: absolute;
+            left: -1.1vw;
+            top: 2.65vw;
+            font-family: 'Poiret One', cursive;
+            transform: rotate(-270deg);
+            transition: all .5s ease;
+        }
+        #pleft-4 b {
+            letter-spacing: .1vw;
+            font-size: 1vw;
+            position: absolute;
+            left: -.6vw;
+            top: 2.3vw;
+            font-family: 'Poiret One', cursive;
+            transform: rotate(-270deg);
+            transition: all .5s ease;
+        }
+        #pleft2 p { width:100%; height:100%;
+           
+            font-size: .8vw;
+            position: absolute;
+            left: .2vw;
+            top: .2vw;
+            transform: rotate(-360deg);
+        }
+        #art {
+            width: 12vw;
+            position: absolute;
+            bottom: -5vw; z-index:-1;
+            transition: all .5s ease; opacity:0;
+        }
+        #art2 {
+            width: 15vw;
+            z-index: -1;
+            position: absolute;
+            bottom: -5vw;
+            transition: all .5s ease;
+            opacity: 0;
+            margin-left: -5vw;
+        }
+        #art5 {
+            width: 17vw;
+            z-index: -1;
+            position: absolute;
+            bottom: -5vw;
+            transition: all .5s ease;
+            opacity: 0;
+            margin-left: -2vw;
+        }
+        #men1:hover #art { opacity:1; bottom:0; z-index:2;
+        }
+        #men2:hover #art2 {
+            z-index: 2;
+            opacity: 1;
+            bottom: 0;
+        }
+
+        #men3:hover #art5 {
+            z-index: 2;
+            opacity: 1;
+            bottom: 0;
+        }
+        #men4:hover #art5 {
+            z-index: 2;
+            opacity: 1;
+            bottom: 0;
+        }
+        #men5:hover #art5 {
+            z-index: 2;
+            opacity: 1;
+            bottom: 0;
+        }
+        #arnum { position:absolute; width:8vw; height:3vw;  bottom:0; margin-left:.5vw;
+        }
+
+            #arnum p {
+                letter-spacing: .1vw;
+                font-size: .9vw;
+                position: absolute;
+                font-family: 'Poiret One', cursive;
+                transition: all .5s ease;
+            }
+            #arnum b {
+                letter-spacing: .1vw;
+                font-size: .6vw;
+                position: absolute;
+                
+                font-family: 'Poiret One', cursive;
+                transition: all .5s ease;
+            }
+        #men1:hover #arnum p {
+          color:#e24d4d;
+        }
+
+        #men2:hover #arnum b {
+            color: #e24d4d;
+        }
+        #men3:hover #arnum b {
+            color: #e24d4d;
+        }
+        #men4:hover #arnum b {
+            color: #e24d4d;
+        }
+        #men5:hover #arnum b {
+            color: #e24d4d;
+        }
+        #log {
+            position: absolute; 
+            width: 10%;
+            height: 12%;
+            left: 10%;
+            top: 3%;
+            font-family: Arial;
+        }
+
+        #logrose {
+            position: absolute;
+            width: 4vw;
+        }
+
+        #log b {
+            position: absolute;
+            font-size: 1.5vw;
+            letter-spacing: .1vw;
+            left: 4.2vw;
+            top: .6vw;
+        }
+
+        #log p { width:100%;
+            position: absolute;
+            font-size: .8vw;
+            left: 4.2vw;
+            top: 1.1vw; color:#e24d4d;
+        }
+        @keyframes t-menufade {
+
+            0% {
+                opacity: 1;z-index:2;
+            }
+
+           
+
+            100% {
+                opacity: 0;
+                z-index: -2;
+            }
+        }
+        @keyframes t-menuintro {
+
+            0% {
+                opacity: 0;
+                z-index: -2;
+            }
+
+
+
+            100% {
+                opacity: 1;
+                z-index: 2;
+            }
+        }
+        #bak { transition:all 3s ease;
+        }
+        .on-img1 {
+            animation: t-img1 3s 1;
+            animation-fill-mode: forwards;
+        }
+        .menufade { animation: t-menufade 3s 1; animation-fill-mode:forwards;
+        }
+        .menuintro {
+            animation: t-menuintro 3s 1;
+            animation-delay: 1.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes t-img1 {
+
+            0% {
+               right:-5%; opacity:1;
+            }
+            20% {
+                right: -5%;
+                opacity: 1;
+            }
+
+
+            100% {
+                right: -50%;
+                opacity: 0;
+            }
+        }
+        @keyframes t-img1-3 {
+
+            0% {
+                right: -50%;
+                opacity: 0;
+                z-index:-2;
+            }
+
+            20% {
+                right: -50%;
+                opacity: 0;
+                z-index: -2;
+            }
+
+
+            100% {
+                z-index: 2;
+                right: -5%;
+                opacity: 1;
+            }
+        }
+        #menu1 {
+            opacity: 0;
+            z-index: -2;
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
+        }
+        #menu3 {
+            opacity:0; z-index:-2;
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
+            /*background: red;*/ 
+        }
+        .bak1 {
+            animation: t-img1-3 3s 1;
+            animation-fill-mode: forwards;
+        }
+        .bak3-1 {
+            animation: t-img1-3 3s 1;
+            animation-fill-mode: forwards;
+        }
+        #bak3, #bak1 {
+            transition: all 3s ease;
+            opacity: 0;
+            z-index: -3;
+            width: auto;
+            height: 90%;
+            right: -5%;
+            bottom: 0;
+            position: absolute;
+        }
+        #firm { position:absolute; width:16vw; transform:rotate(20deg);
+        }
+    </style>
+    
+</head>
+
+
+<body>
+   
+    <div id="main">
+        <!--<img id="firm" src="https://i.postimg.cc/2j9WyGjd/w.png" />-->
+
+        <img id="bak" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" />
+        <img id="bak1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" />
+
+
+        <img id="bak3" src="https://i.postimg.cc/v8gG10DM/aniyuki-genshin-impact-raiden-shogun-13.png" />
+        <div id="log">
+            <img src="https://i.postimg.cc/kXWNYZdJ/rose.png" id="logrose" />
+            <b>ROSE</b>
+            <p>| 呛水 | 10000051</p>
+        </div>
+        <div id="menu1">
+            <img id="firm" src="https://i.postimg.cc/d1MLH3WN/frame0.jpg" />
+        </div>
+        <div id="menu2">
+
+        </div>
+        <div id="menu3">
+
+        </div>
+        <div id="menu4">
+
+        </div>
+        <div id="menu5">
+
+        </div>
+        <div id="menu">
+            <script>
+                function Fademenu() {
+                    //$("#menu").removeClass("tofade");
+                    $("#menu").addClass("menufade");
+                    $("#menu1").addClass("menuintro");
+                    $("#bak").addClass("on-img1");
+                    $("#bak1").addClass("bak3-1");
+                }
+                function Fademenu3() {
+                    //$("#bak3").removeClass("bak3");
+                    $("#menu").addClass("menufade");
+                    $("#bak").addClass("on-img1");
+                    $("#bak3").addClass("bak3-1");
+
+                }
+            </script>
+
+
+            <div id="men1" onclick="Fademenu();">
+                <div id="big"><p id="lett">输</p></div>
+                <div id="subtext"><div id="pleft"><b>About.me:</b></div><div id="pleft2"><p>明人山廿</p></div></div>
+                <img id="art" src="https://i.postimg.cc/FHJkPCkr/pngegg.png" />
+                <div id="arnum">
+                    <p>铎口人</p>
+                    <b>SECTION 0.0</b>
+                </div>
+            </div>
+            <div id="men2">
+                <div id="big"><p id="lett">音</p></div>  <div id="subtext">
+                    <div id="pleft-1"><b>Friends:</b></div><div id="pleft2">
+                        <p>燥救子尸</p>
+                    </div>
+                </div> <img id="art2" src="https://i.postimg.cc/2SPcJtH2/pngegg-1.png" /> <div id="arnum">
+                    <p>山弓人</p>
+                    <b>SECTION 0.1</b>
+                </div>
+            </div>
+            <div id="men3" onclick="Fademenu3();">
+                <div id="big"><p id="lett">会</p></div>  <div id="subtext"><div id="pleft-2"><b>Posts:</b></div><div id="pleft2"><p>怆廿尸</p></div></div>
+                <img id="art5" src="https://i.postimg.cc/3wmSHZV7/pngaaa-com-403490.png" /> <div id="arnum">
+                    <p>木人尸</p>
+                    <b>SECTION 0.2</b>
+                </div>
+            </div>
+            <div id="men4">
+                <div id="big"><p id="lett">要</p></div>  <div id="subtext"><div id="pleft-3"><b>Change:</b></div><div id="pleft2"><p>颁晚土水</p></div></div>
+                <img id="art5" src="https://i.postimg.cc/nh8hLFMx/pngfind-com-black-lines-png-1609438.png" /> <div id="arnum">
+                    <p>敬水尸</p>
+                    <b>SECTION 0.3</b>
+                </div>
+            </div>
+            <div id="men5">
+                <div id="big"><p id="lett">来</p></div>  <div id="subtext"><div id="pleft-4"><b>Home:</b></div><div id="pleft2"><p>行水</p></div></div>
+                <img id="art5" src="https://i.postimg.cc/15VzPnmM/pngfind-com-leaf-clip-art-png-6028589.png" /> <div id="arnum">
+                    <p>铠显口人</p>
+                    <b>SECTION 0.4</b>
+                </div>
+            </div>
+
+        </div>
+        <div id="crdts">
+            <style>
+                #crdts {
+                }
+
+                #p_t6 {
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ left: 2.5%;
+                    top: 94%;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                    opacity: .6;
+                }
+
+                #p_t7 {
+                    opacity: .6;
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ left: 2.5%;
+                    top: 95.4%;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                }
+
+                #icongif {
+                    mix-blend-mode: difference;
+                    filter: grayscale(100%) contrast(200%);
+                    width: 1.3vw;
+                    position: absolute;
+                    left: 1%;
+                    top: 95%;
+                }
+            </style>
+            <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
+            <p id="p_t7">1533252890 | contact | xat.com</p>
+            <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+        </div>
+    </div>
+
+</body>
+</html>
