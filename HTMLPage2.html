@@ -1,0 +1,1015 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            cursor: url(https://i.postimg.cc/8cFtjm7s/cursor-1.png),auto;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+        }
+
+        #Main {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            margin: 0;
+            background:black;
+        }
+        #main7 {
+            height: 84%;
+            background: red;
+            width: 100%;
+            transform-style: preserve-3d;
+            position: relative;
+            top: 8%;
+            backface-visibility: visible;
+        }
+
+
+        #Form2 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: 2s;
+        }
+      
+        #main7:target .card-front {
+            transform: rotateY(-180deg);
+            z-index: 1;
+        }
+
+        #main7:target .card-back {
+            transform: rotateY(0deg);
+            z-index: 5;
+        }
+
+
+
+
+        #main4:target #cbk3 {
+            transform: rotateY(0deg); z-index:10;
+        }
+        #main4:target .card-front {
+            transform: rotateY(-180deg);
+        }
+        #main4:target .card-back {
+            transform: rotateY(0deg);
+            z-index: 7;
+        }
+        #main4:target .card-front2 {
+            transform: rotateY(-180deg);
+            z-index: 10;
+        }
+
+
+
+
+        #main5:target .card-front {
+            transform: rotateY(-180deg);
+        }
+
+        #main5:target .card-back {
+            transform: rotateY(0deg);
+            z-index: 7;
+        }
+
+        #main5:target .card-back2 {
+            transform: rotateY(0deg);
+            z-index: 9;
+        }
+        #main5:target .card-front2 {
+            transform: rotateY(-180deg);
+            z-index: 9;
+        }
+
+        #main5:target .card-back3 {
+            transform: rotateY(0deg);
+            z-index: 11;
+        }
+
+        #main5:target .card-front3 {
+            transform: rotateY(-180deg);
+            z-index: 11;
+        }
+
+
+        #main6:target .card-front {
+            transform: rotateY(-180deg);
+        }
+
+        #main6:target .card-back {
+            transform: rotateY(0deg);
+            z-index: 7;
+        }
+
+        #main6:target .card-back2 {
+            transform: rotateY(0deg);
+            z-index: 9;
+        }
+
+        #main6:target .card-front2 {
+            transform: rotateY(-180deg);
+            z-index: 9;
+        }
+
+        #main6:target .card-back3 {
+            transform: rotateY(0deg);
+            z-index: 11;
+        }
+
+        #main6:target .card-front3 {
+            transform: rotateY(-180deg);
+            z-index: 11;
+        }
+
+        #main6:target .card-back4 {
+            transform: rotateY(0deg);
+            z-index: 131;
+        }
+
+        #main6:target .card-front4 {
+            transform: rotateY(-180deg);
+            z-index: 13;
+        }
+
+
+
+
+        #cbk3, .card-back3, .card-back4 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            transition: 2s;
+            z-index: 0;
+        }
+        .card-front, .card-front2, .card-front3, .card-front4 {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;z-index:3;
+            backface-visibility: hidden;
+            transform: rotateY(0deg);
+            transition: 2s;
+        }
+
+
+        .card-back {
+            z-index: 3;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            transition: 2s;
+        }
+        .baki1 { margin-left:50%;
+            width:50vw; height:86vh;
+        }
+        .baki2 {
+            width: 50vw;
+            height: 86vh;
+        }
+        #Paste1, #Paste2 { position:absolute; width:100%; height:100%; z-index:1;
+        }
+        #main7:target #Paste1 { z-index:1;
+        }
+        #main7:target #Crd2 { z-index:100;
+        }
+
+        /*-----------------------------------------*/
+
+        #Menubar {
+            width: 100%;
+            font-family: 'Yu Gothic';
+            position: absolute;
+            top: 0;
+            transition: all .5s ease;
+            height: 8%;
+            background: black;
+            z-index: 1000;
+        }
+        .PD1 {
+            top: 17%;
+            position: absolute;
+            transition: all 1s ease;
+        }
+
+
+        #Pp5 {
+            right: 13%;
+        }
+
+        #Pp4 {
+            right: 22%;
+        }
+
+
+
+        #Pp2 {
+            right: 31.5%;
+        }
+
+        #Pp1 {
+            right: 38%;
+        }
+
+        #p1:before {
+            content: 'HOME';
+        }
+
+        #Pp1:hover #p1:before {
+            animation: Sp1 .3s 1;
+            animation-fill-mode: forwards;
+        }
+
+
+        #p2:before {
+            content: 'SYIMPHONY';
+        }
+
+        #Pp2:hover #p2:before {
+            animation: Sp2 .3s 1;
+            animation-fill-mode: forwards;
+        }
+
+        #p3:before {
+            content: 'ABOUT';
+        }
+
+
+
+        #p4 {
+            white-space: nowrap;
+        }
+
+            #p4:before {
+                content: 'LADY PAIN';
+            }
+
+        #Pp4:hover #p4:before {
+            animation: Sp4 .3s 1;
+            animation-fill-mode: forwards;
+        }
+
+        #p5:before {
+            content: 'CONTACT';
+        }
+
+        #Pp5:hover #p5:before {
+            animation: Sp5 .3s 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes Sp1 {
+            0% {
+                content: 'XHTN';
+            }
+
+            20% {
+                content: 'GY7O';
+            }
+
+            40% {
+                content: 'LP1Z';
+            }
+
+            60% {
+                content: 'XMKL';
+            }
+
+            100% {
+                content: 'HELL';
+            }
+        }
+
+        @keyframes Sp2 {
+            0% {
+                content: '9KLP31DFX';
+            }
+
+            20% {
+                content: 'BMQX4H80I';
+            }
+
+            40% {
+                content: 'GLPQW17B8';
+            }
+
+            60% {
+                content: '87VMLXQ1';
+            }
+
+            100% {
+                content: 'SACRILEGE';
+            }
+        }
+
+
+
+        @keyframes Sp4 {
+            0% {
+                content: '9KLP31DFX';
+            }
+
+            20% {
+                content: 'BMQX4H80I';
+            }
+
+            40% {
+                content: 'GLPQW17B8';
+            }
+
+            60% {
+                content: '87VMLXQ1';
+            }
+
+            100% {
+                content: 'PRIESTESS';
+            }
+        }
+
+        @keyframes Sp5 {
+            0% {
+                content: 'FRX4HTN';
+            }
+
+            20% {
+                content: '457YHJO';
+            }
+
+            40% {
+                content: '6000PQR';
+            }
+
+            60% {
+                content: '4CXMKL';
+            }
+
+            100% {
+                content: 'SINNER';
+            }
+        }
+        #Menu {
+            mix-blend-mode: difference;
+            position: absolute;
+            width: 10%;
+            height: 40%;
+            top: 25%;
+            left: 2%;
+            z-index: 9999;
+        }
+
+        #cros {
+            height: 110%;
+            position: absolute;
+            left: 0;
+            transform: rotate(180deg);
+            filter: invert(100%);
+        }
+
+        #smn {
+            color: white;
+            letter-spacing: .45vw;
+            font-size: .8vw;
+            position: absolute;
+            left: 2.5vw;
+            top: -.3vw;
+            transition: all 1s ease;
+        }
+
+        #br1 {
+            width: 75%;
+            height: .05vw;
+            background: white;
+            position: absolute;
+            left: 1.5vw;
+            top: 105%;
+        }
+
+        #br2 {
+            width: 0;
+            height: .15vw;
+            background: white;
+            position: absolute;
+            left: 1.5vw;
+            top: 98%;
+            transition: all 2s ease;
+        }
+
+        #Menu:hover #br2 {
+            width: 75%;
+        }
+        #boreff, #boreff2, #boreff3, #boreff4 {
+            position: absolute;
+            width: 3vw;
+            height: 1vw;
+            top: 1vw;
+            left: 0;
+            transition: all .5s ease;
+            z-index: 5;
+            opacity: 0;
+        }
+
+        #boreff2 {
+            width: 5vw;
+        }
+
+        #boreff3 {
+            width: 4vw;
+        }
+
+        #boreff4 {
+            width: 4.5vw;
+        }
+
+        .PD1:hover .Px {
+            color: #8f3232;
+        }
+
+        .PD1:hover #boreff {
+            left: -1.2vw;
+            width: 5vw;
+            height: 3vw;
+            top: 0vw;
+            opacity: 1;
+        }
+
+        .PD1:hover #boreff2 {
+            width: 8vw;
+            left: -1.2vw;
+            height: 3vw;
+            top: 0vw;
+            opacity: 1;
+        }
+
+        .PD1:hover #boreff3 {
+            width: 6vw;
+            left: -1.2vw;
+            height: 3vw;
+            top: 0vw;
+            opacity: 1;
+        }
+
+        .PD1:hover #boreff4 {
+            width: 6.5vw;
+            left: -1.2vw;
+            height: 3vw;
+            top: 0vw;
+            opacity: 1;
+        }
+
+        #cu1 {
+            position: absolute;
+            width: 25%;
+            height: 40%;
+            border-bottom: .2vw solid #8f3232;
+            border-left: .2vw solid #8f3232;
+            transition: all .5s ease;
+            bottom: 0;
+        }
+
+        #cu2 {
+            border-top: .2vw solid #8f3232;
+            transition: all .5s ease;
+            border-right: .2vw solid #8f3232;
+            position: absolute;
+            width: 25%;
+            right: 0;
+            height: 40%;
+        }
+
+        #imglog {
+            width: 3vw;
+            height: 2vw;
+            z-index: 9899;
+            left: 94.5%;
+            position: absolute;
+            top: 2.3%;
+            filter: invert(100%);
+            mix-blend-mode: difference;
+            transition: all .5s ease;
+            -webkit-transition-delay: .5s;
+        }
+
+            #imglog:hover #sumnu {
+                height: 15vw;
+            }
+
+            #imglog:hover #trin {
+                opacity: 1;
+            }
+
+            #imglog img {
+                width: 3vw;
+                transition: all .2s ease;
+            }
+
+            #imglog:hover img {
+                filter: contrast(0) sepia(1) hue-rotate(330deg) saturate(2300%) grayscale(75%) invert(100%);
+            }
+
+        #sumnu {
+            width: 10vw;
+            height: 0vw;
+            background: black;
+            top: 4vw;
+            position: absolute;
+            left: -6vw;
+            overflow: hidden;
+            transition: all .5s ease;
+            -webkit-transition-delay: .5s;
+        }
+
+        #trin {
+            position: absolute;
+            opacity: 0;
+            width: 1.5vw;
+            height: 1.5vw;
+            background: black;
+            transform: rotate(45deg);
+            left: .75vw;
+            top: 3.5vw;
+            transition: all .5s ease;
+            -webkit-transition-delay: .5s;
+        }
+
+        #AreTex {
+            width: 80%;
+            position: absolute;
+            left: 10%;
+            filter: invert(100%);
+            height: 80%;
+            text-align: left;
+        }
+
+            #AreTex p {
+                font-size: .9vw;
+                font-family: 'Agency FB';
+                letter-spacing: .2vw;
+                transition: all .5s ease;
+            }
+
+                #AreTex p:hover {
+                    color: #8f3232;
+                    letter-spacing: .3vw;
+                }
+
+        .Px {
+            color: white;
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            position: absolute;
+            transition: all 1s ease;
+            z-index: 999;
+            mix-blend-mode: difference;
+        }
+        #controls {
+            width: 100%;
+            height: 5.5vw;
+            bottom: 5vw;
+            position: absolute;
+            transition: all 1s ease; z-index:9999;
+        }
+
+        #LogM {
+            position: absolute;
+            width: 6.5vw;
+            height: 2.8vw;
+            border: .3vw solid white;
+            left: 3%;
+            top: 1vw;
+        }
+
+        #play, #Next, #Max, #Minn {
+            top: 1vw;
+            position: absolute;
+            width: 2.8vw;
+            height: 2.8vw;
+            border: .3vw solid white;
+            left: 12%;
+        }
+
+        #Next {
+            left: 17%;
+        }
+
+        #Max {
+            left: 93%;
+        }
+
+        #Minn {
+            left: 93%;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        #play img {
+            position: absolute;
+            filter: invert(100%);
+            width: 1.4vw;
+            top: .7vw;
+            left: .8vw;
+        }
+
+        #Next img, #Mx1, #Mx2 {
+            position: absolute;
+            filter: invert(100%);
+            width: 1.4vw;
+            top: .7vw;
+            left: .8vw;
+        }
+        #Crt {
+            width: 100%;
+            background: black;
+            position: absolute;
+            height: 3vw;
+            bottom: 0;
+            transition: all 1s ease;
+        }
+
+
+        #Lin1 {
+            width: 93.5%;
+            height: .4vw;
+            background: white;
+            position: absolute;
+            bottom: 0vw;
+            left: 3%;
+        }
+
+        #lin2 {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background: #555555;
+            animation: song 300s 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes song {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        #title {
+            position: absolute;
+            color: white;
+            font-size: 1.8vw;
+            letter-spacing: .1vw;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            left: 22%;
+        }
+        #LogM p {
+            position: absolute;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.4vw;
+            letter-spacing: .2vw;
+            left: .4vw;
+            top: -.9vw;
+        }
+
+        #Crt p {
+            position: absolute;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: .8vw;
+            letter-spacing: .2vw;
+            left: 3vw;
+            top: .5vw;
+            opacity: 1;
+            transition: all 1s ease;
+        }
+        #main7:target #Frds, #main4:target #Frds, #main5:target #Frds, #main6:target #Frds { z-index:-1;
+        }
+        #butom1, #butom1-2, #butom1-3, #butom1-4 {
+            position: absolute;
+            width: 5vw;
+            height: 4vw;
+            top: 47%;
+            right: 2%;
+            z-index: 9;
+        }
+        #butom2, #butom2-2, #butom2-3, #butom2-4 {
+            position: absolute;
+            width: 5vw;
+            height: 4vw;
+            top: 47%;
+            left: 2%;
+            z-index: -1; opacity:0; 
+        }
+        #main7:target #butom2 {
+            opacity: 1;
+            z-index: 10;
+        }
+        #main4:target #butom2-2 {
+            opacity: 1;
+            z-index: 10;
+        }
+        #main5:target #butom2-3 {
+            opacity: 1;
+            z-index: 10;
+        }
+        #main6:target #butom2-4 {
+            opacity: 1;
+            z-index: 10;
+        }
+        #butom1-2, #butom1-3, #butom1-4 {
+            opacity: 0;
+            z-index: -1;
+        }
+
+        #main7:target #butom1-2 { opacity:1; z-index:10;
+        }
+        #main4:target #butom1-3 {
+            opacity: 1;
+            z-index: 11;
+        }
+
+        #main5:target #butom1-4 {
+            opacity: 1;
+            z-index: 12;
+        }
+        #main6:target .butn { z-index:-1;
+        }
+
+        #linx {
+            position: absolute;
+            width: 0%; filter:blur(.5px);
+            left: -10%;
+            height: 5vw;
+            overflow: hidden;
+            top: 0;
+            transition: all .3s ease;
+        }
+        #lin {
+            width: 6vw;
+            transform:  rotate(-5deg);
+        }
+            .butn:hover #next1, .butn2:hover #next1 {
+                animation:bounz .1s 1; animation-fill-mode:forwards;
+            }
+        .butn:hover #linx, .butn2:hover #linx {
+            width: 120%;
+            filter: blur(0px);
+        }
+        #next1 {
+            position: absolute;
+            width: 80%;
+            left: 10%;
+            top: 1vw;
+        }
+        @keyframes bounz {
+            0% {
+                width: 80%;
+            }
+
+            50% {
+                width: 100%; left:0; top:.5vw;
+            }
+            100% {
+                width: 80%;
+                transform:rotate(10deg);
+            }
+        }
+        @keyframes bounz1 {
+            0% {
+                width: 100%;
+            }
+
+            50% {
+                width: 120%;
+                left: -10%;
+                top: -10%;
+            }
+
+            100% {
+                width: 100%;
+                transform: rotate(10deg);
+            }
+        }
+        #Frds { width:10vw; height:25vh;  z-index:99; position:absolute; top:45vh; left:3vw;
+        }
+        .Fd { width:1.5vw; height:1.5vw;  border-radius:50%; position:absolute;
+        }
+        #Fr2 {
+            width: 2vw; top:4vh; left: 1vw;
+            height: 2vw;
+        }
+        #Fr3 {
+            width: 2.5vw;
+            top: 8vh;
+            left: 2vw;
+            height: 2.5vw;
+        }
+        #Fr4 {
+            width: 2.75vw;
+            top: 13vh;
+            left: 4vw;
+            height: 2.75vw;
+        }
+        #Fr5 {
+            width:3vw;
+            top: 17vh;
+            left: 7vw;
+            height: 3vw;
+        }
+        .Fd:hover .ifd {
+            animation: bounz1 .1s 1;
+            animation-fill-mode: forwards;
+        }
+        .ifd { width:100%; 
+        }
+    </style>
+</head>
+<body>
+    <div id="Main">
+        <div id="Menubar">
+            <a href="https://xat.com/Ebanjerisuto">
+                <div id="Pp1" class="PD1">
+                    <div id="boreff">
+                        <div id="cu1"></div>
+                        <div id="cu2"></div>
+                    </div>
+
+                    <p class="Px" id="p1"></p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=xPIg7-4ObTY">
+                <div id="Pp2" class="PD1">
+                    <div id="boreff2">
+                        <div id="cu1"></div>
+                        <div id="cu2"></div>
+                    </div><p class="Px" id="p2"></p>
+                </div>
+            </a>
+            <a href="https://xat.me/damitaozcura">
+                <div id="Pp4" class="PD1">
+                    <div id="boreff2">
+                        <div id="cu1"></div>
+                        <div id="cu2"></div>
+                    </div><p class="Px" id="p4"></p>
+                </div>
+            </a>
+            <div id="Pp5" class="PD1">
+                <div id="boreff4">
+                    <div id="cu1"></div>
+                    <div id="cu2"></div>
+                </div><p class="Px" id="p5"></p>
+            </div>
+
+            <div id="Menu">
+                <img id="cros" src="https://i.postimg.cc/BvX0wwc4/cross.png" /> <p id="smn">NIHIL XI</p> <div id="br1"></div><div id="br2"></div>
+
+
+
+
+            </div>
+
+        </div>
+        <div id="imglog">
+            <img src="https://i.postimg.cc/9FmQ1fMP/1.png" />
+            <div id="trin"></div>
+            <div id="sumnu">
+
+                <div id="AreTex">
+                    <p>EDIT</p>
+                    <p>WIKI</p>
+                    <p>FORUM</p>
+                    <p>PRIVACY</p>
+                    <p>TERMS</p>
+                    <p>SAFETY</p>
+                    <p>INAPPROPIATE</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="main7">
+            <div id="main4">
+                <div id="main5">
+                    <div id="main6">
+                        <div id="Form2">
+                            <div id="Paste1">
+                                <img class="baki2" src="https://i.postimg.cc/15CBkSFr/1111.jpg" />
+                            </div>
+                            <div id="Paste2">
+                                <img class="baki1" src="https://i.postimg.cc/nr4zjN9V/5-2.jpg" />
+                            </div>
+                            <div class="card-front4"><img class="baki1" src="https://i.postimg.cc/wvs3H16m/4-2.jpg" /></div>
+                            <div class="card-back4"> <img class="baki2" src="https://i.postimg.cc/XqSqvnJD/5-1.jpg" /> </div>
+
+
+                            <div class="card-front3"><img class="baki1" src="https://i.postimg.cc/MGSW-C9n1/3-2.jpg" /></div>
+                            <div class="card-back3"> <img class="baki2" src="https://i.postimg.cc/43ymL8qw/4-1.jpg" /> </div>
+
+
+                            <div class="card-front2"><img class="baki1" src="https://i.postimg.cc/SK8ZHGBF/2-2.jpg" /></div>
+                            <div id="cbk3" class="card-back2"> <img class="baki2" src="https://i.postimg.cc/Z53bsG5T/3-1.jpg" /> </div>
+
+                            <div class="card-front"><img class="baki1" src="https://i.postimg.cc/QNQN8kJm/1-2.jpg" /></div>
+                            <div id="Crd2" class="card-back"> <img class="baki2" src="https://i.postimg.cc/Vk2G7hHW/2-1.jpg" /> </div>
+
+
+
+                        </div>
+                        <div id="Frds">
+                            <a href="#"><div id="Fr1" class="Fd"><img class="ifd" src="https://i.postimg.cc/fWFkpgL0/x.png" /></div></a>
+                            <a href="#"> <div id="Fr2" class="Fd"><img class="ifd" src="https://i.postimg.cc/fWFkpgL0/x.png" /></div></a>
+                            <a href="#"> <div id="Fr3" class="Fd"><img class="ifd" src="https://i.postimg.cc/fWFkpgL0/x.png" /></div></a>
+                            <a href="#"><div id="Fr4" class="Fd"><img class="ifd" src="https://i.postimg.cc/fWFkpgL0/x.png" /></div></a>
+                            <a href="#"><div id="Fr5" class="Fd"><img class="ifd" src="https://i.postimg.cc/fWFkpgL0/x.png" /></div></a>
+
+                        </div>
+                        <div id="butom1" class="butn">
+                            <a href="#main7">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/VNpMsHNp/11.png" />
+                            </a>
+                        </div>
+                        <div id="butom1-2" class="butn">
+                            <a href="#main4">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/VNpMsHNp/11.png" />
+                            </a>
+                        </div>
+                        <div id="butom1-3" class="butn">
+                            <a href="#main5">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/VNpMsHNp/11.png" />
+                            </a>
+                        </div>
+                        <div id="butom1-4" class="butn">
+                            <a href="#main6">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/VNpMsHNp/11.png" />
+                            </a>
+                        </div>
+
+                        <div id="butom2" class="butn2">
+                            <a href="#">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/fTk1PBPp/22.png" />
+                            </a>
+                        </div>
+                        <div id="butom2-2" class="butn2">
+                            <a href="#main7">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/fTk1PBPp/22.png" />
+                            </a>
+                        </div>
+                        <div id="butom2-3" class="butn2">
+                            <a href="#main4">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/fTk1PBPp/22.png" />
+                            </a>
+                        </div>
+                        <div id="butom2-4" class="butn2">
+                            <a href="#main5">
+                                <div id="linx"> <img id="lin" src="https://i.postimg.cc/q7SbfwHM/kisspng-brush-color-image-tracing-brush-stroke-5ab8bd593c1e84-3610799615220565372463.png" /></div>
+                                <img id="next1" src="https://i.postimg.cc/fTk1PBPp/22.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="controls">
+            <div id="LogM"><p>CODEX</p></div>
+            <div id="play"><img src="https://i.postimg.cc/QNPFJz7k/boton-de-play-4.png" /></div> <div id="vidcontrol"></div>
+            <a href="https://www.youtube.com/watch?v=SLLYt-2SaZ8"><div id="Next"><img src="https://i.postimg.cc/rsvzydTY/next.png" /></div></a>
+            <p id="title">PULSE/SURREAL - LANTLôS</p>
+            <a href="#C"> <div id="Max"><img id="Mx1" src="https://i.postimg.cc/HW762fKT/expandir-vista.png" /></div></a>
+
+            <div id="Lin1">
+                <div id="lin2"></div>
+            </div>
+        </div>
+        <div id="Crt">
+            <p>XATSPACE BY xEVANGELIST / XAT.COM® ALL RIGHTS© RESERVED 2021 </p>
+        </div>
+    </div>
+
+</body>
+</html>
