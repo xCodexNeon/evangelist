@@ -8,7 +8,6 @@
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="TweenMax.min.js"></script>
     <script type="text/javascript" src="vue.global.js"></script>
-   
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
@@ -189,7 +188,13 @@
             position: absolute;
          
         }
-        #menu { position:absolute; width:55%; height:70%; left:7%; top:20%;  opacity:0;
+        #menu {
+            position: absolute;
+            width: 55%;
+            height: 70%;
+            left: 7%;
+            top: 20%;
+            opacity: 0;
         }
         #men1, #men2, #men3, #men4, #men5 {
             width: 19%;
@@ -645,12 +650,21 @@
             bottom: 0;
             position: absolute;
         }
-        #firm { position:absolute; width:16vw; transform:rotate(20deg); left:50%; bottom:0;
+        #firm { position:absolute; width:16vw; transform:rotate(20deg); left:50%; bottom:0; filter:blur(.7px);
         }
         #retr:hover { color:#e24d4d;
         }
         #mainfirst { position:absolute; width:100%; height:100%;
         }
+        .inver {
+            filter: invert(80%);
+        }
+        .noinvert{
+            filter:invert(200%);
+        }
+        #main { transition:all 1s ease;
+        }
+       
     </style>
     
 </head>
@@ -804,11 +818,13 @@
 
         <img id="bak" class="bk1" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" /> <!--main section-->
         <img id="bak1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" /><!--aboutme section-->
-        <img id="bak2-2" src="https://i.postimg.cc/jqw43WZt/raiden-shogun-genshin-impact-drawn-by-mizuchi-mizuchi7118-sample-764eeaa29617d72a34a2151bb983ce7e.jpg" /><!--friends section-->
+        <img id="bak2-2" src="https://i.postimg.cc/rFS504mJ/aniyuki-genshin-impact-raiden-shogun-15.png" /><!--friends section-->
         <img id="bak3" src="https://i.postimg.cc/v8gG10DM/aniyuki-genshin-impact-raiden-shogun-13.png" /><!--posts section-->
         <img id="bak4" src="https://i.postimg.cc/CLbHYW32/aniyuki-genshin-impact-raiden-shogun-21.png" /><!--change section-->
         <img id="bak5" src="https://i.postimg.cc/8k2B210W/aniyuki-genshin-impact-raiden-shogun-9-1.png" /><!--home section-->
+        <div id="bkg1" class="bkg11">
 
+        </div>
 
         <div id="crdts">
             <style>
@@ -861,38 +877,977 @@
 
         <div id="log">
             <img src="https://i.postimg.cc/kXWNYZdJ/rose.png" id="logrose" />
-            <b>ROSE</b>
-            <p>| 呛水 | 10000051</p>
+            <b id="b_log">ROSE</b>
+            <p id="p_log">| 玫瑰 | 10000051</p>
         </div>
+
+
         <div id="menu1">
-            <img id="firm" src="https://i.postimg.cc/d1MLH3WN/frame0.jpg" /><div id="arnum">
-                <p id="retr" onclick="Returnmenu1();">叹朔口弓</p>
+
+            <style>
+                .b_log {
+                    animation: t-menufade 2s 1;
+                    animation-fill-mode: forwards;
+                }
+
+                .b_log2 {
+                    animation: t-menuintro 4s 1;
+                    animation-fill-mode: forwards;
+                }
+
+                #menu1 {
+                    font-family: 'Poiret One', cursive;
+                }
+
+                #RegID {
+                    position: absolute;
+                    font-size: 2.2vw;
+                    left: 7%;
+                    color: black;
+                    font-weight: bold;
+                }
+
+                #RegnumB {
+                    top: 12%;
+                    position: absolute;
+                    font-size: .9vw;
+                    left: 7%;
+                    color: dimgray;
+                    font-weight: bold;
+                }
+
+                    #RegnumB b {
+                        color: #e24d4d;
+                    }
+
+                #gifs {
+                    position: absolute;
+                    width: auto;
+                    height: 25%;
+                    top: 20%;
+                    background: lightgray;
+                    left: 7%;
+                    border-radius: .5vw;
+                }
+
+                    #gifs img {
+                        margin: .3vw;
+                        width: auto;
+                        height: 94%;
+                        float: left;
+                    }
+
+                #textfirmJ {
+                    position: absolute;
+                    font-size: 1.2vw;
+                    left: 7%;
+                    top: 45%;
+                    color: dimgray;
+                    font-weight: bold;
+                }
+
+                #textfirm {
+                    position: absolute;
+                    font-size: .9vw;
+                    left: 7%;
+                    top: 52%;
+                    color: black;
+                    font-weight: bold;
+                }
+
+                    #textfirm b {
+                        color: #e24d4d;
+                    }
+            </style>
+
+            <p id="RegID">Rose.🌹</p>
+            <p id="RegnumB"><b>玫瑰</b> | 10000051</p>
+
+            <div id="gifs">
+                <img id="gifabout" src="https://i.postimg.cc/vB4n8W7z/dkx7nealymj71.gif" /><img id="gifabout2" src="https://i.postimg.cc/X7S53Brf/raiden-shogun-genshin-impact.gif" />
+            </div>
+            <p id="textfirmJ">"跟着玫瑰去哪里，愿上帝指引你"</p>
+            <p id="textfirm">"Sigue las <b>rosas</b> a dónde vayan, que Dios te guíe"</p>
+
+
+            <img id="firm" src="https://i.postimg.cc/wTDwdskJ/w.png" /><div id="arnum">
+                <p id="retr" onclick="Returnmenu1();">⮌回去</p>
+
                 <b>RETURN</b>
             </div>
         </div>
         <div id="menu2">
+            <style>
+                #menu2 {
+                    font-family: 'Poiret One', cursive;
+                }
+
+                #textFrd {
+                    position: absolute;
+                    width: 30%;
+                    height: 13%;
+                    left: 7%;
+                    top: 5%;
+                }
+
+                #tFrd {
+                    position: absolute;
+                    font-size: 1.4vw;
+                    color: dimgray;
+                    font-weight: bold;
+                }
+
+                    #tFrd b, #tFrdJ b {
+                        color: #e24d4d;
+                    }
+
+                #tFrdJ {
+                    top: 2vw;
+                    position: absolute;
+                    font-size: 1vw;
+                    color: gray;
+                    font-weight: bold;
+                }
+
+                #Frd1 {
+                    overflow: hidden;
+                    background: #171717;
+                    width: 7%;
+                    height: 50%;
+                    top: 28%;
+                    position: absolute;
+                    left: 7%;
+                }
+
+                #Frd2 {
+                    width: 7%;
+                    background: #171717;
+                    height: 50%;
+                    top: 28%;
+                    position: absolute;
+                    left: 16%;
+                }
+
+                #Frd3 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 25%;
+                }
+
+                #Frd4 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 34%;
+                }
+
+                #Frd5 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 43%;
+                }
+
+                #Frd6 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 52%;
+                }
+
+                #Frd7 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 61%;
+                }
+
+                #Frd8 {
+                    width: 7%;
+                    height: 50%;
+                    background: #171717;
+                    top: 28%;
+                    position: absolute;
+                    left: 70%;
+                }
+
+                #pRegnum {
+                    width: 100%;
+                    height: 6%;
+                    background: #171717;
+                    font-size: .6vw;
+                    text-align: center;
+                    color: lightgray;
+                    padding-top: .3vw;
+                }
+
+                #pimgfrd {
+                    width: 80%;
+                    border: .4vw solid #171717;
+                    position: absolute;
+                    top: 1vw;
+                }
+
+                #contentFrd {
+                    position: absolute;
+                    width: 59%;
+                    height: 72%;
+                    border: .15vw solid #171717;
+                    bottom: 0;
+                    background: white;
+                    z-index: 2;
+                    transition: all .5s ease;
+                }
+
+                #Frd1:hover #contentFrd, #Frd2:hover #contentFrd, #Frd3:hover #contentFrd, #Frd4:hover #contentFrd, #Frd5:hover #contentFrd, #Frd6:hover #contentFrd,
+                #Frd7:hover #contentFrd, #Frd8:hover #contentFrd {
+                    background: #171717;
+                }
+
+                #Frd1:hover #nameFrdJ, #Frd2:hover #nameFrdJ, #Frd3:hover #nameFrdJ, #Frd4:hover #nameFrdJ, #Frd5:hover #nameFrdJ, #Frd6:hover #nameFrdJ,
+                #Frd7:hover #nameFrdJ, #Frd8:hover #nameFrdJ {
+                    color: #1db2b2;
+                }
+
+                #contentFrd2 {
+                    position: absolute;
+                    width: 40%;
+                    height: 73%;
+                    right: 0;
+                    background: white;
+                    bottom: 0;
+                }
+
+                #nameFrd {
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: dimgray;
+                    font-size: 1.2vw;
+                    font-weight: bold;
+                    width: 10vw;
+                    height: 20%;
+                    top: 3vw;
+                    left: -4vw;
+                    mix-blend-mode: difference;
+                }
+
+                #nameFrdJ {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: black;
+                    font-size: .65vw;
+                    font-weight: bold;
+                    color: #e24d4d;
+                    width: 10vw;
+                    height: 20%;
+                    top: 3.6vw;
+                    left: -5.2vw;
+                }
+            </style>
+            <div id="textFrd">
+                <p id="tFrd">Friends<b> / </b>Contacts</p>
+                <p id="tFrdJ"> 朋友<b> / </b>联系人 </p>
+            </div>
+            <div id="Frd1">
+                <div id="pRegnum">69999999</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Lenin | ♥</p>
+                    <p id="nameFrdJ" class="noinvert">列宁 | ♥</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd2">
+                <div id="pRegnum">42120532</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Jadiction | +</p>
+                    <p id="nameFrdJ" class="noinvert">口语 | +</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd3">
+                <div id="pRegnum">638877683</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Austin</p>
+                    <p id="nameFrdJ" class="noinvert">奥斯汀</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd4">
+                <div id="pRegnum">23232323</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">FEXBot</p>
+                    <p id="nameFrdJ" class="noinvert">FEX机器人</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd5">
+                <div id="pRegnum">220341852</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Lemona</p>
+                    <p id="nameFrdJ" class="noinvert">
+                        柠檬
+                    </p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd6">
+                <div id="pRegnum">181818</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">WoLfie</p>
+                    <p id="nameFrdJ" class="noinvert">小狼</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd7">
+                <div id="pRegnum">400444434</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Luci</p>
+                    <p id="nameFrdJ" class="noinvert">灯</p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
+            <div id="Frd8">
+                <div id="pRegnum">2018</div>
+                <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
+                <div id="contentFrd">
+                    <p id="nameFrd">Marek</p>
+                    <p id="nameFrdJ" class="noinvert">
+                        标记
+                    </p>
+                </div>
+                <div id="contentFrd2">
+
+                </div>
+            </div>
             <div id="arnum">
-                <p id="retr" onclick="Returnmenu2();">叹朔口弓</p>
+                <p id="retr" onclick="Returnmenu2();">⮌回去</p>
                 <b>RETURN</b>
             </div>
-           
+
         </div>
         <div id="menu3">
+            <div id="crt">
+                <b id="letcrt">
+                    出版物
+                </b>
+            </div>
+            <div id="aPosts">
+                <style>
+                    #crt {
+                        position: absolute;
+                        width: 4vw;
+                        height: 8vw;
+                        left: 95%;
+                        top: 0%;
+                        background: darkgray;
+                        border-top: .5vw solid lightgray;
+                        border-bottom: .5vw solid lightgray;
+                    }
+
+                    #letcrt {
+                        color: white;
+                        width: 150%;
+                        letter-spacing: .1vw;
+                        font-size: 1.5vw;
+                        position: absolute;
+                        left: -1vw;
+                        top: 3.7vw;
+                        font-family: 'Poiret One', cursive;
+                        transform: rotate(-270deg);
+                        transition: all .5s ease;
+                    }
+
+                    #aPosts {
+                        width: 90%;
+                        height: 90%;
+                        position: absolute;
+                        overflow: auto;
+                    }
+
+                        #aPosts::-webkit-scrollbar {
+                            width: .3vw;
+                            background: white;
+                        }
+
+                        #aPosts::-webkit-scrollbar-thumb {
+                            border-radius: .5vw;
+                            background: #171717;
+                        }
+
+                    #post1 {
+                        font-family: 'Poiret One', cursive;
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                        margin-bottom: 4vw;
+                    }
+
+                    #post2 {
+                        font-family: 'Poiret One', cursive;
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                        margin-bottom: 4vw;
+                    }
+
+                    #img_post1 {
+                        width: 30%;
+                        position: relative;
+                        left: 70%;
+                    }
+
+                    #img_post2 {
+                        width: 30%;
+                        position: relative;
+                        left: 0%;
+                    }
+
+                    #aText1 {
+                        width: 70%;
+                        height: 100%;
+                        overflow: hidden;
+                        left: 0%;
+                        position: relative;
+                        float: right;
+                        z-index: 8;
+                    }
+
+                    #p_title {
+                        position: relative;
+                        left: 0;
+                        margin-top: 20%;
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        color: gray;
+                    }
+
+                    #btit {
+                        color: dimgray;
+                    }
+
+                    #p_author {
+                        position: relative;
+                        left: 0;
+                        font-size: .9vw;
+                        letter-spacing: .1vw;
+                        color: gray;
+                    }
+
+                    #baut {
+                        color: #e24d4d;
+                    }
+
+                    #contentPost {
+                        margin-top: 10%;
+                        width: 60%;
+                        position: relative;
+                        left: 0;
+                        font-size: .9vw;
+                        letter-spacing: .1vw;
+                        color: gray;
+                    }
+
+                    #cubes {
+                        width: 7vw;
+                        height: 6vw;
+                        position: relative;
+                    }
+
+                    #cube1 {
+                        width: 1.8vw;
+                        background: black;
+                        height: 100%;
+                        border: 1px solid dimgray;
+                        margin-right: .4vw;
+                        float: left;
+                        transition: all .5s ease;
+                    }
+
+                    #cube2 {
+                        width: 1.8vw;
+                        height: 100%;
+                        float: left;
+                        background: white;
+                        border: 1px solid dimgray;
+                        transition: all .5s ease;
+                        margin-right: .4vw;
+                    }
+
+                    #cube3 {
+                        background: white;
+                        width: 1.8vw;
+                        height: 100%;
+                        float: left;
+                        transition: all .5s ease;
+                        border: 1px solid dimgray;
+                    }
+
+                        #cube2:hover, #cube3:hover {
+                            background: black;
+                        }
+
+                    #cube1:hover {
+                        background: white;
+                    }
+
+                    #cube1 span {
+                        transform: rotate(-270deg);
+                        position: absolute;
+                        font-size: .8vw;
+                        font-weight: bold;
+                        mix-blend-mode: difference;
+                        color: white;
+                        text-align: center;
+                        left: -1vw;
+                        top: 2vw;
+                    }
+
+                    #csp2 {
+                        transform: rotate(-270deg);
+                        position: absolute;
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        font-weight: bold;
+                        margin-left: -.5vw;
+                        mix-blend-mode: difference;
+                        color: gray;
+                        text-align: center;
+                        top: 1.5vw;
+                    }
+
+                    #csp3 {
+                        width: 70%;
+                        height: auto;
+                        transform: rotate(-270deg);
+                        position: absolute;
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        font-weight: bold;
+                        margin-left: -1.5vw;
+                        mix-blend-mode: difference;
+                        color: gray;
+                        text-align: center;
+                        top: 1.8vw;
+                    }
+                </style>
+
+                <div id="post1">
+
+                    <div id="aText1">
+                        <p id="p_title"><b id="btit">作者: </b>Neurasthenia</p>
+                        <p id="p_author"><b id="baut">标题: </b>Neige de mars</p>
+
+                        <p id="contentPost">
+                            Everything seems so far away to me this isn't my life,
+                            but the movie of my life This sensation evades me, Is it just a feeling?
+                        </p>
+
+                        <div id="cubes">
+                            <div id="cube1"> <span> 03月04日</span></div>
+                            <div id="cube2"><span id="csp2">16号课</span></div>
+                            <div id="cube3"><span id="csp3">2023年</span></div>
+                        </div>
+                    </div>
+                    <img id="img_post1" src="https://i.postimg.cc/KzzPYMrp/as24-1.jpg" />
+
+                </div>
+
+                <div id="post2">
+                    <div id="aText1">
+                        <p id="p_title"><b id="btit">作者: </b>Neurasthenia</p>
+                        <p id="p_author"><b id="baut">标题: </b>Neige de mars</p>
+
+                        <p id="contentPost">
+                            Everything seems so far away to me this isn't my life,
+                            but the movie of my life This sensation evades me, Is it just a feeling?
+                        </p>
+
+                        <div id="cubes">
+                            <div id="cube1"> <span> 03月04日</span></div>
+                            <div id="cube2"><span id="csp2">16号课</span></div>
+                            <div id="cube3"><span id="csp3">2023年</span></div>
+                        </div>
+                    </div>
+                    <img id="img_post2" src="https://i.postimg.cc/KzzPYMrp/as24-1.jpg" />
+                </div>
+                <div id="post1">
+
+                    <div id="aText1">
+                        <p id="p_title"><b id="btit">作者: </b>Neurasthenia</p>
+                        <p id="p_author"><b id="baut">标题: </b>Neige de mars</p>
+
+                        <p id="contentPost">
+                            Everything seems so far away to me this isn't my life,
+                            but the movie of my life This sensation evades me, Is it just a feeling?
+                        </p>
+
+                        <div id="cubes">
+                            <div id="cube1"> <span> 03月04日</span></div>
+                            <div id="cube2"><span id="csp2">16号课</span></div>
+                            <div id="cube3"><span id="csp3">2023年</span></div>
+                        </div>
+                    </div>
+                    <img id="img_post1" src="https://i.postimg.cc/KzzPYMrp/as24-1.jpg" />
+
+                </div>
+                <div id="post2"></div>
+            </div>
+
             <div id="arnum">
-                <p id="retr" onclick="Returnmenu3();">叹朔口弓</p>
+
+                <p id="retr" onclick="Returnmenu3();">⮌回去</p>
                 <b>RETURN</b>
             </div>
-           
+
         </div>
         <div id="menu4">
+            <script>
+                function addcl1() {
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg12");
+                    $("#bkg1").removeClass("bkg13");
+                    $("#bkg1").removeClass("bkg14");
+                    $("#bkg1").removeClass("bkg15");
+                    $("#bkg1").addClass("bkg11");
+                }
+                function addcl2() {
+                   
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg13");
+                    $("#bkg1").removeClass("bkg14");
+                    $("#bkg1").removeClass("bkg15");
+                    $("#bkg1").addClass("bkg12");
+                }
+                function addcl3() {
+                   
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg12");
+                    $("#bkg1").removeClass("bkg14");
+                    $("#bkg1").removeClass("bkg15");
+                    $("#bkg1").addClass("bkg13");
+                }
+                function addcl4() {
+                    
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg12");
+                    $("#bkg1").removeClass("bkg13");
+                    $("#bkg1").removeClass("bkg15");
+                    $("#bkg1").addClass("bkg14");
+                }
+                function addcl5() {
+                  
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg12");
+                    $("#bkg1").removeClass("bkg14");
+                    $("#bkg1").removeClass("bkg13");
+                    $("#bkg1").addClass("bkg15");
+                } function addcl6() {
+                   
+                    $("#bkg1").removeClass("bkg11");
+                    $("#bkg1").removeClass("bkg12");
+                    $("#bkg1").removeClass("bkg14");
+                    $("#bkg1").removeClass("bkg13");
+                    $("#bkg1").removeClass("bkg15");
+                }
+                function ToDarkMode() {
+                    //$("#menu").removeClass("tofade");
+                    $("#main").addClass("inver");
+                    $("#bak").addClass("noinvert"); $("#bak1").addClass("noinvert");
+                    $("#bak2-2").addClass("noinvert");
+                    $("#bak3").addClass("noinvert");
+                    $("#bak4").addClass("noinvert");
+                    $("#bak5").addClass("noinvert");
+                    $("#gifabout").addClass("noinvert");
+                    $("#gifabout2").addClass("noinvert");
+                    //$("#menu1").removeClass("menuintro");
+                    $("#Normalmod").removeClass("Ocultt");
+                    $("#Darkmod").addClass("Ocultt");
+
+
+                }
+                function ToNormalMode() {
+                    //$("#menu").removeClass("tofade");
+                    $("#main").removeClass("inver");
+                    $("#bak").removeClass("noinvert"); $("#bak1").removeClass("noinvert");
+                    $("#bak2-2").removeClass("noinvert");
+                    $("#bak3").removeClass("noinvert");
+                    $("#bak4").removeClass("noinvert");
+                    $("#bak5").removeClass("noinvert");
+                    $("#gifabout").removeClass("noinvert");
+                    $("#gifabout2").removeClass("noinvert");
+                    //$("#menu1").removeClass("menuintro");
+                    $("#Normalmod").addClass("Ocultt");
+                    $("#Darkmod").removeClass("Ocultt");
+
+
+                }
+            </script>
+            <style>
+                #menu4 {
+                    font-family: 'Poiret One', cursive;
+                }
+
+                #Darkmod {
+                    position: absolute;
+                    left: 7%;
+                    top: 20%;
+                    width: 8%;
+                    height: 30%;
+                    background: #171717;
+                    transition: all .5s ease;
+                }
+
+                #Normalmod {
+                    position: absolute;
+                    left: 7%;
+                    top: 20%;
+                    width: 8%;
+                    height: 30%;
+                    background: #171717;
+                    transition: all .5s ease;
+                }
+
+                .Ocultt {
+                    z-index: -2;
+                    opacity: 0;
+                }
+
+                #contentDM {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #contDM {
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: #e24d4d;
+                    font-size: 1vw;
+                    font-weight: bold;
+                    width: 10vw;
+                    height: 20%;
+                    top: 40%;
+                    left: -2.2vw;
+                }
+
+                #contDMJ {
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: black;
+                    font-size: 1.7vw;
+                    font-weight: bold;
+                    color: #171717;
+                    width: 10vw;
+                    height: 20%;
+                    top: 3.6vw;
+                    left: -2.9vw;
+                }
+                #bkg1, #bkg11 {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .bkg11 {
+                    opacity: .12;
+                    background-image: url(https://i.postimg.cc/TP5KKCxx/Bruised-Partial-Katydid-size-restricted.gif);
+                }
+
+                .bkg12 {
+                    mix-blend-mode:difference;
+                    opacity: .2;
+                    background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
+                }
+
+                .bkg13 {
+                    background-image: url(https://i.postimg.cc/Hn2Yp8M2/3c175dd2380da2128c3a99e559219b68.gif);
+                    opacity: .12;
+                }
+
+                .bkg14 {
+                    opacity: .1;
+                    filter:grayscale(100%);
+                    background-image: url(https://i.postimg.cc/bY64jRD5/532a270caf5b324c887edd98a5e706d5.gif);
+                }
+
+                .bkg15 {
+                    opacity: .1;
+                    background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+                }
+                #abutns { position:absolute; width:40%; height:20%;  left:17%;top:20%;
+                }
+                #btn1 {
+                    width: 14%;
+                    height: 80%;
+                    position: absolute;
+                    border: .2vw solid #171717;
+                }
+                #btn2 {
+                    width: 14%; left:17%;
+                    height: 80%; border:.2vw solid #171717;
+                    position: absolute;
+                }
+                #btn3 {
+                    left: 34%;
+                    border: .2vw solid #171717;
+                    width: 14%;
+                    height: 80%;
+                    position: absolute;
+                }
+                #btn4 {
+                    left: 51%;
+                    border: .2vw solid #171717;
+                    width: 14%;
+                    height: 80%;
+                    position: absolute;
+                }
+                #btn5 {
+                    left: 68%;
+                    border: .2vw solid #171717;
+                    width: 14%;
+                    height: 80%;
+                    position: absolute;
+                }
+                #btn6 {
+                    left: 85%;
+                    border: .2vw solid #171717;
+                    width: 14%;
+                    height: 80%;
+                    position: absolute;
+                }
+                #contentBN {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #contBN {
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: #e24d4d;
+                    font-size: .65vw;
+                    font-weight: bold;
+                    width: 10vw;
+                    height: 20%;
+                    top: 4.4vw;
+                    left: -2.9vw;
+                }
+
+                #contBNJ {
+                    position: absolute;
+                    transform: rotate(-270deg);
+                    color: black;
+                    font-size: 1vw;
+                    font-weight: bold;
+                    color: #171717;
+                    width: 10vw;
+                    height: 20%;
+                    top: 4.1vw;
+                    left: -3.5vw;
+                }
+            </style>
+            <div id="textFrd">
+                <p id="tFrd">Configuration<b> / </b>Effects</p>
+
+
+                <p id="tFrdJ">
+                    设置<b> / </b>
+                    效果
+                </p>
+            </div>
+            <div id="Darkmod" onclick="ToDarkMode();">
+                <div id="contentDM">
+                    <p id="contDM">Dark Mode</p>
+                    <p id="contDMJ" class="noinvert">深色模式</p>
+                </div>
+            </div>
+            <div id="Normalmod" class="Ocultt" onclick="ToNormalMode();">
+                <div id="contentDM">
+                    <p id="contDM" class="noinvert">Normal Mode</p>
+                    <p id="contDMJ" class="noinvert">正常模式</p>
+                </div>
+            </div>
+
+
+            <div id="abutns">
+                <div id="btn1" onclick="addcl1();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ" >深色模式</p>
+                    </div>
+                </div>
+                <div id="btn2" onclick="addcl2();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ">深色模式</p>
+                    </div>
+                </div>
+                <div id="btn3" onclick="addcl3();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ">深色模式</p>
+                    </div>
+                </div>
+                <div id="btn4" onclick="addcl4();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ">深色模式</p>
+                    </div>
+                </div>
+                <div id="btn5" onclick="addcl5();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ">深色模式</p>
+                    </div>
+                </div>
+                <div id="btn6" onclick="addcl6();">
+                    <div id="contentBN">
+                        <p id="contBN">Dark Mode</p>
+                        <p id="contBNJ">深色模式</p>
+                    </div>
+                </div>
+            </div>
+
             <div id="arnum">
-                <p id="retr" onclick="Returnmenu4();">叹朔口弓</p>
+                <p id="retr" onclick="Returnmenu4();">⮌回去</p>
                 <b>RETURN</b>
             </div>
         </div>
         <div id="menu5">
             <div id="arnum">
-                <p id="retr" onclick="Returnmenu5();">叹朔口弓</p>
+                <p id="retr" onclick="Returnmenu5();">⮌回去</p>
                 <b>RETURN</b>
             </div>
         </div>
@@ -910,7 +1865,8 @@
                     $("#bak3").removeClass("bak3-1");
                     $("#bak4").removeClass("bak3-1");
                     $("#bak5").removeClass("bak3-1");
-
+                    $("#b_log").removeClass("b_log"); $("#p_log").removeClass("b_log");
+                    $("#b_log").addClass("b_log2"); $("#p_log").addClass("b_log2");
 
                     $("#menu1").addClass("menufade");
                     $("#menu").addClass("menuintro");
@@ -938,7 +1894,8 @@
 
 
 
-                } function Returnmenu3() {
+                }
+                function Returnmenu3() {
                     //$("#menu").removeClass("tofade");
                     $("#menu").removeClass("menufade");
                     $("#menu2").removeClass("menuintro");
@@ -952,7 +1909,7 @@
                     $("#bak4").removeClass("bak3-1");
                     $("#bak5").removeClass("bak3-1");
 
-                   
+
                     $("#menu3").addClass("menufade");
                     $("#menu").addClass("menuintro");
                     $("#bak3").addClass("bakentr");
@@ -1008,8 +1965,10 @@
 
                 }
                 function Fademenu() {
+                    $("#b_log").addClass("b_log"); $("#p_log").addClass("b_log");
+                    $("#b_log").removeClass("b_log2"); $("#p_log").removeClass("b_log2");
                     $("#bak").removeClass("bk1");
-                    
+
                     $("#menu1").removeClass("menufade");
                     $("#menu").removeClass("menuintro0");
                     $("#menu").removeClass("menuintro");
@@ -1097,41 +2056,41 @@
 
             <div id="men1" onclick="Fademenu();">
                 <div id="big"><p id="lett">输</p></div>
-                <div id="subtext"><div id="pleft"><b>About.me:</b></div><div id="pleft2"><p>明人山廿</p></div></div>
+                <div id="subtext"><div id="pleft"><b>About.me:</b></div><div id="pleft2"><p>关于我</p></div></div>
                 <img id="art" src="https://i.postimg.cc/FHJkPCkr/pngegg.png" />
                 <div id="arnum">
-                    <p>铎口人</p>
+                    <p>关于我</p>
                     <b>SECTION 0.0</b>
                 </div>
             </div>
             <div id="men2" onclick="Fademenu2();">
                 <div id="big"><p id="lett">音</p></div>  <div id="subtext">
                     <div id="pleft-1"><b>Friends:</b></div><div id="pleft2">
-                        <p>燥救子尸</p>
+                        <p>朋友们</p>
                     </div>
                 </div> <img id="art2" src="https://i.postimg.cc/2SPcJtH2/pngegg-1.png" /> <div id="arnum">
-                    <p>山弓人</p>
+                    <p>朋友们</p>
                     <b>SECTION 0.1</b>
                 </div>
             </div>
             <div id="men3" onclick="Fademenu3();">
-                <div id="big"><p id="lett">会</p></div>  <div id="subtext"><div id="pleft-2"><b>Posts:</b></div><div id="pleft2"><p>怆廿尸</p></div></div>
+                <div id="big"><p id="lett">会</p></div>  <div id="subtext"><div id="pleft-2"><b>Posts:</b></div><div id="pleft2"><p>帖子</p></div></div>
                 <img id="art5" src="https://i.postimg.cc/3wmSHZV7/pngaaa-com-403490.png" /> <div id="arnum">
-                    <p>木人尸</p>
+                    <p>帖子</p>
                     <b>SECTION 0.2</b>
                 </div>
             </div>
             <div id="men4" onclick="Fademenu4();">
-                <div id="big"><p id="lett">要</p></div>  <div id="subtext"><div id="pleft-3"><b>Change:</b></div><div id="pleft2"><p>颁晚土水</p></div></div>
+                <div id="big"><p id="lett">要</p></div>  <div id="subtext"><div id="pleft-3"><b>Change:</b></div><div id="pleft2"><p>设置</p></div></div>
                 <img id="art5" src="https://i.postimg.cc/nh8hLFMx/pngfind-com-black-lines-png-1609438.png" /> <div id="arnum">
-                    <p>敬水尸</p>
+                    <p>设置</p>
                     <b>SECTION 0.3</b>
                 </div>
             </div>
             <div id="men5" onclick="Fademenu5();">
-                <div id="big"><p id="lett">来</p></div>  <div id="subtext"><div id="pleft-4"><b>Home:</b></div><div id="pleft2"><p>行水</p></div></div>
+                <div id="big"><p id="lett">来</p></div>  <div id="subtext"><div id="pleft-4"><b>Home:</b></div><div id="pleft2"><p>我的空间</p></div></div>
                 <img id="art5" src="https://i.postimg.cc/15VzPnmM/pngfind-com-leaf-clip-art-png-6028589.png" /> <div id="arnum">
-                    <p>铠显口人</p>
+                    <p>我的空间</p>
                     <b>SECTION 0.4</b>
                 </div>
             </div>
