@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="normalize.css" />
+	<link rel="stylesheet" type="text/css" href="demo.css" />
+	<link rel="stylesheet" type="text/css" href="component.css" />
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="TweenMax.min.js"></script>
+	<script type="text/javascript" src="jquery.scrollbar.js"></script>
+	<script>
+		document.documentElement.className = 'js';
+	</script>
+</head>
+	<body class="demo-5" onclick="ort();">
+		
+		<main>
+			<script>
+
+
+</script>
+			<div class="segmenter" style="background-image: url(https://i.postimg.cc/vBhbGbx1/1359220-Noriko-Sonozaki-Kiznaiver-HD-Wallpaper.jpg)"></div>
+			<!--<h2 class="trigger-headline trigger-headline--hidden"><span>R</span><span>a</span><span>b</span><span>b</span><span>i</span><span>t</span></h2>-->
+			<!--<div class="bottom-nav">
+				<button style="opacity:0;"  class="btn btn--trigger">Show Effect</button>
+
+			</div>-->
+			<script>
+
+				function sckl() { 
+                    var win = $("#mainscroll");
+
+
+
+
+
+					win.scroll(function () {
+						console.log(win.scrollTop());
+						if (win.scrollTop() > 10) {
+							TweenLite.to($("#nav"), 2.5, { top: -100 });
+						} else {
+							TweenLite.to($("#nav"), 2.5, { top: 300});
+						}
+					});
+                }
+			</script>
+
+			<div id="mainscroll" ">
+				<style>
+
+					body {
+						overflow: hidden;
+					}
+
+					#mainscroll::-webkit-scrollbar {
+						width: .4vw;
+						background: transparent;
+						mix-blend-mode: difference;
+					}
+
+					#mainscroll::-webkit-scrollbar-thumb {
+						width: .4vw;
+						background: rgba(100,100,100,.1);
+						border-radius: 1vw;
+					}
+					/* #mainscroll:hover #mainscroll::-webkit-scrollbar-thumb {
+
+						background: rgba(100,100,100,.2);
+
+					}*/
+					#mainscroll {
+						/*backdrop-filter: blur(10px);*/
+						position: absolute;
+						width: 30%;
+						height: 100%;
+						right: 5%;
+						top: 0%;
+						overflow: auto;
+						overflow-x: hidden;
+						transition: all 1s ease;
+					}
+					/* #mainscroll:hover {
+							 background:rgba(46,98,136,.1);
+						}*/
+
+
+					#nav {
+						opacity: .5;
+						left: 20%;
+						position: fixed;
+						width: 5vw;
+						height: 5vw;
+						background: #ff6a00;
+						filter: blur(10px);
+						top: 300px;
+						border-radius: 50%;
+						padding: 4px;
+					}
+
+					#postNeura {
+						width: 100%;
+						height: 30%;
+						margin-top: 40%; margin-bottom:40%;
+						position: relative;
+						backdrop-filter: blur(5px);
+					}
+
+					#imgagata {
+						height: 100%;
+						position: absolute;
+						right: 0;
+						filter: grayscale(60%) contrast(120%);
+					}
+
+					#NeuPosTit {
+						position: absolute;
+						font-size: 2.2vw;
+						left: 3%;
+						top: 0;
+						color: lightgray;
+						font-weight: bold;
+					}
+
+					#NeuFirm {
+						mix-blend-mode: difference;
+						position: absolute;
+						font-size: .55vw;
+						line-height: .7vw;
+						right: 1%;
+					}
+
+					#NeuFirm2 {
+						mix-blend-mode: difference;
+						position: absolute;
+						font-size: .55vw;
+						line-height: .8vw;
+						right: 4%;
+					}
+
+					#NeuFirm3 {
+						mix-blend-mode: difference;
+						position: absolute;
+						font-size: .6vw;
+						letter-spacing: .1vw;
+						right: 1%;
+						bottom: 1%;
+					}
+
+					#NeuFirm4 {
+						mix-blend-mode: difference;
+						position: absolute;
+						font-size: .6vw;
+						letter-spacing: .1vw;
+						right: 1%;
+						bottom: -3%;
+					}
+
+					#firstPost {
+						width: 100%;
+						height: 25%;
+						margin-top: 20%;
+						position: relative;
+						backdrop-filter: blur(5px);
+					}
+
+					#Fpimg {
+						top: -30%;
+						height: 130%;
+						position: absolute;
+						left: 0;
+						filter: grayscale(70%) contrast(120%);
+					}
+
+					#FIgif1 {
+						position: absolute;
+						right: 1%;
+						width: 5vw;
+						height: 5vw;
+						border-radius: 50%;
+						border: .3vw solid white;
+						overflow: hidden;
+						filter: grayscale(70%) contrast(120%);
+						top: 5%;
+					}
+
+						#FIgif1 img {
+							width: 110%;
+							position: absolute;
+							left: -5%;
+							top: -5%;
+						}
+
+					#FIgif2 {
+						position: absolute;
+						right: 1%;
+						width: 5vw;
+						height: 5vw;
+						border-radius: 50%;
+						border: .3vw solid white;
+						overflow: hidden;
+						filter: grayscale(70%) contrast(120%);
+						bottom: 5%;
+					}
+
+						#FIgif2 img {
+							width: 110%;
+							position: absolute;
+							left: -5%;
+							top: -5%;
+						}
+
+					#textverse1 {
+						width: 46%;
+						mix-blend-mode: difference;
+						position: absolute;
+						font-size: .6vw;
+						letter-spacing: .1vw;
+						left: 35%;
+						top: 10%;
+					}
+
+					#neurfirm {
+						position: absolute;
+						width: 50%;
+						height: 80%;
+						left: 12%;
+						top: 20%;
+						mix-blend-mode: difference;
+					}
+
+					#Np1 {
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np1 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np1 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#Np2 {
+						top: 13%;
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np2 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np2 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#Np3 {
+						top: 26%;
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np3 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np3 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#Np4 {
+						top: 39%;
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np4 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np4 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#Np5 {
+						top: 52%;
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np5 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np5 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#Np6 {
+						top: 65%;
+						position: absolute;
+						width: 100%;
+						height: 13%;
+						font-size: .8vw;
+					}
+
+						#Np6 p {
+							color: white;
+							top: 10%;
+							position: absolute;
+							font-size: .45vw;
+							letter-spacing: .05vw;
+						}
+
+						#Np6 b {
+							color: lightgray;
+							position: absolute;
+							font-size: .6vw;
+							letter-spacing: .05vw;
+						}
+
+					#firmD {
+						filter: invert(100%);
+						position: absolute;
+						width: 9vw;
+						bottom: -15%;
+						left: 30%;
+						mix-blend-mode: difference;
+					}
+				</style>
+
+
+
+				<div id="postinfo">
+					<style>
+						#postinfo {
+							position: relative;
+							width: 100%;
+							margin-bottom: 20%;
+							height: 35%;
+							margin-top: 100%;
+							backdrop-filter: blur(5px);
+						}
+
+						#contimg {
+							position: absolute;
+							width: 70%;
+							height: 100%;
+							top: 00%;
+						}
+
+							#contimg img {
+								position: absolute;
+								height: 100%;
+								right: 0;
+								bottom: 0;
+							}
+
+						#postinfcont {
+							position: absolute;
+							width: 55%;
+							height: 85%;
+							top: 10%;
+							right: 3%;
+							mix-blend-mode: difference;
+						}
+
+						#pinfolin {
+							position: absolute;
+							width: 95%;
+							height: 95%;
+							left: 2.5%;
+							top: 2.5%;
+							backdrop-filter: blur(10px);
+							border: .1vw solid white;
+							opacity: .3;
+						}
+
+						#inftitj {
+							position: absolute;
+							font-size: 2.2vw;
+							top: -25%;
+							color: white;
+							left: 38%;
+							letter-spacing: .15vw;
+						}
+
+						#inftit {
+							position: absolute;
+							font-size: .9vw;
+							letter-spacing: .15vw;
+							top: -2%;
+							color: white;
+							left: 38%;
+						}
+
+						#infoname {
+							position: absolute;
+							font-size: .7vw;
+							letter-spacing: .2vw;
+							top: 10%;
+							color: darkgray;
+							left: -3%;
+						}
+
+							#infoname span {
+								color: white;
+								font-weight: bold;
+							}
+
+						#infoage {
+							position: absolute;
+							font-size: .7vw;
+							top: 20%;
+							letter-spacing: .2vw;
+							color: darkgray;
+							left: -3%;
+						}
+
+							#infoage span {
+								color: white;
+								font-weight: bold;
+							}
+
+						#infcontry {
+							position: absolute;
+							font-size: .7vw;
+							top: 30%;
+							letter-spacing: .2vw;
+							color: darkgray;
+							left: -3%;
+						}
+
+							#infcontry span {
+								color: white;
+								font-weight: bold;
+							}
+
+						#infmail {
+							position: absolute;
+							font-size: .7vw;
+							top: 40%;
+							letter-spacing: .2vw;
+							color: darkgray;
+							left: -3%;
+						}
+
+							#infmail span {
+								color: white;
+								font-weight: bold;
+							}
+
+						#versinfo {
+							opacity: .5;
+							position: absolute;
+							font-size: .5vw;
+							top: 70%;
+							width: 60%;
+							letter-spacing: .1vw;
+							color: white;
+							right: 3%;
+						}
+
+						#firminfo {
+							position: absolute;
+							width: 7vw;
+							top: 90%;
+							right: -5%;
+							filter: invert(100%);
+							mix-blend-mode: difference;
+						}
+					</style>
+
+					<p id="inftit">
+						Atonement:
+					</p><p id="inftitj">
+						赎罪:
+					</p>
+					<div id="postinfcont">
+
+
+						<div id="pinfolin"></div>
+						<p id="infoname"><span>姓名:</span> Yukine | Yuki | XXX</p>
+						<p id="infoage"><span>年龄:</span> XIX | 19</p>
+						<p id="infcontry"><span>城市:</span> XXXXXX</p>
+						<p id="infmail">
+							<span>
+								邮件:
+							</span> XXX@XXX.XXX
+						</p>
+						<i id="versinfo">
+							"It didn't matter where I was anymore, I longed for you, I missed you and every time I looked for you it only made me lose myself more."
+						</i>
+						<img src="https://i.postimg.cc/y81h1q90/pngwing-com-4.png" id="firminfo" />
+					</div>
+					<div id="contimg">
+
+						<img src="https://i.postimg.cc/pX60D2NB/teahub-io-kiznaiver-wallpaper-3571045.png" />
+
+					</div>
+
+				</div>
+
+				<div id="postscr">
+					<style>
+						#postscr {
+							width: 100%;
+							height: 40%;
+							backdrop-filter: blur(5px);
+							position: relative;
+							margin-top: 10%;
+						}
+
+						#cubimg {
+							position: absolute;
+							width: 50%;
+							height: 80%;
+							top: 10%;
+							left: 25%;
+							overflow: hidden;
+						}
+
+						#cubimg2 {
+							position: absolute;
+							width: 180%;
+							height: 100%;
+							top: 0%;
+							left: -20%;
+							overflow: hidden;
+						}
+
+							#cubimg2 img {
+								width: 100%;
+							}
+
+						#dfirmscr {
+							position: absolute;
+							width: 10vw;
+							height: 10vw;
+							backdrop-filter: blur(15px);
+							top: 25%;
+							left: 5%;
+							mix-blend-mode: difference;
+						}
+
+						#dfscrlin {
+							position: absolute;
+							width: 95%;
+							height: 95%;
+							top: 2.5%;
+							left: 2.5%;
+							border: .1vw solid darkgray;
+							mix-blend-mode: difference;
+							opacity: .3;
+						}
+
+						#dfscrlin2 {
+							position: absolute;
+							width: 13vw;
+							left: 14.5%;
+							height: 13vw;
+							top: 6%;
+							border: .1vw solid darkgray;
+							mix-blend-mode: difference;
+							opacity: .3;
+						}
+
+						#pscaryuk {
+							position: absolute;
+							font-size: 2vw;
+							color: lightgray;
+							top: -10%;
+							right: 2%;
+							animation: bluranim 3s infinite;
+						}
+
+						#pscaryuk2 {
+							position: absolute;
+							font-size: 1vw;
+							color: lightgray;
+							top: -3%;
+							animation-delay: 2s;
+							right: 12%;
+							animation: bluranim 2s infinite;
+						}
+
+						@keyframes bluranim {
+							0% {
+								filter: blur(1px);
+							}
+
+							33% {
+								filter: blur(3px);
+							}
+
+							66% {
+								filter: blur(2px);
+							}
+
+							100% {
+								filter: blur(1px);
+							}
+						}
+
+						#ptextscar {
+							position: absolute;
+							width: 90%;
+							height: 90%;
+							top: 5%;
+							left: 5%;
+							text-align: center;
+							mix-blend-mode: difference;
+						}
+
+							#ptextscar p {
+								font-size: .6vw;
+								color: white;
+								letter-spacing: .05vw;
+							}
+
+							#ptextscar span {
+								color: #c62f2f
+							}
+
+						#scrddiv {
+							position: absolute;
+							width: .1vw;
+							background: gray;
+							height: 30%;
+							top: 80%;
+							right: 23%;
+						}
+
+						#scrdfirmimg {
+							position: absolute;
+							width: 6vw;
+							right: 2%;
+							bottom: -10%;
+							mix-blend-mode: difference;
+							filter: invert(100%);
+						}
+
+						#regscrd {
+							font-size: .55vw;
+							color: white;
+							letter-spacing: .1vw;
+							position: absolute;
+							left: 78%;
+							opacity: .3;
+							top: 77%;
+						}
+
+						#numregscrd {
+							font-size: .55vw;
+							color: white;
+							letter-spacing: .1vw;
+							position: absolute;
+							left: 78%;
+							opacity: .3;
+							top: 81%;
+						}
+
+						#titscrd {
+							font-size: .6vw;
+							color: white;
+							letter-spacing: .1vw;
+							position: absolute;
+							left: 6%;
+							opacity: .3;
+							top: 13%;
+						}
+
+						#titscrdj {
+							font-weight: bold;
+							font-size: .6vw;
+							color: white;
+							letter-spacing: .1vw;
+							position: absolute;
+							left: 6%;
+							opacity: .6;
+							top: 17%;
+						}
+					</style>
+
+					<div id="cubimg">
+						<div id="cubimg2">
+							<img src="https://i.postimg.cc/bNhxbHhy/tumblr-o6o0gm-XQEl1ruv1gno1-500.gif" /><div id="dfscrlin2"></div>
+						</div>
+					</div>
+
+					<div id="dfirmscr">
+						<div id="ptextscar">
+							<p>
+								<span>Yuki</span>, no te olvides de que ojalá seas eterna,
+								<span>Yuki</span> ❮3, te quiero por haber estado ahí, volver a xat me
+								premió con tu amistad. Espero me permitas conocerte cada
+								vez más, porque se ve que eres tan misteriosa como interesante
+
+							</p>
+						</div>
+
+						<div id="dfscrlin"></div>
+					</div>
+					<p id="titscrd">Algunas palabras:</p>
+					<p id="titscrdj">
+						一些单词:
+					</p>
+					<p id="pscaryuk">
+						不<br />
+						安<br />
+						的<br />
+						●<br />
+						寒<br />
+						冷<br />
+						的
+					</p>
+					<p id="pscaryuk2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+					<div id="scrddiv"></div>
+					<img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png" />
+					<p id="regscrd">
+						VeryScared
+					</p>
+					<p id="numregscrd">1545732774</p>
+				</div>
+
+
+				<div id="postNeura">
+					<img id="imgagata" src="https://i.postimg.cc/VNDxwb0S/769596.png" />
+					<p id="NeuPosTit">脆<br />弱<br />的<br />三<br />月<br />雪</p>
+					<p id="NeuFirm">灰<br />指<br />甲<br />●<br />N<br />E<br />U<br />R<br />A<br />S<br />T<br />H<br />E<br />N<br />I<br />A</p>
+					<p id="NeuFirm2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+					<p id="NeuFirm3">Grisâtre | Swallow</p>
+					<p id="NeuFirm4">1533252890</p>
+					<div id="neurfirm">
+						<div id="Np1"><b>Neige de mars. Si inattendu</b><p>三月雪, 太出乎意料了</p></div>
+						<div id="Np2"><b>Tombe fragile autour de moi</b><p>在我身边变得脆弱</p></div>
+						<div id="Np3"><b>Si fragile, si froid...</b><p>如此优雅，如此冰冷</p></div>
+						<div id="Np4"><b>m'enveloppant de son étreinte glaciale</b><p>将我包裹在它冰冷的怀抱中</p></div>
+						<div id="Np5"><b>Sous sa chaude délicatesse</b><p>在它温暖的美味下</p></div>
+						<div id="Np6"><b>Celui auquel je ñ'appartiendrai jamais...</b><p>我永远不会属于的那个</p></div>
+					</div>
+					<img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmD" />
+				</div>
+
+				<div id="postshiro">
+					<style>
+						#postshiro {
+							position: relative;
+							width: 100%;
+							height: 70%;
+							backdrop-filter: blur(5px);
+							margin-top: 20%;
+							margin-bottom: 20%;
+							overflow: hidden;
+						}
+
+						#mainimgshiro {
+							position: absolute;
+							overflow: hidden;
+							width: 70%;
+							height: 70%;
+							top: 12%;
+							left: 15%;
+						}
+
+							#mainimgshiro img {
+								position: absolute;
+								width: 110%;
+								left: -5%;
+								filter: grayscale(70%);
+							}
+
+						#titpostshir {
+							position: absolute;
+							font-size: 5vw;
+							color: #95258C;
+							filter: blur(1px);
+							letter-spacing: .5vw;
+							left: 15%;
+							top: -5vw;
+							mix-blend-mode: difference; /* text-shadow:.1vw .1vw .3vw white;*/
+							font-weight: bold;
+						}
+
+						#codbar {
+							width: 10vw;
+							right: 5%;
+							top: 95%;
+							position: absolute;
+							filter: invert(100%);
+							opacity: .5;
+						}
+
+						#textshiro {
+							position: absolute;
+							width: 80%;
+							top: 85%;
+							left: 15%;
+							font-size: .6vw;
+							letter-spacing: .1vw;
+						}
+
+						#namejshiro {
+							position: absolute;
+							color: #95258C;
+							font-size: 1.3vw;
+							top: 42%;
+							right: 8%;
+						}
+
+						#shirFirm2 {
+							position: absolute;
+							color: lightgray;
+							;
+							font-size: .8vw;
+							top: 56%;
+							left: 8%;
+						}
+
+						#shirFirm3 {
+							position: absolute;
+							color: lightgray;
+							font-size: .8vw;
+							top: 56%;
+							left: 4%;
+						}
+
+						#numregshiro {
+							color: lightgray;
+							opacity: .4;
+							left: 3%;
+							top: 86%;
+							font-size: 3vw;
+							position: absolute;
+						}
+
+						#regshiro {
+							color: lightgray;
+							opacity: .7;
+							letter-spacing: .2vw;
+							right: -35%;
+							transform: rotate(-90deg);
+							top: 24%;
+							font-size: 2.1vw;
+							position: absolute;
+						}
+
+						#imgfirmshir {
+							filter: invert(100%);
+							width: 6vw;
+							top: 77%;
+							left: 8%;
+							mix-blend-mode: difference;
+							position: absolute;
+						}
+					</style>
+					<p id="titpostshir">yukine:</p>
+					<div id="mainimgshiro">
+						<img src="https://i.postimg.cc/CK5D0RJT/IMG-20230319-WA0028.jpg" />
+					</div>
+					<p id="namejshiro">
+						四<br />郎<br />帕<br />拉<br />蒂
+					</p>
+					<p id="shirFirm2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+					<p id="shirFirm3">雪<br />音</p>
+					<i id="textshiro">
+						"En tu perdén encontré la paz, en tu ser encontré una pequeña parte de mi alma, eres una terca pero aunque el mundo te de la espalda
+						puedes contar conmigo."
+					</i>
+					<p id="numregshiro">1525823861</p>
+					<p id="regshiro">XHeLadodeMentaX</p>
+					<img src="https://i.postimg.cc/sD6kT8Bj/vecteezy-barcode-1199361.png" id="codbar" />
+					<img src="https://i.postimg.cc/0NjDpV6J/pngwing-com-5.png" id="imgfirmshir" />
+				</div>
+				<div id="nav">
+
+				</div>
+
+			</div>
+
+			<div id="mainprofile">
+				<style>
+					@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+
+					#mainprofile {
+						position: absolute;
+						width: 20%;
+						height: 70%;
+						left: 1%;
+						top: 2%;
+						 
+					}
+
+					#imgpro {
+						position: absolute;
+						width: 9vw;
+						height: 9vw;
+						top: 27%;
+						left: 18%;
+					}
+
+					#cubeimg {
+						position: absolute;
+						width: 7vw;
+						height: 7vw;
+						mix-blend-mode: difference;
+						border: .1vw solid lightgray;
+						top: 1vw;
+						left: 1vw;
+					}
+
+					#cube1 {
+						position: absolute;
+						width: 7vw;
+						height: 1vw;
+						backdrop-filter: blur(2px);
+						top: 0;
+						left: 0;
+					}
+
+					#cube2 {
+						position: absolute;
+						width: 7vw;
+						height: 1vw;
+						backdrop-filter: blur(2px);
+						bottom: 0;
+						left: 0;
+					}
+
+					#cube3 {
+						position: absolute;
+						width: 1vw;
+						height: 7vw;
+						backdrop-filter: blur(2px);
+						bottom: 0;
+						left: 0;
+					}
+
+					#cube4 {
+						position: absolute;
+						width: 1vw;
+						height: 7vw;
+						backdrop-filter: blur(2px);
+						bottom: 0;
+						right: 0;
+					}
+
+					#imgpro img {
+						position: absolute;
+						width: 100%;
+						filter: grayscale(60%) contrast(120%);
+					}
+
+					#textd {
+						position: absolute;
+						width: 72%;
+						height: 10%;
+						top: 52%;
+						left: 0%;
+						text-align: right;
+					}
+
+						#textd p {
+							font-size: .6vw;
+							color: lightgray;
+						}
+
+					#nickverse {
+						position: absolute;
+						width: 66%;
+						height: 6%;
+						top: 19%;
+						left: 6%;
+						text-align: center;
+					}
+
+						#nickverse p {
+							font-size: .65vw;
+							color: lightgray;
+						}
+
+						#nickverse i {
+							font-size: .65vw;
+							color: #e55f5f
+						}
+                    #lat_txt { position:absolute; width:35%; height:40%;   right:26%; top:60%;
+                    }
+                    #txt1 { position:absolute; /*transform:rotate(-270deg); background:blue;width:12vw; top:5.5vw;*/ font-size:.55vw; line-height:.8vw; right:1vw;
+                    }
+                    #txt2 {
+                        position: absolute; /*transform:rotate(-270deg); background:blue;width:12vw; top:5.5vw;*/
+                        font-size: .55vw;
+                        line-height: .8vw;
+                        right: .3vw;
+                    }
+                    #i1 { position:absolute; width:1.2vw; height:1.2vw; left:20%;  top:.5vw; opacity:.8;
+                    }
+                    #i2 {
+                        position: absolute;
+                        opacity: .8;
+                        width: 1.2vw;
+                        height: 1.2vw;
+                        left: 20%;
+                        bottom: 47%;
+                    }
+                    #i3 {
+                        position: absolute;
+                        opacity: .8;
+                        width: 1.2vw;
+                        height: 1.2vw;
+                        left: 20%;
+                        bottom: 1vw;
+                    }
+                    #i1 img, #i2 img, #i3 img { width:100%;
+                    }
+				</style>
+				<!--<p>We look up without a destination to reach for Towards the clear, mechanical sky</p>-->
+
+				<div id="nickverse">
+					<p>
+						In a pale sky, I wander like a ghost <br /> for the fallen cold <b> <i>Yukine</i></b>...
+					</p>
+				</div>
+				<div id="imgpro">
+
+					<img src="https://i.pinimg.com/originals/da/fb/64/dafb64fb91b7491e11bfe310cdaf0fca.png" />
+
+					<div id="cubeimg"></div>
+					<div id="cube1"></div>
+					<div id="cube2"></div>
+					<div id="cube3"></div>
+					<div id="cube4"></div>
+				</div>
+
+				<div id="lat_txt">
+					<p id="txt1">雪<br />音<br /> <br />●<br /> 1<br />5<br />1<br />5<br />3<br />0<br />2<br />5<br />2<br />0</p>
+					<p id="txt2">他<br /> <br />●<br /> 不<br />安<br />的<br /> <br />● <br />寒<br />冷<br />的<br /> <br />● <br />白<br />色<br />的</p>
+					<div id="i1"><img src="https://i.postimg.cc/4NNHccxx/1.png" /></div>
+					<div id="i2"><img src="https://i.postimg.cc/bwZGCjbX/2.png" /></div>
+					<div id="i3" onclick="sckl();" class="bottom-nav"><img class="btn btn--trigger" src="https://i.postimg.cc/X7HGkvrc/3.png" /></div>
+
+				</div>
+
+				<div id="textd">
+					<p>
+						It didn’t matter where I was anymore, I longed for you, <br />I missed you and every time <br />
+						I looked for you it only made me lose myself more.
+					</p>
+				</div>
+
+
+			</div>
+
+			<div id="auid">
+				<script>
+					$(document).ready(function () {
+						var playing = false,
+							artistname = $(".artist-name"),
+							musicName = $(".music-name"),
+							time = $(".time"),
+							fillBar = $(".fillBar");
+
+						let audioData = [];
+
+						var song = new Audio();
+						var CurrentSong = 0;
+						window.onload = load();
+
+						function load() {
+							audioData = [
+
+								{
+									name: "RADIO OFF",
+									artist: "RADIO OFF",
+									src:
+										""
+								},
+								{
+									name: "MINUSMENSCH",
+									artist: "LANTLOS  (Only the best part)",
+									src:
+										"https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+								},
+								{
+									name: "THE EERIE COLD",
+									artist: "SHINING",
+									src:
+										"https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
+								},
+								{
+									name: "PULSE / SURREAL",
+									artist: "LANTLOS",
+									src:
+										"https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+								},
+								{
+									name: "TOO LATE TO CALL AN AMBULANCE",
+									artist: "PSYCHONAOUT 4",
+									src:
+										"https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
+								},
+								{
+									name: "THE GREAT COLD DEATH OF HEART",
+									artist: "AGALOCH",
+									src:
+										"https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
+								},
+								{
+									name: "THE HIDDEN LAKE OF THE FOREST",
+									artist: "AUTUMN NOSTALGIE",
+									src:
+										"https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
+								},
+
+							];
+
+							artistname.html(audioData[CurrentSong].artist);
+							musicName.html(audioData[CurrentSong].name);
+							song.src = audioData[CurrentSong].src;
+						}
+
+						function playSong() {
+							var curSong = audioData[CurrentSong];
+							artistname.html(curSong.artist);
+							musicName.html(curSong.name);
+							song.src = curSong.src;
+							song.play();
+							$("#play").addClass("fa-pause");
+							$("#play").removeClass("fa-play");
+							$("p").addClass("active");
+							$(".player-track").addClass("active");
+						}
+
+						song.addEventListener("timeupdate", function () {
+							var position = (100 / song.duration) * song.currentTime;
+							var current = song.currentTime;
+							var duration = song.duration;
+							var durationMinute = Math.floor(duration / 60);
+							var durationSecond = Math.floor(duration - durationMinute * 60);
+							var durationLabel = durationMinute + ":" + durationSecond;
+							currentSecond = Math.floor(current);
+							currentMinute = Math.floor(currentSecond / 60);
+							currentSecond = currentSecond - currentMinute * 60;
+							// currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+							if (currentSecond < 10) {
+								currentSecond = "0" + currentSecond;
+							}
+							var currentLabel = currentMinute + ":" + currentSecond;
+
+							var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+							fillBar.css("width", position + "%");
+
+							$(".time").html(indicatorLabel);
+						});
+						//////
+						$("#a_in").click(function playOrPause() {
+							if (song.paused) {
+								song.play();
+								playing = true;
+								$("#play").addClass("fa-pause");
+								$("#play").removeClass("fa-play");
+								$("p").addClass("active");
+								/* $("#bar1").addClass("br1");*/
+
+							} else {
+								song.pause();
+								playing = false;
+								$("#play").removeClass("fa-pause");
+								$("#play").addClass("fa-play");
+								$("p").removeClass("active");
+
+
+							}
+						});
+
+						$("#prev").click(function prev() {
+							CurrentSong--;
+							if (CurrentSong < 0) {
+								CurrentSong = 6;
+							}
+							playSong();
+						});
+
+						$("#next").click(function next() {
+							CurrentSong++;
+							if (CurrentSong > 6) {
+								CurrentSong = 0;
+							}
+							playSong();
+						});
+					});
+
+				</script>
+				<style>
+					#auid {
+						mix-blend-mode: difference;
+					}
+
+					#auid {
+						position: absolute;
+						width: 13%;
+						height: 10%;
+						bottom: 13%;
+						left: 2%;
+					}
+
+					.player {
+						z-index: 9;
+					}
+
+					.player-control {
+						position: absolute;
+						z-index: 999999999999999;
+						top: 120%;
+						right: 12%;
+					}
+
+					#prev {
+						cursor: pointer;
+						position: absolute;
+						width: 2vw;
+						height: 1vw;
+						left: 0;
+						z-index: 3;
+						top: -2.6vw;
+					}
+
+					#next {
+						cursor: pointer;
+						position: absolute;
+						width: 2vw;
+						height: 1vw;
+						left: 1.2vw;
+						top: -6vw;
+					}
+
+						#next p, #prev p {
+							position: absolute;
+							font-family: 'Oswald', sans-serif;
+							color: white;
+							letter-spacing: .1vw;
+							text-shadow: 0 0 1vw #171717;
+							font-size: 1vw;
+						}
+
+					#namesong {
+						position: absolute;
+						width: 188%;
+						height: 70%;
+						top: 50%;
+						color: lightgray;
+						left: 0%;
+						letter-spacing: .1vw;
+						font-size: 1vw;
+					}
+
+
+					#name_sng {
+						position: relative;
+						float: left;
+					}
+
+					.progress-bar {
+						width: 40%;
+						background: lightgray;
+						height: .2vw;
+						position: absolute;
+						top: 30%;
+						left: 29%;
+					}
+
+					.fillBar {
+						background: #292929;
+						width: 0;
+						height: .3vw;
+					}
+
+					#AT_time {
+						width: 5vw;
+						height: 1vw;
+						top: 35%;
+						right: 2%;
+						position: absolute;
+					}
+
+						#AT_time p {
+							position: absolute;
+							font-family: 'Oswald', sans-serif;
+							letter-spacing: .1vw;
+							font-size: .8vw;
+							color: lightgray;
+						}
+
+					.time {
+						position: absolute;
+						left: 1.7vw;
+						top: -.8vw;
+						font-family: 'Oswald', sans-serif;
+						letter-spacing: .1vw;
+						font-size: 1vw;
+						width: 4vw; overflow:hidden;
+						color: white;
+					}
+
+					#cd_1 {
+						width: 8vw;
+						height: 1.3vw;
+						border: .1vw solid rgba(199,48,48.3);
+						position: absolute;
+						left: 21vw;
+						top: .3vw;
+					}
+
+					#cd_2 {
+						width: 4.7vw;
+						height: 1.3vw;
+						border: .1vw solid rgba(199,48,48.3);
+						position: absolute;
+						left: 29vw;
+						top: .3vw;
+					}
+
+					.artist-name {
+						position: absolute;
+						left: .1vw;
+						top: 80%;
+						font-family: 'Oswald', sans-serif;
+						letter-spacing: .1vw;
+						font-size: .6vw;
+						color: lightgray;
+					}
+
+					#cd_2 p {
+						position: absolute;
+						top: 10%;
+						letter-spacing: .05vw;
+						font-size: .4vw;
+						left: .4vw;
+						color: rgba(199,48,48.3);
+						line-height: .5vw;
+					}
+
+					#time0 {
+						color: lightgray;
+						font-size: 1vw;
+						position: absolute;
+						left: 0;
+					}
+				</style>
+
+				<div id="R_plyr">
+					<div id="dt_rp">
+						<p id="time0">20 ● 12</p>
+						<div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+					</div>
+
+					<div id="mor_rpy">
+
+						<div class="player">
+
+							<div class="player-track">
+								<div id="titles">
+
+								</div>
+
+
+
+								<div class="progress-bar">
+									<div class="fillBar"></div>
+								</div>
+								<div id="AT_time"><div class="time">0:00</div></div>
+								<div class="artist-name"></div>
+
+							</div>
+
+							<div class="player-control">
+								<!--<div id="prev" class="fas fa-backward"><p>◄</p></div>-->
+
+								<div id="next" class="fas fa-forward"><p>►</p></div>
+							</div>
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div id="listsong">
+				<style>
+					#listsong {
+						position: absolute;
+						width: 30%;
+						height: 8%;
+						left: 1.5%;
+						bottom: 4%; 
+					}
+
+						#listsong p {
+							color: #b5b5b5;
+							font-size: .6vw;
+							position: absolute;
+							letter-spacing: .1vw;
+						}
+
+					#p1-1 {
+						top: 0;
+					}
+
+					#p1-2 {
+						top: .8vw;
+					}
+                    #p1-3 {
+                        top: 1.6vw;
+                    }
+
+                    #p1-4 {
+                        top: 2.4vw;
+                    }
+                    #listsong span {
+                        color: white;
+                        font-weight: bold;
+                    }
+				</style>
+				<p id="p1-1"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+				<p id="p1-2"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+				<p id="p1-3"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+				<p id="p1-4"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+
+			</div>
+			<div id="crdt">
+				<style>
+                    #crdt { position:absolute; width:30%; height:3%;   left:1.5%; bottom:1%;
+                    }
+                        #crdt p { color:#b5b5b5; font-size:.6vw; position:absolute; letter-spacing:.1vw;
+                        }
+                        #crdt span { color:white; font-weight:bold;
+                        }
+				</style>
+				<p><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+			</div>
+		</main>
+
+
+
+
+
+		<script src="anime.min.js"></script>
+		<script src="imagesloaded.pkgd.min.js"></script>
+		<script src="main.js"></script>
+		<script>
+		(function() {
+			var headline = document.querySelector('.trigger-headline'),
+				trigger = document.querySelector('.btn--trigger'),
+				segmenter = new Segmenter(document.querySelector('.segmenter'), {
+					pieces: 8,
+					positions: [
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100},
+						{top: 0, left: 0, width: 100, height: 100}
+					],
+					shadows: false,
+					parallax: true,
+					parallaxMovement: {min: 10, max: 30},
+					animation: {
+						duration: 2500,
+						easing: 'easeOutExpo',
+						delay: 0,
+						opacity: .1,
+						translateZ: {min: 10, max: 25}
+					},
+					onReady: function() {
+						trigger.classList.remove('btn--hidden');
+						trigger.addEventListener('click', function() {
+							segmenter.animate();
+							headline.classList.remove('trigger-headline--hidden');
+							this.classList.add('btn--hidden');
+						});
+					}
+				});
+		})();
+		</script>
+	</body>
+</html>
