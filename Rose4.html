@@ -5,9 +5,15 @@
     <meta charset="utf-8" />
     <title></title>
 
-    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="TweenMax.min.js"></script>
-    <script type="text/javascript" src="vue.global.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/vue.global.js"></script>
+    <script src="C:/Users/jessf/Desktop/Ev/mgGlitch.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/covervid.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/pixi.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/TweenMax.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/rgbShiftSlider.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
@@ -696,40 +702,10 @@
                             ""
                     },
                     {
-                        name: "MINUSMENSCH",
-                        artist: "LANTLOS  (Only the best part)",
+                        name: "See Tình",
+                        artist: "酒酒井Anri",
                         src:
                             "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
-                    },
-                    {
-                        name: "THE EERIE COLD",
-                        artist: "SHINING",
-                        src:
-                            "https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
-                    },
-                    {
-                        name: "PULSE / SURREAL",
-                        artist: "LANTLOS",
-                        src:
-                            "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
-                    },
-                    {
-                        name: "TOO LATE TO CALL AN AMBULANCE",
-                        artist: "PSYCHONAOUT 4",
-                        src:
-                            "https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
-                    },
-                    {
-                        name: "THE GREAT COLD DEATH OF HEART",
-                        artist: "AGALOCH",
-                        src:
-                            "https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
-                    },
-                    {
-                        name: "THE HIDDEN LAKE OF THE FOREST",
-                        artist: "AUTUMN NOSTALGIE",
-                        src:
-                            "https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
                     },
 
                 ];
@@ -797,14 +773,14 @@
             $("#prev").click(function prev() {
                 CurrentSong--;
                 if (CurrentSong < 0) {
-                    CurrentSong = 6;
+                    CurrentSong = 1;
                 }
                 playSong();
             });
 
             $("#next").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 6) {
+                if (CurrentSong > 1) {
                     CurrentSong = 0;
                 }
                 playSong();
@@ -817,8 +793,8 @@
     <div id="main" class="maincolor">
         <!--<img id="firm" src="https://i.postimg.cc/2j9WyGjd/w.png" />-->
 
-        <img id="bak" class="bk1" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" /> <!--main section-->
-        <img id="bak1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" /><!--aboutme section-->
+        <img id="bak" class="bk1" src="https://i.postimg.cc/tT7pN553/392095-raiden-shogun-genshin-impact-game-4k-pc-wallpaper-1.png" /> <!--main section-->
+        <img id="bak1" src="https://i.postimg.cc/1RL9v793/aniyuki-genshin-impact-raiden-shogun-16.png" /><!--aboutme section-->
         <img id="bak2-2" src="https://i.postimg.cc/rFS504mJ/aniyuki-genshin-impact-raiden-shogun-15.png" /><!--friends section-->
         <img id="bak3" src="https://i.postimg.cc/v8gG10DM/aniyuki-genshin-impact-raiden-shogun-13.png" /><!--posts section-->
         <img id="bak4" src="https://i.postimg.cc/CLbHYW32/aniyuki-genshin-impact-raiden-shogun-21.png" /><!--change section-->
@@ -924,7 +900,7 @@
                 #gifs {
                     position: absolute;
                     width: auto;
-                    height: 25%;
+                    height: 45%;
                     top: 20%;
                     background: lightgray;
                     left: 7%;
@@ -942,7 +918,7 @@
                     position: absolute;
                     font-size: 1.2vw;
                     left: 7%;
-                    top: 45%;
+                    top: 65%;
                     color: dimgray;
                     font-weight: bold;
                 }
@@ -951,7 +927,7 @@
                     position: absolute;
                     font-size: .9vw;
                     left: 7%;
-                    top: 52%;
+                    top: 72%;
                     color: black;
                     font-weight: bold;
                 }
@@ -965,8 +941,10 @@
             <p id="RegnumB"><b>玫瑰</b> | 10000051</p>
 
             <div id="gifs">
-                <img id="gifabout" src="https://i.postimg.cc/vB4n8W7z/dkx7nealymj71.gif" /><img id="gifabout2" src="https://i.postimg.cc/X7S53Brf/raiden-shogun-genshin-impact.gif" />
+                <img id="gifabout" src="https://i.postimg.cc/nrmJqy2H/7xx-OQ3-V1b4-AW.gif" />
             </div>
+            <!--<img id="gifabout2" src="https://i.postimg.cc/X7S53Brf/raiden-shogun-genshin-impact.gif" />-->
+            
             <p id="textfirmJ">"跟着玫瑰去哪里，愿上帝指引你"</p>
             <p id="textfirm">"Sigue las <b>rosas</b> a dónde vayan, que Dios te guíe"</p>
 
@@ -1106,7 +1084,7 @@
                     height: 72%;
                     border: .15vw solid #171717;
                     bottom: 0;
-                    background: white;
+                    background: transparent;
                     z-index: 2;
                     transition: all .5s ease;
                 }
@@ -1126,7 +1104,7 @@
                     width: 40%;
                     height: 73%;
                     right: 0;
-                    background: white;
+                    background: transparent;
                     bottom: 0;
                 }
 
@@ -1140,11 +1118,11 @@
                     height: 20%;
                     top: 3vw;
                     left: -4vw;
-                    mix-blend-mode: difference;
+                    /*mix-blend-mode: difference;*/
                 }
 
                 #nameFrdJ {
-                    mix-blend-mode: difference;
+                    /*mix-blend-mode: difference;*/
                     position: absolute;
                     transform: rotate(-270deg);
                     color: black;
@@ -1166,7 +1144,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Lenin | ♥</p>
-                    <p id="nameFrdJ" class="noinvert">列宁 | ♥</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>列宁 | ♥</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1177,7 +1155,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Jadiction | +</p>
-                    <p id="nameFrdJ" class="noinvert">口语 | +</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>口语 | +</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1188,7 +1166,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Austin</p>
-                    <p id="nameFrdJ" class="noinvert">奥斯汀</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>奥斯汀</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1199,7 +1177,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">FEXBot</p>
-                    <p id="nameFrdJ" class="noinvert">FEX机器人</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>FEX机器人</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1210,7 +1188,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Lemona</p>
-                    <p id="nameFrdJ" class="noinvert">
+                    <p id="nameFrdJ" <!--class="noinvert"-->>
                         柠檬
                     </p>
                 </div>
@@ -1223,7 +1201,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">WoLfie</p>
-                    <p id="nameFrdJ" class="noinvert">小狼</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>小狼</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1234,7 +1212,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Luci</p>
-                    <p id="nameFrdJ" class="noinvert">灯</p>
+                    <p id="nameFrdJ" <!--class="noinvert"-->>灯</p>
                 </div>
                 <div id="contentFrd2">
 
@@ -1245,7 +1223,7 @@
                 <img id="pimgfrd" src="https://i.ibb.co/xmKVd59/46f5b92e60d7e4ae4ce0ef8a8257c8332.jpg" />
                 <div id="contentFrd">
                     <p id="nameFrd">Marek</p>
-                    <p id="nameFrdJ" class="noinvert">
+                    <p id="nameFrdJ" <!--class="noinvert"-->>
                         标记
                     </p>
                 </div>
@@ -1671,7 +1649,7 @@
                 }
             </script>
             <style>
-                #menu4 {
+                #menu4, #menu5 {
                     font-family: 'Poiret One', cursive;
                 }
 
@@ -1983,6 +1961,16 @@
             </div>
         </div>
         <div id="menu5">
+            <div id="textFrd">
+                <p id="tFrd">Home<b> / </b>Find me</p>
+                <p id="tFrdJ">家<b> / </b>找我</p>
+            </div>
+            <div id="Darkmod">
+                <div id="contentDM">
+                    <p id="contDM">xat.com/fexbots</p>
+                    <p id="contDMJ" class="noinvert">信.和/机器</p>
+                </div>
+            </div>
             <div id="arnum">
                 <p id="retr" onclick="Returnmenu5();">⮌回去</p>
                 <b>RETURN</b>
