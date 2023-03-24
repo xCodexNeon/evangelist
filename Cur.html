@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -272,7 +272,7 @@
         </section>
 
 
-        <section id="about">
+        <!--<section id="about">
             <h2><span>&raquo;About</span></h2>
             <p>QUADRA V-TECH VER:2.38 INTERFACE SIMULATION.</p>
             <p>
@@ -390,7 +390,7 @@ CURSOR
                 <div id="cunt"><div id="cunt2"></div></div>
             </p>
 
-        </section>
+        </section>-->
 
 
         <!--Prologue-->
@@ -606,8 +606,7 @@ CURSOR
 
             <p>leave? or keep contemplating?</p>
         </section>
-        <input type="text" id="nofocus" />
-
+         
         <!--Negations-->
         <section id="not">
             <h2>You have decided the path of the coward.</h2>
@@ -860,7 +859,7 @@ CURSOR
                         speed: 20,
                         afterAnimation: function () {
                             $('.command').fadeIn();
-                            //$('input[type="text"]').focus();
+                            $('input[type="text"]').focus();
                             $('input[type="text"]').val('');
 
                         }
@@ -868,6 +867,8 @@ CURSOR
 
                 }// end if ENTER key pressed
                 //$("#cmd2").focus();
+
+                //$('input[type="text"]').focus();
             });// end keyup function
             
             // End Command Input-----------------------------
