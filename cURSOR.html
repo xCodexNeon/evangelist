@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
+    <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
+    <style>
+        @keyframes text-blink {
+            from, to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        b {
+            color: #2EFE16;
+            font-weight: bold;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background: #02120A;
+            overflow: hidden;
+            animation: text-blink 0.01s steps(2) infinite;
+        }
+
+        #main {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #backladf {
+            filter: contrast(250%) brightness(50%);
+            opacity: .7;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0%;
+            background-image: url(https://i.postimg.cc/d33JXYYy/image.jpg);
+            /* background-image: url();*/
+            background-size: contain;
+        }
+
+            #backladf img {
+                width: 100%;
+                height: 100%;
+            }
+
+        #skullgir {
+            filter: contrast(140%);
+            position: absolute;
+            width: 40%;
+            height: 80%;
+            top: 10%;
+            left: 30%;
+            animation: animskull 5s 1;
+            animation-fill-mode: forwards;
+            /* background-image: url(https://i.postimg.cc/5NKyDbMP/1.png);
+            background-size: cover;*/
+        }
+
+        @keyframes animskull {
+            0% {
+                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
+                background-size: cover;
+            }
+
+            10% {
+                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
+                background-size: cover;
+            }
+
+            10.1% {
+                background-image: url(https://i.postimg.cc/HL5pWvS5/image-1.png);
+                background-size: cover;
+            }
+
+            20% {
+                background-image: url(https://i.postimg.cc/HL5pWvS5/image-1.png);
+                background-size: cover;
+            }
+
+
+            20.1% {
+                background-image: url(https://i.postimg.cc/YCJ9qR0Y/3.png);
+                background-size: cover;
+            }
+
+            30% {
+                background-image: url(https://i.postimg.cc/YCJ9qR0Y/3.png);
+                background-size: cover;
+            }
+
+
+            30.1% {
+                background-image: url(https://i.postimg.cc/XJWY9vwv/4.png);
+                background-size: cover;
+            }
+
+            40% {
+                background-image: url(https://i.postimg.cc/XJWY9vwv/4.png);
+                background-size: cover;
+            }
+
+
+            40.1% {
+                background-image: url(https://i.postimg.cc/HLXLJM8K/5.png);
+                background-size: cover;
+            }
+
+            50% {
+                background-image: url(https://i.postimg.cc/HLXLJM8K/5.png);
+                background-size: cover;
+            }
+
+
+            50.1% {
+                background-image: url(https://i.postimg.cc/k4yXsdcv/6.png);
+                background-size: cover;
+            }
+
+            60% {
+                background-image: url(https://i.postimg.cc/k4yXsdcv/6.png);
+                background-size: cover;
+            }
+
+
+            60.1% {
+                background-image: url(https://i.postimg.cc/6qj6sLF7/7.png);
+                background-size: cover;
+            }
+
+            70% {
+                background-image: url(https://i.postimg.cc/6qj6sLF7/7.png);
+                background-size: cover;
+            }
+
+            70.1% {
+                background-image: url(https://i.postimg.cc/VvLsHHZQ/8.png);
+                background-size: cover;
+            }
+
+            80% {
+                background-image: url(https://i.postimg.cc/VvLsHHZQ/8.png);
+                background-size: cover;
+            }
+
+
+            80.1% {
+                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
+                background-size: cover;
+            }
+
+
+            100% {
+                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
+                background-size: cover;
+            }
+        }
+
+        #backmanch {
+            image-rendering: pixelated;
+            image-rendering: auto;
+            image-rendering: crisp-edges;
+            position: absolute;
+            width: 100%;
+            height: 120%;
+            top: -20%;
+            left: 0%;
+            animation: animback 5s 1;
+            animation-fill-mode: forwards;
+            /* background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
+            background-size: cover;*/
+        }
+
+        @keyframes animback {
+            0% {
+                background-image: url(https://i.postimg.cc/qMY21BT2/image-2-2.png);
+                background-size: cover;
+            }
+
+            10% {
+                background-image: url(https://i.postimg.cc/qMY21BT2/image-2-2.png);
+                background-size: cover;
+            }
+
+            10.1% {
+                background-image: url(https://i.postimg.cc/FzSkq3mc/Frame2png.png);
+                background-size: cover;
+            }
+
+            20% {
+                background-image: url(https://i.postimg.cc/FzSkq3mc/Frame2png.png);
+                background-size: cover;
+            }
+
+
+            20.1% {
+                background-image: url(https://i.postimg.cc/Kj5xR8Dw/image-2-2.png);
+                background-size: cover;
+            }
+
+            30% {
+                background-image: url(https://i.postimg.cc/Kj5xR8Dw/image-2-2.png);
+                background-size: cover;
+            }
+
+
+            30.1% {
+                background-image: url(https://i.postimg.cc/k40LqPrZ/image-3.png);
+                background-size: cover;
+            }
+
+            40% {
+                background-image: url(https://i.postimg.cc/k40LqPrZ/image-3.png);
+                background-size: cover;
+            }
+
+
+            40.1% {
+                background-image: url(https://i.postimg.cc/k5BbPkvW/image-4.png);
+                background-size: cover;
+            }
+
+            50% {
+                background-image: url(https://i.postimg.cc/k5BbPkvW/image-4.png);
+                background-size: cover;
+            }
+
+
+            50.1% {
+                background-image: url(https://i.postimg.cc/ZK4jz5B3/image-5.png);
+                background-size: cover;
+            }
+
+            60% {
+                background-image: url(https://i.postimg.cc/ZK4jz5B3/image-5.png);
+                background-size: cover;
+            }
+
+
+            60.1% {
+                background-image: url(https://i.postimg.cc/DfJmfrs3/7.png);
+                background-size: cover;
+            }
+
+            70% {
+                background-image: url(https://i.postimg.cc/DfJmfrs3/7.png);
+                background-size: cover;
+            }
+
+            70.1% {
+                background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
+                background-size: cover;
+            }
+
+
+
+            100% {
+                background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
+                background-size: cover;
+            }
+        }
+
+        #logdiv {
+            width: 60%;
+            height: 50%;
+            position: absolute;
+            top: 100%;
+            left: 20%;
+            opacity: .8;
+            animation: enterlogo 4s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 4s;
+        }
+
+        @keyframes enterlogo {
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: 5%;
+            }
+        }
+
+        #logdiv img {
+            position: absolute;
+            width: 100%;
+        }
+
+        #back-eff {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+            opacity: .05;
+        }
+
+        #introtext {
+            width: 50%;
+            height: 5%;
+            filter: contrast(130%);
+            background: #02120A;
+            position: absolute;
+            top: 100%;
+            left: 25%;
+            animation: enterlink1 2s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 6s;
+        }
+
+        @keyframes enterlink1 {
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: 90%;
+            }
+        }
+
+        #introtext2 {
+            width: 50%;
+            height: 5%;
+            filter: contrast(130%);
+            position: absolute;
+            top: 95%;
+            left: 25%;
+        }
+
+        #introtext p {
+            width: 0;
+            color: #2EFE16;
+            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 2vw;
+            margin: 0 auto;
+            font-family: Consolas;
+            border-right: 0.15em solid #2EFE16;
+            animation: typing 4s steps(31) 1s 1 normal both, blink 1s steps(1) infinite;
+            animation-delay: 9s;
+        }
+
+        #introtext2 p {
+            width: 0;
+            color: #2EFE16;
+            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 1vw;
+            margin: 0 auto;
+            font-family: Consolas;
+            border-right: 0.15em solid #2EFE16;
+            animation: typing2 4s steps(31) 1s 1 normal both, blink 1s steps(1) infinite;
+            animation-delay: 13s;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 68%;
+            }
+        }
+
+        @keyframes typing2 {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 27.5%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="backladf">
+            <!--<img src="https://i.postimg.cc/bwKjD0Wh/pared-de-piedra-natural-grandes-rocas-y-hormig-n-fondo-194130712.jpg" />-->
+        </div>
+        <div id="skullgir">
+
+
+
+        </div>  <div id="backmanch"></div><div id="logdiv">
+            <img src="https://i.postimg.cc/y8QT9q1b/logo.png" />
+        </div>
+        <div id="introtext"><p>© 1984 NEURASTHENIA SOFTWARE.CO</p></div>
+        <div id="introtext2"><p>PRESS "ENTER" TO CONTINUE</p></div>
+        <div id="back-eff"></div>
+    </div>
+
+
+</body>
+<script>
+    function PRess_R() {
+        tecla_R = event.keyCode;
+        if (tecla_R == 13) {
+            var url = "Cur.html";
+            $(location).attr('href', url);
+        }
+
+    }
+    window.onkeydown = PRess_R;
+</script>
+</html>
