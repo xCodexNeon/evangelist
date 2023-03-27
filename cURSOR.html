@@ -400,7 +400,17 @@
   
 </head>
 <body>
-   
+     <script>
+                function PRess_R() {
+                    tecla_R = event.keyCode;
+                    if (tecla_R == 32) {
+                        var url = "Cur.html";
+                        $(location).attr('href', url);
+                    }
+
+                }
+                window.onkeydown = PRess_R;
+            </script>
     <div id="main">
         <div id="backladf">
             <!--<img src="https://i.postimg.cc/bwKjD0Wh/pared-de-piedra-natural-grandes-rocas-y-hormig-n-fondo-194130712.jpg" />-->
@@ -413,7 +423,7 @@
             <img src="https://i.postimg.cc/y8QT9q1b/logo.png" />
         </div>
         <div id="introtext"><p>© 1984 NEURASTHENIA SOFTWARE.CO</p></div>
-        <div id="introtext2"><p>PRESS "ENTER" TO CONTINUE</p></div>
+        <div id="introtext2"><p>PRESS "SPACE" TO CONTINUE</p></div>
         <div id="back-eff"></div>
     </div>
 
@@ -485,17 +495,7 @@
             <p>Loading...</p>
         </div>
         <div id="back-eff">
-            <script>
-                function PRess_R() {
-                    tecla_R = event.keyCode;
-                    if (tecla_R == 13) {
-                        var url = "Cur.html";
-                        $(location).attr('href', url);
-                    }
-
-                }
-                window.onkeydown = PRess_R;
-            </script>
+          
         </div>
 
     </div>
