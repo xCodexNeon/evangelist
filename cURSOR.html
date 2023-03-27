@@ -341,6 +341,7 @@
             position: absolute;
             top: 95%;
             left: 25%;
+            z-index:99999;
         }
 
         #introtext p {
@@ -356,9 +357,12 @@
             animation: typing 4s steps(31) 1s 1 normal both, blink 1s steps(1) infinite;
             animation-delay: 13s;
         }
-
+        a {
+            color: #2EFE16;
+            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+        }
         #introtext2 p {
-            width: 0;
+            width: 0; opacity:0;
             color: #2EFE16;
             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
             overflow: hidden;
@@ -382,12 +386,15 @@
         }
 
         @keyframes typing2 {
-            from {
+            0% {
                 width: 0;
+                opacity: 0;
             }
-
-            to {
-                width: 27.5%;
+            .1% {opacity:1;
+            }
+            100% {
+                width: 45.5%;
+                opacity: 1;
             }
         }
 
@@ -400,17 +407,7 @@
   
 </head>
 <body>
-     <script>
-                function PRess_R() {
-                    tecla_R = event.keyCode;
-                    if (tecla_R == 32) {
-                        var url = "Cur.html";
-                        $(location).attr('href', url);
-                    }
 
-                }
-                window.onkeydown = PRess_R;
-            </script>
     <div id="main">
         <div id="backladf">
             <!--<img src="https://i.postimg.cc/bwKjD0Wh/pared-de-piedra-natural-grandes-rocas-y-hormig-n-fondo-194130712.jpg" />-->
@@ -423,10 +420,21 @@
             <img src="https://i.postimg.cc/y8QT9q1b/logo.png" />
         </div>
         <div id="introtext"><p>© 1984 NEURASTHENIA SOFTWARE.CO</p></div>
-        <div id="introtext2"><p>PRESS "SPACE" TO CONTINUE</p></div>
-        <div id="back-eff"></div>
-    </div>
 
+        <div id="back-eff"></div>
+        <script>
+            function PRess_R() {
+                tecla_R = event.keyCode;
+                if (tecla_R == 32) {
+                    var url = "Cur.html";
+                    $(location).attr('href', url);
+                }
+
+            }
+            window.onkeydown = PRess_R;
+        </script>
+    </div>
+    <div id="introtext2"><p>PRESS "SPACE" OR "CLICK" <a href="https://xevangelist.github.io/evangelist/Cur.html">HERE</a> TO CONTINUE</p></div>
     <div id="maincharg">
         <style>
             @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
@@ -495,7 +503,7 @@
             <p>Loading...</p>
         </div>
         <div id="back-eff">
-          
+
         </div>
 
     </div>
