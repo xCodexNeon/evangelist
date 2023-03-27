@@ -399,7 +399,17 @@
     </style>
   
 </head>
-<body>
+<body> <script>
+            function PRess_R() {
+                tecla_R = event.keyCode;
+                if (tecla_R == 13) {
+                    var url = "Cur.html";
+                    $(location).attr('href', url);
+                }
+
+            }
+            window.onkeydown = PRess_R;
+        </script>
     <div id="main">
         <div id="backladf">
             <!--<img src="https://i.postimg.cc/bwKjD0Wh/pared-de-piedra-natural-grandes-rocas-y-hormig-n-fondo-194130712.jpg" />-->
@@ -484,17 +494,7 @@
             <p>Loading...</p>
         </div>
         <div id="back-eff"></div>
-        <script>
-            function PRess_R() {
-                tecla_R = event.keyCode;
-                if (tecla_R == 13) {
-                    var url = "Cur.html";
-                    $(location).attr('href', url);
-                }
-
-            }
-            window.onkeydown = PRess_R;
-        </script>
+       
     </div>
 
 
