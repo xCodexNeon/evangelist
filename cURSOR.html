@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -6,421 +6,1010 @@
     <title></title>
 
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <style>
-        @keyframes text-blink {
-            from, to {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        b {
-            color: #2EFE16;
-            font-weight: bold;
-        }
-
-        body {
-            width: 100%;
-            height: 100%;
-            background: #02120A;
-            overflow: hidden;
-            animation: text-blink 0.01s steps(2) infinite;
-        }
-
-        #main {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-
-        #backladf {
-            filter: contrast(250%) brightness(50%);
-            opacity: .7;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0%;
-            background-image: url(https://i.postimg.cc/d33JXYYy/image.jpg);
-            /* background-image: url();*/
-            background-size: contain;
-        }
-
-            #backladf img {
-                width: 100%;
-                height: 100%;
-            }
-
-        #skullgir {
-            filter: contrast(140%);
-            position: absolute;
-            width: 40%;
-            height: 80%;
-            top: 10%;
-            left: 30%;
-            animation: animskull 5s 1;
-            animation-fill-mode: forwards;
-            /* background-image: url(https://i.postimg.cc/5NKyDbMP/1.png);
-            background-size: cover;*/
-        }
-
-        @keyframes animskull {
-            0% {
-                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
-                background-size: cover;
-            }
-
-            10% {
-                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
-                background-size: cover;
-            }
-
-            10.1% {
-                background-image: url(https://i.postimg.cc/HL5pWvS5/image-1.png);
-                background-size: cover;
-            }
-
-            20% {
-                background-image: url(https://i.postimg.cc/HL5pWvS5/image-1.png);
-                background-size: cover;
-            }
-
-
-            20.1% {
-                background-image: url(https://i.postimg.cc/YCJ9qR0Y/3.png);
-                background-size: cover;
-            }
-
-            30% {
-                background-image: url(https://i.postimg.cc/YCJ9qR0Y/3.png);
-                background-size: cover;
-            }
-
-
-            30.1% {
-                background-image: url(https://i.postimg.cc/XJWY9vwv/4.png);
-                background-size: cover;
-            }
-
-            40% {
-                background-image: url(https://i.postimg.cc/XJWY9vwv/4.png);
-                background-size: cover;
-            }
-
-
-            40.1% {
-                background-image: url(https://i.postimg.cc/HLXLJM8K/5.png);
-                background-size: cover;
-            }
-
-            50% {
-                background-image: url(https://i.postimg.cc/HLXLJM8K/5.png);
-                background-size: cover;
-            }
-
-
-            50.1% {
-                background-image: url(https://i.postimg.cc/k4yXsdcv/6.png);
-                background-size: cover;
-            }
-
-            60% {
-                background-image: url(https://i.postimg.cc/k4yXsdcv/6.png);
-                background-size: cover;
-            }
-
-
-            60.1% {
-                background-image: url(https://i.postimg.cc/6qj6sLF7/7.png);
-                background-size: cover;
-            }
-
-            70% {
-                background-image: url(https://i.postimg.cc/6qj6sLF7/7.png);
-                background-size: cover;
-            }
-
-            70.1% {
-                background-image: url(https://i.postimg.cc/VvLsHHZQ/8.png);
-                background-size: cover;
-            }
-
-            80% {
-                background-image: url(https://i.postimg.cc/VvLsHHZQ/8.png);
-                background-size: cover;
-            }
-
-
-            80.1% {
-                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
-                background-size: cover;
-            }
-
-
-            100% {
-                background-image: url(https://i.postimg.cc/MGZDqgZ3/image.png);
-                background-size: cover;
-            }
-        }
-
-        #backmanch {
-            image-rendering: pixelated;
-            image-rendering: auto;
-            image-rendering: crisp-edges;
-            position: absolute;
-            width: 100%;
-            height: 120%;
-            top: -20%;
-            left: 0%;
-            animation: animback 5s 1;
-            animation-fill-mode: forwards;
-            /* background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
-            background-size: cover;*/
-        }
-
-        @keyframes animback {
-            0% {
-                background-image: url(https://i.postimg.cc/qMY21BT2/image-2-2.png);
-                background-size: cover;
-            }
-
-            10% {
-                background-image: url(https://i.postimg.cc/qMY21BT2/image-2-2.png);
-                background-size: cover;
-            }
-
-            10.1% {
-                background-image: url(https://i.postimg.cc/FzSkq3mc/Frame2png.png);
-                background-size: cover;
-            }
-
-            20% {
-                background-image: url(https://i.postimg.cc/FzSkq3mc/Frame2png.png);
-                background-size: cover;
-            }
-
-
-            20.1% {
-                background-image: url(https://i.postimg.cc/Kj5xR8Dw/image-2-2.png);
-                background-size: cover;
-            }
-
-            30% {
-                background-image: url(https://i.postimg.cc/Kj5xR8Dw/image-2-2.png);
-                background-size: cover;
-            }
-
-
-            30.1% {
-                background-image: url(https://i.postimg.cc/k40LqPrZ/image-3.png);
-                background-size: cover;
-            }
-
-            40% {
-                background-image: url(https://i.postimg.cc/k40LqPrZ/image-3.png);
-                background-size: cover;
-            }
-
-
-            40.1% {
-                background-image: url(https://i.postimg.cc/k5BbPkvW/image-4.png);
-                background-size: cover;
-            }
-
-            50% {
-                background-image: url(https://i.postimg.cc/k5BbPkvW/image-4.png);
-                background-size: cover;
-            }
-
-
-            50.1% {
-                background-image: url(https://i.postimg.cc/ZK4jz5B3/image-5.png);
-                background-size: cover;
-            }
-
-            60% {
-                background-image: url(https://i.postimg.cc/ZK4jz5B3/image-5.png);
-                background-size: cover;
-            }
-
-
-            60.1% {
-                background-image: url(https://i.postimg.cc/DfJmfrs3/7.png);
-                background-size: cover;
-            }
-
-            70% {
-                background-image: url(https://i.postimg.cc/DfJmfrs3/7.png);
-                background-size: cover;
-            }
-
-            70.1% {
-                background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
-                background-size: cover;
-            }
-
-
-
-            100% {
-                background-image: url(https://i.postimg.cc/tRKJsstZ/8-1.png);
-                background-size: cover;
-            }
-        }
-
-        #logdiv {
-            width: 60%;
-            height: 50%;
-            position: absolute;
-            top: 100%;
-            left: 20%;
-            opacity: .8;
-            animation: enterlogo 4s 1;
-            animation-fill-mode: forwards;
-            animation-delay: 4s;
-        }
-
-        @keyframes enterlogo {
-            0% {
-                top: 100%;
-            }
-
-            100% {
-                top: 5%;
-            }
-        }
-
-        #logdiv img {
-            position: absolute;
-            width: 100%;
-        }
-
-        #back-eff {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
-            opacity: .05;
-        }
-
-        #introtext {
-            width: 50%;
-            height: 5%;
-            filter: contrast(130%);
-            background: #02120A;
-            position: absolute;
-            top: 100%;
-            left: 25%;
-            animation: enterlink1 2s 1;
-            animation-fill-mode: forwards;
-            animation-delay: 6s;
-        }
-
-        @keyframes enterlink1 {
-            0% {
-                top: 100%;
-            }
-
-            100% {
-                top: 90%;
-            }
-        }
-
-        #introtext2 {
-            width: 50%;
-            height: 5%;
-            filter: contrast(130%);
-            position: absolute;
-            top: 95%;
-            left: 25%;
-        }
-
-        #introtext p {
-            width: 0;
-            color: #2EFE16;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 2vw;
-            margin: 0 auto;
-            font-family: Consolas;
-            border-right: 0.15em solid #2EFE16;
-            animation: typing 4s steps(31) 1s 1 normal both, blink 1s steps(1) infinite;
-            animation-delay: 9s;
-        }
-
-        #introtext2 p {
-            width: 0;
-            color: #2EFE16;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 1vw;
-            margin: 0 auto;
-            font-family: Consolas;
-            border-right: 0.15em solid #2EFE16;
-            animation: typing2 4s steps(31) 1s 1 normal both, blink 1s steps(1) infinite;
-            animation-delay: 13s;
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 68%;
-            }
-        }
-
-        @keyframes typing2 {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 27.5%;
-            }
-        }
-
-        @keyframes blink {
-            50% {
-                border-color: transparent;
-            }
-        }
-    </style>
+ <style>
+     @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+     @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+     @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+     html {
+         font-family: 'Share Tech Mono', monospace;
+         background: linear-gradient(180deg, #050E09 0%, #07080d 100%) fixed;
+         overflow-y: scroll;
+     }
+     #back-eff {
+         position: fixed;
+         width: 100%;
+         height: 100%;
+         background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+         opacity: .06;
+     }
+         html::-webkit-scrollbar { width:.01vw;
+         }
+     @keyframes text-blink {
+         from, to {
+             opacity: 1;
+         }
+
+         50% {
+             opacity: 0.5;
+         }
+     }
+     b {
+         color: #2EFE16;
+         font-weight: bold;
+     }
+     body {
+         animation: text-blink 0.01s steps(2) infinite;
+         /*font: .875em/1.6 'Inconsolata', monospace;*/
+         color: #10B435;
+         font-weight: 400;
+         max-width: 28em;
+         padding: 1em;
+         margin: 5% 0;
+         color: #48B83B;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+     }
+
+     ::selection {
+         background: transparent;
+     }
+
+     ::-webkit-selection {
+         background: transparent;
+     }
+
+     ::-moz-selection {
+         background: transparent;
+     }
+
+     a {
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         color: #48B83B;
+     }
+
+         a:hover, a:focus {
+             background: black;
+             color: #48B83B;
+             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         }
+
+     h2 {
+         font-size: 1em;
+         font-weight: 400; opacity:.8;
+     }
+
+     p {
+         margin-bottom: 2em; opacity:.8;
+     }
+
+     abbr {
+         cursor: help;
+     }
+
+     ul {
+         list-style: none;
+         padding: 0;
+     }
+
+     li {
+         margin: 1em 0 0;
+     }
+
+     span {
+         display: block;
+         color: #2C9E1F;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         line-height: 1;
+         animation: flashText 1s ease-out alternate infinite;
+     }
+     @keyframes flashText {
+         0% {
+             opacity: .3
+         }
+
+         100% {
+             opacity: 1
+         }
+     }
+
+     kbd {
+         font-family: 'Share Tech Mono', monospace;
+         border: 1px solid #48B83B;
+         box-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         text-transform: uppercase;
+         padding: 0 .2em;
+     }
+     #cod {
+         border: 1px solid #48B83B;
+         box-shadow: 0 0 5px rgba(14, 219, 21, .8);
+     }
+     input[type="text"] {
+         max-width: 25em;
+         border: none;
+         font-family: inherit;
+         background: transparent;
+         padding: 0 .5em;
+         padding-left:1vw;
+     }
+
+         input[type="text"]:focus {
+             background: transparent;
+             color: #48B83B;
+             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+             outline: none;
+         }
+     #cmd2 {
+         animation-delay: .4s;
+         animation-duration: .5s;
+         margin-left: 40%;
+     }
+   
+
+     section {
+         display: none;   width:200%; margin-left:40%;
+     }
+
+     .open {
+         display: block;
+     }
+     #cod { padding:.2vw;
+     }
+     #matrice {
+         width: 52%;
+         text-align: center;
+         height: 1.6vw;
+         background: #48B83B;
+         color: black;
+     }
+     #fail {
+         background: #db0e15;
+         color: black; padding:.2vw; opacity:0;
+     }
+     #music {
+         position: fixed;
+         right: 1vw;
+         top: 1vw; height:2vw; 
+         border: 1px solid #db0e15;
+         box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+     }
+     #mus { margin:.3vw;
+     }
+     #levelfont {
+         font-size: 2vw;
+         font-family: 'UnifrakturMaguntia', cursive;
+     }
+     #levelfont2 {
+         font-size: 6vw;
+         font-family: 'UnifrakturCook', cursive;
+         font-weight: lighter;
+     }
+ </style>
+   
 </head>
 <body>
-    <div id="main">
-        <div id="backladf">
-            <!--<img src="https://i.postimg.cc/bwKjD0Wh/pared-de-piedra-natural-grandes-rocas-y-hormig-n-fondo-194130712.jpg" />-->
-        </div>
-        <div id="skullgir">
+    <script>
+        function opentab1() {
+            nuevaVentana = window.open(
+                "https://xevangelist.github.io/evangelist/Neura5.html",
+                "Curs>r",
+                "width=750, height=550, resizable=true, menubar=yes"
+            );
 
+            nuevaVentana.focus();
+        }
+    </script>
+    <!--<script>
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var audioBuffer, fuenteDeReproduccion;
+        var start = false;
+        var stop = true;
 
-
-        </div>  <div id="backmanch"></div><div id="logdiv">
-            <img src="https://i.postimg.cc/y8QT9q1b/logo.png" />
-        </div>
-        <div id="introtext"><p>© 1984 NEURASTHENIA SOFTWARE.CO</p></div>
-        <div id="introtext2"><p>PRESS "ENTER" TO CONTINUE</p></div>
-        <div id="back-eff"></div>
-    </div>
-
-
-</body>
-<script>
-    function PRess_R() {
-        tecla_R = event.keyCode;
-        if (tecla_R == 13) {
-            var url = "Cur.html";
-            $(location).attr('href', url);
+        function solicitarAudio(url) {
+            var request = new XMLHttpRequest();
+            request.open("GET", url, true);
+            request.responseType = "arraybuffer";
+            request.onload = function () {
+                audioCtx.decodeAudioData(request.response, function (buffer) {
+                    audioBuffer = buffer;
+                });
+            };
+            request.send();
         }
 
-    }
-    window.onkeydown = PRess_R;
-</script>
+        function reproducirAudio() {
+            fuenteDeReproduccion = audioCtx.createBufferSource();
+            fuenteDeReproduccion.buffer = audioBuffer;
+            fuenteDeReproduccion.playbackRate.value = 1;
+            fuenteDeReproduccion.connect(audioCtx.destination);
+            fuenteDeReproduccion.start(audioCtx.currentTime);
+        }
+
+        function detenerAudio() {
+            fuenteDeReproduccion.stop();
+        }
+
+        function audio() {
+            if (stop) {// si el audio está parado
+                start = true;
+                stop = false;
+                mus.innerHTML = "MUSIC ON";//detener
+                document.getElementById("music").style.opacity = "1";
+                reproducirAudio();
+            } else {// de lo contrario
+                stop = true;
+                start = false;
+                mus.innerHTML = "MUSIC OFF";//reproducir
+                detenerAudio()
+                document.getElementById("music").style.opacity = ".3";
+            }
+        }
+
+        solicitarAudio(
+            "https://xevangelist.github.io/evangelist/the-rebel-path.mp3"
+        );
+
+        // Utiliza el evento click para iniciar o detener la reproducción
+        music.addEventListener("click", audio, false);
+    </script>-->
+    <main>
+        <!--<div id="music" onclick="audio();">
+            <p id="mus">MUSIC ON</p>
+        </div>-->
+        <style>
+            #maindiv {
+                text-align: center;
+            }
+        </style>
+
+
+
+        <section id="home">
+            <div id="maindiv">
+                <h1 id="levelfont2">
+                    curs>r
+                </h1>
+                <p>A Neurasthenia xatspace inspired by a cursed game</p>
+                <h2>
+                    Welcome, guest!.
+
+                </h2>
+                <p>Prove yoursel worthe of the prize</p>
+            </div>
+
+
+
+            <p><span>Type "help" if you need to be held by the hand.</span></p>
+            <h2>Otherwise, just type "start" + "your Regname" ;)</h2>
+
+
+        </section>
+
+
+        <!--<section id="about">
+                <h2><span>&raquo;About</span></h2>
+                <p>QUADRA V-TECH VER:2.38 INTERFACE SIMULATION.</p>
+                <p>
+                    >> Initialize protocol colle28 (INIT.PROTOCOL.VEK[5.8])&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                    .<br />
+                    .<br />
+                    colle28 iniatilizing... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                    plase wait... &nbsp;&nbsp;&nbsp;<br />
+                    Cheking A.I. integrity...<br />
+                    Colle28 Protocol 05%.<br />
+                    Colle28 Protocol 18%.<br />
+                    Colle28 Protocol 33%.<br />
+                    Colle28 Protocol 56%.<br />
+                    Colle28 Protocol 79%.<br />
+                    Colle28 Protocol 99%.<br />
+                    <div id="matrice">protocol complete!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                    &nbsp;&nbsp;&nbsp;
+
+                    colle28 initialized: &nbsp;&nbsp;&nbsp;<br /><br /><br />
+                </p> <p>
+                    "What a beatifull day to die!"<br />
+                    Welcome to my terminal, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
+                    jQuery Terminal: version 2.38.1 Copyright (c) 2019-2021 based in Cyberpunk2077<br />
+                    by Nihil - xEvangelist:1533252890 WORK IN PROGRESS
+
+
+                </p>
+            </section>
+
+            <section id="compiler">
+                <h2><span>&raquo;Compiler</span></h2>
+
+                <p>Welcome to the QUADRA:Compiler V5.9</p>
+                <p>
+                    Initializing D.E.C.A Boot A.I. V3.29 <br /><br />
+                    script: Compiled successfully.<br />
+                    hash: 1639550242517<br />
+                    package: glitched-writer<br />
+                    version: 2.0.29<br />
+                    time: 644ms<br /><br />
+                    <div id="matrice">Password Required</div><br />
+                    Attempts Remaining:  0
+                    <br />
+
+
+                </p>
+
+
+            </section>
+
+            <section id="terminal">
+
+                <h2><span>&raquo;Terminal</span></h2>
+                <script>
+                    var n = 15000; var l = document.getElementById("nmr"); var tx = document.getElementById("fail")
+                    window.setInterval(function () {
+                        l.innerHTML = n; if (n == "0") { n = 0; tx.style.opacity = "1"; }
+                        else { n--; }
+                    }, 1000000);
+
+                </script>
+                <p>
+                    Breach time Remaing: <b id="nmr">30000</b> <br />
+                    Secuence Reequired to upload: <b id="cod">5C</b>  <b id="cod">FF</b> <b id="cod">E9</b><br />
+                    <div id="matrice">Matrice de code</div>
+                    <br />
+                    &nbsp; &nbsp;&nbsp;&nbsp;CD 55 BD  1C [] E9 <br /><br />
+                    &nbsp; &nbsp;&nbsp;&nbsp;FF [] 55  E9 CD F1 <br /><br />
+                    &nbsp; &nbsp;&nbsp;&nbsp;FD E9 1C  1C BD 55 <br /><br />
+                    &nbsp; &nbsp;&nbsp;&nbsp;BD F1 BD  FF E9 [] <br /><br />
+                    &nbsp; &nbsp;&nbsp;&nbsp;E9 1C FD  55 CD CD <br /><br />
+                    &nbsp;&nbsp;&nbsp; <b id="fail">FAILURE! RETURN HOME</b>
+
+                    <div id="cunt"><div id="cunt2"></div></div>
+                </p>
+
+            </section>-->
+        <!--Prologue-->
+        <section id="start">
+            <div id="maindiv">
+                <h1 id="levelfont">
+                    Level 1
+                </h1>
+
+                <h2>
+                    Welcome:  <span id="nameux"></span>
+
+                </h2>
+                <p>Prove yoursel worthe of the prize</p>
+            </div>
+
+            <p><span>Answer the questions with any of the <b>highlighted</b> commands</span></p>
+            <p>If you still need guidance write "help"</p>
+
+            <p>You observe my xatspace, your curiosity has led you to prove your worth.</p>
+            <p>You want to try? <b>yes</b>? or <b>not</b>?</p>
+        </section>
+
+        <section id="yes">
+            <h2>You have decided to prove your worth.</h2>
+            <p>You are in your room, it is necessary to turn off the lights.</p>
+            <p>Turn <b>off</b>? or turn <b>on</b>? </p>
+
+
+        </section>
+        <section id="off">
+            <h2>I assume you have turned them off.</h2>
+            <p>Now, click <a href="#" onclick="opentab1();">here</a>. Run the code.</p>
+            <p>do you still listen? ;)  </p>
+            <p><b>continue</b>? or <b>abandon</b>?  </p>
+
+        </section>
+        <section id="continue">
+            <h2>Assuming you're still listening...</h2>
+            <p>would you like to watch a video?</p>
+            <p><b>agree</b>? or <b>deny</b>?</p>
+        </section>
+        <section id="agree">
+            <p>Copy and paste in a new tab ;)</p>
+            <h2>https://www.youtube.com/watch?v=ZZOPpUK6rfw</h2>
+            <p>Don't even think about closing this window!.</p>
+            <p>Now you've gone blind, assuming you saw it.</p>
+            <p>this was <b>cringe</b>? or <b>creepy</b>?</p>
+        </section>
+
+        <section id="cringe">
+            <p>No matter what you think,</p>
+            <p>in the end you are doing what I tell you ;)</p>
+            <p>But it's the truth, you're still here of your own free will.</p>
+            <p>If you don't mind, let's play something! Let's say you're lost in a forest.</p>
+            <p>Where would you go?</p>
+            <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+        </section>
+        <section id="creepy">
+            <p>No matter what you think,</p>
+            <p>in the end you are doing what I tell you ;)</p>
+            <p>But it's the truth, you're still here of your own free will.</p>
+            <p>If you don't mind, let's play something! Let's say you're lost in a forest..</p>
+            <p>Where would you go?</p>
+            <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+        </section>
+        <!--NORTH route-->
+        <section id="north">
+            <p>Sure?</p>
+            <p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; ...</p>
+            <p>A shame... Bad way!</p>
+            <p>You fell off a cliff while screaming bleeding like a bitch.</p>
+            <p>Do you go <b>back</b>? or <b>surrender</b>?</p>
+        </section>
+        <section id="back">
+            <p>Go back...</p>
+            <p>Where would you go?</p>
+            <p><b>hell</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+        </section>
+
+
+        <!--south route-->
+        <section id="south">
+            <p>Sure?</p>
+            <p>A shame... You arrive at a cave where a bear rips your skin off and laughs at you.</p>
+
+            <p><b>return</b>? or <b>giveup</b>?</p>
+        </section>
+        <section id="return">
+            <p>Returned</p>
+            <p>Where would you go?</p>
+            <p><b>north</b>?, <b>east</b>?, <b>hell</b>?, <b>west</b>? or <b>hell</b>?</p>
+        </section>
+
+        <!--west route-->
+        <!--east route-->
+        <section id="east">
+
+            <p> you are in a forest clearing...</p>
+            <p>This seems familiar to you, you are standing in a place where the earth seems soft. </p>
+            <p>You're not so sure, but you know than to dig you won't like what you find buried.</p>
+            <p>Anyway, you can ignore those hunches.</p>
+            <p><b>dig</b>? Or find another <b>way out</b>?</p>
+
+        </section>
+        <section id="dig">
+
+
+            <p> You dig and find gold, a head of golden hair.</p>
+            <p>It sure looks familiar, doesn't it?  </p>
+            <p>In any case, this idea is already obsolete. There are not many exits.</p>
+            <p><b>suicide</b>? or keep <b>looking</b>?</p>
+
+        </section>
+        <section id="suicide">
+
+            <p> The best decision, now enjoy the price of your sins.</p>
+            <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
+            <p> as you do?</p>
+            <p><b>fast</b>? or <b>slow</b>?</p>
+        </section>
+        <section id="fast">
+
+            <p>No matter how you do it. Anyway it all ends here. </p>
+            <p>You've shown some courage, but you're still not worth it.</p>
+            <p>Anyway... It was fun!</p>
+            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+            <p>Or close this window if you already got bored</p>
+        </section>
+        <section id="slow">
+
+            <p>No matter how you do it. Anyway it all ends here. </p>
+            <p>You've shown some courage, but you're still not worth it.</p>
+            <p>Anyway... It was fun!</p>
+            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+            <p>Or close this window if you already got bored</p>
+        </section>
+
+        <section id="looking">
+
+            <p>Keep looking... </p>
+            <p>There aren't many roads left.</p>
+            <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
+
+        </section>
+        <section id="way">
+            <p>another way out</p>
+            <p>There aren't many roads left.</p>
+            <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
+
+        </section>
+
+
+        <!--hell route-->
+        <section id="hell">
+            <p>seems to be the only way...</p>
+            <p>Looking for something in your backpack:</p>
+            <p>Do you take the <b>rope</b>? or the <b>bottle</b>?</p>
+        </section>
+        <!--bottle route-->
+        <section id="bottle">
+
+
+            <p>You take the bottle and drink its contents.</p>
+            <p> You squirm like a pig in its shit and die in a matter of minutes to your gasps and vomit.</p>
+            <p> <b>finish</b>?</p>
+        </section>
+        <!--rope route-->
+        <section id="rope">
+            <p>
+                You take the rope.
+            </p>
+            <p>hang the <b>body</b>? or hang <b>yourself</b>?</p>
+        </section>
+
+        <section id="yourself">
+
+            <p> The best decision, now enjoy the price of your sins.</p>
+            <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
+            <p>you lie hanging like a bitch:</p>
+            <p> <b>finish</b>?</p>
+        </section>
+        <section id="incenerate">
+
+            <p>Well... Burning with life and soon in hell. </p>
+            <p>What decisions yours. </p>
+            <p>At least you knew from the start what you deserved.</p>
+            <p> <b>finish</b>? </p>
+        </section>
+        <section id="finish">
+
+            <p>Ending up here does not prove your worth, quite the contrary.</p>
+            <p>Anyway... It was fun!</p>
+            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+            <p>Or close this window if you already got bored</p>
+        </section>
+
+
+        <!--true route-->
+        <section id="body">
+
+            <p>Well done, looks like a suicide scene.</p>
+            <p>I guess it's too late to call an ambulance ;)</p>
+            <p>Everything is done.</p>
+            <p>Make a <b>bonfire</b>? or <b>incinerate</b> you?</p>
+        </section>
+        <section id="bonfire">
+
+            <p>you watch the fire while you drink from a bottle of whiskey</p>
+            <p> while you remember how much fun you had with now, that boxing bag.</p>
+
+            <p><b>leave</b>? or <b>stay</b> here?</p>
+        </section>
+
+        <section id="stay">
+            <p>As you contemplate your sins, </p>
+            <p>a man suddenly appears from behind and cuts your throat like cattle.</p>
+            <p>You're bleeding out like a bitch while panting.</p>
+            <p> But hey, it's not like you don't deserve it either. Don't they say you always get what you deserve?</p>
+            <p> In the end, one less crazy doesn't hurt. Who knows? there can be worse ;)</p>
+            <p> No one is unique, we are all replaceable.</p>
+            <p>You are just one more in this world.</p>
+            <p><b>finish?</b></p>
+        </section>
+        <section id="leave">
+
+            <p>You prepare to leave,</p>
+            <p>but suddenly a man who saw it all appears.</p>
+
+            <p><b>flee</b>? or <b>kill</b> him?</p>
+        </section>
+        <section id="flee">
+
+            <p>As you run away, you stumble like the typical blonde jerk in a horror movie.</p>
+            <p> The man jumps on your back and starts stabbing you as he cackles at your screams.</p>
+            <p> Your cowardice led you to this, now enjoy its price.</p>
+            <p><b>finish</b>?</p>
+        </section>
+        <section id="kill">
+
+            <p> As it should be ;)</p>
+            <p>The man without thinking runs towards you wielding a knife.</p>
+            <p> He looks familiar to you...&nbsp;&nbsp;&nbsp;&nbsp; It's...&nbsp;&nbsp; like...&nbsp;&nbsp; you know him...&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <p>TRUE!.</p>
+            <p>He is the father of the sack that hangs from that branch!</p>
+            <p> Will he be upset? You don't want to find out by standing there like an idiot.</p>
+
+            <p><b>confront</b> him? or <b>throw</b> bottle?</p>
+        </section>
+        <section id="confront">
+
+            <p>It's all over in a second.</p>
+            <p> Now you are in hell!</p>
+
+            <p><b>finish?</b></p>
+        </section>
+        <section id="throw">
+
+            <p> You throw the bottle and it crashes drenching the subject in alcohol.</p>
+            <p> He still doesn't seem to care, it seems that he is drugged and stumbles.</p>
+            <p> He falls into the bonfire and it starts to burn fast, his screams sound good...</p>
+            <p>The subject starts running trying to put out the fire and falls off the cliff.</p>
+            <p> Now there are two bodies!</p>
+            <p> What will you do?</p>
+
+            <p>go <b>away</b>? or <b>suicide</b>?</p>
+        </section>
+        <section id="away">
+
+            <p>There is nothing you can do, he burned alive and now he will burn in hell forever ;)</p>
+            <p>  Just like you someday.</p>
+            <p> At the moment, you are free of blame, there is no proof.</p>
+            <p>You've taken down the first boss!</p>
+            <p> <b>end</b>?</p>
+        </section>
+        <!--Negations-->
+        <section id="not">
+            <h2>You have decided the path of the coward.</h2>
+            <p>
+                Too bad, your worth equals the same as shit.
+            </p>
+            <p> good luck! </p>
+            <p> Close this window, you don't deserve that I dedicate more time ;)</p>
+
+        </section>
+        <section id="on">
+            <h2>You have decided the path of the coward.</h2>
+            <p>
+                Are you so scared of a little dark?
+            </p>
+            <p> good luck! </p>
+            <p> Close this window, you don't deserve that I dedicate more time ;)</p>
+
+        </section>
+        <section id="abandon">
+            <h2>You have decided the path of the coward.</h2>
+            <h2>
+                It's not like I'm going to dox you, xat doesn't allow it ;)
+
+            </h2>
+            <p>  It is only a "game". </p>
+            <p> Close this window, you don't deserve that I dedicate more time.</p>
+
+        </section>
+        <section id="deny">
+            <h2>You have decided the path of the coward.</h2>
+            <h2>
+                It's not like I'm going to dox you, xat doesn't allow it ;)
+
+            </h2>
+            <p>  It is only a "game". </p>
+            <p> Close this window, you don't deserve that I dedicate more time.</p>
+
+        </section>
+
+        <section id="exit">
+            <h2><span>&raquo;Logout...</span></h2>
+            <p>
+                exiting... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                Plase wait... &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                Deleting temporal archives... &nbsp;; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                <div id="matrice">Logout sucess!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                Close this window to exit
+
+            </p>
+
+        </section>
+        <!--<section id="error">
+            <p>Command not found!<p>
+            <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span></p>
+        </section>-->
+
+        <section id="help">
+            <!--<h2><span>&raquo;Help?</span></h2>-->
+            <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
+            <p>A Neurasthenia xatspace inspired by a cursed game</p>
+            <p><span>Type any of these commands </span></p>
+
+            <p>Main menu:</p>
+            <ul>
+                <li>'start + "your Regname"' -- Start the game. (Replace "+" for whitespace " "). Once the game is started, as per the question just type any of the highlighted commands.</li>
+                <!--<li>'about' -- What's this for</li>-->
+                <li>'neurasthenia' -- About my maker</li>
+                <li>'more' -- Extra Information</li>
+                <li>'media' -- stop or change music</li>
+                <li>'help' -- displays this list</li>
+                <li>'exit' -- Logout the interface</li>
+            </ul>
+        </section>
+        <section id="neurasthenia">
+            <div id="maindiv">
+                <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
+                <p>About my maker:</p>
+            </div>
+
+            <p>
+                "What a beatifull day to exonerate us!"<br />
+                Welcome to my simulator, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
+                jQuery Terminal: version 3.4.1 Copyright (c) 2019-2023 based in "Curs>r" Chosse or die<br />
+                by Grisatre - Neurasthenia:1533252890 WORK IN PROGRESS ;)
+            </p><div id="maindiv">
+                <p>About me: Curs>r Ver 0.89 </p>
+            </div>
+
+            <p>
+                Initializing D.E.C.A Boot A.I. V3.29 <br />script: Compiled successfully.<br />
+                hash: 1639550242517<br />
+                package: glitched-writer<br />
+                version: 2.0.29<br />
+                time: 644ms<br />
+                link to my font Code: XXXXX//XXX-XXXXX-XXX-XXXXXXXX-XXX-XX-XXXXXXXXXXXXX-XXXXXX.XX
+                <br />Contact:XXXXXXX@XXX.XXX
+            </p>
+            <p>Type "home" to return to main menu</p>
+
+        </section>
+
+        <span id="cmd2" onfocus="resumeAudio();" class="command">
+            <b id="blkjn2">:></b><span id="blkjn">▉</span><input id="txxt" type="text">
+
+
+        </span>
+
+    </main>
+
+    <div id="back1">
+        <style>
+            #cmd2 {
+                position: relative;
+                left: 0;
+            }
+
+            .command {
+                display: block;
+                max-width: 20em;
+                color: #48B83B;
+                text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+                font-weight: 700;
+                /*margin: 2em 0;*/
+            }
+
+            @keyframes blkn {
+                0% {
+                    opacity: 0;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+
+                50.1% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            #blkjn {
+                left: 0;
+                animation: blkn .5s infinite;
+                position: absolute;
+                z-index: -1;
+                left: 7%;
+            }
+
+            #blkjn2 {
+                position: absolute;
+                z-index: -1;
+                left: 0;
+            }
+
+            #txxt {
+                position: relative;
+                z-index: 99;
+                left: 5%;
+            }
+
+            #back1 {
+                background-image: url(https://i.postimg.cc/tRmstSn0/image.png);
+                filter: contrast(130%);
+                background-size: contain;
+                background-repeat: repeat;
+                position: absolute;
+                width: 100%;
+                height: 5vw;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </div> <div id="back3">
+        <style>
+            #back3 {
+                background-image: url(https://i.postimg.cc/Jh4y59xL/2.png);
+                filter: contrast(130%);
+                background-size: contain;
+                background-repeat: repeat;
+                position: absolute;
+                width: 5vw;
+                height: 80%;
+                top: 10%;
+                left: 0;
+            }
+        </style>
+    </div><div id="back2">
+        <style>
+            #back2 {
+                background-image: url(https://i.postimg.cc/tRmstSn0/image.png);
+                filter: contrast(130%);
+                background-size: contain;
+                background-repeat: repeat;
+                position: absolute;
+                width: 100%;
+                height: 5vw;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+    </div> <div id="back4">
+        <style>
+            #back4 {
+                background-image: url(https://i.postimg.cc/Jh4y59xL/2.png);
+                filter: contrast(130%);
+                background-size: contain;
+                background-repeat: repeat;
+                position: absolute;
+                width: 5vw;
+                height: 80%;
+                top: 10%;
+                right: 0;
+            }
+        </style>
+    </div>
+    <div id="back-eff"></div>
+    <script>
+
+        //]]>
+
+
+        (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+        // Let's do it!!
+        $(document).ready(function () {
+
+
+
+
+
+
+            $('.command').hide();
+            $('#home').focus();
+            $('input[type="text"]').focus();
+            $('#home').addClass('open');
+            $('#home').textTyper({
+                speed: 20,
+                afterAnimation: function () {
+                    $('.command').fadeIn();
+                    $('input[type="text"]').focus();
+                    $('input[type="text"]').val('');
+                }
+                //beforeAnimation: function () { $("nofocus").focus(); }
+            });
+
+            // get array of section ids, that exist in DOM
+            var sectionArray = [];
+            // We are using <section> here, you can use <div> or <article> if you want
+            $('section').each(function (i, e) {
+                //you can use e.id instead of $(e).attr('id')
+                sectionArray.push($(e).attr('id'));
+            });
+
+            // Debug
+            //console.log(sectionArray);
+
+
+
+            // Command Input------------------------------
+
+            $('input[type="text"]').keyup(function (e) {
+
+                if (e.which == 13) {// ENTER key pressed
+                    clave1 = $('input[type="text"]').val();
+
+                    if (clave1 == "end") {
+                        var url = "Cris2.html";
+                        $(location).attr('href', url);
+                    }
+
+                    $('.command').hide();
+                    /*var destination = $('input[type="text"]').val();*/
+
+                    var nombresincortar = $('input[type="text"]').val();
+                    var nombrecortado = nombresincortar.split(" ");
+                    var destination = nombrecortado[0];
+                    if (nombrecortado[1] == null) {
+                        nombrecortado[1] = "Unknow";
+                    }
+                    var nameuser = nombrecortado[1];
+                    /* var usernamex = destination;*/
+                    $('#nameux').text(nameuser);
+
+                    // Display section with id == destination and hide all others
+                    $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+                    // If destination does not match our array of section ids, display error section
+                    //if ($.inArray(destination, sectionArray) == -1) {
+                    //    $('#error').addClass('open');
+                    //    $('#error').siblings().removeClass('open');
+
+                    //}
+
+                    // All sections with class .open init textTyper
+
+
+                    $('.open').textTyper({
+                        speed: 20,
+                        afterAnimation: function () {
+                            $('.command').fadeIn();
+
+                            $('input[type="text"]').val('');
+
+                            let reproducir = false;
+                            let musica = new Audio("https://xevangelist.github.io/evangelist/click.mp3?raw=true");
+                            musica.loop = true;
+
+                            //arranca la música en bucle
+                            musica.addEventListener('ended', function () {
+
+                                this.play();
+                            }, false);
+                            musica.play();
+
+                            function resumeAudio() {
+                                if (!reproducir) {
+                                    reproducir = true;
+                                    musica.play();
+                                }
+                            }
+
+                            function pauseAudio() {
+                                if (reproducir) {
+                                    reproducir = false;
+                                    musica.pause();
+                                }
+                            }
+
+                            //$("#cmd2").click(function () {
+                            //    if (!reproducir) {
+                            //        reproducir = true;
+                            //        musica.pause();
+                            //    }
+                            //});
+                            function teclado(objeto) {
+                                var tecla = objeto.which;
+                                var num;
+
+                                switch (tecla) {
+                                    //case 82: //m
+                                    //    resumeAudio();
+                                    //    break;
+                                    case 13: //n
+                                        if (!reproducir) {
+                                            reproducir = true;
+                                            musica.pause();
+                                        }
+                                        break;
+
+                                }
+
+                            }
+
+                            document.addEventListener('keydown', teclado, false);
+                            $('input[type="text"]').focus();
+                        }
+                    });
+
+                }// end if ENTER key pressed
+                //$("#cmd2").focus();
+
+                $('input[type="text"]').focus();
+            });// end keyup function
+
+            // End Command Input-----------------------------
+
+        });
+    </script>
+
+</body>
+
 </html>
