@@ -4,26 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-                                                                                                                                                                                                                                     
-     <!--##### #     ##         ##### ##         ##### /    ##        ##### /##          ##              #######      /###           /      #####    ##         ##### ##         ##### #     ##            #####  #         ##        
-  ######  /#    #### /   ######  /### /   ######  /  #####     ######  / ##       /####            /       ###   /  ############/    ######  /  #### /   ######  /### /   ######  /#    #### /      ######  /        /####        
- /#   /  / ##    ###/   /#   /  / ###/   /#   /  /     #####  /#   /  /  ##      /  ###           /         ##  /     #########     /#   /  /   ####/   /#   /  / ###/   /#   /  / ##    ###/      /#   /  /        /  ###        
-/    /  /  ##    # #   /    /  /   ##   /    /  ##     # ##  /    /  /   ##         /##           ##        #   #     /  #         /    /  /    # #    /    /  /   ##   /    /  /  ##    # #      /    /  /            /##        
-    /  /    ##   #         /  /             /  ###     #         /  /    /         /  ##           ###           ##  /  ##             /  /     #          /  /             /  /    ##   #            /  /            /  ##       
-   ## ##    ##   #        ## ##            ##   ##     #        ## ##   /          /  ##          ## ###            /  ###            ## ##     #         ## ##            ## ##    ##   #           ## ##            /  ##       
-   ## ##     ##  #        ## ##            ##   ##     #        ## ##  /          /    ##          ### ###         ##   ##            ## ##     #         ## ##            ## ##     ##  #           ## ##           /    ##      
-   ## ##     ##  #        ## ######        ##   ##     #        ## ###/           /    ##            ### ###       ##   ##            ## ########         ## ######        ## ##     ##  #         /### ##           /    ##      
-   ## ##      ## #        ## #####         ##   ##     #        ## ##  ###       /      ##             ### /##     ##   ##            ## ##     #         ## #####         ## ##      ## #        / ### ##          /      ##     
-   ## ##      ## #        ## ##            ##   ##     #        ## ##    ##      /########               #/ /##    ##   ##            ## ##     ##        ## ##            ## ##      ## #           ## ##          /########     
-   #  ##       ###        #  ##             ##  ##     #        #  ##    ##     /        ##               #/ ##     ##  ##            #  ##     ##        #  ##            #  ##       ###      ##   ## ##         /        ##    
-      /        ###           /               ## #      #           /     ##     #        ##                # /       ## #      /         /       ##          /                /        ###     ###   #  /          #        ##    
-  /##/          ##       /##/         /       ###      /       /##/      ###   /####      ##     /##        /         ###     /      /##/        ##      /##/         /   /##/          ##      ###    /          /####      ##   
- /  #####               /  ##########/         #######/       /  ####    ##   /   ####    ## /  /  ########/           ######/      /  #####      ##    /  ##########/   /  #####                #####/          /   ####    ## / 
-/     ##               /     ######              ####        /    ##     #   /     ##      #/  /     #####               ###       /     ##            /     ######     /     ##                   ###          /     ##      #/  
-#                      #                                     #               #                 |                                   #                   #                #                                       #                 
- ##                     ##                                    ##              ##                \)                                  ##                  ##               ##                                      ##-->               
-                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                  
+
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/jquery-3.4.1.min.js"></script>
@@ -32,330 +13,303 @@
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/Gruntfile.js"></script>
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.js"></script>
     <script type="text/javascript" src="C:/Users/jessf/Desktop/Ev/countdown.min.js"></script>
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
-        @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
-        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+ <style>
+     @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+     @import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+     @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+     html {
+         font-family: 'Share Tech Mono', monospace;
+         background: linear-gradient(180deg, #050E09 0%, #07080d 100%) fixed;
+         overflow-y: scroll;
+     }
+     #back-eff {
+         position: fixed;
+         width: 100%;
+         height: 100%;
+         background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
+         opacity: .06;
+     }
+         html::-webkit-scrollbar { width:.01vw;
+         }
+     @keyframes text-blink {
+         from, to {
+             opacity: 1;
+         }
 
-        html {
-            font-family: 'Share Tech Mono', monospace;
-            background: linear-gradient(180deg, #050E09 0%, #07080d 100%) fixed;
-            overflow-y: scroll;
-        }
+         50% {
+             opacity: 0.5;
+         }
+     }
+     b {
+         color: #2EFE16;
+         font-weight: bold;
+     }
+     body {
+         animation: text-blink 0.01s steps(2) infinite;
+         /*font: .875em/1.6 'Inconsolata', monospace;*/
+         color: #10B435;
+         font-weight: 400;
+         max-width: 28em;
+         padding: 1em;
+         margin: 5% 0;
+         color: #48B83B;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+     }
 
-        #back-eff {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: url(https://i.postimg.cc/fLkWwRCn/tumblr-nhf4f8s-Gfz1s4fz4bo1-500.gif);
-            opacity: .06;
-        }
+     ::selection {
+         background: transparent;
+     }
 
-        html::-webkit-scrollbar {
-            width: .01vw;
-        }
+     ::-webkit-selection {
+         background: transparent;
+     }
 
-        @keyframes text-blink {
-            from, to {
-                opacity: 1;
-            }
+     ::-moz-selection {
+         background: transparent;
+     }
 
-            50% {
-                opacity: 0.5;
-            }
-        }
+     a {
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         color: #48B83B;
+     }
 
-        b {
-            color: #2EFE16;
-            font-weight: bold;
-        }
+         a:hover, a:focus {
+             background: black;
+             color: #48B83B;
+             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         }
 
-        body {
-            animation: text-blink 0.01s steps(2) infinite;
-            /*font: .875em/1.6 'Inconsolata', monospace;*/
-            color: #10B435;
-            font-weight: 400;
-            max-width: 28em;
-            padding: 1em;
-            margin: 5% 0;
-            color: #48B83B;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-        }
+     h2 {
+         font-size: 1em;
+         font-weight: 400; opacity:.8;
+     }
 
-        ::selection {
-            background: transparent;
-        }
+     p {
+         margin-bottom: 2em; opacity:.8;
+     }
 
-        ::-webkit-selection {
-            background: transparent;
-        }
+     abbr {
+         cursor: help;
+     }
 
-        ::-moz-selection {
-            background: transparent;
-        }
+     ul {
+         list-style: none;
+         padding: 0;
+     }
 
-        a {
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            color: #48B83B;
-        }
+     li {
+         margin: 1em 0 0;
+     }
 
-            a:hover, a:focus {
-                background: black;
-                color: #48B83B;
-                text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            }
+     span {
+         display: block;
+         color: #2C9E1F;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         line-height: 1;
+         animation: flashText 1s ease-out alternate infinite;
+     }
+     @keyframes flashText {
+         0% {
+             opacity: .3
+         }
 
-        h2 {
-            font-size: 1em;
-            font-weight: 400;
-            opacity: .8;
-        }
+         100% {
+             opacity: 1
+         }
+     }
 
-        p {
-            margin-bottom: 2em;
-            opacity: .8;
-        }
+     kbd {
+         font-family: 'Share Tech Mono', monospace;
+         border: 1px solid #48B83B;
+         box-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         text-transform: uppercase;
+         padding: 0 .2em;
+     }
+     #cod {
+         border: 1px solid #48B83B;
+         box-shadow: 0 0 5px rgba(14, 219, 21, .8);
+     }
+     input[type="text"] {
+         max-width: 25em;
+         border: none;
+         font-family: inherit;
+         background: transparent;
+         padding: 0 .5em;
+         padding-left:1vw;
+     }
 
-        abbr {
-            cursor: help;
-        }
+         input[type="text"]:focus {
+             background: transparent;
+             color: #48B83B;
+             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+             outline: none;
+         }
+     #cmd2 {
+         animation-delay: .4s;
+         animation-duration: .5s;
+         margin-left: 40%;
+     }
+   
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+     section {
+         display: none;   width:200%; margin-left:40%;
+     }
 
-        li {
-            margin: 1em 0 0;
-        }
+     .open {
+         display: block;
+     }
+     #cod { padding:.2vw;
+     }
+     #matrice {
+         width: 52%;
+         text-align: center;
+         height: 1.6vw;
+         background: #48B83B;
+         color: black;
+     }
+     #fail {
+         background: #db0e15;
+         color: black; padding:.2vw; opacity:0;
+     }
+     #music {
+         position: fixed;
+         right: 1vw;
+         top: 1vw; height:2vw; 
+         border: 1px solid #db0e15;
+         box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+     }
+     #mus { margin:.3vw;
+     }
+     #levelfont {
+         font-size: 2vw;
+         font-family: 'UnifrakturMaguntia', cursive;
+     }
+     #levelfont2 {
+         font-size: 6vw;
+         font-family: 'UnifrakturCook', cursive;
+         font-weight: lighter;
+     }
+     #imgpost { width:30%;
+     }
+     #auid {  
+         position: absolute;
+         width: 30%;
+         height: 7%;
+         top:20%;
+         left: 32%; text-align:center;
+     }
 
-        span {
-            display: block;
-            color: #2C9E1F;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            line-height: 1;
-            animation: flashText 1s ease-out alternate infinite;
-        }
+     .player {
+         z-index: 9;
+     }
 
-        @keyframes flashText {
-            0% {
-                opacity: .3
-            }
-
-            100% {
-                opacity: 1
-            }
-        }
-
-        kbd {
-            font-family: 'Share Tech Mono', monospace;
-            border: 1px solid #48B83B;
-            box-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            text-transform: uppercase;
-            padding: 0 .2em;
-        }
-
-        #cod {
-            border: 1px solid #48B83B;
-            box-shadow: 0 0 5px rgba(14, 219, 21, .8);
-        }
-
-        input[type="text"] {
-            max-width: 25em;
-            border: none;
-            font-family: inherit;
-            background: transparent;
-            padding: 0 .5em;
-            padding-left: 1vw;
-        }
-
-            input[type="text"]:focus {
-                background: transparent;
-                color: #48B83B;
-                text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-                outline: none;
-            }
-
-        #cmd2 {
-            animation-delay: .4s;
-            animation-duration: .5s;
-            margin-left: 40%;
-        }
-
-
-        section {
-            display: none;
-            width: 200%;
-            margin-left: 40%;
-        }
-
-        .open {
-            display: block;
-        }
-
-        #cod {
-            padding: .2vw;
-        }
-
-        #matrice {
-            width: 52%;
-            text-align: center;
-            height: 1.6vw;
-            background: #48B83B;
-            color: black;
-        }
-
-        #fail {
-            background: #db0e15;
-            color: black;
-            padding: .2vw;
-            opacity: 0;
-        }
-
-        #music {
-            position: fixed;
-            right: 1vw;
-            top: 1vw;
-            height: 2vw;
-            border: 1px solid #db0e15;
-            box-shadow: 0 0 5px rgba(219, 14, 21, .8);
-        }
-
-        #mus {
-            margin: .3vw;
-        }
-
-        #levelfont {
-            font-size: 2vw;
-            font-family: 'UnifrakturMaguntia', cursive;
-        }
-
-        #levelfont2 {
-            font-size: 6vw;
-            font-family: 'UnifrakturCook', cursive;
-            font-weight: lighter;
-        }
-
-        #imgpost {
-            width: 30%;
-        }
-
-        #auid {
-            position: absolute;
-            width: 30%;
-            height: 7%;
-            top: 20%;
-            left: 32%;
-            text-align: center;
-        }
-
-        .player {
-            z-index: 9;
-        }
-
-        .player-control {
-            position: absolute;
-            z-index: 999999999999999;
-            top: 120%;
-            right: 12%;
-        }
+     .player-control {
+         position: absolute;
+         z-index: 999999999999999;
+         top: 120%;
+         right: 12%;
+     }
 
 
 
 
-        #namesong {
-            color: #48B83B;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            left: 0%;
-            letter-spacing: .1vw;
-            font-size: 1vw;
-        }
+     #namesong {
+         
+         color: #48B83B;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         left: 0%;
+         letter-spacing: .1vw;
+         font-size: 1vw;
+     }
 
 
-        #name_sng {
-        }
+     #name_sng {
+         
+     }
 
-        .progress-bar {
-            width: 100%;
-            background: rgba(14, 219, 21, .8);
-            height: .2vw;
-            position: absolute;
-            top: 80%;
-        }
+     .progress-bar {
+         width: 100%;
+         background: rgba(14, 219, 21, .8);
+         height: .2vw;
+         position: absolute;
+         top: 80%;
+     }
 
-        .fillBar {
-            background: #033806;
-            width: 0;
-            height: .3vw;
-        }
+     .fillBar {
+         background: #033806;
+         width: 0;
+         height: .3vw;
+     }
 
-        #AT_time {
-            width: 5vw;
-            height: 1vw;
-            top: 35%;
-            right: 2%;
-            position: absolute;
-        }
+     #AT_time {
+         width: 5vw;
+         height: 1vw;
+         top: 35%;
+         right: 2%;
+         position: absolute;
+     }
 
-            #AT_time p {
-                position: absolute;
-                letter-spacing: .1vw;
-                font-size: .8vw;
-                color: #48B83B;
-                text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            }
+         #AT_time p {
+             position: absolute;
+             letter-spacing: .1vw;
+             font-size: .8vw;
+             color: #48B83B;
+             text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         }
 
-        .time {
-            position: absolute;
-            left: 4vw;
-            top: 2vw;
-            letter-spacing: .1vw;
-            font-size: .7vw;
-            width: 2vw;
-            overflow: hidden;
-            color: #48B83B;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-        }
+     .time {
+         position: absolute;
+         left: 4vw;
+         top: 2vw;
+         letter-spacing: .1vw;
+         font-size: .7vw;
+         width: 2vw;
+         overflow: hidden;
+         color: #48B83B;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+     }
 
-        #cd_1 {
-            width: 8vw;
-            height: 1.3vw;
-            border: .1vw solid rgba(199,48,48.3);
-            position: absolute;
-            left: 21vw;
-            top: .3vw;
-            overflow: hidden;
-        }
+     #cd_1 {
+         width: 8vw;
+         height: 1.3vw;
+         border: .1vw solid rgba(199,48,48.3);
+         position: absolute;
+         left: 21vw;
+         top: .3vw;
+         overflow: hidden;
+     }
 
-        #cd_2 {
-            width: 4.7vw;
-            height: 1.3vw;
-            border: .1vw solid rgba(199,48,48.3);
-            position: absolute;
-            left: 29vw;
-            top: .3vw;
-        }
+     #cd_2 {
+         width: 4.7vw;
+         height: 1.3vw;
+         border: .1vw solid rgba(199,48,48.3);
+         position: absolute;
+         left: 29vw;
+         top: .3vw;
+     }
 
-        .artist-name {
-            left: .1vw;
-            color: #48B83B;
-            text-shadow: 0 0 5px rgba(14, 219, 21, .8);
-            letter-spacing: .1vw;
-            font-size: .6vw;
-        }
+     .artist-name {
+         left: .1vw;
+         color: #48B83B;
+         text-shadow: 0 0 5px rgba(14, 219, 21, .8);
+         letter-spacing: .1vw;
+         font-size: .6vw;
+        
+     }
 
-        #cd_2 p {
-            position: absolute;
-            top: 10%;
-            letter-spacing: .05vw;
-            font-size: .4vw;
-            left: .4vw;
-            color: rgba(199,48,48.3);
-            line-height: .5vw;
-        }
-    </style>
-
+     #cd_2 p {
+         position: absolute;
+         top: 10%;
+         letter-spacing: .05vw;
+         font-size: .4vw;
+         left: .4vw;
+         color: rgba(199,48,48.3);
+         line-height: .5vw;
+     }
+     
+ </style>
+   
 </head>
 <body>
     <script>
