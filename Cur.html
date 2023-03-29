@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <title></title>
 
-    
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
  <style>
      @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
@@ -15,7 +14,7 @@
      html {
          font-family: 'Share Tech Mono', monospace;
          background: linear-gradient(180deg, #050E09 0%, #07080d 100%) fixed;
-         overflow-y: scroll;
+         /**/
      }
      #back-eff {
          position: fixed; top:0; left:0;
@@ -44,9 +43,7 @@
          /*font: .875em/1.6 'Inconsolata', monospace;*/
          color: #10B435;
          font-weight: 400;
-         max-width: 28em;
-         padding: 1em;
-         margin: 5% 0;
+         
          color: #48B83B;
          text-shadow: 0 0 5px rgba(14, 219, 21, .8);
      }
@@ -142,12 +139,12 @@
      #cmd2 {
          animation-delay: .4s;
          animation-duration: .5s;
-         margin-left: 40%;
+         
      }
    
 
      section {
-         display: none;   width:200%; margin-left:40%;
+         display: none;   width:100%; 
      }
 
      .open {
@@ -374,750 +371,767 @@
         // Utiliza el evento click para iniciar o detener la reproducción
         music.addEventListener("click", audio, false);
     </script>-->
-    <main>
-        <!--<div id="music" onclick="audio();">
-        <p id="mus">MUSIC ON</p>
-    </div>-->
-        <style>
-            #maindiv {
-                text-align: center;
-            }
+    <div id="mainscren">
+        <main>
+            <!--<div id="music" onclick="audio();">
+            <p id="mus">MUSIC ON</p>
+        </div>-->
+            <style>
+                #maindiv {
+                    text-align: center;
+                }
 
-            .novis {
-                opacity: 0;
-                z-index: -20;
-            }
+                .novis {
+                    opacity: 0;
+                    z-index: -20;
+                }
 
-            .visi {
-                opacity: 1;
-                z-index: 1;
-            }
-        </style>
-
-
-
-        <section id="home">
-            <div id="maindiv">
-                <h1 id="levelfont2">
-                    curs>r
-                </h1>
-                <p>A Neurasthenia xatspace inspired by a cursed game</p>
-                <h2>
-                    Welcome, guest!.
-
-                </h2>
-                <p>Prove yoursel worthe of the prize</p>
-            </div>
+                .visi {
+                    opacity: 1;
+                    z-index: 1;
+                }
+            </style>
 
 
 
-            <p><span>Type "help" if you still don't know how to proceed.</span></p>
-            <h2>Otherwise, just type "start" + "your Regname" ;)</h2>
+            <section id="home">
+                <div id="maindiv">
+                    <h1 id="levelfont2">
+                        curs>r
+                    </h1>
+                    <p>A Neurasthenia xatspace inspired by a cursed game</p>
+                    <h2>
+                        Welcome, guest!.
+
+                    </h2>
+                    <p>Prove yoursel worthe of the prize</p>
+                </div>
 
 
-        </section>
+
+                <p><span>Type "help" if you still don't know how to proceed.</span></p>
+                <h2>Otherwise, just type "start" + "your Regname" ;)</h2>
 
 
-        <!--<section id="about">
-        <h2><span>&raquo;About</span></h2>
-        <p>QUADRA V-TECH VER:2.38 INTERFACE SIMULATION.</p>
-        <p>
-            >> Initialize protocol colle28 (INIT.PROTOCOL.VEK[5.8])&nbsp; &nbsp;&nbsp;&nbsp;<br />
-            .<br />
-            .<br />
-            colle28 iniatilizing... &nbsp; &nbsp;&nbsp;&nbsp;<br />
-            plase wait... &nbsp;&nbsp;&nbsp;<br />
-            Cheking A.I. integrity...<br />
-            Colle28 Protocol 05%.<br />
-            Colle28 Protocol 18%.<br />
-            Colle28 Protocol 33%.<br />
-            Colle28 Protocol 56%.<br />
-            Colle28 Protocol 79%.<br />
-            Colle28 Protocol 99%.<br />
-            <div id="matrice">protocol complete!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
-            &nbsp;&nbsp;&nbsp;
-
-            colle28 initialized: &nbsp;&nbsp;&nbsp;<br /><br /><br />
-        </p> <p>
-            "What a beatifull day to die!"<br />
-            Welcome to my terminal, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
-            jQuery Terminal: version 2.38.1 Copyright (c) 2019-2021 based in Cyberpunk2077<br />
-            by Nihil - xEvangelist:1533252890 WORK IN PROGRESS
+            </section>
 
 
-        </p>
-    </section>
-
-    <section id="compiler">
-        <h2><span>&raquo;Compiler</span></h2>
-
-        <p>Welcome to the QUADRA:Compiler V5.9</p>
-        <p>
-            Initializing D.E.C.A Boot A.I. V3.29 <br /><br />
-            script: Compiled successfully.<br />
-            hash: 1639550242517<br />
-            package: glitched-writer<br />
-            version: 2.0.29<br />
-            time: 644ms<br /><br />
-            <div id="matrice">Password Required</div><br />
-            Attempts Remaining:  0
-            <br />
-
-
-        </p>
-
-
-    </section>
-
-    <section id="terminal">
-
-        <h2><span>&raquo;Terminal</span></h2>
-        <script>
-            var n = 15000; var l = document.getElementById("nmr"); var tx = document.getElementById("fail")
-            window.setInterval(function () {
-                l.innerHTML = n; if (n == "0") { n = 0; tx.style.opacity = "1"; }
-                else { n--; }
-            }, 1000000);
-
-        </script>
-        <p>
-            Breach time Remaing: <b id="nmr">30000</b> <br />
-            Secuence Reequired to upload: <b id="cod">5C</b>  <b id="cod">FF</b> <b id="cod">E9</b><br />
-            <div id="matrice">Matrice de code</div>
-            <br />
-            &nbsp; &nbsp;&nbsp;&nbsp;CD 55 BD  1C [] E9 <br /><br />
-            &nbsp; &nbsp;&nbsp;&nbsp;FF [] 55  E9 CD F1 <br /><br />
-            &nbsp; &nbsp;&nbsp;&nbsp;FD E9 1C  1C BD 55 <br /><br />
-            &nbsp; &nbsp;&nbsp;&nbsp;BD F1 BD  FF E9 [] <br /><br />
-            &nbsp; &nbsp;&nbsp;&nbsp;E9 1C FD  55 CD CD <br /><br />
-            &nbsp;&nbsp;&nbsp; <b id="fail">FAILURE! RETURN HOME</b>
-
-            <div id="cunt"><div id="cunt2"></div></div>
-        </p>
-
-    </section>-->
-        <!--Prologue-->
-        <section id="start">
-            <div id="maindiv">
-                <h1 id="levelfont">
-                    Level 1
-                </h1>
-
-                <h2>
-                    Welcome:  <span id="nameux"></span>
-
-                </h2>
-                <p>Prove yoursel worthe of the prize</p>
-            </div>
-
-            <p><span>Answer the questions with any of the <b>highlighted</b> commands</span></p>
-            <p>If you still need guidance write "help"</p>
-
-            <p>You observe my xatspace, your curiosity has led you to prove your worth.</p>
-            <p>You want to try? <b>yes</b>? or <b>not</b>?</p>
-        </section>
-
-        <section id="yes">
-            <h2>You have decided to prove your worth.</h2>
-            <p>You are in your room, it is necessary to turn off the lights.</p>
-            <p>Turn <b>off</b>? or turn <b>on</b>? </p>
-
-
-        </section>
-        <section id="off">
-            <h2>I assume you have turned them off.</h2>
-            <p>Now, click <a href="#" onclick="opentab1();">here</a>. Run the code.</p>
-            <p>do you still listen? ;)  </p>
-            <p><b>continue</b>? or <b>abandon</b>?  </p>
-
-        </section>
-        <section id="continue">
-            <h2>Assuming you're still listening...</h2>
-            <p>would you like to watch a video?</p>
-            <p><b>agree</b>? or <b>deny</b>?</p>
-        </section>
-        <section id="agree">
-            <p>Copy and paste in a new tab ;)</p>
-            <h2>https://www.youtube.com/watch?v=ZZOPpUK6rfw</h2>
-            <p>Don't even think about closing this window!.</p>
-            <p>Now you've gone blind, assuming you saw it.</p>
-            <p>this was <b>cringe</b>? or <b>creepy</b>?</p>
-        </section>
-
-        <section id="cringe">
-            <p>No matter what you think,</p>
-            <p>in the end you are doing what I tell you ;)</p>
-            <p>But it's the truth, you're still here of your own free will.</p>
-            <p>If you don't mind, let's play something! Let's say you're lost in a forest.</p>
-            <p>Where would you go?</p>
-            <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
-        </section>
-        <section id="creepy">
-            <p>No matter what you think,</p>
-            <p>in the end you are doing what I tell you ;)</p>
-            <p>But it's the truth, you're still here of your own free will.</p>
-            <p>If you don't mind, let's play something! Let's say you're lost in a forest..</p>
-            <p>Where would you go?</p>
-            <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
-        </section>
-        <!--NORTH route-->
-        <section id="north">
-            <p>Sure?</p>
-            <p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; ...</p>
-            <p>A shame... Bad way!</p>
-            <p>You fell off a cliff while screaming bleeding like a bitch.</p>
-            <p>Do you go <b>back</b>? or <b>surrender</b>?</p>
-        </section>
-        <section id="back">
-            <p>Go back...</p>
-            <p>Where would you go?</p>
-            <p><b>hell</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
-        </section>
-
-
-        <!--south route-->
-        <section id="south">
-            <p>Sure?</p>
+            <!--<section id="about">
+            <h2><span>&raquo;About</span></h2>
+            <p>QUADRA V-TECH VER:2.38 INTERFACE SIMULATION.</p>
             <p>
-                I can see the future...<br />
-                You will come to a cave where a bear will skin you and laugh at you.
-            </p>
+                >> Initialize protocol colle28 (INIT.PROTOCOL.VEK[5.8])&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                .<br />
+                .<br />
+                colle28 iniatilizing... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                plase wait... &nbsp;&nbsp;&nbsp;<br />
+                Cheking A.I. integrity...<br />
+                Colle28 Protocol 05%.<br />
+                Colle28 Protocol 18%.<br />
+                Colle28 Protocol 33%.<br />
+                Colle28 Protocol 56%.<br />
+                Colle28 Protocol 79%.<br />
+                Colle28 Protocol 99%.<br />
+                <div id="matrice">protocol complete!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                &nbsp;&nbsp;&nbsp;
 
-            <p><b>return</b>? or <b>giveup</b>?</p>
-        </section>
-        <section id="return">
-            <p>Returned</p>
-            <p>Where would you go?</p>
-            <p><b>north</b>?, <b>east</b>?, <b>hell</b>?, <b>west</b>? or <b>hell</b>?</p>
-        </section>
+                colle28 initialized: &nbsp;&nbsp;&nbsp;<br /><br /><br />
+            </p> <p>
+                "What a beatifull day to die!"<br />
+                Welcome to my terminal, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
+                jQuery Terminal: version 2.38.1 Copyright (c) 2019-2021 based in Cyberpunk2077<br />
+                by Nihil - xEvangelist:1533252890 WORK IN PROGRESS
 
-        <!--west route--> <section id="west">
-            <p>Bad way...</p>
-            <p>you will fall into a bear trap and slowly bleed out.</p>
-
-            <p><b>giveup</b>? or keep <b>looking</b>?</p>
-        </section>
-        <section id="giveup">
-            
-            <p>
-                When you were trying to escape, you tripped and broke your neck as you fell.<br />
-                I know, a pretty stupid way to die, just like your decisions ;)
-            </p>
-            <p> It was fun! </p>
-            <p> Close this window, you don't deserve that I dedicate more time ;)</p>
-
-        </section>
-        <!--east route-->
-        <section id="east">
-
-            <p> you are in a forest clearing...</p>
-            <p>This seems familiar to you, you are standing in a place where the earth seems soft. </p>
-            <p>You're not so sure, but you know than to dig you won't like what you find buried.</p>
-            <p>Anyway, you can ignore those hunches.</p>
-            <p><b>dig</b>? Or find another <b>way out</b>?</p>
-
-        </section>
-        <section id="dig">
-
-
-            <p> You dig and find gold, a head of golden hair.</p>
-            <p>It sure looks familiar, doesn't it?  </p>
-            <p>In any case, this idea is already obsolete. There are not many exits.</p>
-            <p><b>suicide</b>? or keep <b>looking</b>?</p>
-
-        </section>
-        <section id="suicide">
-
-            <p> The best decision, now enjoy the price of your sins.</p>
-            <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
-            <p> as you do?</p>
-            <p><b>fast</b>? or <b>slow</b>?</p>
-        </section>
-        <section id="fast">
-
-            <p>No matter how you do it. Anyway it all ends here. </p>
-            <p>You've shown some courage, but you're still not worth it.</p>
-            <p>Anyway... It was fun!</p>
-            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
-            <p>Or close this window if you already got bored</p>
-        </section>
-        <section id="slow">
-
-            <p>No matter how you do it. Anyway it all ends here. </p>
-            <p>You've shown some courage, but you're still not worth it.</p>
-            <p>Anyway... It was fun!</p>
-            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
-            <p>Or close this window if you already got bored</p>
-        </section>
-
-        <section id="looking">
-
-            <p>Keep looking... </p>
-            <p>There aren't many roads left.</p>
-            <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
-
-        </section>
-        <section id="way">
-            <p>another way out</p>
-            <p>There aren't many roads left.</p>
-            <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
-
-        </section>
-
-
-        <!--hell route-->
-        <section id="hell">
-            <p>seems to be the only way...</p>
-            <p>Looking for something in your backpack:</p>
-            <p>Do you take the <b>rope</b>? or the <b>bottle</b>?</p>
-        </section>
-        <!--bottle route-->
-        <section id="bottle">
-
-
-            <p>You take the bottle and drink its contents.</p>
-            <p> You squirm like a pig in its shit and die in a matter of minutes to your gasps and vomit.</p>
-            <p> <b>finish</b>?</p>
-        </section>
-        <!--rope route-->
-        <section id="rope">
-            <p>
-                You take the rope.
-            </p>
-            <p>hang the <b>body</b>? or hang <b>yourself</b>?</p>
-        </section>
-
-        <section id="yourself">
-
-            <p> The best decision, now enjoy the price of your sins.</p>
-            <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
-            <p>you lie hanging like a bitch:</p>
-            <p> <b>finish</b>?</p>
-        </section>
-        <section id="incenerate">
-
-            <p>Well... Burning with life and soon in hell. </p>
-            <p>What decisions yours. </p>
-            <p>At least you knew from the start what you deserved.</p>
-            <p> <b>finish</b>? </p>
-        </section>
-        <section id="finish">
-
-            <p>Ending up here does not prove your worth, quite the contrary.</p>
-            <p>Anyway... It was fun!</p>
-            <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
-            <p>Or close this window if you already got bored</p>
-        </section>
-
-
-        <!--true route-->
-        <section id="body">
-
-            <p>Well done, looks like a suicide scene.</p>
-            <p>I guess it's too late to call an ambulance ;)</p>
-            <p>Everything is done.</p>
-            <p>Make a <b>bonfire</b>? or <b>incinerate</b> you?</p>
-        </section>
-        <section id="bonfire">
-
-            <p>you watch the fire while you drink from a bottle of whiskey</p>
-            <p> while you remember how much fun you had with now, that boxing bag.</p>
-
-            <p><b>leave</b>? or <b>stay</b> here?</p>
-        </section>
-
-        <section id="stay">
-            <p>As you contemplate your sins, </p>
-            <p>a man suddenly appears from behind and cuts your throat like cattle.</p>
-            <p>You're bleeding out like a bitch while panting.</p>
-            <p> But hey, it's not like you don't deserve it either. Don't they say you always get what you deserve?</p>
-            <p> In the end, one less crazy doesn't hurt. Who knows? there can be worse ;)</p>
-            <p> No one is unique, we are all replaceable.</p>
-            <p>You are just one more in this world.</p>
-            <p><b>finish?</b></p>
-        </section>
-        <section id="leave">
-
-            <p>You prepare to leave,</p>
-            <p>but suddenly a man who saw it all appears.</p>
-
-            <p><b>flee</b>? or <b>kill</b> him?</p>
-        </section>
-        <section id="flee">
-
-            <p>As you run away, you stumble like the typical blonde jerk in a horror movie.</p>
-            <p> The man jumps on your back and starts stabbing you as he cackles at your screams.</p>
-            <p> Your cowardice led you to this, now enjoy its price.</p>
-            <p><b>finish</b>?</p>
-        </section>
-        <section id="kill">
-
-            <p> As it should be ;)</p>
-            <p>The man without thinking runs towards you wielding a knife.</p>
-            <p> He looks familiar to you...&nbsp;&nbsp;&nbsp;&nbsp; It's...&nbsp;&nbsp; like...&nbsp;&nbsp; you know him...&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p>TRUE!.</p>
-            <p>He is the father of the sack that hangs from that branch!</p>
-            <p> Will he be upset? You don't want to find out by standing there like an idiot.</p>
-
-            <p><b>confront</b> him? or <b>throw</b> bottle?</p>
-        </section>
-        <section id="confront">
-
-            <p>It's all over in a second.</p>
-            <p> Now you are in hell!</p>
-
-            <p><b>finish?</b></p>
-        </section>
-        <section id="throw">
-
-            <p> You throw the bottle and it crashes drenching the subject in alcohol.</p>
-            <p> He still doesn't seem to care, it seems that he is drugged and stumbles.</p>
-            <p> He falls into the bonfire and it starts to burn fast, his screams sound good...</p>
-            <p>The subject starts running trying to put out the fire and falls off the cliff.</p>
-            <p> Now there are two bodies!</p>
-            <p> What will you do?</p>
-
-            <p>go <b>away</b>? or <b>suicide</b>?</p>
-        </section>
-        <section id="away">
-
-            <p>There is nothing you can do, he burned alive and now he will burn in hell forever ;)</p>
-            <p>  Just like you someday.</p>
-            <p> At the moment, you are free of blame, there is no proof.</p>
-            <p>You've taken down the first boss!</p>
-            <p> <b>end</b>?</p>
-        </section>
-        <style>
-            #imgend {
-                position: absolute;
-                width: 70%;
-                height: 90%;
-                left: 15%;
-                top: 10%;
-                filter: contrast(130%);
-                overflow: hidden;
-                position: absolute;
-                z-index: -1;
-            }
-
-            #imgen {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                z-index: 1; /*animation: imgspin 10s alternate;*/
-            }
-
-            #maindiv2 {
-                background: black;
-                text-align: center;
-                height: 15vw;
-                z-index: 2222;
-                width: auto;
-                opacity: .9;
-            }
-
-            @keyframes imgspin {
-                0% {
-                    transform: rotate(0deg);
-                    transition-delay: .5s;
-                }
-
-                10% {
-                    transition-delay: .5s;
-                    transform: rotate(0deg);
-                }
-
-                10.1% {
-                    transform: rotate(15deg);
-                    transition-delay: .5s;
-                }
-
-                20% {
-                    transform: rotate(15deg);
-                    transition-delay: .5s;
-                }
-
-                20.1% {
-                    transform: rotate(30deg);
-                    transition-delay: .5s;
-                }
-
-                30% {
-                    transform: rotate(30deg);
-                    transition-delay: .5s;
-                }
-
-                30.1% {
-                    transform: rotate(15deg);
-                    transition-delay: .5s;
-                }
-
-                100% {
-                    top: 5%;
-                }
-            }
-        </style>
-        <section id="end">
-            <div id="imgend"><img id="imgen" src="https://i.postimg.cc/Nf9gNXHb/image-8.png" /></div>
-
-            <br /> <br /> <br /> <br />
-            <div id="maindiv2">
-                <br />
-                <p>A worthy player!</p>
-                <h1 id="levelfont">
-                    Level 1 complete!
-                </h1>
-
-                <p>Same time again tomorrow for more fun!</p>
-            </div>
-            <p>Type "home" to return main menu</p>
-
-        </section>
-        <!--Negations-->
-        <section id="not">
-            <h2>You have decided the path of the coward.</h2>
-            <p>
-                Too bad, your worth equals the same as shit.
-            </p>
-            <p> good luck! </p>
-            <p> Close this window, you don't deserve that I dedicate more time ;)</p>
-
-        </section>
-        <section id="on">
-            <h2>You have decided the path of the coward.</h2>
-            <p>
-                Are you so scared of a little dark?
-            </p>
-            <p> good luck! </p>
-            <p> Close this window, you don't deserve that I dedicate more time ;)</p>
-
-        </section>
-        <section id="abandon">
-            <h2>You have decided the path of the coward.</h2>
-            <h2>
-                It's not like I'm going to dox you, xat doesn't allow it ;)
-
-            </h2>
-            <p>  It is only a "game". </p>
-            <p> Close this window, you don't deserve that I dedicate more time.</p>
-
-        </section>
-        <section id="deny">
-            <h2>You have decided the path of the coward.</h2>
-            <h2>
-                It's not like I'm going to dox you, xat doesn't allow it ;)
-
-            </h2>
-            <p>  It is only a "game". </p>
-            <p> Close this window, you don't deserve that I dedicate more time.</p>
-
-        </section>
-
-        <section id="exit">
-            <h2><span>&raquo;Logout...</span></h2>
-            <p>
-                exiting... &nbsp; &nbsp;&nbsp;&nbsp;<br />
-                Plase wait... &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br />
-                Deleting temporal archives... &nbsp;; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
-                <div id="matrice">Logout sucess!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
-                Close this window to exit
 
             </p>
-
         </section>
-        <!--<section id="error">
-        <p>Command not found!<p>
-        <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span></p>
-    </section>-->
 
-        <section id="help">
-            <!--<h2><span>&raquo;Help?</span></h2>-->
-            <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
-            <p>A Neurasthenia xatspace inspired by a cursed game</p>
-            <p><span>Type any of these commands </span></p>
+        <section id="compiler">
+            <h2><span>&raquo;Compiler</span></h2>
 
-            <p>Main menu:</p>
-            <ul>
-                <li>'start + "your Regname"' -- Start the game. (Replace "+" for whitespace " "). Once the game is started, as per the question just type any of the highlighted commands.</li>
-                <!--<li>'about' -- What's this for</li>-->
-                <li>'neurasthenia' -- About me and my creator</li>
-                <li>'more' -- Extra Information</li>
-                <li>'media' -- MusicPlayer</li>
-                <li>'help' -- displays this list</li>
-                <li>'exit' -- Logout the interface</li>
-            </ul>
-        </section>
-        <section id="neurasthenia">
-            <div id="maindiv">
-                <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
-                <p>About my maker:</p>
-            </div>
-
+            <p>Welcome to the QUADRA:Compiler V5.9</p>
             <p>
-                "What a beatifull day to exonerate us!"<br />
-                Welcome to my simulator, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
-                jQuery Terminal: version 3.4.1 Copyright (c) 2019-2023 based in "Curs>r" Chosse or die<br />
-                by Grisatre - Neurasthenia:1533252890 WORK IN PROGRESS ;)
-            </p><div id="maindiv">
-                <p>About me: Curs>r Ver 0.89 </p>
-            </div>
-
-            <p>
-                Initializing D.E.C.A Boot A.I. V3.29 <br />script: Compiled successfully.<br />
+                Initializing D.E.C.A Boot A.I. V3.29 <br /><br />
+                script: Compiled successfully.<br />
                 hash: 1639550242517<br />
                 package: glitched-writer<br />
                 version: 2.0.29<br />
-                time: 644ms<br />
-                link to my font Code: XXXXX//XXX-XXXXX-XXX-XXXXXXXX-XXX-XX-XXXXXXXXXXXXX-XXXXXX.XX
-                <br />Contact:XXXXXXX@XXX.XXX
-            </p>
-            <p>Type "home" to return to main menu</p>
-
-        </section>
-        <section id="more">
-            <div id="maindiv">
-                <p><span>Extra Information / notes / lists</span></p>
-                <p>Last update: 27/03/2023</p>
-            </div>
-
-            <p>
-                Post by: Neurasthenia<br />
-
-
-                Swallow your freedom, swallow your smile, swallow your sanity that crawls and itches inside.<br />
-                We got the cure, we got your fate, we got everything you want so you don't have to think again.<br />
-                You're the chemical whore, they make you beg on your knees for more.<br />
-                A chemical whore. steal your life, steal your mind whatever is left of your soul.<br />
+                time: 644ms<br /><br />
+                <div id="matrice">Password Required</div><br />
+                Attempts Remaining:  0
                 <br />
-                We'll make you addicted: our little bitches, we love your money much more than your pity health<br />
-                With our expensive pills we control your fear we disconnect you and tell you what to feel<br />
+
+
+            </p>
+
+
+        </section>
+
+        <section id="terminal">
+
+            <h2><span>&raquo;Terminal</span></h2>
+            <script>
+                var n = 15000; var l = document.getElementById("nmr"); var tx = document.getElementById("fail")
+                window.setInterval(function () {
+                    l.innerHTML = n; if (n == "0") { n = 0; tx.style.opacity = "1"; }
+                    else { n--; }
+                }, 1000000);
+
+            </script>
+            <p>
+                Breach time Remaing: <b id="nmr">30000</b> <br />
+                Secuence Reequired to upload: <b id="cod">5C</b>  <b id="cod">FF</b> <b id="cod">E9</b><br />
+                <div id="matrice">Matrice de code</div>
                 <br />
-                Grisatre - "Chemical whore"
-                <br />
-                27/03/2023 <br />
-                <!--<img id="imgpost" src="https://i.postimg.cc/02171bKC/fotoefectos-com-final-7679581919713164846.jpg" />-->
+                &nbsp; &nbsp;&nbsp;&nbsp;CD 55 BD  1C [] E9 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;FF [] 55  E9 CD F1 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;FD E9 1C  1C BD 55 <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;BD F1 BD  FF E9 [] <br /><br />
+                &nbsp; &nbsp;&nbsp;&nbsp;E9 1C FD  55 CD CD <br /><br />
+                &nbsp;&nbsp;&nbsp; <b id="fail">FAILURE! RETURN HOME</b>
+
+                <div id="cunt"><div id="cunt2"></div></div>
             </p>
 
+        </section>-->
+            <!--Prologue-->
+            <section id="start">
+                <div id="maindiv">
+                    <h1 id="levelfont">
+                        Level 1
+                    </h1>
 
-            <p>
-                "section2" to next page<br />
-                "list" to see social list<br />
-                "home" to return to main menu
-            </p>
+                    <h2>
+                        Welcome:  <span id="nameux"></span>
 
-            <div></div>
-        </section>
-        <section id="list">
-            <div id="maindiv">
-                <p><span>List friends</span></p>
-                <p>Last update: 27/03/2023</p>
-            </div>
-
-
-            <p>
-                <b>
-                    "SunfLoweer"+  - 276028763
-                </b><br />
-                <b>
-                    "Itami"+ - 1481199396
-                </b><br />
-                "zXanaxiety" - 341287796<br />
-                "Taiga" - 90391591 <br />
-                "xincoherent" - 104551610<br />
-                "Necessarius" - 258635881<br />
-                "OtsegoLectric" - 291296788<br />
-                "Niert" - 1515877736<br />
-                "AntiCLockwise" - 1515302520<br />
-                "Kagura" - 1520048635<br />
-                "AhriWithHeaL" - 276479585<br />
-                "MrCobain" - 131141053
-            </p>
-            <p>
-                "more" to return<br />
-                "home" to return to main menu
-            </p>
-
-        </section>
-        <section id="section2">
-            <div id="maindiv">
-                <p><span>Extra Information / notes / lists</span></p>
-                <p>Last update: 27/03/2023</p>
-            </div>
-
-            <p>
-                Nothing here! ;)
-            </p>
-
-
-            <p>
-                "more" to return<br />
-                "list" to see social list<br />
-                "home" to return to main menu
-            </p>
-
-            <div></div>
-        </section>
-        <section id="media">
-            <div id="maindiv">
-                <p><span>Music player</span></p>
-
-            </div>
-
-            <br />
-            <br /> <br /> <br /> <br /> <br /> <br />
-            <p>
-                "next" to play or next song<br />
-                "prev" prev song<br />
-                "pause" for stop or "resume" to renude song<br />
-                "home" main menu
-            </p>
-
-
-        </section>
-        <div id="auid" class="novis">
-            <div id="R_plyr">
-                <div id="dt_rp">
-
-                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                    </h2>
+                    <p>Prove yoursel worthe of the prize</p>
                 </div>
 
-                <div id="mor_rpy">
+                <p><span>Answer the questions with any of the <b>highlighted</b> commands</span></p>
+                <p>If you still need guidance write "help"</p>
 
-                    <div class="player">
+                <p>You observe my xatspace, your curiosity has led you to prove your worth.</p>
+                <p>You want to try? <b>yes</b>? or <b>not</b>?</p>
+            </section>
 
-                        <div class="player-track">
-                            <div id="titles">
+            <section id="yes">
+                <h2>You have decided to prove your worth.</h2>
+                <p>You are in your room, it is necessary to turn off the lights.</p>
+                <p>Turn <b>off</b>? or turn <b>on</b>? </p>
+
+
+            </section>
+            <section id="off">
+                <h2>I assume you have turned them off.</h2>
+                <p>Now, click <a href="#" onclick="opentab1();">here</a>. Run the code.</p>
+                <p>do you still listen? ;)  </p>
+                <p><b>continue</b>? or <b>abandon</b>?  </p>
+
+            </section>
+            <section id="continue">
+                <h2>Assuming you're still listening...</h2>
+                <p>would you like to watch a video?</p>
+                <p><b>agree</b>? or <b>deny</b>?</p>
+            </section>
+            <section id="agree">
+                <p>Copy and paste in a new tab ;)</p>
+                <h2>https://www.youtube.com/watch?v=ZZOPpUK6rfw</h2>
+                <p>Don't even think about closing this window!.</p>
+                <p>Now you've gone blind, assuming you saw it.</p>
+                <p>this was <b>cringe</b>? or <b>creepy</b>?</p>
+            </section>
+
+            <section id="cringe">
+                <p>No matter what you think,</p>
+                <p>in the end you are doing what I tell you ;)</p>
+                <p>But it's the truth, you're still here of your own free will.</p>
+                <p>If you don't mind, let's play something! Let's say you're lost in a forest.</p>
+                <p>Where would you go?</p>
+                <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+            </section>
+            <section id="creepy">
+                <p>No matter what you think,</p>
+                <p>in the end you are doing what I tell you ;)</p>
+                <p>But it's the truth, you're still here of your own free will.</p>
+                <p>If you don't mind, let's play something! Let's say you're lost in a forest..</p>
+                <p>Where would you go?</p>
+                <p><b>north</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+            </section>
+            <!--NORTH route-->
+            <section id="north">
+                <p>Sure?</p>
+                <p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; ...</p>
+                <p>A shame... Bad way!</p>
+                <p>You fell off a cliff while screaming bleeding like a bitch.</p>
+                <p>Do you go <b>back</b>? or <b>surrender</b>?</p>
+            </section>
+            <section id="back">
+                <p>Go back...</p>
+                <p>Where would you go?</p>
+                <p><b>hell</b>?, <b>east</b>?, <b>south</b>?, <b>west</b>? or <b>hell</b>?</p>
+            </section>
+
+
+            <!--south route-->
+            <section id="south">
+                <p>Sure?</p>
+                <p>
+                    I can see the future...<br />
+                    You will come to a cave where a bear will skin you and laugh at you.
+                </p>
+
+                <p><b>return</b>? or <b>giveup</b>?</p>
+            </section>
+            <section id="return">
+                <p>Returned</p>
+                <p>Where would you go?</p>
+                <p><b>north</b>?, <b>east</b>?, <b>hell</b>?, <b>west</b>? or <b>hell</b>?</p>
+            </section>
+
+            <!--west route--> <section id="west">
+                <p>Bad way...</p>
+                <p>you will fall into a bear trap and slowly bleed out.</p>
+
+                <p><b>giveup</b>? or keep <b>looking</b>?</p>
+            </section>
+            <section id="giveup">
+
+                <p>
+                    When you were trying to escape, you tripped and broke your neck as you fell.<br />
+                    I know, a pretty stupid way to die, just like your decisions ;)
+                </p>
+                <p> It was fun! </p>
+                <p> Close this window, you don't deserve that I dedicate more time ;)</p>
+
+            </section>
+            <!--east route-->
+            <section id="east">
+
+                <p> you are in a forest clearing...</p>
+                <p>This seems familiar to you, you are standing in a place where the earth seems soft. </p>
+                <p>You're not so sure, but you know than to dig you won't like what you find buried.</p>
+                <p>Anyway, you can ignore those hunches.</p>
+                <p><b>dig</b>? Or find another <b>way out</b>?</p>
+
+            </section>
+            <section id="dig">
+
+
+                <p> You dig and find gold, a head of golden hair.</p>
+                <p>It sure looks familiar, doesn't it?  </p>
+                <p>In any case, this idea is already obsolete. There are not many exits.</p>
+                <p><b>suicide</b>? or keep <b>looking</b>?</p>
+
+            </section>
+            <section id="suicide">
+
+                <p> The best decision, now enjoy the price of your sins.</p>
+                <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
+                <p> as you do?</p>
+                <p><b>fast</b>? or <b>slow</b>?</p>
+            </section>
+            <section id="fast">
+
+                <p>No matter how you do it. Anyway it all ends here. </p>
+                <p>You've shown some courage, but you're still not worth it.</p>
+                <p>Anyway... It was fun!</p>
+                <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+                <p>Or close this window if you already got bored</p>
+            </section>
+            <section id="slow">
+
+                <p>No matter how you do it. Anyway it all ends here. </p>
+                <p>You've shown some courage, but you're still not worth it.</p>
+                <p>Anyway... It was fun!</p>
+                <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+                <p>Or close this window if you already got bored</p>
+            </section>
+
+            <section id="looking">
+
+                <p>Keep looking... </p>
+                <p>There aren't many roads left.</p>
+                <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
+
+            </section>
+            <section id="way">
+                <p>another way out</p>
+                <p>There aren't many roads left.</p>
+                <p><b>hell</b>?, <b>hell</b>?, <b>hell</b>?, <b>hell</b>? or <b>hell</b>?</p>
+
+            </section>
+
+
+            <!--hell route-->
+            <section id="hell">
+                <p>seems to be the only way...</p>
+                <p>Looking for something in your backpack:</p>
+                <p>Do you take the <b>rope</b>? or the <b>bottle</b>?</p>
+            </section>
+            <!--bottle route-->
+            <section id="bottle">
+
+
+                <p>You take the bottle and drink its contents.</p>
+                <p> You squirm like a pig in its shit and die in a matter of minutes to your gasps and vomit.</p>
+                <p> <b>finish</b>?</p>
+            </section>
+            <!--rope route-->
+            <section id="rope">
+                <p>
+                    You take the rope.
+                </p>
+                <p>hang the <b>body</b>? or hang <b>yourself</b>?</p>
+            </section>
+
+            <section id="yourself">
+
+                <p> The best decision, now enjoy the price of your sins.</p>
+                <p> But you are dissatisfied, in any case, there is nothing you can do anymore ¯\_(ツ)_/¯</p>
+                <p>you lie hanging like a bitch:</p>
+                <p> <b>finish</b>?</p>
+            </section>
+            <section id="incenerate">
+
+                <p>Well... Burning with life and soon in hell. </p>
+                <p>What decisions yours. </p>
+                <p>At least you knew from the start what you deserved.</p>
+                <p> <b>finish</b>? </p>
+            </section>
+            <section id="finish">
+
+                <p>Ending up here does not prove your worth, quite the contrary.</p>
+                <p>Anyway... It was fun!</p>
+                <p>Type "<b>help</b>", you need it... to return to the main menu ;)</p>
+                <p>Or close this window if you already got bored</p>
+            </section>
+
+
+            <!--true route-->
+            <section id="body">
+
+                <p>Well done, looks like a suicide scene.</p>
+                <p>I guess it's too late to call an ambulance ;)</p>
+                <p>Everything is done.</p>
+                <p>Make a <b>bonfire</b>? or <b>incinerate</b> you?</p>
+            </section>
+            <section id="bonfire">
+
+                <p>you watch the fire while you drink from a bottle of whiskey</p>
+                <p> while you remember how much fun you had with now, that boxing bag.</p>
+
+                <p><b>leave</b>? or <b>stay</b> here?</p>
+            </section>
+
+            <section id="stay">
+                <p>As you contemplate your sins, </p>
+                <p>a man suddenly appears from behind and cuts your throat like cattle.</p>
+                <p>You're bleeding out like a bitch while panting.</p>
+                <p> But hey, it's not like you don't deserve it either. Don't they say you always get what you deserve?</p>
+                <p> In the end, one less crazy doesn't hurt. Who knows? there can be worse ;)</p>
+                <p> No one is unique, we are all replaceable.</p>
+                <p>You are just one more in this world.</p>
+                <p><b>finish?</b></p>
+            </section>
+            <section id="leave">
+
+                <p>You prepare to leave,</p>
+                <p>but suddenly a man who saw it all appears.</p>
+
+                <p><b>flee</b>? or <b>kill</b> him?</p>
+            </section>
+            <section id="flee">
+
+                <p>As you run away, you stumble like the typical blonde jerk in a horror movie.</p>
+                <p> The man jumps on your back and starts stabbing you as he cackles at your screams.</p>
+                <p> Your cowardice led you to this, now enjoy its price.</p>
+                <p><b>finish</b>?</p>
+            </section>
+            <section id="kill">
+
+                <p> As it should be ;)</p>
+                <p>The man without thinking runs towards you wielding a knife.</p>
+                <p> He looks familiar to you...&nbsp;&nbsp;&nbsp;&nbsp; It's...&nbsp;&nbsp; like...&nbsp;&nbsp; you know him...&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p>TRUE!.</p>
+                <p>He is the father of the sack that hangs from that branch!</p>
+                <p> Will he be upset? You don't want to find out by standing there like an idiot.</p>
+
+                <p><b>confront</b> him? or <b>throw</b> bottle?</p>
+            </section>
+            <section id="confront">
+
+                <p>It's all over in a second.</p>
+                <p> Now you are in hell!</p>
+
+                <p><b>finish?</b></p>
+            </section>
+            <section id="throw">
+
+                <p> You throw the bottle and it crashes drenching the subject in alcohol.</p>
+                <p> He still doesn't seem to care, it seems that he is drugged and stumbles.</p>
+                <p> He falls into the bonfire and it starts to burn fast, his screams sound good...</p>
+                <p>The subject starts running trying to put out the fire and falls off the cliff.</p>
+                <p> Now there are two bodies!</p>
+                <p> What will you do?</p>
+
+                <p>go <b>away</b>? or <b>suicide</b>?</p>
+            </section>
+            <section id="away">
+
+                <p>There is nothing you can do, he burned alive and now he will burn in hell forever ;)</p>
+                <p>  Just like you someday.</p>
+                <p> At the moment, you are free of blame, there is no proof.</p>
+                <p>You've taken down the first boss!</p>
+                <p> <b>end</b>?</p>
+            </section>
+            <style>
+                #imgend {
+                    position: absolute;
+                    width: 70%;
+                    height: 90%;
+                    left: 15%;
+                    top: 10%;
+                    filter: contrast(130%);
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                #imgen {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: 1; /*animation: imgspin 10s alternate;*/
+                }
+
+                #maindiv2 {
+                    background: black;
+                    text-align: center;
+                    height: 15vw;
+                    z-index: 2222;
+                    width: auto;
+                    opacity: .9;
+                }
+
+                @keyframes imgspin {
+                    0% {
+                        transform: rotate(0deg);
+                        transition-delay: .5s;
+                    }
+
+                    10% {
+                        transition-delay: .5s;
+                        transform: rotate(0deg);
+                    }
+
+                    10.1% {
+                        transform: rotate(15deg);
+                        transition-delay: .5s;
+                    }
+
+                    20% {
+                        transform: rotate(15deg);
+                        transition-delay: .5s;
+                    }
+
+                    20.1% {
+                        transform: rotate(30deg);
+                        transition-delay: .5s;
+                    }
+
+                    30% {
+                        transform: rotate(30deg);
+                        transition-delay: .5s;
+                    }
+
+                    30.1% {
+                        transform: rotate(15deg);
+                        transition-delay: .5s;
+                    }
+
+                    100% {
+                        top: 5%;
+                    }
+                }
+            </style>
+            <section id="end">
+                <div id="imgend"><img id="imgen" src="https://i.postimg.cc/Nf9gNXHb/image-8.png" /></div>
+
+                <br /> <br /> <br /> <br />
+                <div id="maindiv2">
+                    <br />
+                    <p>A worthy player!</p>
+                    <h1 id="levelfont">
+                        Level 1 complete!
+                    </h1>
+
+                    <p>Same time again tomorrow for more fun!</p>
+                </div>
+                <p>Type "home" to return main menu</p>
+
+            </section>
+            <!--Negations-->
+            <section id="not">
+                <h2>You have decided the path of the coward.</h2>
+                <p>
+                    Too bad, your worth equals the same as shit.
+                </p>
+                <p> good luck! </p>
+                <p> Close this window, you don't deserve that I dedicate more time ;)</p>
+
+            </section>
+            <section id="on">
+                <h2>You have decided the path of the coward.</h2>
+                <p>
+                    Are you so scared of a little dark?
+                </p>
+                <p> good luck! </p>
+                <p> Close this window, you don't deserve that I dedicate more time ;)</p>
+
+            </section>
+            <section id="abandon">
+                <h2>You have decided the path of the coward.</h2>
+                <h2>
+                    It's not like I'm going to dox you, xat doesn't allow it ;)
+
+                </h2>
+                <p>  It is only a "game". </p>
+                <p> Close this window, you don't deserve that I dedicate more time.</p>
+
+            </section>
+            <section id="deny">
+                <h2>You have decided the path of the coward.</h2>
+                <h2>
+                    It's not like I'm going to dox you, xat doesn't allow it ;)
+
+                </h2>
+                <p>  It is only a "game". </p>
+                <p> Close this window, you don't deserve that I dedicate more time.</p>
+
+            </section>
+
+            <section id="exit">
+                <h2><span>&raquo;Logout...</span></h2>
+                <p>
+                    exiting... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                    Plase wait... &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br />
+                    Deleting temporal archives... &nbsp;; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                    <div id="matrice">Logout sucess!</div>&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                    Close this window to exit
+
+                </p>
+
+            </section>
+            <!--<section id="error">
+            <p>Command not found!<p>
+            <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span></p>
+        </section>-->
+
+            <section id="help">
+                <!--<h2><span>&raquo;Help?</span></h2>-->
+                <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
+                <p>A Neurasthenia xatspace inspired by a cursed game</p>
+                <p><span>Type any of these commands </span></p>
+
+                <p>Main menu:</p>
+                <ul>
+                    <li>'start + "your Regname"' -- Start the game. (Replace "+" for whitespace " "). Once the game is started, as per the question just type any of the highlighted commands.</li>
+                    <!--<li>'about' -- What's this for</li>-->
+                    <li>'neurasthenia' -- About me and my creator</li>
+                    <li>'more' -- Extra Information</li>
+                    <li>'media' -- MusicPlayer</li>
+                    <li>'help' -- displays this list</li>
+                    <li>'exit' -- Logout the interface</li>
+                </ul>
+            </section>
+            <section id="neurasthenia">
+                <div id="maindiv">
+                    <p><span>Curs>r 1984 NEUSRASTHENIA</span></p>
+                    <p>About my maker:</p>
+                </div>
+
+                <p>
+                    "What a beatifull day to exonerate us!"<br />
+                    Welcome to my simulator, BURN YOURSELF FOR A WHILE,  and enjoy the price for your sins.<br />
+                    jQuery Terminal: version 3.4.1 Copyright (c) 2019-2023 based in "Curs>r" Chosse or die<br />
+                    by Grisatre - Neurasthenia:1533252890 WORK IN PROGRESS ;)
+                </p><div id="maindiv">
+                    <p>About me: Curs>r Ver 0.89 </p>
+                </div>
+
+                <p>
+                    Initializing D.E.C.A Boot A.I. V3.29 <br />script: Compiled successfully.<br />
+                    hash: 1639550242517<br />
+                    package: glitched-writer<br />
+                    version: 2.0.29<br />
+                    time: 644ms<br />
+                    link to my font Code: XXXXX//XXX-XXXXX-XXX-XXXXXXXX-XXX-XX-XXXXXXXXXXXXX-XXXXXX.XX
+                    <br />Contact:XXXXXXX@XXX.XXX
+                </p>
+                <p>Type "home" to return to main menu</p>
+
+            </section>
+            <section id="more">
+                <div id="maindiv">
+                    <p><span>Extra Information / notes / lists</span></p>
+                    <p>Last update: 27/03/2023</p>
+                </div>
+
+                <p>
+                    Post by: Neurasthenia<br />
+
+
+                    Swallow your freedom, swallow your smile, swallow your sanity that crawls and itches inside.<br />
+                    We got the cure, we got your fate, we got everything you want so you don't have to think again.<br />
+                    You're the chemical whore, they make you beg on your knees for more.<br />
+                    A chemical whore. steal your life, steal your mind whatever is left of your soul.<br />
+                    <br />
+                    We'll make you addicted: our little bitches, we love your money much more than your pity health<br />
+                    With our expensive pills we control your fear we disconnect you and tell you what to feel<br />
+                    <br />
+                    Grisatre - "Chemical whore"
+                    <br />
+                    27/03/2023 <br />
+                    <!--<img id="imgpost" src="https://i.postimg.cc/02171bKC/fotoefectos-com-final-7679581919713164846.jpg" />-->
+                </p>
+
+
+                <p>
+                    "section2" to next page<br />
+                    "list" to see social list<br />
+                    "home" to return to main menu
+                </p>
+
+                <div></div>
+            </section>
+            <section id="list">
+                <div id="maindiv">
+                    <p><span>List friends</span></p>
+                    <p>Last update: 27/03/2023</p>
+                </div>
+
+
+                <p>
+                    <b>
+                        "SunfLoweer"+  - 276028763
+                    </b><br />
+                    <b>
+                        "Itami"+ - 1481199396
+                    </b><br />
+                    "zXanaxiety" - 341287796<br />
+                    "Taiga" - 90391591 <br />
+                    "xincoherent" - 104551610<br />
+                    "Necessarius" - 258635881<br />
+                    "OtsegoLectric" - 291296788<br />
+                    "Niert" - 1515877736<br />
+                    "AntiCLockwise" - 1515302520<br />
+                    "Kagura" - 1520048635<br />
+                    "AhriWithHeaL" - 276479585<br />
+                    "MrCobain" - 131141053
+                </p>
+                <p>
+                    "more" to return<br />
+                    "home" to return to main menu
+                </p>
+
+            </section>
+            <section id="section2">
+                <div id="maindiv">
+                    <p><span>Extra Information / notes / lists</span></p>
+                    <p>Last update: 27/03/2023</p>
+                </div>
+
+                <p>
+                    Nothing here! ;)
+                </p>
+
+
+                <p>
+                    "more" to return<br />
+                    "list" to see social list<br />
+                    "home" to return to main menu
+                </p>
+
+                <div></div>
+            </section>
+            <section id="media">
+                <div id="maindiv">
+                    <p><span>Music player</span></p>
+
+                </div>
+
+                <br />
+                <br /> <br /> <br /> <br /> <br /> <br />
+                <p>
+                    "next" to play or next song<br />
+                    "prev" prev song<br />
+                    "pause" for stop or "resume" to renude song<br />
+                    "home" main menu
+                </p>
+
+
+            </section>
+            <div id="auid" class="novis">
+                <div id="R_plyr">
+                    <div id="dt_rp">
+
+                        <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                    </div>
+
+                    <div id="mor_rpy">
+
+                        <div class="player">
+
+                            <div class="player-track">
+                                <div id="titles">
+
+                                </div>
+
+
+
+                                <div class="progress-bar">
+                                    <div class="fillBar"></div>
+                                </div>
+                                <div id="AT_time"><div class="time"></div></div>
+                                <div class="artist-name"></div>
 
                             </div>
 
 
-
-                            <div class="progress-bar">
-                                <div class="fillBar"></div>
-                            </div>
-                            <div id="AT_time"><div class="time"></div></div>
-                            <div class="artist-name"></div>
 
                         </div>
 
-
-
                     </div>
-
                 </div>
+
             </div>
 
-        </div>
+
+            <span id="cmd2" onfocus="resumeAudio();" class="command visi">
+                <b id="blkjn2">:></b><span id="blkjn">▉</span><input id="txxt" type="text">
 
 
-        <span id="cmd2" onfocus="resumeAudio();" class="command visi">
-            <b id="blkjn2">:></b><span id="blkjn">▉</span><input id="txxt" type="text">
+            </span>
 
-
-        </span>
-
-    </main>
-
+        </main>
+        <style>
+            #mainscren {
+                width: 88%;
+                height: 80%;
+                position: fixed;
+                left: 6%;
+                top: 10%;  overflow-x:hidden;
+                overflow-y: scroll;
+            }
+                #mainscren::-webkit-scrollbar {
+                    width: 0;
+                    background: transparent;
+                    mix-blend-mode: difference;
+                }
+        </style>
+    </div>
+   
     <div id="back1">
         <style>
             #cmd2 {
