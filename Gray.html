@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Xatspace</title>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: #000;
+            color: #62627A;
+            padding: 20px;
+            text-align: center;
+        }
+
+            header h1 {
+                font-size: 36px;
+                margin: 0;
+            }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .chat-section {
+            width: 600px;
+            margin-right: 50px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-box {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: scroll;
+            height: 300px;
+            margin-top: 50px;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: transform 0.2s;
+        }
+
+            .avatar:hover {
+                transform: scale(1.1);
+            }
+
+        .message {
+            margin: 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .video-section {
+            width: 400px Gray Fullbuster continua margin-top: 50px;
+        }
+
+        .video-container {
+            position: sticky;
+            top: 50px;
+            right: 0;
+            width: 400px;
+            height: 225px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+            .video-container iframe {
+                width: 100%;
+                height: 100%;
+            }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #3e8e41;
+            }
+
+        /* Media queries */
+        @media screen and (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+
+            .chat-section, .video-section {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        .logo {
+            position: relative;
+            z-index: 1;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+        }
+
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 300px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+            }
+
+            .card img {
+                width: 100%;
+                height: auto;
+                transition: all 0.3s ease;
+            }
+
+            .card:hover img {
+                opacity: 0.7;
+            }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .card button:hover {
+                background-color: #3e8e41;
+            }
+
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<h1>iDemonSlayer</h1>
+		<img class="logo" src="https://u.cubeupload.com/iDemondSlayer/9e0voa68j.png" alt="Logo de la página">
+		
+	</header>
+
+	<main>
+
+		<section class="chat-section">
+			<div class="chat-box">
+				<div class="chat-message">
+					<img src="https://u.cubeupload.com/iDemondSlayer/xeLLMjk.png" alt="Avatar" class="avatar">
+					<p class="message">Siempre hay una oportunidad para redimirse y hacer lo correcto</p>
+				</div>
+				<div class="chat-message">
+					<img src="https://u.cubeupload.com/iDemondSlayer/GrayFullbusterimageg.jpg" alt="Avatar" class="avatar">
+					<p class="message">
+						Soy un mago de hielo. La única cosa que me derretirá es el calor de la batalla.
+					</p>
+				</div>
+				<div class="chat-message">
+					<img src="https://u.cubeupload.com/iDemondSlayer/a0fzyxHFMU.png" alt="Avatar" class="avatar">
+					<p class="message">No importa cuán oscuro sea el camino, siempre hay una luz al final.</p>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+		<section class="video-section">
+			<div class="video-container">
+				<iframe src="https://www.youtube.com/embed/cNz8K2rdE70?autoplay=1" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
+
