@@ -3,252 +3,265 @@
 <head>
 	<title>Xatspace</title>
 	<style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-        }
+       body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-        header {
-            background-color: #000;
-            color: #62627A;
-            padding: 20px;
-            text-align: center;
-        }
+header {
+  background-color: #000;
+  color: #62627a;
+  padding: 20px;
+  text-align: center;
+}
 
-            header h1 {
-                font-size: 36px;
-                margin: 0;
-            }
+header h1 {
+  font-size: 36px;
+  margin: 0;
+}
 
-        main {
-            display: flex;
-            flex-wrap: wrap;
-        }
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-        .chat-section {
-            width: 600px;
-            margin-right: 50px;
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.chat-box {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  height: 300px;
+}
 
-        .chat-box {
-            background-color: #f2f2f2;
-            padding: 20px;
-            border-radius: 10px;
-            overflow-y: scroll;
-            height: 300px;
-            margin-top: 50px;
-        }
+.chat-message {
+  display: flex;
+  margin-bottom: 20px;
+}
 
-        .chat-message {
-            display: flex;
-            margin-bottom: 20px;
-            background-color: #f5f5f5;
-        }
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: transform 0.2s;
-        }
+.avatar:hover {
+  transform: scale(1.1);
+}
 
-            .avatar:hover {
-                transform: scale(1.1);
-            }
+.message {
+  margin: 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
 
-        .message {
-            margin: 0;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 10px;
-        }
+button[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
 
-        .video-section {
-            width: 400px Gray Fullbuster continua margin-top: 50px;
-        }
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
 
-        .video-container {
-            position: sticky;
-            top: 50px;
-            right: 0;
-            width: 400px;
-            height: 225px;
-            margin-top: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+/* Media queries */
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+}
 
-            .video-container iframe {
-                width: 100%;
-                height: 100%;
-            }
+.logo {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+}
 
-        footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-        }
+.chat-section {
+  margin: 50px auto;
+  width: 80%;
+  text-align: center;
+}
 
-        form {
-            display: flex;
-            justify-content: center;
-        }
+.chat-box {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: hidden;
+  height: 300px;
+}
 
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px 0 0 5px;
-        }
+.chat-message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-        button[type="submit"] {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
+.chat-message img {
+  margin-right: 10px;
+}
 
-            button[type="submit"]:hover {
-                background-color: #3e8e41;
-            }
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
 
-        /* Media queries */
-        @media screen and (max-width: 768px) {
-            main {
-                flex-direction: column;
-            }
+.message {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
 
-            .chat-section, .video-section {
-                width: 100%;
-                margin-right: 0;
-            }
-        }
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
-        .logo {
-            position: relative;
-            z-index: 1;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            margin-right: 20px;
-        }
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
 
+.about-text {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  margin-right: 20px;
+}
 
-        .card-container {
-            display: flex;
-            justify-content: center;
-        }
+.about-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-left: 20px;
+  float: right;
+}
 
-        .card {
-            width: 300px;
-            margin: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.3s ease;
-        }
+.avatar-container img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+  transition: transform 0.3s ease-in-out;
+}
 
-            .card:hover {
-                transform: translateY(-10px);
-            }
+.video-section {
+  position: relative;
+}
 
-            .card img {
-                width: 100%;
-                height: auto;
-                transition: all 0.3s ease;
-            }
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
 
-            .card:hover img {
-                opacity: 0.7;
-            }
+  border-radius: 10px;
+}
 
-        .card-content {
-            padding: 20px;
-        }
+.video-section {
+  width: 400px;
+  margin-top: 50px;
+}
 
-        .card h3 {
-            margin-top: 0;
-        }
+.video-section {
+  width: 400px;
+}
 
-        .card p {
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.5;
-        }
+#ytplayer {
+  position: relative;
+  top: 0;
+  left: 150%;
+  width: 100%;
+  height: 100%;
 
-        .card button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+  opacity: 1;
+}
 
-            .card button:hover {
-                background-color: #3e8e41;
-            }
+#ytplayer.ready {
+  opacity: 0;
+}
+
+/*Foooter */
+
 
 	</style>
 </head>
 
 <body>
 
-	<header>
-		<h1>iDemonSlayer</h1>
-		<img class="logo" src="https://u.cubeupload.com/iDemondSlayer/9e0voa68j.png" alt="Logo de la página">
-		
-	</header>
+  <header>
+    <h1>iDemonSlayer</h1>
+    <img class="logo" src="https://u.cubeupload.com/iDemondSlayer/9e0voa68j.png" alt="Logo de la página">
+  </header>
 
-	<main>
+  <main>
 
-		<section class="chat-section">
-			<div class="chat-box">
-				<div class="chat-message">
-					<img src="https://u.cubeupload.com/iDemondSlayer/xeLLMjk.png" alt="Avatar" class="avatar">
-					<p class="message">Siempre hay una oportunidad para redimirse y hacer lo correcto</p>
-				</div>
-				<div class="chat-message">
-					<img src="https://u.cubeupload.com/iDemondSlayer/GrayFullbusterimageg.jpg" alt="Avatar" class="avatar">
-					<p class="message">
-						Soy un mago de hielo. La única cosa que me derretirá es el calor de la batalla.
-					</p>
-				</div>
-				<div class="chat-message">
-					<img src="https://u.cubeupload.com/iDemondSlayer/a0fzyxHFMU.png" alt="Avatar" class="avatar">
-					<p class="message">No importa cuán oscuro sea el camino, siempre hay una luz al final.</p>
-				</div>
-			</div>
-		</section>
+    <section class="chat-section">
+      <div class="chat-box">
+        <div class="chat-message">
+          <img src="https://u.cubeupload.com/iDemondSlayer/xeLLMjk.png" alt="Avatar" class="avatar">
+          <p class="message">Siempre hay una oportunidad para redimirse y hacer lo correcto</p>
+        </div>
+        <div class="chat-message">
+          <img src="https://u.cubeupload.com/iDemondSlayer/GrayFullbusterimageg.jpg" alt="Avatar" class="avatar">
+          <p class="message">Soy un mago de hielo. La única cosa que me derretirá es el calor de la batalla.
+          </p>
+        </div>
+        <div class="chat-message">
+          <img src="https://u.cubeupload.com/iDemondSlayer/a0fzyxHFMU.png" alt="Avatar" class="avatar">
+          <p class="message">No importa cuán oscuro sea el camino, siempre hay una luz al final.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="about-section">
 
+      <div class="avatar-container">
+        <div class="avatar">
+          <img src="https://u.cubeupload.com/iDemondSlayer/tumblrinlinemx57qhz9.png" alt="Avatar 1">
+        </div>
+        <div class="avatar">
+          <img src="https://u.cubeupload.com/iDemondSlayer/tumblrinlinemx57w3Vs.jpg" alt="Avatar 2">
+        </div>
+        <div class="avatar">
+          <img src="https://u.cubeupload.com/iDemondSlayer/tumblrinlinemov5vo5x.jpg" alt="Avatar 3">
+        </div>
+      </div>
+    </section>
 
+    <section class="video-section">
+      <div class="video-container">
+        <iframe id="ytplayer" type="text/html" width="100%" height="360" src="https://www.youtube.com/embed/cNz8K2rdE70?autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
 
-
-
-		<section class="video-section">
-			<div class="video-container">
-				<iframe src="https://www.youtube.com/embed/cNz8K2rdE70?autoplay=1" frameborder="0" allowfullscreen></iframe>
-			</div>
-		</section>
-	</main>
+  </main>
 </body>
-</html>
 
+</html>
