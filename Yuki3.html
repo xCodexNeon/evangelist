@@ -18,7 +18,7 @@
 </head>
 	<body class="demo-5" onclick="ort();">
 		
-		<main>
+		<main id="mainpage">
 			<script>
 
 
@@ -32,8 +32,9 @@
 			<script>
 
 				function sckl() { 
-                    var win = $("#mainscroll");
-
+					var win = $("#mainscroll");
+					$("#back-intro").addClass("loadpage1");
+                    $("#clik").addClass("tooffp");
 
 
 
@@ -42,16 +43,101 @@
 						console.log(win.scrollTop());
 						if (win.scrollTop() > 10) {
 							TweenLite.to($("#nav"), 2.5, { top: -100 });
+							TweenLite.to($("#nav2"), 2.5, { top: -150 });
+							TweenLite.to($("#nav3"), 2.5, { top: -90 });
+
+                            TweenLite.to($("#nav4"), 2.5, { top: -50 });
+                            TweenLite.to($("#nav5"), 2.5, { top: -100 });
+                            TweenLite.to($("#nav6"), 2.5, { top: -30 });
 						} else {
-							TweenLite.to($("#nav"), 2.5, { top: 300});
+							TweenLite.to($("#nav"), 2.5, { top: 300 });
+							TweenLite.to($("#nav2"), 2.5, { top: 600 });
+							TweenLite.to($("#nav3"), 2.5, { top: 1000 });
+
+                            TweenLite.to($("#nav4"), 2.5, { top: 700 });
+                            TweenLite.to($("#nav5"), 2.5, { top: 200 });
+                            TweenLite.to($("#nav6"), 2.5, { top: 500 });
 						}
 					});
                 }
 			</script>
 
-			<div id="mainscroll" ">
+			<div id="mainscroll">
 				<style>
+					#nav {
+						opacity: .3;
+						left: 20%;
+						position: fixed;
+						width: 5vw;
+						height: 5vw;
+						background: #ff6a00;
+						filter: blur(20px);
+						top: 300px;
+						border-radius: 50%;
+						padding: 4px;
+					}
 
+					#nav2 {
+						opacity: .5;
+						left: 50%;
+						position: fixed;
+						width: 5vw;
+						height: 5vw;
+						background: #ff6a00;
+						filter: blur(20px);
+						top: 600px;
+						border-radius: 50%;
+						padding: 4px;
+					}
+
+					#nav3 {
+						opacity: .3;
+						left: 90%;
+						position: fixed;
+						width: 7vw;
+						height: 7vw;
+						background: #ff6a00;
+						filter: blur(20px);
+						top: 1000px;
+						border-radius: 50%;
+						padding: 4px;
+					}
+                    #nav4 {
+                        opacity: .3;
+                        left: -5%;
+                        position: fixed;
+                        width: 10vw;
+                        height: 10vw;
+                        background: #ff6a00;
+                        filter: blur(20px);
+                        top: 700px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+                    #nav5 {
+                        opacity: .3;
+                        left: 65%;
+                        position: fixed;
+                        width: 8vw;
+                        height: 8vw;
+                        background: #ff6a00;
+                        filter: blur(20px);
+                        top: 200px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+                    #nav6 {
+                        opacity: .3;
+                        left: 30%;
+                        position: fixed;
+                        width: 6vw;
+                        height: 6vw;
+                        background: #ff6a00;
+                        filter: blur(20px);
+                        top: 500px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
 					body {
 						overflow: hidden;
 					}
@@ -88,23 +174,13 @@
 						}*/
 
 
-					#nav {
-						opacity: .5;
-						left: 20%;
-						position: fixed;
-						width: 5vw;
-						height: 5vw;
-						background: #ff6a00;
-						filter: blur(10px);
-						top: 300px;
-						border-radius: 50%;
-						padding: 4px;
-					}
+				 
 
 					#postNeura {
 						width: 100%;
 						height: 30%;
-						margin-top: 40%; margin-bottom:40%;
+						margin-top: 40%;
+						margin-bottom: 40%;
 						position: relative;
 						backdrop-filter: blur(5px);
 					}
@@ -519,6 +595,16 @@
 							filter: invert(100%);
 							mix-blend-mode: difference;
 						}
+
+						#iconscroll {
+							mix-blend-mode: difference;
+							position: absolute;
+							filter: invert(100%);
+							right: 1%;
+							top: 15%;
+							width: 4vw;
+							opacity: .5;
+						}
 					</style>
 
 					<p id="inftit">
@@ -528,7 +614,7 @@
 					</p>
 					<div id="postinfcont">
 
-
+						<img src="https://i.postimg.cc/GpvCgvQ9/scroll-down.gif" id="iconscroll" />
 						<div id="pinfolin"></div>
 						<p id="infoname"><span>姓名:</span> Yukine | Yuki | XXX</p>
 						<p id="infoage"><span>年龄:</span> XIX | 19</p>
@@ -925,13 +1011,28 @@
 				<div id="nav">
 
 				</div>
+				<div id="nav2">
 
+				</div>
+				<div id="nav3">
+
+				</div>
+				<div id="nav4">
+
+				</div>
+				<div id="nav5">
+
+				</div>
+				<div id="nav6">
+
+				</div>
 			</div>
 
 			<div id="mainprofile">
 				<style>
 					@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
 
+                   
 					#mainprofile {
 						position: absolute;
 						width: 20%;
@@ -1065,7 +1166,7 @@
                     }
 				</style>
 				<!--<p>We look up without a destination to reach for Towards the clear, mechanical sky</p>-->
-
+			
 				<div id="nickverse">
 					<p>
 						In a pale sky, I wander like a ghost <br /> for the fallen cold <b> <i>Yukine</i></b>...
@@ -1073,7 +1174,7 @@
 				</div>
 				<div id="imgpro">
 
-					<img src="https://i.pinimg.com/originals/da/fb/64/dafb64fb91b7491e11bfe310cdaf0fca.png" />
+					<img id="imgprgh" src="https://i.pinimg.com/originals/da/fb/64/dafb64fb91b7491e11bfe310cdaf0fca.png" />
 
 					<div id="cubeimg"></div>
 					<div id="cube1"></div>
@@ -1087,7 +1188,7 @@
 					<p id="txt2">他<br /> <br />●<br /> 不<br />安<br />的<br /> <br />● <br />寒<br />冷<br />的<br /> <br />● <br />白<br />色<br />的</p>
 					<div id="i1"><img src="https://i.postimg.cc/4NNHccxx/1.png" /></div>
 					<div id="i2"><img src="https://i.postimg.cc/bwZGCjbX/2.png" /></div>
-					<div id="i3" onclick="sckl();" class="bottom-nav"><img class="btn btn--trigger" src="https://i.postimg.cc/X7HGkvrc/3.png" /></div>
+					<div id="i3"   class="bottom-nav"><img   src="https://i.postimg.cc/X7HGkvrc/3.png" /></div>
 
 				</div>
 
@@ -1126,40 +1227,40 @@
 										""
 								},
 								{
-									name: "MINUSMENSCH",
-									artist: "LANTLOS  (Only the best part)",
+                                    name: "トーキョーゲットー",
+                                    artist: "Eve MV",
 									src:
 										"https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
 								},
 								{
-									name: "THE EERIE COLD",
-									artist: "SHINING",
+                                    name: "退屈を再演しないで",
+                                    artist: "Eve MV",
 									src:
 										"https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
 								},
 								{
-									name: "PULSE / SURREAL",
-									artist: "LANTLOS",
+                                    name: "米津玄師 - 春雷 Kenshi Yonezu",
+                                    artist: "Shunrai",
 									src:
 										"https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
 								},
 								{
-									name: "TOO LATE TO CALL AN AMBULANCE",
-									artist: "PSYCHONAOUT 4",
+                                    name: "Cómo comer una vida",
+                                    artist: "Eve MV",
 									src:
 										"https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
 								},
 								{
-									name: "THE GREAT COLD DEATH OF HEART",
-									artist: "AGALOCH",
+                                    name: "FightSong",
+                                    artist: "Eve MV",
 									src:
 										"https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
 								},
 								{
-									name: "THE HIDDEN LAKE OF THE FOREST",
-									artist: "AUTUMN NOSTALGIE",
+									name: "Not your kind of people",
+									artist: "Garbage",
 									src:
-										"https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
+										"https://xevangelist.github.io/evangelist/onlymp3.to%20-%20Garbage%20-%20Not%20Your%20Kind%20of%20People-KckCsw_JyJI-192k-1655163709308.mp3?raw=true"
 								},
 
 							];
@@ -1475,10 +1576,10 @@
                         font-weight: bold;
                     }
 				</style>
-				<p id="p1-1"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
-				<p id="p1-2"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
-				<p id="p1-3"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
-				<p id="p1-4"><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•NEURASTHENIA</span>所有权利®</p>
+				<p id="p1-1"><span>神经衰弱</span>: 【❝】Eve MV<span>•トーキョーゲットー</span>|</p>
+				<p id="p1-2"><span>神经衰弱</span>: 【❝】Eve MV⸻<span>•退屈を再演しないで</span>|</p>
+				<p id="p1-3"><span>神经衰弱</span>: 【❝】Shunrai如何©<span>•米津玄師 - 春雷</span>Kenshi Yonezu|</p>
+				<p id="p1-4"><span>神经衰弱</span>: 【❝】Eve MV<span>•Cómo comer una vida</span>所|</p>
 
 			</div>
 			<div id="crdt">
@@ -1494,7 +1595,77 @@
 			</div>
 		</main>
 
+		<div id="back-intro">
+			<style>
+				#back-intro {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					background: rgba(0,0,0,.9);
+					filter: blur(1px);
+				}
 
+				#clik {
+					color: white;
+					font-size: .8vw;
+					letter-spacing: .1vw;
+					position: absolute;
+					left: 14%;
+					top: 66.5%; 
+				}
+                    #clik span {
+                        position: absolute;
+                        animation: text-blink-2 2s infinite;
+                    }
+                @keyframes text-blink-2 {
+                    0% {
+                        left:-1vw;
+                    }
+
+                    50% {
+                        left:-2vw;
+                    }
+                    100% { left:-1vw;
+                    }
+                }
+                @keyframes to-off {
+                    0% {
+                       opacity:1;
+                    }
+
+                    99% {
+                       z-index:-2;
+                    }
+
+                    100% {
+                        opacity: 0;
+                        z-index: -2;
+                    }
+                }
+                .loadpage1 {  animation:to-off 3s 1; animation-fill-mode:forwards;
+                }
+                .tooffp { opacity:0;
+                }
+			</style>
+			<div id="mainprofile">
+
+				<!--<p>We look up without a destination to reach for Towards the clear, mechanical sky</p>-->
+
+
+
+				<div id="lat_txt">
+
+					<div id="i3" onclick="sckl();" class="bottom-nav"><img class="btn btn--trigger" src="https://i.postimg.cc/X7HGkvrc/3.png" /></div>
+
+				</div>
+
+
+
+			</div>
+			<p id="clik"><span>⫷</span>Click here to continue...</p>
+		</div>
 
 
 
@@ -1540,3 +1711,4 @@
 		</script>
 	</body>
 </html>
+
