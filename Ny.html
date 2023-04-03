@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -6,12 +7,12 @@
     <title></title>
 
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="TweenMax.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
     <script type="text/javascript" src="vue.global.js"></script>
     <script src="mgGlitch.min.js"></script>
 
     <script type="text/javascript" src="pixi.min.js"></script>
-    <script type="text/javascript" src="TweenMax.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
     <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
@@ -97,6 +98,7 @@
             left: 0;
             overflow: hidden;
         }
+
         html, button, .center-center, a {
             cursor: crosshair
         }
@@ -170,6 +172,7 @@
             left: -6px;
             opacity: 1;
         }
+
         #auid {
             position: absolute;
             width: 25%;
@@ -376,10 +379,35 @@
                                 ""
                         },
                         {
+                            name: "FAIBLESSE DES SENS",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                        },
+                        {
+                            name: "STRATUS",
+                            artist: "MOMENTS IN GRACE",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Stratus.mp3?raw=true"
+                        },
+                        {
                             name: "MINUSMENSCH",
                             artist: "LANTLOS  (Only the best part)",
                             src:
                                 "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+                        },
+
+                        {
+                            name: "BLACKBIRD",
+                            artist: "ALTER BRIDGE",
+                            src:
+                                "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
+                        },
+                        {
+                            name: "DEAD FLOWERS",
+                            artist: "DEMON HUNTER",
+                            src:
+                                "https://xevangelist.github.io/evangelist/demon-hunter-dead-flowers.mp3?raw=true"
                         },
                         {
                             name: "THE EERIE COLD",
@@ -400,16 +428,22 @@
                                 "https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
                         },
                         {
-                            name: "THE GREAT COLD DEATH OF HEART",
+                            name: "AND THE GREAT COLD DEATH OF THE HEART",
                             artist: "AGALOCH",
                             src:
                                 "https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
                         },
                         {
-                            name: "THE HIDDEN LAKE OF THE FOREST",
-                            artist: "AUTUMN NOSTALGIE",
+                            name: "BROKEN WINGS",
+                            artist: "ALTER BRIDGE",
                             src:
-                                "https://xevangelist.github.io/evangelist/Autumn%20Nostalgie%20-%20The%20Hidden%20Lake%20Of%20The%20Forest-.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
+                        },
+                        {
+                            name: "BAD MORNING",
+                            artist: "PSYCHONAUT 4",
+                            src:
+                                "https://xevangelist.github.io/evangelist/badmorning.mp3?raw=true"
                         },
 
                     ];
@@ -477,14 +511,14 @@
                 $("#prev").click(function prev() {
                     CurrentSong--;
                     if (CurrentSong < 0) {
-                        CurrentSong = 6;
+                        CurrentSong = 11;
                     }
                     playSong();
                 });
 
                 $("#next").click(function next() {
                     CurrentSong++;
-                    if (CurrentSong > 6) {
+                    if (CurrentSong > 11) {
                         CurrentSong = 0;
                     }
                     playSong();
@@ -510,9 +544,9 @@
             // demo works but images are blocked by codepen Cors issue
             var images = [
                 "https://i.postimg.cc/cLJD6Dr8/Jan20-15-650038687.jpg",
-                "https://i.postimg.cc/XJgFfbPN/dee.png",
+                "https://i.postimg.cc/3Rvpw03h/wallpaperflare-com-wallpaper-1.jpg",
 
-                "https://i.postimg.cc/15hDJdzw/red.png"
+                "https://i.postimg.cc/XJgFfbPN/dee.png"
             ];
             // instanciate slider
             var rbgShiftSlider = new rbgShiftSlider({
@@ -531,7 +565,7 @@
                 mouseDispIntensity: 3,
                 interactive: true,
                 autoPlay: true,
-                autoPlaySpeed: 15000
+                autoPlaySpeed: 10000
             });
 
         </script>
@@ -553,6 +587,34 @@
         <div class="joystick__dummy joystick__dummy--up"></div>
         <div class="joystick__dummy joystick__dummy--down"></div>
         <div id="joystick" data-dumping="3" class="joystick"></div>
+        <!--<div id="afirms">
+            <style>
+                #afirms {
+                    position: absolute;
+                    left: 0;
+                    width: 25%;
+                    top: 0;
+                    height: 100%;
+                    background: rgb(255,255,255);
+                    background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5214460784313726) 50%);
+                }
+                #arfirms {
+                    position: absolute;
+                    left: 5%;
+                    width: 80%;
+                    top: 0; overflow:auto; overflow-x:hidden; background:red;
+                    height: 100%;
+                }
+                #barlatf { position:absolute; right:0; width:.1vw; height:80%; background:gray; top:10%;
+                }
+            </style>
+            <div id="barlatf"></div>
+            <div id="arfirms">
+                <div id="FirmYuk"></div>
+            </div>
+        </div>-->
+        
+        
         <div id="amenu">
             <style>
                 #amenu {
@@ -563,7 +625,8 @@
                     right: 20%;
                     top: 20%;
                 }
-
+                a { cursor:pointer;
+                }
                 #cubes {
                     position: absolute;
                     width: 40%;
@@ -694,12 +757,22 @@
                     position: absolute;
                     top: 72%;
                     left: 37%;
-                    color: white;
-                    mix-blend-mode: difference;
+                    color: rgba(199,48,48.3); 
                     font-size: .7vw;
                     letter-spacing: .2vw;
+                   
                 }
-
+                #p88 {
+                    color: white;
+                    mix-blend-mode: difference;
+                    opacity: 0;
+                    animation: blink 1s steps(1) infinite;
+                }
+                @keyframes blink {
+                    50% {
+                        opacity:1;
+                    }
+                }
                 #p9 {
                     position: absolute;
                     top: 78%;
@@ -757,7 +830,7 @@
 
             <a id="p6" onclick="toload();" href="#">◇ABOUT◇</a>
             <a id="p7" href="https://xevangelist.github.io/evangelist/Neuraloading.html">◇DEPERSONALIZATION◇</a>
-            <a id="p8" href="https://xevangelist.github.io/evangelist/Neura5.html">◇BURDEN◇</a>
+            <a id="p8" href="https://xevangelist.github.io/evangelist/cURSOR.html">◇CURS>R<span id="p88">|</span>◇</a>
             <a id="p9" href="https://xevangelist.github.io/evangelist/Neura3.html">◇UNCERTAINTY◇</a>
 
             <p id="p10">◇◇◇</p>
@@ -945,7 +1018,7 @@
                     #txtret span {
                         position: relative;
                         color: lightgray;
-                        top: -.5vw;
+                        top: .5vw;
                         opacity: .8;
                         font-size: .6vw;
                         letter-spacing: .1vw;
@@ -1003,6 +1076,7 @@
                         opacity: 1;
                     }
                 }
+
                 @keyframes t-entrance1 {
 
                     0% {
@@ -1238,6 +1312,6 @@
     </div>
 
 
- 
+
 </body>
 </html>
