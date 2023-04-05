@@ -379,6 +379,12 @@
                                 ""
                         },
                         {
+                            name: "PAIN",
+                            artist: "JIMMY EAT WORLD",
+                            src:
+                                "https://xevangelist.github.io/evangelist/pain.mp3?raw=true"
+                        },
+                        {
                             name: "FAIBLESSE DES SENS",
                             artist: "AMESOEURS",
                             src:
@@ -439,12 +445,7 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
                         },
-                        {
-                            name: "BAD MORNING",
-                            artist: "PSYCHONAUT 4",
-                            src:
-                                "https://xevangelist.github.io/evangelist/badmorning.mp3?raw=true"
-                        },
+                       
 
                     ];
 
@@ -543,10 +544,10 @@
             // set images
             // demo works but images are blocked by codepen Cors issue
             var images = [
-                "https://i.postimg.cc/cLJD6Dr8/Jan20-15-650038687.jpg",
-                "https://i.postimg.cc/3Rvpw03h/wallpaperflare-com-wallpaper-1.jpg",
+                "https://i.postimg.cc/Pr4YLbWt/300318.jpg",
+                "https://i.postimg.cc/VNFJ5JDb/233.jpg",
 
-                "https://i.postimg.cc/XJgFfbPN/dee.png"
+                //"https://i.postimg.cc/B6MN5QQj/bleach-pc-4i88whwegmjpxn1v.jpg"
             ];
             // instanciate slider
             var rbgShiftSlider = new rbgShiftSlider({
@@ -565,7 +566,7 @@
                 mouseDispIntensity: 3,
                 interactive: true,
                 autoPlay: true,
-                autoPlaySpeed: 10000
+                autoPlaySpeed: 7000
             });
 
         </script>
@@ -587,34 +588,7 @@
         <div class="joystick__dummy joystick__dummy--up"></div>
         <div class="joystick__dummy joystick__dummy--down"></div>
         <div id="joystick" data-dumping="3" class="joystick"></div>
-        <!--<div id="afirms">
-            <style>
-                #afirms {
-                    position: absolute;
-                    left: 0;
-                    width: 25%;
-                    top: 0;
-                    height: 100%;
-                    background: rgb(255,255,255);
-                    background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5214460784313726) 50%);
-                }
-                #arfirms {
-                    position: absolute;
-                    left: 5%;
-                    width: 80%;
-                    top: 0; overflow:auto; overflow-x:hidden; background:red;
-                    height: 100%;
-                }
-                #barlatf { position:absolute; right:0; width:.1vw; height:80%; background:gray; top:10%;
-                }
-            </style>
-            <div id="barlatf"></div>
-            <div id="arfirms">
-                <div id="FirmYuk"></div>
-            </div>
-        </div>-->
-        
-        
+     
         <div id="amenu">
             <style>
                 #amenu {
@@ -757,7 +731,7 @@
                     position: absolute;
                     top: 72%;
                     left: 37%;
-                    color: rgba(199,48,48.3); 
+                    color:#16a82b;
                     font-size: .7vw;
                     letter-spacing: .2vw;
                    
@@ -1092,6 +1066,360 @@
                     }
                 }
             </style>
+
+            <div id="afirms">
+                <style>
+                    #afirms {
+                        background: red;
+                        transition: all .5s ease;
+                        position: absolute;
+                        left: -20%;
+                        width: 25%;
+                        top: 0;
+                        height: 100%;
+                        background: rgb(255,255,255);
+                        background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5214460784313726) 50%);
+                    }
+
+                        #afirms:hover {
+                            left: 0;
+                        }
+
+                            #afirms:hover #arfirms {
+                                opacity: 1;
+                            }
+
+                            #afirms:hover #flechfirm {
+                                opacity: 0;
+                            }
+
+                    #arfirms {
+                        opacity: 0;
+                        transition: all 1s ease;
+                        position: absolute;
+                        left: 5%;
+                        width: 90%;
+                        top: 0;
+                        overflow: auto;
+                        overflow-x: hidden;
+                        height: 100%;
+                    }
+
+                        #arfirms::-webkit-scrollbar {
+                            width: 0vw;
+                            background: transparent;
+                        }
+
+                    #barlatf {
+                        position: absolute;
+                        right: 0;
+                        width: .1vw;
+                        height: 80%;
+                        background: gray;
+                        top: 10%;
+                    }
+
+                    #FirmNeu {
+                        position: relative;
+                        background: black;
+                        width: 100%;
+                        height: 70%;
+                        margin-top: 35%;
+                        border: .1vw solid white;
+                    }
+
+                    #firmimgneur {
+                        position: absolute;
+                        height: 70%;
+                        mix-blend-mode: difference;
+                        bottom: 0;
+                        right: 0;
+                    }
+
+                    #inineura {
+                        position: absolute;
+                        left: 8%;
+                        color: white;
+                        font-size: 2.5vw;
+                        top: -3%;
+                        border-bottom: .15vw solid white;
+                    }
+
+                    #subtneur {
+                        position: absolute;
+                        left: 8%;
+                        color: white;
+                        font-size: 1.5vw;
+                        top: 9%;
+                    }
+
+                    #subtneur2 {
+                        position: absolute;
+                        left: 8%;
+                        color: white;
+                        font-size: 1.3vw;
+                        letter-spacing: .05vw;
+                        top: 14.6%;
+                        font-weight: lighter;
+                    }
+
+                    #titleneura {
+                        position: absolute;
+                        left: 8%;
+                        color: white;
+                        font-size: .9vw;
+                        letter-spacing: .1vw;
+                        top: 21%;
+                        font-weight: bold;
+                    }
+
+                    #subtneu {
+                        position: absolute;
+                        left: 8%;
+                        color: white;
+                        font-size: .55vw;
+                        letter-spacing: .1vw;
+                        top: 26%;
+                        text-transform: uppercase;
+                        font-weight: lighter;
+                        border-bottom: .1vw solid white;
+                        padding-bottom: .3vw;
+                    }
+
+                    #neuxc {
+                        width: 2vw;
+                        position: absolute;
+                        left: 10%;
+                        top: 50%;
+                    }
+
+                    #neuxc2 {
+                        height: 1vw;
+                        position: absolute;
+                        left: 7.5%;
+                        top: 37%;
+                    }
+
+                    #firmnnr {
+                        filter: invert(100%);
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        right: 2%;
+                        bottom: -5%;
+                        width: 9vw;
+                    }
+
+                    #firmnya {
+                        position: relative;
+                        margin-top: 20%;
+                        background: #202020;
+                        width: 100%;
+                        height: 45%;
+                    }
+
+                    #imgfirmnya {
+                        position: absolute;
+                        width: 70%;
+                        top: 15%;
+                        right: 15%;
+                    }
+
+                    #textnya {
+                        position: absolute;
+                        width: 50%;
+                        top: 25%;
+                        height: 75%;
+                        left: 6%;
+                        color: white;
+                        mix-blend-mode: difference;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                    }
+
+                    #niertfirm {
+                        position: absolute;
+                        bottom: 1%;
+                        color: white;
+                        left: 4%;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                    }
+
+                    #nyadte1 {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        top: 65%;
+                        color: white;
+                        left: 55%;
+                        font-size: .5vw;
+                        letter-spacing: .05vw;
+                    }
+
+                    #nyadte {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        top: 72%;
+                        width: 200px;
+                        color: white;
+                        left: 65%;
+                        font-size: 1.2vw;
+                        letter-spacing: .2vw;
+                    }
+
+                    #niertti {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        top: -3%;
+                        color: white;
+                        left: 40%;
+                        font-size: 2.2vw;
+                        letter-spacing: .2vw;
+                    }
+
+                    #firmyuk {
+                        width: 100%;
+                        height: auto;
+                        background: red;
+                        margin-top: 30%;
+                        position: relative;
+                        border: .1vw solid white;
+                        margin-bottom: 20%;
+                    }
+
+                    #imgyukx {
+                        width: 100%;
+                    }
+
+                    #yuktext {
+                        position: absolute;
+                        width: 13vw;
+                        height: auto;
+                        top: 0;
+                        left: 10%;
+                        top: 20vw;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                        color: white;
+                        background: rgba(0,0,0,.3);
+                        mix-blend-mode: difference;
+                    }
+
+                    #flechfirm {
+                        width: 4vw;
+                        height: 4vw;
+                        top: 47%;
+                        right: 0%;
+                        position: absolute;
+                        transition: all .5s ease;
+                    }
+
+                        #flechfirm img {
+                            width: 100%;
+                            opacity: .5;
+                        }
+
+                    #tityuk {
+                        position: absolute;
+                        left: 10%;
+                        top: 1vw;
+                        font-weight: lighter;
+                        font-size: 2vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #yukfm {
+                        position: absolute;
+                        top: 95%;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                        right: 5%;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+                </style>
+                <div id="flechfirm">
+                    <img src="https://i.postimg.cc/hPvMx3Zp/flecha-izquierda.png" />
+                </div>
+                <div id="barlatf"></div>
+                <div id="arfirms">
+
+                    <div id="FirmNeu">
+                        <p id="inineura">
+                            灰指甲
+                        </p>
+                        <p id="subtneur">神经衰弱症</p>
+                        <p id="subtneur2">03.04-20.23</p>
+
+                        <p id="titleneura">IT TAKES MY PAIN AWAY</p>
+
+                        <p id="subtneu">
+                            It's a lie.<br />
+                            Never mind these are <br />
+                            horrid times.<br />
+                            she's not breathing back.
+                        </p>
+                        <img src="https://i.postimg.cc/gcS9KGxF/xc.png" id="neuxc" /><img src="https://i.postimg.cc/QxH24v7B/xc1.png" id="neuxc2" />
+                        <img src="https://i.postimg.cc/QtQPrWcF/12.png" id="firmimgneur" />
+                        <img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmnnr" />
+                    </div>
+
+
+                    <div id="firmnya">
+                        <img id="imgfirmnya" src="https://i.postimg.cc/jjGshNv1/55242f2ed68269edfe31c317936c8607.jpg" />
+                        <p id="niertti">
+                            私たちの光
+                        </p>
+
+                        <div id="textnya">
+                            Our loop made like a line of stations,<br />
+                            where a set of emotions intertwine,<br />
+                            no room for hate; completely the opposite<br />
+                            an island of beautiful emotions based on devotion and attachment.<br /><br />
+
+                            Without a doubt, storage could only<br />
+                            archiving dire memories causing melancholy<br />
+                            to create moments where love and happiness<br />
+                            may reign; we won't let go, not now.
+                        </div>
+                        <p id="niertfirm">Niert | 0000000000</p>
+                        <p id="nyadte1">To say goodbye is to die a little</p>
+                        <span id="nyadte">03|03-04|23</span>
+                        <!--<div id="nyadte2">03|03-04|23</div>-->
+                    </div>
+                    <div id="firmyuk">
+                        <img id="imgyukx" src="https://i.postimg.cc/wMW4XKdQ/3c2aa96ad73fd63fb083623c6f7e3712.jpg" />
+
+                        <p id="tityuk">
+                            脆<br />
+                            弱<br />
+                            的<br />
+                            三<br />
+                            月<br />
+                            雪
+                        </p>
+                        <div id="yuktext">
+                            Un "monstre" contre moi, dans le monde couvert d'ombres
+                            Je suis venu à lui de manière inattendue et j'ai entendu des rumeurs à son sujet.
+                            Peu l'ont approché, inique et cruel. Ils voyaient peu eux-mêmes
+                            comme il pourrait faire chaud Toi qui ne te méfies de rien, tu sauras aimer
+                            à ce monde maudit. Maintenant que nous portons le monde sur nos épaules.
+                            Vous vous demandez ce qu'il y avait dans votre monde, ce que vous avez vu dans votre monde.
+                            Y avait-il des couleurs dans votre monde ? Étais-je dans ton monde ?
+                            Maintenant c'est une nuit éternelle, où nous mènerait-elle ?
+                            Ce soir toi et moi tomberons du ciel, traîne-moi jusqu'en enfer.
+                            Parce que je ne te laisserai pas partir
+                        </div>
+
+                        <p id="yukfm">AntiClockwise | Yuki</p>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
 
             <div id="firmcont">
                 <img id="firmimg" src="https://i.postimg.cc/nhJ9GtMQ/frm.png" />
