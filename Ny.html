@@ -174,6 +174,8 @@
         }
 
         #auid {
+            text-transform: uppercase;
+            font-family: "Roboto", Arial, sans-serif;
             position: absolute;
             width: 25%;
             height: 10%;
@@ -373,16 +375,22 @@
                     audioData = [
 
                         {
-                            name: "RADIO OFF",
-                            artist: "RADIO OFF",
+                            name: "Radio éteinte",
+                            artist: "Radio éteinte",
                             src:
                                 ""
                         },
                         {
-                            name: "PAIN",
-                            artist: "JIMMY EAT WORLD",
+                            name: "Souvenirs d'un autre monde",
+                            artist: "Alcest",
                             src:
-                                "https://xevangelist.github.io/evangelist/pain.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
+                        },
+                        {
+                            name: "Au Crépuscule de Nos Rêves",
+                            artist: "Amesoeurs",
+                            src:
+                                "https://xevangelist.github.io/evangelist/AuCrepuscule.mp3?raw=true"
                         },
                         {
                             name: "FAIBLESSE DES SENS",
@@ -391,10 +399,10 @@
                                 "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
                         },
                         {
-                            name: "STRATUS",
-                            artist: "MOMENTS IN GRACE",
+                            name: "Faux Semblants",
+                            artist: "AMESOEURS",
                             src:
-                                "https://xevangelist.github.io/evangelist/Stratus.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
                         },
                         {
                             name: "MINUSMENSCH",
@@ -404,22 +412,22 @@
                         },
 
                         {
-                            name: "BLACKBIRD",
-                            artist: "ALTER BRIDGE",
+                            name: "I XIII V XIX XV V XXI XVIII XIX -- IX XIX -- IV V I IV",
+                            artist: "AMESOEURS",
                             src:
-                                "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/Amesoeurs.mp3?raw=true"
                         },
                         {
-                            name: "DEAD FLOWERS",
-                            artist: "DEMON HUNTER",
+                            name: "Recueillement",
+                            artist: "AMESOEURS",
                             src:
-                                "https://xevangelist.github.io/evangelist/demon-hunter-dead-flowers.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
                         },
                         {
-                            name: "THE EERIE COLD",
-                            artist: "SHINING",
+                            name: "Trouble (Éveils Infâmes)",
+                            artist: "AMESOEURS",
                             src:
-                                "https://xevangelist.github.io/evangelist/the-eerie-cold.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/Trouble.mp3?raw=true"
                         },
                         {
                             name: "PULSE / SURREAL",
@@ -427,25 +435,8 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
                         },
-                        {
-                            name: "TOO LATE TO CALL AN AMBULANCE",
-                            artist: "PSYCHONAOUT 4",
-                            src:
-                                "https://xevangelist.github.io/evangelist/Psychonaut%204%20-%20Too%20Late%20to%20Call%20an%20Ambulance%20.mp3?raw=true"
-                        },
-                        {
-                            name: "AND THE GREAT COLD DEATH OF THE HEART",
-                            artist: "AGALOCH",
-                            src:
-                                "https://xevangelist.github.io/evangelist/Agalloch%20-%20...And%20The%20Great%20Cold%20Death%20Of%20The%20Earth.mp3?raw=true"
-                        },
-                        {
-                            name: "BROKEN WINGS",
-                            artist: "ALTER BRIDGE",
-                            src:
-                                "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
-                        },
-                       
+
+
 
                     ];
 
@@ -588,7 +579,7 @@
         <div class="joystick__dummy joystick__dummy--up"></div>
         <div class="joystick__dummy joystick__dummy--down"></div>
         <div id="joystick" data-dumping="3" class="joystick"></div>
-     
+
         <div id="amenu">
             <style>
                 #amenu {
@@ -599,8 +590,11 @@
                     right: 20%;
                     top: 20%;
                 }
-                a { cursor:pointer;
+
+                a {
+                    cursor: pointer;
                 }
+
                 #cubes {
                     position: absolute;
                     width: 40%;
@@ -710,7 +704,7 @@
                 #p6 {
                     position: absolute;
                     top: 60%;
-                    left: 39%;
+                    left: 31%;
                     color: white;
                     mix-blend-mode: difference;
                     font-size: .7vw;
@@ -723,6 +717,7 @@
                     left: 21%;
                     color: white;
                     mix-blend-mode: difference;
+                    text-transform: uppercase;
                     font-size: .7vw;
                     letter-spacing: .2vw;
                 }
@@ -730,27 +725,30 @@
                 #p8 {
                     position: absolute;
                     top: 72%;
-                    left: 37%;
-                    color:#16a82b;
+                    left: 39%;
+                    color: #16a82b;
                     font-size: .7vw;
                     letter-spacing: .2vw;
-                   
                 }
+
                 #p88 {
                     color: white;
                     mix-blend-mode: difference;
                     opacity: 0;
                     animation: blink 1s steps(1) infinite;
                 }
+
                 @keyframes blink {
                     50% {
-                        opacity:1;
+                        opacity: 1;
                     }
                 }
+
                 #p9 {
                     position: absolute;
                     top: 78%;
-                    left: 30%;
+                    left: 32%;
+                    text-transform: uppercase;
                     color: white;
                     mix-blend-mode: difference;
                     font-size: .7vw;
@@ -760,7 +758,7 @@
                 #p10 {
                     position: absolute;
                     top: 82%;
-                    left: 40%;
+                    left: 42%;
                     color: white;
                     mix-blend-mode: difference;
                     font-size: 1.5vw;
@@ -772,13 +770,17 @@
                     width: 30%;
                     height: .05vw;
                     background: white;
-                    left: 35%;
+                    left: 37%;
                     top: 89.5%;
                     mix-blend-mode: difference;
                 }
 
                 a {
                     text-decoration: none;
+                }
+
+                #p6 {
+                    text-transform: uppercase;
                 }
 
                 #auid {
@@ -802,17 +804,17 @@
             <p id="p5">GRIS</p>
             <div id="barx"></div>
 
-            <a id="p6" onclick="toload();" href="#">◇ABOUT◇</a>
-            <a id="p7" href="https://xevangelist.github.io/evangelist/Neuraloading.html">◇DEPERSONALIZATION◇</a>
+            <a id="p6" onclick="toload();" href="#">◇à propos de◇</a>
+            <a id="p7" href="https://xevangelist.github.io/evangelist/Neuraloading.html">◇dépersonnalisation◇</a>
             <a id="p8" href="https://xevangelist.github.io/evangelist/cURSOR.html">◇CURS>R<span id="p88">|</span>◇</a>
-            <a id="p9" href="https://xevangelist.github.io/evangelist/Neura3.html">◇UNCERTAINTY◇</a>
+            <a id="p9" href="https://xevangelist.github.io/evangelist/Neura3.html">◇incertitude◇</a>
 
             <p id="p10">◇◇◇</p>
             <div id="baratr"></div>
 
 
         </div>
-
+     
         <div id="auid">
             <div id="R_plyr">
                 <div id="dt_rp">
@@ -1066,7 +1068,6 @@
                     }
                 }
             </style>
-
             <div id="afirms">
                 <style>
                     #afirms {
@@ -1343,26 +1344,165 @@
                 </div>
                 <div id="barlatf"></div>
                 <div id="arfirms">
+                    <div id="postneura2">
+                        <style>
+                            #postneura2 {
+                                width: 100%;
+                                height: 60%;
+                                background: black;
+                                margin-top: 30%;
+                                margin-bottom: 30%;
+                            }
 
-                    <div id="FirmNeu">
-                        <p id="inineura">
-                            灰指甲
-                        </p>
-                        <p id="subtneur">神经衰弱症</p>
-                        <p id="subtneur2">03.04-20.23</p>
+                            #neura2divimg {
+                                width: 90%;
+                                height: 60%;
+                                position: absolute;
+                                top: 23%;
+                                left: 5%;
+                            }
 
-                        <p id="titleneura">IT TAKES MY PAIN AWAY</p>
+                                #neura2divimg img {
+                                    position: absolute;
+                                    width: 100%;
+                                }
 
-                        <p id="subtneu">
-                            It's a lie.<br />
-                            Never mind these are <br />
-                            horrid times.<br />
-                            she's not breathing back.
-                        </p>
-                        <img src="https://i.postimg.cc/gcS9KGxF/xc.png" id="neuxc" /><img src="https://i.postimg.cc/QxH24v7B/xc1.png" id="neuxc2" />
-                        <img src="https://i.postimg.cc/QtQPrWcF/12.png" id="firmimgneur" />
-                        <img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmnnr" />
+                            #artextreg {
+                                position: absolute;
+                                width: 20%;
+                                height: 45%;
+                                top: 17%;
+                                left: 10%;
+                            }
+
+                            #neur2text {
+                                mix-blend-mode: difference;
+                                position: absolute;
+                                width: 20%;
+                                height: 42%;
+                                top: 17%;
+                                right: 2%;
+                            }
+
+                            #ptext2 {
+                                color: white;
+                                font-size: .7vw;
+                                letter-spacing: .1vw;
+                                transform: rotate(90deg);
+                                position: absolute;
+                                height: 100%;
+                                width: 550%;
+                                right: -35%;
+                            }
+
+                                #ptext2 span {
+                                    color: rgb(245, 167, 167);
+                                }
+
+                            #g1 {
+                                color: white;
+                                font-size: .45vw;
+                                left: 0;
+                                top: 0;
+                                letter-spacing: .05vw;
+                                opacity: .7;
+                                text-transform: uppercase;
+                            }
+
+                            .lineimg {
+                                filter: invert(100%);
+                                width: 1vw;
+                                position: relative;
+                                margin-left: 1vw;
+                            }
+
+                            #textinto {
+                                opacity: .7;
+                                text-align: right;
+                                color: white;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                                text-transform: uppercase;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+
+                            #neu2date {
+                                position: absolute;
+                                width: 50%;
+                                height: 5%;
+                                left: 5%;
+                                top: 63%;
+                                color: white;
+                                opacity: .7;
+                                font-size: .7vw;
+                                letter-spacing: .1vw;
+                                text-transform: uppercase;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+
+                            #firmnnr4 {
+                                position: absolute;
+                                width: 8vw;
+                                mix-blend-mode: difference;
+                                filter: invert(100%);
+                                top: 60%;
+                                right: 0;
+                            }
+                        </style>
+                        <div id="neura2divimg">
+                            <img src="https://i.postimg.cc/kgHHJCy4/45bea0d544e1f94657779cc6174687c1.jpg" />
+
+                        </div>
+                        <div id="artextreg">
+                            <p id="g1">
+                                GRIS<br />
+                                NEURASTHENIA<br />
+                                Hirondelle
+                                <br />
+                                <br />
+                                <br />
+                                <div id="textinto">
+                                    XERXES<br /><br />
+                                    <img class="lineimg" src="https://i.postimg.cc/JnjJy3Vg/diagonal-line.png" /><br /><br />
+                                    clair<br />de lune<br /><br />
+                                    <img class="lineimg" src="https://i.postimg.cc/JnjJy3Vg/diagonal-line.png" /><br /><br />
+                                    toute<br />les étoiles<br /><br />
+                                    <img class="lineimg" src="https://i.postimg.cc/JnjJy3Vg/diagonal-line.png" /><br /><br />
+                                    ils brillent <br />pour toi<br /><br /><img class="lineimg" src="https://i.postimg.cc/JnjJy3Vg/diagonal-line.png" /><br /><br />
+                                </div>
+
+                            </p>
+
+                        </div>
+
+                        <div id="neur2text">
+                            <p id="ptext2">Le Soleil moribond s'endormir sous une arche Et, comme un long linceul traînant à l’Orient Entends, <span>ma chère</span>, entends la douce Nuit qui marche.</p>
+                        </div>
+                        <div id="neu2date">
+                            SATURDAY, 08TH APRIL<br />
+                            05:31:11 PM @ 0 NOTES
+                        </div>
+                        <img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmnnr4" />
                     </div>
+                    <!--<div id="FirmNeu">
+                <p id="inineura">
+                    灰指甲
+                </p>
+                <p id="subtneur">神经衰弱症</p>
+                <p id="subtneur2">03.04-20.23</p>
+
+                <p id="titleneura">IT TAKES MY PAIN AWAY</p>
+
+                <p id="subtneu">
+                    It's a lie.<br />
+                    Never mind these are <br />
+                    horrid times.<br />
+                    she's not breathing back.
+                </p>
+                <img src="https://i.postimg.cc/gcS9KGxF/xc.png" id="neuxc" /><img src="https://i.postimg.cc/QxH24v7B/xc1.png" id="neuxc2" />
+                <img src="https://i.postimg.cc/QtQPrWcF/12.png" id="firmimgneur" />
+                <img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmnnr" />
+            </div>-->
 
 
                     <div id="firmnya">
@@ -1421,6 +1561,7 @@
 
 
 
+
             <div id="firmcont">
                 <img id="firmimg" src="https://i.postimg.cc/nhJ9GtMQ/frm.png" />
 
@@ -1447,25 +1588,42 @@
 
             <div id="afrds">
                 <style>
-                    #afrds { position:absolute; width:24%; height:3%;   top:93%; left:38%; text-align:center; font-weight:bold;
+                    #afrds {
+                        position: absolute;
+                        width: 24%;
+                        height: 3%;
+                        top: 93%;
+                        left: 38%;
+                        text-align: center;
+                        font-weight: bold;
                     }
-                    #pfrds { font-size:.8vw; letter-spacing:.1vw; 
+
+                    #pfrds {
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
                     }
-                        #pfrds a { margin-right:1vw;  color:lightgray;
+
+                        #pfrds a {
+                            margin-right: 1vw;
+                            color: lightgray;
                         }
-                   #pfrds a:first-child { color:rgba(199,48,48.3);
-                    }
+
+                            #pfrds a:first-child {
+                                color: rgba(199,48,48.3);
+                            }
                 </style>
-                <p id="pfrds"><a href="https://xat.me/niert">I</a>
-                <a href="https://xat.me/SunfLoweer">II</a>
-                <a href="https://xat.me/itami">III</a>
-                <a href="https://xat.me/Kagura">IV</a>
-                <a href="https://xat.me/AntiCLockwise">V</a>
-                <a href="https://xat.me/OtsegoLectric">VI</a>
-                <a href="https://xat.me/Necessarius">VII</a>
-                <a href="https://xat.me/taiga">VIII</a>
-                <a href="https://xat.me/xincoherent">IX</a>
-                <a href="https://xat.me/AhriWithHeaL">X</a></p>
+                <p id="pfrds">
+                    <a href="https://xat.me/niert">I</a>
+                    <a href="https://xat.me/SunfLoweer">II</a>
+                    <a href="https://xat.me/itami">III</a>
+                    <a href="https://xat.me/Kagura">IV</a>
+                    <a href="https://xat.me/AntiCLockwise">V</a>
+                    <a href="https://xat.me/OtsegoLectric">VI</a>
+                    <a href="https://xat.me/Necessarius">VII</a>
+                    <a href="https://xat.me/taiga">VIII</a>
+                    <a href="https://xat.me/xincoherent">IX</a>
+                    <a href="https://xat.me/AhriWithHeaL">X</a>
+                </p>
 
             </div>
             <div id="txtret">
@@ -1657,7 +1815,7 @@
                     top: 95%;
                 }
             </style>
-            <p id="p_t6">Powered by Neurasthenia © 2019-2023 All Rights Reserved xat.me</p>
+            <p id="p_t6">Propulsé par Neurasthenia © 2019-2023 Tous droits réservés xat.me</p>
             <p id="p_t7">1533252890 | contact | xat.com</p>
             <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
         </div>
