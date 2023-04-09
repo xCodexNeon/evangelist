@@ -187,7 +187,7 @@
                         overflow: hidden;
                     }
 
-                        #imgcontent img {
+                       #imgcont2 { z-index:9; top:0;
                             position: absolute;
                             width: 100%;
                         }
@@ -203,9 +203,15 @@
                         width: 100%;
                         height: 100%;
                         opacity: .3;
-                        background: url(https://i.postimg.cc/3NRKhY0b/rel.png);
+                        background: url(https://i.postimg.cc/T3qwYYZc/Captura.png);
                     }
-
+                    #contbtnbk2 {
+                        width: 100%;
+                        height: 100%;
+                        opacity: .3;
+                        z-index: -1;
+                        background: url(https://i.postimg.cc/T3qwYYZc/Captura.png);
+                    }
                     #abtns {
                         position: absolute;
                         width: 80%;
@@ -254,7 +260,7 @@
                         }
 
                     #pdiv {
-                        
+                        /*top: .3vw;*/
                         position: relative;
                         letter-spacing: .1vw;
                         font-size: .65vw;
@@ -423,7 +429,8 @@
                     }
                 </style>
                 <div id="imgcontent">
-                    <img src="https://i.pinimg.com/originals/b3/62/fd/b362fd48fbeaea7cbf1add410b56e565.jpg" />
+                    <div id="contbtnbk2"></div>
+                    <img id="imgcont2" src="https://i.pinimg.com/originals/b3/62/fd/b362fd48fbeaea7cbf1add410b56e565.jpg" />
                 </div>
                 <div id="contcont">
                     <div id="contbtnbk"></div>
@@ -939,24 +946,173 @@
                         }
                     </style>
 
+                    <div id="arefirmneu">
+                        <style>
+                            #arefirmneu {
+                                width: 90%;
+                                height: 150%;
+                                background: black;
+                                top: 0;
+                                left: 0;
+                                position: absolute;
+                            }
 
+                            #imgneu1 {
+                                position: absolute;
+                                top: 10%;
+                                left: -55%;
+                                width: 60%;
+                                z-index: 0;
+                            }
 
-                    <div id="imgbk1neu3">
+                            #imgneu2 {
+                                position: absolute;
+                                top: 10%;
+                                left: 25%;
+                                width: 60%;
+                                z-index: 0;
+                            }
+
+                            #neufirmacub {
+                                position: absolute;
+                                width: 8vw;
+                                height: 10vw;
+                                background: black;
+                                top: 40%;
+                                left: 8%;
+                            }
+
+                            #linescub {
+                                width: 7vw;
+                                height: 9vw;
+                                position: absolute;
+                                left: .48vw;
+                                top: .48vw;
+                                border: .1vw solid white;
+                            }
+
+                            #firmnnr4 {
+                                width: 11vw;
+                                mix-blend-mode: difference;
+                                position: absolute;
+                                filter: invert(100%);
+                                left: -1vw;
+                                top: -1vw;
+                            }
+
+                            #firmtxt1 {
+                                width: 35%;
+                                height: 25%;
+                                top: 13%;
+                                left: 7%;
+                                z-index: 2;
+                                position: absolute;
+                            }
+                            #firmtxt2 { mix-blend-mode:difference;
+                                width: 85%; 
+                                height: 20%;
+                                top: 77%;
+                                left: 12%;
+                                z-index: 2;
+                                position: absolute;
+                            }
+                                #firmtxt1 p {
+                                    color: white;
+                                    letter-spacing: .05vw;
+                                    font-size: .65vw;
+                                    position: absolute;
+                                    opacity: .6;
+                                    font-family: "Roboto", Arial, sans-serif;
+                                }
+                            #firmtxt2 p {
+                                color: white;
+                                letter-spacing: .05vw;
+                                font-size: .65vw;
+                                position: absolute;
+                                opacity: .6;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+                            #textlate { position:absolute; width:10%; height:65%; top:9%; right:8%;
+                            }
+                                #textlate p { transform:rotate(90deg);   width:500%; left:-200%;  top:33%;
+                                    color: white;
+                                    letter-spacing: .05vw;
+                                    font-size: 1.3vw; letter-spacing:.1vw; text-transform:uppercase;
+                                    position: absolute;
+                                    opacity: .6;
+                                    font-family: "Roboto", Arial, sans-serif;
+                                }
+                            #neudatx { 
+                                 position: absolute;
+                                color: white;
+                                letter-spacing: .05vw;
+                                top: 75%; left:1vw;
+                                text-align: left;
+                                font-size: .65vw;
+                                position: absolute;
+                                opacity: .6;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+                        </style>
+
+                        <img src="https://i.postimg.cc/cH4M99nG/2d0dc94900d3d18ccbc62697cb706b9d.jpg" id="imgneu1" />
+                        <img src="https://i.postimg.cc/cH4M99nG/2d0dc94900d3d18ccbc62697cb706b9d.jpg" id="imgneu2" />
+                        <div id="firmtxt1">
+                            <p>
+                                J'avais peur, mais une fois que j'y ai pensé, j'ai laissé tomber.
+                                Nous sommes fatigués de parler quand il s'agit d'agir,
+                                qunque ne nous amène jamais aux conclusions que nous aurions voulues.
+                            </p>
+                        </div> 
+                        <div id="firmtxt2">
+                            <p>
+                                Tout ce que je lui ai dit, je pense que tu le sais bien.
+                                Il n'y a rien de plus à ajouter.
+
+                                Tu sais ce qui se passe quand les lumières s'éteignent
+                                moins vous en savez, plus vous voulez en savoir.
+                                Même si cela nous amène à des conclusions que nous n'avons jamais voulues.
+
+                                Nous ne serons plus jamais les mêmes, nous ne ressentirons plus jamais cela.
+                                Je ne te demanderais jamais de rester avec moi.
+                                Plus jamais.
+                                Juste ce soir, d'accord ?
+                            </p>
+                        </div>
+
+                        <div id="textlate">
+                            <p>
+                                Au Crépuscule De <br />Nos Rêves
+                            </p>
+                        </div>
+                        <div id="neufirmacub">
+                            <div id="linescub">
+
+                            </div>
+                            <img src="https://i.postimg.cc/nhJ9GtMQ/frm.png" id="firmnnr4" />
+                            <div id="neudatx">
+                                | NEURASTHENIA<br />
+                                | GRIS
+                            </div>
+                        </div>
+                        <!--<p id="regnm">HIRONDELLE |<br /> 1533252890 |</p>-->
+                    </div>
+
+                    <!--<div id="imgbk1neu3">
                         <img src="https://i.postimg.cc/SNvc1rqB/7fe352e55a3c2da184fdb867e12be336.jpg" />
 
-                    </div>
-                    <div id="imgbk1neu">
+                    </div>-->
+                    <!--<div id="imgbk1neu">
                         <img src="https://i.postimg.cc/ZRTNvyYK/c5c3639bdca846e99a6ee95b6bbb032d.jpg" />
 
                     </div> <div id="imgbk1neu2">
                         <img src="https://i.postimg.cc/ry9JjxDT/5e6ac258f92cf017784de63265d62f7f.jpg" />
 
-                    </div>
+                    </div>-->
                     <p id="neudat">07/04/23</p>
 
-                    <h1>Scroll down</h1>
 
-                    <div class="section section-1" id="sect1">
+                    <!--<div class="section section-1" id="sect1">
                         <p id="ver1">I was<br />scared,</p>
                         <p id="ver2">but once I </p>
                         <p id="ver3">thought about it, I let it go.</p>
@@ -992,8 +1148,8 @@
                     <div class="section section-6" id="sect6">
 
                         <p id="ver16">Gris|Neurasthenia</p> <p id="ver15">Ok...?</p>
-                    </div>
-                    <script>
+                    </div>-->
+                    <!--<script>
                         $(document).ready(function () {
                             $("#apost1").scroll(function () {
                                 $(".section").each(function () {
@@ -1007,7 +1163,7 @@
                             });
                         });
 
-                    </script>
+                    </script>-->
 
 
 
