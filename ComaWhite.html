@@ -1,0 +1,2010 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <style>
+        body {
+            position: absolute;
+            height: 101%;
+            width: 101%;
+            background: #292929;
+            top: -1%;
+            left: -1%;
+            overflow: hidden;
+        }
+
+        #main {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: #292929;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        *,
+        *:after,
+        *:before {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        
+
+        p,
+        a {
+            font-family: "Roboto", Arial, sans-serif;
+        }
+
+        .notice {
+            position: absolute;
+            top: 4vw;
+            right: 4vw;
+            color: white;
+            z-index: 1;
+        }
+
+            .notice a {
+                color: white;
+            }
+
+        /*slider styles*/
+        .rgbShiftSlider {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*mix-blend-mode: hard-light;*/
+            opacity: 0.85;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /*transform-origin : 50vw 300vh;*/
+            transform-origin: 50% 50%;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        nav {
+            position: absolute;
+            top: 4vw;
+            left: 4vw;
+            z-index: 1;
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin-right: 14px;
+            }
+
+     
+        html, button, .center-center, a {
+            cursor: crosshair
+        }
+
+        .joystick__dummy {
+            mix-blend-mode: difference;
+            position: relative;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            width: 10px;
+            height: 10px;
+            background: transparent;
+            border: 1px solid #fefefe;
+            border-radius: 10px;
+            margin: 0 0 0 -6px;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .joystick__dummy--show {
+            mix-blend-mode: difference;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .joystick {
+            position: absolute;
+            mix-blend-mode: difference;
+            width: 0;
+            height: 0;
+        }
+
+            .joystick:after {
+                transition: all 0.5s ease-in-out;
+                position: absolute;
+                content: "";
+                width: 150px;
+                height: 150px;
+                border: 1px solid #fefefe;
+                border-radius: 150px;
+                top: -75px;
+                left: -75px;
+                opacity: 0;
+            }
+
+            .joystick:before {
+                transition: all 0.2s ease-in;
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: 1px solid #fefefe;
+                border-radius: 50px;
+                top: -26px;
+                left: -26px;
+            }
+
+        .joystick--down:before {
+            width: 10px;
+            height: 10px;
+            top: -6px;
+            left: -6px;
+            background: #fefefe;
+        }
+
+        .joystick--down:after {
+            transition: all 0.2s ease-in;
+            width: 10px;
+            height: 10px;
+            top: -6px;
+            left: -6px;
+            opacity: 1;
+        }
+
+        #auid {
+            text-transform: uppercase;
+            font-family: "Roboto", Arial, sans-serif;
+            position: absolute;
+            width: 25%;
+            height: 10%;
+            bottom: 3%;
+            left: 2%;
+        }
+
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            z-index: 999999999999999;
+            top: 120%;
+            right: 12%;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: white;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1vw;
+            }
+
+        #namesong {
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: lightgray;
+            left: 0%;
+            letter-spacing: .1vw;
+            font-size: 1vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: lightgray;
+            height: .2vw;
+            position: absolute;
+            top: 80%;
+        }
+
+        .fillBar {
+            background: #292929;
+            ;
+            width: 0;
+            height: .3vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 35%;
+            right: 2%;
+            position: absolute;
+        }
+
+            #AT_time p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .1vw;
+                font-size: .8vw;
+                color: lightgray;
+            }
+
+        .time {
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .7vw;
+            width: 2vw;
+            overflow: hidden;
+            color: white;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            position: absolute;
+            left: .1vw;
+            top: 90%;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: lightgray;
+        }
+
+        #cd_2 p {
+            position: absolute;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
+    </style>
+
+    <script>
+        fullscreen();
+        $(window).resize(fullscreen);
+        $(window).scroll(headerParallax);
+
+        function fullscreen() {
+            var masthead = $('.masthead');
+            var windowH = $(window).height();
+            var windowW = $(window).width();
+
+            masthead.width(windowW);
+            masthead.height(windowH);
+        }
+
+        function headerParallax() {
+            var st = $(window).scrollTop();
+            var headerScroll = $('.masthead h1');
+
+            if (st < 500) {
+                headerScroll.css('opacity', 1 - st / 1000);
+                $('.masthead-arrow ').css('opacity', 0.5 - st / 250);
+                headerScroll.css({
+                    '-webkit-transform': 'translateY(' + st / 7 + '%)',
+                    '-ms-transform': 'translateY(' + st / 7 + '%)',
+                    transform: 'translateY(' + st / 7 + '%)'
+                });
+            }
+        }
+    </script>
+
+</head>
+
+
+<body onload="digi()" onclick="digi()">
+
+    <div id="main">
+        <div id="sectimg">
+            <style>
+
+                #sectimg {
+                    position: absolute;
+                    width: 32%;
+                    right: 0;
+                    height: 100%;
+                    border-left: .5vw solid gray;
+                }
+
+                #crdt {
+                    position: absolute;
+                    width: 25%;
+                    height: 7%;
+                    bottom: 2%;
+                    right: 5%;
+                }
+
+                    #crdt img {
+                        position: absolute;
+                        width: 4vw;
+                        filter: invert(100%);
+                        right: 0;
+                    }
+
+                #g1 {
+                    color: white;
+                    top: 0;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g2 {
+                    color: white;
+                    top: .6vw;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g3 {
+                    color: white;
+                    top: 1.2vw;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g4 {
+                    color: white;
+                    text-transform: uppercase;
+                    bottom: 4%;
+                    left: 5%;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                    #g4 span {
+                        font-weight: bold;
+                        font-size: .6vw;
+                    }
+
+                #txtimg {
+                    opacity: .8;
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    position: absolute;
+                    /*font-weight: bold;*/
+                    width: 35%;
+                    left: 5%;
+                    top: 56%;
+                    height: 35%;
+                    font-size: .4vw;
+                    letter-spacing: .1vw;
+                }
+
+                    #txtimg span {
+                        font-size: .45vw;
+                    }
+
+                #mainnick {
+                    text-align: center;
+                    position: absolute;
+                    width: 80%;
+                    height: 8%;
+                    top: 8%;
+                    left: 10%;
+                }
+
+                #c1 {
+                    color: white;
+                    left: 5%;
+                    top: -80%;
+                    opacity: .6;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: 3.5vw;
+                    font-weight: lighter;
+                    letter-spacing: .3vw;
+                }
+
+                #tt {
+                    color: rgb(165,157,154);
+                    text-transform: uppercase;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    position: absolute;
+                    left: 40%;
+                    top: 48%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+
+                #clock {
+                    color: rgb(165,157,154);
+                    z-index: 9;
+                    text-transform: uppercase;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    position: relative;
+                    left: 39%;
+                    top: 12%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+                /* html { filter:invert(100%);
+                }*/
+                #c2 {
+                    right: 5%;
+                    color: white;
+                    top: -80%;
+                    opacity: .6;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: 3.5vw;
+                    font-weight: lighter;
+                    letter-spacing: .3vw;
+                }
+            </style>
+
+            <script>
+                var mydate = new Date();
+                var year = mydate.getYear();
+                if (year < 1000) year += 1900;
+                var day = mydate.getDay();
+                var month = mydate.getMonth();
+                var daym = mydate.getDate();
+                if (daym < 10) daym = "0" + daym;
+                var dayarray = new Array(
+                    "dimanche,",
+                    "lundi&nbsp;&nbsp;&nbsp;,",
+                    "Mardi&nbsp;&nbsp;&nbsp;,",
+                    "Mercredi,",
+                    "Jeudi&nbsp;&nbsp;&nbsp;,",
+                    "vendredi,",
+                    "Samedi&nbsp;&nbsp;,"
+                );
+                var montharray = new Array(
+                    "Janvier",
+                    "Février",
+                    "Mars",
+                    "avril",
+                    "Peut",
+                    "Juin",
+                    "Juillet",
+                    "Août",
+                    "September",
+                    "Octobre",
+                    "November",
+                    "December"
+                );
+                document.write(
+                    "<font id='clock'>" +
+                    dayarray[day] +
+                    " " +
+                    daym +
+                    "TH " +
+                    montharray[month] +
+                    " " +
+
+                    "</font>"
+                );
+                function digi() {
+                    var date = new Date(),
+                        hour = date.getHours(),
+                        minute = checkTime(date.getMinutes()),
+                        ss = checkTime(date.getSeconds());
+
+                    function checkTime(i) {
+                        if (i < 10) {
+                            i = "0" + i;
+                        }
+                        return i;
+                    }
+
+                    if (hour > 12) {
+                        hour = hour - 12;
+                        if (hour == 12) {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                                hour + ":" + minute + ":" + ss + " AM";
+                        } else {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                                hour + ":" + minute + ":" + ss + " PM";
+                        }
+                    } else {
+                        document.getElementById("tt").innerHTML =
+                            hour + ":" + minute + ":" + ss + " AM";
+                    }
+                    var time = setTimeout(digi, 1000);
+                }
+
+
+            </script>
+            <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+            <script>
+                // set images
+                // demo works but images are blocked by codepen Cors issue
+                var images = [
+                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
+                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
+
+                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg"];
+                // instanciate slider
+                var rbgShiftSlider = new rbgShiftSlider({
+                    nav: true,
+                    navElement: ".scene-nav",
+                    slideImages: images,
+                    stageWidth: 650,
+                    stageHeight: 940,
+                    displacementImage:
+                        "https://images.unsplash.com/photo-1495757450029-09dbedacbc36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+                    fullScreen: true,
+                    transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                    transitionGhostDuration: 0.25,
+                    transitionFilterIntensity: 150,
+                    transitionSpriteIntensity: 1,
+                    mouseDispIntensity: 3,
+                    interactive: true,
+                    autoPlay: true,
+                    autoPlaySpeed: 12000
+                });
+
+            </script>
+
+            <div id="txtimg">
+                <span>总是一样的 | </span>C'est toujours pareil, <br />
+                <span>愚蠢折磨着我们 </span><br /><br />
+                <span> 折磨 | </span> la bêtise nous tourmente<br /><br />
+                <span> 愚蠢的我们 </span><br /><span> | Mais tu sais, </span>
+                <br /> <br />
+                会很 | ce sera très <br /><br />
+                <span>
+                    痛苦如果今晚 | douloureux si cette nuit <br />
+                </span><br /><br />
+                ne finit jamais <span>| 永不结束</span><br />
+                <span>
+                    当然一
+                </span>Sûrement vous, qui <br /><br />
+                <span>不要怀疑</span><br /> n'en doutez pas, <br /><br />
+                êtes capables d'aimer ce <span>
+                    这
+                </span><br /> <br />
+                一monde maudit <br /><span>被诅咒的世界</span>
+                <br /><br />
+                <span>我们必须 | </span>Nous devons <br />
+                <span>支持者 | </span> supporter <br /><br />
+                tout cela et maintenant...<br />
+                <span>现在...</span>
+            </div>
+
+            <div id="mainnick">
+                <p id="c1">昏迷</p>
+                <p id="clock"></p><p id="tt"></p>
+                <p id="c2">白色</p>
+            </div>
+
+            <div id="crdt">
+                <p id="g1">YUKI</p>
+                <p id="g2">xCOMA,WHITE</p>
+                <p id="g3">RS515</p>
+                <img src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
+
+            </div>
+            <p id="g4">Élaboré par <span>×COMA,BLACK ◙xat.me® ∞2023</span></p>
+        </div>
+        <div id="sectmenu">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+                #sectmenu {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 30%;
+                    height: 35%; /*border:.1vw solid black;*/
+                    top: 1.5%;
+                    right: 38%;
+                }
+
+                #amenus {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 80%;
+                    height: 15%;
+                    left: 10%;
+                }
+
+                #nav1 {
+                    transform: skew(-10deg);
+                    width: 20%;
+                    height: 60%;
+                    background: white;
+                    position: absolute;
+                    top: 25%;
+                }
+
+                #nav2 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    width: 20%;
+                    left: 27%;
+                    position: absolute;
+                    height: 60%;
+                    background: white;
+                }
+
+                #nav3 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    width: 20%;
+                    left: 55%;
+                    position: absolute;
+                    height: 60%;
+                    background: white;
+                }
+
+                #nav4 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    left: 83%;
+                    width: 20%;
+                    position: absolute;
+                    height: 60%;
+                    background: white;
+                }
+
+                #p1 {
+                    text-align: center;
+                    margin-top: .4vw;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: .7vw;
+                    letter-spacing: .05vw;
+                    color: black;
+                    transition: all .5s ease;
+                    top: 0vw;
+                    transform: skew(10deg);
+                }
+
+                #bor1 {
+                    position: absolute;
+                    width: 0%;
+                    height: .2vw;
+                    background: #ee6b6b;
+                    top: 100%;
+                    transform: skew(30deg);
+                    transition: all .5s ease;
+                }
+
+                #nav1:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav3:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav2:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav4:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav1:hover #p1, #nav2:hover #p1, #nav3:hover #p1, #nav4:hover #p1 {
+                    color: #ee6b6b;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            </style>
+            <div id="amenus">
+                <div id="nav1">
+                    <a href="https://xat.me/xComaBLack"><p id="p1">Folie ♡</p></a>
+                    <div id="bor1"></div>
+                </div>
+                <div id="nav2"> <p id="p1">Sur moi</p> <div id="bor1"></div></div>
+                <div id="nav3" onclick="clickfriends();"> <p id="p1">dédicaces</p> <div id="bor1"></div></div>
+                <div id="nav4"> <p id="p1">Maison</p> <div id="bor1"></div></div>
+            </div>
+
+        </div>
+        <div id="sectfoot">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+                #sectfoot {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 68%;
+                    height: 10%;
+                    bottom: 0;
+                    left: 0;
+                    background: white;
+                }
+
+                #Regname {
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    transform: rotate(270deg);
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: 4vw;
+                    right: 20%;
+                    bottom: 18%;
+                    border-bottom: .2vw solid black;
+                    line-height: 4.2vw;
+                }
+
+                #regwhite {
+                    font-weight: bold;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    transform: rotate(90deg);
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    right: 30%;
+                    top: 18%;
+                }
+
+                #brr2 {
+                    height: 40%;
+                    width: .2vw;
+                    position: absolute;
+                    background: #171717;
+                    right: 36%;
+                    top: 1.5%;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                }
+
+                #sectcrt {
+                    position: absolute;
+                    width: 40%;
+                    height: 45%;
+                    left: 65%;
+                    top: 40%;
+                }
+
+                #crt {
+                    font-family: 'Montserrat', sans-serif;
+                    color: black;
+                    font-weight: bold;
+                    font-size: .45vw;
+                    letter-spacing: .1vw;
+                    text-transform: uppercase;
+                    opacity: 1;
+                }
+            </style> <div id="sectcrt">
+                <p id="crt">
+                    ●yuki<br />
+                    灰色的 | 昏迷，黑色 | 吞 | 0005 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ●YUKINE | 000009<br />
+                    ●COMA, white | ●tous droits réservés ●xat.com ●2023
+                </p>
+
+            </div>
+        </div>
+        <div id="sectfrds">
+            <style>
+                #sectfrds {
+                    position: absolute;
+                    width: 29%;
+                    height: 35%;
+                    left: 31%;
+                    top: 10%;
+                }
+
+                #l1 {
+                    left: 0;
+                    top: -10%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: 2.5vw;
+                    letter-spacing: .1vw;
+                    opacity: 0;
+                }
+
+                .lic1 {
+                    animation: litextentrance 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
+
+                .lic12 {
+                    animation: litextentrance2 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
+
+                .f12 {
+                    animation: textentrance2 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
+
+                @keyframes litextentrance {
+                    0% {
+                        opacity: 0;
+                        top: -12%;
+                    }
+
+                    10% {
+                        top: -15%;
+                    }
+
+                    80% {
+                        top: -10%;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes litextentrance2 {
+                    0% {
+                        opacity: 1;
+                        top: -10%;
+                    }
+
+                    10% {
+                        top: -15%;
+                    }
+
+                    90% {
+                        top: -15%;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                #f1 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 0;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f1 {
+                    animation: textentrance 2s 1;
+                    animation-delay: .4s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f2 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 8%;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f2 {
+                    animation: textentrance 2s 1;
+                    animation-delay: .8s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f3 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 16%;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f3 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 1.2s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f4 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 24%;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f4 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 1.6s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f5 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 32%;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f5 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f6 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 40%;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                .f6 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2.4s;
+                    animation-fill-mode: forwards;
+                }
+
+                #f7 {
+                    position: absolute;
+                    width: 1vw;
+                    color: white;
+                    font-weight: bold;
+                    height: 60%;
+                    left: 12%;
+                    opacity: 0;
+                }
+
+                .f7 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2.8s;
+                    animation-fill-mode: forwards;
+                }
+
+                #sepr {
+                    width: .1vw;
+                    height: 50%;
+                    top: 0;
+                    left: 48%;
+                    background: white;
+                    position: absolute;
+                }
+
+                #nmelist {
+                    line-height: 1.7vw;
+                    top: 45%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    left: 0;
+                    font-size: .9vw;
+                    letter-spacing: .1vw;
+                }
+
+                #nmelist2 {
+                    text-transform: uppercase;
+                    top: 50%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    left: .2vw;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                }
+
+                #nmelist span {
+                    color: #ee6b6b;
+                }
+
+                @keyframes textentrance {
+                    0% {
+                        opacity: 0;
+                        top: -2%;
+                    }
+
+                    10% {
+                        top: -5%;
+                    }
+
+                    80% {
+                        top: 0%;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes textentrance2 {
+                    0% {
+                        opacity: 1;
+                        top: 0%;
+                    }
+
+                    10% {
+                        top: -5%;
+                    }
+
+                    90% {
+                        top: -2%;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                #nmelist, #nmelist2 {
+                    transition: all .5s ease;
+                }
+
+                #f2:hover p, #f3:hover p, #f4:hover p, #f5:hover p, #f6:hover p, #f7:hover p, #f1:hover p {
+                    color: #171717;
+                    text-shadow: 0 0 .5vw white;
+                }
+            </style>
+            <script>
+                function clickfriends() {
+                    $("#l1").removeClass("lic12");
+                    $("#f1").removeClass("f12");
+                    $("#f2").removeClass("f12");
+                    $("#f3").removeClass("f12");
+                    $("#f4").removeClass("f12");
+                    $("#f5").removeClass("f12");
+                    $("#f6").removeClass("f12");
+                    $("#f7").removeClass("f12");
+
+                    $("#l1").addClass("lic1");
+                    $("#f1").addClass("f1");
+                    $("#f2").addClass("f2");
+                    $("#f3").addClass("f3");
+                    $("#f4").addClass("f4");
+                    $("#f5").addClass("f5");
+                    $("#f6").addClass("f6");
+                    $("#f7").addClass("f7");
+
+
+                } function clickfriends2() {
+                    $("#l1").removeClass("lic1");
+                    $("#f1").removeClass("f1");
+                    $("#f2").removeClass("f2");
+                    $("#f3").removeClass("f3");
+                    $("#f4").removeClass("f4");
+                    $("#f5").removeClass("f5");
+                    $("#f6").removeClass("f6");
+                    $("#f7").removeClass("f7");
+
+                    $("#l1").addClass("lic12");
+                    $("#f1").addClass("f12");
+                    $("#f2").addClass("f12");
+                    $("#f3").addClass("f12");
+                    $("#f4").addClass("f12");
+                    $("#f5").addClass("f12");
+                    $("#f6").addClass("f12");
+                    $("#f7").addClass("f12");
+
+
+                }
+            </script>
+            <p id="l1">
+                ▐<br />列<br />出<br />好<br />友
+            </p>
+            <div id="f1">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    <span> 昏<br />迷<br />白<br />色<br /></span>
+                </p>
+            </div>
+            <div id="f2">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    太<br />阳<br />花
+                </p>
+
+            </div>
+            <div id="f3">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    拒<br />绝
+                </p>
+
+            </div>
+            <div id="f4">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    必<br />要<br />的
+                </p>
+
+            </div>
+            <div id="f5">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    神<br />乐
+                </p>
+
+            </div>
+            <div id="f6">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    奥<br />齐<br />格<br />电<br />气
+                </p>
+
+            </div>
+            <div id="f7" onclick="clickfriends2();">
+                <div id="sepr"></div>
+                <p id="nmelist2">
+                    R<br />e<br />t<br />o<br />u<br />r<br />n<br />e<br />r
+                </p>
+
+            </div>
+
+        </div>
+
+        <div id="sectqr">
+            <style>
+                #sectqr {
+                    position: absolute;
+                    width: 8%;
+                    height: 35%;
+                    top: 2%;
+                    left: 8%;
+                }
+
+                #dte {
+                    font-weight: bold;
+                    top: -2vw;
+                    right: 9%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    font-size: 2vw;
+                    letter-spacing: .2vw;
+                }
+
+                #dte2 {
+                    font-weight: bold;
+                    right: 10%;
+                    top: 10%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    font-size: .8vw;
+                    letter-spacing: .2vw;
+                }
+
+                #dv1 {
+                    position: absolute;
+                    width: .1vw;
+                    height: 15%;
+                    right: 13%;
+                    top: 22%;
+                    background: white;
+                }
+
+                #qrwhite {
+                    position: absolute;
+                    width: 3vw;
+                    left: 5%;
+                    top: 57%;
+                    border: .1vw solid white;
+                }
+
+                #qr1 {
+                    font-weight: bold;
+                    right: 10%;
+                    top: 40%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #qr2 {
+                    font-weight: bold;
+                    right: 23%;
+                    top: 40%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #qr3 {
+                    font-weight: bold;
+                    right: 36%;
+                    top: 40%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    background: lightgray;
+                    font-size: .7vw;
+                    color: dimgray;
+                    letter-spacing: .2vw;
+                }
+
+                #qr4 {
+                    font-weight: bold;
+                    right: -2.5%;
+                    transform: rotate(90deg);
+                    top: 64%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+
+            <p id="dte">23/04</p>
+            <div id="dv1"></div>
+            <p id="dte2">17:34<br /><br /><br /><br />19:43</p>
+            <p id="qr1">
+                愚<br />蠢<br />折<br />磨<br />着<br />我<br />们
+            </p>
+            <p id="qr2">
+                们<br />会<br />很<br />痛<br />苦<br />如<br />果<br />今<br />晚<br />永<br />不<br />结<br />束
+            </p>
+            <p id="qr3">
+                被<br />诅<br />咒<br />的<br />世<br />界
+            </p>
+            <p id="qr4">
+                https://xat.me/ComaBlack
+            </p>
+            <img id="qrwhite" src="https://i.postimg.cc/W3hGG1Wt/black.png" />
+
+        </div>
+
+
+        <div id="sectprof">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+                #sectprof {
+                    position: absolute;
+                    width: 25%;
+                    height: 16%;
+                    bottom: 11%;
+                    left: 1%;
+                }
+
+                #imgprof {
+                    position: absolute;
+                    height: 8vw;
+                    width: 8vw;
+                    border: .1vw solid white;
+                }
+
+                    #imgprof img {
+                        position: absolute;
+                        width: 90%;
+                        height: 90%;
+                        left: 5%;
+                        top: 5%;
+                    }
+
+                #firmwhite {
+                    mix-blend-mode: difference;
+                    font-size: 1.5vw;
+                    font-weight: lighter;
+                    left: 6.5vw;
+                    top: 2.1vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: white;
+                }
+
+                #prop1 {
+                    mix-blend-mode: difference;
+                    font-size: .5vw;
+                    font-weight: lighter;
+                    left: 6.5vw;
+                    top: 84%;
+                    letter-spacing: .5vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: white;
+                }
+
+                #prop2 {
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    font-weight: lighter;
+                    left: 33%;
+                    top: 0%;
+                    letter-spacing: .2vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: white;
+                }
+
+                #prop3 {
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    font-weight: lighter;
+                    color: darkgray;
+                    left: 33%;
+                    top: 22%;
+                    letter-spacing: .2vw;
+                    position: absolute;
+                    z-index: 9;
+                }
+            </style>
+            <div id="imgprof">
+
+                <img src="https://i.postimg.cc/2S6GGfJ1/111.jpg" />
+            </div>
+
+            <p id="prop2"> YUKI | BLACKBIRD <br />BLACKHEARTED BUTTERFLY</p>
+            <p id="prop3"> MRR | XIX </p>
+            <p id="firmwhite">
+                昏迷黑色
+                <br />灰色的
+            </p>
+            <p id="prop1">1533252890</p>
+        </div>
+        <script>
+            $(document).ready(function () {
+                var playing = false,
+                    artistname = $(".artist-name"),
+                    musicName = $(".music-name"),
+                    time = $(".time"),
+                    fillBar = $(".fillBar");
+
+                let audioData = [];
+
+                var song = new Audio();
+                var CurrentSong = 0;
+                window.onload = load();
+
+                function load() {
+                    audioData = [
+
+                        {
+                            name: "Radio éteinte",
+                            artist: "Radio éteinte",
+                            src:
+                                ""
+                        },
+                        {
+                            name: "Souvenirs d'un autre monde",
+                            artist: "Alcest",
+                            src:
+                                "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
+                        },
+                        {
+                            name: "Au Crépuscule de Nos Rêves",
+                            artist: "Amesoeurs",
+                            src:
+                                "https://xevangelist.github.io/evangelist/AuCrepuscule.mp3?raw=true"
+                        },
+                        {
+                            name: "FAIBLESSE DES SENS",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                        },
+                        {
+                            name: "Faux Semblants",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                        },
+                        {
+                            name: "MINUSMENSCH",
+                            artist: "LANTLOS  (Only the best part)",
+                            src:
+                                "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+                        },
+
+                        {
+                            name: "I XIII V XIX XV V XXI XVIII XIX -- IX XIX -- IV V I IV",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Amesoeurs.mp3?raw=true"
+                        },
+                        {
+                            name: "Recueillement",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                        },
+                        {
+                            name: "Trouble (Éveils Infâmes)",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Trouble.mp3?raw=true"
+                        },
+                        {
+                            name: "PULSE / SURREAL",
+                            artist: "LANTLOS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                        },
+
+
+
+                    ];
+
+                    artistname.html(audioData[CurrentSong].artist);
+                    musicName.html(audioData[CurrentSong].name);
+                    song.src = audioData[CurrentSong].src;
+                }
+
+                function playSong() {
+                    var curSong = audioData[CurrentSong];
+                    artistname.html(curSong.artist);
+                    musicName.html(curSong.name);
+                    song.src = curSong.src;
+                    song.play();
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    $(".player-track").addClass("active");
+                }
+
+                song.addEventListener("timeupdate", function () {
+                    var position = (100 / song.duration) * song.currentTime;
+                    var current = song.currentTime;
+                    var duration = song.duration;
+                    var durationMinute = Math.floor(duration / 60);
+                    var durationSecond = Math.floor(duration - durationMinute * 60);
+                    var durationLabel = durationMinute + ":" + durationSecond;
+                    currentSecond = Math.floor(current);
+                    currentMinute = Math.floor(currentSecond / 60);
+                    currentSecond = currentSecond - currentMinute * 60;
+                    // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                    if (currentSecond < 10) {
+                        currentSecond = "0" + currentSecond;
+                    }
+                    var currentLabel = currentMinute + ":" + currentSecond;
+
+                    var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                    fillBar.css("width", position + "%");
+
+                    $(".time").html(indicatorLabel);
+                });
+                //////
+                $("#a_in").click(function playOrPause() {
+                    if (song.paused) {
+                        song.play();
+                        playing = true;
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        /* $("#bar1").addClass("br1");*/
+
+                    } else {
+                        song.pause();
+                        playing = false;
+                        $("#play").removeClass("fa-pause");
+                        $("#play").addClass("fa-play");
+                        $("p").removeClass("active");
+
+
+                    }
+                });
+
+                $("#prev").click(function prev() {
+                    CurrentSong--;
+                    if (CurrentSong < 0) {
+                        CurrentSong = 11;
+                    }
+                    playSong();
+                });
+
+                $("#next").click(function next() {
+                    CurrentSong++;
+                    if (CurrentSong > 11) {
+                        CurrentSong = 0;
+                    }
+                    playSong();
+                });
+            });
+
+        </script>
+        <div id="auid">
+            <style>
+                #auid {
+                    mix-blend-mode: difference;
+                    text-transform: uppercase;
+                    font-family: "Roboto", Arial, sans-serif;
+                    position: absolute;
+                    width: 25%;
+                    height: 10%;
+                    bottom: 3%;
+                    left: 1%;
+                }
+
+                .player {
+                    z-index: 9;
+                }
+
+                .player-control {
+                    position: absolute;
+                    z-index: 999999999999999;
+                    top: 120%;
+                    right: 12%;
+                }
+
+                #prev {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 2vw;
+                    height: 1vw;
+                    left: 0;
+                    z-index: 3;
+                    top: -2.6vw;
+                }
+
+                #next {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 2vw;
+                    height: 1vw;
+                    left: 2vw;
+                    top: -2.6vw;
+                }
+
+                    #next p, #prev p {
+                        position: absolute;
+                        font-family: 'Oswald', sans-serif;
+                        color: white;
+                        letter-spacing: .1vw;
+                        text-shadow: 0 0 1vw #171717;
+                        font-size: 1vw;
+                    }
+
+                #namesong {
+                    position: absolute;
+                    width: 88%;
+                    height: 70%;
+                    top: 50%;
+                    color: lightgray;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                    font-size: 1vw;
+                }
+
+
+                #name_sng {
+                    position: relative;
+                    float: left;
+                }
+
+                .progress-bar {
+                    width: 100%;
+                    background: lightgray;
+                    height: .2vw;
+                    position: absolute;
+                    top: 80%;
+                }
+
+                .fillBar {
+                    background: #292929;
+                    ;
+                    width: 0;
+                    height: .3vw;
+                }
+
+                #AT_time {
+                    width: 5vw;
+                    height: 1vw;
+                    top: 35%;
+                    right: 2%;
+                    position: absolute;
+                }
+
+                    #AT_time p {
+                        position: absolute;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .8vw;
+                        color: lightgray;
+                    }
+
+                .time {
+                    position: absolute;
+                    left: 4vw;
+                    top: 1vw;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .7vw;
+                    width: 2vw;
+                    overflow: hidden;
+                    color: white;
+                }
+
+                #cd_1 {
+                    width: 8vw;
+                    height: 1.3vw;
+                    border: .1vw solid rgba(199,48,48.3);
+                    position: absolute;
+                    left: 21vw;
+                    top: .3vw;
+                    overflow: hidden;
+                }
+
+                #cd_2 {
+                    width: 4.7vw;
+                    height: 1.3vw;
+                    border: .1vw solid rgba(199,48,48.3);
+                    position: absolute;
+                    left: 29vw;
+                    top: .3vw;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    left: .1vw;
+                    top: 90%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .6vw;
+                    color: lightgray;
+                }
+
+                #cd_2 p {
+                    position: absolute;
+                    top: 10%;
+                    letter-spacing: .05vw;
+                    font-size: .4vw;
+                    left: .4vw;
+                    color: rgba(199,48,48.3);
+                    line-height: .5vw;
+                }
+            </style>
+            <div id="R_plyr">
+                <div id="dt_rp">
+
+                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                </div>
+
+                <div id="mor_rpy">
+
+                    <div class="player">
+
+                        <div class="player-track">
+                            <div id="titles">
+
+                            </div>
+
+
+
+                            <div class="progress-bar">
+                                <div class="fillBar"></div>
+                            </div>
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div class="artist-name"></div>
+
+                        </div>
+
+                        <div class="player-control">
+                            <div id="prev" class="fas fa-backward"><p>◄</p></div>
+
+                            <div id="next" class="fas fa-forward"><p>►</p></div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <p id="Regname">xCOMA,WHITE</p><div id="brr2"></div>
+        <p id="regwhite">xCOMA,BLACK</p>
+        <p id="dtereg">2023 一 ROAD TO NOWHERE | 无处</p>
+        <style>
+            #dtereg {
+                color: white;
+                opacity: .7;
+                font-weight: bold;
+                top: 19%;
+                position: absolute;
+                right: 25.8%;
+                font-family: 'Montserrat', sans-serif;
+                position: absolute;
+                font-size: .8vw;
+                letter-spacing: .1vw;
+                transform: rotate(90deg);
+            }
+        </style>
+        <div id="sectlat1">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+                #sectlat1 {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 8%;
+                    height: 90%;
+                    top: 0;
+                    left: 0;
+                }
+
+                #br1 {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    background: white;
+                    height: .1vw;
+                    left: 10%;
+                    top: 2%;
+                    width: 80%;
+                }
+
+                #num1 {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    color: white;
+                    font-size: 6vw;
+                    top: -15%;
+                    left: 15%;
+                    font-family: 'Playfair Display', serif;
+                }
+
+                #br2 {
+                    position: absolute;
+                    background: white;
+                    height: 40%;
+                    left: 49.5%;
+                    top: 16%;
+                    width: .2vw;
+                }
+
+                #num2 {
+                    position: absolute;
+                    color: white;
+                    font-size: 6vw;
+                    top: 45%;
+                    line-height: 3.5vw;
+                    left: 15%;
+                    font-family: 'Playfair Display', serif;
+                }
+
+                #br3 {
+                    position: absolute;
+                    background: white;
+                    height: .1vw;
+                    left: 10%;
+                    top: 79%;
+                    width: 80%;
+                }
+            </style>
+            <div id="br1"></div>
+            <p id="num1">19</p>
+            <div id="br2"></div>
+            <p id="num2">21.<br />93</p>
+            <div id="br3"></div>
+        </div>
+    </div>
+    <div id="mainpage" class="mnge" onclick="ocultpage();">
+        <style>
+            .mnge {
+                z-index: 999999999999999;
+                opacity: 1;
+            }
+
+            .mnge2 {
+                z-index: -9;
+                opacity: 0;
+            }
+
+            #mainpage {
+                position: fixed;
+                background: rgba(0,0,0,0.6);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+
+
+            ul {
+                position: relative;
+                top: 30%;
+                margin: 0;
+                padding: 0;
+            }
+
+                ul li {
+                    font-size: 5vw;
+                    padding: 3em 0 0 0;
+                    list-style: none;
+                    position: absolute;
+                    color: lightgray;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    text-align: center;
+                    width: 100%;
+                    -webkit-backface-visibility: hidden;
+                    text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                    transition: opacity 0.4s ease;
+                }
+
+                    ul li:first-child {
+                        /* leave this one on as a background */
+                        opacity: 0.2 !important;
+                    }
+
+            #firmcoma {
+                filter: invert(100%);
+                width: 17vw;
+                position: absolute;
+                top: 20%;
+                left: 43%;
+            }
+
+            #loadtext {
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                top: 57%;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                position: relative;
+                font-size: .5vw;
+                letter-spacing: .1vw;
+                animation: loadanim 1s infinite;
+            }
+
+                #loadtext::before {
+                    animation: loadanim2 8s 1;
+                    animation-fill-mode: forwards;
+                    content: "chargement"
+                }
+
+            @keyframes loadanim {
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes loadanim2 {
+                0% {
+                    content: "chargement"
+                }
+
+                99% {
+                    content: "chargement"
+                }
+
+                100% {
+                    content: "Cliquez pour continuer"
+                }
+            }
+        </style>
+
+        <script>
+            function ocultpage() {
+                $("#mainpage").removeClass("mnge");
+                $("#mainpage").addClass("mnge2");
+            }
+        </script>
+
+        <p id="loadtext"></p>
+        <img id="firmcoma" src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
+        <ul>
+            <script>
+    var items = document.getElementsByTagName("li");
+                var counter = 1;
+
+                setInterval(function () {
+                    items[counter - 1].style.opacity = 0;
+                    items[counter].style.opacity = 1;
+                    counter++;
+                    if (counter == items.length) {
+                        counter = 1;
+                        items[0].style.opacity = 1;
+                        items[items.length - 1].style.opacity = 0;
+                    }
+                }, 500);
+            </script>
+            <li>⣿</li>
+            <li>⣰</li>
+            <li>⣱</li>
+            <li>⣲</li>
+            <li>⣳</li>
+            <li>⣴</li>
+            <li>⣵</li>
+            <li>⣶</li>
+            <li>⣷</li>
+            <li>⣸</li>
+            <li>⣹</li>
+            <li>⣺</li>
+            <li>⣻</li>
+            <li>⣼</li>
+            <li>⣽</li>
+            <li>⣾</li>
+        </ul>
+    </div>
+
+</body>
+</html>
