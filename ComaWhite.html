@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -29,7 +29,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            background: #292929;
+           
             top: 0;
             left: 0;
             overflow: hidden;
@@ -45,7 +45,7 @@
             box-sizing: border-box;
         }
 
-        
+
 
         p,
         a {
@@ -99,7 +99,7 @@
                 margin-right: 14px;
             }
 
-     
+
         html, button, .center-center, a {
             cursor: crosshair
         }
@@ -352,12 +352,116 @@
             }
         }
     </script>
-
+    <style>
+        canvas#mainx {
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 
 
 <body onload="digi()" onclick="digi()">
+    <canvas id="mainx">
+        <script>
+            /**
+* Constants and global variables.
+*/
+            const canvas = document.getElementById("mainx");
+            const context = canvas.getContext("2d");
+            context.globalAlpha = 0.5;
+            const GRIDS = 1;
 
+            const cursor = {
+                x: innerWidth / 2,
+                y: innerHeight / 2
+            };
+
+            let particlesArray = [];
+
+            generateParticles(GRIDS);
+            setSize();
+            anim();
+
+            addEventListener("mousemove", (e) => {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+            });
+
+            addEventListener(
+                "touchmove",
+                (e) => {
+                    e.preventDefault();
+                    cursor.x = e.touches[0].clientX;
+                    cursor.y = e.touches[0].clientY;
+                },
+                { passive: false }
+            );
+
+            addEventListener("resize", () => setSize());
+
+            function generateParticles(amount) {
+                for (let i = 0; i < amount; i++) {
+                    particlesArray[i] = new Particle(
+                        innerWidth / 2,
+                        innerHeight / 2,
+                        10,
+                        generateColor(),
+                        0.02
+                    );
+                }
+            }
+
+            function generateColor() {
+                let hexSet = "0123456789ABCDEF";
+                let finalHexString = "#";
+                for (let i = 0; i < 6; i++) {
+                    finalHexString += hexSet[Math.ceil(Math.random() * 15)];
+                }
+                return finalHexString;
+            }
+
+            function setSize() {
+                canvas.height = innerHeight;
+                canvas.width = innerWidth;
+            }
+
+            function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
+                this.x = x;
+                this.y = y;
+                this.particleTrailWidth = particleTrailWidth;
+                this.strokeColor = strokeColor;
+                this.theta = Math.random() * Math.PI * 2;
+                this.rotateSpeed = rotateSpeed;
+                this.t = Math.random() * 150;
+
+                this.rotate = () => {
+                    const ls = {
+                        x: this.x,
+                        y: this.y
+                    };
+                    this.theta += this.rotateSpeed;
+                    this.x = cursor.x + Math.cos(this.theta) * this.t;
+                    this.y = cursor.y + Math.sin(this.theta) * this.t;
+                    context.beginPath();
+                    context.lineWidth = this.particleTrailWidth;
+                    context.strokeStyle = generateColor();
+                    context.moveTo(ls.x, ls.y);
+                    context.lineTo(this.x, this.y);
+                    context.stroke();
+                };
+            }
+
+            function anim() {
+                context.fillStyle = "#292929";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                particlesArray.forEach((particle) => particle.rotate());
+                requestAnimationFrame(anim);
+            }
+
+        </script>
+    </canvas>
     <div id="main">
         <div id="sectimg">
             <style>
@@ -584,10 +688,10 @@
                 // set images
                 // demo works but images are blocked by codepen Cors issue
                 var images = [
-                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
-                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
+                    "https://i.postimg.cc/CKbnm3GH/266083221c0fd48604e1f62d0e6642e4.jpg",
+                    "https://i.postimg.cc/v8S9jSkF/3-1.png",
 
-                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg"];
+                    "https://i.postimg.cc/vT1ycBGz/2.png"];
                 // instanciate slider
                 var rbgShiftSlider = new rbgShiftSlider({
                     nav: true,
@@ -1161,26 +1265,31 @@
             <p id="l1">
                 ▐<br />列<br />出<br />好<br />友
             </p>
-            <div id="f1">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    <span> 昏<br />迷<br />白<br />色<br /></span>
-                </p>
-            </div>
-            <div id="f2">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    太<br />阳<br />花
-                </p>
+            <a href="https://xat.me/xComaBLack">
+                <div id="f1">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        <span> 昏<br />迷<br />白<br />色<br /></span>
+                    </p>
+                </div>
+            </a>
+           
+                <div id="f2">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        太<br />阳<br />花
+                    </p>
 
-            </div>
-            <div id="f3">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    拒<br />绝
-                </p>
+                </div>
+                <a>
+                    <div id="f3">
+                        <div id="sepr"></div>
+                        <p id="nmelist">
+                            拒<br />绝
+                        </p>
 
-            </div>
+                    </div>
+                </a>
             <div id="f4">
                 <div id="sepr"></div>
                 <p id="nmelist">
@@ -1334,7 +1443,7 @@
 
                 #sectprof {
                     position: absolute;
-                    width: 25%;
+                    width: 30%;
                     height: 16%;
                     bottom: 11%;
                     left: 1%;
@@ -1382,20 +1491,22 @@
                     mix-blend-mode: difference;
                     font-size: .7vw;
                     font-weight: lighter;
-                    left: 33%;
+                    left: 28%;
                     top: 0%;
                     letter-spacing: .2vw;
                     position: absolute;
                     z-index: 9;
                     color: white;
                 }
-
+                #txtimg, #mainnick, #crdt, #g4 {
+                    mix-blend-mode: difference;
+                }
                 #prop3 {
                     mix-blend-mode: difference;
                     font-size: .7vw;
                     font-weight: lighter;
                     color: darkgray;
-                    left: 33%;
+                    left: 28%;
                     top: 22%;
                     letter-spacing: .2vw;
                     position: absolute;
@@ -1407,13 +1518,13 @@
                 <img src="https://i.postimg.cc/2S6GGfJ1/111.jpg" />
             </div>
 
-            <p id="prop2"> YUKI | BLACKBIRD <br />BLACKHEARTED BUTTERFLY</p>
+            <p id="prop2"> YUKI | BLACKBIRD <br />SWAYING FROM SEASON TO SEASON</p>
             <p id="prop3"> MRR | XIX </p>
             <p id="firmwhite">
                 昏迷黑色
                 <br />灰色的
             </p>
-            <p id="prop1">1533252890</p>
+            <p id="prop1">1515302520</p>
         </div>
         <script>
             $(document).ready(function () {
@@ -1973,7 +2084,7 @@
         <img id="firmcoma" src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
         <ul>
             <script>
-    var items = document.getElementsByTagName("li");
+                var items = document.getElementsByTagName("li");
                 var counter = 1;
 
                 setInterval(function () {
