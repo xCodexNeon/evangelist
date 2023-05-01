@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -29,7 +29,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            background: white;
+             
             top: 0;
             left: 0;
             overflow: hidden;
@@ -356,8 +356,107 @@
 </head>
 
 
-<body   onclick="digi()">
-  
+<body onclick="digi()">
+    <canvas id="mainx">
+        <script>
+            /**
+* Constants and global variables.
+*/
+            const canvas = document.getElementById("mainx");
+            const context = canvas.getContext("2d");
+            context.globalAlpha = 0.5;
+            const GRIDS = 1;
+
+            const cursor = {
+                x: innerWidth / 2,
+                y: innerHeight / 2
+            };
+
+            let particlesArray = [];
+
+            generateParticles(GRIDS);
+            setSize();
+            anim();
+
+            addEventListener("mousemove", (e) => {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+            });
+
+            addEventListener(
+                "touchmove",
+                (e) => {
+                    e.preventDefault();
+                    cursor.x = e.touches[0].clientX;
+                    cursor.y = e.touches[0].clientY;
+                },
+                { passive: false }
+            );
+
+            addEventListener("resize", () => setSize());
+
+            function generateParticles(amount) {
+                for (let i = 0; i < amount; i++) {
+                    particlesArray[i] = new Particle(
+                        innerWidth / 2,
+                        innerHeight / 2,
+                        10,
+                        generateColor(),
+                        0.02
+                    );
+                }
+            }
+
+            function generateColor() {
+                let hexSet = "0123456789ABCDEF";
+                let finalHexString = "#";
+                for (let i = 0; i < 6; i++) {
+                    finalHexString += hexSet[Math.ceil(Math.random() * 15)];
+                }
+                return finalHexString;
+            }
+
+            function setSize() {
+                canvas.height = innerHeight;
+                canvas.width = innerWidth;
+            }
+
+            function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
+                this.x = x;
+                this.y = y;
+                this.particleTrailWidth = particleTrailWidth;
+                this.strokeColor = strokeColor;
+                this.theta = Math.random() * Math.PI * 2;
+                this.rotateSpeed = rotateSpeed;
+                this.t = Math.random() * 150;
+
+                this.rotate = () => {
+                    const ls = {
+                        x: this.x,
+                        y: this.y
+                    };
+                    this.theta += this.rotateSpeed;
+                    this.x = cursor.x + Math.cos(this.theta) * this.t;
+                    this.y = cursor.y + Math.sin(this.theta) * this.t;
+                    context.beginPath();
+                    context.lineWidth = this.particleTrailWidth;
+                    context.strokeStyle = generateColor();
+                    context.moveTo(ls.x, ls.y);
+                    context.lineTo(this.x, this.y);
+                    context.stroke();
+                };
+            }
+
+            function anim() {
+                context.fillStyle = "rgba(255,255,255,0.5)";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                particlesArray.forEach((particle) => particle.rotate());
+                requestAnimationFrame(anim);
+            }
+
+        </script>
+    </canvas>
     <div id="main" onload="digi()">
         <div id="sectimg">
             <style>
@@ -502,7 +601,9 @@
                     font-weight: lighter;
                     letter-spacing: .3vw;
                 }
-                a { text-decoration:none;
+
+                a {
+                    text-decoration: none;
                 }
             </style>
 
@@ -587,9 +688,9 @@
                 // demo works but images are blocked by codepen Cors issue
                 var images = [
                     "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
-                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg",
+                    "https://i.postimg.cc/qqY33zyM/3.png",
 
-                    "https://i.postimg.cc/sf7SBQkg/c45749afc39ce8f969ad059bfc42d9aa.jpg"];
+                    "https://i.postimg.cc/6qp76TDY/b893c9fd91a567889e9cdf23c0602518.jpg"];
                 // instanciate slider
                 var rbgShiftSlider = new rbgShiftSlider({
                     nav: true,
@@ -656,7 +757,8 @@
         <div id="sectmenu">
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-
+                #txtimg, #mainnick, #crdt, #g4 { mix-blend-mode:difference;
+                }
                 #sectmenu {
                     position: absolute;
                     width: 30%;
@@ -1356,6 +1458,7 @@
                     font-size: .7vw;
                     letter-spacing: .2vw;
                 }
+
                 #qr3 {
                     font-weight: bold;
                     right: 36%;
@@ -1364,12 +1467,14 @@
                     font-family: 'Montserrat', sans-serif;
                     background: dimgray;
                     font-size: .7vw;
-                    color:white;
+                    color: white;
                     letter-spacing: .2vw;
                 }
+
                 #qr4 {
                     font-weight: bold;
-                    right: -3%; transform:rotate(90deg);
+                    right: -3%;
+                    transform: rotate(90deg);
                     top: 64%;
                     position: absolute;
                     font-family: 'Montserrat', sans-serif;
@@ -1387,13 +1492,13 @@
             </p>
             <p id="qr2">
                 们<br />会<br />很<br />痛<br />苦<br />如<br />果<br />今<br />晚<br />永<br />不<br />结<br />束
-            </p> 
+            </p>
             <p id="qr3">
                 被<br />诅<br />咒<br />的<br />世<br />界
             </p>
             <p id="qr4">
-    https://xat.me/ComaWhite
-</p>
+                https://xat.me/ComaWhite
+            </p>
             <img id="qrwhite" src="https://i.postimg.cc/dV8xz49w/qrwhite.png" />
 
         </div>
@@ -1417,23 +1522,26 @@
                     font-size: 2.5vw;
                     letter-spacing: .1vw;
                     opacity: 0;
-                   
                 }
+
                 .lic1 {
                     animation: litextentrance 2s 1;
                     animation-delay: 0s;
                     animation-fill-mode: forwards;
                 }
+
                 .lic12 {
                     animation: litextentrance2 2s 1;
                     animation-delay: 0s;
                     animation-fill-mode: forwards;
                 }
+
                 .f12 {
                     animation: textentrance2 2s 1;
                     animation-delay: 0s;
                     animation-fill-mode: forwards;
                 }
+
                 @keyframes litextentrance {
                     0% {
                         opacity: 0;
@@ -1452,6 +1560,7 @@
                         opacity: 1;
                     }
                 }
+
                 @keyframes litextentrance2 {
                     0% {
                         opacity: 1;
@@ -1467,7 +1576,7 @@
                     }
 
                     100% {
-                        opacity:0;
+                        opacity: 0;
                     }
                 }
 
@@ -1478,13 +1587,14 @@
                     right: 0;
                     top: 0;
                     opacity: 0;
-                    
                 }
+
                 .f1 {
                     animation: textentrance 2s 1;
                     animation-delay: .4s;
                     animation-fill-mode: forwards;
                 }
+
                 #f2 {
                     position: absolute;
                     width: 1vw;
@@ -1492,8 +1602,8 @@
                     right: 8%;
                     top: 0;
                     opacity: 0;
-                   
                 }
+
                 .f2 {
                     animation: textentrance 2s 1;
                     animation-delay: .8s;
@@ -1507,13 +1617,14 @@
                     right: 16%;
                     top: 0;
                     opacity: 0;
-                  
                 }
+
                 .f3 {
                     animation: textentrance 2s 1;
                     animation-delay: 1.2s;
                     animation-fill-mode: forwards;
                 }
+
                 #f4 {
                     position: absolute;
                     width: 1vw;
@@ -1521,13 +1632,14 @@
                     right: 24%;
                     top: 0;
                     opacity: 0;
-                   
                 }
+
                 .f4 {
                     animation: textentrance 2s 1;
                     animation-delay: 1.6s;
                     animation-fill-mode: forwards;
                 }
+
                 #f5 {
                     position: absolute;
                     width: 1vw;
@@ -1535,13 +1647,14 @@
                     right: 32%;
                     top: 0;
                     opacity: 0;
-                  
                 }
+
                 .f5 {
                     animation: textentrance 2s 1;
                     animation-delay: 2s;
                     animation-fill-mode: forwards;
                 }
+
                 #f6 {
                     position: absolute;
                     width: 1vw;
@@ -1549,8 +1662,8 @@
                     right: 40%;
                     top: 0;
                     opacity: 0;
-                   
                 }
+
                 .f6 {
                     animation: textentrance 2s 1;
                     animation-delay: 2.4s;
@@ -1565,8 +1678,8 @@
                     height: 60%;
                     left: 12%;
                     opacity: 0;
-                   
                 }
+
                 .f7 {
                     animation: textentrance 2s 1;
                     animation-delay: 2.8s;
@@ -1592,8 +1705,9 @@
                     font-size: .9vw;
                     letter-spacing: .1vw;
                 }
+
                 #nmelist2 {
-                     text-transform:uppercase;
+                    text-transform: uppercase;
                     top: 50%;
                     position: absolute;
                     font-family: 'Montserrat', sans-serif;
@@ -1602,9 +1716,10 @@
                     font-size: .7vw;
                     letter-spacing: .1vw;
                 }
-                    #nmelist span {
-                        color: #ee6b6b;
-                    }
+
+                #nmelist span {
+                    color: #ee6b6b;
+                }
 
                 @keyframes textentrance {
                     0% {
@@ -1624,6 +1739,7 @@
                         opacity: 1;
                     }
                 }
+
                 @keyframes textentrance2 {
                     0% {
                         opacity: 1;
@@ -1646,6 +1762,7 @@
                 #nmelist, #nmelist2 {
                     transition: all .5s ease;
                 }
+
                 #f2:hover p, #f3:hover p, #f4:hover p, #f5:hover p, #f6:hover p, #f7:hover p, #f1:hover p {
                     color: white;
                     text-shadow: 0 0 .5vw black;
@@ -1694,70 +1811,81 @@
 
                 }
             </script>
-            <p id="l1" >
+            <p id="l1">
                 ▐<br />列<br />出<br />好<br />友
             </p>
-            <div id="f1">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    <span> 昏<br />迷<br />白<br />色<br /></span>
-                </p>
-            </div>
-            <div id="f2">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    太<br />阳<br />花
-                </p>
+            <a  href="https://xat.me/xComaWhite">
+                <div id="f1">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        <span> 昏<br />迷<br />白<br />色<br /></span>
+                    </p>
+                </div>
+            </a>
+            <a href="https://xat.me/SunfLoweer">
+                <div id="f2">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        太<br />阳<br />花
+                    </p>
 
-            </div>
+                </div></a><a href="https://xat.me/Niert">
+   
             <div id="f3">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    拒<br />绝
-                </p>
+        <div id="sepr"></div>
+        <p id="nmelist">
+            拒<br />绝
+        </p>
 
-            </div>
-            <div id="f4">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    必<br />要<br />的
-                </p>
+    </div></a>
+                          <a href="https://xat.me/Necessarius">
+                              <div id="f4">
+                                  <div id="sepr"></div>
+                                  <p id="nmelist">
+                                      必<br />要<br />的
+                                  </p>
 
-            </div>
-            <div id="f5">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    神<br />乐
-                </p>
+                              </div>
+                          </a>
+                          <a href="https://xat.me/Kagura">
+                              <div id="f5">
+                                  <div id="sepr"></div>
+                                  <p id="nmelist">
+                                      神<br />乐
+                                  </p>
 
-            </div>
-            <div id="f6">
-                <div id="sepr"></div>
-                <p id="nmelist">
-                    奥<br />齐<br />格<br />电<br />气
-                </p>
+                              </div></a><a href="https://xat.me/OtsegoLectric">
+    <div id="f6">
+        <div id="sepr"></div>
+        <p id="nmelist">
+            奥<br />齐<br />格<br />电<br />气
+        </p>
 
-            </div>  
-            <div id="f7" onclick="clickfriends2();">
-                <div id="sepr"></div>
-                <p id="nmelist2">
-                    R<br />e<br />t<br />o<br />u<br />r<br />n<br />e<br />r
-                </p>
+    </div></a>
+    <div id="f7" onclick="clickfriends2();">
+        <div id="sepr"></div>
+        <p id="nmelist2">
+            R<br />e<br />t<br />o<br />u<br />r<br />n<br />e<br />r
+        </p>
 
-            </div>
+    </div>
 
-        </div>
+</div>
 
         <p id="Regname">xCOMA,BLACK</p><div id="brr2"></div>
         <p id="regwhite">xCOMA,WHITE</p>
         <p id="dtereg">2023 一 ROAD TO NOWHERE | 无处</p>
         <style>
-            #dtereg { font-weight:bold; top:19%;
-                position: absolute; right:25.8%;
+            #dtereg {
+                font-weight: bold;
+                top: 19%;
+                position: absolute;
+                right: 25.8%;
                 font-family: 'Montserrat', sans-serif;
                 position: absolute;
-                font-size: .8vw; 
-                letter-spacing: .1vw; transform:rotate(90deg);
+                font-size: .8vw;
+                letter-spacing: .1vw;
+                transform: rotate(90deg);
             }
         </style>
         <div id="sectlat1">
@@ -1824,42 +1952,48 @@
             <p id="num2">26.<br />03</p>
             <div id="br3"></div>
         </div>
-    
-       
-    
+
+
+
     </div>
 
     <div id="mainpage" class="mnge" onclick="ocultpage();">
         <style>
             .mnge {
-                z-index: 999999999999999; opacity:1;
+                z-index: 999999999999999;
+                opacity: 1;
             }
+
             .mnge2 {
                 z-index: -9;
                 opacity: 0;
             }
+
             #mainpage {
                 position: fixed;
                 background: rgba(0,0,0,0.6);
                 backdrop-filter: blur(10px);
                 width: 100%;
                 height: 100%;
-                
                 top: 0;
                 left: 0;
             }
 
 
 
-            ul { position:relative; top:30%;
+            ul {
+                position: relative;
+                top: 30%;
                 margin: 0;
                 padding: 0;
             }
 
-                ul li { font-size:5vw;
+                ul li {
+                    font-size: 5vw;
                     padding: 3em 0 0 0;
                     list-style: none;
-                    position: absolute; color:lightgray;
+                    position: absolute;
+                    color: lightgray;
                     top: 0;
                     left: 0;
                     opacity: 0;
@@ -1874,37 +2008,48 @@
                         /* leave this one on as a background */
                         opacity: 0.2 !important;
                     }
-            #firmcoma { filter:invert(100%); width:17vw; position:absolute; top:20%; left:43%;
+
+            #firmcoma {
+                filter: invert(100%);
+                width: 17vw;
+                position: absolute;
+                top: 20%;
+                left: 43%;
             }
+
             #loadtext {
                 text-transform: uppercase;
                 color: white;
                 text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
                 top: 57%;
-                text-align:center;
+                text-align: center;
                 font-family: 'Montserrat', sans-serif;
                 position: relative;
                 font-size: .5vw;
-                letter-spacing: .1vw; animation: loadanim 1s infinite;
+                letter-spacing: .1vw;
+                animation: loadanim 1s infinite;
             }
+
                 #loadtext::before {
                     animation: loadanim2 8s 1;
                     animation-fill-mode: forwards;
                     content: "chargement"
                 }
+
             @keyframes loadanim {
                 0% {
                     opacity: 1;
                 }
 
                 50% {
-                    opacity:0;
+                    opacity: 0;
                 }
 
                 100% {
                     opacity: 1;
                 }
             }
+
             @keyframes loadanim2 {
                 0% {
                     content: "chargement"
@@ -1930,7 +2075,8 @@
         <p id="loadtext"></p>
         <img id="firmcoma" src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" />
         <ul>
-            <script>var items = document.getElementsByTagName("li");
+            <script>
+                var items = document.getElementsByTagName("li");
                 var counter = 1;
 
                 setInterval(function () {
@@ -1943,7 +2089,7 @@
                         items[items.length - 1].style.opacity = 0;
                     }
                 }, 500);
-</script>
+            </script>
             <li>⣿</li>
             <li>⣰</li>
             <li>⣱</li>
@@ -1963,5 +2109,11 @@
         </ul>
     </div>
 
+    <style>
+        canvas#mainx {
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+    </style>
 </body>
 </html>
