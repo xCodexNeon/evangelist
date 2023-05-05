@@ -585,7 +585,7 @@
                     letter-spacing: .1vw;
                     position: relative;
                     left: 39%;
-                    top: 12%;
+                    top: 11%;
                     font-family: "Roboto", Arial, sans-serif;
                 }
                 /* html { filter:invert(100%);
@@ -859,12 +859,15 @@
                 }
             </style>
             <div id="amenus">
+                <style>
+                    
+                </style>
                 <div id="nav1">
                     <a href="https://xat.me/xComaWhite"> <p id="p1">Folie ♡</p></a>
                     <div id="bor1"></div>
                 </div>
-                <div id="nav2"> <p id="p1">Sur moi</p> <div id="bor1"></div></div>
-                <div id="nav3" onclick="clickfriends();"> <p id="p1">dédicaces</p> <div id="bor1"></div></div>
+                <div id="nav2" onclick="clicksectdedicate(); clickfriends2();"> <p id="p1">Dédicaces</p> <div id="bor1"></div></div>
+                <div id="nav3" onclick="clickfriends();"> <p id="p1">Amitiés</p> <div id="bor1"></div></div>
                 <div id="nav4"> <p id="p1">Maison</p> <div id="bor1"></div></div>
             </div>
 
@@ -936,6 +939,18 @@
                     letter-spacing: .1vw;
                     text-transform: uppercase;
                     opacity: .7;
+                }
+                @keyframes textentrance3 {
+                    0% {
+                        opacity: 0;
+                        
+                    }
+
+                    80% { opacity:0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
                 }
             </style>
 
@@ -1503,6 +1518,261 @@
 
         </div>
 
+        <div id="sectdedicate"> <!--class="nosectdedicate"-->
+            <style>
+                .nosectdedicate { 
+                    opacity: 0;
+                    z-index: -2;
+                }
+
+                .Ysectdedicate { animation:textentrance3 1.5s 1; animation-fill-mode:forwards; 
+                    z-index: 9; 
+                }
+                #sectdedicate {
+                    position: absolute;
+                    width: 25%;
+                    height: 70%;
+                    top: 10%;
+                    right: 40%;
+                    overflow: auto;
+                    overflow-x: hidden; 
+                }
+                #firmblackx { width:90%; height:105%; background:black; position:relative;
+                }
+                #imgfirmblk { position:absolute; width:80%; top:5%; left:20%;
+                }
+                #imgfirmk { position:absolute; width:6vw; filter:invert(100%); mix-blend-mode:difference; left:4%; top:7%; opacity:.8;
+                }
+                #textarea { position:absolute; right:2%; top:65%; height:35%; width:95%;   text-align:right;
+                }
+                    #textarea p {
+                        /*text-transform: uppercase;*/
+                        line-height:.4vw;
+                        font-family: 'Montserrat', sans-serif;
+                        color: lightgray; 
+                        font-size: .45vw;
+                        letter-spacing: .1vw;
+                    }
+                #bartext {
+                    top: -25%;
+                    font-size: .3vw;
+                    position: absolute;
+                    right: 2%;
+                }
+                #numcma {
+                    position: absolute;
+                    left: 2%;
+                    bottom: -1%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray;
+                    opacity: .6;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
+                #blackh {
+                    position: absolute;
+                    left: -5%; text-transform:uppercase;
+                    top:27%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray; 
+                    font-size: .5vw;  letter-spacing:.1vw; transform:rotate(90deg); 
+                }
+                #qrbl { position:absolute; width:2vw; top:18.6%; left:2%;  
+                }
+                #bltit {
+                    position: absolute;
+                    right:2%; text-align:right;
+                    text-transform: uppercase;
+                    top: 7%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray;
+                    font-size: .6vw;
+                    letter-spacing: .1vw;
+                }
+                #sectdedicate::-webkit-scrollbar {
+                    width: .4vw;
+                    background: transparent;
+                    mix-blend-mode: difference;
+                }
+
+                #sectdedicate::-webkit-scrollbar-thumb {
+                    width: .4vw;
+                    background: rgba(100,100,100,.6);
+                    border-radius: 1vw;
+                }
+                #yukbl {
+                    position: absolute;
+                    right:4%;
+                    text-align: right; 
+                    top: 12%;
+                    font-family: 'Montserrat', sans-serif;
+                     
+                    color: lightgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
+                
+            </style>
+              
+
+            <div id="autofirm">
+                <style>
+                    #sectdedicate { background:white;
+                    }
+                    #autofirm { background:white;
+                        width: 100%;
+                        height: 80%;
+                        position: relative;
+                    }
+
+                    #imgautofirm {
+                        width: 95%;
+                        position: absolute;
+                        bottom: 0;
+                        filter: grayscale(75%);
+                        right: 0;
+                    }
+
+                    #bordimg {
+                        width: 80%;
+                        height: 9vw;
+                        bottom: 20%;
+                        border-left: .1vw solid gray;
+                        border-top: .1vw solid gray;
+                        position: absolute;
+                    }
+                    #borpost {
+                        width: 70%;
+                        height: 5vw;
+                        top:0; right:5%;
+                        border-right: .1vw solid gray;
+                        border-top: .1vw solid gray;
+                        position: absolute;
+                    }
+
+                    #firmcomax {
+                        width: 6vw;
+                        filter: invert(100%);
+                        mix-blend-mode: difference;
+                        right: -1%;
+                        bottom: -5%;
+                        position: absolute;
+                    }
+                    #subtext {
+                       
+                        position: absolute;
+                        left: 10%; bottom:0%;
+                        font-family: 'Montserrat', sans-serif;
+                        color: white;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                    }
+                    #textcomab {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        left: 12%;
+                        font-family: 'Montserrat', sans-serif;
+                        color: dimgray;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                        line-height: 1vw;
+                    }
+
+                        #textcomab span {
+                            color: lightgray;
+                            font-size: .6vw;
+                        }
+                    #comalat {
+                        mix-blend-mode: difference;
+                        position: absolute; top:-1.5vw;
+                        left: 1%;
+                        font-family: 'Montserrat', sans-serif;
+                        color: white; font-weight:bold;
+                        font-size: 1.8vw; opacity:.6;
+                        letter-spacing: .1vw;
+                    }
+                    #ultp {
+                        position: absolute;
+                        top: 15%;
+                        right: 3%;
+                        font-family: 'Montserrat', sans-serif;
+                        color: black;
+                        font-weight: bold;
+                        font-size: .9vw;
+                        opacity: .6;
+                        letter-spacing: .1vw;
+                    }
+                </style>
+                <p id="ultp">血<br />鹰<br />之<br />翼</p>
+                <div id="borpost"></div>
+                <div id="bordimg"></div>
+                <img src="https://i.postimg.cc/4yCRNS6f/3.gif" id="imgautofirm" />
+                <div id="textcomab">
+                    <p>
+                        <span>我问你: </span>I ask you:<br />
+
+                        <span>为什么？   </span>Why?<br />
+
+                        <span>
+                            为什么要对抗一切？
+                        </span>why fight everything?<br />
+                        <span>
+                            为什么不能接受？
+                        </span>Why can’t you accept it?<br />
+                        <span>你永远无法阻止它：</span>You can never stop it<br />
+                        <span>我不想尝试：</span>And I don’t want to try<br />
+                        <span>半信半疑的谎言：</span>A weak half measured lie<br />
+                        <span>为什么？</span>Why?<br />
+                        <span>不是你所期望的？</span> Not what you expected?<br />
+                        <span>你的反乌托邦史诗</span>Your dystopian epic<br />
+                        <span>回忆是谎言：</span> Of memories are a lie<br />
+                        <span>我不必尝试 </span>I don’t have to try<br />
+                        <span> 展开你的翅膀飞翔</span> Unfold your wings and fly<br />
+                    </p>
+                </div>
+                <p id="comalat">
+                    昏<br />迷<br />黑<br />色<br />20<br />23<br />年<br />05<br />月<br />04<br />日
+                </p>
+                <p id="subtext">
+                    A grey place that exists, in my mind...<br />
+
+                    Hell is empty, ‘cause all my demons are here.
+                </p>
+                <img src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" id="firmcomax" />
+            </div>
+        
+        <div id="firmyu">
+            <style  >
+                #firmyu { width:99%; height:auto; position:relative; margin-top:20%; 
+                }
+                #firmimgyu { width:100%;
+                }
+                #yufirmd {   position:absolute; mix-blend-mode:difference; right:1%; bottom:1%; filter:invert(100%); width:7vw;
+                }
+                #yureg {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    bottom: -1%;
+                    right: 3%;
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    font-weight: bold;
+                    font-size: .6vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+            <img id="firmimgyu" src="https://i.postimg.cc/VLNCtXDM/firma.png" />
+            <img id="yufirmd" src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
+            <p id="yureg">
+                xComaWhite | Yuki
+            </p>
+        </div>
+        
+        </div>
+
         <div id="sectfrds">
             <style>
                 #sectfrds {
@@ -1769,7 +2039,17 @@
                 }
             </style>
             <script>
+
+                function clicksectdedicate() {
+                    $("#sectdedicate").removeClass("nosectdedicate"); $("#sectdedicate").addClass("Ysectdedicate"); $("#sectfrds").addClass("nosectdedicate");
+                }
+
+
                 function clickfriends() {
+
+
+                    $("#sectfrds").removeClass("nosectdedicate");
+                    $("#sectdedicate").removeClass("Ysectdedicate"); $("#sectdedicate").addClass("nosectdedicate");
                     $("#l1").removeClass("lic12");
                     $("#f1").removeClass("f12");
                     $("#f2").removeClass("f12");
