@@ -565,7 +565,9 @@
                     font-weight: lighter;
                     letter-spacing: .3vw;
                 }
-
+                a {
+                    cursor: pointer;
+                }
                 #tt {
                     color: rgb(165,157,154);
                     text-transform: uppercase;
@@ -868,7 +870,7 @@
                 </div>
                 <div id="nav2" onclick="clicksectdedicate(); clickfriends2();"> <p id="p1">Dédicaces</p> <div id="bor1"></div></div>
                 <div id="nav3" onclick="clickfriends();"> <p id="p1">Amitiés</p> <div id="bor1"></div></div>
-                <div id="nav4"> <p id="p1">Maison</p> <div id="bor1"></div></div>
+                <div id="nav4"><a href="https://xat.com/hexenzirkel"> <p id="p1">Maison</p> <div id="bor1"></div></a></div>
             </div>
 
         </div>
@@ -946,7 +948,7 @@
                         
                     }
 
-                    80% { opacity:0;
+                    20% { opacity:0;
                     }
                     100% {
                         opacity: 1;
@@ -1037,7 +1039,7 @@
             </style>
             <div id="imgprof">
 
-                <img src="https://i.postimg.cc/CxQN6QTm/222.jpg" />
+                <img src="https://i.postimg.cc/c1R8P4pm/b.jpg" />
             </div>
 
             <p id="prop2"> GRIS | SWALLOW <br />BLACKHEARTED BUTTERFLY</p>
@@ -1078,10 +1080,22 @@
                                 "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
                         },
                         {
-                            name: "Au Crépuscule de Nos Rêves",
+                            name: "Something About Us",
+                            artist: "Daft Punk",
+                            src:
+                                "https://xevangelist.github.io/evangelist/somethingaboutus.mp3?raw=true"
+                        },
+                        {
+                            name: "Faux Semblants",
                             artist: "Amesoeurs",
                             src:
-                                "https://xevangelist.github.io/evangelist/AuCrepuscule.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                        },
+                        {
+                            name: "  春雷 Kenshi Yonezu",
+                            artist: "Shunrai",
+                            src:
+                                "https://xevangelist.github.io/evangelist/shunrai.mp3?raw=true"
                         },
                         {
                             name: "FAIBLESSE DES SENS",
@@ -1089,25 +1103,14 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
                         },
+                      
                         {
-                            name: "Faux Semblants",
-                            artist: "AMESOEURS",
+                            name: "退屈を再演しないで",
+                            artist: "Eve MV",
                             src:
-                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/eve1.mp3?raw=true"
                         },
-                        {
-                            name: "MINUSMENSCH",
-                            artist: "LANTLOS  (Only the best part)",
-                            src:
-                                "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
-                        },
-
-                        {
-                            name: "I XIII V XIX XV V XXI XVIII XIX -- IX XIX -- IV V I IV",
-                            artist: "AMESOEURS",
-                            src:
-                                "https://xevangelist.github.io/evangelist/Amesoeurs.mp3?raw=true"
-                        },
+                        
                         {
                             name: "Recueillement",
                             artist: "AMESOEURS",
@@ -1115,10 +1118,10 @@
                                 "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
                         },
                         {
-                            name: "Trouble (Éveils Infâmes)",
-                            artist: "AMESOEURS",
+                            name: "トーキョーゲットー",
+                            artist: "Eve MV",
                             src:
-                                "https://xevangelist.github.io/evangelist/Trouble.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/eve2.mp3?raw=true"
                         },
                         {
                             name: "PULSE / SURREAL",
@@ -1194,14 +1197,14 @@
                 $("#prev").click(function prev() {
                     CurrentSong--;
                     if (CurrentSong < 0) {
-                        CurrentSong = 11;
+                        CurrentSong = 9;
                     }
                     playSong();
                 });
 
                 $("#next").click(function next() {
                     CurrentSong++;
-                    if (CurrentSong > 11) {
+                    if (CurrentSong > 9) {
                         CurrentSong = 0;
                     }
                     playSong();
@@ -1518,16 +1521,20 @@
 
         </div>
 
-        <div id="sectdedicate" class="nosectdedicate"> <!---->
+        <div id="sectdedicate" class="nosectdedicate">
+            <!-- -->
             <style>
-                .nosectdedicate { 
+                .nosectdedicate {
                     opacity: 0;
                     z-index: -2;
                 }
 
-                .Ysectdedicate { animation:textentrance3 1.5s 1; animation-fill-mode:forwards; 
-                    z-index: 9; 
+                .Ysectdedicate {
+                    animation: textentrance3 1.5s 1;
+                    animation-fill-mode: forwards;
+                    z-index: 9;
                 }
+
                 #sectdedicate {
                     position: absolute;
                     width: 25%;
@@ -1535,30 +1542,58 @@
                     top: 10%;
                     right: 40%;
                     overflow: auto;
-                    overflow-x: hidden; 
+                    overflow-x: hidden;
                 }
-                #firmblackx { width:90%; height:105%; background:black; position:relative;
+
+                #firmblackx {
+                    width: 90%;
+                    height: 105%;
+                    background: black;
+                    position: relative;
                 }
-                #imgfirmblk { position:absolute; width:80%; top:5%; left:20%;
+
+                #imgfirmblk {
+                    position: absolute;
+                    width: 80%;
+                    top: 5%;
+                    left: 20%;
                 }
-                #imgfirmk { position:absolute; width:6vw; filter:invert(100%); mix-blend-mode:difference; left:4%; top:7%; opacity:.8;
+
+                #imgfirmk {
+                    position: absolute;
+                    width: 6vw;
+                    filter: invert(100%);
+                    mix-blend-mode: difference;
+                    left: 4%;
+                    top: 7%;
+                    opacity: .8;
                 }
-                #textarea { position:absolute; right:2%; top:65%; height:35%; width:95%;   text-align:right;
+
+                #textarea {
+                    position: absolute;
+                    right: 2%;
+                    top: 65%;
+                    height: 35%;
+                    width: 95%;
+                    text-align: right;
                 }
+
                     #textarea p {
                         /*text-transform: uppercase;*/
-                        line-height:.4vw;
+                        line-height: .4vw;
                         font-family: 'Montserrat', sans-serif;
-                        color: lightgray; 
+                        color: lightgray;
                         font-size: .45vw;
                         letter-spacing: .1vw;
                     }
+
                 #bartext {
                     top: -25%;
                     font-size: .3vw;
                     position: absolute;
                     right: 2%;
                 }
+
                 #numcma {
                     position: absolute;
                     left: 2%;
@@ -1570,20 +1605,31 @@
                     font-size: .5vw;
                     letter-spacing: .1vw;
                 }
+
                 #blackh {
                     position: absolute;
-                    left: -5%; text-transform:uppercase;
-                    top:27%;
+                    left: -5%;
+                    text-transform: uppercase;
+                    top: 27%;
                     font-family: 'Montserrat', sans-serif;
                     font-weight: bold;
-                    color: lightgray; 
-                    font-size: .5vw;  letter-spacing:.1vw; transform:rotate(90deg); 
+                    color: lightgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    transform: rotate(90deg);
                 }
-                #qrbl { position:absolute; width:2vw; top:18.6%; left:2%;  
+
+                #qrbl {
+                    position: absolute;
+                    width: 2vw;
+                    top: 18.6%;
+                    left: 2%;
                 }
+
                 #bltit {
                     position: absolute;
-                    right:2%; text-align:right;
+                    right: 2%;
+                    text-align: right;
                     text-transform: uppercase;
                     top: 7%;
                     font-family: 'Montserrat', sans-serif;
@@ -1592,6 +1638,7 @@
                     font-size: .6vw;
                     letter-spacing: .1vw;
                 }
+
                 #sectdedicate::-webkit-scrollbar {
                     width: .4vw;
                     background: transparent;
@@ -1603,26 +1650,29 @@
                     background: rgba(100,100,100,.6);
                     border-radius: 1vw;
                 }
+
                 #yukbl {
                     position: absolute;
-                    right:4%;
-                    text-align: right; 
+                    right: 4%;
+                    text-align: right;
                     top: 12%;
                     font-family: 'Montserrat', sans-serif;
-                     
                     color: lightgray;
                     font-size: .5vw;
                     letter-spacing: .1vw;
                 }
-                
             </style>
-              
+
+
 
             <div id="autofirm">
                 <style>
-                    #sectdedicate { background:white;
+                    #sectdedicate {
+                        background: white;
                     }
-                    #autofirm { background:white;
+
+                    #autofirm {
+                        background: white;
                         width: 100%;
                         height: 80%;
                         position: relative;
@@ -1644,10 +1694,12 @@
                         border-top: .1vw solid gray;
                         position: absolute;
                     }
+
                     #borpost {
                         width: 70%;
                         height: 5vw;
-                        top:0; right:5%;
+                        top: 0;
+                        right: 5%;
                         border-right: .1vw solid gray;
                         border-top: .1vw solid gray;
                         position: absolute;
@@ -1661,15 +1713,17 @@
                         bottom: -5%;
                         position: absolute;
                     }
+
                     #subtext {
-                       
                         position: absolute;
-                        left: 10%; bottom:0%;
+                        left: 10%;
+                        bottom: 0%;
                         font-family: 'Montserrat', sans-serif;
                         color: white;
                         font-size: .5vw;
                         letter-spacing: .1vw;
                     }
+
                     #textcomab {
                         mix-blend-mode: difference;
                         position: absolute;
@@ -1685,15 +1739,20 @@
                             color: lightgray;
                             font-size: .6vw;
                         }
+
                     #comalat {
                         mix-blend-mode: difference;
-                        position: absolute; top:-1.5vw;
+                        position: absolute;
+                        top: -1.5vw;
                         left: 1%;
                         font-family: 'Montserrat', sans-serif;
-                        color: white; font-weight:bold;
-                        font-size: 1.8vw; opacity:.6;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 1.8vw;
+                        opacity: .6;
                         letter-spacing: .1vw;
                     }
+
                     #ultp {
                         position: absolute;
                         top: 15%;
@@ -1743,34 +1802,121 @@
                 </p>
                 <img src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" id="firmcomax" />
             </div>
-        
-        <div id="firmyu">
-            <style  >
-                #firmyu { width:99%; height:auto; position:relative; margin-top:20%; 
-                }
-                #firmimgyu { width:100%;
-                }
-                #yufirmd {   position:absolute; mix-blend-mode:difference; right:1%; bottom:1%; filter:invert(100%); width:7vw;
-                }
-                #yureg {
-                    mix-blend-mode: difference;
-                    position: absolute;
-                    bottom: -1%;
-                    right: 3%;
-                    font-family: 'Montserrat', sans-serif;
-                    color: white;
-                    font-weight: bold;
-                    font-size: .6vw;
-                    letter-spacing: .1vw;
-                }
-            </style>
-            <img id="firmimgyu" src="https://i.postimg.cc/VLNCtXDM/firma.png" />
-            <img id="yufirmd" src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
-            <p id="yureg">
-                xComaWhite | Yuki
-            </p>
-        </div>
-        
+
+            <div id="firmyu">
+                <style>
+                    #firmyu {
+                        width: 99%;
+                        height: auto;
+                        position: relative;
+                        margin-top: 20%;
+                    }
+
+                    #firmimgyu {
+                        width: 100%;
+                    }
+
+                    #yufirmd {
+                        position: absolute;
+                        mix-blend-mode: difference;
+                        right: 1%;
+                        bottom: 1%;
+                        filter: invert(100%);
+                        width: 7vw;
+                    }
+
+                    #yureg {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        bottom: -1%;
+                        right: 3%;
+                        font-family: 'Montserrat', sans-serif;
+                        color: white;
+                        font-weight: bold;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                    }
+                </style>
+                <img id="firmimgyu" src="https://i.postimg.cc/VLNCtXDM/firma.png" />
+                <img id="yufirmd" src="https://i.postimg.cc/76kX4JBR/kisspng-type-signature-file-signature-digital-signature-si-signature-5b119202230e63-8658309915278781.png" />
+                <p id="yureg">
+                    xComaWhite | Yuki
+                </p>
+            </div>
+            <div id="firmaby">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+                    #firmaby {
+                        width: 70%;
+                        height: 80%;
+                        position: relative;
+                        background: black;
+                        margin-top: 20%;
+                        margin-bottom: 20%;
+                    }
+
+                    #imgaby {
+                        transform: rotate(90deg);
+                        position: absolute;
+                        width: 8vw;
+                        left: 25%;
+                        top: 15%;
+                    }
+
+                    #boraby1 {
+                        position: absolute;
+                        width: 8vw;
+                        height: 8vw;
+                        border: .1vw solid lightgray;
+                        left: 20%;
+                        top: 12%;
+                    }
+
+                    #boraby2 {
+                        position: absolute;
+                        width: 8vw;
+                        height: 8vw;
+                        border: .1vw solid lightgray;
+                        left: 30%;
+                        top: 18%;
+                    }
+
+                    #regaby {
+                        font-family: 'Alex Brush', cursive;
+                        color: white;
+                        font-weight: lighter;
+                        letter-spacing: .1vw;
+                        font-size: .8vw;
+                        transform: rotate(90deg);
+                        top: 62%;
+                        position: absolute;
+                        right: 3%;
+                    }
+
+                    #textaby {
+                        font-family: 'Montserrat', sans-serif;
+                        color: white;
+                        font-weight: lighter;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        transform: rotate(90deg);
+                        top: 65%;
+                        width: 80%;
+                        position: absolute;
+                        right: 10%;
+                    }
+                </style>
+                <div id="boraby1"></div> <div id="boraby2"></div>
+                <img src="https://i.postimg.cc/59CVnXFP/d01a3f1c2d5019f997a105dc66f7071b.jpg" id="imgaby" />
+                <p id="regaby">AhriWithHeaL | Abby</p><br /><br /><br />
+                <p id="textaby">
+                    Para Gris: <br /> Mientras más te conozco, más miedo y pánico tengo,
+                    a pesar de eso eres mi amigo, aún así, si me sales en las noches me daría un infarto.
+                    <br /> <br />Con cariño Aby
+                </p>
+            </div>
+
         </div>
 
         <div id="sectfrds">
