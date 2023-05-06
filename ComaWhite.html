@@ -590,7 +590,7 @@
                     letter-spacing: .1vw;
                     position: relative;
                     left: 39%;
-                    top: 12%;
+                    top: 11%;
                     font-family: "Roboto", Arial, sans-serif;
                 }
                 /* html { filter:invert(100%);
@@ -863,12 +863,13 @@
                 a {
                     text-decoration: none;
                 }
+
                 @keyframes textentrance3 {
                     0% {
                         opacity: 0;
                     }
 
-                    80% {
+                    20% {
                         opacity: 0;
                     }
 
@@ -876,7 +877,9 @@
                         opacity: 1;
                     }
                 }
-                a { cursor:pointer;
+
+                a {
+                    cursor: pointer;
                 }
             </style>
             <div id="amenus">
@@ -885,7 +888,7 @@
                     <a href="https://xat.me/xComaBLack"><p id="p1">Folie ♡</p></a>
                     <div id="bor1"></div>
                 </div>
-                <div id="nav2"  onclick="clicksectdedicate(); clickfriends2();"> <p id="p1">Dédicaces</p> <div id="bor1"></div></div>
+                <div id="nav2" onclick="clicksectdedicate(); clickfriends2();"> <p id="p1">Dédicaces</p> <div id="bor1"></div></div>
                 <div id="nav3" onclick="clickfriends();"> <p id="p1">Amitiés</p> <div id="bor1"></div></div>
                 <div id="nav4"><a href="https://xat.com/hexenzirkel"> <p id="p1">Maison</p> <div id="bor1"></div></a></div>
             </div>
@@ -973,912 +976,913 @@
 
             </div>
         </div> <div id="sectdedicate" class="nosectdedicate">
-    <style>
-        .nosectdedicate {
-            opacity: 0;
-            z-index: -2;
-        }
-
-        .Ysectdedicate {
-            animation: textentrance3 1.5s 1;
-            animation-fill-mode: forwards;
-            z-index: 9;
-        }
-
-        #sectdedicate {
-            position: absolute;
-            width: 25%;
-            height: 70%;
-            top: 10%;
-            right: 40%;
-            overflow: auto;
-            overflow-x: hidden;
-        }
-
-        #firmblackx {
-            width: 90%;
-            height: 105%;
-            background: black;
-            position: relative;
-        }
-
-        #imgfirmblk {
-            position: absolute;
-            width: 80%;
-            top: 5%;
-            left: 20%;
-        }
-
-        #imgfirmk {
-            position: absolute;
-            width: 6vw;
-            filter: invert(100%);
-            mix-blend-mode: difference;
-            left: 4%;
-            top: 7%;
-            opacity: .8;
-        }
-
-        #textarea {
-            position: absolute;
-            right: 2%;
-            top: 65%;
-            height: 35%;
-            width: 95%;
-            text-align: right;
-        }
-
-            #textarea p {
-                /*text-transform: uppercase;*/
-                line-height: .4vw;
-                font-family: 'Montserrat', sans-serif;
-                color: lightgray;
-                font-size: .45vw;
-                letter-spacing: .1vw;
-            }
-
-        #bartext {
-            top: -25%;
-            font-size: .3vw;
-            position: absolute;
-            right: 2%;
-        }
-
-        #numcma {
-            position: absolute;
-            left: 2%;
-            bottom: -1%;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            color: lightgray;
-            opacity: .6;
-            font-size: .5vw;
-            letter-spacing: .1vw;
-        }
-
-        #blackh {
-            position: absolute;
-            left: -5%;
-            text-transform: uppercase;
-            top: 27%;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            color: lightgray;
-            font-size: .5vw;
-            letter-spacing: .1vw;
-            transform: rotate(90deg);
-        }
-
-        #qrbl {
-            position: absolute;
-            width: 2vw;
-            top: 18.6%;
-            left: 2%;
-        }
-
-        #bltit {
-            position: absolute;
-            right: 2%;
-            text-align: right;
-            text-transform: uppercase;
-            top: 7%;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            color: lightgray;
-            font-size: .6vw;
-            letter-spacing: .1vw;
-        }
-
-        #sectdedicate::-webkit-scrollbar {
-            width: .4vw;
-            background: transparent;
-            mix-blend-mode: difference;
-        }
-
-        #sectdedicate::-webkit-scrollbar-thumb {
-            width: .4vw;
-            background: rgba(100,100,100,.6);
-            border-radius: 1vw;
-        }
-
-        #yukbl {
-            position: absolute;
-            right: 4%;
-            text-align: right;
-            top: 12%;
-            font-family: 'Montserrat', sans-serif;
-            color: lightgray;
-            font-size: .5vw;
-            letter-spacing: .1vw;
-        }
-    </style>
-
-    <div id="firmblackx">
-        <img id="imgfirmblk" src="https://i.postimg.cc/VLK9Z8B8/4e2e7542721448d5e43d740c95f790ca.jpg" />
-        <img id="imgfirmk" src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" />
-        <img id="qrbl" src="https://i.postimg.cc/G9wYTgNL/Captura.png" />
-        <p id="bltit">
-            A travers des ciels <br />orageux
-        </p>
-        <p id="yukbl">对 <br />我 <br />来 <br />说 <br />雪 <br />音</p>
-        <p id="blackh">
-            blackhearted butterfly<br />
-            黑心蝴蝶<br />
-            âmes soeurs
-        </p>
-        <div id="textarea">
-            <p id="bartext">我<br /><br />的<br /><br />王<br /><br />后</p> <p>
-                Vivant <br /> <br />
-                seule, loin  <br /> <br />
-                de tout Dressée  <br /> <br />
-                sur les toits du monde <br /> <br /><br />
-                Je garde toujours un oeil sur toi <br /> <br /> <br />
-                Lorsque la nuit enserre la ville <br /> <br />
-                Que se meurent les espérances, Au <br /> <br />
-                détour d'une rue j'attrapperai ta main <br /> <br /> <br />
-                Pour te montrer les lumières bleutées. Et poursuivre <br /> <br />
-                les ombre fuyantes. Au détour d'une rue j'attrapperai <br /> <br /><br />
-                ta main. Pour ne plus la lâcher. Et qu'ensemble nous corrions <br /> <br /><br />
-                Comme des fous dans les sombres allées
-            </p>
-        </div>
-        <p id="numcma">●GRIS.XXIII.IV ●xCOMABLACK</p>
-    </div>
-    <div id="postscr">
-        <style>
-            #postscr {
-                width: 100%;
-                height: 50%;
-                backdrop-filter: blur(5px);
-                position: relative;
-                margin-top: 30%;
-            }
-
-            #cubimg {
-                position: absolute;
-                width: 50%;
-                height: 80%;
-                top: 10%;
-                left: 25%;
-                overflow: hidden;
-            }
-
-            #cubimg2 {
-                position: absolute;
-                width: 180%;
-                height: 100%;
-                top: 0%;
-                left: -20%;
-                overflow: hidden;
-            }
-
-                #cubimg2 img {
-                    width: 100%;
+            <style>
+                .nosectdedicate {
+                    opacity: 0;
+                    z-index: -2;
                 }
 
-            #dfirmscr {
-                position: absolute;
-                width: 10vw;
-                height: 10vw;
-                backdrop-filter: blur(15px);
-                top: 25%;
-                left: 5%;
-                mix-blend-mode: difference;
-            }
-
-            #dfscrlin {
-                position: absolute;
-                width: 90%;
-                height: 90%;
-                top: 5%;
-                left: 5%;
-                border: .1vw solid darkgray;
-                mix-blend-mode: difference;
-                opacity: .3;
-            }
-
-            #dfscrlin2 {
-                position: absolute;
-                width: 48%;
-                left: 14.5%;
-                height: 76%;
-                top: 6%;
-                border: .1vw solid darkgray;
-                mix-blend-mode: difference;
-                opacity: .3;
-            }
-
-            #pscaryuk {
-                position: absolute;
-                font-size: 2vw;
-                color: lightgray;
-                top: -10%;
-                right: 2%;
-                animation: bluranim 3s infinite;
-            }
-
-            #pscaryuk2 {
-                position: absolute;
-                font-size: 1vw;
-                color: lightgray;
-                top: -3%;
-                animation-delay: 2s;
-                right: 12%;
-                animation: bluranim 2s infinite;
-            }
-
-            @keyframes bluranim {
-                0% {
-                    filter: blur(1px);
+                .Ysectdedicate {
+                    animation: textentrance3 1.5s 1;
+                    animation-fill-mode: forwards;
+                    z-index: 9;
                 }
 
-                33% {
-                    filter: blur(3px);
-                }
-
-                66% {
-                    filter: blur(2px);
-                }
-
-                100% {
-                    filter: blur(1px);
-                }
-            }
-
-            #ptextscar {
-                position: absolute;
-                width: 80%;
-                height: 90%;
-                top: 5%;
-                left: 5%;
-                text-align: center;
-                mix-blend-mode: difference;
-            }
-
-                #ptextscar p {
-                    font-size: .6vw;
-                    color: white;
-                    letter-spacing: .05vw;
-                }
-
-                #ptextscar span {
-                    color: #c62f2f
-                }
-
-            #scrddiv {
-                position: absolute;
-                width: .1vw;
-                background: gray;
-                height: 30%;
-                top: 80%;
-                left: 23%;
-            }
-
-            #scrdfirmimg {
-                position: absolute;
-                width: 6vw;
-                left: 2%;
-                bottom: -10%;
-                mix-blend-mode: difference;
-                filter: invert(100%);
-            }
-
-            #regscrd {
-                font-size: .55vw;
-                color: white;
-                letter-spacing: .1vw;
-                position: absolute;
-                right: 78%;
-                opacity: .3;
-                top: 77%;
-            }
-
-            #numregscrd {
-                font-size: .55vw;
-                color: white;
-                letter-spacing: .1vw;
-                position: absolute;
-                right: 78%;
-                opacity: .3;
-                top: 81%;
-            }
-
-            #titscrd {
-                font-size: .6vw;
-                color: white;
-                letter-spacing: .1vw;
-                position: absolute;
-                left: 6%;
-                opacity: .3;
-                top: 13%;
-            }
-
-            #titscrdj {
-                font-weight: bold;
-                font-size: .6vw;
-                color: white;
-                letter-spacing: .1vw;
-                position: absolute;
-                left: 6%;
-                opacity: .6;
-                top: 17%;
-            }
-        </style>
-
-        <div id="cubimg">
-            <div id="cubimg2">
-                <img src="https://i.postimg.cc/bNhxbHhy/tumblr-o6o0gm-XQEl1ruv1gno1-500.gif" /><div id="dfscrlin2"></div>
-            </div>
-        </div>
-
-        <div id="dfirmscr">
-            <div id="ptextscar">
-                <p>
-                    <span>Yuki</span>, no te olvides de que ojalá seas eterna,
-                    <span>Yuki</span> ❮3, te quiero por haber estado ahí, volver a xat me
-                    premió con tu amistad. Espero me permitas conocerte cada
-                    vez más, porque se ve que eres tan misteriosa como interesante
-
-                </p>
-            </div>
-
-            <div id="dfscrlin"></div>
-        </div>
-        <p id="titscrd">Algunas palabras:</p>
-        <p id="titscrdj">
-            一些单词:
-        </p>
-        <p id="pscaryuk">
-            不<br />
-            安<br />
-            的<br />
-            ●<br />
-            寒<br />
-            冷<br />
-            的
-        </p>
-        <p id="pscaryuk2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
-        <div id="scrddiv"></div>
-        <img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png" />
-        <p id="regscrd">
-            VeryScared
-        </p>
-        <p id="numregscrd">1545732774</p>
-    </div>
-
-    <div id="postshiro">
-        <style>
-            #postshiro {
-                position: relative;
-                width: 100%;
-                height: 70%;
-                backdrop-filter: blur(5px);
-                margin-top: 30%;
-                margin-bottom: 20%;
-                overflow: hidden;
-            }
-
-            #mainimgshiro {
-                position: absolute;
-                overflow: hidden;
-                width: 70%;
-                height: 70%;
-                top: 12%;
-                left: 15%;
-            }
-
-                #mainimgshiro img {
+                #sectdedicate {
                     position: absolute;
-                    width: 110%;
-                    left: -5%;
-                    filter: grayscale(70%);
+                    width: 25%;
+                    height: 70%;
+                    top: 10%;
+                    right: 40%;
+                    overflow: auto;
+                    overflow-x: hidden;
                 }
 
-            #titpostshir {
-                position: absolute;
-                font-size: 5vw;
-                color: #95258C;
-                filter: blur(1px);
-                letter-spacing: .5vw;
-                left: 15%;
-                top: -5vw;
-                mix-blend-mode: difference; /* text-shadow:.1vw .1vw .3vw white;*/
-                font-weight: bold;
-            }
+                #firmblackx {
+                    width: 90%;
+                    height: 105%;
+                    background: black;
+                    position: relative;
+                }
 
-            #codbar {
-                width: 10vw;
-                right: 5%;
-                top: 95%;
-                position: absolute;
-                filter: invert(100%);
-                opacity: .5;
-            }
+                #imgfirmblk {
+                    position: absolute;
+                    width: 80%;
+                    top: 5%;
+                    left: 20%;
+                }
 
-            #textshiro {
-                position: absolute;
-                width: 80%;
-                top: 85%;
-                left: 15%; color:white;
-                font-size: .6vw;
-                letter-spacing: .1vw;
-            }
+                #imgfirmk {
+                    position: absolute;
+                    width: 6vw;
+                    filter: invert(100%);
+                    mix-blend-mode: difference;
+                    left: 4%;
+                    top: 7%;
+                    opacity: .8;
+                }
 
-            #namejshiro {
-                position: absolute;
-                color: #95258C;
-                font-size: 1.3vw;
-                top: 42%;
-                right: 8%;
-            }
+                #textarea {
+                    position: absolute;
+                    right: 2%;
+                    top: 65%;
+                    height: 35%;
+                    width: 95%;
+                    text-align: right;
+                }
 
-            #shirFirm2 {
-                position: absolute;
-                color: lightgray;
-                ;
-                font-size: .8vw;
-                top: 56%;
-                left: 8%;
-            }
+                    #textarea p {
+                        /*text-transform: uppercase;*/
+                        line-height: .4vw;
+                        font-family: 'Montserrat', sans-serif;
+                        color: lightgray;
+                        font-size: .45vw;
+                        letter-spacing: .1vw;
+                    }
 
-            #shirFirm3 {
-                position: absolute;
-                color: lightgray;
-                font-size: .8vw;
-                top: 56%;
-                left: 4%;
-            }
+                #bartext {
+                    top: -25%;
+                    font-size: .3vw;
+                    position: absolute;
+                    right: 2%;
+                }
 
-            #numregshiro {
-                color: lightgray;
-                opacity: .4;
-                left: 3%;
-                top: 86%;
-                font-size: 3vw;
-                position: absolute;
-            }
+                #numcma {
+                    position: absolute;
+                    left: 2%;
+                    bottom: -1%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray;
+                    opacity: .6;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
 
-            #regshiro {
-                color: lightgray;
-                opacity: .7;
-                letter-spacing: .2vw;
-                right: -35%;
-                transform: rotate(-90deg);
-                top: 24%;
-                font-size: 1.8vw;
-                position: absolute;
-            }
+                #blackh {
+                    position: absolute;
+                    left: -5%;
+                    text-transform: uppercase;
+                    top: 27%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    transform: rotate(90deg);
+                }
 
-            #imgfirmshir {
-                filter: invert(100%);
-                width: 6vw;
-                top: 7%;
-                left: 8%;
-                mix-blend-mode: difference;
-                position: absolute;
-            }
-        </style>
-        
-        <div id="mainimgshiro">
-            <img src="https://i.postimg.cc/CK5D0RJT/IMG-20230319-WA0028.jpg" />
+                #qrbl {
+                    position: absolute;
+                    width: 2vw;
+                    top: 18.6%;
+                    left: 2%;
+                }
+
+                #bltit {
+                    position: absolute;
+                    right: 2%;
+                    text-align: right;
+                    text-transform: uppercase;
+                    top: 7%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bold;
+                    color: lightgray;
+                    font-size: .6vw;
+                    letter-spacing: .1vw;
+                }
+
+                #sectdedicate::-webkit-scrollbar {
+                    width: .4vw;
+                    background: transparent;
+                    mix-blend-mode: difference;
+                }
+
+                #sectdedicate::-webkit-scrollbar-thumb {
+                    width: .4vw;
+                    background: rgba(100,100,100,.6);
+                    border-radius: 1vw;
+                }
+
+                #yukbl {
+                    position: absolute;
+                    right: 4%;
+                    text-align: right;
+                    top: 12%;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+
+            <div id="firmblackx">
+                <img id="imgfirmblk" src="https://i.postimg.cc/VLK9Z8B8/4e2e7542721448d5e43d740c95f790ca.jpg" />
+                <img id="imgfirmk" src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" />
+                <img id="qrbl" src="https://i.postimg.cc/G9wYTgNL/Captura.png" />
+                <p id="bltit">
+                    A travers des ciels <br />orageux
+                </p>
+                <p id="yukbl">对 <br />我 <br />来 <br />说 <br />雪 <br />音</p>
+                <p id="blackh">
+                    blackhearted butterfly<br />
+                    黑心蝴蝶<br />
+                    âmes soeurs
+                </p>
+                <div id="textarea">
+                    <p id="bartext">我<br /><br />的<br /><br />王<br /><br />后</p> <p>
+                        Vivant <br /> <br />
+                        seule, loin  <br /> <br />
+                        de tout Dressée  <br /> <br />
+                        sur les toits du monde <br /> <br /><br />
+                        Je garde toujours un oeil sur toi <br /> <br /> <br />
+                        Lorsque la nuit enserre la ville <br /> <br />
+                        Que se meurent les espérances, Au <br /> <br />
+                        détour d'une rue j'attrapperai ta main <br /> <br /> <br />
+                        Pour te montrer les lumières bleutées. Et poursuivre <br /> <br />
+                        les ombre fuyantes. Au détour d'une rue j'attrapperai <br /> <br /><br />
+                        ta main. Pour ne plus la lâcher. Et qu'ensemble nous corrions <br /> <br /><br />
+                        Comme des fous dans les sombres allées
+                    </p>
+                </div>
+                <p id="numcma">●GRIS.XXIII.IV ●xCOMABLACK</p>
+            </div>
+            <div id="postscr">
+                <style>
+                    #postscr {
+                        width: 100%;
+                        height: 50%;
+                        backdrop-filter: blur(5px);
+                        position: relative;
+                        margin-top: 30%;
+                    }
+
+                    #cubimg {
+                        position: absolute;
+                        width: 50%;
+                        height: 80%;
+                        top: 10%;
+                        left: 25%;
+                        overflow: hidden;
+                    }
+
+                    #cubimg2 {
+                        position: absolute;
+                        width: 180%;
+                        height: 100%;
+                        top: 0%;
+                        left: -20%;
+                        overflow: hidden;
+                    }
+
+                        #cubimg2 img {
+                            width: 100%;
+                        }
+
+                    #dfirmscr {
+                        position: absolute;
+                        width: 10vw;
+                        height: 10vw;
+                        backdrop-filter: blur(15px);
+                        top: 25%;
+                        left: 5%;
+                        mix-blend-mode: difference;
+                    }
+
+                    #dfscrlin {
+                        position: absolute;
+                        width: 90%;
+                        height: 90%;
+                        top: 5%;
+                        left: 5%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #dfscrlin2 {
+                        position: absolute;
+                        width: 48%;
+                        left: 14.5%;
+                        height: 76%;
+                        top: 6%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #pscaryuk {
+                        position: absolute;
+                        font-size: 2vw;
+                        color: lightgray;
+                        top: -10%;
+                        right: 2%;
+                        animation: bluranim 3s infinite;
+                    }
+
+                    #pscaryuk2 {
+                        position: absolute;
+                        font-size: 1vw;
+                        color: lightgray;
+                        top: -3%;
+                        animation-delay: 2s;
+                        right: 12%;
+                        animation: bluranim 2s infinite;
+                    }
+
+                    @keyframes bluranim {
+                        0% {
+                            filter: blur(1px);
+                        }
+
+                        33% {
+                            filter: blur(3px);
+                        }
+
+                        66% {
+                            filter: blur(2px);
+                        }
+
+                        100% {
+                            filter: blur(1px);
+                        }
+                    }
+
+                    #ptextscar {
+                        position: absolute;
+                        width: 80%;
+                        height: 90%;
+                        top: 5%;
+                        left: 5%;
+                        text-align: center;
+                        mix-blend-mode: difference;
+                    }
+
+                        #ptextscar p {
+                            font-size: .6vw;
+                            color: white;
+                            letter-spacing: .05vw;
+                        }
+
+                        #ptextscar span {
+                            color: #c62f2f
+                        }
+
+                    #scrddiv {
+                        position: absolute;
+                        width: .1vw;
+                        background: gray;
+                        height: 30%;
+                        top: 80%;
+                        left: 23%;
+                    }
+
+                    #scrdfirmimg {
+                        position: absolute;
+                        width: 6vw;
+                        left: 2%;
+                        bottom: -10%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #regscrd {
+                        font-size: .55vw;
+                        color: white;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 77%;
+                    }
+
+                    #numregscrd {
+                        font-size: .55vw;
+                        color: white;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 81%;
+                    }
+
+                    #titscrd {
+                        font-size: .6vw;
+                        color: white;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .3;
+                        top: 13%;
+                    }
+
+                    #titscrdj {
+                        font-weight: bold;
+                        font-size: .6vw;
+                        color: white;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .6;
+                        top: 17%;
+                    }
+                </style>
+
+                <div id="cubimg">
+                    <div id="cubimg2">
+                        <img src="https://i.postimg.cc/bNhxbHhy/tumblr-o6o0gm-XQEl1ruv1gno1-500.gif" /><div id="dfscrlin2"></div>
+                    </div>
+                </div>
+
+                <div id="dfirmscr">
+                    <div id="ptextscar">
+                        <p>
+                            <span>Yuki</span>, no te olvides de que ojalá seas eterna,
+                            <span>Yuki</span> ❮3, te quiero por haber estado ahí, volver a xat me
+                            premió con tu amistad. Espero me permitas conocerte cada
+                            vez más, porque se ve que eres tan misteriosa como interesante
+
+                        </p>
+                    </div>
+
+                    <div id="dfscrlin"></div>
+                </div>
+                <p id="titscrd">Algunas palabras:</p>
+                <p id="titscrdj">
+                    一些单词:
+                </p>
+                <p id="pscaryuk">
+                    不<br />
+                    安<br />
+                    的<br />
+                    ●<br />
+                    寒<br />
+                    冷<br />
+                    的
+                </p>
+                <p id="pscaryuk2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+                <div id="scrddiv"></div>
+                <img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png" />
+                <p id="regscrd">
+                    VeryScared
+                </p>
+                <p id="numregscrd">1545732774</p>
+            </div>
+
+            <div id="postshiro">
+                <style>
+                    #postshiro {
+                        position: relative;
+                        width: 100%;
+                        height: 70%;
+                        backdrop-filter: blur(5px);
+                        margin-top: 30%;
+                        margin-bottom: 20%;
+                        overflow: hidden;
+                    }
+
+                    #mainimgshiro {
+                        position: absolute;
+                        overflow: hidden;
+                        width: 70%;
+                        height: 70%;
+                        top: 12%;
+                        left: 15%;
+                    }
+
+                        #mainimgshiro img {
+                            position: absolute;
+                            width: 110%;
+                            left: -5%;
+                            filter: grayscale(70%);
+                        }
+
+                    #titpostshir {
+                        position: absolute;
+                        font-size: 5vw;
+                        color: #95258C;
+                        filter: blur(1px);
+                        letter-spacing: .5vw;
+                        left: 15%;
+                        top: -5vw;
+                        mix-blend-mode: difference; /* text-shadow:.1vw .1vw .3vw white;*/
+                        font-weight: bold;
+                    }
+
+                    #codbar {
+                        width: 10vw;
+                        right: 5%;
+                        top: 95%;
+                        position: absolute;
+                        filter: invert(100%);
+                        opacity: .5;
+                    }
+
+                    #textshiro {
+                        position: absolute;
+                        width: 80%;
+                        top: 85%;
+                        left: 15%;
+                        color: white;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                    }
+
+                    #namejshiro {
+                        position: absolute;
+                        color: #95258C;
+                        font-size: 1.3vw;
+                        top: 42%;
+                        right: 8%;
+                    }
+
+                    #shirFirm2 {
+                        position: absolute;
+                        color: lightgray;
+                        ;
+                        font-size: .8vw;
+                        top: 56%;
+                        left: 8%;
+                    }
+
+                    #shirFirm3 {
+                        position: absolute;
+                        color: lightgray;
+                        font-size: .8vw;
+                        top: 56%;
+                        left: 4%;
+                    }
+
+                    #numregshiro {
+                        color: lightgray;
+                        opacity: .4;
+                        left: 3%;
+                        top: 86%;
+                        font-size: 3vw;
+                        position: absolute;
+                    }
+
+                    #regshiro {
+                        color: lightgray;
+                        opacity: .7;
+                        letter-spacing: .2vw;
+                        right: -35%;
+                        transform: rotate(-90deg);
+                        top: 24%;
+                        font-size: 1.8vw;
+                        position: absolute;
+                    }
+
+                    #imgfirmshir {
+                        filter: invert(100%);
+                        width: 6vw;
+                        top: 7%;
+                        left: 8%;
+                        mix-blend-mode: difference;
+                        position: absolute;
+                    }
+                </style>
+
+                <div id="mainimgshiro">
+                    <img src="https://i.postimg.cc/CK5D0RJT/IMG-20230319-WA0028.jpg" />
+                </div>
+                <p id="namejshiro">
+                    四<br />郎<br />帕<br />拉<br />蒂
+                </p>
+                <p id="shirFirm2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+                <p id="shirFirm3">雪<br />音</p>
+                <i id="textshiro">
+                    "En tu perdén encontré la paz, en tu ser encontré una pequeña parte de mi alma, eres una terca pero aunque el mundo te de la espalda
+                    puedes contar conmigo."
+                </i>
+                <p id="numregshiro">1525823861</p>
+                <p id="regshiro">XHeLadodeMentaX</p>
+                <img src="https://i.postimg.cc/sD6kT8Bj/vecteezy-barcode-1199361.png" id="codbar" />
+                <img src="https://i.postimg.cc/0NjDpV6J/pngwing-com-5.png" id="imgfirmshir" />
+            </div>
+
         </div>
-        <p id="namejshiro">
-            四<br />郎<br />帕<br />拉<br />蒂
-        </p>
-        <p id="shirFirm2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
-        <p id="shirFirm3">雪<br />音</p>
-        <i id="textshiro">
-            "En tu perdén encontré la paz, en tu ser encontré una pequeña parte de mi alma, eres una terca pero aunque el mundo te de la espalda
-            puedes contar conmigo."
-        </i>
-        <p id="numregshiro">1525823861</p>
-        <p id="regshiro">XHeLadodeMentaX</p>
-        <img src="https://i.postimg.cc/sD6kT8Bj/vecteezy-barcode-1199361.png" id="codbar" />
-        <img src="https://i.postimg.cc/0NjDpV6J/pngwing-com-5.png" id="imgfirmshir" />
-    </div>
 
-</div>
+        <div id="sectfrds">
+            <style>
+                #sectfrds {
+                    position: absolute;
+                    width: 29%;
+                    height: 35%;
+                    left: 31%;
+                    top: 10%;
+                }
 
-               <div id="sectfrds">
-                   <style>
-                       #sectfrds {
-                           position: absolute;
-                           width: 29%;
-                           height: 35%;
-                           left: 31%;
-                           top: 10%;
-                       }
+                #l1 {
+                    left: 0;
+                    top: -10%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    font-size: 2.5vw;
+                    letter-spacing: .1vw;
+                    opacity: 0;
+                }
 
-                       #l1 {
-                           left: 0;
-                           top: -10%;
-                           position: absolute;
-                           font-family: 'Montserrat', sans-serif;
-                           color: lightgray;
-                           font-size: 2.5vw;
-                           letter-spacing: .1vw;
-                           opacity: 0;
-                       }
+                .lic1 {
+                    animation: litextentrance 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .lic1 {
-                           animation: litextentrance 2s 1;
-                           animation-delay: 0s;
-                           animation-fill-mode: forwards;
-                       }
+                .lic12 {
+                    animation: litextentrance2 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .lic12 {
-                           animation: litextentrance2 2s 1;
-                           animation-delay: 0s;
-                           animation-fill-mode: forwards;
-                       }
+                .f12 {
+                    animation: textentrance2 2s 1;
+                    animation-delay: 0s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f12 {
-                           animation: textentrance2 2s 1;
-                           animation-delay: 0s;
-                           animation-fill-mode: forwards;
-                       }
+                @keyframes litextentrance {
+                    0% {
+                        opacity: 0;
+                        top: -12%;
+                    }
 
-                       @keyframes litextentrance {
-                           0% {
-                               opacity: 0;
-                               top: -12%;
-                           }
+                    10% {
+                        top: -15%;
+                    }
 
-                           10% {
-                               top: -15%;
-                           }
+                    80% {
+                        top: -10%;
+                    }
 
-                           80% {
-                               top: -10%;
-                           }
+                    100% {
+                        opacity: 1;
+                    }
+                }
 
-                           100% {
-                               opacity: 1;
-                           }
-                       }
+                @keyframes litextentrance2 {
+                    0% {
+                        opacity: 1;
+                        top: -10%;
+                    }
 
-                       @keyframes litextentrance2 {
-                           0% {
-                               opacity: 1;
-                               top: -10%;
-                           }
+                    10% {
+                        top: -15%;
+                    }
 
-                           10% {
-                               top: -15%;
-                           }
+                    90% {
+                        top: -15%;
+                    }
 
-                           90% {
-                               top: -15%;
-                           }
+                    100% {
+                        opacity: 0;
+                    }
+                }
 
-                           100% {
-                               opacity: 0;
-                           }
-                       }
+                #f1 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 0;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f1 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 0;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f1 {
+                    animation: textentrance 2s 1;
+                    animation-delay: .4s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f1 {
-                           animation: textentrance 2s 1;
-                           animation-delay: .4s;
-                           animation-fill-mode: forwards;
-                       }
+                #f2 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 8%;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f2 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 8%;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f2 {
+                    animation: textentrance 2s 1;
+                    animation-delay: .8s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f2 {
-                           animation: textentrance 2s 1;
-                           animation-delay: .8s;
-                           animation-fill-mode: forwards;
-                       }
+                #f3 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 16%;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f3 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 16%;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f3 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 1.2s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f3 {
-                           animation: textentrance 2s 1;
-                           animation-delay: 1.2s;
-                           animation-fill-mode: forwards;
-                       }
+                #f4 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 24%;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f4 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 24%;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f4 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 1.6s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f4 {
-                           animation: textentrance 2s 1;
-                           animation-delay: 1.6s;
-                           animation-fill-mode: forwards;
-                       }
+                #f5 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 32%;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f5 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 32%;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f5 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f5 {
-                           animation: textentrance 2s 1;
-                           animation-delay: 2s;
-                           animation-fill-mode: forwards;
-                       }
+                #f6 {
+                    position: absolute;
+                    width: 1vw;
+                    height: 60%;
+                    right: 40%;
+                    top: 0;
+                    opacity: 0;
+                }
 
-                       #f6 {
-                           position: absolute;
-                           width: 1vw;
-                           height: 60%;
-                           right: 40%;
-                           top: 0;
-                           opacity: 0;
-                       }
+                .f6 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2.4s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f6 {
-                           animation: textentrance 2s 1;
-                           animation-delay: 2.4s;
-                           animation-fill-mode: forwards;
-                       }
+                #f7 {
+                    position: absolute;
+                    width: 1vw;
+                    color: white;
+                    font-weight: bold;
+                    height: 60%;
+                    left: 12%;
+                    opacity: 0;
+                }
 
-                       #f7 {
-                           position: absolute;
-                           width: 1vw;
-                           color: white;
-                           font-weight: bold;
-                           height: 60%;
-                           left: 12%;
-                           opacity: 0;
-                       }
+                .f7 {
+                    animation: textentrance 2s 1;
+                    animation-delay: 2.8s;
+                    animation-fill-mode: forwards;
+                }
 
-                       .f7 {
-                           animation: textentrance 2s 1;
-                           animation-delay: 2.8s;
-                           animation-fill-mode: forwards;
-                       }
+                #sepr {
+                    width: .1vw;
+                    height: 50%;
+                    top: 0;
+                    left: 48%;
+                    background: white;
+                    position: absolute;
+                }
 
-                       #sepr {
-                           width: .1vw;
-                           height: 50%;
-                           top: 0;
-                           left: 48%;
-                           background: white;
-                           position: absolute;
-                       }
+                #nmelist {
+                    line-height: 1.7vw;
+                    top: 45%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    left: 0;
+                    font-size: .9vw;
+                    letter-spacing: .1vw;
+                }
 
-                       #nmelist {
-                           line-height: 1.7vw;
-                           top: 45%;
-                           position: absolute;
-                           font-family: 'Montserrat', sans-serif;
-                           color: lightgray;
-                           left: 0;
-                           font-size: .9vw;
-                           letter-spacing: .1vw;
-                       }
+                #nmelist2 {
+                    text-transform: uppercase;
+                    top: 50%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: lightgray;
+                    left: .2vw;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                }
 
-                       #nmelist2 {
-                           text-transform: uppercase;
-                           top: 50%;
-                           position: absolute;
-                           font-family: 'Montserrat', sans-serif;
-                           color: lightgray;
-                           left: .2vw;
-                           font-size: .7vw;
-                           letter-spacing: .1vw;
-                       }
+                #nmelist span {
+                    color: #ee6b6b;
+                }
 
-                       #nmelist span {
-                           color: #ee6b6b;
-                       }
+                @keyframes textentrance {
+                    0% {
+                        opacity: 0;
+                        top: -2%;
+                    }
 
-                       @keyframes textentrance {
-                           0% {
-                               opacity: 0;
-                               top: -2%;
-                           }
+                    10% {
+                        top: -5%;
+                    }
 
-                           10% {
-                               top: -5%;
-                           }
+                    80% {
+                        top: 0%;
+                    }
 
-                           80% {
-                               top: 0%;
-                           }
+                    100% {
+                        opacity: 1;
+                    }
+                }
 
-                           100% {
-                               opacity: 1;
-                           }
-                       }
+                @keyframes textentrance2 {
+                    0% {
+                        opacity: 1;
+                        top: 0%;
+                    }
 
-                       @keyframes textentrance2 {
-                           0% {
-                               opacity: 1;
-                               top: 0%;
-                           }
+                    10% {
+                        top: -5%;
+                    }
 
-                           10% {
-                               top: -5%;
-                           }
+                    90% {
+                        top: -2%;
+                    }
 
-                           90% {
-                               top: -2%;
-                           }
+                    100% {
+                        opacity: 0;
+                    }
+                }
 
-                           100% {
-                               opacity: 0;
-                           }
-                       }
+                #nmelist, #nmelist2 {
+                    transition: all .5s ease;
+                }
 
-                       #nmelist, #nmelist2 {
-                           transition: all .5s ease;
-                       }
+                #f2:hover p, #f3:hover p, #f4:hover p, #f5:hover p, #f6:hover p, #f7:hover p, #f1:hover p {
+                    color: #171717;
+                    text-shadow: 0 0 .5vw white;
+                }
+            </style>
+            <script>
 
-                       #f2:hover p, #f3:hover p, #f4:hover p, #f5:hover p, #f6:hover p, #f7:hover p, #f1:hover p {
-                           color: #171717;
-                           text-shadow: 0 0 .5vw white;
-                       }
-                   </style>
-                   <script>
-
-                       function clicksectdedicate() {
-                           $("#sectdedicate").removeClass("nosectdedicate"); $("#sectdedicate").addClass("Ysectdedicate");
-                           $("#sectfrds").addClass("nosectdedicate");
-                       }
+                function clicksectdedicate() {
+                    $("#sectdedicate").removeClass("nosectdedicate"); $("#sectdedicate").addClass("Ysectdedicate");
+                    $("#sectfrds").addClass("nosectdedicate");
+                }
 
 
-                       function clickfriends() {
+                function clickfriends() {
 
 
-                           $("#sectfrds").removeClass("nosectdedicate");
-                           $("#sectdedicate").removeClass("Ysectdedicate"); $("#sectdedicate").addClass("nosectdedicate");
-                           $("#l1").removeClass("lic12");
-                           $("#f1").removeClass("f12");
-                           $("#f2").removeClass("f12");
-                           $("#f3").removeClass("f12");
-                           $("#f4").removeClass("f12");
-                           $("#f5").removeClass("f12");
-                           $("#f6").removeClass("f12");
-                           $("#f7").removeClass("f12");
+                    $("#sectfrds").removeClass("nosectdedicate");
+                    $("#sectdedicate").removeClass("Ysectdedicate"); $("#sectdedicate").addClass("nosectdedicate");
+                    $("#l1").removeClass("lic12");
+                    $("#f1").removeClass("f12");
+                    $("#f2").removeClass("f12");
+                    $("#f3").removeClass("f12");
+                    $("#f4").removeClass("f12");
+                    $("#f5").removeClass("f12");
+                    $("#f6").removeClass("f12");
+                    $("#f7").removeClass("f12");
 
-                           $("#l1").addClass("lic1");
-                           $("#f1").addClass("f1");
-                           $("#f2").addClass("f2");
-                           $("#f3").addClass("f3");
-                           $("#f4").addClass("f4");
-                           $("#f5").addClass("f5");
-                           $("#f6").addClass("f6");
-                           $("#f7").addClass("f7");
-
-
-                       } function clickfriends2() {
-                           $("#l1").removeClass("lic1");
-                           $("#f1").removeClass("f1");
-                           $("#f2").removeClass("f2");
-                           $("#f3").removeClass("f3");
-                           $("#f4").removeClass("f4");
-                           $("#f5").removeClass("f5");
-                           $("#f6").removeClass("f6");
-                           $("#f7").removeClass("f7");
-
-                           $("#l1").addClass("lic12");
-                           $("#f1").addClass("f12");
-                           $("#f2").addClass("f12");
-                           $("#f3").addClass("f12");
-                           $("#f4").addClass("f12");
-                           $("#f5").addClass("f12");
-                           $("#f6").addClass("f12");
-                           $("#f7").addClass("f12");
+                    $("#l1").addClass("lic1");
+                    $("#f1").addClass("f1");
+                    $("#f2").addClass("f2");
+                    $("#f3").addClass("f3");
+                    $("#f4").addClass("f4");
+                    $("#f5").addClass("f5");
+                    $("#f6").addClass("f6");
+                    $("#f7").addClass("f7");
 
 
-                       }
-                   </script>
-                   <p id="l1">
-                       ▐<br />列<br />出<br />好<br />友
-                   </p>
-                   <a href="https://xat.me/xComaBLack">
-                       <div id="f1">
-                           <div id="sepr"></div>
-                           <p id="nmelist">
-                               <span> 昏<br />迷<br />白<br />色<br /></span>
-                           </p>
-                       </div>
-                   </a>
-                   <a href="https://xat.me/PieceOfShiit">
-                       <div id="f2">
-                           <div id="sepr"></div>
-                           <p id="nmelist">
-                               一<br />坨<br />屎
-                           </p>
+                } function clickfriends2() {
+                    $("#l1").removeClass("lic1");
+                    $("#f1").removeClass("f1");
+                    $("#f2").removeClass("f2");
+                    $("#f3").removeClass("f3");
+                    $("#f4").removeClass("f4");
+                    $("#f5").removeClass("f5");
+                    $("#f6").removeClass("f6");
+                    $("#f7").removeClass("f7");
 
-                       </div>
-                   </a>
-                   <a href="https://xat.me/AzuchanRosada">
-                       <div id="f3">
-                           <div id="sepr"></div>
-                           <p id="nmelist">
-                               出<br />生<br />的<br />罗<br />萨<br />达
-                           </p>
+                    $("#l1").addClass("lic12");
+                    $("#f1").addClass("f12");
+                    $("#f2").addClass("f12");
+                    $("#f3").addClass("f12");
+                    $("#f4").addClass("f12");
+                    $("#f5").addClass("f12");
+                    $("#f6").addClass("f12");
+                    $("#f7").addClass("f12");
 
-                       </div>
-                   </a>
-                   <a href="https://xat.me/XHeLadodeMentaX">
-                       <div id="f4">
-                           <div id="sepr"></div>
-                           <p id="nmelist">
-                               X<br />薄<br />荷<br />冰<br />淇<br />淋<br />X
-                           </p>
 
-                       </div>
-                   </a><a href="https://xat.me/kagura">
-                       <div id="f5">
-                           <div id="sepr"></div>
-                           <p id="nmelist">
-                               神<br />乐
-                           </p>
-                       </div>
-                   </a>
-                   <div id="f6">
-                       <div id="sepr"></div>
-                       <p id="nmelist">
-                           奥<br />齐<br />格<br />电<br />气
-                       </p>
+                }
+            </script>
+            <p id="l1">
+                ▐<br />列<br />出<br />好<br />友
+            </p>
+            <a href="https://xat.me/xComaBLack">
+                <div id="f1">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        <span> 昏<br />迷<br />白<br />色<br /></span>
+                    </p>
+                </div>
+            </a>
+            <a href="https://xat.me/PieceOfShiit">
+                <div id="f2">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        一<br />坨<br />屎
+                    </p>
 
-                   </div>
-                   <div id="f7" onclick="clickfriends2();">
-                       <div id="sepr"></div>
-                       <p id="nmelist2">
-                           R<br />e<br />t<br />o<br />u<br />r<br />n<br />e<br />r
-                       </p>
+                </div>
+            </a>
+            <a href="https://xat.me/AzuchanRosada">
+                <div id="f3">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        出<br />生<br />的<br />罗<br />萨<br />达
+                    </p>
 
-                   </div>
+                </div>
+            </a>
+            <a href="https://xat.me/XHeLadodeMentaX">
+                <div id="f4">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        X<br />薄<br />荷<br />冰<br />淇<br />淋<br />X
+                    </p>
 
-               </div>
+                </div>
+            </a><a href="https://xat.me/kagura">
+                <div id="f5">
+                    <div id="sepr"></div>
+                    <p id="nmelist">
+                        神<br />乐
+                    </p>
+                </div>
+            </a>
+            <div id="f6">
+                <div id="sepr"></div>
+                <p id="nmelist">
+                    奥<br />齐<br />格<br />电<br />气
+                </p>
+
+            </div>
+            <div id="f7" onclick="clickfriends2();">
+                <div id="sepr"></div>
+                <p id="nmelist2">
+                    R<br />e<br />t<br />o<br />u<br />r<br />n<br />e<br />r
+                </p>
+
+            </div>
+
+        </div>
 
         <div id="sectqr">
             <style>
@@ -2076,7 +2080,7 @@
             </style>
             <div id="imgprof">
 
-                <img src="https://i.postimg.cc/2S6GGfJ1/111.jpg" />
+                <img src="https://i.postimg.cc/4yQ7cB6M/a.jpg" />
             </div>
 
             <p id="prop2"> YUKI | BLACKBIRD <br />SWAYING FROM SEASON TO SEASON</p>
@@ -2117,10 +2121,22 @@
                                 "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
                         },
                         {
-                            name: "Au Crépuscule de Nos Rêves",
+                            name: "Something About Us",
+                            artist: "Daft Punk",
+                            src:
+                                "https://xevangelist.github.io/evangelist/somethingaboutus.mp3?raw=true"
+                        },
+                        {
+                            name: "Faux Semblants",
                             artist: "Amesoeurs",
                             src:
-                                "https://xevangelist.github.io/evangelist/AuCrepuscule.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                        },
+                        {
+                            name: "  春雷 Kenshi Yonezu",
+                            artist: "Shunrai",
+                            src:
+                                "https://xevangelist.github.io/evangelist/shunrai.mp3?raw=true"
                         },
                         {
                             name: "FAIBLESSE DES SENS",
@@ -2128,25 +2144,14 @@
                             src:
                                 "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
                         },
-                        {
-                            name: "Faux Semblants",
-                            artist: "AMESOEURS",
-                            src:
-                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
-                        },
-                        {
-                            name: "MINUSMENSCH",
-                            artist: "LANTLOS  (Only the best part)",
-                            src:
-                                "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
-                        },
 
                         {
-                            name: "I XIII V XIX XV V XXI XVIII XIX -- IX XIX -- IV V I IV",
-                            artist: "AMESOEURS",
+                            name: "退屈を再演しないで",
+                            artist: "Eve MV",
                             src:
-                                "https://xevangelist.github.io/evangelist/Amesoeurs.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/eve1.mp3?raw=true"
                         },
+
                         {
                             name: "Recueillement",
                             artist: "AMESOEURS",
@@ -2154,10 +2159,10 @@
                                 "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
                         },
                         {
-                            name: "Trouble (Éveils Infâmes)",
-                            artist: "AMESOEURS",
+                            name: "トーキョーゲットー",
+                            artist: "Eve MV",
                             src:
-                                "https://xevangelist.github.io/evangelist/Trouble.mp3?raw=true"
+                                "https://xevangelist.github.io/evangelist/eve2.mp3?raw=true"
                         },
                         {
                             name: "PULSE / SURREAL",
@@ -2233,14 +2238,14 @@
                 $("#prev").click(function prev() {
                     CurrentSong--;
                     if (CurrentSong < 0) {
-                        CurrentSong = 11;
+                        CurrentSong = 9;
                     }
                     playSong();
                 });
 
                 $("#next").click(function next() {
                     CurrentSong++;
-                    if (CurrentSong > 11) {
+                    if (CurrentSong > 9) {
                         CurrentSong = 0;
                     }
                     playSong();
