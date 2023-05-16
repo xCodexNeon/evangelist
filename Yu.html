@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" >
-<head>
+<head >
     <meta charset="utf-8" />
     <title></title>
 
@@ -91,7 +91,7 @@
 
 </head>
 
-<body onclick="nohoverlink1()">
+<body  onload="digi()"  >
     <div id="main">
         <div id="bkgmain"></div>
         <div id="cube1"></div> <div id="cube2"></div> <div id="cube3"></div> <div id="cube4"></div>
@@ -457,18 +457,22 @@
 
         </script>
 
-            <div id="mainscroll">
-                <style>
-                    #mainscroll {
-                        width: 84%;
-                        height: 100%;
-                        top: 0;
-                        right: .5%;
-                        position: absolute;
-                        overflow: auto;
-                    }
-                    #trackmain { font-weight:bold; color:#7c6092;
-                    }
+                <div id="mainscroll">
+                    <style>
+                        #mainscroll {
+                            width: 84%;
+                            height: 100%;
+                            top: 0;
+                            right: .5%;
+                            position: absolute;
+                            overflow: auto;
+                        }
+
+                        #trackmain {
+                            font-weight: bold;
+                            color: #7c6092;
+                        }
+
                         #mainscroll::-webkit-scrollbar {
                             width: .1vw;
                             background: transparent;
@@ -479,514 +483,1024 @@
                             background: linear-gradient(180deg, transparent 0%, transparent 5%, #7c6092 5.1%, #7c6092 95%, transparent 95.1%,transparent 100%);
                             /*background: #7c6092*/
                         }
-                </style>
+                    </style>
 
 
-                <style>
+                    <style>
 
-                    #post {
-                        position: relative;
-                        width: 42%;
-                        height: auto;
-                        background: black;
-                        margin-top: 2vw;
-                        margin-bottom: 5vw;
-                    }
-                    #post1 {
-                        position: relative;
-                        width: 42%;
-                        height: auto;
-                        background: black;
-                        margin-top: 2vw;
-                        margin-bottom: 5vw;
-                    }
+                        #post {
+                            position: relative;
+                            width: 42%;
+                            height: auto;
+                            background: black;
+                            margin-top: 2vw;
+                            margin-bottom: 5vw;
+                        }
 
-                    #headpost {
-                        position: relative;
-                        width: 96%;
-                        left: 2%;
-                        top: .5vw;
-                        background: rgb(25,25,25);
-                        height: 5vw;
-                    }
+                        #post1 {
+                            position: relative;
+                            width: 42%;
+                            height: auto;
+                            background: black;
+                            margin-top: 2vw;
+                            margin-bottom: 5vw;
+                        }
 
-                    #imgmainpost {
-                        position: relative;
-                        width: 96%;
-                        left: 2%;
-                        margin-top: 2vw;
-                    }
-
-                    #butonspost {
-                        height: 3vw;
-                        width: 96%;
-                        left: 2%;
-                        text-align: right;
-                        margin-top: 0vw;
-                    }
-
-                        #butonspost p {
-                            font-family: "Roboto", Arial, sans-serif;
+                        #headpost {
+                            position: relative;
+                            width: 96%;
+                            left: 2%;
+                            top: .5vw;
                             background: rgb(25,25,25);
-                            color: white;
-                            padding: .4vw;
-                            margin-left: 1vw;
-                            float: right;
-                            font-size: .7vw;
-                            letter-spacing: .1vw;
+                            height: 5vw;
                         }
 
-                    #textareapost {
-                        margin-top: 1vw;
-                        position: relative;
-                        width: 96%;
-                        left: 2%;
-                    }
+                        #imgmainpost {
+                            position: relative;
+                            width: 96%;
+                            left: 2%;
+                            margin-top: 2vw;
+                        }
 
-                    #ptitlepost {
-                        font-family: "Roboto", Arial, sans-serif;
-                        font-size: .7vw;
-                        letter-spacing: .1vw;
-                        color: #b67fb6;
-                        text-decoration: underline;
-                        font-weight: bold;
-                    }
+                        #butonspost {
+                            height: 3vw;
+                            width: 96%;
+                            left: 2%;
+                            text-align: right;
+                            margin-top: 0vw;
+                        }
 
-                    #textpost {
-                        position: relative;
-                        width: 92%;
-                        left: 5%;
-                        border-left: .1vw solid #7c6092;
-                    }
+                            #butonspost p {
+                                font-family: "Roboto", Arial, sans-serif;
+                                background: rgb(25,25,25);
+                                color: white;
+                                padding: .4vw;
+                                margin-left: 1vw;
+                                float: right;
+                                font-size: .7vw;
+                                letter-spacing: .1vw;
+                            }
 
-                        #textpost p {
-                            margin-left: .5vw;
+                        #textareapost {
+                            margin-top: 1vw;
+                            position: relative;
+                            width: 96%;
+                            left: 2%;
+                        }
+
+                        #ptitlepost {
                             font-family: "Roboto", Arial, sans-serif;
                             font-size: .7vw;
                             letter-spacing: .1vw;
-                            color: white;
+                            color: #b67fb6;
+                            text-decoration: underline;
+                            font-weight: bold;
                         }
 
-                        #textpost span {
-                            color: #7c6092;
+                        #textpost {
+                            position: relative;
+                            width: 92%;
+                            left: 5%;
+                            border-left: .1vw solid #7c6092;
                         }
-                    #reproarea {
-                        position: relative;
-                        width: 96%; height:15%;  
-                        left: 2%;
-                        margin-top: 2vw;
-                    }
-                </style>
-                <div id="post1">
-                    <div id="headpost"> </div>
-                   
-                    <div id="reproarea">
 
-                        <div id="auid">
-                            <style>
-                                #auid {
-                                    mix-blend-mode: difference;
-                                    
-                                    font-family: "Roboto", Arial, sans-serif;
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 100%; 
-                                }
+                            #textpost p {
+                                margin-left: .5vw;
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-size: .7vw;
+                                letter-spacing: .1vw;
+                                color: white;
+                            }
 
-                                .player {
-                                    z-index: 9;
-                                }
+                            #textpost span {
+                                color: #7c6092;
+                            }
 
-                                .player-control {
-                                    position: absolute;
-                                    z-index: 999999999999999;
-                                    top: 10%;
-                                    left:3%;
-                                }
+                        #reproarea {
+                            position: relative;
+                            width: 96%;
+                            height: 15%;
+                            left: 2%;
+                            margin-top: 2vw;
+                        }
 
-                                #prev {
-                                    cursor: pointer;
-                                    position: absolute;
-                                    width: 2vw;
-                                    height: 1vw;
-                                    left: 0;
-                                    z-index: 3;
-                                    top: -2.6vw;
-                                }
+                        #clock, #clock2 {
+                            color: lightgray;
+                            text-transform: uppercase;
+                            font-size: .8vw;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 5vw;
+                            top: 1.5vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
 
-                                #next {
-                                    cursor: pointer;
-                                    position: absolute;
-                                    width: 2vw;
-                                    height: 2vw;
-                                    
-                                }
+                        #tt, #tt2 {
+                            color: rgb(165,157,154);
+                            text-transform: uppercase;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 5vw;
+                            top: 1.8vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
 
-                                    #next p, #prev p {
-                                        position: absolute;
-                                         padding:1vw; background:#7c6092; border-radius:50%;
-                                        color: white;
-                                        letter-spacing: .1vw;
-                                        text-shadow: 0 0 1vw #171717;
-                                        font-size: 1vw;
+                        #headimg {
+                            width: 3vw;
+                            height: 3vw;
+                            position: relative;
+                            border-radius: .6vw;
+                            background: #5e4870;
+                            left: 1vw;
+                            top: 1vw;
+                        }
+
+                            #headimg img {
+                                width: 1.5vw;
+                                position: absolute;
+                                left: .7vw;
+                                top: .75vw;
+                                filter: invert(100%);
+                            }
+
+                        #buttons {
+                            filter: invert(100%);
+                            position: absolute;
+                            z-index: 9;
+                            width: 12%;
+                            right: 2%;
+                            top: 40%;
+                            height: 8%;
+                            opacity: .4;
+                        }
+
+                        #bt1, #bt12 {
+                            position: absolute;
+                            width: 1vw;
+                            height: 1vw;
+                        }
+
+                        .relad3 {
+                            background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
+                            background-size: contain;
+                        }
+
+                        .relad2 {
+                            background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
+                            background-size: contain;
+                        }
+
+                        #bt2, #bt22 {
+                            left: 2vw;
+                            position: absolute;
+                            width: 1vw;
+                            height: 1vw;
+                            background: url(https://i.postimg.cc/W1ytn21n/reload.png);
+                            background-size: contain;
+                        }
+
+                        .relad {
+                            animation: reload 2s 1;
+                        }
+
+                        .reloadpost {
+                            animation: reloadpost 2s 1;
+                        }
+
+                        @keyframes reload {
+                            100% {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        @keyframes reloadpost {
+                            0% {
+                                opacity: 0;
+                            }
+
+                            100% {
+                                opacity: 1;
+                            }
+                        }
+                    </style>
+
+
+                    <div id="post1">
+                        <div id="headpost">
+                            <div id="headimg">
+                                <img src="https://i.postimg.cc/QNJ9d01p/musical-note.png" />
+                            </div>
+                            <div id="clock"></div><p id="tt"></p>
+                            <script>
+                                var mydate = new Date();
+                                var year = mydate.getYear();
+                                if (year < 1000) year += 1900;
+                                var day = mydate.getDay();
+                                var month = mydate.getMonth();
+                                var daym = mydate.getDate();
+                                if (daym < 10) daym = "0" + daym;
+                                var dayarray = new Array(
+                                    "Sunday,",
+                                    "Monday,",
+                                    "Tuesday,",
+                                    "Wednesday,",
+                                    "Thursday,",
+                                    "Friday,",
+                                    "Saturday,"
+                                );
+                                var montharray = new Array(
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April",
+                                    "May",
+                                    "June",
+                                    "July",
+                                    "August",
+                                    "September",
+                                    "October",
+                                    "November",
+                                    "December"
+                                );
+                                document.write(
+                                    "<font id='clock'>" +
+                                    dayarray[day] +
+                                    " " +
+                                    daym +
+                                    "TH " +
+                                    montharray[month] +
+                                    " " +
+
+                                    "</font>"
+                                );
+                                function digi() {
+                                    var date = new Date(),
+                                        hour = date.getHours(),
+                                        minute = checkTime(date.getMinutes()),
+                                        ss = checkTime(date.getSeconds());
+
+                                    function checkTime(i) {
+                                        if (i < 10) {
+                                            i = "0" + i;
+                                        }
+                                        return i;
                                     }
 
-                                #namesong {
-                                    position: absolute;
-                                    width: 88%;
-                                    height: 80%;
-                                    top: 10%;
-                                    color: lightgray;
-                                    left: 16%;
-                                    letter-spacing: .1vw;
-                                    font-size: .8vw;
+                                    if (hour > 12) {
+                                        hour = hour - 12;
+                                        if (hour == 12) {
+                                            hour = checkTime(hour);
+                                            document.getElementById("tt").innerHTML =
+                                                hour + ":" + minute + ":" + ss + " AM @ 0 NOTES";
+                                        } else {
+                                            hour = checkTime(hour);
+                                            document.getElementById("tt").innerHTML =
+                                                hour + ":" + minute + ":" + ss + " PM @ 0 NOTES";
+                                        }
+                                    } else {
+                                        document.getElementById("tt").innerHTML =
+                                            hour + ":" + minute + ":" + ss + " AM @ 0 NOTES";
+                                    }
+                                    var time = setTimeout(digi, 1000);
                                 }
 
 
-                                #name_sng {
-                                    position: relative;
-                                    float: left;
-                                }
+                            </script>
+                            <div id="buttons">
+                                <div id="bt1" class="relad3" onclick="onfull();">
+                                    <script>
+                                        var y = 0;
+                                        function onfull() {
 
-                                .progress-bar {
-                                    width: 80%; left:16%;
-                                    background: lightgray;
-                                    height: .2vw;
-                                    position: absolute;
-                                    top: 75%;
-                                }
+                                            y++;
+                                            if (y == 1) {
+                                                $("#bt1").addClass("relad2"); $("#bt1").removeClass("relad3");
+                                            }
+                                            else { y = 0; $("#bt1").removeClass("relad2"); $("#bt1").addClass("relad3"); }
+                                        }
 
-                                .fillBar {
-                                    background: #7c6092;
-                                
-                                    width: 0;
-                                    height: .2vw;
-                                }
- 
-                                  
+                                    </script>
 
-                                .time {
-                                    position: absolute;
-                                    top: 50%;  width:40%;
-                                    color: lightgray;
-                                    left: 16%;
-                                    letter-spacing: .1vw;
-                                    font-size: .8vw;
-                                }
-
-                               
-
-                                .artist-name {
-                                    position: absolute;
-                                     
-                                    top: 30%;
-                                    left: 16%;
-                                    color: lightgray;
-                                    left: 16%;
-                                    letter-spacing: .1vw;
-                                    font-size: .8vw;
-                                }
-
-                              
-                            </style>
-                            <div id="R_plyr">
-                                <div id="dt_rp">
-
-                                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
                                 </div>
+                                <div id="bt2" onclick="onrelad();">
 
-                                <div id="mor_rpy">
+                                    <script>
+                                        var x = 0;
+                                        function onrelad() {
 
-                                    <div class="player">
+                                            x++;
+                                            if (x == 1) {
+                                                $("#bt2").addClass("relad");
+                                                $("#textpost").addClass("reloadpost");
+                                            }
+                                            else { x = 0; $("#bt2").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
+                                        }
 
-                                        <div class="player-track">
-                                            <div id="titles">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
 
-                                            </div>
+                        <div id="reproarea">
+
+                            <div id="auid">
+                                <style>
+                                    #auid {
+                                        mix-blend-mode: difference;
+                                        font-family: "Roboto", Arial, sans-serif;
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+
+                                    .player {
+                                        z-index: 9;
+                                    }
+
+                                    .player-control {
+                                        position: absolute;
+                                        z-index: 999999999999999;
+                                        top: 10%;
+                                        left: 3%;
+                                    }
+
+                                    #prev {
+                                        cursor: pointer;
+                                        position: absolute;
+                                        width: 2vw;
+                                        height: 1vw;
+                                        left: 0;
+                                        z-index: 3;
+                                        top: -2.6vw;
+                                    }
+
+                                    #next {
+                                        cursor: pointer;
+                                        position: absolute;
+                                        width: 2vw;
+                                        height: 2vw;
+                                    }
+
+                                        #next p, #prev p {
+                                            position: absolute;
+                                            padding: 1vw;
+                                            background: #7c6092;
+                                            border-radius: 50%;
+                                            color: white;
+                                            letter-spacing: .1vw;
+                                            text-shadow: 0 0 1vw #171717;
+                                            font-size: 1vw;
+                                        }
+
+                                    #namesong {
+                                        position: absolute;
+                                        width: 88%;
+                                        height: 80%;
+                                        top: 10%;
+                                        color: lightgray;
+                                        left: 16%;
+                                        letter-spacing: .1vw;
+                                        font-size: .8vw;
+                                    }
+
+
+                                    #name_sng {
+                                        position: relative;
+                                        float: left;
+                                    }
+
+                                    .progress-bar {
+                                        width: 80%;
+                                        left: 16%;
+                                        background: lightgray;
+                                        height: .2vw;
+                                        position: absolute;
+                                        top: 75%;
+                                    }
+
+                                    .fillBar {
+                                        background: #7c6092;
+                                        width: 0;
+                                        height: .2vw;
+                                    }
 
 
 
-                                            <div class="progress-bar">
-                                                <div class="fillBar"></div>
-                                            </div>
-                                           <div class="time"></div>
-                                            <div class="artist-name"></div>
-
-                                        </div>
-
-                                        <div class="player-control">
-                                            <!--<div id="prev" class="fas fa-backward"><p>◄</p></div>-->
-
-                                            <div id="next" class="fas fa-forward"><p>►</p></div>
-                                        </div>
+                                    .time {
+                                        position: absolute;
+                                        top: 50%;
+                                        width: 40%;
+                                        color: lightgray;
+                                        left: 16%;
+                                        letter-spacing: .1vw;
+                                        font-size: .8vw;
+                                    }
 
 
 
+                                    .artist-name {
+                                        position: absolute;
+                                        top: 30%;
+                                        left: 16%;
+                                        color: lightgray;
+                                        left: 16%;
+                                        letter-spacing: .1vw;
+                                        font-size: .8vw;
+                                    }
+                                </style>
+                                <div id="R_plyr">
+                                    <div id="dt_rp">
+
+                                        <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
                                     </div>
 
+                                    <div id="mor_rpy">
+
+                                        <div class="player">
+
+                                            <div class="player-track">
+                                                <div id="titles">
+
+                                                </div>
+
+
+
+                                                <div class="progress-bar">
+                                                    <div class="fillBar"></div>
+                                                </div>
+                                                <div class="time"></div>
+                                                <div class="artist-name"></div>
+
+                                            </div>
+
+                                            <div class="player-control">
+                                                <!--<div id="prev" class="fas fa-backward"><p>◄</p></div>-->
+
+                                                <div id="next" class="fas fa-forward"><p>►</p></div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
                                 </div>
+
+
                             </div>
 
 
                         </div>
 
+                        <div id="textareapost">
+                            <p id="ptitlepost">List songs:</p>
+                            <div id="textpost">
+                                <p>
+                                    神经衰弱: 【❝】Eve MV•トーキョーゲットー|<br />
+                                    神经衰弱: 【❝】Eve MV⸻•退屈を再演しないで|<br />
+                                    神经衰弱: 【❝】Shunrai如何©•米津玄師 - 春雷Kenshi Yonezu|<br />
+                                    神经衰弱: 【❝】Eve MV•Cómo comer una vida所|<br />
+                                </p>
+                            </div>
+
+                        </div>
+                        <div id="butonspost"><p>#ComaWhite</p><p>#Music</p><p>#Player</p></div>
 
                     </div>
 
-                    <div id="textareapost">
-                        <p id="ptitlepost">List songs:</p>
-                        <div id="textpost">
-                            <p>
-                                神经衰弱: 【❝】Eve MV•トーキョーゲットー|<br />
-                                神经衰弱: 【❝】Eve MV⸻•退屈を再演しないで|<br />
-                                神经衰弱: 【❝】Shunrai如何©•米津玄師 - 春雷Kenshi Yonezu|<br />
-                                神经衰弱: 【❝】Eve MV•Cómo comer una vida所|<br />
-                            </p>
+
+
+                    <div id="post">
+                        <div id="headpost">
+                            <div id="headimg">
+                                <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                            </div>
+                            <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+
+                            <div id="buttons">
+                                <div id="bt12" class="relad3" onclick="onfull2();">
+                                    <script>
+                                        var y = 0;
+                                        function onfull2() {
+
+                                            y++;
+                                            if (y == 1) {
+                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
+                                            }
+                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
+                                        }
+
+                                    </script>
+
+                                </div>
+                                <div id="bt22" onclick="onrelad2();">
+
+                                    <script>
+                                        var x = 0;
+                                        function onrelad2() {
+
+                                            x++;
+                                            if (x == 1) {
+                                                $("#bt22").addClass("relad");
+                                                $("#textpost").addClass("reloadpost");
+                                            }
+                                            else { x = 0; }
+                                        }
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <img id="imgmainpost" src="https://i.postimg.cc/FHgf8L2b/4b8f5ca7bf41461a19e3b4d1e64c1eb5.gif" />
+                        <div id="textareapost">
+                            <p id="ptitlepost">With me:</p>  <div id="textpost">
+                                <p>
+                                    I want you to know with everything, I won't let this go.
+                                    These words are my <span>heart</span> and <span>soul</span>, I'll hold on to this moment, you know
+                                    As I <span>bleed</span> my heart out to show and I won't let go.
+                                </p>
+                            </div>
+
+
+                        </div>
+                        <div id="butonspost"><p>#ComaBlack</p><p>#FromMyHeart</p><p>#ForYuki</p></div>
+
+                    </div>
+
+              
+                    <div id="post">
+                        <div id="headpost">
+                            <div id="headimg">
+                                <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                            </div>
+                            <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+
+                            <div id="buttons">
+                                <div id="bt12" class="relad3" onclick="onfull2();">
+                                    <script>
+                                        var y = 0;
+                                        function onfull2() {
+
+                                            y++;
+                                            if (y == 1) {
+                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
+                                            }
+                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
+                                        }
+
+                                    </script>
+
+                                </div>
+                                <div id="bt22" onclick="onrelad2();">
+
+                                    <script>
+                                        var x = 0;
+                                        function onrelad2() {
+
+                                            x++;
+                                            if (x == 1) {
+                                                $("#bt22").addClass("relad");
+                                                $("#textpost").addClass("reloadpost");
+                                            }
+                                            else { x = 0; $("#bt22").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
+                                        }
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <img id="imgmainpost" src="https://i.postimg.cc/R0PRn4kz/black-aesthetic-anime-black.gif" />
+                        <div id="textareapost">
+                            <p id="ptitlepost">三月雪 | Neige de mars:</p>
+                            <div id="textpost">
+                                <p>
+                                    <span>太出乎意料了|</span> Si inattendu <br />
+                                    <span>在我身边变得脆弱|</span> Tombe fragile autour de moi<br />
+                                    <span>如此优雅，如此冰冷|</span> Si fragile, si froid...<br />
+                                    <span>将我包裹在它冰冷的怀抱中|</span> m'enveloppant de son étreinte glaciale<br />
+                                    <span>在它温暖的美味下|</span> Sous sa chaude délicatesse<br />
+                                    <span>我一直想留下的那个...|</span> Celui que je veux toujours rester...<br />
+                                </p>
+                            </div>
+
                         </div>
 
+                        <div id="butonspost"><p>#ComaBlack</p><p>#NeigedeMars</p><p>#ForYuki</p></div>
+
                     </div>
-                    <div id="butonspost"><p>#ComaWhite</p><p>#Music</p><p>#Player</p></div>
+                    <div id="post">
+                        <div id="headpost">
+                            <div id="headimg">
+                                <img src="https://i.postimg.cc/x85cp1ns/image.pngg" />
+                            </div>
+                            <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
 
-                </div>
+                            <div id="buttons">
+                                <div id="bt12" class="relad3" onclick="onfull2();">
+                                    <script>
+                                        var y = 0;
+                                        function onfull2() {
 
+                                            y++;
+                                            if (y == 1) {
+                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
+                                            }
+                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
+                                        }
 
+                                    </script>
 
-                <div id="post">
-                    <div id="headpost"> </div>
-                    <img id="imgmainpost" src="https://i.postimg.cc/FHgf8L2b/4b8f5ca7bf41461a19e3b4d1e64c1eb5.gif" />
-                    <div id="textareapost">
-                        <p id="ptitlepost">With me:</p>
-                        <div id="textpost">
-                            <p>
-                                I want you to know with everything, I won't let this go.
-                                These words are my <span>heart</span> and <span>soul</span>, I'll hold on to this moment, you know
-                                As I <span>bleed</span> my heart out to show and I won't let go.
-                            </p>
+                                </div>
+                                <div id="bt22" onclick="onrelad2();">
+
+                                    <script>
+                                        var x = 0;
+                                        function onrelad2() {
+
+                                            x++;
+                                            if (x == 1) {
+                                                $("#bt22").addClass("relad");
+                                                $("#textpost").addClass("reloadpost");
+                                            }
+                                            else { x = 0; $("#bt22").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
+                                        }
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <img id="imgmainpost" src="https://i.postimg.cc/q7R3Cnc1/CXCNd-Mj-Ws-AAw-SZu.jpg" />
+                        <div id="textareapost">
+                            <p id="ptitlepost">With the stars(You):</p>
+                            
+
                         </div>
 
+                        <div id="butonspost"><p>#ComaBlack</p><p>#You'reMyShiningStar</p><p>#ForYuki</p></div>
+
                     </div>
-                    <div id="butonspost"><p>#ComaBlack</p><p>#Sum41</p></div>
+                    <div id="areaprofile">
+                        <style>
+                            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+                            @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-                </div>
-
-
-
-                <div id="areaprofile">
-                    <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-                        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-
-                        #areaprofile {
-                            position: fixed;
-                            top: 57%;
-                            right: 19%;
-                            width: 23%;
-                            height: 20%;
-                        }
-
-                        #ainfo {
-                            position: absolute;
-                            width: 100%;
-                            height: 60%;
-                            top: 0;
-                            left: 0;
-                            background: black;
-                        }
-
-                        #abuttns {
-                            position: absolute;
-                            width: 100%;
-                            height: 20%;
-                            top: 75%;
-                            left: 0;
-                        }
-
-                        #amainimg {
-                            width: 6vw;
-                            height: 6vw;
-                            background: #171717;
-                            position: absolute;
-                        }
-
-                            #amainimg img {
-                                width: 4.5vw;
-                                height: 4.5vw;
-                                position: absolute;
-                                left: .75vw;
-                                top: .75vw;
+                            #areaprofile {
+                                position: fixed;
+                                top: 57%;
+                                right: 19%;
+                                width: 23%;
+                                height: 20%;
                             }
 
-                        #textinfo {
-                            color: gray;
-                            font-size: .7vw;
-                            letter-spacing: .1vw;
-                            position: absolute;
-                            width: 67%;
-                            height: 80%;
-                            top: -4%;
-                            line-height: .9vw;
-                            right: 2%;
-                            font-family: "Roboto", Arial, sans-serif;
-                        }
+                            #ainfo {
+                                position: absolute;
+                                width: 100%;
+                                height: 60%;
+                                top: 0;
+                                left: 0;
+                                background: black;
+                            }
 
-                            #textinfo span {
+                            #abuttns {
+                                position: absolute;
+                                width: 100%;
+                                height: 20%;
+                                top: 75%;
+                                left: 0;
+                            }
+
+                            #amainimg {
+                                width: 6vw;
+                                height: 6vw;
+                                background: #171717;
+                                position: absolute;
+                            }
+
+                                #amainimg img {
+                                    width: 4.5vw;
+                                    height: 4.5vw;
+                                    position: absolute;
+                                    left: .75vw;
+                                    top: .75vw;
+                                }
+
+                            #textinfo {
+                                color: gray;
+                                font-size: .7vw;
+                                letter-spacing: .1vw;
+                                position: absolute;
+                                width: 67%;
+                                height: 80%;
+                                top: -4%;
+                                line-height: .9vw;
+                                right: 2%;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+
+                                #textinfo span {
+                                    color: #b67fb6;
+                                    text-decoration: underline;
+                                }
+
+                                #textinfo b {
+                                    color: #e2bcd7;
+                                }
+
+                            .buton {
+                                width: 20%;
+                                margin-right: 5%;
+                                background: black;
+                                height: 100%;
+                                float: left;
+                            }
+
+                                .buton p {
+                                    font-family: "Roboto", Arial, sans-serif;
+                                    color: gray;
+                                    font-weight: bold;
+                                    position: relative;
+                                    text-align: center;
+                                    font-size: .6vw;
+                                    letter-spacing: .15vw;
+                                }
+                        </style>
+                        <div id="ainfo">
+                            <div id="amainimg">
+                                <img src="https://i.ibb.co/7jX7crm/87ciel.png" />
+                            </div>
+                            <div id="textinfo">
+                                <p>
+                                    Oh, <b>God</b>... please, please let me hear your <i>voice</i>! <br />
+                                    Just the <i>slightest words</i> will do! So that we'll never be apart again, <br />
+                                    I want you to join with me...<br />
+                                    Just <b>like</b> that <span>constellation</span>.
+                                </p>
+                            </div>
+                        </div>
+                        <div id="abuttns">
+                            <div class="buton"><p>YUKINE</p></div>
+                            <div class="buton"><p>XIX</p></div>
+                            <div class="buton"><p>MRR</p></div>
+                            <div class="buton"><p>HOME</p></div>
+                        </div>
+
+                    </div>
+
+                    <div id="aconstell">
+                        <style>
+                            #aconstell {
+                                position: fixed;
+                                top: 24%;
+                                right: 19%;
+                                width: 23%;
+                                height: 30%;
+                            }
+
+                            #alinks {
+                                position: absolute;
+                                right: 0;
+                                top: 5%;
+                                width: 40%;
+                                height: 90%;
+                                font-weight: bold;
+                                color: lightgray;
+                                line-height: 1.7vw;
+                                font-size: .65vw;
+                                letter-spacing: .17vw;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+
+                            #aconst {
+                                position: absolute;
+                                top: 10%;
+                                left: 0;
+                                width: 55%;
+                                height: 80%;
+                            }
+
+                            #imgconst1 {
+                                position: absolute;
+                                width: 11vw;
+                                height: 11vw;
+                                left: -140%;
+                                top: 10%;
+                                z-index: -1;
+                            }
+
+                            .nolink1 {
+                                opacity: 0;
+                                z-index: -1;
+                            }
+
+                            yeslink1 {
+                                opacity: 1;
+                                z-index: 9;
+                            }
+
+                            #imgconst2 {
+                                position: absolute;
+                                width: 11vw;
+                                height: 11vw;
+                                left: -140%;
+                                top: 10%;
+                            }
+
+                            #imgconst3, #imgconst4, #imgconst5, #imgconst6, #imgconst7, #imgconst8 {
+                                position: absolute;
+                                width: 11vw;
+                                height: 11vw;
+                                left: -140%;
+                                top: 10%;
+                            }
+
+                            .linkcoloryes {
                                 color: #b67fb6;
                                 text-decoration: underline;
                             }
 
-                            #textinfo b {
-                                color: #e2bcd7;
+                            .linkcolorno {
+                                color: white;
+                                text-decoration: none;
+                            }
+                        </style>
+
+                        <div id="aconst">
+
+
+                        </div>
+
+                        <script>
+                            function onmove1() {
+                                $("#link11").removeClass("linkcolorno"); $("#link11").addClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst1").removeClass("nolink1"); $("#imgconst1").addClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
                             }
 
-                        .buton {
-                            width: 20%;
-                            margin-right: 5%;
-                            background: black;
-                            height: 100%;
-                            float: left;
-                        }
+                            function onmove2() {
+                                $("#link12").removeClass("linkcolorno"); $("#link12").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
 
-                            .buton p {
-                                font-family: "Roboto", Arial, sans-serif;
-                                color: gray;
-                                font-weight: bold;
-                                position: relative;
-                                text-align: center;
-                                font-size: .6vw;
-                                letter-spacing: .15vw;
+                                $("#imgconst2").removeClass("nolink1"); $("#imgconst2").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
                             }
-                    </style>
-                    <div id="ainfo">
-                        <div id="amainimg">
-                            <img src="https://i.ibb.co/7jX7crm/87ciel.png" />
+                            function onmove3() {
+                                $("#link13").removeClass("linkcolorno"); $("#link13").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst3").removeClass("nolink1"); $("#imgconst3").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                            }
+                            function onmove4() {
+                                $("#link14").removeClass("linkcolorno"); $("#link14").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst4").removeClass("nolink1"); $("#imgconst4").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                            }
+                            function onmove5() {
+                                $("#link15").removeClass("linkcolorno"); $("#link15").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst5").removeClass("nolink1"); $("#imgconst5").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                            }
+                            function onmove6() {
+                                $("#link16").removeClass("linkcolorno"); $("#link16").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst6").removeClass("nolink1"); $("#imgconst6").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                            } function onmove7() {
+                                $("#link17").removeClass("linkcolorno"); $("#link17").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                                $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                                $("#imgconst7").removeClass("nolink1"); $("#imgconst7").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                                $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                            } function onmove8() {
+                                $("#link18").removeClass("linkcolorno"); $("#link18").addClass("linkcoloryes");
+                                $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                                $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                                $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                                $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                                $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                                $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                                $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+
+                                $("#imgconst8").removeClass("nolink1"); $("#imgconst8").addClass("yeslink1");
+                                $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                                $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                                $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                                $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                                $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                                $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                                $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            }
+                        </script>
+
+                        <div id="alinks">
+                            <a id="link1" onmouseover="onmove1();">
+                                001 ── <span id="link11" class="linkcoloryes">LINK ONE</span>
+                                <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
+
+                            </a><br />
+                            <a onmouseover="onmove2();" id="link2">002 ── <span id="link12">LINK TWO</span> <img class="nolink1" src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst2" /></a><br />
+                            <a onmouseover="onmove3();" id="link3">003 ── <span id="link13">LINK THREE </span> <img class="nolink1" src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
+                            <a onmouseover="onmove4();" id="link4">004 ── <span id="link14">LINK FOUR</span> <img class="nolink1" src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst4" /></a><br />
+                            <a onmouseover="onmove5();" id="link5">005 ── <span id="link15">LINK FIVE</span><img class="nolink1" src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst5" /></a><br />
+                            <a onmouseover="onmove6();" id="link6">006 ── <span id="link16">LINK SIX</span><img class="nolink1" src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst6" /></a><br />
+                            <a onmouseover="onmove7();" id="link7">007 ── <span id="link17">LINK SEVEN</span><img class="nolink1" src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst7" /></a><br />
+                            <a onmouseover="onmove8();" id="link8">008 ── <span id="link18">LINK EIGHT</span><img class="nolink1" src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst8" /></a>
                         </div>
-                        <div id="textinfo">
-                            <p>
-                                Oh, <b>God</b>... please, please let me hear your <i>voice</i>! <br />
-                                Just the <i>slightest words</i> will do! So that we'll never be apart again, <br />
-                                I want you to join with me...<br />
-                                Just <b>like</b> that <span>constellation</span>.
-                            </p>
-                        </div>
-                    </div>
-                    <div id="abuttns">
-                        <div class="buton"><p>YUKINE</p></div>
-                        <div class="buton"><p>XIX</p></div>
-                        <div class="buton"><p>MRR</p></div>
-                        <div class="buton"><p>HOME</p></div>
                     </div>
 
                 </div>
-
-                <div id="aconstell">
-                    <style>
-                        #aconstell {
-                            position: fixed;
-                            top: 24%;
-                            right: 19%;
-                            width: 23%;
-                            height: 30%;
-                        }
-
-                        #alinks {
-                            position: absolute;
-                            right: 0;
-                            top: 5%;
-                            width: 40%;
-                            height: 90%;
-                            font-weight: bold;
-                            color: lightgray;
-                            line-height: 1.7vw;
-                            font-size: .65vw;
-                            letter-spacing: .17vw;
-                            font-family: "Roboto", Arial, sans-serif;
-                        }
-
-                        #aconst {
-                            position: absolute;
-                            top: 10%;
-                            left: 0;
-                            width: 55%;
-                            height: 80%;
-                        }
-
-                        #imgconst1 {
-                            position: absolute;
-                            width: 11vw;
-                            height: 11vw;
-                            left: -140%;
-                            top: 10%;
-                            z-index: -1;
-                        }
-
-                        .nolink1 {
-                            opacity: 0;
-                        }
-
-                        yeslink1 {
-                            opacity: 1;
-                        }
-
-                        #imgconst2 {
-                            opacity: 0;
-                            z-index: -1;
-                            position: absolute;
-                            width: 11vw;
-                            height: 11vw;
-                            left: -140%;
-                            top: 10%;
-                        }
-
-                        #imgconst3, #imgconst4, #imgconst5, #imgconst6, #imgconst7, #imgconst8 {
-                            opacity: 0;
-                            z-index: -1;
-                            position: absolute;
-                            width: 11vw;
-                            height: 11vw;
-                            left: -140%;
-                            top: 10%;
-                        }
-
-                        #link1:hover #imgconst1, #link2:hover #imgconst2, #link3:hover #imgconst3,
-                        #link4:hover #imgconst4, #link5:hover #imgconst5, #link6:hover #imgconst6,
-                        #link7:hover #imgconst7, #link8:hover #imgconst8 {
-                            opacity: 1;
-                            z-index: 1;
-                        }
-                    </style>
-
-                    <div id="aconst">
-
-
-                    </div>
-
-                    <script>
-
-
-                        function onmove1() { $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1"); }
-                        function onmove2() { $("#imgconst1").removeClass("nolink1"); $("#imgconst1").addClass("yeslink1"); }
-
-
-
-                    </script>
-
-                    <div id="alinks">
-                        <a id="link1">
-                            001 ── LINK ONE
-                            <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
-
-                        </a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link2">002 ── LINK TWO <img src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst2" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link3">003 ── LINK THREE  <img src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link4">004 ── LINK FOUR <img src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst4" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link5">005 ── LINK FIVE<img src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst5" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link6">006 ── LINK SIX<img src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst6" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link7">007 ── LINK SEVEN<img src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst7" /></a><br />
-                        <a onmouseover="onmove1();" onmouseout="onmove2();" id="link8">008 ── LINK EIGHT<img src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst8" /></a>
-                    </div>
-                </div>
-
-            </div>
 
 
 
