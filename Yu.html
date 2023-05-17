@@ -82,7 +82,7 @@
             background-color: black;
             z-index: 9;
         }
-        #main2 { width:94%; height:88%; left:2.5%; top:4%; position:absolute;  overflow:hidden; border:.1vw solid #7c6092; background:black;
+        #main2 { width:94%; height:88%; left:2.5%; top:4%; position:absolute;  overflow:hidden; border:.1vw solid #7c6092; background:black;  
         }
            
            
@@ -485,6 +485,46 @@
                         }
                     </style>
 
+                    <div id="settings">
+                        <style>
+                            #settings { position:fixed; width:2vw; height:2vw; bottom:9%; right:4%;  
+                            }
+                            #cogimg { width:1.2vw; height:1.2vw; position:absolute; left:.4vw; top:.4vw;
+                            }
+                            #settings:hover #pp3 {
+                                opacity: 1;
+                                left: -20vw;
+                            }
+                            #settings p {
+                                color: white;
+                                border-radius: .3vw;
+                                font-size: .6vw;
+                                padding: .5vw;
+                                background: #7c6092;
+                                text-align: center;
+                                letter-spacing: .1vw;
+                                 opacity:0; z-index:-1;
+                                transition: all .5s ease;
+                                position: absolute;
+                                 top:-20%; left:100%;
+                                font-family: "Roboto", Arial, sans-serif;
+                            }
+                            #pp3 { 
+                            }
+                            #settings:hover #pp2 {
+                                opacity: 1;
+                                left: -8vw;
+                            }
+                            #settings:hover #pp1 {
+                                opacity: 1;
+                                left: -4vw;
+                            }
+                        </style>
+                        <img id="cogimg" src="https://i.postimg.cc/6qT9PMn8/settings.png" />
+                        <p id="pp1">ABOUT</p>
+                        <p id="pp2">EDIT</p>
+                        <p id="pp3">DEVELOPED─xCOMABLACK</p>
+                    </div>
 
                     <style>
 
@@ -683,6 +723,32 @@
                                 opacity: 1;
                             }
                         }
+                        #pbtn1 { filter:invert(100%);
+                            color: white; border-radius:.3vw;
+                            font-size: .6vw; padding:.5vw; background:#7c6092; text-align:center;
+                            letter-spacing: .1vw; top:1vw; opacity:0; transition: all .5s ease;
+                             position:absolute; width:8vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+                        #pbtn2 {
+                            filter: invert(100%);
+                            color: white;
+                            border-radius: .3vw;
+                            font-size: .6vw;
+                            padding: .5vw;
+                            background: #7c6092;
+                            text-align: center;
+                            letter-spacing: .1vw;
+                            top: 1vw;
+                            opacity: 0;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 8vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+                        #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                            opacity: 1;
+                        }
                     </style>
 
 
@@ -769,6 +835,7 @@
                             </script>
                             <div id="buttons">
                                 <div id="bt1" class="relad3" onclick="onfull();">
+                                    <p id="pbtn1">LIKE THIS POST?</p>
                                     <script>
                                         var y = 0;
                                         function onfull() {
@@ -783,21 +850,9 @@
                                     </script>
 
                                 </div>
-                                <div id="bt2" onclick="onrelad();">
+                                <div id="bt2">
+                                    <p id="pbtn2">REBLOG THIS POST?</p>
 
-                                    <script>
-                                        var x = 0;
-                                        function onrelad() {
-
-                                            x++;
-                                            if (x == 1) {
-                                                $("#bt2").addClass("relad");
-                                                $("#textpost").addClass("reloadpost");
-                                            }
-                                            else { x = 0; $("#bt2").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
-                                        }
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -892,6 +947,14 @@
                                     }
                                     #R_plyr { position:relative; height:7vw;  
                                     }
+                                    #imgmainpost {
+                                        opacity: .7;
+                                        transition: all .9s ease;
+                                    }
+
+                                       #post:hover #imgmainpost {
+                                            opacity: 1;
+                                        }
                                 </style>
                                 <div id="R_plyr">
                                     <div id="dt_rp">
@@ -963,36 +1026,13 @@
                             <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
 
                             <div id="buttons">
-                                <div id="bt12" class="relad3" onclick="onfull2();">
-                                    <script>
-                                        var y = 0;
-                                        function onfull2() {
-
-                                            y++;
-                                            if (y == 1) {
-                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
-                                            }
-                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
-                                        }
-
-                                    </script>
+                                <div id="bt1" class="relad3" >
+                                    <p id="pbtn1">LIKE THIS POST?</p>
 
                                 </div>
-                                <div id="bt22" onclick="onrelad2();">
+                                <div id="bt2">
+                                    <p id="pbtn2">REBLOG THIS POST?</p>
 
-                                    <script>
-                                        var x = 0;
-                                        function onrelad2() {
-
-                                            x++;
-                                            if (x == 1) {
-                                                $("#bt22").addClass("relad");
-                                                $("#textpost").addClass("reloadpost");
-                                            }
-                                            else { x = 0; }
-                                        }
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -1019,38 +1059,14 @@
                                 <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
                             </div>
                             <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
-
                             <div id="buttons">
-                                <div id="bt12" class="relad3" onclick="onfull2();">
-                                    <script>
-                                        var y = 0;
-                                        function onfull2() {
-
-                                            y++;
-                                            if (y == 1) {
-                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
-                                            }
-                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
-                                        }
-
-                                    </script>
+                                <div id="bt1" class="relad3">
+                                    <p id="pbtn1">LIKE THIS POST?</p>
 
                                 </div>
-                                <div id="bt22" onclick="onrelad2();">
+                                <div id="bt2">
+                                    <p id="pbtn2">REBLOG THIS POST?</p>
 
-                                    <script>
-                                        var x = 0;
-                                        function onrelad2() {
-
-                                            x++;
-                                            if (x == 1) {
-                                                $("#bt22").addClass("relad");
-                                                $("#textpost").addClass("reloadpost");
-                                            }
-                                            else { x = 0; $("#bt22").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
-                                        }
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -1079,38 +1095,14 @@
                                 <img src="https://i.postimg.cc/x85cp1ns/image.pngg" />
                             </div>
                             <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
-
                             <div id="buttons">
-                                <div id="bt12" class="relad3" onclick="onfull2();">
-                                    <script>
-                                        var y = 0;
-                                        function onfull2() {
-
-                                            y++;
-                                            if (y == 1) {
-                                                $("#bt12").addClass("relad2"); $("#bt12").removeClass("relad3");
-                                            }
-                                            else { y = 0; $("#bt12").removeClass("relad2"); $("#bt12").addClass("relad3"); }
-                                        }
-
-                                    </script>
+                                <div id="bt1" class="relad3">
+                                    <p id="pbtn1">LIKE THIS POST?</p>
 
                                 </div>
-                                <div id="bt22" onclick="onrelad2();">
+                                <div id="bt2">
+                                    <p id="pbtn2">REBLOG THIS POST?</p>
 
-                                    <script>
-                                        var x = 0;
-                                        function onrelad2() {
-
-                                            x++;
-                                            if (x == 1) {
-                                                $("#bt22").addClass("relad");
-                                                $("#textpost").addClass("reloadpost");
-                                            }
-                                            else { x = 0; $("#bt22").removeClass("relad"); $("#textpost").removeClass("reloadpost"); }
-                                        }
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -1208,6 +1200,7 @@
                                     font-size: .6vw;
                                     letter-spacing: .15vw;
                                 }
+                           
                         </style>
                         <div id="ainfo">
                             <div id="amainimg">
@@ -1225,7 +1218,7 @@
                         <div id="abuttns">
                             <div class="buton"><p>YUKINE</p></div>
                             <div class="buton"><p>XIX</p></div>
-                            <div class="buton"><p>MRR</p></div>
+                            <div class="buton"><p>MRR.♡</p></div>
                             <div class="buton"><p>HOME</p></div>
                         </div>
 
@@ -1309,7 +1302,7 @@
                             }
                             #link1 b { font-size:.8vw;
                             }
-                            a { text-decoration:none; color:white;
+                            a { text-decoration:none; color:white; cursor:pointer;
                             }
                         </style>
 
@@ -1478,13 +1471,13 @@
                                 <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
 
                             </a><br />
-                            <a onmouseover="onmove2();" id="link2">002 ── <span id="link12">LINK TWO</span> <img class="nolink1" src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst2" /></a><br />
-                            <a onmouseover="onmove3();" id="link3">003 ── <span id="link13">LINK THREE </span> <img class="nolink1" src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
-                            <a onmouseover="onmove4();" id="link4">004 ── <span id="link14">LINK FOUR</span> <img class="nolink1" src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst4" /></a><br />
-                            <a onmouseover="onmove5();" id="link5">005 ── <span id="link15">LINK FIVE</span><img class="nolink1" src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst5" /></a><br />
-                            <a onmouseover="onmove6();" id="link6">006 ── <span id="link16">LINK SIX</span><img class="nolink1" src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst6" /></a><br />
-                            <a onmouseover="onmove7();" id="link7">007 ── <span id="link17">LINK SEVEN</span><img class="nolink1" src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst7" /></a><br />
-                            <a onmouseover="onmove8();" id="link8">008 ── <span id="link18">LINK EIGHT</span><img class="nolink1" src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst8" /></a>
+                            <a onmouseover="onmove2();" id="link2">002 ── <span id="link12">LU.+</span> <img class="nolink1" src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst2" /></a><br />
+                            <a onmouseover="onmove3();" id="link3">003 ── <span id="link13">AZU.</span> <img class="nolink1" src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
+                            <a onmouseover="onmove4();" id="link4">004 ── <span id="link14">LUNA.</span> <img class="nolink1" src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst4" /></a><br />
+                            <a onmouseover="onmove5();" id="link5">005 ── <span id="link15">GARRY.</span><img class="nolink1" src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst5" /></a><br />
+                            <a onmouseover="onmove6();" id="link6">006 ── <span id="link16">VOLDY.</span><img class="nolink1" src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst6" /></a><br />
+                            <a onmouseover="onmove7();" id="link7">007 ── <span id="link17">SCARED.</span><img class="nolink1" src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst7" /></a><br />
+                            <a onmouseover="onmove8();" id="link8">008 ── <span id="link18">NAYE.</span><img class="nolink1" src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst8" /></a>
                         </div>
                     </div>
 
