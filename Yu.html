@@ -50,14 +50,14 @@
         #cube1 {
             width: .75vw;
             height: .75vw;
-            border: .1vw solid #7c6092; position:absolute; top:1.3%; left:2.1%; background-color:black; z-index:9;
+            border: .1vw solid #7c6092; position:absolute; top:3.3%; left:2.1%; background-color:black; z-index:9;
         }
         #cube2 {
             width: .75vw;
             height: .75vw;
             border: .1vw solid #7c6092;
             position: absolute;
-            bottom: 9%;
+            bottom: 7%;
             left: 2.1%;
             background-color: black;
             z-index: 9;
@@ -67,7 +67,7 @@
             height: .75vw;
             border: .1vw solid #7c6092;
             position: absolute;
-            bottom: 9%;
+            bottom: 7%;
             right: 3%;
             background-color: black;
             z-index: 9;
@@ -77,12 +77,12 @@
             height: .75vw;
             border: .1vw solid #7c6092;
             position: absolute;
-            top: 1.3%;
+            top: 3.3%;
             right: 3%;
             background-color: black;
             z-index: 9;
         }
-        #main2 { width:94%; height:88%; left:2.5%; top:2%; position:absolute;  overflow:hidden; border:.1vw solid #7c6092; background:black;
+        #main2 { width:94%; height:88%; left:2.5%; top:4%; position:absolute;  overflow:hidden; border:.1vw solid #7c6092; background:black;
         }
            
            
@@ -809,9 +809,8 @@
                                     #auid {
                                         mix-blend-mode: difference;
                                         font-family: "Roboto", Arial, sans-serif;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
+                                        position: relative;
+                                        
                                     }
 
                                     .player {
@@ -825,31 +824,14 @@
                                         left: 3%;
                                     }
 
-                                    #prev {
-                                        cursor: pointer;
-                                        position: absolute;
-                                        width: 2vw;
-                                        height: 1vw;
-                                        left: 0;
-                                        z-index: 3;
-                                        top: -2.6vw;
-                                    }
-
-                                    #next {
-                                        cursor: pointer;
-                                        position: absolute;
-                                        width: 2vw;
-                                        height: 2vw;
-                                    }
+                               
 
                                         #next p, #prev p {
                                             position: absolute;
                                             padding: 1vw;
                                             background: #7c6092;
                                             border-radius: 50%;
-                                            color: white;
-                                            letter-spacing: .1vw;
-                                            text-shadow: 0 0 1vw #171717;
+                                            color: white; 
                                             font-size: 1vw;
                                         }
 
@@ -866,7 +848,7 @@
 
 
                                     #name_sng {
-                                        position: relative;
+                                        position: absolute;
                                         float: left;
                                     }
 
@@ -907,6 +889,8 @@
                                         left: 16%;
                                         letter-spacing: .1vw;
                                         font-size: .8vw;
+                                    }
+                                    #R_plyr { position:relative; height:7vw;  
                                     }
                                 </style>
                                 <div id="R_plyr">
@@ -1323,6 +1307,10 @@
                                 color: white;
                                 text-decoration: none;
                             }
+                            #link1 b { font-size:.8vw;
+                            }
+                            a { text-decoration:none; color:white;
+                            }
                         </style>
 
                         <div id="aconst">
@@ -1485,8 +1473,8 @@
                         </script>
 
                         <div id="alinks">
-                            <a id="link1" onmouseover="onmove1();">
-                                001 ── <span id="link11" class="linkcoloryes">LINK ONE</span>
+                            <a id="link1" onmouseover="onmove1();" href="https://xat.me/xComaBlack">
+                                001 ── <span id="link11" class="linkcoloryes">GRISATRE.<b>♡</b></span>
                                 <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
 
                             </a><br />
