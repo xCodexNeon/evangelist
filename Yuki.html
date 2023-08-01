@@ -1,0 +1,232 @@
+﻿E﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<head >
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+        }
+        #main {
+            background: #f8cbd0;
+            background-image: url(https://i.postimg.cc/DztC4cPs/Gb5O9g.jpg);
+            background-repeat: repeat;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+        #entrance { position:absolute; width:100%; height:100%; top:0; left:0; background:#eb5c8a; animation:animaentrance 5s 1; animation-fill-mode:forwards; color:white; text-align:center; overflow:hidden;
+        z-index:999; }
+        @keyframes animaentrance {
+            0% {
+               height:100%;
+            }
+            50% { height:100%;
+            }
+            100% {
+                height:8%;
+            }
+        }
+        #entrancetexts { 
+            width: auto;
+            height: 5vw;
+            position: relative;
+            top: -1vw;
+            animation: animaentrancetexts 5s 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes animaentrancetexts {
+            0% {
+                top:45%;
+            }
+
+            50% {
+                top: 45%;
+            }
+
+            100% {
+                top: -2.2vw;
+            }
+        }
+        #entrancetitle { font-size:2vw; letter-spacing:.2vw;
+            font-family: 'Oswald', sans-serif;
+        }
+        #subtentrance {
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            position: relative;
+            top: -2vw;
+            font-family: "Roboto", Arial, sans-serif;
+        }
+        @keyframes blkn {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            50.1% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #blkjn {
+            left: 0;
+            animation: blkn .5s infinite;
+             
+        }
+    </style>
+
+</head>
+ <body>
+     <div id="main">
+
+
+         <div id="entrance">
+             <div id="entrancetexts">
+                 <p id="entrancetitle">雪根 / 昏迷白</p>
+                 <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
+             </div>
+             
+         </div>
+
+         <div id="menulat">
+             <style>
+                 #menulat {
+                     position: absolute;
+                     width: 22%;
+                     right: 0;
+                     height: 93%;
+                     top: 7%;
+                    /* background: #ef82a1;*/
+                 }
+
+                 #backlat  { overflow:hidden;
+                     position: absolute;
+                     left: 0;
+                     height: 72%;
+                     width: 100%;
+                     top: 18%;
+                     background-size: cover;
+                 }
+                 #back2 { z-index:9; width:110%; height:110%; background-size:cover; position:absolute; opacity:.2; left:-5%; top:-5%;
+                 }
+                 #butonsmenulat { position:absolute; width:100%; height:18%; top:0; background:red;
+                 }
+                 .butons {
+                     float: left;
+                     width: 25%;
+                     height: 100%;
+                     background: #ef82a1;  transition: all .5s ease; text-align:center;
+                 }
+                     .butons:hover { background:#d24081;
+                     }
+                 #divlat {
+                     top: 90%;
+                     width: 100%;
+                     height: 2%;
+                     background: #ef82a1;
+                     position: absolute;
+                 }
+                 .buton-p {
+                     transition: all .5s ease;
+                     color: white;
+                     font-size: .65vw;
+                     letter-spacing: .15vw;
+                     font-family: "Roboto", Arial, sans-serif;
+                     position: relative;
+                     top: 70%;
+                 }
+                 .butons:hover .buton-p {
+                     letter-spacing: .25vw; color:#f8cbd0; text-decoration:underline;
+                 }
+             </style>
+            
+             <div id="butonsmenulat">
+                 <div id="but1" class="butons">
+                     <p class="buton-p">YUKINE</p>
+                 </div>
+                 <div id="but2" class="butons"><p class="buton-p">XIX</p></div>
+                 <div id="but3" class="butons"><p class="buton-p">HOME</p></div>
+                 <div id="but4" class="butons"><p class="buton-p">MRR♡</p></div>
+             </div>
+
+             <div id="backlat">
+                 <div id="back2"></div>
+                 <script>
+
+
+                     var moveForce = 12; // max popup movement in pixels
+                     var rotateForce = 8; // max popup rotation in deg
+                     $(document).mousemove(function (e) {
+                         var docX = $(document).width();
+                         var docY = $(document).height();
+
+                         var moveX = (e.pageX - docX / 2) / (docX / 2) * -moveForce;
+                         var moveY = (e.pageY - docY / 2) / (docY / 2) * -moveForce;
+
+                         var rotateY = (e.pageX / docX * rotateForce * 2) - rotateForce;
+                         var rotateX = -((e.pageY / docY * rotateForce * 2) - rotateForce);
+
+                         $('#back2')
+                             .css('left', moveX + 'px')
+                             .css('top', moveY + 'px')
+                             .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
+
+                     });
+                 </script>
+                 <script>
+
+                     // ...
+                     function random(min, max) {
+                         return Math.floor(Math.random() * (max - min + 1) + min);
+                     }
+
+                     var spec = {
+                         backgrounds: [
+                             'https://i.pinimg.com/564x/98/df/1d/98df1d8a856ca6cf388f00a6ca950069.jpg',
+                             //'https://i.postimg.cc/c4fDrT08/6760564.png',
+                             //'https://i.postimg.cc/9QBW8vHz/anime-anime-girls-white-hair-dress-butterflies-white-eyes-1943533.png',
+                             //'https://i.postimg.cc/Hn9yCJ1j/wallpaperflare-com-wallpaper.jpg',
+                             //'https://i.postimg.cc/3rPJdXZr/anime-girl-3-wallpaper-1280x800.jpg',
+                             //'https://i.postimg.cc/sD7fSMnY/papers-co-bl84-art-anime-girl-white-cry-31-wallpaper.jpg'
+
+                         ]
+                     };
+
+                     var i = random(0, spec.backgrounds.length - 1);
+                     var b = spec.backgrounds[i];
+                     $('#back2').css('background-image', 'url("' + b + '")');
+                     $('#backlat').css('background-image', 'url("' + b + '")');
+                                                                                            // ...
+
+                 </script>
+
+             </div>
+        
+            <div id="divlat"></div>
+         </div>
+
+     </div>
+ </body>
+</html>
