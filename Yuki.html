@@ -1,8 +1,8 @@
-﻿E﻿
+E﻿
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
-<head >
+<head>
     <meta charset="utf-8" />
     <title></title>
 
@@ -21,27 +21,46 @@
             width: 100%;
             position: fixed;
         }
+
         #main {
             background: #f8cbd0;
-            background-image: url(https://i.postimg.cc/DztC4cPs/Gb5O9g.jpg);
+            background-image: url(https://i.postimg.cc/FRHQNnxQ/Gb5-O9g-1.jpg);
             background-repeat: repeat;
             top: 0;
             left: 0;
             position: fixed;
         }
-        #entrance { position:absolute; width:100%; height:100%; top:0; left:0; background:#eb5c8a; animation:animaentrance 5s 1; animation-fill-mode:forwards; color:white; text-align:center; overflow:hidden;
-        z-index:999; }
+
+        #entrance {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #eb5c8a;
+            animation: animaentrance 5s 1;
+            animation-fill-mode: forwards;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            z-index: 999;
+        }
+
         @keyframes animaentrance {
             0% {
-               height:100%;
+                height: 100%;
             }
-            50% { height:100%;
+
+            50% {
+                height: 100%;
             }
+
             100% {
-                height:8%;
+                height: 8%;
             }
         }
-        #entrancetexts { 
+
+        #entrancetexts {
             width: auto;
             height: 5vw;
             position: relative;
@@ -49,9 +68,10 @@
             animation: animaentrancetexts 5s 1;
             animation-fill-mode: forwards;
         }
+
         @keyframes animaentrancetexts {
             0% {
-                top:45%;
+                top: 45%;
             }
 
             50% {
@@ -62,9 +82,13 @@
                 top: -2.2vw;
             }
         }
-        #entrancetitle { font-size:2vw; letter-spacing:.2vw;
+
+        #entrancetitle {
+            font-size: 2vw;
+            letter-spacing: .2vw;
             font-family: 'Oswald', sans-serif;
         }
+
         #subtentrance {
             font-size: .7vw;
             letter-spacing: .1vw;
@@ -72,6 +96,7 @@
             top: -2vw;
             font-family: "Roboto", Arial, sans-serif;
         }
+
         @keyframes blkn {
             0% {
                 opacity: 0;
@@ -93,21 +118,589 @@
         #blkjn {
             left: 0;
             animation: blkn .5s infinite;
-             
         }
     </style>
-
+    <script> /*botons*/
+        function removeprofile() { $("#profile").remove(); }
+        function removepost() { $("#post").remove(); }
+    </script>
 </head>
  <body>
      <div id="main">
 
 
          <div id="entrance">
-             <div id="entrancetexts">
-                 <p id="entrancetitle">雪根 / 昏迷白</p>
-                 <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
+        <div id="entrancetexts">
+            <p id="entrancetitle">雪根 / 昏迷白</p>
+            <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
+        </div>
+
+    </div>
+
+         <div id="Amn">
+             <style>
+                 #Amn {
+                     font-family: "Roboto", Arial, sans-serif;
+                     direction: rtl;
+                     position: absolute;
+                     left: 1%;
+                     width: 71%;
+                     height: 86%;
+                     top: 7%;
+                     overflow: auto;
+                 }
+
+                     #Amn::-webkit-scrollbar {
+                         width: .5vw;
+                         background-color: #ef82a1;
+                     }
+
+
+                     #Amn::-webkit-scrollbar-thumb {
+                         border-radius: .5vw;
+                         /*background: lightgray;*/
+                         border: .1vw solid #ef82a1;
+                         /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                         background: linear-gradient(360deg, #ef82a1 43%,#f8cbd0 43.1%, #f8cbd0 50%, #f8cbd0 56.9%, #ef82a1 57%);
+                     }
+
+                 /* #Amn::-webkit-scrollbar-thumb:active {
+                             width: 1vw;
+                             background: linear-gradient(360deg, black 43%, #be4343 43.1%, #be4343 50%, #be4343 56.9%, black 57%);
+                         }*/
+                 #post {
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                     direction: ltr; border-radius:.5vw; 
+                     width: 45%;
+                     height: auto;
+                     margin-bottom: 10%;
+                 }
+
+                 #Firm {
+                     width: 100%;
+                     background: #ef82a1;
+                     height: 5vw;
+                 }
+
+                 #Aimgp {
+                     width: 75%;
+                     margin-left: 5%;
+                     border: .05vw solid #d198c4;
+                 }
+
+                 .PstImg {
+                     width: 96%;
+                     margin: 2%;
+                 }
+
+                 #Ptit {
+                     color: gray;
+                     font-size: 1vw;
+                     letter-spacing: .2vw;
+                     padding: 1vw;
+                     transition: all .5s ease;
+                     margin-left: .5vw;
+                 }
+
+                 #post:hover #Ptit {
+                     letter-spacing: .25vw;
+                     color: #be4343;
+                 }
+
+                 #ImF {
+                     width: 4vw;
+                     height: 4vw;
+                     border: .04vw solid lightgray;
+                     position: relative;
+                     left: 1.5vw;
+                     top: .4vw;
+                 }
+
+                     #ImF img {
+                         margin: 5%;
+                         width: 90%;
+                     }
+
+                 #Im {
+                     font-size: .7vw;
+                     color: white;
+                     letter-spacing: .15vw;
+                     position: relative;
+                     left: 20%;
+                     top: -3.8vw;
+                 }
+
+                     #Im:hover {
+                         color: #be4343;
+                     }
+
+                 #tx {
+                     font-size: .5vw;
+                     color: darkgray;
+                     letter-spacing: .1vw;
+                     position: relative;
+                     left: 20%;
+                     width: 75%;
+                     top: -2.5vw;
+                 }
+
+                 #rgn {
+                     font-size: .5vw;
+                     color: #be4343;
+                     letter-spacing: .1vw;
+                     position: relative;
+                     left: 80%;
+                     opacity: .7;
+                     width: 25%;
+                     top: -2.1vw;
+                 }
+
+                 #Ar {
+                     font-size: .6vw;
+                     color: dimgray;
+                     letter-spacing: .1vw;
+                     width: 78%;
+                     margin-left: 5%;
+                     margin-top: 1vw;
+                     margin-bottom: 1vw;
+                 }
+
+                 #bbr {
+                     position: absolute;
+                     width: 1vw;
+                     height: 100%;
+                     border: .05vw solid gray;
+                     overflow: hidden;
+                 }
+
+                 #bbr2 {
+                     position: absolute;
+                     width: .6vw;
+                     left: .2vw;
+                     height: 0;
+                     bottom: 2%;
+                     background: linear-gradient(darkgray, dimgray, #171717);
+                     transition: all .5s ease;
+                 }
+
+                 #dts:hover #bbr2 {
+                     height: 96%;
+                 }
+
+                 #Bimg {
+                     position: absolute;
+                     width: 5vw;
+                     height: 5vw;
+                     border: .05vw solid gray;
+                     bottom: -.5%;
+                     left: 1.5vw;
+                 }
+
+                     #Bimg img {
+                         width: 4.4vw;
+                         height: 4.4vw;
+                         margin: .3vw;
+                     }
+
+                 #Atxt {
+                     position: absolute;
+                     width: 60%;
+                     height: 5vw;
+                     border: .05vw solid gray;
+                     bottom: -.5%;
+                     left: 7vw;
+                     overflow: hidden;
+                 }
+
+                     #Atxt p {
+                         padding: .5vw;
+                         color: dimgray;
+                         font-size: .45vw;
+                         letter-spacing: .05vw;
+                     }
+
+                     #Atxt b {
+                         position: absolute;
+                         right: 5%;
+                         font-size: .5vw;
+                         letter-spacing: .1vw;
+                         color: #be4343;
+                         opacity: .7;
+                     }
+
+                 #Mpic img {
+                     width: 100%;
+                     height: 100%;
+                 }
+
+                 .vnt {
+                     display: block;
+                     float: left;
+                     width: 1.5vw;
+                     height: 1.5vw;
+                     margin-left: .2vw;
+                     border: .05vw solid #d198c4;
+                 }
+
+                     .vnt img {
+                         width: 60%;
+                         height: 60%;
+                         margin-left: 20%;
+                         margin-top: 20%;
+                         opacity: .6;
+                     }
+
+                     .vnt:hover {
+                         background: #ef82a1;
+                     }
+
+                         .vnt:hover .vntimg {
+                             filter: invert(100%);
+                         }
+
+                 .btns {
+                     width: 80%;
+                     height: 2vw;
+                     position: absolute;
+                     bottom: 2%;
+                     left: -60%;
+                     transition: all .5s ease;
+                 }
+
+                     .btns:hover {
+                         left: 0;
+                         background: #ef82a1;
+                     }
+
+                         .btns:hover img {
+                             opacity: 1;
+                         }
+
+                 #Btn4 {
+                     bottom: 3vw;
+                 }
+
+                 #Btn3 {
+                     bottom: 5.5vw;
+                 }
+
+                 #Btn2 {
+                     bottom: 8vw;
+                 }
+
+                 #Btn1 {
+                     bottom: 10.5vw;
+                 }
+
+                 #dts {
+                     position: absolute;
+                     width: 20%;
+                     height: 35%;
+                     bottom: 3%;
+                     left: 2.5%;
+                 }
+
+                 .Pimg {
+                     width: 1.9vw;
+                     height: 1.9vw;
+                     position: absolute;
+                     right: 0;
+                     border: .05vw solid darkgray;
+                     background: lightgray;
+                 }
+
+                 .Aimg {
+                     width: 60%;
+                     height: 60%;
+                     position: absolute;
+                     left: 20%;
+                     top: 20%;
+                 }
+
+                     .Aimg img {
+                         width: 100%;
+                         height: 100%;
+                         opacity: .5;
+                     }
+
+                 #vr1, #vr2 {
+                     position: absolute;
+                     width: 1vw;
+                     height: 94%;
+                     border-top: .05vw solid gray;
+                     border-bottom: .05vw solid gray;
+                     transition: all .5s ease;
+                     z-index: 2;
+                 }
+
+                 #vr1 {
+                     border-left: .05vw solid gray;
+                 }
+
+                 #vr2 {
+                     right: 0;
+                     border-right: .05vw solid gray;
+                 }
+
+                 #icns {
+                     position: absolute;
+                     width: 10%;
+                     height: 49%;
+                     top: 7%;
+                     left: 17%;
+                     overflow: hidden;
+                 }
+
+                 #icn {
+                     position: absolute;
+                     width: 6%;
+                     height: 3%;
+                     right: 1.5%;
+                     top: 2%;
+                 }
+
+                 #icn2 {
+                     position: relative;
+                     left: 81.5%;
+                     top: .2vw;
+                 }
+             </style>
+             <div id="post">
+
+                 <div id="icn2">
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                 </div>
+                 <p id="Ptit">Speak now</p>
+                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+
+                 <div id="Ar">
+                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
+                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
+                     Tell me, what do you see?  A lifelessness hindered today
+
+                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
+                 </div>
+                 <div id="Firm">
+                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
+                     <b id="Im">@Reiizzue</b>
+                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
+                     <b id="rgn">xEvangelist</b>
+                 </div>
              </div>
-             
+             <div id="post">
+
+                 <div id="icn2">
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                 </div>
+                 <p id="Ptit">Speak now</p>
+                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+
+                 <div id="Ar">
+                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
+                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
+                     Tell me, what do you see?  A lifelessness hindered today
+
+                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
+                 </div>
+                 <div id="Firm">
+                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
+                     <b id="Im">@Reiizzue</b>
+                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
+                     <b id="rgn">xEvangelist</b>
+                 </div>
+             </div>
+             <div id="post">
+
+                 <div id="icn2">
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                 </div>
+                 <p id="Ptit">Speak now</p>
+                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+
+                 <div id="Ar">
+                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
+                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
+                     Tell me, what do you see?  A lifelessness hindered today
+
+                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
+                 </div>
+                 <div id="Firm">
+                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
+                     <b id="Im">@Reiizzue</b>
+                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
+                     <b id="rgn">xEvangelist</b>
+                 </div>
+             </div>
+         </div>
+
+         <div id="profile">
+             <script>
+                 let draggableElem = document.getElementById("profile");
+                 let initialX = 0,
+                     initialY = 0;
+                 let moveElement = false;
+                 //events object
+                 let events = {
+                     mouse: {
+                         down: "mousedown",
+                         move: "mousemove",
+                         up: "mouseup"
+                     },
+                     touch: {
+                         down: "touchstart",
+                         move: "touchmove",
+                         up: "touchend"
+                     }
+                 };
+                 let deviceType = "";
+                 //Detect touch device
+                 const isTouchDevice = () => {
+                     try {
+                         //We try to create TouchEvent (it would fail for desktops and throw error)
+                         document.createEvent("TouchEvent");
+                         deviceType = "touch";
+                         return true;
+                     } catch (e) {
+                         deviceType = "mouse";
+                         return false;
+                     }
+                 };
+                 isTouchDevice();
+                 // start(mouse down/touch start)
+                 draggableElem.addEventListener(events[deviceType].down, (e) => {
+                     e.preventDefault();
+                     //initial x and y points
+                     initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+                     initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+                     // start movement
+                     moveElement = true;
+                 });
+                 // Move
+                 draggableElem.addEventListener(events[deviceType].move, (e) => {
+                     //if movement==true then set top and left to new X and y while removing any offset
+                     if (moveElement) {
+                         e.preventDefault();
+                         let newX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+                         let newY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+                         draggableElem.style.top = draggableElem.offsetTop - (initialY - newY) + "px";
+                         draggableElem.style.left =
+                             draggableElem.offsetLeft - (initialX - newX) + "px";
+                         initialX = newX;
+                         initialY = newY;
+                     }
+                 });
+                 //mouse up/touch end
+                 draggableElem.addEventListener(
+                     events[deviceType].up,
+                     (stopMovement = (e) => {
+                         //stop movement
+                         moveElement = false;
+                     })
+                 );
+                 draggableElem.addEventListener("mouseleave", stopMovement);
+                 document.addEventListener(events[deviceType].up, (e) => {
+                     moveElement = false;
+                 });
+
+             </script>
+             <style>
+                 #profile {
+                     position: absolute;
+                     width: 25%;
+                     left: 2%;
+                     top: 64%;
+                     height: 29%;
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                 }
+
+                 #profile2 {
+                     width: 92%;
+                     height: 88%;
+                     background: #f8cbd0;
+                     background-image: url(https://i.postimg.cc/FRHQNnxQ/Gb5-O9g-1.jpg);
+                     background-repeat: repeat;
+                     left: 4%;
+                     top: 6%;
+                     position: absolute;
+                 }
+
+                 #profile3 {
+                     width: 92%;
+                     height: 88%;
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                     left: 4%;
+                     top: 6%;
+                     position: absolute;
+                 }
+
+                 #imgprofile {
+                     position: absolute;
+                     width: 8vw;
+                     height: 8vw;
+                     left: .8vw;
+                     top: .8vw;
+                     border: .2vw solid #d198c4;
+                 }
+
+                 #butonsprofile {
+                     position: absolute;
+                     top: -1.8vw;
+                     height: 1.5vw;
+                     width: 4vw;
+                     right: 0;
+                 }
+
+                 .butonprofile {
+                     width: 1.5vw;
+                     height: 1.5vw;
+                     float: left;
+                     margin-left: .3vw;
+                     border: .1vw solid white;
+                     border-radius: .2vw;
+                 }
+
+                     .butonprofile:hover {
+                         border: .1vw solid #f8cbd0;
+                         ;
+                         background: #eb5c8a;
+                     }
+
+                     .butonprofile img {
+                         position: relative;
+                         width: 1vw;
+                         left: .25vw;
+                         top: .25vw;
+                         filter: invert(100%);
+                     }
+
+                 #btnmove {
+                     width: 1.4vw;
+                     left: .05vw;
+                     top: .05vw;
+                     cursor: grab;
+                 }
+
+                     #btnmove:active {
+                         cursor: grabbing;
+                     }
+             </style>
+             <div id="butonsprofile">
+                 <div class="butonprofile"><img id="btnmove" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
+                 <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
+             </div>
+             <div id="profile2">
+                 <div id="profile3">
+                     <img id="imgprofile" src="https://i.postimg.cc/Y9P33X0f/e61722c22e847c93acf0aa74ff6096c8.jpg" />
+
+                 </div>
+             </div>
+
          </div>
 
          <div id="menulat">
@@ -118,10 +711,11 @@
                      right: 0;
                      height: 93%;
                      top: 7%;
-                    /* background: #ef82a1;*/
+                     /* background: #ef82a1;*/
                  }
 
-                 #backlat  { overflow:hidden;
+                 #backlat {
+                     overflow: hidden;
                      position: absolute;
                      left: 0;
                      height: 72%;
@@ -129,18 +723,39 @@
                      top: 18%;
                      background-size: cover;
                  }
-                 #back2 { z-index:9; width:110%; height:110%; background-size:cover; position:absolute; opacity:.2; left:-5%; top:-5%;
+
+                 #back2 {
+                     z-index: 9;
+                     width: 110%;
+                     height: 110%;
+                     background-size: cover;
+                     position: absolute;
+                     opacity: .2;
+                     left: -5%;
+                     top: -5%;
                  }
-                 #butonsmenulat { position:absolute; width:100%; height:18%; top:0; background:red;
+
+                 #butonsmenulat {
+                     position: absolute;
+                     width: 100%;
+                     height: 18%;
+                     top: 0;
+                     background: red;
                  }
+
                  .butons {
                      float: left;
                      width: 25%;
                      height: 100%;
-                     background: #ef82a1;  transition: all .5s ease; text-align:center;
+                     background: #ef82a1;
+                     transition: all .5s ease;
+                     text-align: center;
                  }
-                     .butons:hover { background:#d24081;
+
+                     .butons:hover {
+                         background: #d24081;
                      }
+
                  #divlat {
                      top: 90%;
                      width: 100%;
@@ -148,6 +763,7 @@
                      background: #ef82a1;
                      position: absolute;
                  }
+
                  .buton-p {
                      transition: all .5s ease;
                      color: white;
@@ -157,11 +773,14 @@
                      position: relative;
                      top: 70%;
                  }
+
                  .butons:hover .buton-p {
-                     letter-spacing: .25vw; color:#f8cbd0; text-decoration:underline;
+                     letter-spacing: .25vw;
+                     color: #f8cbd0;
+                     text-decoration: underline;
                  }
              </style>
-            
+
              <div id="butonsmenulat">
                  <div id="but1" class="butons">
                      <p class="buton-p">YUKINE</p>
@@ -218,13 +837,13 @@
                      var b = spec.backgrounds[i];
                      $('#back2').css('background-image', 'url("' + b + '")');
                      $('#backlat').css('background-image', 'url("' + b + '")');
-                                                                                            // ...
+                                                                                                             // ...
 
                  </script>
 
              </div>
-        
-            <div id="divlat"></div>
+
+             <div id="divlat"></div>
          </div>
 
      </div>
