@@ -14,6 +14,7 @@
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+
         html,
         body, #main {
             top: 0;
@@ -39,12 +40,13 @@
             top: 0;
             left: 0;
             background: #eb5c8a;
-            animation: animaentrance 5s 1;
-            animation-fill-mode: forwards;
+            /* animation: animaentrance 5s 1;
+            animation-fill-mode: forwards;*/
             color: white;
             text-align: center;
             overflow: hidden;
             z-index: 999;
+            height: 8%;
         }
 
         @keyframes animaentrance {
@@ -120,21 +122,275 @@
             left: 0;
             animation: blkn .5s infinite;
         }
+
+        @keyframes animaappsearch {
+            0% {
+                opacity: 0;
+            }
+
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #mess_serch {
+            text-align: left;
+            opacity: 0;
+            position: fixed;
+            width: 20%;
+            right: 2%;
+            height: 2vw;
+            top: 2%;
+            animation: animaappsearch 1s 1;
+            animation-delay: 5s;
+            animation-fill-mode: forwards;
+        }
+
+        #text_serch {
+            font-family: 'Inconsolata', monospace;
+            border: .05vw solid white;
+            border-radius: .3vw;
+            -webkit-user-modify: read-write;
+            position: absolute;
+            width: 83%;
+            left: 15%;
+            height: 60%;
+            text-decoration: none;
+            color: white;
+            overflow: hidden;
+            font-size: .9vw;
+            letter-spacing: .1vw;
+            padding: .3vw;
+        }
+
+            #text_serch:active {
+                background: none;
+            }
+
+            #text_serch:focus {
+                border: none;
+            }
+
+        #lup {
+            background-image: url(https://i.postimg.cc/vBZHkvn4/lupa.png);
+            background-size: cover;
+            filter: grayscale(100%) invert(100%);
+            width: 2vw;
+            height: 2vw;
+            position: absolute;
+        }
+
+        #span_g {
+            animation: blkn .5s infinite;
+        }
     </style>
-    <script> /*botons*/
+    <script>
+    /*botons*/
         function removeprofile() { $("#profile").remove(); }
         function removepost() { $("#post").remove(); }
     </script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Radio éteinte",
+                        artist: "Radio éteinte",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "Sorry",
+                        artist: "Only smile",
+                        src:
+                            "https://xevangelist.github.io/evangelist/sorry.mp3?raw=true"
+                    },
+
+                    {
+                        name: "Faux Semblants",
+                        artist: "Amesoeurs",
+                        src:
+                            "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                    },
+                    {
+                        name: "Mémoires d'Outre Auvergne",
+                        artist: "Malenuit",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Memories.mp3?raw=true"
+                    },
+                    {
+                        name: "Love(Lorn)",
+                        artist: "Angor amini",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Love.mp3?raw=true"
+                    },
+                    {
+                        name: "FAIBLESSE DES SENS",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                    },
+
+                    {
+                        name: "La Reine Trayeuse",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/LaReine.mp3?raw=true"
+                    },
+
+                    {
+                        name: "Recueillement",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                    },
+                    {
+                        name: "PULSE / SURREAL",
+                        artist: "LANTLOS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                    },
+                    {
+                        name: "Souvenirs d'un autre monde",
+                        artist: "Alcest",
+                        src:
+                            "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
+
+
+                    },
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 9) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 9;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 9) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+
 </head>
  <body>
      <div id="main">
 
 
          <div id="entrance">
-        <div id="entrancetexts">
-            <p id="entrancetitle">雪根 / 昏迷白</p>
-            <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
-        </div>
+             <div id="entrancetexts">
+                 <div id="mess_serch">
+                     <div id="lup"></div>
+
+                     <div id="text_serch" placeholder="SEARCH">Search:<span id="span_g">|</span> </div>
+
+
+                 </div>
+
+                 <p id="entrancetitle">雪根 / 昏迷白</p>
+                 <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
+             </div>
 
     </div>
 
@@ -466,14 +722,18 @@
                      left: 81.5%;
                      top: .2vw;
                  }
+
                  #postintro {
-                    /* background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);*/
+                     /* background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);*/
                      direction: ltr;
                      border-radius: .5vw;
                      width: 45%;
-                     height: auto; text-align:center;
+                     height: auto;
+                     text-align: center;
                      margin-bottom: 10%;
+                     border-bottom: .1vw solid #ffa5be;
                  }
+
                  #textpostintro {
                      position: relative;
                      font-family: 'Inconsolata', monospace;
@@ -484,19 +744,26 @@
                      font-size: 2vw;
                      font-weight: lighter;
                  }
+
                  #textpostsub {
-                     position: absolute; right:13.1vw; top:9vw;
+                     position: absolute;
+                     right: 13.1vw;
+                     top: 9vw;
                      font-family: 'Inconsolata', monospace;
-                     line-height: .9vw;  /*text-transform:uppercase;*/
+                     line-height: .9vw; /*text-transform:uppercase;*/
                      /*font-family: 'Raleway', sans-serif;*/
-                     color: white; text-shadow: 0 0 1vw #eb5c8a;
+                     color: white;
+                     text-shadow: 0 0 1vw #eb5c8a;
                      font-size: .67vw;
                      /*font-weight: lighter;*/
                  }
+
                  #textpostintro2 {
-                     position:relative;
-                     width:70%;
-                     top: 2vw; left:15%; 
+                     position: relative;
+                     width: 70%;
+                     height: 8.5vw;
+                     top: 3vw;
+                     left: 15%;
                      font-family: 'Inconsolata', monospace;
                      line-height: 1.1vw; /*text-transform:uppercase;*/
                      /*font-family: 'Raleway', sans-serif;*/
@@ -505,10 +772,26 @@
                      font-size: .8vw;
                      /*font-weight: lighter;*/
                  }
+                 #postNeige {
+                     direction: ltr;
+                     width: 35%;
+                     height: 90%;
+                     margin-right: 5%;
+                     margin-bottom: 10%; 
+                  
+                 }
+                     #postNeige #icn2 { top:-2vw;   
+                     }
+                 #postneigeback {
+                     position: absolute;
+                     width: 35%;
+                     height: 90%;
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg); opacity:.3;
+                 }
              </style>
              <div id="postintro">
- 
-                 
+
+
                  <p id="textpostintro">
                      <br />脆<br />く<br />て<br />冷<br />た<br />い<br />雪
                  </p>
@@ -522,6 +805,22 @@
                      Just like that constellation.
                  </p>
              </div>
+
+             <div id="postNeige">
+                 <style>
+                    
+                 </style>
+                 <div id="icn2">
+
+                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                 </div>
+                 <div id="postneigeback">
+
+                 </div>
+
+             </div>
+
              <div id="post">
 
                  <div id="icn2">
@@ -596,89 +895,185 @@
              </div>
          </div>
 
+      
 
          <div id="maininfo">
              <style>
-                 #maininfo { width:25%; /*background:red;*/ position:absolute; height:50%; left:2%; top:10%;
+                 #maininfo {
+                     width: 25%; /*background:red;*/
+                     position: absolute;
+                     height: 50%;
+                     left: 2%;
+                     top: 10%;
                  }
-                 #areacoma { width:100%; position:absolute; bottom:0; height:20%; /*background:green;*/
+
+                 #areacoma {
+                     width: 100%;
+                     position: absolute;
+                     bottom: 0;
+                     height: 20%; /*background:green;*/
                  }
-                 #comas { position:absolute; width:90%; height:100%; /*background:pink;*/ left:5%; transition: all .5s ease;
+
+                 #comas {
+                     position: absolute;
+                     width: 90%;
+                     height: 100%; /*background:pink;*/
+                     left: 5%;
+                     transition: all .5s ease;
                  }
-                     #comas:hover { width:100%; left:0;
+
+                     #comas:hover {
+                         width: 100%;
+                         left: 0;
                      }
+
                          #comas:hover #coma1, #comas:hover #coma2 {
                              opacity: 0;
                          }
+
                          #comas:hover #coma1-1, #comas:hover #coma1-2 {
                              opacity: 1;
                          }
-                         
+
                  #coma1, #coma1-1, #coma2, #coma1-2 {
                      position: absolute;
                      width: 5vw;
                      top: .5vw;
                      transition: all .5s ease;
                  }
-                 #coma2, #coma1-2 { transform:rotate(180deg); right:0;
+
+                 #coma2, #coma1-2 {
+                     transform: rotate(180deg);
+                     right: 0;
                  }
+
                  #coma1-1, #coma1-2 {
-                     opacity: 0; 
+                     opacity: 0;
                  }
-                 #comas:hover #comawhite { left:25%;
+
+                 #comas:hover #comawhite {
+                     left: 25%;
                  }
+
                  #comawhite {
                      transition: all .5s ease;
                      font-family: 'Raleway', sans-serif;
-                     color: white; width:57%; height:100%;
+                     color: white;
+                     width: 57%;
+                     height: 100%;
                      font-size: 2vw;
                      letter-spacing: .1vw;
                      position: relative;
                      left: 22%;
                      top: -.5vw;
+                 }
 
+                 #CW0, #CW2 {
+                     opacity: 0;
                  }
-                 #CW0, #CW2 { opacity:0;
-                 }
-                 #CW0, #CW2 , #CW1{ /* opacity:0;*/
-                     height: 50%; right:0;
+
+                 #CW0, #CW2, #CW1 { /* opacity:0;*/
+                     height: 50%;
+                     right: 0;
                      width: 100%;
-                     
                      position: absolute;
                      overflow: hidden;
                      transition: all .5s ease;
                  }
-                  
-       
-                 #CW2 {  left:0;
+
+                 #CW2 {
+                     left: 0;
                  }
+
                  #textcw0 {
                      position: absolute;
                      top: -30%;
-                     transition: all .5s ease;  
+                     transition: all .5s ease;
                  }
-                 #comas:hover #CW0 {  right: 1.5%; opacity:1;
+
+                 #comas:hover #CW0 {
+                     right: 1.5%;
+                     opacity: 1;
                  }
-                 #comas:hover #CW2 { opacity:1;
-                    left: 1%;
+
+                 #comas:hover #CW2 {
+                     opacity: 1;
+                     left: 1%;
                  }
-                 #comas:hover #CW1{ opacity:0;
+
+                 #comas:hover #CW1 {
+                     opacity: 0;
                  }
+
                  #textcw2 {
                      position: absolute;
                      transition: all .5s ease;
-                     top: -130%; color:#ef82a1;
+                     top: -130%;
+                     color: #ef82a1;
                  }
-                 #CW0 {top:15%;
+
+                 #CW0 {
+                     top: 15%;
                  }
-                 #CW2 { 
+
+                 #CW2 {
                      top: 65%;
                      transition: all .5s ease;
                  }
-                 
-                 #CW1 { opacity:1;
+
+                 #CW1 {
+                     opacity: 1;
                  }
              </style>
+
+             <div id="menulatinfo">
+                 <style >
+                     #menulatinfo { position:absolute; width:100%; height:80%;  overflow:hidden;
+                     }
+                     #menus {
+                         position: absolute;
+                         width: 100%;
+                         height: 25%;
+                         background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                     }
+                     #mainsection { 
+                         position: absolute;
+                         width: 100%; top:20%;
+                         height: 80%;
+                         /*background: blue;*/
+                     }
+                     #menunav { background:#ef82a1; height:1.8vw; width:100%; border-radius:.3vw .3vw 0 0;
+                         transition: all .5s ease;
+                         font-family: 'Raleway', sans-serif;
+                         color: white; font-size:.8vw; letter-spacing:.1vw;
+                          position:absolute;
+                     }
+                     #butonsnav { position:absolute; width:50%; height:2vw;   top:2vw; left:15%;
+                     }
+                     .btnnav { width:2vw; height:2vw;   margin-left:.5vw; float:left;
+                     }
+                     .imgnav { width:1.4vw; filter:invert(90%); position:relative; left:.3vw; top:.3vw;
+                     }
+                 </style>
+
+                 <!--<div id="menus">
+                     <div id="menunav">
+                         <p >NAVIGATE <span id="blkjn">█</span></p>
+                     </div>
+                    
+                     <div id="butonsnav">
+                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
+                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/V6DhfrtN/musica-1.png" /></div>
+                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
+                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/1z0TdY5w/editar-simbolo-de-interfaz-2.png" /></div>
+                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
+                     </div>
+                 </div>
+                 <div id="mainsection">
+
+                 </div>-->
+             </div>
+
              <div id="areacoma">
                  <div id="comas">
                      <img id="coma1" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" />
@@ -698,9 +1093,9 @@
                              </p>
                          </div>
                      </div>
-                   
 
-                     <img id="coma2" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" /> 
+
+                     <img id="coma2" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" />
                      <img id="coma1-2" src="https://i.postimg.cc/vBxS7h1F/COMILLAS2.png" />
                  </div>
              </div>
@@ -712,7 +1107,7 @@
                  let initialX = 0,
                      initialY = 0;
                  let moveElement = false;
-                 //events object
+                  
                  let events = {
                      mouse: {
                          down: "mousedown",
@@ -726,10 +1121,10 @@
                      }
                  };
                  let deviceType = "";
-                 //Detect touch device
+                 
                  const isTouchDevice = () => {
                      try {
-                         //We try to create TouchEvent (it would fail for desktops and throw error)
+                         
                          document.createEvent("TouchEvent");
                          deviceType = "touch";
                          return true;
@@ -738,11 +1133,10 @@
                          return false;
                      }
                  };
-                 isTouchDevice();
-                 // start(mouse down/touch start)
+                 isTouchDevice(); 
                  draggableElem.addEventListener(events[deviceType].down, (e) => {
                      e.preventDefault();
-                     //initial x and y points
+                      
                      initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
                      initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
                      // start movement
@@ -856,6 +1250,60 @@
                      #btnmove:active {
                          cursor: grabbing;
                      }
+                 #japname {
+                     font-family: 'Inconsolata', monospace; position:absolute; color:#ef82a1; top:77%; left:9%; font-size:.65vw; letter-spacing:.2vw; font-weight:lighter;
+                 }
+                 #namemain {
+                     font-family: 'Inconsolata', monospace;
+                     position: absolute;
+                     color: #eb5c8a;
+                     top: 1%;
+                     left: 62%; font-weight:bold;
+                     font-size: .9vw;
+                     letter-spacing: .6vw;
+                    
+                 }
+                 #namemain2 {
+                     font-family: 'Inconsolata', monospace;
+                     position: absolute;
+                     color: dimgray;
+                     top: 1%; opacity:.5;
+                     left: 63%;
+                     font-weight: bold;
+                     font-size: .9vw;
+                     letter-spacing: .6vw;
+                 }
+                 #linename { width:38%; height:0; border-top:.01vw solid #f8cbd0; top:17%; left:53%; position:absolute;
+                 }
+                 #subname {
+                     font-family: 'Inconsolata', monospace;
+                     color:  #a5a5a5; font-weight:bold;
+                     font-size: .6vw;
+                     letter-spacing: .1vw;
+                     top: 15%;
+                     left: 60%;
+                     position: absolute;
+                 }
+                 #date {
+                     font-family: 'Inconsolata', monospace;
+                     color: #a5a5a5;
+                     font-weight: bold;
+                     font-size: .7vw;
+                     letter-spacing: .1vw;
+                     top: 24%;
+                     left: 78%;
+                     position: absolute;
+                 }
+                 #infoyuki { position:absolute; width:47%; height:.8vw; top:39%; left:50%; background:#ef82a1;
+                 }
+                 #pinfo {
+                     font-family: 'Inconsolata', monospace;
+                     color: white; text-transform:uppercase;
+                     letter-spacing:.3px;
+                     font-size: .6vw; left:.1vw;
+                     top:-.5vw;
+                     position: absolute;
+                 }
              </style>
              <div id="butonsprofile">
                  <div class="butonprofile"><img id="btnmove" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
@@ -864,6 +1312,204 @@
              <div id="profile2">
                  <div id="profile3">
                      <img id="imgprofile" src="https://i.postimg.cc/Y9P33X0f/e61722c22e847c93acf0aa74ff6096c8.jpg" />
+                     <p id="japname">
+                         脆くて冷たい雪
+                     </p>
+                     <p id="namemain">
+                         YUKI
+                     </p>
+                     <p id="namemain2">
+                         YUKI
+                     </p>
+                     <div id="linename"></div>
+                     <p id="subname">
+                         @Yukine1342
+                     </p>
+                     <p id="date">01/10/03♥</p>
+                     <div id="infoyuki">
+                         <p id="pinfo">Yuki - Fem - XIX - InLoveNeige</p>
+                     </div>
+
+                     <div id="Aaudio">
+                         <style>
+                             #Aaudio {
+                                 font-family: 'Raleway', sans-serif;
+                                 position: absolute;
+                                 width: 48%;
+                                 left: 49%;
+                                 top: 50%; 
+                                 height: 40%;
+                             }
+
+                             #abtnaud {
+                                 cursor: pointer;  
+                                 position: absolute;
+                                 width: 60%;
+                                 height: 23%;
+                                 left: 20%;
+                                 top: 29%;
+                             }
+
+                             .butplayer { float:left;
+                                 height: 1vw; top:-.25vw;
+                                 width: 1vw; margin-left:.4vw;
+                                 position: relative;  
+                             }
+
+                             .butpl {
+                                 position: absolute;
+                                 width: 1vw;
+                                 height: 1vw;
+                                 left: 0;
+                                 top: .3vw;
+                                 border-radius: .2vw;
+                                 transition: all .5s ease;
+                             }
+
+                                 .butpl:hover {
+                                     background: #f8cbd0;
+                                 }
+
+                                 .butpl img {
+                                     position: absolute;
+                                     width: .8vw;
+                                     height: .8vw;
+                                     /*filter: invert(100%);*/
+                                     left: .07vw;
+                                     top: .1vw;
+                                 }
+
+                             #pause, #play, #next, #prev, #stop {
+                                 width: 1vw;
+                                 height: 1vw;  
+                                 position: absolute;
+                                 left: 0;
+                             }
+
+                             .progress-bar {
+                                 top: 55%;
+                                 left: 10%;
+                                 width: 80%;
+                                 background: #ef82a1;
+                                 height: .35vw;
+                                 position: absolute;
+                             }
+
+                             .fillBar {
+                                 background: #f8cbd0;
+                                 width: 0;
+                                 height: .35vw;
+                             }
+
+
+                             #namesong {
+                                 text-transform: uppercase;
+                                 position: absolute;
+                                 width: 100%;
+                                 height: 70%;
+                                 top: 10%;
+                                 font-weight: bold;
+                                 color: #b21160;
+                                 
+                                 letter-spacing: .1vw;
+                                 font-size: .55vw;
+                             }
+
+                             .artist-name {
+                                 position: absolute;
+                                 width: 88%;left:10%;
+                                 height: 100%;
+                                 top: 70%; 
+                                 font-family: 'Oswald', sans-serif;
+                                 letter-spacing: .1vw;
+                                 font-size: .5vw;
+                                 color: #b21160;
+                             }
+
+                             #AT_time {
+                                 width: 70%;
+                                 height: 1vw;
+                                 top: 85%;
+                                 left: 25%;
+                                 position: absolute;
+                             }
+
+                                 #AT_time p {
+                                     position: absolute;
+                                     font-family: 'Oswald', sans-serif;
+                                     letter-spacing: .1vw;
+                                     font-size: .5vw;
+                                     color: lightgray;
+                                 }
+
+                             .time {
+                                 position: absolute;
+                                 left: -1.5vw;
+                                 top: 0vw;
+                                 font-family: 'Oswald', sans-serif;
+                                 letter-spacing: .1vw;
+                                 font-size: .45vw;
+                                 overflow: hidden;
+                                 color: #b21160;
+                             }
+
+                             #name_sng {
+                                 position: relative;
+                                 float: left;
+                             }
+                         </style>
+                         <div class="progress-bar">
+                             <div class="fillBar"></div>
+                         </div>
+
+
+                         <div id="AT_time"><div class="time"></div></div>
+                         <marquee id="namesong"> <div id="name_sng" class="music-name"></div></marquee>
+                         <div > </div>
+                         <div class="artist-name"></div>
+
+                         <div id="abtnaud">
+                             <div class="butplayer">
+                                 <div class="butpl">
+                                     <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                     <div id="prev" class="fas fa-backward"><p></p></div>
+                                 </div>
+
+                             </div>
+                             <div class="butplayer">
+                                 <div class="butpl">
+                                     <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:.6vw; height:.6vw; left:.15vw; top:.2vw;" />
+                                     <div id="play"> </div>
+                                 </div>
+
+                             </div>
+                             <div class="butplayer">
+                                 <div class="butpl">
+                                     <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                     <div id="next" class="fas fa-forward"><p></p></div>
+                                 </div>
+
+                             </div>
+                             <div class="butplayer">
+                                 <div class="butpl">
+                                     <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                     <div id="pause"> </div>
+                                 </div>
+
+                             </div>
+                             <!--<div class="butplayer">
+        <div class="butpl">
+            <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+            <div id="stop"> </div>
+        </div>
+
+    </div>-->
+                         </div>
+
+
+
+                     </div>
 
                  </div>
              </div>
@@ -1004,7 +1650,7 @@
                      var b = spec.backgrounds[i];
                      $('#back2').css('background-image', 'url("' + b + '")');
                      $('#backlat').css('background-image', 'url("' + b + '")');
-                                                                                                             // ...
+                                                                                                           
 
                  </script>
 
