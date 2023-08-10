@@ -14,7 +14,7 @@
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
         html,
         body, #main {
             top: 0;
@@ -186,9 +186,26 @@
         }
     </style>
     <script>
-    /*botons*/
+        /*botons*/
+        var x = 0;
         function removeprofile() { $("#profile").remove(); }
         function removepost() { $("#post").remove(); }
+        function neige1left() {
+            if ((x == 1) || (x==0) ) {
+                $("#neige1").removeClass("neige1"); $("#neige1").addClass("neigeleft");
+                $("#neige2").removeClass("neige2"); $("#neige2").addClass("neigeright");
+                x++;
+                 
+            }
+            if (x == 2) {
+                $("#neige1").addClass("neige1"); $("#neige1").removeClass("neigeleft");
+                $("#neige2").addClass("neige2"); $("#neige2").removeClass("neigeright");
+                x++;
+}
+            else if (x > 2) { x = 0; }
+           
+        }
+
     </script>
     <script>
         $(document).ready(function () {
@@ -389,7 +406,7 @@
                  </div>
 
                  <p id="entrancetitle">雪根 / 昏迷白</p>
-                 <p id="subtentrance">Yuki | xComaWhite | 15121212 <span id="blkjn">|</span></p>
+                 <p id="subtentrance">Yuki | xComaWhite | 1515302520 <span id="blkjn">|</span></p>
              </div>
 
     </div>
@@ -772,24 +789,114 @@
                      font-size: .8vw;
                      /*font-weight: lighter;*/
                  }
-                 #postNeige {
+                 #pstn {
                      direction: ltr;
-                     width: 35%;
-                     height: 90%;
-                     margin-right: 5%;
-                     margin-bottom: 10%; 
-                  
+                     width: 42%;
+                     height: 78%;
+                     margin-right: 2.5%;
+                     margin-top: 5%;
+                     margin-bottom: 10%; border:.1vw solid #ef82a1;
                  }
-                     #postNeige #icn2 { top:-2vw;   
+                 #postNeige { position:relative;
+                     direction: ltr;
+                     width: 97%;
+                     height: 98%; left:1.5%;
+                     top:.4%; 
+                 }
+                     #postNeige #icn2 { top: 1vw; z-index:9; right:-10%; position:absolute;
                      }
-                 #postneigeback {
+                         #postNeige #icn2 img { filter:invert(100%);
+                         }
+                 #postneigeb {
+                     width: 100%;
+                     height: 100%;
+                     margin-right: 5%;  top:.2vw;
+                     position: relative; overflow:hidden;
+                 }
+                 #neige1 {
                      position: absolute;
-                     width: 35%;
-                     height: 90%;
-                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg); opacity:.3;
+                     width: 50%;
+                     height: 100%;
+                     transition: all .5s ease;
+                 }
+                 .neige1 {
+                     left: 0;
+                 }
+                 .neige2 {
+                     right: 0;
+                 }
+                 #neige1back {
+                     position: absolute;
+                     width: 50%;
+                     height: 100%;
+                     background: #171717;
+                 }
+                 #neige2 {
+                     position: absolute;
+                     width: 50%; 
+                     transition: all .5s ease;
+                     height: 100%;
+                     background: #171717;
+                 }
+                 #neige2back {
+                     position: absolute;
+                     width: 50%;
+                     left: 50%;
+                     height: 100%;
+                     background: #171717;  
+                 }
+                 #neigeimg1 { position:absolute; width:100%; height:100%;
+                 }
+                 #closeneige {
+                     font-family: "Roboto", Arial, sans-serif;
+                     position: absolute;
+                     top: 1.8vw;
+                     color: #ef82a1;
+                     z-index: 9;
+                     font-size: .7vw;
+                     line-height: 1.2vw;
+                     right: 8.5%;
+                     opacity: .5;
+                 }
+                 #closeneigeesp {
+                     position: absolute;
+                     top: 14%; right:-2%; z-index:9; letter-spacing:.1vw; font-size:.45vw; text-transform:uppercase; transform:rotate(90deg);  
+                     font-family: "Roboto", Arial, sans-serif; color:white;
+                 }
+                 #closeneige2 {
+                     font-family: "Roboto", Arial, sans-serif;
+                     position: absolute;
+                     top: 1.8vw;
+                     color:#ef82a1;
+                     z-index: 9;
+                     font-size: .7vw;
+                     line-height: 1.2vw;
+                     right: 15%;
+                     opacity: .5;
+                 }
+
+                 #closeneigeesp2 {
+                     position: absolute;
+                     top: 14.5%;
+                     right: 4%;
+                     z-index: 9;
+                     letter-spacing: .1vw;
+                     font-size: .45vw;
+                     text-transform: uppercase;
+                     transform: rotate(90deg);
+                     
+                     font-family: "Roboto", Arial, sans-serif;
+                     color: white;
+                 }
+                 .neigeright {
+                     right: -55%;
+                 }
+                 .neigeleft {
+                    
+                     left: -50%;
                  }
              </style>
-             <div id="postintro">
+             <!--<div id="postintro">
 
 
                  <p id="textpostintro">
@@ -804,22 +911,246 @@
                      I want you to join with me...
                      Just like that constellation.
                  </p>
-             </div>
+             </div>-->
 
-             <div id="postNeige">
-                 <style>
-                    
-                 </style>
-                 <div id="icn2">
+             <div id="pstn">
+                 <div id="postNeige" >
+                     <style>
+                     </style>
+                     <div id="icn2">
 
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                         <div class="vnt" onclick="neige1left();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                         <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                     </div>
+                     <div id="postneigeb">
+
+                         <p id="closeneige">关<br />闭<br />这<br />篇<br />文<br />章</p>
+                         <p id="closeneigeesp">Close this post</p>
+
+                         <p id="closeneige2">展<br />开<br />是<br />帖<br />子 </p>
+                         <p id="closeneigeesp2">expand this post</p>
+                         <div id="neige1" class="neige1">
+                             <img src="https://i.postimg.cc/Z5T7mxw6/1.jpg" id="neigeimg1" />
+
+                         </div>
+                         <div id="neige1back">
+        <style>
+            #neige1 { z-index:2;
+            }
+            #neige2{ z-index:3;}
+            #textfirmneige { position:absolute; width:100%; left:0%; top:0%; height:100%;   overflow:auto;
+            }
+            #ptextneige {
+                font-family: "Roboto", Arial, sans-serif;
+                color: white;
+                letter-spacing: .07vw; font-weight:lighter;
+                font-size: .95vw;
+            }
+            #textfirmneige::-webkit-scrollbar {
+                width: .5vw;
+                background-color: transparent;
+            }
+
+
+            #textfirmneige::-webkit-scrollbar-thumb {
+                border-radius: .5vw;
+                /*background: lightgray;*/
+                border: .2vw solid #171717;
+                /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                background: linear-gradient(360deg, #171717 43%, #F77DBF 43.1%, #F77DBF 50%, #F77DBF 56.9%, #171717 57%);
+            }
+            #neigetitle {
+                font-family: 'Raleway', sans-serif;
+                color: white;
+                left: 10%;
+                position: absolute;
+                letter-spacing: .2vw;
+                font-weight: bold;
+                font-size: .6vw;
+            }
+            #neigetitle2 {
+                top: 8%;
+                font-weight: lighter;
+                font-family: "Roboto", Arial, sans-serif;
+                color: white;
+                left: 65%;
+                position: absolute;
+                letter-spacing: .2vw; 
+                font-size: 1.9vw;
+            }
+            #neigetitle3 {
+                top: 15%;
+                font-weight: lighter;
+                font-family: "Roboto", Arial, sans-serif;
+                color: white;
+                left: 80%;
+                position: absolute;
+                letter-spacing: .2vw;
+                font-size: 1.9vw;
+            }
+        </style>
+        <div id="textfirmneige">
+
+            <p id="neigetitle">
+                LOi II: YUKINE
+
+            </p>
+            <p id="neigetitle2">
+
+                三<br />月<br />雪
+            </p>
+            <p id="neigetitle3">
+
+                四<br />月<br />风<br />暴 
+            </p>
+            <!--<p id="ptextneige">
+        Bajo esta noche negra cubierta de nubes grises,<br />
+        desde el cielo caen fugaces matices.<br />
+        <br />
+        La grácil y frígida tormenta, me envuelven en su dulce y cálida caricia.<br />
+        <br />
+        La nieve lentamente desfallece al tocar mi piel,<br />
+        como pequeñas luciernagas al tocar la luz del amanecer.<br />
+        <br />
+        Tan fría y frágil...<br />
+        Tan cálida y grácil ...<br />
+        <br />
+        Hay ocasiones en las que la realidad no deja de sorprenderme,<br />
+        pues mirando hacia atrás, la vida parecía solo seguir sin detenerse.<br />
+        <br />
+        Si realmente los sueños pudieran convertise en realidad,<br />
+        ahora mismo la realidad sería que más se intentaría buscar.<br />
+        <br />
+        Esta tormenta blanca me enseñó que hay excepciones...<br />
+        como todo en la vida, no existen las generalizaciones.<br />
+        <br />
+        Cada ser vivo en esta realidad, está en esta vida para un proposita alcanzar...<br />
+        <br />
+        Y si anializas con delicadeza,<br />
+        observarás que a todo le hace falta una pieza.<br />
+        <br />
+        Los trinidos de los mirlos a nuestro alrededor ¿puedes escuchar?<br />
+        Son demasiadas palabras que no podremos asimilar<br />
+        <br />
+        Como los sentimientos que me envuelven<br />
+        bajo esta tormenta de frágil nieve<br />
+        <br />
+        Y es tan dificil describir,<br />
+        la calidez que esta nieve me hace sentir.<br />
+        <br />
+        Con palabras no puedo expresar lo que siento por ti,<br />
+        mi dulce Yuki, por ti en esta gris realidad vale la pena vivir.
+    </p>-->
+        </div>
+
+    </div>
+
+    <div id="neige2back">
+        <img src="https://i.postimg.cc/T3Ck35sF/2.jpg" id="neigeimg1" />
+
+    </div>
+                         <div id="neige2" class="neige2">
+                             <style>
+
+                                 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100&display=swap');
+
+                                 #firmNeige {
+                                     width: 8vw;
+                                     height: 11vw;
+                                     background: #171717;
+                                     position: absolute;
+                                     top: 40%;
+                                     left: -10%;
+                                 }
+
+                                 #cubefirm {
+                                     position: absolute;
+                                     width: 7vw;
+                                     height: 10vw;
+                                     top: .5vw;
+                                     left: .5vw;
+                                     border: .1vw solid white;
+                                 }
+
+                                 #imgfirmneige {
+                                     position: absolute;
+                                     filter: invert(100%);
+                                     width: 9vw;
+                                     left: -1vw;
+                                     top: 3vw;
+                                 }
+
+                                 #neigereg {
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     position: absolute;
+                                     left: .5vw;
+                                     letter-spacing: .1vw;
+                                     color: white;
+                                     font-size: .7vw;
+                                 }
+
+                                 #neigedat {
+                                     color: white;
+                                     font-size: 1.5vw;
+                                     font-weight: lighter;
+                                     left: 5%;
+                                     position: absolute;
+                                     font-family: 'Nanum Myeongjo', serif;
+                                     letter-spacing: .1vw;
+                                 }
+
+                                 #neigedat2 {
+                                     color: #f8cbd0;
+                                     opacity: .7;
+                                     font-size: .8vw;
+                                     font-weight: lighter;
+                                     line-height: 1.3vw;
+                                     left: 18%;
+                                     top: 4%;
+                                     position: absolute;
+                                     font-family: 'Nanum Myeongjo', serif;
+                                     letter-spacing: .1vw;
+                                 }
+
+                                 #neigepostbk {
+                                     text-align: right;
+                                     color: lightgray;
+                                     line-height: .9vw;
+                                     opacity: .7;
+                                     letter-spacing: .15vw;
+                                     font-size: .5vw;
+                                     font-weight: lighter;
+                                     right: 4%;
+                                     bottom: 0;
+                                     position: absolute;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     letter-spacing: .1vw;
+                                 }
+                             </style>
+                             <p id="neigedat">我<br />爱<br />你<br /><br />由<br />纪</p>
+                             <p id="neigedat2">
+                                 我<br />的<br />细<br />腻<br />又<br />甜<br />蜜
+                             </p>
+                             <p id="neigepostbk">
+                                 Depuis le fond de mon coeur<br />
+                                 Mon bien-aimé yuki 我爱你 <br />
+                                 06 ● 08 ● 2023<br />
+                                 Neige~ ● Gris ● 1533252890 ● RS-151
+                             </p>
+                             <div id="firmNeige">
+
+
+                                 <div id="cubefirm">
+                                     <p id="neigereg">| NEIGE<br />| GRISATRE</p>
+                                     <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="imgfirmneige" />
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
                  </div>
-                 <div id="postneigeback">
-
-                 </div>
-
              </div>
+            
 
              <div id="post">
 
