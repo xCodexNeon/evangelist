@@ -15,6 +15,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
         html,
         body, #main {
             top: 0;
@@ -40,13 +41,13 @@
             top: 0;
             left: 0;
             background: #eb5c8a;
-            /* animation: animaentrance 5s 1;
-            animation-fill-mode: forwards;*/
+             animation: animaentrance 5s 1;
+            animation-fill-mode: forwards;
             color: white;
             text-align: center;
             overflow: hidden;
             z-index: 999;
-            height: 8%;
+            height: /*8%;*/  100%;
         }
 
         @keyframes animaentrance {
@@ -185,27 +186,207 @@
             animation: blkn .5s infinite;
         }
     </style>
+
+    <style>
+        #profile {
+            position: absolute;
+            width: 25%;
+            left: 2%;
+            top: 64%;
+            height: 29%;
+            background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+        }
+
+        #profile2 {
+            width: 92%;
+            height: 88%;
+            background: #f8cbd0;
+            background-image: url(https://i.postimg.cc/FRHQNnxQ/Gb5-O9g-1.jpg);
+            background-repeat: repeat;
+            left: 4%;
+            top: 6%;
+            position: absolute;
+        }
+
+        #profile3 {
+            width: 92%;
+            height: 88%;
+            background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+            left: 4%;
+            top: 6%;
+            position: absolute;
+        }
+
+        #imgprofile {
+            position: absolute;
+            width: 8vw;
+            height: 8vw;
+            left: .8vw;
+            top: .8vw;
+            border: .2vw solid #d198c4;
+        }
+
+        #butonsprofile {
+            position: absolute;
+            top: -1.8vw;
+            height: 1.5vw;
+            width: 4vw;
+            right: 0;
+        }
+
+        .butonprofile {
+            width: 1.5vw;
+            height: 1.5vw;
+            float: left;
+            margin-left: .3vw;
+            border: .1vw solid white;
+            border-radius: .2vw;
+        }
+
+            .butonprofile:hover {
+                border: .1vw solid #f8cbd0;
+                ;
+                background: #eb5c8a;
+            }
+
+            .butonprofile img {
+                position: relative;
+                width: 1vw;
+                left: .25vw;
+                top: .25vw;
+                filter: invert(100%);
+            }
+
+        #btnmove {
+            width: 1.4vw;
+            left: .05vw;
+            top: .05vw;
+            cursor: grab;
+        }
+
+            #btnmove:active {
+                cursor: grabbing;
+            }
+
+        #japname {
+            font-family: 'Inconsolata', monospace;
+            position: absolute;
+            color: #ef82a1;
+            top: 77%;
+            left: 9%;
+            font-size: .65vw;
+            letter-spacing: .2vw;
+            font-weight: lighter;
+        }
+
+        #namemain {
+            font-family: 'Inconsolata', monospace;
+            position: absolute;
+            color: #eb5c8a;
+            top: 1%;
+            left: 62%;
+            font-weight: bold;
+            font-size: .9vw;
+            letter-spacing: .6vw;
+        }
+
+        #namemain2 {
+            font-family: 'Inconsolata', monospace;
+            position: absolute;
+            color: dimgray;
+            top: 1%;
+            opacity: .5;
+            left: 63%;
+            font-weight: bold;
+            font-size: .9vw;
+            letter-spacing: .6vw;
+        }
+
+        #linename {
+            width: 38%;
+            height: 0;
+            border-top: .01vw solid #f8cbd0;
+            top: 17%;
+            left: 53%;
+            position: absolute;
+        }
+
+        #subname {
+            font-family: 'Inconsolata', monospace;
+            color: #a5a5a5;
+            font-weight: bold;
+            font-size: .6vw;
+            letter-spacing: .1vw;
+            top: 15%;
+            left: 60%;
+            position: absolute;
+        }
+
+        #date {
+            font-family: 'Inconsolata', monospace;
+            color: #a5a5a5;
+            font-weight: bold;
+            font-size: .7vw;
+            letter-spacing: .1vw;
+            top: 24%;
+            left: 78%;
+            position: absolute;
+        }
+
+        #infoyuki {
+            position: absolute;
+            width: 47%;
+            height: .8vw;
+            top: 39%;
+            left: 50%;
+            background: #ef82a1;
+        }
+
+        #pinfo {
+            font-family: 'Inconsolata', monospace;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+            font-size: .6vw;
+            left: .1vw;
+            top: -.5vw;
+            position: absolute;
+        }
+    </style>
     <script>
         /*botons*/
-        var x = 0;
+        var x = 0; var y = 0;
         function removeprofile() { $("#profile").remove(); }
         function removepost() { $("#post").remove(); }
+        function removepostneige() { $("#pstn").remove(); }
         function neige1left() {
-            if ((x == 1) || (x==0) ) {
+            if ((x == 1) || (x == 0)) {
                 $("#neige1").removeClass("neige1"); $("#neige1").addClass("neigeleft");
                 $("#neige2").removeClass("neige2"); $("#neige2").addClass("neigeright");
                 x++;
-                 
+
             }
             if (x == 2) {
                 $("#neige1").addClass("neige1"); $("#neige1").removeClass("neigeleft");
                 $("#neige2").addClass("neige2"); $("#neige2").removeClass("neigeright");
                 x++;
-}
+            }
             else if (x > 2) { x = 0; }
-           
-        }
 
+        }
+        function neigepic() {
+            if ((y == 1) || (y == 0)) {
+                $("#neige2").removeClass("neige2"); $("#neige2").addClass("neigeright"); $("#neige1").addClass("neige1"); $("#neige1").removeClass("neigeleft");
+                y++;
+
+            }
+            if (y == 2) {
+                $("#neige2").addClass("neige2"); $("#neige2").removeClass("neigeright");
+                y++;
+            }
+            else if (y > 2) { y = 0; }
+
+        }
     </script>
     <script>
         $(document).ready(function () {
@@ -803,7 +984,7 @@
                      height: 98%; left:1.5%;
                      top:.4%; 
                  }
-                     #postNeige #icn2 { top: 1vw; z-index:9; right:-10%; position:absolute;
+                     #postNeige #icn2 { top: 1vw; z-index:9;  position:absolute;
                      }
                          #postNeige #icn2 img { filter:invert(100%);
                          }
@@ -855,12 +1036,12 @@
                      z-index: 9;
                      font-size: .7vw;
                      line-height: 1.2vw;
-                     right: 8.5%;
+                     right: 3.5%;
                      opacity: .5;
                  }
                  #closeneigeesp {
                      position: absolute;
-                     top: 14%; right:-2%; z-index:9; letter-spacing:.1vw; font-size:.45vw; text-transform:uppercase; transform:rotate(90deg);  
+                     top: 14%; right:-7%; z-index:9; letter-spacing:.1vw; font-size:.45vw; text-transform:uppercase; transform:rotate(90deg);  
                      font-family: "Roboto", Arial, sans-serif; color:white;
                  }
                  #closeneige2 {
@@ -871,20 +1052,44 @@
                      z-index: 9;
                      font-size: .7vw;
                      line-height: 1.2vw;
-                     right: 15%;
+                     right:  10%;
                      opacity: .5;
                  }
 
                  #closeneigeesp2 {
                      position: absolute;
                      top: 14.5%;
-                     right: 4%;
+                     right: -1%;
                      z-index: 9;
                      letter-spacing: .1vw;
                      font-size: .45vw;
                      text-transform: uppercase;
                      transform: rotate(90deg);
                      
+                     font-family: "Roboto", Arial, sans-serif;
+                     color: white;
+                 }
+                 #closeneige3 {
+                     font-family: "Roboto", Arial, sans-serif;
+                     position: absolute;
+                     top: 1.8vw;
+                     color: #ef82a1;
+                     z-index: 9;
+                     font-size: .7vw;
+                     line-height: 1.2vw;
+                     right: 16.5%;
+                     opacity: .5;
+                 }
+
+                 #closeneigeesp3 {
+                     position: absolute;
+                     top: 12.8%;
+                     right: 8%;
+                     z-index: 9;
+                     letter-spacing: .1vw;
+                     font-size: .45vw;
+                     text-transform: uppercase;
+                     transform: rotate(90deg);
                      font-family: "Roboto", Arial, sans-serif;
                      color: white;
                  }
@@ -896,7 +1101,7 @@
                      left: -50%;
                  }
              </style>
-             <!--<div id="postintro">
+             <div id="postintro">
 
 
                  <p id="textpostintro">
@@ -911,16 +1116,23 @@
                      I want you to join with me...
                      Just like that constellation.
                  </p>
-             </div>-->
+             </div>
 
              <div id="pstn">
                  <div id="postNeige" >
                      <style>
                      </style>
-                     <div id="icn2">
-
+                     <div id="icn2" class="icn2">
+                         <style>
+                             .icn2 {
+                                 position: absolute;
+                                 margin-left: -1.5%;
+                                 width: 20%; 
+                             }
+                         </style>
+                         <div class="vnt" onclick="neigepic();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
                          <div class="vnt" onclick="neige1left();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                         <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                         <div class="vnt" onclick="removepostneige();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
                      </div>
                      <div id="postneigeb">
 
@@ -929,126 +1141,201 @@
 
                          <p id="closeneige2">展<br />开<br />是<br />帖<br />子 </p>
                          <p id="closeneigeesp2">expand this post</p>
+
+                         <p id="closeneige3">扩<br />大<br />图<br />像  </p>
+                         <p id="closeneigeesp3">expand image</p>
                          <div id="neige1" class="neige1">
                              <img src="https://i.postimg.cc/Z5T7mxw6/1.jpg" id="neigeimg1" />
 
                          </div>
                          <div id="neige1back">
-        <style>
-            #neige1 { z-index:2;
-            }
-            #neige2{ z-index:3;}
-            #textfirmneige { position:absolute; width:100%; left:0%; top:0%; height:100%;   overflow:auto;
-            }
-            #ptextneige {
-                font-family: "Roboto", Arial, sans-serif;
-                color: white;
-                letter-spacing: .07vw; font-weight:lighter;
-                font-size: .95vw;
-            }
-            #textfirmneige::-webkit-scrollbar {
-                width: .5vw;
-                background-color: transparent;
-            }
+                             <style>
+                                 #neige1 {
+                                     z-index: 2;
+                                 }
+
+                                 #neige2 {
+                                     z-index: 3;
+                                 }
+
+                                 #textfirmneige {
+                                     position: absolute;
+                                     width: 100%;
+                                     left: 0%;
+                                     top: 0%;
+                                     height: 100%;
+                                     overflow: auto;
+                                 }
+
+                                 #ptextneige {
+                                     top: 61%;
+                                     position: absolute;
+                                     left: 7%;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     color: gray;
+                                     letter-spacing: .05vw;
+                                     font-weight: lighter;
+                                     font-size: .55vw;
+                                 }
+
+                                     #ptextneige span {
+                                         color: white;
+                                         font-size: .4vw;
+                                         letter-spacing: .05vw;
+                                     }
+
+                                 #textfirmneige::-webkit-scrollbar {
+                                     width: .5vw;
+                                     background-color: transparent;
+                                 }
 
 
-            #textfirmneige::-webkit-scrollbar-thumb {
-                border-radius: .5vw;
-                /*background: lightgray;*/
-                border: .2vw solid #171717;
-                /*-webkit-box-shadow: inset 0 0 6px gray;*/
-                background: linear-gradient(360deg, #171717 43%, #F77DBF 43.1%, #F77DBF 50%, #F77DBF 56.9%, #171717 57%);
-            }
-            #neigetitle {
-                font-family: 'Raleway', sans-serif;
-                color: white;
-                left: 10%;
-                position: absolute;
-                letter-spacing: .2vw;
-                font-weight: bold;
-                font-size: .6vw;
-            }
-            #neigetitle2 {
-                top: 8%;
-                font-weight: lighter;
-                font-family: "Roboto", Arial, sans-serif;
-                color: white;
-                left: 65%;
-                position: absolute;
-                letter-spacing: .2vw; 
-                font-size: 1.9vw;
-            }
-            #neigetitle3 {
-                top: 15%;
-                font-weight: lighter;
-                font-family: "Roboto", Arial, sans-serif;
-                color: white;
-                left: 80%;
-                position: absolute;
-                letter-spacing: .2vw;
-                font-size: 1.9vw;
-            }
-        </style>
-        <div id="textfirmneige">
+                                 #textfirmneige::-webkit-scrollbar-thumb {
+                                     border-radius: .5vw;
+                                     /*background: lightgray;*/
+                                     border: .2vw solid #171717;
+                                     /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                                     background: linear-gradient(360deg, #171717 43%, #F77DBF 43.1%, #F77DBF 50%, #F77DBF 56.9%, #171717 57%);
+                                 }
 
-            <p id="neigetitle">
-                LOi II: YUKINE
+                                 #neigetitle {
+                                     font-family: 'Raleway', sans-serif;
+                                     color: white;
+                                     left: 7%;
+                                     position: absolute;
+                                     letter-spacing: .2vw;
+                                     font-weight: lighter;
+                                     font-size: .6vw;
+                                 }
 
-            </p>
-            <p id="neigetitle2">
+                                 #neigetitle2 {
+                                     top: 2%;
+                                     text-align: right;
+                                     text-transform: uppercase;
+                                     font-weight: lighter;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     color: white;
+                                     right: 5%;
+                                     position: absolute;
+                                     letter-spacing: .2vw;
+                                     font-size: 1.1vw;
+                                 }
 
-                三<br />月<br />雪
-            </p>
-            <p id="neigetitle3">
+                                 #neigetitle3 {
+                                     top: 17%;
+                                     font-weight: lighter;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     color: #f8cbd0;
+                                     right: 5%;
+                                     line-height: 1vw;
+                                     position: absolute;
+                                     letter-spacing: .1vw;
+                                     font-size: .6vw;
+                                 }
 
-                四<br />月<br />风<br />暴 
-            </p>
-            <!--<p id="ptextneige">
-        Bajo esta noche negra cubierta de nubes grises,<br />
-        desde el cielo caen fugaces matices.<br />
-        <br />
-        La grácil y frígida tormenta, me envuelven en su dulce y cálida caricia.<br />
-        <br />
-        La nieve lentamente desfallece al tocar mi piel,<br />
-        como pequeñas luciernagas al tocar la luz del amanecer.<br />
-        <br />
-        Tan fría y frágil...<br />
-        Tan cálida y grácil ...<br />
-        <br />
-        Hay ocasiones en las que la realidad no deja de sorprenderme,<br />
-        pues mirando hacia atrás, la vida parecía solo seguir sin detenerse.<br />
-        <br />
-        Si realmente los sueños pudieran convertise en realidad,<br />
-        ahora mismo la realidad sería que más se intentaría buscar.<br />
-        <br />
-        Esta tormenta blanca me enseñó que hay excepciones...<br />
-        como todo en la vida, no existen las generalizaciones.<br />
-        <br />
-        Cada ser vivo en esta realidad, está en esta vida para un proposita alcanzar...<br />
-        <br />
-        Y si anializas con delicadeza,<br />
-        observarás que a todo le hace falta una pieza.<br />
-        <br />
-        Los trinidos de los mirlos a nuestro alrededor ¿puedes escuchar?<br />
-        Son demasiadas palabras que no podremos asimilar<br />
-        <br />
-        Como los sentimientos que me envuelven<br />
-        bajo esta tormenta de frágil nieve<br />
-        <br />
-        Y es tan dificil describir,<br />
-        la calidez que esta nieve me hace sentir.<br />
-        <br />
-        Con palabras no puedo expresar lo que siento por ti,<br />
-        mi dulce Yuki, por ti en esta gris realidad vale la pena vivir.
-    </p>-->
-        </div>
+                                 #neigetitle4 {
+                                     top: 14%;
+                                     border-right: 1px solid white;
+                                     font-weight: lighter;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     color: white;
+                                     left: 11%;
+                                     position: absolute;
+                                     letter-spacing: .1vw;
+                                     font-size: .6vw;
+                                 }
 
-    </div>
+                                 #neigetitle5 {
+                                     border-right: 1px solid white;
+                                     top: 14%;
+                                     font-weight: lighter;
+                                     font-family: "Roboto", Arial, sans-serif;
+                                     color: white;
+                                     left: 5%;
+                                     position: absolute;
+                                     letter-spacing: .1vw;
+                                     font-size: .6vw;
+                                 }
 
-    <div id="neige2back">
-        <img src="https://i.postimg.cc/T3Ck35sF/2.jpg" id="neigeimg1" />
+                                 #firmaneig {
+                                     filter: invert(100%);
+                                     width: 8vw;
+                                     position: absolute;
+                                     top: 36%;
+                                     left: 30%;
+                                 }
+                             </style>
+                             <div id="textfirmneige">
 
-    </div>
+                                 <p id="neigetitle">
+                                     LOi. I I:<br />
+                                     YUKINE<br />
+                                     第二幕 雪
+
+                                 </p>
+                                 <p id="neigetitle2">
+                                     douce<br />tempête<br />blanche
+
+                                 </p>
+                                 <p id="neigetitle3">
+                                     【 雪 】三 月 雪<br />
+                                     【 雪 】四 月 风 暴<br />
+                                     【 雪 】昏 迷 白<br />
+                                 </p>
+                                 <p id="neigetitle4">
+                                     我<br />爱<br />你<br />我<br />甜<br />蜜<br />的<br />雪
+                                 </p>
+                                 <p id="neigetitle5">
+                                     你<br />是<br />我<br />在<br />这<br />灰<br />色<br />生<br />活<br />中<br />可<br />能<br />发<br />生<br />的<br />最<br />好<br />的<br />事<br />情
+                                 </p>
+                                 <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="firmaneig" />
+                                 <p id="ptextneige">
+                                     Bajo esta noche negra cubierta de nubes grises,<br />
+                                     desde el cielo caen fugaces matices.<br />
+                                     <span>【●】在这灰云笼罩的黑夜下</span><br /><br />
+                                     La grácil y frígida tormenta, me envuelven en su dulce y cálida caricia.<br />
+                                     <span>【●】优雅而寒冷的风暴</span><br /><br />
+                                     La nieve lentamente desfallece al tocar mi piel,<br />
+                                     como pequeñas luciérnagas al tocar la luz del amanecer.<br />
+                                     <span>【●】雪接触到我的肌肤就慢慢消散</span><br /><br />
+                                     Tan fría y frágil...<br />
+                                     Tan cálida y grácil ...<br />
+                                     <span>【●】如此寒冷和脆弱</span><br /><br />
+                                     Hay ocasiones en las que la realidad no deja de sorprenderme,<br />
+                                     pues mirando hacia atrás, la vida parecía solo seguir sin detenerse.<br />
+                                     <span>【●】有时现实总是让我感到惊讶。</span><br /><br />
+                                     Si realmente los sueños pudieran convertirse en realidad,<br />
+                                     ahora mismo la realidad sería lo que más se intentaría buscar.<br />
+                                     <span>【●】如果梦想真的可以实现</span><br /><br />
+                                     Esta tormenta blanca me enseñó que hay excepciones...<br />
+                                     como todo en la vida, no existen las generalizaciones.<br />
+                                     <span>【●】这场白色风暴告诉我凡事都有例外</span><br /><br />
+                                     Cada ser vivo en esta realidad, está en esta vida para un propósito alcanzar...<br />
+                                     <span>【●】这个现实中的每一个众生</span><br /><br />
+                                     Y si analizas con delicadeza,<br />
+                                     observarás que a todo le hace falta una pieza.<br />
+                                     <span>【●】而如果你仔细分析的话</span><br /><br />
+                                     Los trinados de los mirlos a nuestro alrededor ¿puedes escuchar?<br />
+                                     Son demasiadas palabras que no podremos asimilar<br />
+                                     <span>【●】 我们周围乌鸫的鸣叫声</span><br /><br />
+                                     Como los sentimientos que me envuelven<br />
+                                     bajo esta tormenta de frágil nieve<br />
+                                     <span>【●】就像我周围的感觉一样</span><br /><br />
+                                     Y es tan difícil describir,<br />
+                                     la calidez que esta nieve me hace sentir.<br />
+                                     <span>【●】这很难描述</span><br /><br />
+                                     Con palabras no puedo expresar lo que siento por ti,<br />
+                                     mi dulce Yuki, por ti en esta gris realidad vale la pena vivir.<br />
+                                     <span>【●】我无法用言语表达我对你的感受</span><br /><br />
+                                 </p>
+                             </div>
+
+                         </div>
+
+                         <div id="neige2back">
+                             <img src="https://i.postimg.cc/T3Ck35sF/2.jpg" id="neigeimg1" />
+
+                         </div>
                          <div id="neige2" class="neige2">
                              <style>
 
@@ -1359,50 +1646,103 @@
 
              <div id="menulatinfo">
                  <style >
-                     #menulatinfo { position:absolute; width:100%; height:80%;  overflow:hidden;
+                     #menulatinfo { position:absolute; width:70%; height:80%;  
+                     }
+                     #areaicons {
                      }
                      #menus {
+                         top:0%;
                          position: absolute;
                          width: 100%;
-                         height: 25%;
+                         height: 45%;
                          background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
                      }
-                     #mainsection { 
+
+                     #butonsprofile2 {
                          position: absolute;
-                         width: 100%; top:20%;
-                         height: 80%;
-                         /*background: blue;*/
+                         top: -2.4vw;
+                         height: 1.5vw;
+                         width: 2vw;
+                         right: -.6vw;
                      }
-                     #menunav { background:#ef82a1; height:1.8vw; width:100%; border-radius:.3vw .3vw 0 0;
-                         transition: all .5s ease;
-                         font-family: 'Raleway', sans-serif;
-                         color: white; font-size:.8vw; letter-spacing:.1vw;
-                          position:absolute;
+                     #butonsprofile3 {
+                         position: absolute;
+                         top: -1.9vw;
+                         height: 1.5vw;
+                         width: 2vw;
+                         right: -.1vw;
                      }
-                     #butonsnav { position:absolute; width:50%; height:2vw;   top:2vw; left:15%;
+                     @keyframes animafloat {
+                         0% {
+                            top:5%;
+                         }
+
+                         50% {
+                             top:10%;
+                         }
+
+                         100% {
+                             top: 5%;
+                         }
                      }
-                     .btnnav { width:2vw; height:2vw;   margin-left:.5vw; float:left;
+                     @keyframes animafloat2 {
+                         0% {
+                             top: 60%;
+                         }
+
+                         50% {
+                             top: 65%;
+                         }
+
+                         100% {
+                             top: 60%;
+                         }
                      }
-                     .imgnav { width:1.4vw; filter:invert(90%); position:relative; left:.3vw; top:.3vw;
+                     #menus {
+                         animation: animafloat 4s infinite;
+                          
+                         border-radius: .5vw;
+                     }
+                     #textpalet {
+                         color: #ef82a1;
+                         font-family: 'Raleway', sans-serif; font-weight:bold; font-size:.9vw; letter-spacing:.1vw; position:absolute; left:.7vw; top:-.5vw;
+                     }
+                     #areaicons {
+                         animation: animafloat2 4s infinite; animation-delay:2s;
+                         top: 65%;
+                         left: 35%;
+                         position: absolute;
+                         width: 120%;
+                         height: 30%;
+                         background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                         border-radius: .5vw;
                      }
                  </style>
 
-                 <!--<div id="menus">
-                     <div id="menunav">
-                         <p >NAVIGATE <span id="blkjn">█</span></p>
-                     </div>
+                 <div id="menus">
                     
-                     <div id="butonsnav">
-                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
-                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/V6DhfrtN/musica-1.png" /></div>
-                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
-                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/1z0TdY5w/editar-simbolo-de-interfaz-2.png" /></div>
-                         <div class="btnnav"><img class="imgnav" src="https://i.postimg.cc/SRRvJSLf/enviar.png" /></div>
-                     </div>
-                 </div>
-                 <div id="mainsection">
+                     <div id="profile2"  >
+                         <div id="butonsprofile2">
 
-                 </div>-->
+                             <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
+                         </div>
+                         <div id="profile3">
+                             <p id="textpalet">palette color <span id="blkjn">█</span></p>
+                         </div>
+                     </div>
+                      
+                 </div>
+                
+                 <div id="areaicons">
+                     
+                         <div id="butonsprofile3">
+
+                             <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
+                         </div>
+                          
+                      
+                 </div>
+
              </div>
 
              <div id="areacoma">
@@ -1501,141 +1841,7 @@
                  });
 
              </script>
-             <style>
-                 #profile {
-                     position: absolute;
-                     width: 25%;
-                     left: 2%;
-                     top: 64%;
-                     height: 29%;
-                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
-                 }
-
-                 #profile2 {
-                     width: 92%;
-                     height: 88%;
-                     background: #f8cbd0;
-                     background-image: url(https://i.postimg.cc/FRHQNnxQ/Gb5-O9g-1.jpg);
-                     background-repeat: repeat;
-                     left: 4%;
-                     top: 6%;
-                     position: absolute;
-                 }
-
-                 #profile3 {
-                     width: 92%;
-                     height: 88%;
-                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
-                     left: 4%;
-                     top: 6%;
-                     position: absolute;
-                 }
-
-                 #imgprofile {
-                     position: absolute;
-                     width: 8vw;
-                     height: 8vw;
-                     left: .8vw;
-                     top: .8vw;
-                     border: .2vw solid #d198c4;
-                 }
-
-                 #butonsprofile {
-                     position: absolute;
-                     top: -1.8vw;
-                     height: 1.5vw;
-                     width: 4vw;
-                     right: 0;
-                 }
-
-                 .butonprofile {
-                     width: 1.5vw;
-                     height: 1.5vw;
-                     float: left;
-                     margin-left: .3vw;
-                     border: .1vw solid white;
-                     border-radius: .2vw;
-                 }
-
-                     .butonprofile:hover {
-                         border: .1vw solid #f8cbd0;
-                         ;
-                         background: #eb5c8a;
-                     }
-
-                     .butonprofile img {
-                         position: relative;
-                         width: 1vw;
-                         left: .25vw;
-                         top: .25vw;
-                         filter: invert(100%);
-                     }
-
-                 #btnmove {
-                     width: 1.4vw;
-                     left: .05vw;
-                     top: .05vw;
-                     cursor: grab;
-                 }
-
-                     #btnmove:active {
-                         cursor: grabbing;
-                     }
-                 #japname {
-                     font-family: 'Inconsolata', monospace; position:absolute; color:#ef82a1; top:77%; left:9%; font-size:.65vw; letter-spacing:.2vw; font-weight:lighter;
-                 }
-                 #namemain {
-                     font-family: 'Inconsolata', monospace;
-                     position: absolute;
-                     color: #eb5c8a;
-                     top: 1%;
-                     left: 62%; font-weight:bold;
-                     font-size: .9vw;
-                     letter-spacing: .6vw;
-                    
-                 }
-                 #namemain2 {
-                     font-family: 'Inconsolata', monospace;
-                     position: absolute;
-                     color: dimgray;
-                     top: 1%; opacity:.5;
-                     left: 63%;
-                     font-weight: bold;
-                     font-size: .9vw;
-                     letter-spacing: .6vw;
-                 }
-                 #linename { width:38%; height:0; border-top:.01vw solid #f8cbd0; top:17%; left:53%; position:absolute;
-                 }
-                 #subname {
-                     font-family: 'Inconsolata', monospace;
-                     color:  #a5a5a5; font-weight:bold;
-                     font-size: .6vw;
-                     letter-spacing: .1vw;
-                     top: 15%;
-                     left: 60%;
-                     position: absolute;
-                 }
-                 #date {
-                     font-family: 'Inconsolata', monospace;
-                     color: #a5a5a5;
-                     font-weight: bold;
-                     font-size: .7vw;
-                     letter-spacing: .1vw;
-                     top: 24%;
-                     left: 78%;
-                     position: absolute;
-                 }
-                 #infoyuki { position:absolute; width:47%; height:.8vw; top:39%; left:50%; background:#ef82a1;
-                 }
-                 #pinfo {
-                     font-family: 'Inconsolata', monospace;
-                     color: white; text-transform:uppercase;
-                     letter-spacing:.3px;
-                     font-size: .6vw; left:.1vw;
-                     top:-.5vw;
-                     position: absolute;
-                 }
-             </style>
+          
              <div id="butonsprofile">
                  <div class="butonprofile"><img id="btnmove" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
                  <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
@@ -1886,7 +2092,13 @@
                      top: 0;
                      background: red;
                  }
-
+                 #butonsmenulat2 {
+                     position: absolute;
+                     width: 100%;
+                     height: 100%;
+                     top: 0;
+                     background: red;
+                 }
                  .butons {
                      float: left;
                      width: 25%;
@@ -1899,14 +2111,37 @@
                      .butons:hover {
                          background: #d24081;
                      }
+                 .butons2 {
+                     float: left;
+                     width: 25%;
+                     height: 100%; 
+                     background: #ef82a1;
+                     transition: all .5s ease;
+                     text-align: center;
+                 }
 
-                 #divlat {
+                     .butons2:hover {
+                         background: #d24081;
+                     }
+
+                 #divlat { overflow:hidden;
                      top: 90%;
                      width: 100%;
-                     height: 2%;
+                     border-radius: 0 0 1vw 1vw;
+                     height: 3%;
                      background: #ef82a1;
                      position: absolute;
+                     text-align: center;
+                     color: white;
+                     font-size: .55vw;
+                     letter-spacing: .15vw;
+                     font-family: "Roboto", Arial, sans-serif;
                  }
+                     #divlat span {
+                         margin-left: 1vw;
+                         margin-right: 1vw;
+                        
+                     }
 
                  .buton-p {
                      transition: all .5s ease;
@@ -1922,6 +2157,18 @@
                      letter-spacing: .25vw;
                      color: #f8cbd0;
                      text-decoration: underline;
+                 }
+                 #but11 { border-right:1px solid white; margin-left:-1px;
+                 }
+                 #but22 {
+                     border-right: 1px solid white;
+                     margin-left: -2px;
+                     border-left: 1px solid white;
+                 }
+                 #but44 {
+                     border-right: 1px solid white;
+                     margin-left: -2px;
+                     border-left: 1px solid white;
                  }
              </style>
 
@@ -1987,7 +2234,17 @@
 
              </div>
 
-             <div id="divlat"></div>
+             <div id="divlat">
+                 <div id="butonsmenulat2">
+                     <div id="but11" class="butons2">
+                         <p class="buton-p2">Cute</p> 
+                     </div>
+                     <div id="but22" class="butons2"> <p class="buton-p2">Sweety</p> </div>
+                     <div id="but33" class="butons2"><p class="buton-p2">Erratic</p></div>
+                     <div id="but44" class="butons2"><p class="buton-p2">Beauty♡</p></div>
+                 </div>
+                 <!--<span></span>|<span></span>|<span></span>|<span></span>-->
+             </div>
          </div>
 
      </div>
