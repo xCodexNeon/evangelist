@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
@@ -47,7 +47,7 @@
             text-align: center;
             overflow: hidden;
             z-index: 999;
-            height: /*8%;*/  100%;
+            height:   100%;
         }
 
         @keyframes animaentrance {
@@ -359,6 +359,8 @@
         function removeprofile() { $("#profile").remove(); }
         function removepost() { $("#post").remove(); }
         function removepostneige() { $("#pstn").remove(); }
+        function removegall() { $("#areaicons").remove(); }
+        function removepale() { $("#menus").remove(); }
         function neige1left() {
             if ((x == 1) || (x == 0)) {
                 $("#neige1").removeClass("neige1"); $("#neige1").addClass("neigeleft");
@@ -1717,30 +1719,159 @@
                          background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
                          border-radius: .5vw;
                      }
+                     #galimg1 {border-radius:.4vw;
+                         position: absolute;
+                         width: 4.5vw;
+                         height: 4.5vw;
+                         right: .5vw;
+                         top: .7vw;
+                         border: .2vw solid #ef82a1;
+                     }
+                     #galimg2 {
+                         border-radius: .4vw;
+                         position: absolute;
+                         width: 4.5vw;
+                         height: 4.5vw;
+                         right: 5.5vw;
+                         top: .7vw;
+                         border: .2vw solid #ef82a1;
+                     }
+                     #galimg3 {
+                         border-radius: .4vw;
+                         position: absolute;
+                         width: 4.5vw;
+                         height: 4.5vw;
+                         right: 10.5vw;
+                         top: .7vw;
+                         border: .2vw solid #ef82a1;
+                     }
+                         #galimg1 img, #galimg2 img, #galimg3 img {
+                             position: absolute;
+                             width: 4vw;
+                             height: 4vw;
+                             left: .3vw;
+                             top: .3vw;
+                         }
+                     #color1, #color2, #color3, #color4, #color5, #color6 {
+                         position: absolute;
+                         width: 2.2vw;
+                         height: 2.2vw;
+                         border-radius: 50%;
+                         border: .1vw solid #ef82a1;
+                         top: 30%;
+                         left: 10%;
+                     }
+                     #color2 { left:27%;
+                     }
+                     #color3 {
+                         left: 44%;
+                     }
+                     #color4 {
+                         left: 61%;
+                     }
+                     #color5 {
+                         left: 77%;
+                     }
+                     #color6 {
+                         top: 61%;
+                         left: 10%;
+                     }
+                     #color11 {
+                         position: absolute;
+                         width: 2vw; top:.1vw; left:.1vw; background:#ef82a1;
+                         height: 2vw;
+                         border-radius: 50%; 
+                     }
+                     #color14 {
+                         position: absolute;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: #d24081;
+                         height: 2vw;
+                         border-radius: 50%;
+                     }
+                     #color12 {
+                         position: absolute;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: white;
+                         height: 2vw;
+                         border-radius: 50%;
+                     }
+                     #color13 {
+                         position: absolute;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: #d198c4;
+                         height: 2vw;
+                         border-radius: 50%;
+                     }
+                     #color15 {
+                         position: absolute;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: #f8cbd0;
+                         height: 2vw;
+                         border-radius: 50%;
+                     }
+                     #color16 {
+                         position: absolute;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: #b21160;
+                         height: 2vw;
+                         border-radius: 50%;
+                     }
                  </style>
 
                  <div id="menus">
                     
-                     <div id="profile2"  >
+                     <div id="profile2">
                          <div id="butonsprofile2">
 
-                             <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
+                             <div class="butonprofile" onclick="removepale();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
                          </div>
                          <div id="profile3">
                              <p id="textpalet">palette color <span id="blkjn">█</span></p>
+                         </div>
+
+                         <div id="color1">
+                             <div id="color11"></div>
+                         </div>
+                         <div id="color2">
+                             <div id="color12"></div>
+                         </div>
+                         <div id="color3">
+                             <div id="color13"></div>
+                         </div>
+                         <div id="color4">
+                             <div id="color14"></div>
+                         </div>
+                         <div id="color5">
+                             <div id="color15"></div>
+                         </div>
+                         <div id="color6">
+                             <div id="color16"></div>
                          </div>
                      </div>
                       
                  </div>
                 
                  <div id="areaicons">
-                     
-                         <div id="butonsprofile3">
 
-                             <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
-                         </div>
-                          
-                      
+                     <div id="butonsprofile3">
+
+                         <div class="butonprofile" onclick="removegall();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
+                     </div>
+                     <p id="textpalet">Gallery <span id="blkjn">█</span></p>
+                     <div id="galimg1"><img src="https://i.pinimg.com/564x/0c/da/2f/0cda2f937cac4583deb4c7fa9d205edb.jpg" /></div>
+                     <div id="galimg2"><img src="https://i.pinimg.com/564x/f5/69/82/f569825976c63c2f5eae595e97fc5c6d.jpg" /></div>
+                     <div id="galimg3"><img src="https://i.pinimg.com/736x/8a/4d/6c/8a4d6c33cc37f1862dc577e366f5d3fc.jpg" /></div>
                  </div>
 
              </div>
