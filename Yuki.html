@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
@@ -469,7 +469,7 @@
                             "https://xevangelist.github.io/evangelist/aoki.mp3?raw=true"
                     },
                     {
-                        name: "Your name little glee monster",
+                        name: "Little glee monster",
                         artist: "Your Name",
                         src:
                             "https://xevangelist.github.io/evangelist/glee.mp3?raw=true"
@@ -550,7 +550,7 @@
             });
             $("#stop").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 9) {
+                if (CurrentSong > 4) {
                     CurrentSong = 0;
                 }
                 song.pause();
@@ -559,14 +559,14 @@
             $("#prev").click(function prev() {
                 CurrentSong--;
                 if (CurrentSong < 0) {
-                    CurrentSong = 9;
+                    CurrentSong = 4;
                 }
                 playSong();
             });
 
             $("#next").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 9) {
+                if (CurrentSong > 4) {
                     CurrentSong = 0;
                 }
                 playSong();
