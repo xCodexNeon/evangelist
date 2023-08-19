@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
@@ -41,13 +41,13 @@
             top: 0;
             left: 0;
             background: #eb5c8a;
-             animation: animaentrance 5s 1;
-            animation-fill-mode: forwards;
+            /* animation: animaentrance 5s 1;
+            animation-fill-mode: forwards;*/
             color: white;
             text-align: center;
             overflow: hidden;
             z-index: 999;
-            height:   100%;
+            height: 8%; /* 100%*/
         }
 
         @keyframes animaentrance {
@@ -66,7 +66,7 @@
 
         #entrancetexts {
             width: auto;
-            height: 5vw;
+            height: 5vw;    
             position: relative;
             top: -1vw;
             animation: animaentrancetexts 5s 1;
@@ -389,6 +389,30 @@
             else if (y > 2) { y = 0; }
 
         }
+        function openpost() {
+            $("#post").removeClass("closepost"); $("#post").addClass("openpost");
+               
+
+            
+        }
+        function closepost() {
+            $("#post").removeClass("openpost"); $("#post").addClass("closepost");
+
+
+
+        } function openpost1() {
+            $("#post1").removeClass("closepost"); $("#post1").addClass("openpost");
+
+
+
+        }
+        function closepost1() {
+            $("#post1").removeClass("openpost"); $("#post1").addClass("closepost");
+
+
+
+        }
+
     </script>
     <script>
         $(document).ready(function () {
@@ -589,7 +613,7 @@
                  </div>
 
                  <p id="entrancetitle">雪根 / 昏迷白</p>
-                 <p id="subtentrance">Yuki | xComaWhite | 1515302520 <span id="blkjn">|</span></p>
+                 <p id="subtentrance">Yuki | Lynette | 1515302520 <span id="blkjn">|</span></p>
              </div>
 
     </div>
@@ -625,12 +649,11 @@
                              width: 1vw;
                              background: linear-gradient(360deg, black 43%, #be4343 43.1%, #be4343 50%, #be4343 56.9%, black 57%);
                          }*/
-                 #post {
+                 #post, #post1 {
                      background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
                      direction: ltr;
                      border-radius: .5vw;
-                     width: 45%;
-                     height: auto;
+                     width: 45%; 
                      margin-bottom: 10%;
                  }
 
@@ -660,7 +683,7 @@
                      margin-left: .5vw;
                  }
 
-                 #post:hover #Ptit {
+                 #post:hover #Ptit, #post1:hover #Ptit {
                      letter-spacing: .25vw;
                      color: #be4343;
                  }
@@ -972,64 +995,89 @@
                      font-size: .8vw;
                      /*font-weight: lighter;*/
                  }
+
                  #pstn {
                      direction: ltr;
                      width: 42%;
                      height: 78%;
                      margin-right: 2.5%;
                      margin-top: 5%;
-                     margin-bottom: 10%; border:.1vw solid #ef82a1;
+                     margin-bottom: 10%;
+                     border: .1vw solid #ef82a1;
                  }
-                 #postNeige { position:relative;
+
+                 #postNeige {
+                     position: relative;
                      direction: ltr;
                      width: 97%;
-                     height: 98%; left:1.5%;
-                     top:.4%; 
+                     height: 98%;
+                     left: 1.5%;
+                     top: .4%;
                  }
-                     #postNeige #icn2 { top: 1vw; z-index:9;  position:absolute;
+
+                     #postNeige #icn2 {
+                         top: 1vw;
+                         z-index: 9;
+                         position: absolute;
                      }
-                         #postNeige #icn2 img { filter:invert(100%);
+
+                         #postNeige #icn2 img {
+                             filter: invert(100%);
                          }
+
                  #postneigeb {
                      width: 100%;
                      height: 100%;
-                     margin-right: 5%;  top:.2vw;
-                     position: relative; overflow:hidden;
+                     margin-right: 5%;
+                     top: .2vw;
+                     position: relative;
+                     overflow: hidden;
                  }
+
                  #neige1 {
                      position: absolute;
                      width: 50%;
                      height: 100%;
                      transition: all .5s ease;
                  }
+
                  .neige1 {
                      left: 0;
                  }
+
                  .neige2 {
                      right: 0;
                  }
+
                  #neige1back {
                      position: absolute;
                      width: 50%;
                      height: 100%;
                      background: #171717;
                  }
+
                  #neige2 {
                      position: absolute;
-                     width: 50%; 
+                     width: 50%;
                      transition: all .5s ease;
                      height: 100%;
                      background: #171717;
                  }
+
                  #neige2back {
                      position: absolute;
                      width: 50%;
                      left: 50%;
                      height: 100%;
-                     background: #171717;  
+                     background: #171717;
                  }
-                 #neigeimg1 { position:absolute; width:100%; height:100%;
+
+                 #neigeimg1 {
+                     position: absolute;
+                     width: 100%;
+                     height: 100%;
                  }
+
                  #closeneige {
                      font-family: "Roboto", Arial, sans-serif;
                      position: absolute;
@@ -1041,20 +1089,29 @@
                      right: 3.5%;
                      opacity: .5;
                  }
+
                  #closeneigeesp {
                      position: absolute;
-                     top: 14%; right:-7%; z-index:9; letter-spacing:.1vw; font-size:.45vw; text-transform:uppercase; transform:rotate(90deg);  
-                     font-family: "Roboto", Arial, sans-serif; color:white;
+                     top: 14%;
+                     right: -7%;
+                     z-index: 9;
+                     letter-spacing: .1vw;
+                     font-size: .45vw;
+                     text-transform: uppercase;
+                     transform: rotate(90deg);
+                     font-family: "Roboto", Arial, sans-serif;
+                     color: white;
                  }
+
                  #closeneige2 {
                      font-family: "Roboto", Arial, sans-serif;
                      position: absolute;
                      top: 1.8vw;
-                     color:#ef82a1;
+                     color: #ef82a1;
                      z-index: 9;
                      font-size: .7vw;
                      line-height: 1.2vw;
-                     right:  10%;
+                     right: 10%;
                      opacity: .5;
                  }
 
@@ -1067,10 +1124,10 @@
                      font-size: .45vw;
                      text-transform: uppercase;
                      transform: rotate(90deg);
-                     
                      font-family: "Roboto", Arial, sans-serif;
                      color: white;
                  }
+
                  #closeneige3 {
                      font-family: "Roboto", Arial, sans-serif;
                      position: absolute;
@@ -1095,11 +1152,12 @@
                      font-family: "Roboto", Arial, sans-serif;
                      color: white;
                  }
+
                  .neigeright {
                      right: -55%;
                  }
+
                  .neigeleft {
-                    
                      left: -50%;
                  }
              </style>
@@ -1121,7 +1179,7 @@
              </div>
 
              <div id="pstn">
-                 <div id="postNeige" >
+                 <div id="postNeige">
                      <style>
                      </style>
                      <div id="icn2" class="icn2">
@@ -1129,7 +1187,7 @@
                              .icn2 {
                                  position: absolute;
                                  margin-left: -1.5%;
-                                 width: 20%; 
+                                 width: 20%;
                              }
                          </style>
                          <div class="vnt" onclick="neigepic();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
@@ -1439,79 +1497,314 @@
 
                  </div>
              </div>
-            
-
-             <div id="post">
-
-                 <div id="icn2">
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+             <div id="post" class="openpost">
+                 <div id="headpost">
+                     <div id="headimg">
+                         <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                     </div>
+                     <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                                                            <div id="icn2" class="icn3">
+                                                                <style>
+                                                                    .icn3 {
+                                                                        margin-top: -20%;
+                                                                        position: absolute;
+                                                                        margin-left: -1.5%;
+                                                                        width: 20%;
+                                                                    }
+                                                                </style>
+                                                                <div class="vnt" onclick="openpost();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
+                                                                <div class="vnt" onclick="closepost();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                                                                <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                                                            </div>
                  </div>
-                 <p id="Ptit">Speak now</p>
-                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+                 <img id="imgmainpost" src="https://i.postimg.cc/FHgf8L2b/4b8f5ca7bf41461a19e3b4d1e64c1eb5.gif" />
+                 <div id="textareapost">
+                     <p id="ptitlepost">With me:</p>  <div id="textpost">
+                         <p>
+                             I want you to know with everything, I won't let this go.
+                             These words are my <span>heart</span> and <span>soul</span>, I'll hold on to this moment, you know
+                             As I <span>bleed</span> my heart out to show and I won't let go.
+                         </p>
+                     </div>
 
-                 <div id="Ar">
-                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
-                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
-                     Tell me, what do you see?  A lifelessness hindered today
 
-                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
                  </div>
-                 <div id="Firm">
-                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
-                     <b id="Im">@Reiizzue</b>
-                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
-                     <b id="rgn">xEvangelist</b>
-                 </div>
+                 <div id="butonspost"><p>#Neige</p><p>#FromMyHeart</p><p>#ForYuki</p></div>
+
              </div>
-             <div id="post">
 
-                 <div id="icn2">
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
-                 </div>
-                 <p id="Ptit">Speak now</p>
-                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
 
-                 <div id="Ar">
-                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
-                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
-                     Tell me, what do you see?  A lifelessness hindered today
+             <div id="post1" class="openpost">
+                 <style>
+                    
+                     #post, #post1 {
+                         position: relative;
+                         width: 42%; overflow:hidden;
+                         left: -2.5%;
+                         
+                         background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                         margin-top: 2vw;
+                         margin-bottom: 5vw; transition:all .5s ease;
+                     }
+                     .openpost {
+                         height: 32vw;
+                     }
+                     .closepost {
+                         height: 7vw;
+                     }
+                      
 
-                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
-                 </div>
-                 <div id="Firm">
-                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
-                     <b id="Im">@Reiizzue</b>
-                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
-                     <b id="rgn">xEvangelist</b>
-                 </div>
-             </div>
-             <div id="post">
+                    
 
-                 <div id="icn2">
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/Zq5s5Jnm/menu-de-puntos.png" /></div>
-                     <div class="vnt"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                     <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
-                 </div>
-                 <p id="Ptit">Speak now</p>
-                 <div id="Aimgp"> <img class="PstImg" src="https://u.cubeupload.com/Azhriell/227original.jpg" /></div>
+                     #headpost {
+                         position: relative;
+                         width: 96%;
+                         left: 2%;
+                         top: .5vw;
+                         background: #eb5c8a;
+                         height: 5vw;
+                     }
+                     
+                     #imgmainpost {
+                         position: relative;
+                         width: 96%;
+                         left: 2%;
+                         margin-top: 2vw;
+                     }
 
-                 <div id="Ar">
-                     my servants rise tell legends of my name before instill the fear into the hearts of all who dare defy me
-                     A question growing slim upon the seas of change below. Be true to all that you have seen my will will carry <br />
-                     Tell me, what do you see?  A lifelessness hindered today
+                     #butonspost {
+                         height: 3vw;
+                         width: 96%;
+                         left: 2%;
+                         text-align: right;
+                         margin-top: 0vw;
+                     }
 
-                     <br /> Bow down to my name <b style="color:#be4343;">For I am the God of this world</b>
+                         #butonspost p {
+                             font-family: "Roboto", Arial, sans-serif;
+                             background: #eb5c8a;
+                             color: white;
+                             padding: .4vw;
+                             margin-left: 1vw;
+                             float: right;
+                             font-size: .7vw;
+                             letter-spacing: .1vw;
+                         }
+
+                     #textareapost {
+                         margin-top: 1vw;
+                         position: relative;
+                         width: 96%;
+                         left: 2%;
+                     }
+
+                     #ptitlepost {
+                         font-family: "Roboto", Arial, sans-serif;
+                         font-size: .7vw;
+                         letter-spacing: .1vw;
+                         color: #b67fb6;
+                         text-decoration: underline;
+                         font-weight: bold;
+                     }
+
+                     #textpost {
+                         position: relative;
+                         width: 92%;
+                         left: 5%;
+                         border-left: .1vw solid #7c6092;
+                     }
+
+                         #textpost p {
+                             margin-left: .5vw;
+                             font-family: "Roboto", Arial, sans-serif;
+                             font-size: .7vw;
+                             letter-spacing: .1vw;
+                             color:gray;
+                         }
+
+                         #textpost span {
+                             color: #7c6092;
+                         }
+
+                     #reproarea {
+                         position: relative;
+                         width: 96%;
+                         height: 15%;
+                         left: 2%;
+                         margin-top: 2vw;
+                     }
+
+                     #clock, #clock2 {
+                         color: lightgray;
+                         text-transform: uppercase;
+                         font-size: .8vw;
+                         letter-spacing: .1vw;
+                         position: absolute;
+                         left: 5vw;
+                         top: 1.5vw;
+                         font-family: "Roboto", Arial, sans-serif;
+                     }
+
+                     #tt, #tt2 {
+                         color: #f8cbd0;
+                         text-transform: uppercase;
+                         font-size: .7vw;
+                         letter-spacing: .1vw;
+                         position: absolute;
+                         left: 5vw;
+                         top: 1.8vw;
+                         font-family: "Roboto", Arial, sans-serif;
+                     }
+
+                     #headimg {
+                         width: 3vw;
+                         height: 3vw;
+                         position: relative;
+                         border-radius: .6vw;
+                         background: #f8cbd0;
+                         left: 1vw;
+                         top: 1vw;
+                     }
+
+                         #headimg img {
+                             width: 1.5vw;
+                             position: absolute;
+                             left: .7vw;
+                             top: .75vw;
+                             filter: invert(50%);
+                         }
+
+                     #buttons {
+                         filter: invert(100%);
+                         position: absolute;
+                         z-index: 9;
+                         width: 12%;
+                         right: 2%;
+                         top: 40%;
+                         height: 8%;
+                         opacity: .4;
+                     }
+
+                     #bt1, #bt12 {
+                         position: absolute;
+                         width: 1vw;
+                         height: 1vw;
+                     }
+
+                     .relad3 {
+                         background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
+                         background-size: contain;
+                     }
+
+                     .relad2 {
+                         background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
+                         background-size: contain;
+                     }
+
+                     #bt2, #bt22 {
+                         left: 2vw;
+                         position: absolute;
+                         width: 1vw;
+                         height: 1vw;
+                         background: url(https://i.postimg.cc/W1ytn21n/reload.png);
+                         background-size: contain;
+                     }
+
+                     .relad {
+                         animation: reload 2s 1;
+                     }
+
+                     .reloadpost {
+                         animation: reloadpost 2s 1;
+                     }
+
+                     @keyframes reload {
+                         100% {
+                             transform: rotate(360deg);
+                         }
+                     }
+
+                     @keyframes reloadpost {
+                         0% {
+                             opacity: 0;
+                         }
+
+                         100% {
+                             opacity: 1;
+                         }
+                     }
+
+                     #pbtn1 {
+                         filter: invert(100%);
+                         color: white;
+                         border-radius: .3vw;
+                         font-size: .6vw;
+                         padding: .5vw;
+                         background: #7c6092;
+                         text-align: center;
+                         letter-spacing: .1vw;
+                         top: 1vw;
+                         opacity: 0;
+                         transition: all .5s ease;
+                         position: absolute;
+                         width: 8vw;
+                         font-family: "Roboto", Arial, sans-serif;
+                     }
+
+                     #pbtn2 {
+                         filter: invert(100%);
+                         color: white;
+                         border-radius: .3vw;
+                         font-size: .6vw;
+                         padding: .5vw;
+                         background: #7c6092;
+                         text-align: center;
+                         letter-spacing: .1vw;
+                         top: 1vw;
+                         opacity: 0;
+                         transition: all .5s ease;
+                         position: absolute;
+                         width: 8vw;
+                         font-family: "Roboto", Arial, sans-serif;
+                     }
+
+                     #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                         opacity: 1;
+                     }
+                 </style>
+
+                 <div id="headpost">
+                     <div id="headimg">
+                         <img src="https://i.postimg.cc/x85cp1ns/image.pngg" />
+                     </div>
+                     <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                     <div id="icn2" class="icn3">
+                         <style>
+                             .icn3 {
+                                 margin-top: -10%;
+                                 position: absolute;
+                                 margin-left: -1.5%;
+                                 width: 20%;
+                             }
+                            
+                         </style>
+                         <div class="vnt" onclick="openpost1();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
+                         <div class="vnt" onclick="closepost1();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                         <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                     </div>
                  </div>
-                 <div id="Firm">
-                     <div id="ImF"><img src="https://u.cubeupload.com/Azhriell/efc9a7b69e4d493e55f6328.jpg" /></div>
-                     <b id="Im">@Reiizzue</b>
-                     <div id="tx">𝑌𝑜𝑢'𝑣𝑒 𝑎 𝑐𝑜𝑟𝑑𝑖𝑎𝑙 𝑖𝑛𝑣𝑖𝑡𝑎𝑡𝑖𝑜𝑛... 𝐹𝑅𝑂𝑀 𝑇𝐻𝐸 𝐻𝐸𝐿𝐿. 𝐵𝑢𝑟𝑛 𝑦𝑜𝑢𝑟𝑠𝑒𝑙𝑓 𝑓𝑜𝑟 𝑎 𝑤𝘩𝑖𝑙𝑒! 𝑎𝑛𝑑 𝑒𝑛𝑗𝑜𝑦 𝑡𝘩𝑒 𝑝𝑟𝑖𝑐𝑒 𝑓𝑜𝑟 𝑦𝑜𝑢𝑟𝑠 𝑠𝑖𝑛𝑠.</div>
-                     <b id="rgn">xEvangelist</b>
-                 </div>
+                 
+                     <img id="imgmainpost" src="https://u.cubeupload.com/Anti_Clockwise/a4868903ebb6d05803ae.gif" />
+                     <div id="textareapost">
+                         <p id="ptitlepost">(Source: Yukine)</p>
+
+
+                     </div>
+
+                     <div id="butonspost"><p>#Lynette</p><p>#Yukine</p> </div>
+                  
+                
+
              </div>
          </div>
 
@@ -1991,7 +2284,7 @@
                      </p>
                      <div id="linename"></div>
                      <p id="subname">
-                         @Yukine1342
+                         @Lynette1342
                      </p>
                      <p id="date">01/10/03♥</p>
                      <div id="infoyuki">
@@ -2305,7 +2598,7 @@
 
              <div id="butonsmenulat">
                  <div id="but1" class="butons">
-                     <p class="buton-p">YUKINE</p>
+                     <p class="buton-p" style="text-transform:uppercase;">Lynette</p>
                  </div>
                  <div id="but2" class="butons"><p class="buton-p">XIX</p></div>
                  <div id="but3" class="butons"><p class="buton-p">HOME</p></div>
