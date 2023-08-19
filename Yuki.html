@@ -41,13 +41,13 @@
             top: 0;
             left: 0;
             background: #eb5c8a;
-            /* animation: animaentrance 5s 1;
-            animation-fill-mode: forwards;*/
+             animation: animaentrance 5s 1;
+            animation-fill-mode: forwards;
             color: white;
             text-align: center;
             overflow: hidden;
             z-index: 999;
-            height: 8%; /* 100%*/
+            height:/* 8%;*/  100%;
         }
 
         @keyframes animaentrance {
@@ -357,7 +357,8 @@
         /*botons*/
         var x = 0; var y = 0;
         function removeprofile() { $("#profile").remove(); }
-        function removepost() { $("#post").remove(); }
+        function removepost() { $("#post").remove(); } function removepost1() { $("#post1").remove(); }
+        function removepost2() { $("#post2").remove(); }
         function removepostneige() { $("#pstn").remove(); }
         function removegall() { $("#areaicons").remove(); }
         function removepale() { $("#menus").remove(); }
@@ -412,7 +413,18 @@
 
 
         }
+        function openpost2() {
+            $("#post2").removeClass("closepost"); $("#post2").addClass("openpost");
 
+
+
+        }
+        function closepost2() {
+            $("#post2").removeClass("openpost"); $("#post2").addClass("closepost");
+
+
+
+        }
     </script>
     <script>
         $(document).ready(function () {
@@ -616,7 +628,7 @@
                  <p id="subtentrance">Yuki | Lynette | 1515302520 <span id="blkjn">|</span></p>
              </div>
 
-    </div>
+         </div>
 
          <div id="Amn">
              <style>
@@ -629,6 +641,7 @@
                      height: 86%;
                      top: 7%;
                      overflow: auto;
+                     scroll-behavior: smooth;
                  }
 
                      #Amn::-webkit-scrollbar {
@@ -649,11 +662,11 @@
                              width: 1vw;
                              background: linear-gradient(360deg, black 43%, #be4343 43.1%, #be4343 50%, #be4343 56.9%, black 57%);
                          }*/
-                 #post, #post1 {
+                 #post, #post1, #post2 {
                      background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
                      direction: ltr;
                      border-radius: .5vw;
-                     width: 45%; 
+                     width: 45%;
                      margin-bottom: 10%;
                  }
 
@@ -683,7 +696,7 @@
                      margin-left: .5vw;
                  }
 
-                 #post:hover #Ptit, #post1:hover #Ptit {
+                 #post:hover #Ptit, #post1:hover #Ptit, #post2:hover #Ptit {
                      letter-spacing: .25vw;
                      color: #be4343;
                  }
@@ -1160,6 +1173,8 @@
                  .neigeleft {
                      left: -50%;
                  }
+                 .vnt { cursor:pointer
+                 }
              </style>
              <div id="postintro">
 
@@ -1497,25 +1512,25 @@
 
                  </div>
              </div>
-             <div id="post" class="openpost">
+             <div id="post" class="closepost">
                  <div id="headpost">
                      <div id="headimg">
                          <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
                      </div>
                      <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
-                                                            <div id="icn2" class="icn3">
-                                                                <style>
-                                                                    .icn3 {
-                                                                        margin-top: -20%;
-                                                                        position: absolute;
-                                                                        margin-left: -1.5%;
-                                                                        width: 20%;
-                                                                    }
-                                                                </style>
-                                                                <div class="vnt" onclick="openpost();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
-                                                                <div class="vnt" onclick="closepost();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                                                                <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
-                                                            </div>
+                     <div id="icn2" class="icn3">
+                         <style>
+                             .icn3 {
+                                 margin-top: -20%;
+                                 position: absolute;
+                                 margin-left: -1.5%;
+                                 width: 20%;
+                             }
+                         </style>
+                         <div class="vnt" onclick="openpost();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
+                         <div class="vnt" onclick="closepost();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                         <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                     </div>
                  </div>
                  <img id="imgmainpost" src="https://i.postimg.cc/FHgf8L2b/4b8f5ca7bf41461a19e3b4d1e64c1eb5.gif" />
                  <div id="textareapost">
@@ -1533,245 +1548,248 @@
 
              </div>
 
+             <style>
 
-             <div id="post1" class="openpost">
-                 <style>
-                    
-                     #post, #post1 {
-                         position: relative;
-                         width: 42%; overflow:hidden;
-                         left: -2.5%;
-                         
-                         background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
-                         margin-top: 2vw;
-                         margin-bottom: 5vw; transition:all .5s ease;
-                     }
-                     .openpost {
-                         height: 32vw;
-                     }
-                     .closepost {
-                         height: 7vw;
-                     }
-                      
+                 #post, #post1, #post2 {
+                     position: relative;
+                     width: 42%;
+                     overflow: hidden;
+                     left: -2.5%;
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                     margin-top: 2vw;
+                     margin-bottom: 5vw;
+                     transition: all .5s ease;
+                 }
 
-                    
+                 .openpost {
+                     height: 32vw;
+                 }
 
-                     #headpost {
-                         position: relative;
-                         width: 96%;
-                         left: 2%;
-                         top: .5vw;
+                 .closepost {
+                     height: 7vw;
+                 }
+
+
+
+
+                 #headpost {
+                     position: relative;
+                     width: 96%;
+                     left: 2%;
+                     top: .5vw;
+                     background: #eb5c8a;
+                     height: 5vw;
+                 }
+
+                 #imgmainpost {
+                     position: relative;
+                     width: 96%;
+                     left: 2%;
+                     margin-top: 2vw;
+                 }
+
+                 #butonspost {
+                     height: 3vw;
+                     width: 96%;
+                     left: 2%;
+                     text-align: right;
+                     margin-top: 0vw;
+                 }
+
+                     #butonspost p {
+                         font-family: "Roboto", Arial, sans-serif;
                          background: #eb5c8a;
-                         height: 5vw;
-                     }
-                     
-                     #imgmainpost {
-                         position: relative;
-                         width: 96%;
-                         left: 2%;
-                         margin-top: 2vw;
+                         color: white;
+                         padding: .4vw;
+                         margin-left: 1vw;
+                         float: right;
+                         font-size: .7vw;
+                         letter-spacing: .1vw;
                      }
 
-                     #butonspost {
-                         height: 3vw;
-                         width: 96%;
-                         left: 2%;
-                         text-align: right;
-                         margin-top: 0vw;
-                     }
+                 #textareapost {
+                     margin-top: 1vw;
+                     position: relative;
+                     width: 96%;
+                     left: 2%;
+                 }
 
-                         #butonspost p {
-                             font-family: "Roboto", Arial, sans-serif;
-                             background: #eb5c8a;
-                             color: white;
-                             padding: .4vw;
-                             margin-left: 1vw;
-                             float: right;
-                             font-size: .7vw;
-                             letter-spacing: .1vw;
-                         }
+                 #ptitlepost {
+                     font-family: "Roboto", Arial, sans-serif;
+                     font-size: .7vw;
+                     letter-spacing: .1vw;
+                     color: #b67fb6;
+                     text-decoration: underline;
+                     font-weight: bold;
+                 }
 
-                     #textareapost {
-                         margin-top: 1vw;
-                         position: relative;
-                         width: 96%;
-                         left: 2%;
-                     }
+                 #textpost {
+                     position: relative;
+                     width: 92%;
+                     left: 5%;
+                     border-left: .1vw solid #7c6092;
+                 }
 
-                     #ptitlepost {
+                     #textpost p {
+                         margin-left: .5vw;
                          font-family: "Roboto", Arial, sans-serif;
                          font-size: .7vw;
                          letter-spacing: .1vw;
-                         color: #b67fb6;
-                         text-decoration: underline;
-                         font-weight: bold;
+                         color: gray;
                      }
 
-                     #textpost {
-                         position: relative;
-                         width: 92%;
-                         left: 5%;
-                         border-left: .1vw solid #7c6092;
+                     #textpost span {
+                         color: #7c6092;
                      }
 
-                         #textpost p {
-                             margin-left: .5vw;
-                             font-family: "Roboto", Arial, sans-serif;
-                             font-size: .7vw;
-                             letter-spacing: .1vw;
-                             color:gray;
-                         }
+                 #reproarea {
+                     position: relative;
+                     width: 96%;
+                     height: 15%;
+                     left: 2%;
+                     margin-top: 2vw;
+                 }
 
-                         #textpost span {
-                             color: #7c6092;
-                         }
+                 #clock, #clock2 {
+                     color: lightgray;
+                     text-transform: uppercase;
+                     font-size: .8vw;
+                     letter-spacing: .1vw;
+                     position: absolute;
+                     left: 5vw;
+                     top: 1.5vw;
+                     font-family: "Roboto", Arial, sans-serif;
+                 }
 
-                     #reproarea {
-                         position: relative;
-                         width: 96%;
-                         height: 15%;
-                         left: 2%;
-                         margin-top: 2vw;
-                     }
+                 #tt, #tt2 {
+                     color: #f8cbd0;
+                     text-transform: uppercase;
+                     font-size: .7vw;
+                     letter-spacing: .1vw;
+                     position: absolute;
+                     left: 5vw;
+                     top: 1.8vw;
+                     font-family: "Roboto", Arial, sans-serif;
+                 }
 
-                     #clock, #clock2 {
-                         color: lightgray;
-                         text-transform: uppercase;
-                         font-size: .8vw;
-                         letter-spacing: .1vw;
+                 #headimg {
+                     width: 3vw;
+                     height: 3vw;
+                     position: relative;
+                     border-radius: .6vw;
+                     background: #f8cbd0;
+                     left: 1vw;
+                     top: 1vw;
+                 }
+
+                     #headimg img {
+                         width: 1.5vw;
                          position: absolute;
-                         left: 5vw;
-                         top: 1.5vw;
-                         font-family: "Roboto", Arial, sans-serif;
+                         left: .7vw;
+                         top: .75vw;
+                         filter: invert(50%);
                      }
 
-                     #tt, #tt2 {
-                         color: #f8cbd0;
-                         text-transform: uppercase;
-                         font-size: .7vw;
-                         letter-spacing: .1vw;
-                         position: absolute;
-                         left: 5vw;
-                         top: 1.8vw;
-                         font-family: "Roboto", Arial, sans-serif;
+                 #buttons {
+                     filter: invert(100%);
+                     position: absolute;
+                     z-index: 9;
+                     width: 12%;
+                     right: 2%;
+                     top: 40%;
+                     height: 8%;
+                     opacity: .4;
+                 }
+
+                 #bt1, #bt12 {
+                     position: absolute;
+                     width: 1vw;
+                     height: 1vw;
+                 }
+
+                 .relad3 {
+                     background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
+                     background-size: contain;
+                 }
+
+                 .relad2 {
+                     background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
+                     background-size: contain;
+                 }
+
+                 #bt2, #bt22 {
+                     left: 2vw;
+                     position: absolute;
+                     width: 1vw;
+                     height: 1vw;
+                     background: url(https://i.postimg.cc/W1ytn21n/reload.png);
+                     background-size: contain;
+                 }
+
+                 .relad {
+                     animation: reload 2s 1;
+                 }
+
+                 .reloadpost {
+                     animation: reloadpost 2s 1;
+                 }
+
+                 @keyframes reload {
+                     100% {
+                         transform: rotate(360deg);
                      }
+                 }
 
-                     #headimg {
-                         width: 3vw;
-                         height: 3vw;
-                         position: relative;
-                         border-radius: .6vw;
-                         background: #f8cbd0;
-                         left: 1vw;
-                         top: 1vw;
-                     }
-
-                         #headimg img {
-                             width: 1.5vw;
-                             position: absolute;
-                             left: .7vw;
-                             top: .75vw;
-                             filter: invert(50%);
-                         }
-
-                     #buttons {
-                         filter: invert(100%);
-                         position: absolute;
-                         z-index: 9;
-                         width: 12%;
-                         right: 2%;
-                         top: 40%;
-                         height: 8%;
-                         opacity: .4;
-                     }
-
-                     #bt1, #bt12 {
-                         position: absolute;
-                         width: 1vw;
-                         height: 1vw;
-                     }
-
-                     .relad3 {
-                         background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
-                         background-size: contain;
-                     }
-
-                     .relad2 {
-                         background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
-                         background-size: contain;
-                     }
-
-                     #bt2, #bt22 {
-                         left: 2vw;
-                         position: absolute;
-                         width: 1vw;
-                         height: 1vw;
-                         background: url(https://i.postimg.cc/W1ytn21n/reload.png);
-                         background-size: contain;
-                     }
-
-                     .relad {
-                         animation: reload 2s 1;
-                     }
-
-                     .reloadpost {
-                         animation: reloadpost 2s 1;
-                     }
-
-                     @keyframes reload {
-                         100% {
-                             transform: rotate(360deg);
-                         }
-                     }
-
-                     @keyframes reloadpost {
-                         0% {
-                             opacity: 0;
-                         }
-
-                         100% {
-                             opacity: 1;
-                         }
-                     }
-
-                     #pbtn1 {
-                         filter: invert(100%);
-                         color: white;
-                         border-radius: .3vw;
-                         font-size: .6vw;
-                         padding: .5vw;
-                         background: #7c6092;
-                         text-align: center;
-                         letter-spacing: .1vw;
-                         top: 1vw;
+                 @keyframes reloadpost {
+                     0% {
                          opacity: 0;
-                         transition: all .5s ease;
-                         position: absolute;
-                         width: 8vw;
-                         font-family: "Roboto", Arial, sans-serif;
                      }
 
-                     #pbtn2 {
-                         filter: invert(100%);
-                         color: white;
-                         border-radius: .3vw;
-                         font-size: .6vw;
-                         padding: .5vw;
-                         background: #7c6092;
-                         text-align: center;
-                         letter-spacing: .1vw;
-                         top: 1vw;
-                         opacity: 0;
-                         transition: all .5s ease;
-                         position: absolute;
-                         width: 8vw;
-                         font-family: "Roboto", Arial, sans-serif;
-                     }
-
-                     #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                     100% {
                          opacity: 1;
                      }
-                 </style>
+                 }
+
+                 #pbtn1 {
+                     filter: invert(100%);
+                     color: white;
+                     border-radius: .3vw;
+                     font-size: .6vw;
+                     padding: .5vw;
+                     background: #7c6092;
+                     text-align: center;
+                     letter-spacing: .1vw;
+                     top: 1vw;
+                     opacity: 0;
+                     transition: all .5s ease;
+                     position: absolute;
+                     width: 8vw;
+                     font-family: "Roboto", Arial, sans-serif;
+                 }
+
+                 #pbtn2 {
+                     filter: invert(100%);
+                     color: white;
+                     border-radius: .3vw;
+                     font-size: .6vw;
+                     padding: .5vw;
+                     background: #7c6092;
+                     text-align: center;
+                     letter-spacing: .1vw;
+                     top: 1vw;
+                     opacity: 0;
+                     transition: all .5s ease;
+                     position: absolute;
+                     width: 8vw;
+                     font-family: "Roboto", Arial, sans-serif;
+                 }
+
+                 #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                     opacity: 1;
+                 }
+             </style>
+
+             <div id="post1" class="openpost">
 
                  <div id="headpost">
                      <div id="headimg">
@@ -1786,29 +1804,333 @@
                                  margin-left: -1.5%;
                                  width: 20%;
                              }
-                            
                          </style>
                          <div class="vnt" onclick="openpost1();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
                          <div class="vnt" onclick="closepost1();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
-                         <div class="vnt" onclick="removepost();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                         <div class="vnt" onclick="removepost1();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
                      </div>
                  </div>
-                 
-                     <img id="imgmainpost" src="https://u.cubeupload.com/Anti_Clockwise/a4868903ebb6d05803ae.gif" />
-                     <div id="textareapost">
-                         <p id="ptitlepost">(Source: Yukine)</p>
+
+                 <img id="imgmainpost" src="https://u.cubeupload.com/Anti_Clockwise/a4868903ebb6d05803ae.gif" />
+                 <div id="textareapost">
+                     <p id="ptitlepost">(Source: Yukine)</p>
+
+
+                 </div>
+
+                 <div id="butonspost"><p>#Lynette</p><p>#Yukine</p> </div>
+
+
+
+             </div>
+
+             <div id="post2" class="openpost">
+
+                 <div id="headpost">
+                     <div id="headimg">
+                         <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                     </div>
+                     <div id="clock2">LIST FRIENDS</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                     <div id="icn2" class="icn3">
+                         <style>
+                             .icn3 {
+                                 margin-top: -10%;
+                                 position: absolute;
+                                 margin-left: -1.5%;
+                                 width: 20%;
+                             }
+                         </style>
+                         <div class="vnt" onclick="openpost2();"><img class="vntimg" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
+                         <div class="vnt" onclick="closepost2();"><img class="vntimg" src="https://i.postimg.cc/CMXG9m8C/retweet-flechas.png" /></div>
+                         <div class="vnt" onclick="removepost2();"><img class="vntimg" src="https://u.cubeupload.com/Azhriell/cerrar.png" /></div>
+                     </div>
+                 </div>
+                 <div id="aconstell">
+                     <style>
+                         #aconstell {
+                             position:sticky;
+                             right: 0%; margin-top:2vw;
+                             width: 100%;
+                             height: 19vw;  
+                         }
+
+                         #alinks {
+                             position: absolute;
+                             right: 0;
+                             top: 5%;
+                             width: 40%;
+                             height: 90%;
+                             font-weight: bold;
+                             color: #eb5c8a;
+                             line-height: 1.7vw;
+                             font-size: .65vw;
+                             letter-spacing: .17vw;
+                             font-family: "Roboto", Arial, sans-serif;
+                         }
+
+                         #aconst {
+                             position: absolute;
+                             top: 10%;
+                             left: 0;
+                             width: 55%;
+                             height: 80%;
+                         }
+
+                         #imgconst1 {
+                             position: absolute;
+                             width: 11vw;
+                             height: 11vw;
+                             left: -140%;
+                             top: 10%;
+                             z-index: -1;
+                         }
+
+                         .nolink1 {
+                             opacity: 0;
+                             z-index: -1;
+                         }
+
+                         yeslink1 {
+                             opacity: 1;
+                             z-index: 999;
+                         }
+
+                         #imgconst2 {
+                             position: absolute;
+                             width: 11vw;
+                             height: 11vw;
+                             left: -140%;
+                             top: 10%;
+                         }
+
+                         #imgconst3, #imgconst4, #imgconst5, #imgconst6, #imgconst7, #imgconst8 {
+                             position: absolute;
+                             width: 11vw;
+                             height: 11vw;
+                             left: -140%;
+                             top: 10%;
+                         }
+
+                         .linkcoloryes {
+                             color: #b67fb6;
+                             text-decoration: underline;
+                         }
+
+                         .linkcolorno {
+                             color: #eb5c8a;
+                             text-decoration: none;
+                         }
+
+                         #link1 b {
+                             font-size: .8vw;
+                         }
+
+                         #alinks a {
+                             text-decoration: none;
+                             color: #eb5c8a;
+                             cursor: pointer;
+                         }
+
+                         #imgconst1 {
+                             position: absolute;
+                             width: 11vw;
+                             height: 11vw;
+                             left: -140%;
+                             top: 10%;
+                             z-index: -1;
+                         }
+                     </style>
+
+                     <div id="aconst">
 
 
                      </div>
 
-                     <div id="butonspost"><p>#Lynette</p><p>#Yukine</p> </div>
-                  
-                
+                     <script>
+                         function onmove1() {
+                             $("#link11").removeClass("linkcolorno"); $("#link11").addClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst1").removeClass("nolink1"); $("#imgconst1").addClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         }
+
+                         function onmove2() {
+                             $("#link12").removeClass("linkcolorno"); $("#link12").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst2").removeClass("nolink1"); $("#imgconst2").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         }
+                         function onmove3() {
+                             $("#link13").removeClass("linkcolorno"); $("#link13").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst3").removeClass("nolink1"); $("#imgconst3").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         }
+                         function onmove4() {
+                             $("#link14").removeClass("linkcolorno"); $("#link14").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst4").removeClass("nolink1"); $("#imgconst4").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         }
+                         function onmove5() {
+                             $("#link15").removeClass("linkcolorno"); $("#link15").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst5").removeClass("nolink1"); $("#imgconst5").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         }
+                         function onmove6() {
+                             $("#link16").removeClass("linkcolorno"); $("#link16").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst6").removeClass("nolink1"); $("#imgconst6").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         } function onmove7() {
+                             $("#link17").removeClass("linkcolorno"); $("#link17").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                             $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                             $("#imgconst7").removeClass("nolink1"); $("#imgconst7").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                             $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                         } function onmove8() {
+                             $("#link18").removeClass("linkcolorno"); $("#link18").addClass("linkcoloryes");
+                             $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                             $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                             $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                             $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                             $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                             $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                             $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+
+                             $("#imgconst8").removeClass("nolink1"); $("#imgconst8").addClass("yeslink1");
+                             $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                             $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                             $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                             $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                             $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                             $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                             $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                         }
+                     </script>
+
+                     <div id="alinks">
+                         <a id="link1" onmouseover="onmove1();" href="https://xat.me/Neige">
+                             001 ── <span id="link11" class="linkcoloryes">NEIGE.<b>♡</b></span>
+                             <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
+
+                         </a><br />
+                         <a onmouseover="onmove2();" href="https://xat.me/Kagura" id="link2">002 ── <span id="link12">LU.+</span> <img class="nolink1" src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst2" /></a><br />
+                         <a onmouseover="onmove3();" href="https://xat.me/azuchanrosada" id="link3">003 ── <span id="link13">AZU.</span> <img class="nolink1" src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
+                         <a onmouseover="onmove4();" href="https://xat.me/pieceofshiit" id="link4">004 ── <span id="link14">LUNA.</span> <img class="nolink1" src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst4" /></a><br />
+                         <a onmouseover="onmove5();" href="https://xat.me/weathering" id="link5">005 ── <span id="link15">GARRY.</span><img class="nolink1" src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst5" /></a><br />
+                         <a onmouseover="onmove6();" href="https://xat.me/sam4elx111" id="link6">006 ── <span id="link16">VOLDY.</span><img class="nolink1" src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst6" /></a><br />
+                         <a onmouseover="onmove7();" href="https://xat.me/veryscared" id="link7">007 ── <span id="link17">SCARED.</span><img class="nolink1" src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst7" /></a><br />
+                         <a onmouseover="onmove8();" href="https://xat.me/nashe" id="link8">008 ── <span id="link18">NAYE.</span><img class="nolink1" src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst8" /></a>
+                     </div>
+                 </div>
+
+                 <div id="textareapost">
+                     <p id="ptitlepost">(Source: Yukine)</p>
+
+
+                 </div>
+
+                 <div id="butonspost"><p>#Lynette</p><p>#Friends</p> </div>
+
+
 
              </div>
+
          </div>
 
-      
+
 
          <div id="maininfo">
              <style>
@@ -1940,13 +2262,18 @@
              </style>
 
              <div id="menulatinfo">
-                 <style >
-                     #menulatinfo { position:absolute; width:70%; height:80%;  
+                 <style>
+                     #menulatinfo {
+                         position: absolute;
+                         width: 70%;
+                         height: 80%;
                      }
+
                      #areaicons {
                      }
+
                      #menus {
-                         top:0%;
+                         top: 0%;
                          position: absolute;
                          width: 100%;
                          height: 45%;
@@ -1960,6 +2287,7 @@
                          width: 2vw;
                          right: -.6vw;
                      }
+
                      #butonsprofile3 {
                          position: absolute;
                          top: -1.9vw;
@@ -1967,19 +2295,21 @@
                          width: 2vw;
                          right: -.1vw;
                      }
+
                      @keyframes animafloat {
                          0% {
-                            top:5%;
+                             top: 5%;
                          }
 
                          50% {
-                             top:10%;
+                             top: 10%;
                          }
 
                          100% {
                              top: 5%;
                          }
                      }
+
                      @keyframes animafloat2 {
                          0% {
                              top: 60%;
@@ -1993,17 +2323,26 @@
                              top: 60%;
                          }
                      }
+
                      #menus {
                          animation: animafloat 4s infinite;
-                          
                          border-radius: .5vw;
                      }
+
                      #textpalet {
                          color: #ef82a1;
-                         font-family: 'Raleway', sans-serif; font-weight:bold; font-size:.9vw; letter-spacing:.1vw; position:absolute; left:.7vw; top:-.5vw;
+                         font-family: 'Raleway', sans-serif;
+                         font-weight: bold;
+                         font-size: .9vw;
+                         letter-spacing: .1vw;
+                         position: absolute;
+                         left: .7vw;
+                         top: -.5vw;
                      }
+
                      #areaicons {
-                         animation: animafloat2 4s infinite; animation-delay:2s;
+                         animation: animafloat2 4s infinite;
+                         animation-delay: 2s;
                          top: 65%;
                          left: 35%;
                          position: absolute;
@@ -2012,7 +2351,9 @@
                          background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
                          border-radius: .5vw;
                      }
-                     #galimg1 {border-radius:.4vw;
+
+                     #galimg1 {
+                         border-radius: .4vw;
                          position: absolute;
                          width: 4.5vw;
                          height: 4.5vw;
@@ -2020,6 +2361,7 @@
                          top: .7vw;
                          border: .2vw solid #ef82a1;
                      }
+
                      #galimg2 {
                          border-radius: .4vw;
                          position: absolute;
@@ -2029,6 +2371,7 @@
                          top: .7vw;
                          border: .2vw solid #ef82a1;
                      }
+
                      #galimg3 {
                          border-radius: .4vw;
                          position: absolute;
@@ -2038,6 +2381,7 @@
                          top: .7vw;
                          border: .2vw solid #ef82a1;
                      }
+
                          #galimg1 img, #galimg2 img, #galimg3 img {
                              position: absolute;
                              width: 4vw;
@@ -2045,6 +2389,7 @@
                              left: .3vw;
                              top: .3vw;
                          }
+
                      #color1, #color2, #color3, #color4, #color5, #color6 {
                          position: absolute;
                          width: 2.2vw;
@@ -2054,27 +2399,38 @@
                          top: 30%;
                          left: 10%;
                      }
-                     #color2 { left:27%;
+
+                     #color2 {
+                         left: 27%;
                      }
+
                      #color3 {
                          left: 44%;
                      }
+
                      #color4 {
                          left: 61%;
                      }
+
                      #color5 {
                          left: 77%;
                      }
+
                      #color6 {
                          top: 61%;
                          left: 10%;
                      }
+
                      #color11 {
                          position: absolute;
-                         width: 2vw; top:.1vw; left:.1vw; background:#ef82a1;
+                         width: 2vw;
+                         top: .1vw;
+                         left: .1vw;
+                         background: #ef82a1;
                          height: 2vw;
-                         border-radius: 50%; 
+                         border-radius: 50%;
                      }
+
                      #color14 {
                          position: absolute;
                          width: 2vw;
@@ -2084,6 +2440,7 @@
                          height: 2vw;
                          border-radius: 50%;
                      }
+
                      #color12 {
                          position: absolute;
                          width: 2vw;
@@ -2093,6 +2450,7 @@
                          height: 2vw;
                          border-radius: 50%;
                      }
+
                      #color13 {
                          position: absolute;
                          width: 2vw;
@@ -2102,6 +2460,7 @@
                          height: 2vw;
                          border-radius: 50%;
                      }
+
                      #color15 {
                          position: absolute;
                          width: 2vw;
@@ -2111,6 +2470,7 @@
                          height: 2vw;
                          border-radius: 50%;
                      }
+
                      #color16 {
                          position: absolute;
                          width: 2vw;
@@ -2123,7 +2483,7 @@
                  </style>
 
                  <div id="menus">
-                    
+
                      <div id="profile2">
                          <div id="butonsprofile2">
 
@@ -2152,9 +2512,9 @@
                              <div id="color16"></div>
                          </div>
                      </div>
-                      
+
                  </div>
-                
+
                  <div id="areaicons">
 
                      <div id="butonsprofile3">
@@ -2202,7 +2562,7 @@
                  let initialX = 0,
                      initialY = 0;
                  let moveElement = false;
-                  
+
                  let events = {
                      mouse: {
                          down: "mousedown",
@@ -2216,10 +2576,10 @@
                      }
                  };
                  let deviceType = "";
-                 
+
                  const isTouchDevice = () => {
                      try {
-                         
+
                          document.createEvent("TouchEvent");
                          deviceType = "touch";
                          return true;
@@ -2228,10 +2588,10 @@
                          return false;
                      }
                  };
-                 isTouchDevice(); 
+                 isTouchDevice();
                  draggableElem.addEventListener(events[deviceType].down, (e) => {
                      e.preventDefault();
-                      
+
                      initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
                      initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
                      // start movement
@@ -2265,7 +2625,7 @@
                  });
 
              </script>
-          
+
              <div id="butonsprofile">
                  <div class="butonprofile"><img id="btnmove" src="https://i.postimg.cc/3RBRQwzt/mover-el-boton.png" /></div>
                  <div class="butonprofile" onclick="removeprofile();"><img src="https://i.postimg.cc/xCYCZmpk/cancelar.png" /></div>
@@ -2293,17 +2653,19 @@
 
                      <div id="Aaudio">
                          <style>
+                             #profile { z-index:9;
+                             }
                              #Aaudio {
                                  font-family: 'Raleway', sans-serif;
                                  position: absolute;
                                  width: 48%;
                                  left: 49%;
-                                 top: 50%; 
+                                 top: 50%;
                                  height: 40%;
                              }
 
                              #abtnaud {
-                                 cursor: pointer;  
+                                 cursor: pointer;
                                  position: absolute;
                                  width: 60%;
                                  height: 23%;
@@ -2311,10 +2673,13 @@
                                  top: 29%;
                              }
 
-                             .butplayer { float:left;
-                                 height: 1vw; top:-.25vw;
-                                 width: 1vw; margin-left:.4vw;
-                                 position: relative;  
+                             .butplayer {
+                                 float: left;
+                                 height: 1vw;
+                                 top: -.25vw;
+                                 width: 1vw;
+                                 margin-left: .4vw;
+                                 position: relative;
                              }
 
                              .butpl {
@@ -2342,7 +2707,7 @@
 
                              #pause, #play, #next, #prev, #stop {
                                  width: 1vw;
-                                 height: 1vw;  
+                                 height: 1vw;
                                  position: absolute;
                                  left: 0;
                              }
@@ -2371,16 +2736,16 @@
                                  top: 10%;
                                  font-weight: bold;
                                  color: #b21160;
-                                 
                                  letter-spacing: .1vw;
                                  font-size: .55vw;
                              }
 
                              .artist-name {
                                  position: absolute;
-                                 width: 88%;left:10%;
+                                 width: 88%;
+                                 left: 10%;
                                  height: 100%;
-                                 top: 70%; 
+                                 top: 70%;
                                  font-family: 'Oswald', sans-serif;
                                  letter-spacing: .1vw;
                                  font-size: .5vw;
@@ -2426,7 +2791,7 @@
 
                          <div id="AT_time"><div class="time"></div></div>
                          <marquee id="namesong"> <div id="name_sng" class="music-name"></div></marquee>
-                         <div > </div>
+                         <div> </div>
                          <div class="artist-name"></div>
 
                          <div id="abtnaud">
@@ -2460,12 +2825,12 @@
 
                              </div>
                              <!--<div class="butplayer">
-        <div class="butpl">
-            <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-            <div id="stop"> </div>
-        </div>
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
 
-    </div>-->
+                        </div>-->
                          </div>
 
 
@@ -2516,13 +2881,14 @@
                      top: 0;
                      background: red;
                  }
+
                  #butonsmenulat2 {
                      position: absolute;
                      width: 100%;
                      height: 100%;
                      top: 0;
-                     background: red;
                  }
+
                  .butons {
                      float: left;
                      width: 25%;
@@ -2535,10 +2901,12 @@
                      .butons:hover {
                          background: #d24081;
                      }
+
                  .butons2 {
+                     position: relative;
                      float: left;
                      width: 25%;
-                     height: 100%; 
+                     height: 100%;
                      background: #ef82a1;
                      transition: all .5s ease;
                      text-align: center;
@@ -2548,7 +2916,7 @@
                          background: #d24081;
                      }
 
-                 #divlat { overflow:hidden;
+                 #divlat {
                      top: 90%;
                      width: 100%;
                      border-radius: 0 0 1vw 1vw;
@@ -2561,10 +2929,10 @@
                      letter-spacing: .15vw;
                      font-family: "Roboto", Arial, sans-serif;
                  }
+
                      #divlat span {
                          margin-left: 1vw;
                          margin-right: 1vw;
-                        
                      }
 
                  .buton-p {
@@ -2582,27 +2950,17 @@
                      color: #f8cbd0;
                      text-decoration: underline;
                  }
-                 #but11 { border-right:1px solid white; margin-left:-1px;
-                 }
-                 #but22 {
-                     border-right: 1px solid white;
-                     margin-left: -2px;
-                     border-left: 1px solid white;
-                 }
-                 #but44 {
-                     border-right: 1px solid white;
-                     margin-left: -2px;
-                     border-left: 1px solid white;
-                 }
              </style>
 
              <div id="butonsmenulat">
-                 <div id="but1" class="butons">
-                     <p class="buton-p" style="text-transform:uppercase;">Lynette</p>
-                 </div>
-                 <div id="but2" class="butons"><p class="buton-p">XIX</p></div>
-                 <div id="but3" class="butons"><p class="buton-p">HOME</p></div>
-                 <div id="but4" class="butons"><p class="buton-p">MRR♡</p></div>
+                 <a href="#">
+                     <div id="but1" class="butons">
+                         <p class="buton-p" style="text-transform:uppercase;">Lynette</p>
+                     </div>
+                 </a>
+                 <a href="#"><div id="but2" class="butons"><p class="buton-p">XIX</p></div></a>
+                 <a href="#"></a><div id="but3" class="butons"><p class="buton-p">HOME</p></div></a>
+                 <a href="https://xat.me/Neige"> <div id="but4" class="butons"><p class="buton-p">MRR♡</p></div></a>
              </div>
 
              <div id="backlat">
@@ -2638,12 +2996,12 @@
 
                      var spec = {
                          backgrounds: [
-                             'https://i.pinimg.com/564x/98/df/1d/98df1d8a856ca6cf388f00a6ca950069.jpg',
-                             //'https://i.postimg.cc/c4fDrT08/6760564.png',
-                             //'https://i.postimg.cc/9QBW8vHz/anime-anime-girls-white-hair-dress-butterflies-white-eyes-1943533.png',
-                             //'https://i.postimg.cc/Hn9yCJ1j/wallpaperflare-com-wallpaper.jpg',
-                             //'https://i.postimg.cc/3rPJdXZr/anime-girl-3-wallpaper-1280x800.jpg',
-                             //'https://i.postimg.cc/sD7fSMnY/papers-co-bl84-art-anime-girl-white-cry-31-wallpaper.jpg'
+                             'https://i.pinimg.com/564x/2f/e7/24/2fe7248799fd1dcdf153ce215733e841.jpg',
+                             'https://favim.com/pd/s11/orig/8/897/8979/89792/pink-manga-yashiro-nene-Favim.com-8979272.jpg',
+                             'https://i.pinimg.com/564x/d1/7f/60/d17f60a83d8f7517ffa4715db61d7415.jpg',
+                             'https://i.pinimg.com/564x/3d/fb/38/3dfb38e1389cad28a751afc1eb289abc.jpg',
+                             'https://i.pinimg.com/564x/2f/e7/24/2fe7248799fd1dcdf153ce215733e841.jpg',
+                             'https://i.pinimg.com/564x/04/ed/35/04ed359a686d215321496eba23a20fb4.jpg'
 
                          ]
                      };
@@ -2652,25 +3010,146 @@
                      var b = spec.backgrounds[i];
                      $('#back2').css('background-image', 'url("' + b + '")');
                      $('#backlat').css('background-image', 'url("' + b + '")');
-                                                                                                           
+
 
                  </script>
 
              </div>
 
              <div id="divlat">
+                 <style>
+
+                     .buton-p2 {
+                         position: relative;
+                         width: 100%;
+                     }
+
+                     a {
+                         text-decoration: none;
+                     }
+
+                     #butonsmenulat2 a {
+                         color: white;
+                     }
+
+                     .butons2 {
+                         transition: all .5s ease;
+                         background: #ef82a1;
+                         overflow: hidden;
+                     }
+
+                         .butons2:hover, #but11:hover, #but44:hover {
+                             height: 200%;
+                             border-radius: 0 0 .5vw .5vw;
+                             overflow: visible;
+                         }
+
+                     #but11 {
+                         border-radius: 0 0 0 .5vw;
+                     }
+
+                     #but44 {
+                         border-radius: 0 0 .5vw 0;
+                     }
+
+                     .numberunder {
+                         font-size: .8vw;
+                         margin-top: -.3vw;
+                         color: #d198c4;
+                         font-weight: bold;
+                     }
+                 </style>
                  <div id="butonsmenulat2">
                      <div id="but11" class="butons2">
-                         <p class="buton-p2">Cute</p> 
+                         <p class="buton-p2">NOTES:</p> <p class="numberunder">+99</p>
                      </div>
-                     <div id="but22" class="butons2"> <p class="buton-p2">Sweety</p> </div>
-                     <div id="but33" class="butons2"><p class="buton-p2">Erratic</p></div>
-                     <div id="but44" class="butons2"><p class="buton-p2">Beauty♡</p></div>
-                 </div>
+                     <a href="#crdts">
+                         <div id="but22" class="butons2"> <p class="buton-p2">ALERTS:</p> <p class="numberunder">+99</p></div>
+                     </a>
+                     <a href="#post2"> <div id="but33" class="butons2"><p class="buton-p2">FRIENDS:</p><p class="numberunder">8</p></div></a>
+                         <a href="#post"><div id="but44" class="butons2"><p class="buton-p2">POSTS:</p><p class="numberunder">3</p></div></a>
+</div>
                  <!--<span></span>|<span></span>|<span></span>|<span></span>-->
              </div>
-         </div>
 
+
+         </div>
+         <div id="crdts">
+
+             <style>
+                 #crdts { position:fixed; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:-1; opacity:0;
+                 }
+                     #crdts:target { z-index:99999; opacity:1;
+                     }
+                 #msnnot {
+                     position: absolute;
+                     width: 30%;
+                     height: 30%;
+                     left: 35%;
+                     top: 35%; border:.4vw solid #ef82a1; border-radius:.5vw;
+                     background-image: url(https://i.ibb.co/mNpzWXb/patron-de-lineas-gray-7999.jpg);
+                 }
+                 .buto {cursor:pointer;
+                     width: 7vw;
+                     height: 3vw;
+                     border: .1vw solid #ef82a1;
+                     background: #ef82a1;
+                     border-radius: .5vw;
+                     text-align: center;
+                     float: left;
+                     position: relative;
+                     margin-left: 18%;
+                     top: 30%;
+                     transition: all .5s ease;
+                 }
+                     .buto:hover { border:.1vw solid white; background:#eb5c8a;  
+                     }
+                     .buto p {
+                         position: relative;
+                          
+                         font-size: .75vw;
+                         letter-spacing: .1vw;
+                         color: white;
+                         font-family: 'Raleway', sans-serif;
+                     }
+                 #p_2 {  margin-top:1vw;
+                 }
+                 #notibell { position:absolute; width:2.5vw; height:2.5vw;   right:3%; top:5%;
+                 }
+                 #imgbell { position:absolute; width:1.6vw; height:1.6vw;
+                 }
+                 #numnoti { background:#ef82a1; border:.1vw solid white; width:1.2vw; height:1vw; border-radius:50%; position:absolute; top:-1.5vw; left:.9vw; z-index:2;
+                            color:white; font-size:.7vw; padding:.1vw; text-align:center; padding-top:.3vw;
+                 }
+                 #notipx {
+                     font-size: .8vw; width:100%; line-height:1.7vw;  top:20%;
+                     letter-spacing: .1vw; position:relative;  
+                     color: #ef82a1; text-align:center; font-weight:bold;
+                     font-family: 'Raleway', sans-serif;
+                 }
+             </style>
+             <div id="msnnot">
+                 <p id="notipx">
+                     This Xatspace was created by Neige<br />
+                     XATSPACE 2023 ALL RIGHTS RESERVED <br />
+                 </p>
+                 <div id="notibell">
+                     <p id="numnoti">+99</p>
+                     <img id="imgbell" src="https://i.postimg.cc/FKVR69RW/notificacion-1.png" />
+                 </div>
+
+                 <a href="#">  <div class="buto">
+                     <p id="p_2">CONFIRM<span id="blkjn">█</span></p>
+                 </div></a>
+                         <a href="https://xevangelist.github.io/evangelist/Yu.html">
+                             <div class="buto">
+                                 <p>GO TO OLD<br />XATSPACE<span id="blkjn">█</span></p>
+                             </div>
+                         </a>
+
+             </div>
+            
+         </div>
      </div>
  </body>
 </html>
