@@ -1,0 +1,2418 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+        }
+
+
+        /*  body {
+            background-color: #333;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }*/
+
+        .equalizer {
+            font-size: 0;
+            opacity: .6;
+            position: absolute;
+            top: 85%;
+            transform: rotate(180deg);
+            left: 22%;
+        }
+
+            .equalizer i {
+                background-color: #fff;
+                content: "";
+                display: inline-block;
+                width: .21vw;
+                margin: 0 .21vw;
+                transition: all .5s ease;
+                transform-origin: bottom left;
+            }
+
+        i:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(2) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(3) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(4) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(5) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(6) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(7) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(8) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(9) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(10) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(11) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(12) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(13) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(14) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(15) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(16) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(17) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(18) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(19) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(20) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(21) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(22) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(23) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(24) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(25) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(26) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(27) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(28) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(29) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(30) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(31) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(32) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(33) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(34) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(35) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(36) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(37) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(38) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(39) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(40) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(41) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(42) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(43) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(44) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(45) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(46) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(47) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(48) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(49) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(50) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(51) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(52) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(53) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(54) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(55) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(56) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(57) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(58) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(59) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(60) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(61) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(62) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(63) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(64) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(65) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(66) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(67) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(68) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(69) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(70) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(71) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(72) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(73) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(74) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(75) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(76) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(77) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(78) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(79) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(80) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(81) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(82) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(83) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(84) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(85) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(86) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(87) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(88) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(89) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(90) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(91) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(92) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(93) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(94) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(95) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(96) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(97) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(98) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(99) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(100) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(101) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(102) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(103) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(104) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(105) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(106) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(107) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(108) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(109) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(110) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(111) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(112) {
+            animation-delay: 0.15s;
+        }
+
+        @-webkit-keyframes move-up-and-down {
+            0% {
+                opacity: 0.3;
+                transform: scaleY(0.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        @keyframes move-up-and-down {
+            0% {
+                opacity: 0.3;
+                transform: scaleY(0.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .playeq {
+            height: 0vw;
+        }
+
+        .stopeq {
+            height: 2vw;
+            animation: move-up-and-down 0.3s infinite alternate;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    
+    <div id="main"><div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+        <style>
+            .rgbShiftSlider {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                /*mix-blend-mode: hard-light;*/
+                opacity: 0.95;
+                width: 100vw;
+                height: 100%;
+                overflow: hidden;
+                /*transform-origin : 50vw 300vh;*/
+                transform-origin: 50% 50%;
+            }
+
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+            }
+
+            #main {
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                position: fixed;
+            }
+
+            #IRDinamic, #IRDinamic2 {
+                position: fixed;
+                margin: auto;
+                top: 0; /*mix-blend-mode:darken;*/
+                left: -29.28vw;
+                /*left: 0;*/
+                width: 43.92vw;
+                height: 100%;
+                background-color: rgba(0,0,0,0.3);
+                border-right: 15px solid black;
+                z-index: 998;
+                transition: all 0.5s ease;
+            }
+
+                #IRDinamic:hover, #IRDinamic2:hover {
+                    left: 0;
+                }
+
+            #fimg, #fimg2 {
+                position: absolute;
+                left: 0;
+                background: rgba(0,0,0,.4);
+                width: 28.91vw;
+                height: 100%;
+                background-image: url('https://i.ibb.co/Jv11jYx/d49xbsn-3ab946af-9c97-422f-ad38-5fbc4c521b22.png');
+                background-size: cover;
+                border-right: 5px solid black;
+            }
+
+            #IRDt, #IRDt2 {
+                position: absolute;
+                position: absolute;
+                width: 27.81vw;
+                height: 40%;
+                background: rgba(0,0,0,0.3);
+                border-right: 1.46vw solid black;
+                left: -22.69vw;
+                /*left:0;*/
+                top: 5%;
+                box-shadow: 1px 1px 5px white;
+                transition: all 0.5s ease;
+            }
+
+                #IRDt:hover, #IRDt2:hover {
+                    left: 0;
+                }
+
+
+
+            #titl {
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                display: block;
+                font-size: 12px;
+                color: white;
+            }
+
+            #a, #d {
+                width: 36%;
+                height: 70%;
+                text-align: left;
+                margin-left: 2%;
+                float: left;
+                font-size: 10px;
+                color: white;
+            }
+
+            #d {
+                text-align: right;
+            }
+        </style>
+
+        <div class="equalizer">
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+            <i id="bareq" class="playeq"></i>
+        </div>
+
+
+        <script>
+            // set images
+            // demo works but images are blocked by codepen Cors issue
+            var images = [
+                "https://i.postimg.cc/hvLgR5GD/rafael-de-nadai-b0eg-PYGICQ-unsplash.jpg",
+                "https://i.postimg.cc/T1JGXBh4/wallpaperflare-com-wallpaper-1.jpg",
+
+                "https://i.postimg.cc/prJN650y/4174435.jpg"
+            ];
+            // instanciate slider
+            var rbgShiftSlider = new rbgShiftSlider({
+                nav: true,
+                navElement: ".scene-nav",
+                slideImages: images,
+                stageWidth: 1920,
+                stageHeight: 1080,
+                displacementImage:
+                    "https://images.unsplash.com/photo-1495757450029-09dbedacbc36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+                fullScreen: true,
+                transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                transitionGhostDuration: 0.25,
+                transitionFilterIntensity: 150,
+                transitionSpriteIntensity: 1,
+                mouseDispIntensity: 3,
+                interactive: true,
+                autoPlay: true,
+                autoPlaySpeed: 12000
+            });
+
+        </script>
+        <div id="IRDinamic">
+            <style>
+            </style>
+            <div id="fimg">
+
+                <div id="aposts">
+                    <style>
+                        #aposts {
+                            direction: rtl;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            overflow: auto;
+                            overflow-x: hidden;
+                        }
+
+                            #aposts::-webkit-scrollbar {
+                                width: .3vw;
+                                background-color: black;
+                            }
+
+
+                            #aposts::-webkit-scrollbar-thumb {
+                                border-radius: .5vw;
+                                /*background: lightgray;*/
+                                border: .1vw solid black;
+                                /*-webkit-box-shadow: inset 0 0 6px gray;*/
+                                background: linear-gradient(360deg, black 43%, #789ffb 43.1%, #789ffb 50%, #789ffb 56.9%, black 57%);
+                            }
+
+                        #aintropost {
+                            z-index: 2;
+                            direction: ltr;
+                            top: 2%;
+                            transition: all .5s ease;
+                            left: -24%;
+                            width: 21%;
+                            height: 11%;
+                            border: .1vw solid white;
+                            position: fixed;
+                            backdrop-filter: blur(3px);
+                            background-image: url('https://i.ibb.co/Jv11jYx/d49xbsn-3ab946af-9c97-422f-ad38-5fbc4c521b22.png');
+                            background-size: cover;
+                        }
+
+                        #IRDinamic:hover #aintropost {
+                            left: 1%;
+                        }
+
+                        #cube1 {
+                            position: absolute;
+                            width: 37%;
+                            height: 100%;
+                            border-right: .1vw solid white;
+                        }
+
+                        #cube2 {
+                            position: absolute;
+                            width: 63%;
+                            left: 37%;
+                            height: 50%;
+                            border-bottom: .1vw solid white;
+                        }
+
+                        #cube3 {
+                            position: absolute;
+                            width: 63%;
+                            left: 37%;
+                            top: 50%;
+                            height: 50%;
+                        }
+
+                        #cube1 p {
+                            font-weight: lighter; /*filter:blur(1px);*/
+                            opacity: .7;
+                            font-family: 'Raleway', sans-serif;
+                            font-size: 2.2vw;
+                            text-align: center;
+                            margin-top: 1.1vw;
+                            color: white;
+                            letter-spacing: .1vw;
+                        }
+
+                        #cube2 p {
+                            font-weight: lighter; /*filter:blur(1px);*/
+                            opacity: .9;
+                            font-family: 'Raleway', sans-serif;
+                            font-size: .5vw;
+                            text-align: center;
+                            margin-top: 1.1vw;
+                            color: white;
+                            letter-spacing: .4vw;
+                        }
+
+                        #cube3 p {
+                            position: relative;
+                            font-weight: lighter; /*filter:blur(1px);*/
+                            opacity: .9;
+                            font-family: 'Raleway', sans-serif;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            text-align: center;
+                            top: .3vw;
+                            margin-left: .2vw;
+                            color: white;
+                        }
+
+                        #extintro {
+                            position: absolute;
+                            right: -8%;
+                            font-weight: lighter; /*filter:blur(1px);*/
+                            opacity: .9;
+                            font-family: 'Raleway', sans-serif;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            top: -.6vw;
+                            color: white;
+                        }
+
+                            #extintro span {
+                                font-size: 1.5vw;
+                                margin-left: .3vw;
+                            }
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                        #span1 a {
+                            color: white;
+                        }
+
+                        #span1 {
+                            margin-left: .7vw;
+                        }
+                        #amrr {
+                            
+                        }
+                    </style>
+
+                    <div id="aintropost">
+
+                        <div id="cube1"><p>灰雪</p></div>
+                        <div id="cube2"><p>SERIAL LIER</p></div>
+                        <div id="cube3">
+                            <p id="span1"><a style="color: #f961ff; font-size:.8vw" href="https://xat.me/Lynette">[♥]</a>⠀<a href="#">[静]</a>⠀<a href="#">[灰]</a>
+                            ⠀<a href="#">[雪]</a>⠀<a href="#">[尔]</a>⠀<a href="#">[洛]</a></p>
+
+                        </div>
+
+                        <p id="extintro"><span>|</span><br />利<br />尔<br /><span>|</span></p>
+                    </div>
+
+                    <div id="firstpost">
+                        <style>
+                            #firstpost {
+                                z-index: 1;
+                                position: relative;
+                                width: 80%;
+                                height: 82%;
+                                right: 10%;
+                                margin-top: 20%;
+                                direction: ltr;
+                            }
+
+                            #pbackx {
+                                left: 20%;
+                                position: relative;
+                                text-align: center;
+                                font-size: 7vw;
+                                opacity: .8;
+                                top: 13%;
+                                color: lightgray;
+                                filter: blur(3px);
+                            }
+
+                            #firstp {
+                                position: relative;
+                                text-align: center;
+                                font-weight: 500;
+                                font-size: 1.4vw;
+                                top: 13%;
+                                opacity: .8;
+                                letter-spacing: .45vw;
+                                color: white;
+                                margin: 0;
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #secp {
+                                margin: 0;
+                                position: relative;
+                                text-align: center;
+                                font-weight: 500;
+                                font-size: 1.7vw;
+                                top: 14%;
+                                opacity: .6;
+                                letter-spacing: .1vw;
+                                color: white;
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #backintro {
+                                position: relative;
+                                text-align: center;
+                                font-weight: 900;
+                                font-size: .9vw;
+                                top: -12%;
+                                opacity: .5;
+                                letter-spacing: .2vw;
+                                color: white;
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #fontp {
+                                filter: blur(1px);
+                                position: relative;
+                                text-align: center;
+                                font-size: 4vw;
+                                text-shadow: 0 0 .4vw black;
+                                opacity: 1;
+                                top: -37%;
+                                color: white;
+                            }
+
+                            #fontp2 {
+                                /*filter: blur(1px);*/
+                                position: relative;
+                                text-align: center;
+                                font-size: 1.4vw;
+                                text-shadow: 0 0 .4vw black;
+                                top: -44%;
+                                color: white;
+                            }
+
+                            #fontp3 {
+                                /*filter: blur(1px);*/
+                                position: relative;
+                                text-align: center;
+                                font-size: .7vw;
+                                text-shadow: 0 0 .4vw black;
+                                top: -47%;
+                                letter-spacing: .3vw;
+                                color: white;
+                                font-weight: bold;
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #areap1 {
+                                position: absolute;
+                                width: 30%;
+                                height: 3vw;
+                                top: 69%;
+                                left: 34%;
+                            }
+
+                            #pdate {
+                                position: relative;
+                                text-align: center;
+                                font-size: .7vw;
+                                text-shadow: 0 0 .4vw black;
+                                top: -37%;
+                                letter-spacing: .2vw;
+                                color: white;
+                                /*font-weight: bold;*/
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #fontp4 {
+                                /*filter: blur(1px);*/
+                                position: relative;
+                                text-align: center;
+                                font-size: 1.5vw;
+                                text-shadow: 0 0 .4vw black;
+                                top: -39%;
+                                letter-spacing: .3vw;
+                                color: white;
+                                /*font-weight: bold;*/
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #areap1 p {
+                                /*filter: blur(1px);*/
+
+                                text-align: center;
+                                font-size: .55vw;
+                                /*text-shadow: 0 0 .4vw black;*/
+                                /*top: -39%;*/
+                                letter-spacing: .1vw;
+                                color: white;
+                                /*font-weight: bold;*/
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                            #areap1 span {
+                                font-size: .45vw;
+                            }
+
+                            #fontp5 {
+                                /*filter: blur(1px);*/
+                                position: relative;
+                                text-align: center;
+                                font-size: .6vw;
+                                text-shadow: 0 0 .4vw black;
+                                top: -39%;
+                                letter-spacing: .1vw;
+                                color: white;
+                                /*font-weight: bold;*/
+                                font-family: 'Raleway', sans-serif;
+                            }
+
+                                #fontp5 span {
+                                    letter-spacing: .2vw;
+                                    font-size: .7vw;
+                                }
+                            #imgscroll { width:4vw; position:absolute; top:98%; left:40%;
+                            }
+                        </style>
+
+                        <p id="firstp">SERIAL LIER</p>
+                        <p id="secp">连/续/剧/利/尔</p>
+                        <b id="pbackx">灰色<br />骗子</b>
+                        <p id="backintro">DESPERSONALIZATION</p>
+                        <p id="fontp">
+                            不<br />
+                            確
+                        </p>
+                        <p id="fontp2">
+                            実
+                            性
+                        </p>
+                        <p id="fontp3">
+                            NEIGE
+                        </p>
+                        <div id="areap1">
+                            <p>
+                                灰色的GRISATRE<br />
+                                神经衰弱 / 传道者<br />
+                                <span>For the lords and gods</span>
+
+                            </p>
+                        </div>
+                        <p id="pdate">
+                            2019.11.18-2023.08.19
+                            <br />
+
+                        </p>
+                        <p id="fontp4">
+                            /
+                        </p>
+
+                        <p id="fontp5">
+                            <span>逃离你的思想是不可能的</span><br /><br />
+                            2nd or 3nd times, it's no use. There is no salvation
+                        </p>
+                        <img src="https://i.postimg.cc/KYjbzrNb/8888ba-59cfa4b8d50a447380301cf196e1819b-mv2.gif" id="imgscroll" />
+                    </div>
+                    <style>
+                        #xpost {
+                            font-family: "Roboto", Arial, sans-serif;
+                            border-left: .15vw solid #789ffb;
+                            position: relative;
+                            right: 10%;
+                            margin-top: 20%;
+                            background: rgba(0,0,0,0.4);
+                            width: 85%;
+                            height: auto;
+                        }
+
+                        #butonslat {
+                            width: 1.5vw;
+                            height: 7vw;
+                            left: 101%;
+                            top: 0;
+                            position: absolute;
+                        }
+
+                        #imgpostinx {
+                            position: relative;
+                            width: 90%;
+                            height: auto;
+                            top: 1.5vw;
+                            left: -5%;
+                            /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
+                        }
+
+                        #areapost {
+                            position: relative;
+                            width: 90%;
+                            height: auto;
+                            left: -5%;
+                            direction: ltr;
+                            margin-top: 3vw;
+                        }
+
+                        #areaetiq {
+                            direction: ltr;
+                            position: relative;
+                            width: 98%;
+                            left: 2%;
+                            height: 2vw;
+                            bottom: -2.5vw;
+                        }
+
+                        #areaauth {
+                            width: 100%;
+                            height: 1.5vw;
+                            left: 2%;
+                        }
+
+                        #areatextx {
+                            width: 90%;
+                            position: relative;
+                            left: 3%;
+                            margin-top: 1vw;
+                            border-left: .2vw solid #789ffb;
+                        }
+
+                        #iconprfil {
+                            position: relative;
+                            width: 1.5vw;
+                            height: 1.5vw;
+                            border-radius: 50%;
+                            border: .1vw solid #789ffb;
+                        }
+
+                        #authtp {
+                            position: relative;
+                            margin-left: 2vw;
+                            top: 0;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            top: -2.5vw;
+                            color: #789ffb;
+                        }
+
+                        #titletext {
+                            position: relative;
+                            margin-left: .5vw;
+                            font-weight: bolder;
+                            font-size: .6vw;
+                            letter-spacing: .1vw;
+                            text-transform: uppercase;
+                            color: dimgray;
+                            text-decoration: underline;
+                            margin-bottom: .7vw;
+                        }
+
+                        #contenttext {
+                            line-height: .7vw;
+                            position: relative;
+                            margin-left: .5vw;
+                            font-size: .55vw;
+                            letter-spacing: .1vw;
+                            color: white;
+                        }
+
+                        .spaneti {
+                            position: relative;
+                            padding: .2vw;
+                            transition: all .5s ease;
+                            background: black;
+                            border-bottom: .1vw solid #789ffb;
+                            font-size: .55vw;
+                            letter-spacing: .1vw;
+                            color: dimgray;
+                            margin-right: 1vw;
+                        }
+
+                            .spaneti:hover {
+                                background: #789ffb;
+                                color: black;
+                            }
+
+                        #specialtext {
+                            text-transform: uppercase;
+                            position: relative;
+                            margin-top: .8vw;
+                            font-size: .55vw;
+                            letter-spacing: .1vw;
+                            color: rgba(200,200,200,.2);
+                            margin-left: 2%;
+                        }
+
+                        .butttt {
+                            width: 1.5vw;
+                            height: 1.5vw;
+                            margin-bottom: .25vw;
+                            transition: all .5s ease;
+                            background: #171717;
+                        }
+
+                        #butimg {
+                            width: 1.1vw;
+                            height: 1.1vw;
+                            border-radius: .2vw;
+                            position: relative;
+                            left: -.2vw;
+                            direction: ltr;
+                            opacity: .7;
+                        }
+
+                        .butttt:hover {
+                            background: #789ffb;
+                        }
+
+                        #butimg img {
+                            position: relative;
+                            width: 70%;
+                            left: 15%;
+                            top: 15%;
+                            filter: invert(100%);
+                        }
+
+                        #xpost:last-child {
+                            margin-bottom: 15%;
+                        }
+                    </style>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/bwVss3ds/5ea6057d7a60b581b10b91bd10d7fd94-2.jpg" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.pinimg.com/564x/ba/0b/6f/ba0b6fd35e4bab906c43cd2903244cf3.jpg" />
+                                <p id="authtp">Allez, petite fille. Viens finir de tuer mon coeur noir</p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">ma chérie...</p>
+                                <p id="contenttext">
+                                    Arrache-le de ce corps sans âme, tout comme j'ai arraché ce bonheur dans ta vie. Détruisez-le en petits fragments comme des centaines de papillons au cœur noir par une nuit froide et sombre sans étoiles...
+                                </p>
+                                <p id="specialtext">
+                                    Mercredi | Juin 06TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/8Cn1nJ2b/f417c518f6068f84cbd93343df0c2de0.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.ibb.co/KLBdx97/c3e8a9e041711033e055931bf043c4d9.jpg" />
+                                <p id="authtp">Imagine que je suis ta mère, ta sœur, ton refuge...</p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">Hé ! viens ici, regarde...</p>
+                                <p id="contenttext">
+                                    J'ai le corps d'une fille et l'âme d'une pute...<br />
+                                    Tout pour satisfaire quoi...<br />
+                                    Alors... donne-moi ta main...<br />
+                                    Donc tu n'en veux pas...<br />
+                                    Je te connais et il m'arrive la même chose...<br />
+                                    Prends-moi, nous sommes seuls... toi et moi...
+                                </p>
+                                <p id="specialtext">
+                                    Mercredi | Juin 06TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#LaReineTrayeuse</span><span class="spaneti">#Amesoeurs</span></div>
+
+                    </div>
+
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.pinimg.com/originals/08/cf/48/08cf4863cd27f36a349f9734e1e48b33.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.ibb.co/p2xfY6h/222.jpg" />
+                                <p id="authtp">Mémoires d’outre-Auvergne</p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">Au fond du trou je suis</p>
+                                <p id="contenttext">
+                                    Au fond du Puy je vis, une vie de misère<br />
+                                    Parsemée d'ennuis, et surtout, de galères<br />
+                                    Accélérer l'oubli en enchaînant les verres<br />
+                                    Pour traverser les nuits, désormais trop sévères<br />
+                                    Sous un soleil de plomb, une brève accalmie<br />
+                                    N'a pas eu ma raison : Muratello, fini !<br />
+                                    Aujourd'hui je survis comme un loup solitaire<br />
+                                    Ton fantôme me suit, et à chaque fois je perds<br /><br /><br />
+                                    Au fin fond du Velay, où j'ai trouvé refuge<br />
+                                    Tomberont mes rеgrets, après toi le déluge<br />
+                                    Au fin fond dеs vallées, à l'alcool je me purge<br />
+                                    Le diable s'en est allé, on continue les murges !<br />
+                                    Mais ici, tout me lasse, me blesse et finit par me nuire<br /><br /><br />
+                                    Au fond du trou je suis, plus aucune lumière<br />
+                                    Ne traverse ma vie, ça ne date pas d'hier<br />
+                                    Parfois je m'assoupis puisque tout m'indiffère<br />
+                                    Ou je trinque sans répit, jusqu'à tomber par terre<br />
+                                    Dans les rues de Clermont, clairement meurtrie<br />
+                                    J'ai perdu la raison, la fête est finie<br />
+                                    Aujourd'hui je survis comme un loup solitaire<br />
+                                    Ton fantôme me suit, et à chaque fois je perds
+                                </p>
+                                <p id="specialtext">
+                                    Dimanche | Juin 18TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#Mémoires</span><span class="spaneti">#AudreSylvain</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.pinimg.com/originals/67/06/6b/67066bb853cde4398e46a9769d324c11.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.ibb.co/p2xfY6h/222.jpg" />
+                                <p id="authtp">Quand la lumière disparait</p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">que les angoisses ressurgissent.</p>
+                                <p id="contenttext">
+                                    Dans mes nuits sans repos, où l'alcool coule à flot, le sang couleur bordeaux alors teinte ma peau.<br />
+                                    Dans mes nuits sans repos le me fige les os, et je risque ma peau dans des rixes, que rien ne vaut ?<br />
+                                    Dans ma tête malade s'immisce cette demie-vie bien abimée, ce constat dégueulasse et triste.
+                                    <br />
+                                </p>
+                                <p id="specialtext">
+                                    Dimanche | Juin 18TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/GpZpmTXm/tumblr-327244c069cea61fd0e40876ae0b3952-8d48f9ee-500.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.ibb.co/p2xfY6h/222.jpg" />
+                                <p id="authtp">Butterfly</p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">~~~~~~~~~~~~~~~~~~~~~~~</p>
+                                <p id="contenttext">
+                                    J'avance froidement <br />
+                                    Les yeux derrière la tête haute <br />
+                                    Laissant le temps <br />
+                                    Anesthésier mes peines <br />
+                                    Paysages sans saveur <br />
+                                    Soleil blanc et froid <br />
+                                    Il suffit d'un rien <br />
+                                    Pour écraser mes joies <br />
+                                    J'avance péniblement vers des horizons lointains <br />
+                                    Le cœur indifférent, lourd, rongé par le chagrin
+                                    <br />
+                                </p>
+                                <p id="specialtext">
+                                    Dimanche | Juin 18TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/pLGHrsYm/44a22b432edb094c5c169c8c7aac9831.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.pinimg.com/564x/ba/0b/6f/ba0b6fd35e4bab906c43cd2903244cf3.jpg" /> <p id="authtp">
+                                    Je n'ai rien de valeur dans ma vie
+                                </p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">mais...</p>
+                                <p id="contenttext">
+                                    J'ai un rêve et je suis prêt à le vendre.<br />
+                                    Personne ne va acheter ? quelqu'un?
+                                </p>
+                                <p id="specialtext">
+                                    Vendredi | Juin 04TH 2023 02:52 AM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/yxHqttBb/b9e9bf62a0a4334594ec8345dc29d2e7.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.pinimg.com/564x/ba/0b/6f/ba0b6fd35e4bab906c43cd2903244cf3.jpg" /> <p id="authtp">
+                                    Je chercherai mon propre calme
+                                </p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">je laisserai la douleur</p>
+                                <p id="contenttext">
+                                    Un verre parmi le tabac<br />
+                                    Une bouteille d'alcool<br />
+                                    Un corps abîmé<br />
+                                    Un esprit malade<br />
+                                    Une corde autour du cou<br />
+                                    Cris étouffés par l'alcool<br />
+                                    Une vie détruite<br />
+                                    Une âme ivre de rancune<br />
+                                    Un dernier souvenir<br />
+                                    Un dernier souffle<br />
+                                    Je trinque au suicide<br />
+                                    Lever un verre d'alcool...
+                                </p>
+                                <p id="specialtext">
+                                    dimanche | Juin 11TH 2023 03:31 aM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/TPKXDnCC/35cdab8ca3724ffa52f5235bd6b141fd.gif" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.pinimg.com/564x/ba/0b/6f/ba0b6fd35e4bab906c43cd2903244cf3.jpg" /> <p id="authtp">
+                                    Faux semblants...
+                                </p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">...</p>
+                                <p id="contenttext">
+                                    La nuit n'en finit pas
+                                    Je deviens transparente
+                                    Tu disparais très loin
+                                    J'oublie nos existences
+
+                                    Le manque étouffe chaque visage
+                                    M'èloigne et me rapproche
+                                    De faux semblants
+                                    Dont je deviens l'apparence
+
+                                    Et dans cette chambre triste
+                                    Je vieillis peu à peu
+                                    Ton absence me guide
+                                    Vers des murs silencieux
+
+                                    Le manque étouffe chaque visage
+                                    M'èloigne et me rapproche
+                                    De faux semblants
+                                    Dont je deviens l'apparence
+                                </p>
+                                <p id="specialtext">
+                                    wednesday | June 06TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                    <div id="xpost">
+                        <div id="butonslat">
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                            <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                        </div>
+
+                        <img src="https://i.postimg.cc/65hwJW8L/5fb6d2b0eb89ed7d4714cd4c59b74d40.jpg" id="imgpostinx" />
+
+                        <div id="areapost">
+                            <div id="areaauth">
+                                <img id="iconprfil" src="https://i.pinimg.com/564x/ba/0b/6f/ba0b6fd35e4bab906c43cd2903244cf3.jpg" /> <p id="authtp">
+                                    Tant pis pour le suicide
+                                </p>
+
+                            </div>
+                            <div id="areatextx">
+                                <p id="titletext">Beaucoup de discussions </p>
+                                <p id="contenttext">
+                                    mais tu n'as jamais essayé.<br />
+                                    Quelques pilules à court d'une ligne droite, se réveiller se sentant toujours bien...
+                                </p>
+                                <p id="specialtext">
+                                    mercredi | Juin 06TH 2023 21:12 PM
+                                </p>
+                            </div>
+                        </div>
+                        <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div id="prof">
+                <!--<div id="Frnds">
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="https://xat.me/Taiga">Ⅰ</a></p>
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="https://xat.me/itami">Ⅱ</a></p>
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="http://xat.me/i=1481199396">Ⅲ</a></p>
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="https://xat.me/i=1409430936">Ⅳ</a></p>
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="https://xat.me/i=291296788">𝚅</a></p>
+                    <p class="Fname" style="font-size:18px;"><a style="color:black;font-size:20px;text-decoration:none;" href="#">Ⅵ</a></p>
+                </div>-->
+
+
+                <div id="alinks">
+                    <style>
+                        #alinks {
+                            filter: invert(100%);
+                            width: 27%;
+                            height: 5%;
+                            position: absolute;
+                            top: 8%;
+                            right: 3%;
+                        }
+
+                        .butsx {
+                            width: 2.5vw;
+                            height: 2vw;
+                            float: left;
+                            margin-left: .3vw;
+                            text-align: center;
+                            color: rgb(36, 36, 36);
+                            transition: all .5s ease;
+                        }
+
+                            .butsx:hover {
+                                color: lightgray;
+                            }
+
+                        .psection {
+                            position: relative;
+                            font-size: .6vw;
+                            font-weight: bold;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        .spancor {
+                            font-family: "Roboto", Arial, sans-serif;
+                            position: relative;
+                            font-size: .4vw;
+                            top: -.1vw;
+                        }
+
+                        .pnumber {
+                            position: relative;
+                            font-size: 1.3vw;
+                            top: -1.5vw;
+                        }
+                    </style>
+
+                    <div id="butx1" class="butsx">
+                        <span class="spancor">[ </span><span class="psection">OLD.XS</span><span class="spancor"> ]</span>
+                        <p class="pnumber">01</p>
+                    </div>
+                    <div id="butx2" class="butsx">
+                        <span class="spancor">[ </span><span class="psection">Home1</span><span class="spancor"> ]</span>
+                        <p class="pnumber">02</p>
+                    </div>
+                    <div id="butx3" class="butsx">
+                        <span class="spancor">[ </span><span class="psection">Section</span><span class="spancor"> ]</span>
+                        <p class="pnumber">03</p>
+                    </div>
+                    <div id="butx4" class="butsx">
+                        <span class="spancor">[ </span><span class="psection">Section</span><span class="spancor"> ]</span>
+                        <p class="pnumber">04</p>
+                    </div>
+                </div>
+
+                <style>
+                    .bim {
+                        position: absolute;
+                        width: 11vw;
+                        overflow: hidden;
+                        height: 11vw;
+                        border-radius: 50%;
+                        left: 71%;
+                        top: 15%;
+                        margin: .1vw;
+                    }
+
+                    .mimg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 11vw;
+                        height: 11vw;
+                        transition: all .3s ease;
+                    }
+
+                    .bim:hover .mimg {
+                        transform: scale(1.1);
+                    }
+
+                    #contentmain {
+                        position: absolute;
+                        right: 2%;
+                        width: 29%;
+                        height: 50%;
+                        top: 38%;
+                    }
+
+                    #pneigemain {
+                        color: white;
+                        font-size: 1.1vw;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                    #pneigemain2 {
+                        font-family: "Roboto", Arial, sans-serif;
+                        top: -5%;
+                        text-transform: uppercase;
+                        color: #d1deff;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                    #profilesub {
+                        width: 10%;
+                        height: 22%;
+                        border-top: .1vw solid white;
+                        border-bottom: .1vw solid white;
+                        position: absolute;
+                        right: 3%;
+                        top: 73%;
+                        text-align: right;
+                    }
+
+                    #biglet {
+                        font-family: 'Raleway', sans-serif;
+                        font-size: 2vw;
+                        color: white;
+                        width: 200%;
+                        margin-left: -100%;
+                        font-weight: bold;
+                        margin-top: 15%;
+                        letter-spacing: .3vw;
+                    }
+
+                    #littlet {
+                        font-family: 'Raleway', sans-serif;
+                        font-size: .45vw;
+                        color: white;
+                        width: 250%;
+                        margin-left: -150%;
+                        text-transform: uppercase;
+                        margin-top: -1.5vw;
+                        line-height: .7vw;
+                        letter-spacing: .1vw;
+                        opacity: .6;
+                    }
+                </style>
+                <div class="bim"><img class="mimg" src="https://i.ibb.co/DQ30QHF/8eba6e82619370b6bfdaac7a78895dda.jpg" /></div>
+
+                <div id="contentmain">
+                    <p id="pneigemain">
+                        / スノーグレ ー ブレイン /
+                    </p><p id="pneigemain2">
+                        / neige et grisâtre /
+                    </p>
+                </div>
+                <div id="profilesub">
+                    <p id="biglet">
+                        OUT<br />
+                        OF<br />
+                        MIND
+                    </p>
+                    <p id="littlet">
+                        and again and again...
+                        I can't help but fall into your sweet smile,
+                        my mind can't escape you
+                    </p>
+                </div>
+                <!--<div class="des">-->
+                <!--<p style="font-size:20px;">Neige​</p>
+                <p style="font-size:8px;"> | Neige |𝟭𝟱𝟯𝟯𝟮𝟱𝟮𝟴𝟵𝟬 | 𝗖𝗼𝗱𝗲 𝚇𝚇𝚅 | GRISATRE |</p>‧<br />
+                <p style="font-size:8px;">
+                    † 𝖲𝗂𝗅𝗅𝖾𝗇𝗍 ‧ 𝖤𝗀𝗈𝖼𝖾𝗇𝗍𝗋𝗂𝖼 ‧ 𝖠𝗉𝖺𝗍𝗁𝖾𝗍𝗂𝖼 ‧ 𝖨𝗇𝖽𝗂𝖿𝖿𝖾𝗋𝖾𝗇𝗍 ‧ 𝖱𝖾𝖺𝗅𝗂𝗌𝗍𝗂𝖼 ‧ 𝖣𝗂𝗋𝖾𝖼𝗍 ‧ 𝖮𝖻𝖾𝖼𝗍𝗂𝗏𝖾 ‧ 𝖭𝖾𝗎𝗍𝗋𝖺𝗅 ‧ 𝖤𝗀𝗈𝗍𝗂𝗌𝗍𝗂𝖼𝖺𝗅 ‧<br />‧<br />
+                    𝖤𝗅𝖾𝗀𝖺𝗇𝗍 & 𝖯𝖾𝗋𝗏𝖾𝗋𝗌𝖾
+                </p>-->
+                <!--</div>-->
+
+
+            </div>
+            <!--<div class="Dcredits">
+                <p style="font-family:Calibri;font-size:9px;text-align:center;">
+                    † Xatspace by xCrimsonRain 1533252890 ‧ Rain ‧ Vendetta ‧ Sky ‧ Crimson ‧ Harbinger ‧ Blaine ‧ <br />
+                    <span style="color:deepskyblue;">Xat.com® 2020-Copyright© All Rights Reserved</span>
+                </p>
+            </div>-->
+        </div>
+
+        <script>
+
+
+
+            $(document).ready(function () {
+                var playing = false,
+                    artistname = $(".artist-name"),
+                    musicName = $(".music-name"),
+                    time = $(".time"),
+                    fillBar = $(".fillBar");
+                z = 0;
+                let audioData = [];
+
+                var song = new Audio();
+                var CurrentSong = 0;
+                window.onload = load();
+
+                function load() {
+                    audioData = [
+
+                        {
+
+                            name: "Radio éteinte",
+                            artist: "Radio éteinte",
+                            src:
+                                ""
+                        },
+                        {
+                            name: "Sorry",
+                            artist: "Only smile",
+                            src:
+                                "https://xevangelist.github.io/evangelist/sorry.mp3?raw=true"
+                        },
+
+                        {
+                            name: "Faux Semblants",
+                            artist: "Amesoeurs",
+                            src:
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                        },
+                        {
+                            name: "Mémoires d'Outre Auvergne",
+                            artist: "Malenuit",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Memories.mp3?raw=true"
+                        },
+                        {
+                            name: "Love(Lorn)",
+                            artist: "Angor amini",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Love.mp3?raw=true"
+                        },
+                        {
+                            name: "FAIBLESSE DES SENS",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                        },
+
+                        {
+                            name: "La Reine Trayeuse",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/LaReine.mp3?raw=true"
+                        },
+
+                        {
+                            name: "Recueillement",
+                            artist: "AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                        },
+                        {
+                            name: "PULSE / SURREAL",
+                            artist: "LANTLOS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                        },
+                        {
+                            name: "Souvenirs d'un autre monde",
+                            artist: "Alcest",
+                            src:
+                                "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
+
+
+                        },
+
+
+
+                    ];
+
+                    artistname.html(audioData[CurrentSong].artist);
+                    musicName.html(audioData[CurrentSong].name);
+                    song.src = audioData[CurrentSong].src;
+                }
+
+                function playSong() {
+                    var curSong = audioData[CurrentSong];
+                    artistname.html(curSong.artist);
+                    musicName.html(curSong.name);
+                    song.src = curSong.src;
+                    song.play();
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    $(".player-track").addClass("active");
+                }
+
+                song.addEventListener("timeupdate", function () {
+                    var position = (100 / song.duration) * song.currentTime;
+                    var current = song.currentTime;
+                    var duration = song.duration;
+                    var durationMinute = Math.floor(duration / 60);
+                    var durationSecond = Math.floor(duration - durationMinute * 60);
+                    var durationLabel = durationMinute + ":" + durationSecond;
+                    currentSecond = Math.floor(current);
+                    currentMinute = Math.floor(currentSecond / 60);
+                    currentSecond = currentSecond - currentMinute * 60;
+                    // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                    if (currentSecond < 10) {
+                        currentSecond = "0" + currentSecond;
+                    }
+                    var currentLabel = currentMinute + ":" + currentSecond;
+
+                    var indicatorLabel = currentLabel + "                     " + durationLabel;
+
+                    fillBar.css("width", position + "%");
+
+                    $(".time").html(indicatorLabel);
+                });
+                //////
+                $("#a_in").click(function playOrPause() {
+                    if (song.paused) {
+                        song.play();
+                        playing = true;
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        /* $("#bar1").addClass("br1");*/
+
+                    } else {
+                        song.pause();
+                        playing = false;
+                        $("#play").removeClass("fa-pause");
+                        $("#play").addClass("fa-play");
+                        $("p").removeClass("active");
+
+
+                    }
+                });
+                $("#play").click(function () {
+
+
+
+
+
+
+                    if (playing != false) {
+                        CurrentSong++;
+                        if (CurrentSong < 0) {
+                            CurrentSong = 9;
+                        } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                        playSong();
+                    }
+
+                    else {
+                        song.play();
+                        playing = true; $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                    }
+
+
+
+                });
+                $("#pause").click(function () {
+                    song.pause();
+                    playing = false; $("i").addClass("playeq"); $("i").removeClass("stopeq");
+                });
+                $("#stop").click(function next() {
+                    CurrentSong++;
+                    if (CurrentSong > 9) {
+                        CurrentSong = 0;
+                    }
+                    song.pause();
+                    playing = false;
+                });
+                $("#prev").click(function prev() {
+                    CurrentSong--;
+                    if (CurrentSong < 0) {
+                        CurrentSong = 9;
+                    } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                    playSong();
+                });
+
+                $("#next").click(function next() {
+                    CurrentSong++;
+                    if (CurrentSong > 9) {
+                        CurrentSong = 0;
+                    }
+                    $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                    playSong();
+                });
+            });
+
+
+
+        </script>
+
+        <div id="maintext2">
+            <style>
+                #maintext2 {
+                    width: 25%;
+                    height: 35%;
+                    position: absolute;
+                    top: 13%;
+                    right: 7%;
+                }
+
+                #textlatrot {
+                    position: absolute;
+                    width: 60%;
+                    height: 30%;
+                    transform: rotate(90deg);
+                    top: 28%;
+                    right: -18%;
+                }
+
+                    #textlatrot b {
+                        position: absolute;
+                        font-size: .6vw;
+                        letter-spacing: .05vw;
+                        left: 0;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                #imgbars {
+                    position: absolute;
+                    transform: rotate(90deg);
+                    height: 2vw;
+                    width: 11vw;
+                    opacity: .4;
+                    right: 24%;
+                    top: 24%;
+                    /*filter: invert(100%);*/
+                }
+
+                #titlemain {
+                    position: absolute;
+                    font-size: 2vw;
+                    left: 40%;
+                    text-align: center;
+                    top: -2.5vw;
+                }
+                #px1 {
+                    position: absolute;
+                    font-size: 1.1vw;
+                    left: 70%;  
+                    text-align: center;
+                    top: -1.3vw;
+                }
+                #px2 {
+                    position: absolute;
+                    font-size: .7vw;
+                    left: 77%;
+                    text-align: center;
+                    top: -.8vw;
+                }
+                #barsep { height:80%; width:.1vw; background:black; left:83%; top:0; position:absolute;
+                }
+            </style>
+            <div id="textlatrot">
+                <b>
+                    Taste the fear, tasting uncertainty. What will you do?  when there's nothing <br />for you to cling to.... when your life has rot...
+                    Can you hear it? can you hear the sound?
+                    As your broken mind, come crashing down.
+                </b>
+            </div>
+            <img id="imgbars" src="https://i.postimg.cc/y8M4TgC4/vecteezy-heartbeat-line-png-17398778-110.png" />
+            <div id="barsep"></div>
+            <p id="px1">
+                品<br />味<br />不<br />确<br />定<br />性<br />和<br />不<br />安
+            </p>
+            <p id="px2">
+
+                享<br />受<br />你<br />的<br />不<br />安<br />全<br />感<br />如<br />何<br />逐<br />渐<br />摧<br />毁<br />你<br />的<br />理<br />智
+            </p>
+            <p id="titlemain">
+                不<br />確<br />●<br />実<br />性
+            </p>
+        </div>
+
+        <div id="maintext1">
+            <style>
+                #maintext1 {
+                    position: absolute;
+                    width: 15%;
+                    height: 22%;
+                    left: 22%;
+                    top: 15%;
+                }
+
+                #cubetext {
+                    position: absolute;
+                    width: 70%;
+                    height: 22%;
+                    border: .14vw solid rgb(36, 36, 36);
+                }
+
+                    #cubetext p {
+                        position: absolute;
+                        font-size: 1.8vw;
+                        top: -1.7vw;
+                        letter-spacing: .2vw;
+                        left: .3vw;
+                    }
+
+                    #cubetext span {
+                        position: absolute;
+                        font-size: 1vw;
+                        top: .5vw;
+                        letter-spacing: .2vw;
+                        left: 40%;
+                    }
+
+                #ptaste {
+                    position: absolute;
+                    font-size: 1.6vw;
+                    top: 10%;
+                    letter-spacing: .2vw;
+                    left: 1%;
+                }
+
+                #ptaste2 {
+                    position: absolute;
+                    font-size: .6vw;
+                    top: 40%;
+                    letter-spacing: .1vw;
+                    left: 0%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+
+                #ptaste3 {
+                    position: absolute;
+                    font-size: .53vw;
+                    top: 48%;
+                    letter-spacing: .1vw;
+                    left: 2%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+            </style>
+
+            <div id="cubetext"><p> ) | ( </p><span>涅格西尤基</span></div>
+            <p id="ptaste">恐怖を味わう</p>
+            <p id="ptaste2">【雪】NEIGE</p>
+            <p id="ptaste3"> MRR | YUKI</p>
+        </div>
+
+        <div id="Aaudio">
+            <style>
+                #Aaudio {
+                    font-family: 'Raleway', sans-serif;
+                    position: absolute;
+                    width: 70%;
+                    left: 22.15%;
+                    top: 75%;
+                    height: 10%;
+                }
+
+                #abtnaud {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 60%;
+                    height: 23%;
+                    left: -2%;
+                    top: 29%;
+                }
+
+                .butplayer {
+                    float: left;
+                    height: 1vw;
+                    top: -.25vw;
+                    width: 1vw;
+                    margin-left: 1.4vw;
+                    position: relative;
+                }
+
+                .butpl {
+                    border: .1vw solid white;
+                    position: absolute;
+                    width: 1.6vw;
+                    height: 1.6vw;
+                    left: 0;
+                    top: .3vw;
+                    border-radius: .2vw;
+                    transition: all .5s ease;
+                }
+
+                    .butpl:hover {
+                        background: #789ffb;
+                    }
+
+                    .butpl img {
+                        position: absolute;
+                        width: 1.3vw;
+                        height: 1.3vw;
+                        filter: grayscale(100%);
+                        left: .14vw;
+                        top: .1vw;
+                    }
+
+                #pause, #play, #next, #prev, #stop {
+                    width: 1vw;
+                    height: 1vw;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .progress-bar {
+                    opacity: .8;
+                    bottom: 10%;
+                    left: 0%;
+                    width: 100%;
+                    background: white;
+                    height: .15vw;
+                    position: absolute;
+                }
+
+                .fillBar {
+                    background: #789ffb;
+                    width: 0;
+                    height: .15vw;
+                }
+
+
+                #namesong {
+                    position: absolute;
+                    text-transform: uppercase;
+                    text-align: right;
+                    width: 40%;
+                    height: 20%;
+                    right: 4%;
+                    top: 30%;
+                    font-weight: bold;
+                    color: white;
+                    letter-spacing: .2vw;
+                    font-size: .75vw;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    text-transform: uppercase;
+                    text-align: right;
+                    width: 40%;
+                    height: 20%;
+                    right: 4%;
+                    top: 50%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .2vw;
+                    font-size: .5vw;
+                    color: #789ffb;
+                }
+
+                #AT_time {
+                    width: 12%;
+                    height: 1vw;
+                    top: 68%;
+                    left: 0%;
+                    position: absolute;
+                }
+
+                    #AT_time p {
+                        position: absolute;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        color: lightgray;
+                    }
+
+                .time {
+                    position: absolute;
+                    top: 0vw;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .45vw;
+                    overflow: hidden;
+                    color: white;
+                }
+
+                #name_sng {
+                }
+            </style>
+            <div class="progress-bar">
+                <div class="fillBar"></div>
+            </div>
+
+
+            <div id="AT_time"><div class="time"></div></div>
+            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+            <div> </div>
+            <div class="artist-name"></div>
+
+            <div id="abtnaud">
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                        <div id="prev" class="fas fa-backward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1.1vw; height:1.1vw; left:.25vw; top:.25vw;" />
+
+                        <div id="play"> </div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                        <div id="next" class="fas fa-forward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer" id="pausebuton">
+                    <style>
+                        #pausebuton {
+                            left: 145%;
+                            position: relative;
+                        }
+                    </style>
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                        <div id="pause"> </div>
+                    </div>
+
+                </div>
+                <!--<div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                        <div id="stop"> </div>
+                    </div>
+
+                </div>-->
+            </div>
+
+
+
+        </div>
+
+        <img id="firmimg" src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png"/>
+    <style>
+        #firmimg { position:absolute; width:8vw; top:85%;right:3%; filter:invert(100%); mix-blend-mode:difference;
+        }
+    </style>
+
+
+    </div>
+
+</body>
+</html>
