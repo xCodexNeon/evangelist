@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="covervid.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script>
+     
+    <style>
+
+    </style>
+
+    <style>
+      /*  @font-face {
+            font-family: 'HYWenHei-85W';
+            src: url('HYWenHei-HEW.woff2') format('woff2'), url('HYWenHei-HEW.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }*/
+        @font-face {
+            font-family: 'HYWenHei-85W';
+            font-style: normal;
+            font-weight: normal;
+            src: local('HYWenHei-85W'), url('zhcn.woff') format('woff');
+        }
+        body { 
+            font-family: 'HYWenHei-85W';
+            overflow: hidden;
+            background: black;
+        }
+
+        .covervid-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        video {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        #maincont {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+
+
+
+
+        html, button, .center-center, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+
+
+        @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+
+        #intro {
+            color: white;
+        }
+    </style>
+
+
+    <script>
+        fullscreen();
+        $(window).resize(fullscreen);
+        $(window).scroll(headerParallax);
+
+        function fullscreen() {
+            var masthead = $('.masthead');
+            var windowH = $(window).height();
+            var windowW = $(window).width();
+
+            masthead.width(windowW);
+            masthead.height(windowH);
+        }
+
+        function headerParallax() {
+            var st = $(window).scrollTop();
+            var headerScroll = $('.masthead h1');
+
+            if (st < 500) {
+                headerScroll.css('opacity', 1 - st / 1000);
+                $('.masthead-arrow ').css('opacity', 0.5 - st / 250);
+                headerScroll.css({
+                    '-webkit-transform': 'translateY(' + st / 7 + '%)',
+                    '-ms-transform': 'translateY(' + st / 7 + '%)',
+                    transform: 'translateY(' + st / 7 + '%)'
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <video autoplay="" loop="" muted="">
+            <source src="sss2.mp4" type="video/mp4">
+            <script>
+                $('video').coverVid(1920, 1080);
+            </script>
+           
+
+        </video>
+         
+    </header>
+
+    <div id="mainscreen">
+        <style>
+            #mainscreen {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            #first {
+                position: absolute;
+                width: 36%;
+                height: 66%;
+                background: white;
+                left: 32%;
+                top: 17%;
+                border-radius: .4vw;
+                font-family: 'HYWenHei-85W';
+             
+                /*font-family: 'Signika', sans-serif;*/
+            }
+
+            #logohoyo {
+                position: absolute;
+                width: 50%;
+                top: -5%;
+                left: 25%;
+            }
+
+            #textmail {
+                position: absolute;
+                width: 80%;
+                height: 3vw;
+                border: none;
+                left: 10%;
+                top: 25%;
+                border: 0;
+                outline: none; 
+                font-family: 'HYWenHei-85W';
+            
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.3vw;
+                opacity: .6;
+            }
+
+            #textpass {
+                position: absolute;
+                width: 80%;
+                height: 3vw;
+                border: none;
+                left: 10%;
+                top: 43%;
+                border: 0;
+                outline: none; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.3vw;
+                opacity: .6;
+            }
+
+            #buttonintro {
+                position: absolute;
+                width: 80%;
+                height: 4vw;
+                border-radius: .4vw;
+                border: none;
+                left: 10%;
+                top: 67%;
+                border: 0;
+                background: #3c3c3c;
+                outline: none; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.3vw;
+            }
+
+            #p1 {
+                position: absolute;
+                left: 7%;
+                top: 53%;
+                border: 0;
+                color: #ceb00c; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.1vw;
+            }
+
+            #p2 {
+                position: absolute;
+                right: 7%;
+                top: 53%;
+                border: 0;
+                color: #ceb00c; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.1vw;
+            }
+
+            #p3 {
+                text-align: center;
+                top: -2.5vw;
+                margin-left: 3vw;
+                position: relative;
+                border: 0;
+                color: white; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.1vw;
+            }
+            #p4 {
+                text-align: center;
+                position: relative;
+                border: 0;
+                color: white; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.1vw;
+            }
+
+            #buttonintro p {
+                color: #e0d283;
+                font-family: 'HYWenHei-85W';
+                text-align: center;
+                margin-top: 1.2vw;
+            }
+
+            html {
+                cursor: url(https://i.postimg.cc/d3qtmmGS/icon.png);
+            }
+
+            #login {
+                position: absolute;
+                width: 50%;
+                left: 25%;
+                height: 5vw;
+                top: 47%;
+                background: #3c3c3c;
+                height: 4vw;
+                border-radius: .4vw;
+            }
+          #incorrect {
+                position: absolute;
+                width: 60%;
+                left: 20%;
+                height: 5vw;
+                top: 47%;
+                background: #3c3c3c;
+                height: 4vw;
+                border-radius: .4vw;
+            }
+                #login img {
+                    position: relative;
+                    filter: invert(100%) grayscale(100%);
+                    width: 2.4vw;
+                    left: 1.4vw;
+                    top: .8vw;
+                }
+
+            .opacity0 {
+                opacity: 0;
+                z-index: -1;
+            }
+
+            .apaerrs {
+                animation: appanddiss 3s 1;
+                animation-fill-mode: forwards;
+            }
+            .apaerrs2 {
+                animation: appanddiss2 3s 1;
+                animation-fill-mode: forwards;
+            }
+            @-webkit-keyframes appanddiss {
+                0% {
+                    opacity: 1;
+                    z-index: 9;
+                }
+
+                90% {
+                    opacity: 1;
+                    z-index: 9;
+                }
+
+                100% {
+                    opacity: 0;
+                    z-index: -1;
+                   
+
+                }
+            }
+            @-webkit-keyframes appanddiss2 {
+                0% {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                30% {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                100% {
+                    opacity: 1;
+                    z-index:9;
+                }
+            }
+        </style>
+        <script>
+            var x = 0;
+            function comprobarClave() {
+                clave1 = document.getElementById("textpass").value;
+                user1 = document.getElementById("textmail").value;
+
+                if ((clave1 != "") && (user1 != "")) {
+
+                    /*$("#login").removeClass("opacity0");*/ $("#first").addClass("apaerrs");
+                    $("#login").removeClass("opacity0"); $("#login").addClass("apaerrs");
+
+                    //var url = "Cris2.html";
+                    //$(location).attr('href', url);
+                    $("#username").text("¡" + user1.substr(0, 2) + "******@xatme.com, Bienvenido!");
+                    $("#usuariospan").text(  user1.substr(0, 2) + "******@xatme.com");
+                    function welcomemsn() {
+                        $("#welcome").addClass("inwelcom"); $("#welcome").removeClass("outwelcom");
+                        $("#mainwelcome").addClass("apaerrs2"); $("#mainwelcome").removeClass("opacity0");
+                        $("#server").addClass("apaerrs2"); $("#server").removeClass("opacity0");
+                        $("#username2").addClass("apaerrs2"); $("#username2").removeClass("opacity0");
+                    }
+
+                    setInterval(welcomemsn, 3200); 
+
+                }
+                else {
+                    $("#incorrect").removeClass("opacity0"); $("#incorrect").addClass("apaerrs");
+                    function returnclas() {
+                        $("#incorrect").addClass("opacity0"); $("#incorrect").removeClass("apaerrs");
+                    }
+                   
+                    setInterval(returnclas, 4000); 
+                  
+
+                }
+
+            }
+
+            function checkradio() {
+                if ((x == 1) || (x == 0)) {
+                    $("#backradiobtn").removeClass("radiobackchek"); $("#backradiobtn").addClass("radiobacknocheck");
+                
+                    x++;
+
+                }
+                if (x == 2)  {
+                    $("#backradiobtn").addClass("radiobackchek"); $("#backradiobtn").removeClass("radiobacknocheck");
+
+                    x++;
+
+                }
+                else if (x > 2) { x = 0; }
+
+            }
+
+        </script>
+        <div id="first">
+            <img src="https://i.postimg.cc/MKThF7P0/Ho-Yoverse-Logo.png" id="logohoyo" />
+            <input type="text" maxlength="14" min="3" id="textmail" placeholder="Correo electrónico" />
+            <input type="password" id="textpass" placeholder="Contraseña" />
+            <p id="p1">Registrate ahora</p> <p id="p2">¿Olvidaste tu contraseña?</p>
+            <div id="buttonintro" onclick="comprobarClave();">
+
+                <p>Conectarse</p>
+
+
+            </div>
+
+            <div id="login" class="opacity0">
+                <img src="https://i.postimg.cc/59Y6gncD/giphy.gif" /> <p id="p3">Iniciando sesión...</p>
+
+            </div>
+            <div id="incorrect" class="opacity0">
+                <p id="p4">Ingresa tu usuario y contraseña!</p>
+
+            </div>
+        </div>
+
+        <center id="welcome" class="outwelcom">
+            <style>
+                #welcome { width:40%; height:11%; background:white; border-radius:.4vw;  left:30%; position:absolute; align-content:center; transition:all 1s ease;
+                }
+                .outwelcom {
+                    top: -20%;  
+                }
+                .inwelcom {  top:10%; 
+                }
+                #iconmsn {   margin-top:1.5vw; margin-right:2vw;
+                }
+                #username:first-letter {text-transform:uppercase;
+                }
+                #username {
+                    text-align: center;
+                    position: relative;
+                    border: 0;
+                    top: -1vw;
+                    color: dimgray; 
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.2vw;
+                }
+            </style>
+            <img src="https://i.postimg.cc/5086VqZY/mail.png" id="iconmsn" />
+            <span id="username"></span>
+        </center>
+
+        <div id="mainwelcome" class="opacity0">
+            <style>
+               
+                #mainwelcome {width:30%; height:17%;   top:38%; left:35%; position:absolute;  
+                }
+                #mainsep { position:absolute; width:100%; top:55%;
+                }
+                #mainp1 {
+                    /*opacity: .4;*/
+                    text-align: center;
+                    position: relative;
+                    border: 0; top:-.7vw;
+                    text-transform: uppercase;
+                    color: white; 
+                    font-family: 'HYWenHei-85W';
+                    font-size: 2.7vw;
+                }
+                #mainp2 {
+                    opacity: .4;
+                    text-align: center;
+                    position: relative;
+                    border: 0;
+                    text-transform:uppercase;
+                    color: white;  top:-55%;
+                    font-family: 'HYWenHei-85W';
+                    font-size: 1.1vw; animation:blinktext 2s infinite;
+                }
+                @-webkit-keyframes blinktext {
+                    0% {
+                        opacity: .4;
+                        
+                    }
+
+                    50% { opacity:.7;
+                    }
+
+                    100% {
+                        opacity: .4; 
+                    }
+                }
+            </style>
+            <p id="mainp1">Lynette's Space</p>
+            <img id="mainsep" src="https://i.postimg.cc/43YrmXbV/Cawptura.png" /><br />
+            <p id="mainp2">Haz clic para empezar</p>
+        </div>
+
+        <div id="server" class="opacity0">
+            <style>
+                #server { position:absolute; width:20%; height:8%; top:80%; left:40%; background:rgba(60,60,60,.7); animation-fill-mode:forwards;
+                }
+                #mainserver { position:absolute; width:98%; height:88%; border:.1vw solid dimgray; left:.7%; top:4%; overflow:hidden;
+                }
+                #imgref { position:absolute; width:4vw; filter:invert(100%); opacity:.1; top:-.2vw;
+                }
+                #mainserver p {
+                    text-align: center;
+                    position: relative;
+                    border: 0;
+                    color: white; top:-.6vw;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.4vw;
+                }
+                #backradiobtn {
+                    position: absolute;
+                    width: 1.8vw;
+                    height: 1.8vw;
+                    
+                    top: 25%; left:5.5%;
+                   
+                }
+                .radiobackchek {
+                    background-image: url(https://i.postimg.cc/13qTpsjQ/Cawptura-1.png);
+                    background-size: contain;
+                }
+                .radiobacknocheck {
+                    background-image: url(https://i.postimg.cc/yYXnBxtW/222.png);
+                    background-size: contain;
+                }
+                #username2 {
+                    text-align: center;
+                    position: relative; margin-top:47%;
+                    border: 0;
+                    color: aqua;
+                    top: -.6vw;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.4vw;
+                }
+                #usuariospan { color:#ceb00c;
+                }
+            </style>
+            <div id="mainserver">
+                <img src="https://i.postimg.cc/N086cz5T/recargar.png" id="imgref" />
+                <p>America</p>
+                <div id="backradiobtn" onclick="checkradio();" class="radiobackchek"></div>
+            </div>
+        </div>
+
+        <p id="username2" class="opacity0">Usuario <span id="usuariospan"></span></p>
+
+    </div>
+   
+</body>
+</html>
