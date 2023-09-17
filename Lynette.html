@@ -1,20 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title></title>
-    
+
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="covervid.js"></script>
     <script type="text/javascript" src="covervid.min.js"></script>
-     
-    <style>
 
+    <style>
     </style>
 
     <style>
-      /*  @font-face {
+        /*  @font-face {
             font-family: 'HYWenHei-85W';
             src: url('HYWenHei-HEW.woff2') format('woff2'), url('HYWenHei-HEW.woff') format('woff');
             font-weight: normal;
@@ -27,7 +26,8 @@
             font-weight: normal;
             src: local('HYWenHei-85W'), url('zhcn.woff') format('woff');
         }
-        body { 
+
+        body {
             font-family: 'HYWenHei-85W';
             overflow: hidden;
             background: black;
@@ -72,6 +72,161 @@
             color: white;
         }
     </style>
+    <script>
+
+
+
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            z = 0;
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+
+                        name: "Radio éteinte",
+                        artist: "Radio éteinte",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "Sorry",
+                        artist: "Only smile",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Genshin.mp3?raw=true"
+                    },
+
+                   
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "                     " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+
+
+
+
+
+                if (playing != false) {
+                    CurrentSong++;
+                    if (CurrentSong < 0) {
+                        CurrentSong = 9;
+                    } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                    playSong();
+                }
+
+                else {
+                    song.play();
+                    playing = true; $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                }
+
+
+
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false; $("i").addClass("playeq"); $("i").removeClass("stopeq");
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 9) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 9;
+                } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                playSong();
+            });
+
+            $("#asongplay").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 9) {
+                    CurrentSong = 0;
+                }
+                $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                playSong();
+            });
+        });
+
+
+
+    </script>
 
 
     <script>
@@ -104,14 +259,19 @@
         }
     </script>
 </head>
-<body>
+
+<body  ><script>
+    function cambiarsrc() {
+        $("#video1").attr("src", "door.mp4");
+    }
+</script>
     <header>
-        <video autoplay="" loop="" muted="">
-            <source src="sss2.mp4" type="video/mp4">
+        <video autoplay="" loop="" muted="" id="video1" src="sss2.mp4" type="video/mp4">
+
             <script>
                 $('video').coverVid(1920, 1080);
             </script>
-           
+            <!--onclick="cambiarsrc();"-->
 
         </video>
          
@@ -361,6 +521,34 @@
                 }
 
             }
+            
+
+            function clickenter() {
+                $("#welcome").removeClass("inwelcom"); $("#welcome").addClass("outwelcom"); 
+                $("#mainwelcome").removeClass("apaerrs2"); $("#mainwelcome").addClass("opacity0");
+                $("#server").removeClass("apaerrs2"); $("#server").addClass("opacity0");
+                $("#username2").removeClass("apaerrs2"); $("#username2").addClass("opacity0");
+                function deletesecions() {
+                    $("#welcome").remove();
+                    $("#mainwelcome").remove();
+                    $("#server").remove();
+                    $("#username2").remove();
+                    $("#loadingenter").removeClass("opacity0"); 
+                    $("#countp").addClass("counanima");
+                    $("#barmainfill").addClass("barfil");
+                }
+                function entranceseconvid() {
+                    $("#loadingenter").addClass("opacity0"); 
+                    cambiarsrc(); 
+                }
+                function entrancesurl() {
+                    var url = "Cris2.html";
+                    $(location).attr('href', url);
+                }
+                setInterval(entrancesurl, 15000); 
+                setInterval(entranceseconvid, 9000); 
+                setInterval(deletesecions, 1000); 
+            }
 
             function checkradio() {
                 if ((x == 1) || (x == 0)) {
@@ -377,9 +565,164 @@
                 }
                 else if (x > 2) { x = 0; }
 
-            }
+            } 
+                 
 
+            
         </script>
+
+        <div id="mainintro">
+            <style>
+                #mainintro {
+                    z-index: 9;
+                    width: 100%;
+                    height: 100%;
+                    background: white;
+                    position: absolute;
+                }
+
+                #mainimg1 {
+                    position: absolute;
+                    width: 36%;
+                    left: 32%;
+                    opacity: 0;
+                    top: 30%;
+                    animation: animaentrance 3s 1;
+                }
+                #mainimg2 {
+                    position: absolute;
+                    width: 36%;
+                    opacity: 0;
+                    left: 32%;
+                    top: 30%;
+                    animation: animaentrance 3s 1;
+                    animation-delay:3s;
+                }
+                #mainimg3 {
+                    opacity: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    animation: animaentrance2 3s 1;
+                    animation-delay: 6s; animation-fill-mode:forwards;
+                }
+
+                #min3 {
+                    position: absolute;
+                    width: 80%;
+                    height: 100%;
+                    left: 10%;
+                }
+
+                #adv1 {
+                    z-index: 2;
+                    text-align: center;
+                    top: 20%;
+                    position: relative;
+                    border: 0;
+                    text-transform: uppercase;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 2.5vw;
+                }
+
+                #adv2 {
+                    z-index: 2;
+                    text-align: center;
+                    width: 70%;
+                    left: 15%;
+                    top: 30%;
+                    color: dimgray;
+                    position: relative;
+                    border: 0; color:black;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.5vw;
+                }
+
+                #avd3 {
+                    z-index: 2;
+                    text-align: center;
+                    text-transform: uppercase;
+                    top: 35%;
+                    color: dimgray;
+                    position: relative;
+                    border: 0;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.2vw;
+                    animation: blinktxt1 1s infinite;
+                }
+
+                @-webkit-keyframes blinktxt1 {
+                    0% {
+                        opacity: .6;
+                    }
+
+                    50% {
+                        opacity: .3;
+                    }
+
+                    100% {
+                        opacity: .6;
+                    }
+                }
+                @-webkit-keyframes animaentrance2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+
+                    
+                }
+
+                @-webkit-keyframes animaentrance {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    40% {
+                        opacity: 1;
+                    }
+                    80% {
+                        opacity: 1;
+                    }
+                    100% {
+                        opacity: 0;
+                    }
+                }
+                #mainintro:target { opacity:0; z-index:-2; 
+                }
+                a { text-decoration:none;
+                }
+            </style>
+
+            <img id="mainimg1" src="https://i.postimg.cc/MKThF7P0/Ho-Yoverse-Logo.png" />
+            <img id="mainimg2" src="https://i.postimg.cc/PrPWrvJT/Genshin-Impact-logo-svg.png" />
+           
+            <div id="mainimg3">
+
+                <img src="https://i.postimg.cc/sDqpBfGS/intro.png" id="min3" /> <p id="adv1">Advertencia: Lee antes de iniciar</p>
+
+                <p id="adv2">
+                    Este XatSpace sólo es una réplica y represantación visual del videojuego Genshin Impact. Esta simulación sólo es estética,
+                    no existe riesgo alguno para el usuario que visualice esta simulación. En ningún momento
+                    se le solicitará al usuario a ingresar sus datos reales, los datos ingresados pueden ser cualquiera y NO se guardan ni se almacenan.
+                    <br /> <br /> Este XatSpace está desarrollada por "Neige" para la usuaria "Lynette"
+
+
+                </p>
+                <a id="asongplay" href="#mainintro"> <p id="avd3">Clic para continuar...</p></a>
+            </div>
+            
+
+        </div>
+
         <div id="first">
             <img src="https://i.postimg.cc/MKThF7P0/Ho-Yoverse-Logo.png" id="logohoyo" />
             <input type="text" maxlength="14" min="3" id="textmail" placeholder="Correo electrónico" />
@@ -399,6 +742,30 @@
             <div id="incorrect" class="opacity0">
                 <p id="p4">Ingresa tu usuario y contraseña!</p>
 
+            </div>
+            <div id="fbbtn">
+                <style>                    #fbbtn {
+                        width: 3vw;
+                        height: 3vw;
+                        position: absolute;
+                        top: 85%;
+                        left: 38%; 
+                        border-radius: 50%;
+                    }
+                    #twbtn{
+                        width: 3vw;
+                        height: 3vw;
+                        position: absolute;
+                        top: 85%;
+                        left: 52%; 
+                        border-radius: 50%;
+                    }
+                    .imgbtnsft { position:absolute; width:100%; height:100%;
+                    }
+                </style><img class="imgbtnsft" src="https://i.postimg.cc/tTWdbK4P/2021-Facebook-icon-svg.png" />
+            </div>
+            <div id="twbtn">
+                <img class="imgbtnsft" src="https://i.postimg.cc/yxKm8LDG/3670151.png" />
             </div>
         </div>
 
@@ -473,13 +840,16 @@
             </style>
             <p id="mainp1">Lynette's Space</p>
             <img id="mainsep" src="https://i.postimg.cc/43YrmXbV/Cawptura.png" /><br />
-            <p id="mainp2">Haz clic para empezar</p>
+            <p id="mainp2" onclick="clickenter();">Haz clic para empezar </p>
         </div>
 
         <div id="server" class="opacity0">
             <style>
                 #server { position:absolute; width:20%; height:8%; top:80%; left:40%; background:rgba(60,60,60,.7); animation-fill-mode:forwards;
                 }
+                    #server:hover {
+                        background: rgba(60,60,60,.9);
+                    }
                 #mainserver { position:absolute; width:98%; height:88%; border:.1vw solid dimgray; left:.7%; top:4%; overflow:hidden;
                 }
                 #imgref { position:absolute; width:4vw; filter:invert(100%); opacity:.1; top:-.2vw;
@@ -530,6 +900,555 @@
         </div>
 
         <p id="username2" class="opacity0">Usuario <span id="usuariospan"></span></p>
+
+        <div id="loadingenter" class="opacity0">
+            <style>
+                #loadingenter {
+                    width: 20%;
+                    height: 10%;
+                    top: 85%;
+                    position: absolute;
+                    left: 40%;
+                }
+
+                #counp1 {
+                    text-align: center;
+                    position: relative;
+                    border: 0;
+                    color: white;
+                    top: -10%;
+                    line-height: .5vw;
+                    font-family: 'HYWenHei-85W';
+                    font-size: 1.2vw;
+                }
+
+                #countp {
+                    font-size: 1vw;
+                    text-align: center;
+                    position: relative;
+                    border: 0;
+                    color: white;
+                    top: -10%;
+                    line-height: .5vw;
+                    font-family: 'HYWenHei-85W';
+                }
+
+                #barsection {
+                    position: absolute;
+                    width: 100%;
+                    height: 25%;
+                    top: 70%;
+                }
+
+                #rom1 {
+                    width: .5vw;
+                    height: .5vw;
+                    border-radius: .1vw;
+                    background: white;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: .3vw;
+                }
+
+                #rom2 {
+                    width: .5vw;
+                    right: 0;
+                    height: .5vw;
+                    border-radius: .1vw;
+                    background: white;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: .3vw;
+                }
+
+                #rom22 {
+                    width: .5vw;
+                    right: 4%;
+                    height: .5vw;
+                    border-radius: .1vw;
+                    background: white;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: .3vw;
+                    z-index: 1;
+                    animation: fillcube 0s 1; animation-delay:6s;
+                    animation-fill-mode: forwards;
+                }
+
+                #rom11 {
+                    left: 4%;
+                    width: .5vw;
+                    height: .5vw;
+                    border-radius: .1vw;
+                    background: #3c3c3c;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    top: .3vw;
+                    z-index: 1;
+                }
+
+                #barmain {
+                    height: .7vw;
+                    width: 90%;
+                    left: 5%;
+                    z-index: 2;
+                    background: white;
+                    position: absolute;
+                    top: .2vw;
+                }
+                #barmainfill {
+                    position: absolute;
+                    width: 0%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    background: #3c3c3c;
+                    animation-delay: 2s;
+                }
+                @-webkit-keyframes fillbarload {
+                    0% {
+                        width:0;
+                    }
+                    50% { width:50%;
+                    }
+                    90% { width:90%;
+                    }
+                    100% {
+                      width:100%;
+                    }
+                }
+                @-webkit-keyframes fillcube {
+                    0% {
+                        background: white;
+                    }
+
+                    100% {
+                        background: #3c3c3c;
+                    }
+                }
+                @keyframes timer {
+                    1% {
+                        content: '1%';
+                    }
+
+                    2% {
+                        content: '2%';
+                    }
+
+                    3% {
+                        content: '3%';
+                    }
+
+                    4% {
+                        content: '4%';
+                    }
+
+                    5% {
+                        content: '5%';
+                    }
+
+                    6% {
+                        content: '6%';
+                    }
+
+                    7% {
+                        content: '7%';
+                    }
+
+                    8% {
+                        content: '8%';
+                    }
+
+                    9% {
+                        content: '9%';
+                    }
+
+                    10% {
+                        content: '10%';
+                    }
+
+                    14% {
+                        content: '11%';
+                    }
+
+                    14.2% {
+                        content: '12%';
+                    }
+
+                    14.3% {
+                        content: '13%';
+                    }
+
+                    14.5% {
+                        content: '14%';
+                    }
+
+                    15% {
+                        content: '15%';
+                    }
+
+                    16% {
+                        content: '17%';
+                    }
+
+                    21% {
+                        content: '18%';
+                    }
+
+                    21.1% {
+                        content: '19%';
+                    }
+
+                    22.5% {
+                        content: '20%';
+                    }
+
+                    22.6% {
+                        content: '21%';
+                    }
+
+                    22.8% {
+                        content: '22%';
+                    }
+
+                    23% {
+                        content: '23%';
+                    }
+
+                    24% {
+                        content: '24%';
+                    }
+
+                    25% {
+                        content: '25%';
+                    }
+
+                    26% {
+                        content: '26%';
+                    }
+
+                    27% {
+                        content: '27%';
+                    }
+
+                    28% {
+                        content: '28%';
+                    }
+
+                    29% {
+                        content: '29%';
+                    }
+
+                    30% {
+                        content: '30%';
+                    }
+
+                    31% {
+                        content: '31%';
+                    }
+
+                    32% {
+                        content: '32%';
+                    }
+
+                    33% {
+                        content: '33%';
+                    }
+
+                    34% {
+                        content: '34%';
+                    }
+
+                    35% {
+                        content: '35%';
+                    }
+
+                    36% {
+                        content: '36%';
+                    }
+
+                    37% {
+                        content: '37%';
+                    }
+
+                    38% {
+                        content: '38%';
+                    }
+
+                    39% {
+                        content: '39%';
+                    }
+
+                    40% {
+                        content: '40%';
+                    }
+
+                    41% {
+                        content: '41%';
+                    }
+
+                    42% {
+                        content: '42%';
+                    }
+
+                    43% {
+                        content: '43%';
+                    }
+
+                    44% {
+                        content: '44%';
+                    }
+
+                    45% {
+                        content: '45%';
+                    }
+
+                    46% {
+                        content: '46%';
+                    }
+
+                    47% {
+                        content: '47%';
+                    }
+
+                    48% {
+                        content: '48%';
+                    }
+
+                    49% {
+                        content: '49%';
+                    }
+
+                    50% {
+                        content: '50%';
+                    }
+
+                    51% {
+                        content: '51%';
+                    }
+
+                    52% {
+                        content: '52%';
+                    }
+
+                    53% {
+                        content: '53%';
+                    }
+
+                    54% {
+                        content: '54%';
+                    }
+
+                    55% {
+                        content: '55%';
+                    }
+
+                    56% {
+                        content: '56%';
+                    }
+
+                    57% {
+                        content: '57%';
+                    }
+
+                    58% {
+                        content: '58%';
+                    }
+
+                    59% {
+                        content: '59%';
+                    }
+
+                    60% {
+                        content: '60%';
+                    }
+
+                    61% {
+                        content: '61%';
+                    }
+
+                    62% {
+                        content: '62%';
+                    }
+
+                    63% {
+                        content: '63%';
+                    }
+
+                    64% {
+                        content: '64%';
+                    }
+
+                    65% {
+                        content: '65%';
+                    }
+
+                    66% {
+                        content: '66%';
+                    }
+
+                    67% {
+                        content: '67%';
+                    }
+
+                    68% {
+                        content: '68%';
+                    }
+
+                    69% {
+                        content: '69%';
+                    }
+
+                    70% {
+                        content: '70%';
+                    }
+
+                    71% {
+                        content: '71%';
+                    }
+
+                    72% {
+                        content: '72%';
+                    }
+
+                    73% {
+                        content: '73%';
+                    }
+
+                    74% {
+                        content: '74%';
+                    }
+
+                    75% {
+                        content: '75%';
+                    }
+
+                    76% {
+                        content: '76%';
+                    }
+
+                    77% {
+                        content: '88%';
+                    }
+
+                    78% {
+                        content: '78%';
+                    }
+
+                    79% {
+                        content: '79%';
+                    }
+
+                    80% {
+                        content: '80%';
+                    }
+
+                    81% {
+                        content: '81%';
+                    }
+
+                    82% {
+                        content: '82%';
+                    }
+
+                    83% {
+                        content: '83%';
+                    }
+
+                    84% {
+                        content: '84%';
+                    }
+
+                    85% {
+                        content: '85%';
+                    }
+
+                    86% {
+                        content: '86%';
+                    }
+
+                    86.1% {
+                        content: '87%';
+                    }
+
+                    86.2% {
+                        content: '88%';
+                    }
+
+                    86.3% {
+                        content: '89%';
+                    }
+
+                    86.4% {
+                        content: '90%';
+                    }
+
+                    86.5% {
+                        content: '91%';
+                    }
+
+                    86.6% {
+                        content: '92%';
+                    }
+
+                    86.7% {
+                        content: '93%';
+                    }
+
+                    86.8% {
+                        content: '94%';
+                    }
+
+                    87% {
+                        content: '95%';
+                    }
+
+                    88% {
+                        content: '96%';
+                    }
+
+                    89% {
+                        content: '97%';
+                    }
+
+                    90% {
+                        content: '98%';
+                    }
+
+                    91% {
+                        content: '99%';
+                    }
+
+                    100% {
+                        content: '100%';
+                    }
+                }
+
+                .barfil {
+                    
+                    animation: fillbarload 4s 1;
+                    animation-fill-mode: forwards;
+                }
+                .counanima:before { 
+                    content: '0%';
+                    animation: timer 6s 1; animation-delay:2s;
+                    animation-fill-mode: forwards;
+                }
+            </style>
+            <p onclick="clickenter()" id="counp1">Verificando recursos...</p>
+            <p id="countp"   > </p>
+            <div id="barsection">
+                <div id="rom1"></div>
+                <div id="rom11"></div>    <div id="barmain">
+
+                    <div id="barmainfill">
+
+                    </div>
+                </div><div id="rom22"></div>
+                <div id="rom2"></div>
+
+            </div>
+        </div>
 
     </div>
    
