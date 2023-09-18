@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -378,24 +378,153 @@
                 }
                 #iconprofile { position:absolute; width:100%;
                 }
+                #baricons { position:absolute; width:80%; height:65%;  left:10%; top:35%;
+                }
+                #iconmenu1 { width:2.8vw; height:2.8vw;   position:absolute; top:8%; left:.2vw;
+                }
+                #iconmenu2 {
+                    width: 2.8vw;
+                    height: 2.8vw; 
+                    position: absolute;
+                    top: 25%;
+                    left: .2vw;
+                }
+                #iconmenu3 {
+                    width: 2.8vw;
+                    height: 2.8vw; 
+                    position: absolute;
+                    top: 40%;
+                    left: .2vw;
+                }
+                #iconmenu4 {
+                    width: 2.8vw;
+                    height: 2.8vw; 
+                    position: absolute;
+                    top: 55%;
+                    left: .2vw;
+                }
+                #iconmenu5 {
+                    width: 2.8vw;
+                    height: 2.8vw; 
+                    position: absolute;
+                    top: 87%;
+                    left: .2vw;
+                }
+                .iconim { position:absolute; width:100%; height:100%;
+                }
+                #iconmenu1:hover, #iconmenu2:hover, #iconmenu3:hover, #iconmenu4:hover, #iconmenu5:hover {
+                    width: 3vw;
+                    height: 3vw;
+                    left: .1vw;
+                }
             </style>
             <img src="https://i.postimg.cc/1RjXd9qf/gl.png" id="iconprofile" />
+
+            <div id="baricons">
+                <div id="iconmenu1" class="iconmnu"> <img class="iconim" src="https://i.postimg.cc/VL1KDY4M/c.png" /></div>
+                <div id="iconmenu2" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
+                <div id="iconmenu3" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
+                <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
+                <div id="iconmenu5" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+            </div>
+
         </div>
         <div id="profil">
             <style>
-                #profil { position:absolute; width:35%; height:100%; background:rgba(255,255,255,.8); left:4.5%;
+                #profil { position:absolute; width:33%; height:100%; background:rgba(255,255,255,.8); left:4.5%;
                 }
                 #card {
                     position: absolute;
                     width: 100%;
                     height: 33%;
-                    background-image: url(https://i.postimg.cc/YCw2WRVx/download.png); background-size:contain;
+                    
                     top: 1.5%;
                 }
-                
+                #imgbkgcard { position:absolute; width:100%; height:100%;
+                }
 
             </style>
             <div id="card">
+                <img id="imgbkgcard" src="https://i.postimg.cc/YCw2WRVx/download.png" />
+
+            </div>
+
+            <div id="menus">
+                <style>
+                    #menus { 
+                        width: 96%;
+                        height: 61%;
+                        top: 37%;
+                        left: 2%;
+                        position: absolute;
+                    }
+
+                  
+
+                    #line1 { 
+                        height: 20%;
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #line2 { top:20%; 
+                        height: 20%;
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #line3 { top:40%; 
+                        height: 20%;
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #line4 { top:60%; 
+                        height: 20%;
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #line5 { top:80%; 
+                        height: 20%;
+                        position: absolute;
+                        width: 100%;
+                    }
+                    .menues {
+                        transition: all .3s ease;
+                        width: 18%;
+                        margin: 1%;
+                        background: rgb(74,82,101);
+                        height: 90%;
+                        float: left;
+                    }
+                    .menues:hover {
+                        position: relative;
+                        width: 19%;
+                        margin: .5%;
+                        height: 94%;
+                        margin-left: .5%;
+                    }
+
+                    #menu1, #menu5, #menu9, #menu13, #menu17 {
+                        margin-left: 10%;
+                    }
+
+                        #menu1:hover, #menu5:hover, #menu9:hover, #menu13:hover, #menu17:hover {
+                            margin-left: 9.5%;
+                        }
+
+                    #menu4:hover {
+                        margin-left: .5%;
+                    }
+
+                    .menues img {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+                <div id="line1"><div id="menu1" class="menues"><img src="https://i.postimg.cc/sxNw0yvC/r.png" /></div><div id="menu2" class="menues"></div><div id="menu3" class="menues"></div><div id="menu4" class="menues"></div></div>
+                <div id="line2"><div id="menu5" class="menues"></div><div id="menu6" class="menues"></div><div id="menu7" class="menues"></div><div id="menu8" class="menues"></div></div>
+                <div id="line3"><div id="menu9" class="menues"></div><div id="menu10" class="menues"></div><div id="menu11" class="menues"></div><div id="menu12" class="menues"></div></div>
+                <div id="line4"> <div id="menu13" class="menues"></div><div id="menu14" class="menues"></div><div id="menu15" class="menues"></div><div id="menu16" class="menues"></div></div>
+                <div id="line5"><div id="menu17" class="menues"></div><div id="menu18" class="menues"></div><div id="menu19" class="menues"></div><div id="menu20" class="menues"></div></div>
                 
 
             </div>
