@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script> 
+
+    <style>
+    </style>
+
+    <style>
+        /*  @font-face {
+            font-family: 'HYWenHei-85W';
+            src: url('HYWenHei-HEW.woff2') format('woff2'), url('HYWenHei-HEW.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }*/
+        @font-face {
+            font-family: 'HYWenHei-85W';
+            font-style: normal;
+            font-weight: normal;
+            src: local('HYWenHei-85W'), url('zhcn.woff') format('woff');
+        }
+
+        body {
+            font-family: 'HYWenHei-85W';
+            overflow: hidden;
+            background: black;
+        }
+
+        
+
+        #maincont {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+
+
+
+
+        html, button, .center-center, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+
+
+        @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+
+        #intro {
+            color: white;
+        }
+    </style>
+  
+  
+</head>
+
+<body  > 
+    <header>
+       
+         
+    </header>
+
+    <div id="mainscreen">
+        <style>
+            #mainscreen {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0; background:white;
+            }
+
+         
+
+            #p1 {
+                position: absolute;
+                left: 7%;
+                top: 53%;
+                border: 0;
+                color: #ceb00c; 
+                font-family: 'HYWenHei-85W';
+                /*font-family: 'Signika', sans-serif;*/
+                font-size: 1.1vw;
+            }
+ 
+         
+
+            .apaerrs {
+                animation: appanddiss 3s 1;
+                animation-fill-mode: forwards;
+            }
+            .apaerrs2 {
+                animation: appanddiss2 3s 1;
+                animation-fill-mode: forwards;
+            }
+            @-webkit-keyframes appanddiss {
+                0% {
+                    opacity: 0;
+                    z-index: -1;
+                }
+                
+                10% {
+                    opacity: 1;
+                    z-index: 9;
+                }
+
+                90% {
+                    opacity: 1;
+                    z-index: 9;
+                }
+
+                100% {
+                    opacity: 0;
+                    z-index: -1;
+                   
+
+                }
+            }
+            @-webkit-keyframes loadbar {
+                0% {
+                     width:40%;
+                }
+
+                10% {
+                   width:35%;
+                }
+
+                90% {
+                    width:5%;
+                }
+
+                100% {
+                     width:0;
+                }
+            }
+        
+        </style>
+        <script>
+          
+                function entrancesurl() {
+                    var url = "Lynette3.html";
+                    $(location).attr('href', url);
+                }
+                setInterval(entrancesurl, 10000);  
+
+            
+                 
+
+            
+        </script>
+ 
+      <div id="mainload">
+          <style>              #mainload {
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  top: 0;
+                  left: 0%;
+                  animation: appanddiss 10s 1;
+                  animation-fill-mode: forwards;
+              }
+              #img1 { position:absolute; width:100%; height:100%;
+              }
+              #loadbar {
+                  width: 100%;
+                  height: 100%;
+                  background: white; opacity:.7;
+                  right: 30%;
+                  position: absolute;
+                  top: 0;
+                   animation: loadbar 10s 1;
+                  animation-fill-mode: forwards;
+              }
+
+          </style>
+          <img src="https://i.postimg.cc/Qt7ttSJ1/10.png" id="img1" />
+          <div id="loadbar"></div>
+
+      </div>
+        
+
+    </div>
+   
+</body>
+</html>
