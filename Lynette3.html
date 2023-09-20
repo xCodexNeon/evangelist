@@ -31,7 +31,20 @@
             overflow: hidden;
             background: black;
         }
+        .covervid-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
+        video { top:0; transform:scale(1.1);
+            overflow: hidden;
+            height: 100%; left:1%;
+            width: 100%;
+            position: absolute;
+        }
 
 
 
@@ -45,8 +58,27 @@
 
 </head>
 
-<body  >  
 
+
+<body>
+    <script>
+        function enterprofile() {
+            $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile"); 
+        } function outprofile() {
+            $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+        }
+    </script>
+    <header>
+        <video autoplay="" loop="" muted="" id="video1" src="tao1.mp4" type="video/mp4">
+
+            <script>
+                $('video').coverVid(1920, 1080);
+            </script>
+            onclick="cambiarsrc();"
+
+        </video>
+
+    </header>
     <div id="mainscreen">
         <style>
             #mainscreen {
@@ -54,11 +86,8 @@
                 width: 100%;
                 height: 100%;
                 top: 0;
-                left: 0;
-                background: black;
+                left: 0; 
             }
-            
-
         </style>
 
         <div class="ag-fireflies_box">
@@ -366,7 +395,7 @@
 
         <div id="barmenu">
             <style>
-                #barmenu {
+                #barmenu { z-index:11;
                     position: absolute;
                     width: 4%;
                     background: rgb(74,82,101);
@@ -376,33 +405,52 @@
                     border-left: .2vw solid gray;
                     border-right: .2vw solid gray;
                 }
-                #iconprofile { position:absolute; width:100%;
+
+                #iconprofile {
+                    position: absolute;
+                    width: 100%;
                 }
-                #baricons { position:absolute; width:80%; height:65%;  left:10%; top:35%;
+
+                #baricons {
+                    position: absolute;
+                    width: 80%;
+                    height: 65%;
+                    left: 10%;
+                    top: 35%;
                 }
-                #iconmenu1 { width:2.8vw; height:2.8vw;   position:absolute; top:6%; left:.2vw;
+
+                #iconmenu1 {
+                    width: 2.8vw;
+                    height: 2.8vw;
+                    position: absolute;
+                    top: 6%;
+                    left: .2vw;
                 }
+
                 #iconmenu2 {
                     width: 2.8vw;
-                    height: 2.8vw; 
+                    height: 2.8vw;
                     position: absolute;
                     top: 19%;
                     left: .2vw;
                 }
+
                 #iconmenu3 {
                     width: 2.8vw;
-                    height: 2.8vw; 
+                    height: 2.8vw;
                     position: absolute;
                     top: 33%;
                     left: .2vw;
                 }
+
                 #iconmenu4 {
                     width: 2.8vw;
-                    height: 2.8vw; 
+                    height: 2.8vw;
                     position: absolute;
                     top: 46%;
                     left: .2vw;
                 }
+
                 #iconmenu6 {
                     width: 2.8vw;
                     height: 2.8vw;
@@ -410,19 +458,61 @@
                     top: 60%;
                     left: .2vw;
                 }
+
+                    #iconmenu6:hover {
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                        top: 59.5%;
+                    }
+
                 #iconmenu5 {
                     width: 2.8vw;
-                    height: 2.8vw; 
+                    height: 2.8vw;
                     position: absolute;
                     top: 87%;
                     left: .2vw;
                 }
-                .iconim { position:absolute; width:100%; height:100%;
+
+                    #iconmenu5:hover {
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                        top: 86.5%;
+                    }
+
+                .iconim {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
                 }
-                #iconmenu1:hover, #iconmenu2:hover, #iconmenu3:hover, #iconmenu4:hover, #iconmenu6:hover, #iconmenu5:hover {
+
+                #iconmenu1:hover {
+                    top: 5.5%;
                     width: 3vw;
                     height: 3vw;
                     left: .1vw;
+                }
+
+                #iconmenu2:hover {
+                    width: 3vw;
+                    height: 3vw;
+                    left: .1vw;
+                    top: 18.5%;
+                }
+
+                #iconmenu3:hover {
+                    width: 3vw;
+                    height: 3vw;
+                    left: .1vw;
+                    top: 32.5%;
+                }
+
+                #iconmenu4:hover {
+                    width: 3vw;
+                    height: 3vw;
+                    left: .1vw;
+                    top: 45.5%;
                 }
             </style>
             <img src="https://i.postimg.cc/1RjXd9qf/gl.png" id="iconprofile" />
@@ -433,19 +523,24 @@
                 <div id="iconmenu3" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
                 <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                 <div id="iconmenu6" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                <div id="iconmenu5" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                <div id="iconmenu5" onclick="outprofile()" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
             </div>
 
         </div>
-        <div id="profil">
+        <div id="profil" class="outprofile">
             <style>
-                #profil { position:absolute; width:33%; height:100%; background:rgba(255,255,255,.8); left:4.5%;
+                .enterprofile { left:4.5%;
+                }
+                .outprofile {
+                    left: -35%;
+                }
+                #profil { position:absolute; width:35%; height:100%; background:rgba(255,255,255,.8); /*left:4.5%;*/ z-index:9; transition:all 1.5s ease; 
                 }
                 #card {
                     position: absolute;
                     width: 100%;
-                    height: 33%;
-                    
+                    height: 35%;
+
                     top: 1.5%;
                 }
                 #imgbkgcard { position:absolute; width:100%; height:100%;
@@ -453,50 +548,232 @@
 
             </style>
             <div id="card">
-                <img id="imgbkgcard" src="https://i.postimg.cc/YCw2WRVx/download.png" />
+                <img id="imgbkgcard" src="https://i.postimg.cc/zfY27rmv/hu-tao-friendship-card-by-vtubehutao-dg5a89h-fullview.jpg" />
+
+                <div id="imgprofilex">
+                    <style>
+                        #imgprofilex { width:7.6vw; height:7.6vw; border-radius:50%; border:.3vw solid rgba(0,0,0,.1);  position:absolute; top:7%; left:6%;
+                        }
+                        #imgprof2 { width:6.1vw; height:6.1vw; position:absolute; left:.4vw; top:.4vw; overflow:hidden; border-radius:50%; background:#ff6a00; border:.3vw solid white;
+                        }
+                            #imgprof2 img { position:absolute; width:100%; transform:scale(1.1);
+                            }
+                    </style>
+                    <div id="imgprof2">
+                        <img src="https://i.postimg.cc/Bv1sLsTv/Hu-Tao.png" />
+                    </div>
+                </div>
+
+                <div id="uidbar">
+                    <style>
+                        #uidbar { width:28%; height:1.3vw; border:.1vw solid darkgray; border-radius:1vw; position:absolute; left:3%; top:58%; background:rgba(74,82,101,.6);
+                        }
+                            #uidbar p {
+                                font-family: 'HYWenHei-85W'; color:white; text-align:center; font-size:1vw; position:relative; top:-.9vw;
+                            }
+                            #icncopy{
+                                position:absolute; width:1.5vw; top:70%; left:8%;
+                            }
+                        #pcopy { position:absolute; top:63.5%; left:13%; color:white; opacity:.4;
+                        }
+                    </style>
+                    <p>UID 63852469</p>
+                </div>
+               <img src="https://i.postimg.cc/HLHfY6p3/w2.png" id="icncopy"/> <p id="pcopy">Copiar</p>
+                <div id="contentcard">
+                    <style>
+                        #contentcard {
+                            position: absolute;
+                            width: 60%;
+                            height: 83%;
+                            top: 10%;
+                            right: 5%;
+                        }
+
+                        #namecard {
+                            position: absolute;
+                            width: 100%;
+                            height: 16%;
+                            background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.2) 25%,rgba(0,0,0,.2) 100%);
+                        }
+
+                            #namecard p {
+                                color: white;
+                                font-size: 2vw;
+                                position: absolute;
+                                top: -1.95vw;
+                            }
+
+                        #diveditname {
+                            background: rgb(236,229,216);
+                            position: absolute;
+                            width: 9.5%;
+                            border-radius: .2vw;
+                            height: 85%;
+                            right: -2%;
+                            top: 5%;
+                        }
+
+                            #diveditname img {
+                                position: absolute;
+                                width: 90%;
+                                top: 10%;
+                            }
+
+                        #pcardsub {
+                            position: absolute;
+                            top: 13%;
+                            color: white;
+                            font-size: 1.2vw;
+                        }
+
+                        #rankcard {
+                            position: absolute;
+                            width: 100%;
+                            top: 46%;
+                            height: 12%;
+                            background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.1) 25%,rgba(0,0,0,.2) 100%);
+                        }
+
+                        #worldcard {
+                            position: absolute;
+                            width: 100%;
+                            top: 76%;
+                            height: 12%;
+                            background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.1) 25%,rgba(0,0,0,.2) 100%);
+                        }
+
+                            #rankcard img, #worldcard img {
+                                position: absolute;
+                                width: 2.5vw;
+                                right: -2%;
+                                top: -20%;
+                            }
+
+                            #rankcard p, #worldcard p {
+                                color: white;
+                                font-size: 1.3vw;
+                                position: absolute;
+                                top: -1.2vw;
+                            }
+
+                        #expbar {
+                            position: absolute;
+                            width: 100%;
+                            top: 60%;
+                            height: 14%;
+                        }
+
+                            #expbar img {
+                                position: absolute;
+                                width: 1.8vw;
+                            }
+
+                        #expebar {
+                            width: 90%;
+                            height: 17%;
+                            background: rgba(0,0,0,.4);
+                            bottom: 13%;
+                            right: 0;
+                            position: absolute;
+                        }
+
+                        #exxp {
+                            position: absolute;
+                            width: 35%;
+                            height: 100%;
+                            background: linear-gradient(rgb(126,171,33),rgb(202,254,103),rgb(126,171,33) );
+                        }
+
+                        #expp {
+                            position: absolute;
+                            color: white;
+                            left: 10%;
+                            font-size: .8vw;
+                            top: -.6vw;
+                        }
+
+                        #expp2 {
+                            position: absolute;
+                            color: white;
+                            right: 0;
+                            font-size: .8vw;
+                            top: -.6vw;
+                        }
+                        #cumpp {
+                            position: absolute;
+                            color: white;
+                             top:85%;
+                            font-size: 1.2vw;
+                        }
+                        #cumpp2 {
+                            position: absolute;
+                            color: white;
+                            top: 85%; right:0;
+                            font-size: 1.2vw;
+                        }
+                    </style>
+                    <div id="namecard">
+                        <p>Saikai</p> <div id="diveditname"><img src="https://i.postimg.cc/Wzv4dkBS/11-1.png" /></div>
+                    </div>
+                    <p id="pcardsub">Te Esperare Ante Mil Otoños..</p>
+                    <div id="rankcard">
+                        <p>Rango de aventura⠀⠀⠀⠀⠀58</p> <img src="https://i.postimg.cc/Wb8jTKXd/11-4.png" />
+                    </div>
+                    <div id="expbar">
+                        <img src="https://i.postimg.cc/85yKZ2G6/11-2.png" />
+                        <p id="expp">EXP de aventura</p> <p id="expp2">97012 / 312825</p>
+                        <div id="expebar"><div id="exxp"></div></div>
+                    </div>
+
+                    <div id="worldcard">
+                        <p>Nivel de mundo⠀⠀⠀⠀⠀⠀⠀⠀ 8</p> <img src="https://i.postimg.cc/Wb8jTKXd/11-4.png" />
+                    </div>
+                    <p id="cumpp">Cumpleaños</p><p id="cumpp2">1 Oct</p>
+                </div>
 
             </div>
 
             <div id="menus">
                 <style>
-                    #menus { 
+                    #menus {
                         width: 96%;
                         height: 61%;
-                        top: 37%;
+                        top: 38%;
                         left: 2%;
                         position: absolute;
                     }
 
-                  
 
-                    #line1 { 
+
+                    #line1 {
                         height: 20%;
                         position: absolute;
                         width: 100%;
                     }
-                    #line2 { top:20%; 
+                    #line2 { top:20%;
                         height: 20%;
                         position: absolute;
                         width: 100%;
                     }
-                    #line3 { top:40%; 
+                    #line3 { top:40%;
                         height: 20%;
                         position: absolute;
                         width: 100%;
                     }
-                    #line4 { top:60%; 
+                    #line4 { top:60%;
                         height: 20%;
                         position: absolute;
                         width: 100%;
                     }
-                    #line5 { top:80%; 
+                    #line5 { top:80%;
                         height: 20%;
                         position: absolute;
                         width: 100%;
                     }
                     .menues {
                         transition: all .3s ease;
-                        width: 18%;
+                        width: 20%;
                         margin: 1%;
                         background: rgb(74,82,101);
                         height: 90%;
@@ -504,18 +781,18 @@
                     }
                     .menues:hover {
                         position: relative;
-                        width: 19%;
+                        width: 21%;
                         margin: .5%;
                         height: 94%;
                         margin-left: .5%;
                     }
 
                     #menu1, #menu5, #menu9, #menu13, #menu17 {
-                        margin-left: 10%;
+                        margin-left: 7%;
                     }
 
                         #menu1:hover, #menu5:hover, #menu9:hover, #menu13:hover, #menu17:hover {
-                            margin-left: 9.5%;
+                            margin-left: 6.5%;
                         }
 
                     #menu4:hover {
@@ -528,17 +805,173 @@
                         height: 100%;
                     }
                 </style>
-                <div id="line1"><div id="menu1" class="menues"><img src="https://i.postimg.cc/sxNw0yvC/r.png" /></div><div id="menu2" class="menues"></div><div id="menu3" class="menues"></div><div id="menu4" class="menues"></div></div>
-                <div id="line2"><div id="menu5" class="menues"></div><div id="menu6" class="menues"></div><div id="menu7" class="menues"></div><div id="menu8" class="menues"></div></div>
-                <div id="line3"><div id="menu9" class="menues"></div><div id="menu10" class="menues"></div><div id="menu11" class="menues"></div><div id="menu12" class="menues"></div></div>
-                <div id="line4"> <div id="menu13" class="menues"></div><div id="menu14" class="menues"></div><div id="menu15" class="menues"></div><div id="menu16" class="menues"></div></div>
-                <div id="line5"><div id="menu17" class="menues"></div><div id="menu18" class="menues"></div><div id="menu19" class="menues"></div><div id="menu20" class="menues"></div></div>
-                
+                <div id="line1"><div id="menu1" class="menues"><img src="https://i.postimg.cc/XvXnF91w/1.png" /></div><div id="menu2" class="menues"><img src="https://i.postimg.cc/wvmH4gpM/2.png" /></div><div id="menu3" class="menues"><img src="https://i.postimg.cc/R084Tq22/3.png" /></div><div id="menu4" class="menues"><img src="https://i.postimg.cc/MHJwhN6D/4.png" /></div></div>
+                <div id="line2"><div id="menu5" class="menues"><img src="https://i.postimg.cc/tJn5VvWL/5.png" /></div><div id="menu6" class="menues"><img src="https://i.postimg.cc/WtR7mm7t/6.png" /></div><div id="menu7" class="menues"><img src="https://i.postimg.cc/XNTM1THB/7.png" /></div><div id="menu8" class="menues"><img src="https://i.postimg.cc/T2yM9R9X/8.png" /></div></div>
+                <div id="line3"><div id="menu9" class="menues"><img src="https://i.postimg.cc/tCPKK2wS/9.png" /></div><div id="menu10" class="menues"><img src="https://i.postimg.cc/HLWF7HxR/10.png" /></div><div id="menu11" class="menues"><img src="https://i.postimg.cc/13QksDZ9/11.png" /></div><div id="menu12" class="menues"><img src="https://i.postimg.cc/d0Wp2XZ1/12.png" /></div></div>
+                <div id="line4"> <div id="menu13" class="menues"><img src="https://i.postimg.cc/MpmhTXW1/13.png" /></div><div id="menu14" class="menues"><img src="https://i.postimg.cc/QtHP0bcq/14.png" /></div><div id="menu15" class="menues"><img src="https://i.postimg.cc/6qZPNpj2/15.png" /></div><div id="menu16" class="menues"><img src="https://i.postimg.cc/QtwzPTbZ/16.png" /></div></div>
+                <div id="line5"><div id="menu17" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div><div id="menu18" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div><div id="menu19" class="menues"><img src="https://i.postimg.cc/BQxzYtPR/19.png" /></div><div id="menu20" class="menues"><img src="https://i.postimg.cc/9QCnvVG0/20.png" /></div></div>
+
 
             </div>
         </div>
 
+        <div id="mapspace">
+            <style>
+                #mapspace {
+                    position: absolute;
+                    width: 20%;
+                    left: 6%;
+                    height: 28%;
+                    top: 2%;
+                }
+
+                #map {
+                    z-index: 2;
+                    width: 12vw;
+                    height: 12vw;
+                    border-radius: 50%;
+                    border: .15vw solid gray;
+                    position: absolute;
+                    left: 7%;
+                    top: 2%;
+                    overflow: hidden;
+                    opacity: .8;
+                }
+
+                    #map img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                #btnpaimon {
+                    position: absolute;
+                    width: 4.2vw;
+                    height: 4.2vw;
+                    top: 0%;
+                    left: -2%;
+                    z-index: 3;
+                }
+
+                    #btnpaimon img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                #btneye {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 0;
+                    left: 60%;
+                }
+
+                    #btneye img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                #btneye2 {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 0;
+                    left: 86%;
+                }
+
+                    #btneye2 img {
+                        width: 100%;
+                        position: relative;
+                    }
+                #btnmision {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 70%;
+                    left: 2%; z-index:3;
+                }
+
+                    #btnmision img {
+                        width: 100%;
+                        position: relative;
+                    }
+            </style>
+
+            <div id="map">
+                <img src="https://i.postimg.cc/FsPmDQsQ/minim.png" />
+            </div>
+
+            <div id="btnpaimon">
+                <img src="https://i.postimg.cc/KjYgqqYz/2e2e2e2e.png" />
+            </div>
+            <div id="btneye">
+                <img src="https://i.postimg.cc/MpBfFjzy/ee.png" />
+            </div>
+            <div id="btneye2">
+                <img src="https://i.postimg.cc/7LMGx8Gh/wss.png" />
+            </div>
+            <div id="btnmision">
+                <img src="https://i.postimg.cc/tgHnQCg8/rr.png" />
+            </div>
+        </div>
+
+        <div id="btnlateral">
+            <style>
+                #btnlateral {
+                    position: absolute;
+                    width: 5%;
+                    height: 50%;
+                    right: 0;
+                    top: 20%;
+                }
+
+                #btnperfil, #btnperfil2, #btnperfil3, #btnperfil4, #btnperfil5, #btnperfil6 {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    left: 15%;
+                }
+                #btnperfil2 { top:18%;
+                }
+                #btnperfil3 {
+                    top: 36%;
+                }
+                #btnperfil4 {
+                    top: 54%;
+                }
+                #btnperfil5 {
+                    top: 72%;
+                }
+                #btnperfil6 {
+                    top: 90%;
+                }
+                    #btnperfil img, #btnperfil2 img, #btnperfil3 img, #btnperfil4 img, #btnperfil5 img, #btnperfil6 img {
+                        width: 100%;
+                    }
+            </style>
+
+            <div id="btnperfil" onclick="enterprofile();">
+                <img src="https://i.postimg.cc/XvMdjksH/1.png" />
+            </div>
+            <div id="btnperfil2">
+                <img src="https://i.postimg.cc/Zqr3CvgT/2.png" />
+            </div>
+            <div id="btnperfil3">
+                <img src="https://i.postimg.cc/yxr3wmJT/3.png" />
+            </div>
+            <div id="btnperfil4">
+                <img src="https://i.postimg.cc/BZhFL0h1/4.png" />
+            </div>
+            <div id="btnperfil5">
+                <img src="https://i.postimg.cc/ZKCd6Mgs/5.png" />
+            </div>
+            <div id="btnperfil6">
+                <img src="https://i.postimg.cc/8P9r4bgp/6.png" />
+            </div>
+        </div>
+
     </div>
-   
+
+
+
 </body>
 </html>
