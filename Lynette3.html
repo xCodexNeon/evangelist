@@ -692,11 +692,11 @@
 
             <div id="baricons">
                 <div id="iconmenu1" class="iconmnu"> <img class="iconim" src="https://i.postimg.cc/VL1KDY4M/c.png" /></div>
-                <div id="iconmenu2" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
+                <div id="iconmenu2" onclick="entersectionfirm();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
                 <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
                 <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                 <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                <div id="iconmenu5" onclick="outprofile(); closeconfig();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                <div id="iconmenu5"  onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu" ><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
             </div>
 
         </div> 
@@ -1290,7 +1290,7 @@
                 <div id="line5">
                     <div id="menu17" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div>
                     <div id="menu18" class="menues"><img src="https://i.postimg.cc/15xTrDXp/18.png" /></div>
-                    <div id="menu19" class="menues"><img src="https://i.postimg.cc/BQxzYtPR/19.png" /></div>
+                    <div id="menu19" onclick="entersectionfirm();" class="menues"><img src="https://i.postimg.cc/BQxzYtPR/19.png" /></div>
                     <div id="menu20" class="menues"><img src="https://i.postimg.cc/9QCnvVG0/20.png" /></div>
                 </div>
 
@@ -1302,7 +1302,7 @@
             <style>
                 /*HOVEEEEEERs*/
                 #menu3:hover, #iconmenu6:hover, #iconmenu5:hover, #btnperfil:hover, #btnperfil4:hover, #mn1:hover, #menu5:hover, #mn13:hover, #bn5:hover,
-                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover  {
+                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover  {
                     cursor: url(https://i.postimg.cc/x8pr3bHz/high.png), zoom-in;
                 }
 
@@ -1495,7 +1495,7 @@
             <div id="btnperfil2">
                 <img src="https://i.postimg.cc/Zqr3CvgT/2.png" />
             </div>
-            <div id="btnperfil3">
+            <div id="btnperfil3" onclick="entersectionfirm();">
                 <img src="https://i.postimg.cc/yxr3wmJT/3.png" />
             </div>
             <div id="btnperfil4" onclick="openarchive1();">
@@ -2775,11 +2775,13 @@
             </div>
         </div>
 
-        <!--<div id="firmas">
+        <div id="firmas" class="nosectfirm">
             <style>
-
+                .nosectfirm { opacity:0; z-index:-1;
+                }
+                .sisectfirm { opacity:1; z-index:7;
+                }
                 #firmas { 
-                    z-index:7;
                     width: 96%;
                     left: 4%;
                     height: 100%;
@@ -2787,6 +2789,7 @@
                     position: absolute;
                     backdrop-filter: blur(8px);
                 }
+
                 #emblemback {
                     position: absolute;
                     filter: invert(100%) blur(3px);
@@ -2795,27 +2798,54 @@
                     left: -15%;
                     top: -10%;
                 }
-                #mainfirmas { border:.2vw solid rgb(74,82,101);
+
+                #mainfirmas {
+                    border: .2vw solid rgb(74,82,101);
                     width: 100%;
                     height: 76%;
                     position: absolute;
                     top: 12%;
-                    
                 }
+
                 .backneige {
                     background-image: url(https://i.postimg.cc/L8m4Rn67/genshin-impacts-web-event-backgrounds-all-that-ive-found-so-v0-2xw4o0rr4lv81.png);
                     background-size: cover;
                 }
+
                 .backlu {
                     background-image: url(https://i.postimg.cc/C5VtpnH6/tumblr-396e1e08e15dbd10efe405ef06656457-62de17dd-1280.jpg);
                     background-size: cover;
                 }
+
                 .backhank {
                     background-image: url(https://i.postimg.cc/qMbDBFkT/genshin-impacts-web-event-backgrounds-all-that-ive-found-so-v0-3vhql15s4lv81.png);
                     background-size: cover;
                 }
+
+                #iconfirmas {
+                    position: absolute;
+                    width: 4vw;
+                    left: 6%;
+                    top: 2%;
+                }
+
+                #titlef {
+                    position: absolute;
+                    font-size: 1.7vw;
+                    left: 11%;
+                    top: 1%;
+                    color: rgb(215, 164, 113);
+                }
             </style>
-            <script> 
+            <script>
+                function entersectionfirm() {
+                    outprofile();
+                    outchat();
+                    outssections(); $("#firmas").removeClass("nosectfirm"); $("#firmas").addClass("sisectfirm");
+                }
+                function outsectfirm(){
+                    $("#firmas").removeClass("sisectfirm"); $("#firmas").addClass("nosectfirm");
+                }
                 function selectuser1() {
                     $("#userneige").removeClass("nouser"); $("#userneige").addClass("siuser");
                     $("#userlucia").addClass("nouser"); $("#userlucia").removeClass("siuser");
@@ -2848,7 +2878,9 @@
                 }
             </script>
             <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
-
+            <img src="https://i.postimg.cc/Z5Gp3LM9/19.png" id="iconfirmas" />
+            <p id="titlef">Firmas</p>
+            <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="outsectfirm();"  />
             <div id="mainfirmas" class="backneige">
                 <div id="barusers">
                     <style>
@@ -2864,29 +2896,48 @@
                             width: 100%;
                             height: 100%;
                         }
-                        #baruserbtns {position:absolute; width:104%; height:100%;   top:0; left:-2%;
+
+                        #baruserbtns {
+                            position: absolute;
+                            width: 104%;
+                            height: 100%;
+                            top: 0;
+                            left: -2%;
                         }
-                        #userneige { position:absolute; width:100%; height:12%;   top:5%; 
+
+                        #userneige {
+                            position: absolute;
+                            width: 100%;
+                            height: 12%;
+                            top: 5%;
                         }
-                        #imguserneige, #imguserhank, #imguserlucia { width:100%;  position:absolute; top:8%; 
+
+                        #imguserneige, #imguserhank, #imguserlucia {
+                            width: 100%;
+                            position: absolute;
+                            top: 8%;
                         }
+
                         #userlucia {
                             position: absolute;
                             width: 100%;
                             height: 12%;
-                             
                             top: 17%;
                         }
+
                         #userhank {
                             position: absolute;
                             width: 100%;
                             height: 12%;
-                            
                             top: 29%;
                         }
-                        .siuser { opacity:1;
+
+                        .siuser {
+                            opacity: 1;
                         }
-                        .nouser { opacity:0;
+
+                        .nouser {
+                            opacity: 0;
                         }
                     </style>
                     <img src="https://i.postimg.cc/hPhMYjc8/firmasback.png" id="fondfirmas" />
@@ -2894,17 +2945,17 @@
                         <div id="userneige" onclick="selectuser1();" class="siuser">
                             <img id="imguserneige" src="https://i.postimg.cc/c1FXTYy4/neigeselected.png" />
                         </div>
-                        <div id="userlucia" onclick="selectuser2();"  class="nouser">
+                        <div id="userlucia" onclick="selectuser2();" class="nouser">
                             <img id="imguserlucia" src="https://i.postimg.cc/Y9cHyV5k/backkagura.png" />
 
                         </div>
-                        <div id="userhank" onclick="selectuser3();"  class="nouser">
+                        <div id="userhank" onclick="selectuser3();" class="nouser">
                             <img id="imguserhank" src="https://i.postimg.cc/brVgJXH2/hankselected.png" />
 
                         </div>
                     </div>
-                </div> 
-                
+                </div>
+
                 <div id="contfirms">
                     <style>
                         #contfirms {
@@ -2912,7 +2963,7 @@
                             width: 59%;
                             height: 80%;
                             right: 5%;
-                            top: 10%; 
+                            top: 10%;
                         }
 
                         #neigefirm {
@@ -2921,8 +2972,10 @@
                             height: 100%;
                             background: rgba(0,0,0,.2);
                             top: 0;
-                            left: 0; border-radius:.7vw;
+                            left: 0;
+                            border-radius: .7vw;
                         }
+
                         #lufirm {
                             position: absolute;
                             width: 100%;
@@ -2932,6 +2985,7 @@
                             left: 0;
                             border-radius: .7vw;
                         }
+
                         #hankfirm {
                             position: absolute;
                             width: 100%;
@@ -2941,10 +2995,17 @@
                             left: 0;
                             border-radius: .7vw;
                         }
-                        .nofirmx { z-index:-1; opacity:0;
+
+                        .nofirmx {
+                            z-index: -1;
+                            opacity: 0;
                         }
-                        .sifirmx { z-index:3; opacity:1;
+
+                        .sifirmx {
+                            z-index: 3;
+                            opacity: 1;
                         }
+
                         #imgneiigerose {
                             position: absolute;
                             width: 19vw;
@@ -2952,43 +3013,119 @@
                             left: -10%;
                             transform: scaleX(-1);
                         }
-                        #imgneigebutter { position:absolute; width:14vw; animation:animabuter 5s infinite; left:5%;
+
+                        #imgneigebutter {
+                            position: absolute;
+                            width: 14vw;
+                            animation: animabuter 5s infinite;
+                            left: 5%;
                         }
+
                         @keyframes animabuter {
                             0% {
-                                top:30%;
+                                top: 30%;
                             }
 
                             50% {
-                                top:35%;
+                                top: 35%;
                             }
 
                             100% {
-                               top:30%;
+                                top: 30%;
                             }
                         }
-                        #contenido { position:absolute; width:60%; height:90%; top:5%; right:10%;  
+
+                        #contenido {
+                            position: absolute;
+                            width: 60%;
+                            height: 90%;
+                            top: 5%;
+                            right: 10%;
                         }
-                        #btnreg1 { position:absolute; top:90%; width:100%; height:10%; right:-4%;
+
+                        #btnreg1 {
+                            position: absolute;
+                            top: 90%;
+                            width: 100%;
+                            height: 10%;
+                            right: -4%;
                         }
-                        #pnota { color:white; font-size:1.2vw; text-align:right; top:-1vw; position:relative;
+
+                        #pnota {
+                            color: white;
+                            font-size: 1.2vw;
+                            text-align: right;
+                            top: -1vw;
+                            position: relative;
                         }
-                        #ptitlefirm { color:white; font-size:2.2vw; position:relative; top:-2vw;
-                        }
-                        #ptitlefirm2 {
-                            color: white; left:-25%;
-                            font-size: 2.2vw; width:128%; 
+
+                        #ptitlefirm {
+                            color: white;
+                            font-size: 2.2vw;
                             position: relative;
                             top: -2vw;
                         }
-                        #pfechafirm { color:#e1d982; position:relative; top:-4vw; font-size:1vw;
+
+                        #ptitlefirm2 {
+                            color: white;
+                            left: -25%;
+                            font-size: 2.2vw;
+                            width: 128%;
+                            position: relative;
+                            top: -2vw;
                         }
-                        #pcontfirma { color:white; font-size:1.2vw; opacity:.8; position:relative; top:-4vw;
+
+                        #pfechafirm {
+                            color: #e1d982;
+                            position: relative;
+                            top: -4vw;
+                            font-size: 1vw;
                         }
+
+                        #pcontfirma {
+                            color: white;
+                            font-size: 1.2vw;
+                            opacity: .8;
+                            position: relative;
+                            top: -4vw;
+                        }
+
                         #firmareg {
-                            color: #e1d982; font-size:1vw; background:rgb(74,82,101); padding:.7vw; width:50%; text-align:center; position:relative;left:50%; top:-10%;
+                            color: #e1d982;
+                            font-size: 1vw;
+                            background: rgb(74,82,101);
+                            padding: .7vw;
+                            width: 50%;
+                            text-align: center;
+                            position: relative;
+                            left: 50%;
+                            top: -10%;
                         }
-                        #firmneigeimg { position:relative; width:75%; top:-16%;
+
+                        #firmareg2 {
+                            color: #e1d982;
+                            font-size: 1vw;
+                            background: rgb(74,82,101);
+                            padding: .7vw;
+                            width: 50%;
+                            text-align: center;
+                            position: relative;
+                            left: 60%;
+                            top: -31%;
+                        }
+
+                        #firmneigeimg {
+                            position: relative;
+                            width: 75%;
+                            top: -16%;
+                        }
+
+                        #firmdi {
+                            filter: invert(100%) blur(.5px);
+                            width: 9vw;
+                            position: absolute;
+                            left: 75%;
+                            top: 60%;
                         }
                     </style>
                     <div id="neigefirm" class="sifirmx">
@@ -2998,13 +3135,10 @@
                             <p id="pnota">Notas del mayordomo:</p>
                             <p id="ptitlefirm2">Mi mundo ahora tiene tu nombre...</p>
                             <p id="pfechafirm">Al día 01 de Octubre 2023</p>
-                             <img src="https://i.postimg.cc/XqKGWcYh/firmaneige.png" id="firmneigeimg" />
-                            <p id="firmareg">hankregister/hanknumber</p>
-                            <div id="btnreg1">
-                                <div id="btn_bak_in">
-                                    <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
-                                </div>
-                            </div>
+                            <img src="https://i.postimg.cc/XqKGWcYh/firmaneige.png" id="firmneigeimg" />
+                            <p id="firmareg2">Con todo mi afecto: Neige</p>
+                            <img id="firmdi" src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" />
+
 
                         </div>
                     </div>
@@ -3013,13 +3147,13 @@
                         <img src="https://i.postimg.cc/fygzCfQ9/guide-of-ballad-material-genshin-wiki-guide.png" id="imgneigebutter" />
                         <div id="contenido">
                             <p id="pnota">Notas de la doncella:</p>
-                            <p id="ptitlefirm">Personalmente yo, Hank...</p>
-                            <p id="pfechafirm">Al día 11 de Agosto 2023</p>
+                            <p id="ptitlefirm">hola linda...</p>
+                            <p id="pfechafirm">Al día 17 de Septiembre 2023</p>
                             <p id="pcontfirma">
-                                En mi carácter de padrino, certifico la excelente calidad de persona que Yuki ha demostrado ser aún a día de hoy, y reafirmo con certeza su bondad, humildad y ternura; Características que hacen de ella una mujer de gran valía
-                                ”Soy capaz de apostar que ninguna adversidad atenuará su luz que brilla en las noches oscuras del valle de sombra de muerte”
+                                nunca se como empezar esto pero nada aunque no hablemos tanto quiero que sepas que te quiero mucho y que sos una persona muy linda que me alegro de haber conocido, siempre que necesites algo voy a estar para apoyarte con lo que pueda
+                                te quiero muchisimo yuki espero siempre estes feliz xq asi me gusta verte
                             </p>
-                            <p id="firmareg">hankregister/hanknumber</p>
+                            <p id="firmareg">Kaugra / 1520048635</p>
                             <div id="btnreg1">
                                 <div id="btn_bak_in">
                                     <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
@@ -3034,20 +3168,20 @@
                         <img src="https://i.postimg.cc/yNnTLDWH/Item-Electroculus.webp" id="imgneiigerose" />
                         <img src="https://i.postimg.cc/nLnkK4F2/Genshin-Impact-UI-Mall-Purchase-Resin-Monthly.png" id="imgneigebutter" />
                         <div id="contenido">
-                            <p id="pnota">Notas del caballero:</p>
+                            <p id="pnota">Notas del mercenario:</p>
                             <p id="ptitlefirm">Personalmente yo, Hank...</p>
-                            <p id="pfechafirm">Al día 11 de Agosto 2023</p>
+                            <p id="pfechafirm">Al día 11 de Septiembre 2023</p>
                             <p id="pcontfirma">
                                 En mi carácter de padrino, certifico la excelente calidad de persona que Yuki ha demostrado ser aún a día de hoy, y reafirmo con certeza su bondad, humildad y ternura; Características que hacen de ella una mujer de gran valía
                                 ”Soy capaz de apostar que ninguna adversidad atenuará su luz que brilla en las noches oscuras del valle de sombra de muerte”
                             </p>
-                            <p id="firmareg">hankregister/hanknumber</p>
+                            <p id="firmareg">Mercenarie / 1506047406</p>
                             <div id="btnreg1">
                                 <div id="btn_bak_in">
                                     <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
                                 </div>
                             </div>
-                           
+
                         </div>
 
 
@@ -3056,7 +3190,7 @@
 
             </div>
 
-        </div>-->
+        </div>
 
     </div>
 
