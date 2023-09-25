@@ -2822,6 +2822,9 @@
                     $("#userhank").removeClass("siuser"); $("#userhank").addClass("nouser");
                     $("#mainfirmas").removeClass("backlu"); $("#mainfirmas").removeClass("backhank"); $("#mainfirmas").addClass("backneige");
 
+                    $("#neigefirm").removeClass("nofirmx"); $("#neigefirm").addClass("sifirmx");
+                    $("#lufirm").addClass("nofirmx"); $("#lufirm").removeClass("sifirmx");
+                    $("#hankfirm").removeClass("sifirmx"); $("#hankfirm").addClass("nofirmx");
                 }
                 function selectuser2() {
                     $("#userneige").removeClass("siuser"); $("#userneige").addClass("nouser");
@@ -2829,6 +2832,9 @@
                     $("#userhank").removeClass("siuser"); $("#userhank").addClass("nouser");
                     $("#mainfirmas").addClass("backlu"); $("#mainfirmas").removeClass("backhank"); $("#mainfirmas").removeClass("backneige");
 
+                    $("#neigefirm").removeClass("sifirmx"); $("#neigefirm").addClass("nofirmx");
+                    $("#lufirm").addClass("sifirmx"); $("#lufirm").removeClass("nofirmx");
+                    $("#hankfirm").removeClass("sifirmx"); $("#hankfirm").addClass("nofirmx");
                 }
                 function selectuser3() {
                     $("#userneige").removeClass("siuser"); $("#userneige").addClass("nouser");
@@ -2836,6 +2842,9 @@
                     $("#userhank").removeClass("nouser"); $("#userhank").addClass("siuser");
                     $("#mainfirmas").removeClass("backlu"); $("#mainfirmas").addClass("backhank"); $("#mainfirmas").removeClass("backneige");
 
+                    $("#neigefirm").removeClass("sifirmx"); $("#neigefirm").addClass("nofirmx");
+                    $("#lufirm").addClass("nofirmx"); $("#lufirm").removeClass("sifirmx");
+                    $("#hankfirm").removeClass("nofirmx"); $("#hankfirm").addClass("sifirmx");
                 }
             </script>
             <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
@@ -2918,17 +2927,19 @@
                             position: absolute;
                             width: 100%;
                             height: 100%;
-                            background: purple;
+                            background: rgba(0,0,0,.2);
                             top: 0;
                             left: 0;
+                            border-radius: .7vw;
                         }
                         #hankfirm {
                             position: absolute;
                             width: 100%;
                             height: 100%;
-                            background: blue;
+                            background: rgba(0,0,0,.2);
                             top: 0;
                             left: 0;
+                            border-radius: .7vw;
                         }
                         .nofirmx { z-index:-1; opacity:0;
                         }
@@ -2956,15 +2967,89 @@
                                top:30%;
                             }
                         }
+                        #contenido { position:absolute; width:60%; height:90%; top:5%; right:10%;  
+                        }
+                        #btnreg1 { position:absolute; top:90%; width:100%; height:10%; right:-4%;
+                        }
+                        #pnota { color:white; font-size:1.2vw; text-align:right; top:-1vw; position:relative;
+                        }
+                        #ptitlefirm { color:white; font-size:2.2vw; position:relative; top:-2vw;
+                        }
+                        #ptitlefirm2 {
+                            color: white; left:-25%;
+                            font-size: 2.2vw; width:128%; 
+                            position: relative;
+                            top: -2vw;
+                        }
+                        #pfechafirm { color:#e1d982; position:relative; top:-4vw; font-size:1vw;
+                        }
+                        #pcontfirma { color:white; font-size:1.2vw; opacity:.8; position:relative; top:-4vw;
+                        }
+                        #firmareg {
+                            color: #e1d982; font-size:1vw; background:rgb(74,82,101); padding:.7vw; width:50%; text-align:center; position:relative;left:50%; top:-10%;
+                        }
+                        #firmneigeimg { position:relative; width:75%; top:-16%;
+                        }
                     </style>
-                    <div id="neigefirm" class="nofirmx">
-                        <img src="https://i.postimg.cc/y6bjRZZq/Item-Gladiator-s-Nostalgia.webp"  id="imgneiigerose"/>
+                    <div id="neigefirm" class="sifirmx">
+                        <img src="https://i.postimg.cc/y6bjRZZq/Item-Gladiator-s-Nostalgia.webp" id="imgneiigerose" />
                         <img src="https://i.postimg.cc/wMR60GQY/UI-Item-Icon-100072.png" id="imgneigebutter" />
+                        <div id="contenido">
+                            <p id="pnota">Notas del mayordomo:</p>
+                            <p id="ptitlefirm2">Mi mundo ahora tiene tu nombre...</p>
+                            <p id="pfechafirm">Al día 01 de Octubre 2023</p>
+                             <img src="https://i.postimg.cc/XqKGWcYh/firmaneige.png" id="firmneigeimg" />
+                            <p id="firmareg">hankregister/hanknumber</p>
+                            <div id="btnreg1">
+                                <div id="btn_bak_in">
+                                    <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div id="lufirm" class="nofirmx">
+                        <img src="https://i.postimg.cc/brvY1FWP/Item-Fragile-Resin.webp" id="imgneiigerose" />
+                        <img src="https://i.postimg.cc/fygzCfQ9/guide-of-ballad-material-genshin-wiki-guide.png" id="imgneigebutter" />
+                        <div id="contenido">
+                            <p id="pnota">Notas de la doncella:</p>
+                            <p id="ptitlefirm">Personalmente yo, Hank...</p>
+                            <p id="pfechafirm">Al día 11 de Agosto 2023</p>
+                            <p id="pcontfirma">
+                                En mi carácter de padrino, certifico la excelente calidad de persona que Yuki ha demostrado ser aún a día de hoy, y reafirmo con certeza su bondad, humildad y ternura; Características que hacen de ella una mujer de gran valía
+                                ”Soy capaz de apostar que ninguna adversidad atenuará su luz que brilla en las noches oscuras del valle de sombra de muerte”
+                            </p>
+                            <p id="firmareg">hankregister/hanknumber</p>
+                            <div id="btnreg1">
+                                <div id="btn_bak_in">
+                                    <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
-                    <div id="hankfirm" class="sifirmx">
+                    <div id="hankfirm" class="nofirmx">
+                        <style>
+                        </style>
+                        <img src="https://i.postimg.cc/yNnTLDWH/Item-Electroculus.webp" id="imgneiigerose" />
+                        <img src="https://i.postimg.cc/nLnkK4F2/Genshin-Impact-UI-Mall-Purchase-Resin-Monthly.png" id="imgneigebutter" />
+                        <div id="contenido">
+                            <p id="pnota">Notas del caballero:</p>
+                            <p id="ptitlefirm">Personalmente yo, Hank...</p>
+                            <p id="pfechafirm">Al día 11 de Agosto 2023</p>
+                            <p id="pcontfirma">
+                                En mi carácter de padrino, certifico la excelente calidad de persona que Yuki ha demostrado ser aún a día de hoy, y reafirmo con certeza su bondad, humildad y ternura; Características que hacen de ella una mujer de gran valía
+                                ”Soy capaz de apostar que ninguna adversidad atenuará su luz que brilla en las noches oscuras del valle de sombra de muerte”
+                            </p>
+                            <p id="firmareg">hankregister/hanknumber</p>
+                            <div id="btnreg1">
+                                <div id="btn_bak_in">
+                                    <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
+                                </div>
+                            </div>
+                           
+                        </div>
+
 
                     </div>
                 </div>
