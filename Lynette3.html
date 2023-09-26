@@ -34,6 +34,12 @@
                             ""
                     },
                     {
+                        name: "Say my name",
+                        artist: "Genshin Impact Ost",
+                        src:
+                            "https://xevangelist.github.io/evangelist/saymyname.mp3?raw=true"
+                    },
+                    {
                         name: "Tiny light",
                         artist: "Akari Kito",
                         src:
@@ -135,7 +141,7 @@
             });
             $("#stop").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 4) {
+                if (CurrentSong > 5) {
                     CurrentSong = 0;
                 }
                 song.pause();
@@ -144,14 +150,21 @@
             $("#prev").click(function prev() {
                 CurrentSong--;
                 if (CurrentSong < 0) {
-                    CurrentSong = 4;
+                    CurrentSong = 5;
                 }
                 playSong();
             });
-
+          
             $("#next").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 4) {
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#mainintro").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                CurrentSong++;
+                if (CurrentSong > 5) {
                     CurrentSong = 0;
                 }
                 playSong();
@@ -171,8 +184,32 @@
         html, button, body, a {
             cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
         }
-        
 
+        @keyframes animaentrancemain {
+            0% {
+               opacity:0;
+            }
+ 
+            100% {
+                opacity:1;
+            }
+        }
+        @keyframes animaoutmain {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        #mainscreen { opacity:0;
+                     
+        }
+        .entrancemainscreen {
+            animation: animaentrancemain 6s 1;
+            animation-fill-mode: forwards;
+        }
         @font-face {
             font-family: 'HYWenHei-85W';
             font-style: normal;
@@ -183,7 +220,7 @@
         body {
             font-family: 'HYWenHei-85W';
             overflow: hidden;
-            background: black;
+            background: white;
         }
 
         .covervid-wrapper {
@@ -203,10 +240,37 @@
             width: 100%;
             position: absolute;
         }
+        #mainintro {
+            position: absolute;
+            width: 0;
+            left: 0;
+            background-image: url(https://i.postimg.cc/PqCrPs7G/maiiin.jpg);
+            background-size: contain;
+            height: 100%;
+            width: 100%;
+           
+        }
+        .intromain { z-index:999999999999999;
+            animation: animaentrancemain 4s 1;
+            animation-fill-mode: forwards;
+        }
+        .outmain { z-index:-1;
+            animation: animaoutmain 2s 1;
+            animation-fill-mode: forwards;
+        }
+            #mainintro p { position:absolute; color:rgb(74,82,101); top:67%;  opacity:.6;left:43%; animation:bg 1s infinite;  
+            }
 
-
-
-
+        @keyframes bg {
+            0% {
+                opacity:.6;
+            }
+            50% { opacity:.3;
+            }
+            100% {
+                opacity: .6;
+            }
+        }
 
         html, button, .center-center, a {
             cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
@@ -221,9 +285,10 @@
 <body>
     <script>
         function enterprofile() {
-            $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile"); 
+            $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
         } function outprofile() {
             $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+
         } function outchat() {
             $("#chat").addClass("nochat"); $("#chat").removeClass("sichat");
         }
@@ -231,7 +296,362 @@
             $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
         }
     </script>
-    <header>
+   
+    <div id="mainintro" onclick="inizializar()" class="intromain">
+        <p>Da  clic para continuar</p>
+    </div>
+
+    <div id="mainscreen">
+        <style>
+            .mks {
+                position: fixed;
+                opacity: 0;
+            }
+        </style>
+        <audio controls id="inprofile" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/10.mp3?raw=true"></source>
+            <script>
+                function inizializar() {
+                    $("#mainintro").addClass("outmain"); $("#mainintro").removeClass("intromain");
+                    $("#mainscreen").addClass("entrancemainscreen"); $("#mainscreen").removeClass("intromain");
+                }
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#inprofile")[0];
+
+                    $("#btnperfil").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#iconmenu3").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#click1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                     
+                });
+
+            </script>
+        </audio>
+        <audio controls id="outprofile" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/5.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#outprofile")[0];
+
+                    $("#iconmenu5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#btnback").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                });
+
+            </script>
+        </audio>
+        <audio controls id="clickmp3" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/4.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#clickmp3")[0];
+
+                    $("body").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="hovers" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#hovers")[0];
+
+                    //eventhandler on hover with play() function
+                    $("#click1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#click2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#click3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btn_bak_in").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#text_bak_in").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnback").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btncloseconfig").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btncloseconfig2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#butonclosesections").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#imgbackfrds").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#antepost").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#antepost2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userlucia").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userneige").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userhank").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu7").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu8").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu9").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu10").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu11").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu12").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu13").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu14").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu15").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu16").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu17").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu18").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu19").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu20").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig3").mouseenter(function () {
+                        audio.play();
+                    });
+
+                    $("#btneye2").click(function () {//Cambiar body por main pageeeee
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+
+        <div id="context">
+            <style>
+                div#context ul {
+                    list-style: none;
+                    list-style-type: none;
+                    list-style-position: outside; 
+                }
+
+                div#context li {
+                    list-style: none;
+                    box-shadow: 0 0 0 0 #800;
+                }
+
+                    
+
+                    div#context li a { /*text-transform:uppercase;*/
+                        line-height: 2vw;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                        cursor: pointer;
+                        padding-left: 1vw;
+                        color: darkgray;
+                        display: block;
+                        text-decoration: none;
+                        -webkit-transition: all .3s ease;
+                        -o-transition: all .3s ease;
+                        transition: all .3s ease;
+                    }
+                #listclick { position:absolute;top:10%; left:-10%;
+                }
+                     
+
+                ::selection {
+                    background: #b21160;
+                    color: white;
+                }
+
+               #context {
+                    width: 20%; height:20%;  
+                    position: absolute;  
+                    z-index: 999999; 
+                    transition: all .3s ease; 
+                }
+                #contextback { width:100%; height:100%;
+                }
+                #imgli {
+                    width: 1vw;
+                    height: 1vw;
+                    position: relative;
+                    filter: invert(100%);
+                    top: .2vw;
+                    margin-right: .5vw;
+                }
+                .btnclickk {
+                    filter: invert(50%);
+                }
+                .btnclickk:hover {
+                    filter: invert(20%);
+                }
+            </style>
+           <img src="https://i.postimg.cc/3wXxQC4V/show.png" id="contextback" />
+          
+            <script>
+                $(document).ready(function () {
+                    //Ocultamos el menú al cargar la página
+                    $("#context").hide();
+
+                    /* mostramos el menú si hacemos click derecho con el ratón */
+                    $(document).bind("contextmenu", function (e) {
+                        $("#context").css({ display: "block", left: e.pageX, top: e.pageY });
+                        return false;
+                    });
+
+                    //cuando hagamos click, el menú desaparecerá
+                    $(document).click(function (e) {
+                        if (e.button == 0) {
+                            $("#context").css("display", "none");
+                        }
+                    });
+
+                    //si pulsamos escape, el menú desaparecerá
+                    $(document).keydown(function (e) {
+                        if (e.keyCode == 27) {
+                            $("#context").css("display", "none");
+                        }
+                    });
+                });
+
+            </script>
+            <ul id="listclick">
+
+                <li>
+                    <a href="#" onclick="enterprofile();" id="click1" class="btnclickk">
+                  
+                        <img id="imgli" src="https://i.postimg.cc/TYNFxTG4/abstracto.png" />Menú principal
+                    </a>
+                </li>
+              
+                
+                <li>
+                    <a href="#" id="click2" onclick="openconfig();" class="btnclickk">
+                <img id="imgli" src="https://i.postimg.cc/7ZCcYjZY/forma-abstracta.png" />Configuración
+                    </a>
+                </li>
+                <li><a href="#bd" id="click3" onclick="openconfig();" class="btnclickk"><img id="imgli" src="https://i.postimg.cc/XqQhpb5X/acerca-de.png" />A cerca de...</a></li>
+            </ul>
+        </div>
+
+
         <video autoplay="" loop="" muted="" id="video1" src="tao1.mp4" type="video/mp4">
 
             <script>
@@ -241,8 +661,6 @@
 
         </video>
 
-    </header>
-    <div id="mainscreen">
         <style>
             #mainscreen {
                 position: absolute;
@@ -259,8 +677,13 @@
             .nofires {
                 opacity: 0;
             }
-            a {color:black}
+
+            a {
+                color: black
+            }
         </style>
+
+
 
         <div id="boxfires" class="ag-fireflies_box sifires">
             <div class="ag-fireflies_item">
@@ -696,38 +1119,63 @@
                 <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
                 <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                 <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                <div id="iconmenu5"  onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu" ><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                <div id="iconmenu5" onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
             </div>
 
-        </div> 
+        </div>
         <div id="amenualerts" class="noalert">
             <style>
-                .noalert {z-index:-1; opacity:0;
+                .noalert {
+                    z-index: -1;
+                    opacity: 0;
                 }
+
                 .sialert {
-                    z-index: 199; opacity:1;
+                    z-index: 199;
+                    opacity: 1;
                 }
 
                 #amenualerts {
                     position: absolute;
                     width: 100%;
                     height: 100%;
-                    background: rgba(0,0,0,.7); backdrop-filter:blur(4px);
+                    background: rgba(0,0,0,.7);
+                    backdrop-filter: blur(4px);
                     top: 0;
                     left: 0;
                 }
-                #alert { position:absolute; width:30%; height:20%; background:rgb(196, 155, 112); border:.3vw solid white; border-radius:2vw; left:35%; top:40%; 
+
+                #alert {
+                    position: absolute;
+                    width: 30%;
+                    height: 20%;
+                    background: rgb(196, 155, 112);
+                    border: .3vw solid white;
+                    border-radius: 2vw;
+                    left: 35%;
+                    top: 40%;
                 }
-                #ppregunta { text-align:center; color:rgb(74,82,101); font-size:1.5vw;
+
+                #ppregunta {
+                    text-align: center;
+                    color: rgb(74,82,101);
+                    font-size: 1.5vw;
                 }
-                #pacc { position:absolute; top:60%;  left:10%;
+
+                #pacc {
+                    position: absolute;
+                    top: 60%;
+                    left: 10%;
                 }
+
                 #pcan {
                     position: absolute;
                     top: 60%;
                     right: 10%;
                 }
-                    #pacc:hover, #pcan:hover { color:white;
+
+                    #pacc:hover, #pcan:hover {
+                        color: white;
                     }
             </style>
             <div id="alert">
@@ -1288,7 +1736,7 @@
                     <div id="menu16" class="menues"><img src="https://i.postimg.cc/QtwzPTbZ/16.png" /></div>
                 </div>
                 <div id="line5">
-                    <div id="menu17" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div>
+                    <div id="menu17" onclick="entersectionposts();" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div>
                     <div id="menu18" class="menues"><img src="https://i.postimg.cc/15xTrDXp/18.png" /></div>
                     <div id="menu19" onclick="entersectionfirm();" class="menues"><img src="https://i.postimg.cc/BQxzYtPR/19.png" /></div>
                     <div id="menu20" class="menues"><img src="https://i.postimg.cc/9QCnvVG0/20.png" /></div>
@@ -1302,7 +1750,7 @@
             <style>
                 /*HOVEEEEEERs*/
                 #menu3:hover, #iconmenu6:hover, #iconmenu5:hover, #btnperfil:hover, #btnperfil4:hover, #mn1:hover, #menu5:hover, #mn13:hover, #bn5:hover,
-                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover  {
+                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover {
                     cursor: url(https://i.postimg.cc/x8pr3bHz/high.png), zoom-in;
                 }
 
@@ -1410,6 +1858,7 @@
                 #btnlateral {
                     position: absolute;
                     width: 5%;
+                    z-index: 8;
                     height: 50%;
                     right: 0;
                     top: 20%;
@@ -2332,9 +2781,35 @@
                     }
                 </style>
                 <p id="revneige">
-                    A xatspace powered by Neige© for Lynette (Yuki).<br />
+
+
+
+
+
+                    A.I. TERMINAL V tech 5.38 - HOST is up (0.025s latency)
                     Genshin Impact UI interface V0.91 REV 1.00 <br />
-                    Xatspace.me all rights reserved xat.com
+                    IMACC NAME: BLACKLARCH 4CL454<br />
+
+                    IMACC TYPE: TAIMAT IMAGE<br />
+
+                    ICCKS COMPRESSED (Q) 444445555<br />
+
+                    LOAD ADRESS 0000x112244-000000000000000<br />
+
+                    NetWire_Seed: d869db7fe62fb07c25a0403ecaea55031744b5fb# IMPACTPROTOCOL
+                    6520-444<br /><br /><br />
+
+                    USERNAME: Guest<br />
+                    PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br /><br />
+                    <br />
+
+                    Authenticatting credentials... 100%<br />
+
+                    Accessing File '/srd/slab/ara/:dt_000000319/falc_min'...     Done!<br />
+
+                    This place was made by Negie, based in Genshin Impact.<br />
+                    A xatspace powered by Neige© for Lynette (Yuki).<br />
+                    Xatspace.me all rights reserved xat.com<br />
                 </p>
                 <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="imgneige" />
 
@@ -2554,11 +3029,14 @@
 
         <div id="chat" class="nochat">
             <style>
-                .nochat { left:-100%;
+                .nochat {
+                    left: -100%;
                 }
+
                 .sichat {
                     left: 4%;
                 }
+
                 #chat {
                     position: absolute;
                     width: 60%;
@@ -2567,17 +3045,49 @@
                     background-image: linear-gradient(270deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
                     z-index: 4;
                 }
-                #barchat {position:absolute; left:1%;   height:100%; width:27%;
+
+                #barchat {
+                    position: absolute;
+                    left: 1%;
+                    height: 100%;
+                    width: 27%;
                 }
-                #imgbarchat { position:absolute; width:100%; height:100%;
+
+                #imgbarchat {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
                 }
-                #diviconsaikai1 { position:absolute; width:3vw; height:3vw; background:rgb(74,82,101); overflow:hidden; border-radius:50%; top:13.5%; left:12%;
+
+                #diviconsaikai1 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 3vw;
+                    background: rgb(74,82,101);
+                    overflow: hidden;
+                    border-radius: 50%;
+                    top: 13.5%;
+                    left: 12%;
                 }
-                #iconsaikai1 { width:100%;
+
+                #iconsaikai1 {
+                    width: 100%;
                 }
-                #pnicksaik { position:absolute; color:white; left:35%; top:13%;
+
+                #pnicksaik {
+                    position: absolute;
+                    color: white;
+                    left: 35%;
+                    top: 13%;
                 }
-                #btnback { position:absolute; width:20%; height:7%;  top:2%; left:10%; border-radius:50%;
+
+                #btnback {
+                    position: absolute;
+                    width: 20%;
+                    height: 7%;
+                    top: 2%;
+                    left: 10%;
+                    border-radius: 50%;
                 }
             </style>
             <div id="barchat">
@@ -2595,18 +3105,36 @@
                     <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr2" />
                 </div>
                 <style>
-                    #areachat { width:50%; left:30%;   height:100%; position:absolute;  
+                    #areachat {
+                        width: 50%;
+                        left: 30%;
+                        height: 100%;
+                        position: absolute;
                     }
-                    #scr1 { position:absolute; width:1vw; top:-1vw; right:-.4vw;
+
+                    #scr1 {
+                        position: absolute;
+                        width: 1vw;
+                        top: -1vw;
+                        right: -.4vw;
                     }
-                    #scr2 { transform:rotate(180deg);
+
+                    #scr2 {
+                        transform: rotate(180deg);
                         position: absolute;
                         width: 1vw;
                         bottom: -1vw;
                         right: -.42vw;
                     }
-                    #areaaddmsn { position:absolute; width:100%; height:10%; bottom:0;  border-top:.15vw solid rgba(74,82,101.6);
+
+                    #areaaddmsn {
+                        position: absolute;
+                        width: 100%;
+                        height: 10%;
+                        bottom: 0;
+                        border-top: .15vw solid rgba(74,82,101.6);
                     }
+
                     #text_bak_in {
                         position: absolute;
                         width: 50%;
@@ -2614,8 +3142,11 @@
                         height: 2.5vw;
                         border-radius: 2vw;
                         left: 12%;
-                        top: 20%; overflow:hidden; text-align:left;
+                        top: 20%;
+                        overflow: hidden;
+                        text-align: left;
                     }
+
                     #textadd {
                         position: absolute;
                         width: 100%;
@@ -2625,10 +3156,11 @@
                         border: none;
                         color: rgb(74,82,101);
                         top: 0;
-                        left: 0; 
-                        font-size: 1vw; 
+                        left: 0;
+                        font-size: 1vw;
                         padding: .6vw;
                     }
+
                     #btn_bak_in {
                         width: 30%;
                         height: 2.8vw;
@@ -2640,57 +3172,115 @@
                         font-family: 'HYWenHei-85W';
                         overflow: hidden;
                     }
-                    #btnadd {  margin-left:10%;
+
+                    #btnadd {
+                        margin-left: 10%;
                         position: absolute;
                         height: 96%;
                         top: 2%;
                         width: 97%;
                         left: 1%;
                     }
-                    #p_btn_se { position:relative; text-align:center; top:-.5vw;
+
+                    #p_btn_se {
+                        position: relative;
+                        text-align: center;
+                        top: -.5vw;
                     }
-                    #circle { width:2vw; height:2vw; border-radius:50%; left:-2%; top:15%; background:rgba(0,0,0,.8); position:absolute;
+
+                    #circle {
+                        width: 2vw;
+                        height: 2vw;
+                        border-radius: 50%;
+                        left: -2%;
+                        top: 15%;
+                        background: rgba(0,0,0,.8);
+                        position: absolute;
                     }
-                    #subcircle { width:30%; height:30%; border:.3vw solid rgb(187,115,41); border-radius:50%; left:20%; top:20%; position:absolute;
+
+                    #subcircle {
+                        width: 30%;
+                        height: 30%;
+                        border: .3vw solid rgb(187,115,41);
+                        border-radius: 50%;
+                        left: 20%;
+                        top: 20%;
+                        position: absolute;
                     }
+
                     #areamensajes {
                         position: absolute;
-                        width: 100%;  
+                        width: 100%;
                         height: 74%;
-                        top: 13%; overflow:auto;
-                     
+                        top: 13%;
+                        overflow: auto;
                     }
-                    #barscroll { width:.2vw; height:74%; top:13%; right:.2vw; position:absolute; background:rgba(74,82,101,.2); 
+
+                    #barscroll {
+                        width: .2vw;
+                        height: 74%;
+                        top: 13%;
+                        right: .2vw;
+                        position: absolute;
+                        background: rgba(74,82,101,.2);
                     }
-                        #areamensajes::-webkit-scrollbar {
-                            width: .6vw;
-                            border-radius: .5vw;
-                            background: transparent;
-                        }
-                    #areamensajes { overflow-x:hidden;
+
+                    #areamensajes::-webkit-scrollbar {
+                        width: .6vw;
+                        border-radius: .5vw;
+                        background: transparent;
                     }
+
+                    #areamensajes {
+                        overflow-x: hidden;
+                    }
+
                         #areamensajes::-webkit-scrollbar-thumb {
-                            border-radius:1vw; background:lightgray;
+                            border-radius: 1vw;
+                            background: lightgray;
                             width: .6vw;
                         }
-                    #msnguest, #msnsaikai { width:100%; height:auto;  position:relative; 
+
+                    #msnguest, #msnsaikai {
+                        width: 100%;
+                        height: auto;
+                        position: relative;
                     }
-                        #msnguest:first-child { margin-top:1vw;
+
+                        #msnguest:first-child {
+                            margin-top: 1vw;
                         }
-                   
-                    #diviconguest { width:5vw;height:5vw; background:rgb(74,82,101); border-radius:50%; overflow:hidden;  
-                    }
-                    #diviconsaikai {
-                        width: 5vw;position:relative;
-                        height: 5vw;left:80%;
+
+                    #diviconguest {
+                        width: 5vw;
+                        height: 5vw;
                         background: rgb(74,82,101);
                         border-radius: 50%;
                         overflow: hidden;
                     }
-                    #iconguest, #iconsaikai {width:100%;
+
+                    #diviconsaikai {
+                        width: 5vw;
+                        position: relative;
+                        height: 5vw;
+                        left: 80%;
+                        background: rgb(74,82,101);
+                        border-radius: 50%;
+                        overflow: hidden;
                     }
-                    #regname { color:white; font-size:.9vw; position:relative; top:-6vw; left:20%;
+
+                    #iconguest, #iconsaikai {
+                        width: 100%;
                     }
+
+                    #regname {
+                        color: white;
+                        font-size: .9vw;
+                        position: relative;
+                        top: -6vw;
+                        left: 20%;
+                    }
+
                     #regname2 {
                         color: white;
                         font-size: .9vw;
@@ -2698,8 +3288,19 @@
                         top: -1vw;
                         left: 65%;
                     }
-                    #areamensaj { background:rgb(74,82,101); height:auto; border-radius:0 2vw 2vw 2vw; width:auto; position:relative; left:20%; top:-6vw; padding:.8vw; color:white;
+
+                    #areamensaj {
+                        background: rgb(74,82,101);
+                        height: auto;
+                        border-radius: 0 2vw 2vw 2vw;
+                        width: auto;
+                        position: relative;
+                        left: 20%;
+                        top: -6vw;
+                        padding: .8vw;
+                        color: white;
                     }
+
                     #areamensaj2 {
                         background: rgb(74,82,101);
                         height: auto;
@@ -2711,10 +3312,12 @@
                         padding: .8vw;
                         color: white;
                     }
-                    #areatop { 
+
+                    #areatop {
                         width: 100%;
                         height: 10%;
-                        top: 0; overflow:hidden;
+                        top: 0;
+                        overflow: hidden;
                         position: absolute;
                         border-bottom: .15vw solid rgba(74,82,101.6);
                     }
@@ -2735,7 +3338,7 @@
                             <img id="iconsaikai" src="https://i.postimg.cc/Bv1sLsTv/Hu-Tao.png" />
                         </div>
                         <p id="regname2">Saikai</p>
-                        <content id="areamensaj2"> 
+                        <content id="areamensaj2">
                             Hola, Bienvenido!
                         </content>
 
@@ -2748,7 +3351,7 @@
                         $('#areamensajes').append('<div id="msnguest"> <div id="diviconguest"><img id="iconguest" src="https://i.postimg.cc/fLybs2sJ/tumblr-25262f373b5c945b762a8fc82f3d6105-49287d65-400.png" /></div> <p id="regname">Guest</p><content id="areamensaj">' + textt + '</content>  </div > ');
 
                     }
-                  
+
 
                     function arriba() {
                         $("#areamensajes").animate({ scrollTop: 1000 }, 600);
@@ -2757,9 +3360,19 @@
                 </script>
                 <div id="areatop">
                     <style>
-                        #areatop img { position:absolute; width:3vw; right:0%; top:35%;
+                        #areatop img {
+                            position: absolute;
+                            width: 3vw;
+                            right: 0%;
+                            top: 35%;
                         }
-                        #namegeu { position:relative; text-align:center; color:white; font-size:1.5vw; top:20%;
+
+                        #namegeu {
+                            position: relative;
+                            text-align: center;
+                            color: white;
+                            font-size: 1.5vw;
+                            top: 20%;
                         }
                     </style>
                     <p id="namegeu">Saikai</p><img src="https://i.postimg.cc/FsB09Ngg/3puntos.png" />
@@ -2777,11 +3390,17 @@
 
         <div id="firmas" class="nosectfirm">
             <style>
-                .nosectfirm { opacity:0; z-index:-1;
+                .nosectfirm {
+                    opacity: 0;
+                    z-index: -1;
                 }
-                .sisectfirm { opacity:1; z-index:7;
+
+                .sisectfirm {
+                    opacity: 1;
+                    z-index: 7;
                 }
-                #firmas { 
+
+                #firmas {
                     width: 96%;
                     left: 4%;
                     height: 100%;
@@ -2843,7 +3462,7 @@
                     outchat();
                     outssections(); $("#firmas").removeClass("nosectfirm"); $("#firmas").addClass("sisectfirm");
                 }
-                function outsectfirm(){
+                function outsectfirm() {
                     $("#firmas").removeClass("sisectfirm"); $("#firmas").addClass("nosectfirm");
                 }
                 function selectuser1() {
@@ -2880,7 +3499,7 @@
             <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
             <img src="https://i.postimg.cc/Z5Gp3LM9/19.png" id="iconfirmas" />
             <p id="titlef">Firmas</p>
-            <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="outsectfirm();"  />
+            <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="outsectfirm();" />
             <div id="mainfirmas" class="backneige">
                 <div id="barusers">
                     <style>
@@ -3191,6 +3810,392 @@
             </div>
 
         </div>
+        <div id="posts" class="noposts">
+            <style>
+                .noposts {
+                    opacity: 0;
+                    z-index: -1222;
+                }
+
+                .siposts {
+                    opacity: 1;
+                    z-index: 7;
+                }
+
+                #posts {
+                    overflow: hidden;
+                    width: 96%;
+                    left: 4%;
+                    height: 100%;
+                    background: rgba(42,55,82,.6);
+                    position: absolute;
+                    backdrop-filter: blur(8px);
+                }
+
+                #emblemback {
+                    position: absolute;
+                    filter: invert(100%) blur(3px);
+                    opacity: .1;
+                    width: 35%;
+                    left: -15%;
+                    top: -10%;
+                }
+            </style>
+            <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
+
+            <div id="areaposts">
+                <style>
+                    #areaposts {
+                        overflow: hidden;
+                        width: 70%;
+                        left: 15%;
+                        height: 90%;
+                        top: 5%;
+                        position: absolute;
+                        background: white;
+                        overflow: hidden;
+                        border-radius: .4vw;
+                    }
+
+                    #mainbarposts {
+                        position: absolute;
+                        width: 100%;
+                        height: 10%;
+                        z-index: 3;
+                        background: rgb(74,82,101);
+                    }
+
+                    #subbar {
+                        position: absolute;
+                        width: 99%;
+                        left: .3%;
+                        height: 84%;
+                        top: 6%;
+                        z-index: 3;
+                        background: rgb(74,82,101);
+                        border: .1vw solid dimgray;
+                    }
+
+                    #btncloseconfig2 {
+                        width: 3vw;
+                        position: absolute;
+                        right: 2%;
+                        top: 10%;
+                    }
+
+                    #pposts {
+                        text-align: center;
+                        font-size: 1.5vw;
+                        color: white;
+                        position: relative;
+                        top: 20%;
+                        width: 10%;
+                        left: 45%;
+                        height: 2.6vw;
+                        border-bottom: .3vw solid rgb(224, 92, 92);
+                    }
+                </style>
+                <div id="mainbarposts">
+                    <div id="subbar">
+                        <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig2" onclick="outposts();" />
+                        <div id="pposts">Posts</div>
+                    </div>
+
+
+
+                </div>
+
+                <div id="areaselectpost">
+                    <style>
+                        #areaselectpost {
+                            width: 32%;
+                            background: rgb(235,230,222);
+                            height: 90%;
+                            position: absolute;
+                            top: 10%;
+                            z-index: 1;
+                            overflow: auto;
+                        }
+
+                            #areaselectpost::-webkit-scrollbar {
+                                width: 0vw;
+                                border-radius: .5vw;
+                                background: transparent;
+                            }
+
+                        #antepost {
+                            position: relative;
+                            width: 90%;
+                            height: 12%;
+                            margin-top: 2%;
+                            left: 5%;
+                        }
+
+                        #antepost2 {
+                            position: relative;
+                            width: 90%;
+                            height: 12%;
+                            margin-top: 2%;
+                            left: 5%;
+                        }
+
+                        #antepost:nth-child(2) {
+                            margin-top: 13%;
+                        }
+
+                        #antepost:last-child {
+                            margin-bottom: 15%;
+                        }
+
+                        #imgbackantepost {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #titleantepost {
+                            position: absolute;
+                            left: 16%;
+                            top: -5%;
+                            color: rgb(74,82,101);
+                        }
+
+                        #selecpos, #selecpos2 {
+                            position: absolute;
+                            width: 1.5vw;
+                            right: 5%;
+                            top: 34%;
+                        }
+
+                        #imgfirsticon {
+                            position: absolute;
+                            width: 2vw;
+                            left: 3%;
+                            top: 25%;
+                        }
+                    </style>
+                    <script>
+                        function deleteicon() {
+                            $("#imgfirsticon").remove();
+                        }
+                        function selectareapost2() {
+                            $("#areadposts2").removeClass("noareapost"); $("#areadposts2").addClass("siareapost");
+                            $("#areadposts").removeClass("siareapost"); $("#areadposts").addClass("noareapost");
+                            $("#selecpos2").removeClass("noareapost"); $("#selecpos2").addClass("siareapost");
+                            $("#selecpos").removeClass("siareapost"); $("#selecpos").addClass("noareapost");
+                        } function selectareapost1() {
+                            $("#areadposts").removeClass("noareapost"); $("#areadposts").addClass("siareapost");
+                            $("#areadposts2").removeClass("siareapost"); $("#areadposts2").addClass("noareapost");
+
+                            $("#selecpos").removeClass("noareapost"); $("#selecpos").addClass("siareapost");
+                            $("#selecpos2").removeClass("siareapost"); $("#selecpos2").addClass("noareapost");
+                        }
+                        function entersectionposts() {
+                            outprofile();
+                            outchat();
+                            outssections();
+                            outsectfirm();
+
+                            $("#posts").removeClass("noareapost"); $("#posts").addClass("siareapost");
+                        }
+                        function outposts() { $("#posts").removeClass("siareapost"); $("#posts").addClass("noareapost"); }
+                    </script>
+                    <div id="antepost" onclick="selectareapost1();">
+                        <img src="https://i.postimg.cc/66jPf0wP/selectpost.png" id="imgbackantepost" />
+                        <p id="titleantepost">Neige de mars<br />by Neige</p>
+                        <img src="https://i.postimg.cc/5tggN42r/selcpost.png" id="selecpos" class="siareapost" />
+                    </div>
+                    <div id="antepost2" onclick="deleteicon(); selectareapost2();">
+                        <img src="https://i.postimg.cc/66jPf0wP/selectpost.png" id="imgbackantepost" />
+                        <p id="titleantepost">With me<br />by Neige</p>
+                        <img src="https://i.postimg.cc/5tggN42r/selcpost.png" id="selecpos2" class="noareapost" />
+                        <img src="https://i.postimg.cc/Xv4xbG4F/iconfirst.png" id="imgfirsticon" />
+                    </div>
+
+                </div>
+                <div id="areadposts" class="siareapost">
+                    <style>
+
+                        #areadposts, #areadposts2 {
+                            width: 68%;
+                            left: 32.2%;
+                            overflow: auto;
+                            top: 10%;
+                            height: 90%;
+                            position: absolute;
+                            background: white;
+                            box-shadow: -.5vw 0vw .5vw rgb(219,215,205);
+                        }
+
+                        .noareapost {
+                            opacity: 0;
+                            z-index: -1;
+                        }
+
+                        .siareapost {
+                            opacity: 1;
+                            z-index: 4;
+                        }
+
+                        #areadposts::-webkit-scrollbar {
+                            width: 0vw;
+                            border-radius: .5vw;
+                            background: transparent;
+                        }
+
+                        #posttitulo {
+                            color: rgb(74,82,101);
+                            font-size: 2vw;
+                            opacity: .8;
+                            left: 5%;
+                            position: absolute;
+                        }
+
+                        #postareaimg {
+                            position: relative;
+                            top: 15%;
+                            height: auto;
+                            width: 95%;
+                            background: Red;
+                            margin-top: 10%;
+                            left: 5%;
+                            background: rgb(235,230,222);
+                        }
+
+                        #imgpost {
+                            width: 60%;
+                            height: auto;
+                            margin-top: 1vw;
+                            margin-bottom: 1vw;
+                            left: 40%;
+                            position: relative;
+                            border-radius: .5vw;
+                        }
+
+                        #contentpost {
+                            color: rgb(74,82,101);
+                            position: relative;
+                            top: 15%;
+                            width: 90%;
+                            left: 5%;
+                            line-height: 2vw;
+                            margin-bottom: 20%;
+                        }
+
+                        #postby {
+                            width: 33%;
+                            height: 2vw;
+                            border: .1vw solid rgb(233,209,155);
+                            background: rgb(70,157,158);
+                            position: absolute;
+                            left: 3%;
+                            top: 40%;
+                            color: white;
+                            text-align: center;
+                            font-size: 1vw;
+                            border-radius: .2vw;
+                        }
+
+                            #postby p {
+                                margin: 0;
+                                margin-top: .3vw;
+                            }
+
+                        #pdatepost {
+                            color: rgb(70,157,158);
+                            font-size: .9vw;
+                            left: 10%;
+                            position: absolute;
+                            top: 55%;
+                        }
+                    </style>
+                    <p id="posttitulo">Neige de mars</p>
+                    <div id="postareaimg">
+                        <div id="postby"><p>Post written by Neige</p></div>
+                        <p id="pdatepost">01-10-23 12:00am</p>
+                        <img src="https://i.postimg.cc/R0PRn4kz/black-aesthetic-anime-black.gif" id="imgpost" />
+                    </div>
+                    <p id="contentpost">
+                        太出乎意料了| Si inattendu<br />
+                        在我身边变得脆弱| Tombe fragile autour de moi<br />
+                        如此优雅，如此冰冷| Si fragile, si froid...<br />
+                        将我包裹在它冰冷的怀抱中| m'enveloppant de son étreinte glaciale<br />
+                        在它温暖的美味下| Sous sa chaude délicatesse<br />
+                        我一直想留下的那个...| Celui que je veux toujours rester...
+                    </p>
+
+                </div>
+                <div id="areadposts2" class="noareapost">
+
+                    <p id="posttitulo">With me</p>
+                    <div id="postareaimg">
+                        <div id="postby"><p>Post written by Neige</p></div>
+                        <p id="pdatepost">01-10-23 12:00am</p>
+                        <img src="https://i.postimg.cc/FHgf8L2b/4b8f5ca7bf41461a19e3b4d1e64c1eb5.gif" id="imgpost" />
+                    </div>
+                    <p id="contentpost">
+
+
+                        I want you to know with everything, I won't let this go.
+                        These words are my <span>heart</span> and <span>soul</span>, I'll hold on to this moment, you know
+                        As I <span>bleed</span> my heart out to show and I won't let go.
+
+                    </p>
+
+                </div>
+                <div id="degradposts">
+                    <style>
+                        #degradposts {
+                            position: absolute;
+                            height: 5%;
+                            background-image: linear-gradient(180deg,transparent 0%,rgb(235,230,222) 50%);
+                            top: 95%;
+                            width: 100%;
+                            z-index: 6;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div id="clock">
+        <style>
+            #clock {
+                position: absolute;
+                width: 60%; right:0;
+                height: 100%;
+                transition: all 1s ease;
+                background-image: linear-gradient(90deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
+                z-index: 4;
+            }
+            #divreloj { opacity:.8  ; filter:blur(1px);
+                width: 60%;
+                height: 72%;  position:absolute;
+                right: 5%;
+                top: 15%;
+            }
+            #imgreloj {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                filter: blur(1px);
+            }
+            #imgrelojfondo {
+                position: absolute;
+                width: 48%;
+                left: 25.8%;
+                top: 26.6%;
+                height: 48%;
+                transform:   scaleY(-1);
+            }
+        </style>
+        <div id="divreloj">
+            <img src="https://i.postimg.cc/fLXbfLS2/descarga.png"   id="imgreloj" />
+            <img src="https://i.ibb.co/YpBz8b4/relojsinfondo3.gif" id="imgrelojfondo" />
+        </div>
+
+
+    </div>-->
 
     </div>
 
