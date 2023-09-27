@@ -71,6 +71,8 @@
         #intro {
             color: white;
         }
+        .mks { opacity:0; z-index:-111;
+        }
     </style>
     <script>
 
@@ -260,17 +262,72 @@
     </script>
 </head>
 
-<body  ><script>
-    function cambiarsrc() {
-        $("#video1").attr("src", "genshinopen.mp4");
-    }
-    function cambiarsrc2() {
-        $("#video1").attr("src", "doorloading.mp4");
-    }
-    function cambiarsrc3() {
-        $("#video1").attr("src", "dooropen.mp4");
-    }
-</script>
+<body>
+    <script>
+        function cambiarsrc() {
+            $("#video1").attr("src", "genshinopen.mp4");
+        }
+        function cambiarsrc2() {
+            $("#video1").attr("src", "doorloading.mp4");
+        }
+        function cambiarsrc3() {
+            $("#video1").attr("src", "dooropen.mp4");
+        }
+    </script>
+
+    <audio controls id="clickmp3" class="mks">
+        <source src="https://xevangelist.github.io/evangelist/4.mp3?raw=true"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#clickmp3")[0];
+
+                $("body").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+
+            });
+
+        </script>
+    </audio>
+    <audio controls id="hovers" class="mks">
+        <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#hovers")[0];
+
+                //eventhandler on hover with play() function
+                $("#buttonintro").mouseenter(function () {
+                    audio.play();
+                });
+                $("#textpass").mouseenter(function () {
+                    audio.play();
+                });
+                $("#textmail").mouseenter(function () {
+                    audio.play();
+                });
+                $("#mainserver").mouseenter(function () {
+                    audio.play();
+                });
+                $("#mainp2").mouseenter(function () {
+                    audio.play();
+                });
+                
+                $("#btneye2").click(function () {//Cambiar body por main pageeeee
+                    audio.play();
+                    console.log(audio);
+                });
+
+            });
+
+        </script>
+    </audio>
+
+
     <header>
         <video autoplay="" loop="" muted="" id="video1" src="sss2.mp4" type="video/mp4">
 
@@ -280,7 +337,7 @@
             <!--onclick="cambiarsrc();"-->
 
         </video>
-         
+
     </header>
 
     <div id="mainscreen">
@@ -302,7 +359,6 @@
                 top: 17%;
                 border-radius: .4vw;
                 font-family: 'HYWenHei-85W';
-             
                 /*font-family: 'Signika', sans-serif;*/
             }
 
@@ -321,9 +377,8 @@
                 left: 10%;
                 top: 25%;
                 border: 0;
-                outline: none; 
+                outline: none;
                 font-family: 'HYWenHei-85W';
-            
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.3vw;
                 opacity: .6;
@@ -337,7 +392,7 @@
                 left: 10%;
                 top: 43%;
                 border: 0;
-                outline: none; 
+                outline: none;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.3vw;
@@ -354,7 +409,7 @@
                 top: 67%;
                 border: 0;
                 background: #3c3c3c;
-                outline: none; 
+                outline: none;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.3vw;
@@ -365,7 +420,7 @@
                 left: 7%;
                 top: 53%;
                 border: 0;
-                color: #ceb00c; 
+                color: #ceb00c;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.1vw;
@@ -376,7 +431,7 @@
                 right: 7%;
                 top: 53%;
                 border: 0;
-                color: #ceb00c; 
+                color: #ceb00c;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.1vw;
@@ -388,16 +443,17 @@
                 margin-left: 3vw;
                 position: relative;
                 border: 0;
-                color: white; 
+                color: white;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.1vw;
             }
+
             #p4 {
                 text-align: center;
                 position: relative;
                 border: 0;
-                color: white; 
+                color: white;
                 font-family: 'HYWenHei-85W';
                 /*font-family: 'Signika', sans-serif;*/
                 font-size: 1.1vw;
@@ -424,7 +480,8 @@
                 height: 4vw;
                 border-radius: .4vw;
             }
-          #incorrect {
+
+            #incorrect {
                 position: absolute;
                 width: 60%;
                 left: 20%;
@@ -434,13 +491,14 @@
                 height: 4vw;
                 border-radius: .4vw;
             }
-                #login img {
-                    position: relative;
-                    filter: invert(100%) grayscale(100%);
-                    width: 2.4vw;
-                    left: 1.4vw;
-                    top: .8vw;
-                }
+
+            #login img {
+                position: relative;
+                filter: invert(100%) grayscale(100%);
+                width: 2.4vw;
+                left: 1.4vw;
+                top: .8vw;
+            }
 
             .opacity0 {
                 opacity: 0;
@@ -451,10 +509,12 @@
                 animation: appanddiss 3s 1;
                 animation-fill-mode: forwards;
             }
+
             .apaerrs2 {
                 animation: appanddiss2 3s 1;
                 animation-fill-mode: forwards;
             }
+
             @-webkit-keyframes appanddiss {
                 0% {
                     opacity: 1;
@@ -469,10 +529,9 @@
                 100% {
                     opacity: 0;
                     z-index: -1;
-                   
-
                 }
             }
+
             @-webkit-keyframes appanddiss2 {
                 0% {
                     opacity: 0;
@@ -486,7 +545,7 @@
 
                 100% {
                     opacity: 1;
-                    z-index:9;
+                    z-index: 9;
                 }
             }
         </style>
@@ -498,13 +557,13 @@
 
                 if ((clave1 != "") && (user1 != "")) {
 
-                    /*$("#login").removeClass("opacity0");*/ $("#first").addClass("apaerrs");
+                                    /*$("#login").removeClass("opacity0");*/ $("#first").addClass("apaerrs");
                     $("#login").removeClass("opacity0"); $("#login").addClass("apaerrs");
 
                     //var url = "Cris2.html";
                     //$(location).attr('href', url);
                     $("#username").text("¡" + user1.substr(0, 2) + "******@xatme.com, Bienvenido!");
-                    $("#usuariospan").text(  user1.substr(0, 2) + "******@xatme.com");
+                    $("#usuariospan").text(user1.substr(0, 2) + "******@xatme.com");
                     function welcomemsn() {
                         $("#welcome").addClass("inwelcom"); $("#welcome").removeClass("outwelcom");
                         $("#mainwelcome").addClass("apaerrs2"); $("#mainwelcome").removeClass("opacity0");
@@ -512,7 +571,7 @@
                         $("#username2").addClass("apaerrs2"); $("#username2").removeClass("opacity0");
                     }
 
-                    setInterval(welcomemsn, 3200); 
+                    setInterval(welcomemsn, 3200);
 
                 }
                 else {
@@ -520,17 +579,17 @@
                     function returnclas() {
                         $("#incorrect").addClass("opacity0"); $("#incorrect").removeClass("apaerrs");
                     }
-                   
-                    setInterval(returnclas, 4000); 
-                  
+
+                    setInterval(returnclas, 4000);
+
 
                 }
 
             }
-            
+
 
             function clickenter() {
-                $("#welcome").removeClass("inwelcom"); $("#welcome").addClass("outwelcom"); 
+                $("#welcome").removeClass("inwelcom"); $("#welcome").addClass("outwelcom");
                 $("#mainwelcome").removeClass("apaerrs2"); $("#mainwelcome").addClass("opacity0");
                 $("#server").removeClass("apaerrs2"); $("#server").addClass("opacity0");
                 $("#username2").removeClass("apaerrs2"); $("#username2").addClass("opacity0");
@@ -539,31 +598,31 @@
                     $("#mainwelcome").remove();
                     $("#server").remove();
                     $("#username2").remove();
-                    $("#loadingenter").removeClass("opacity0"); 
+                    $("#loadingenter").removeClass("opacity0");
                     $("#countp").addClass("counanima");
                     $("#barmainfill").addClass("barfil");
                 }
                 function entranceseconvid() {
-                    $("#loadingenter").addClass("opacity0"); 
-                    cambiarsrc(); 
+                    $("#loadingenter").addClass("opacity0");
+                    cambiarsrc();
                 }
                 function entrancesurl() {
                     var url = "Lynette2.html";
                     $(location).attr('href', url);
                 }
-                setInterval(entrancesurl, 18000); 
-                setInterval(entranceseconvid, 9000); 
-                setInterval(deletesecions, 1000); 
+                setInterval(entrancesurl, 18000);
+                setInterval(entranceseconvid, 9000);
+                setInterval(deletesecions, 1000);
             }
 
             function checkradio() {
                 if ((x == 1) || (x == 0)) {
                     $("#backradiobtn").removeClass("radiobackchek"); $("#backradiobtn").addClass("radiobacknocheck");
-                
+
                     x++;
 
                 }
-                if (x == 2)  {
+                if (x == 2) {
                     $("#backradiobtn").addClass("radiobackchek"); $("#backradiobtn").removeClass("radiobacknocheck");
 
                     x++;
@@ -571,10 +630,10 @@
                 }
                 else if (x > 2) { x = 0; }
 
-            } 
-                 
+            }
 
-            
+
+
         </script>
 
         <div id="mainintro">
@@ -595,6 +654,7 @@
                     top: 30%;
                     animation: animaentrance 3s 1;
                 }
+
                 #mainimg2 {
                     position: absolute;
                     width: 36%;
@@ -602,8 +662,9 @@
                     left: 32%;
                     top: 30%;
                     animation: animaentrance 3s 1;
-                    animation-delay:3s;
+                    animation-delay: 3s;
                 }
+
                 #mainimg3 {
                     opacity: 0;
                     position: absolute;
@@ -612,7 +673,8 @@
                     top: 0;
                     left: 0;
                     animation: animaentrance2 3s 1;
-                    animation-delay: 6s; animation-fill-mode:forwards;
+                    animation-delay: 6s;
+                    animation-fill-mode: forwards;
                 }
 
                 #min3 {
@@ -642,7 +704,8 @@
                     top: 30%;
                     color: dimgray;
                     position: relative;
-                    border: 0; color:black;
+                    border: 0;
+                    color: black;
                     font-family: 'HYWenHei-85W';
                     /*font-family: 'Signika', sans-serif;*/
                     font-size: 1.5vw;
@@ -675,6 +738,7 @@
                         opacity: .6;
                     }
                 }
+
                 @-webkit-keyframes animaentrance2 {
                     0% {
                         opacity: 0;
@@ -683,8 +747,6 @@
                     100% {
                         opacity: 1;
                     }
-
-                    
                 }
 
                 @-webkit-keyframes animaentrance {
@@ -695,22 +757,29 @@
                     40% {
                         opacity: 1;
                     }
+
                     80% {
                         opacity: 1;
                     }
+
                     100% {
                         opacity: 0;
                     }
                 }
-                #mainintro:target { opacity:0; z-index:-2; 
+
+                #mainintro:target {
+                    opacity: 0;
+                    z-index: -2;
                 }
-                a { text-decoration:none;
+
+                a {
+                    text-decoration: none;
                 }
             </style>
 
             <img id="mainimg1" src="https://i.postimg.cc/MKThF7P0/Ho-Yoverse-Logo.png" />
             <img id="mainimg2" src="https://i.postimg.cc/PrPWrvJT/Genshin-Impact-logo-svg.png" />
-           
+
             <div id="mainimg3">
 
                 <img src="https://i.postimg.cc/sDqpBfGS/intro.png" id="min3" /> <p id="adv1">Advertencia: Lee antes de iniciar</p>
@@ -725,7 +794,7 @@
                 </p>
                 <a id="asongplay" href="#mainintro"> <p id="avd3">Clic para continuar...</p></a>
             </div>
-            
+
 
         </div>
 
@@ -750,23 +819,29 @@
 
             </div>
             <div id="fbbtn">
-                <style>                    #fbbtn {
+                <style>
+                    #fbbtn {
                         width: 3vw;
                         height: 3vw;
                         position: absolute;
                         top: 85%;
-                        left: 38%; 
+                        left: 38%;
                         border-radius: 50%;
                     }
-                    #twbtn{
+
+                    #twbtn {
                         width: 3vw;
                         height: 3vw;
                         position: absolute;
                         top: 85%;
-                        left: 52%; 
+                        left: 52%;
                         border-radius: 50%;
                     }
-                    .imgbtnsft { position:absolute; width:100%; height:100%;
+
+                    .imgbtnsft {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
                     }
                 </style><img class="imgbtnsft" src="https://i.postimg.cc/tTWdbK4P/2021-Facebook-icon-svg.png" />
             </div>
@@ -777,23 +852,40 @@
 
         <center id="welcome" class="outwelcom">
             <style>
-                #welcome { width:40%; height:11%; background:white; border-radius:.4vw;  left:30%; position:absolute; align-content:center; transition:all 1s ease;
+                #welcome {
+                    width: 40%;
+                    height: 11%;
+                    background: white;
+                    border-radius: .4vw;
+                    left: 30%;
+                    position: absolute;
+                    align-content: center;
+                    transition: all 1s ease;
                 }
+
                 .outwelcom {
-                    top: -20%;  
+                    top: -20%;
                 }
-                .inwelcom {  top:10%; 
+
+                .inwelcom {
+                    top: 10%;
                 }
-                #iconmsn {   margin-top:1.5vw; margin-right:2vw;
+
+                #iconmsn {
+                    margin-top: 1.5vw;
+                    margin-right: 2vw;
                 }
-                #username:first-letter {text-transform:uppercase;
+
+                #username:first-letter {
+                    text-transform: uppercase;
                 }
+
                 #username {
                     text-align: center;
                     position: relative;
                     border: 0;
                     top: -1vw;
-                    color: dimgray; 
+                    color: dimgray;
                     font-family: 'HYWenHei-85W';
                     /*font-family: 'Signika', sans-serif;*/
                     font-size: 1.2vw;
@@ -805,42 +897,57 @@
 
         <div id="mainwelcome" class="opacity0">
             <style>
-               
-                #mainwelcome {width:30%; height:17%;   top:38%; left:35%; position:absolute;  
+
+                #mainwelcome {
+                    width: 30%;
+                    height: 17%;
+                    top: 38%;
+                    left: 35%;
+                    position: absolute;
                 }
-                #mainsep { position:absolute; width:100%; top:55%;
+
+                #mainsep {
+                    position: absolute;
+                    width: 100%;
+                    top: 55%;
                 }
+
                 #mainp1 {
                     /*opacity: .4;*/
                     text-align: center;
                     position: relative;
-                    border: 0; top:-.7vw;
+                    border: 0;
+                    top: -.7vw;
                     text-transform: uppercase;
-                    color: white; 
+                    color: white;
                     font-family: 'HYWenHei-85W';
                     font-size: 2.7vw;
                 }
+
                 #mainp2 {
                     opacity: .4;
                     text-align: center;
                     position: relative;
                     border: 0;
-                    text-transform:uppercase;
-                    color: white;  top:-55%;
+                    text-transform: uppercase;
+                    color: white;
+                    top: -55%;
                     font-family: 'HYWenHei-85W';
-                    font-size: 1.1vw; animation:blinktext 2s infinite;
+                    font-size: 1.1vw;
+                    animation: blinktext 2s infinite;
                 }
+
                 @-webkit-keyframes blinktext {
                     0% {
                         opacity: .4;
-                        
                     }
 
-                    50% { opacity:.7;
+                    50% {
+                        opacity: .7;
                     }
 
                     100% {
-                        opacity: .4; 
+                        opacity: .4;
                     }
                 }
             </style>
@@ -851,43 +958,71 @@
 
         <div id="server" class="opacity0">
             <style>
-                #server { position:absolute; width:20%; height:8%; top:80%; left:40%; background:rgba(60,60,60,.7); animation-fill-mode:forwards;
+                #server {
+                    position: absolute;
+                    width: 20%;
+                    height: 8%;
+                    top: 80%;
+                    left: 40%;
+                    background: rgba(60,60,60,.7);
+                    animation-fill-mode: forwards;
                 }
+
                     #server:hover {
                         background: rgba(60,60,60,.9);
                     }
-                #mainserver { position:absolute; width:98%; height:88%; border:.1vw solid dimgray; left:.7%; top:4%; overflow:hidden;
+
+                #mainserver {
+                    position: absolute;
+                    width: 98%;
+                    height: 88%;
+                    border: .1vw solid dimgray;
+                    left: .7%;
+                    top: 4%;
+                    overflow: hidden;
                 }
-                #imgref { position:absolute; width:4vw; filter:invert(100%); opacity:.1; top:-.2vw;
+
+                #imgref {
+                    position: absolute;
+                    width: 4vw;
+                    filter: invert(100%);
+                    opacity: .1;
+                    top: -.2vw;
                 }
+
                 #mainserver p {
                     text-align: center;
                     position: relative;
                     border: 0;
-                    color: white; top:-.6vw;
+                    color: white;
+                    top: -.6vw;
                     font-family: 'HYWenHei-85W';
                     /*font-family: 'Signika', sans-serif;*/
                     font-size: 1.4vw;
                 }
+
                 #backradiobtn {
                     position: absolute;
                     width: 1.8vw;
                     height: 1.8vw;
-                    
-                    top: 25%; left:5.5%;
-                   
+                    top: 25%;
+                    left: 5.5%;
                 }
+
                 .radiobackchek {
                     background-image: url(https://i.postimg.cc/13qTpsjQ/Cawptura-1.png);
                     background-size: contain;
                 }
+
                 .radiobacknocheck {
                     background-image: url(https://i.postimg.cc/yYXnBxtW/222.png);
                     background-size: contain;
                 }
+
                 #username2 {
                     text-align: center;
-                    position: relative; margin-top:47%;
+                    position: relative;
+                    margin-top: 47%;
                     border: 0;
                     color: aqua;
                     top: -.6vw;
@@ -895,7 +1030,9 @@
                     /*font-family: 'Signika', sans-serif;*/
                     font-size: 1.4vw;
                 }
-                #usuariospan { color:#ceb00c;
+
+                #usuariospan {
+                    color: #ceb00c;
                 }
             </style>
             <div id="mainserver">
@@ -977,7 +1114,8 @@
                     position: absolute;
                     top: .3vw;
                     z-index: 1;
-                    animation: fillcube 0s 1; animation-delay:6s;
+                    animation: fillcube 0s 1;
+                    animation-delay: 6s;
                     animation-fill-mode: forwards;
                 }
 
@@ -1002,6 +1140,7 @@
                     position: absolute;
                     top: .2vw;
                 }
+
                 #barmainfill {
                     position: absolute;
                     width: 0%;
@@ -1011,18 +1150,25 @@
                     background: #3c3c3c;
                     animation-delay: 2s;
                 }
+
                 @-webkit-keyframes fillbarload {
                     0% {
-                        width:0;
+                        width: 0;
                     }
-                    50% { width:50%;
+
+                    50% {
+                        width: 50%;
                     }
-                    90% { width:90%;
+
+                    90% {
+                        width: 90%;
                     }
+
                     100% {
-                      width:100%;
+                        width: 100%;
                     }
                 }
+
                 @-webkit-keyframes fillcube {
                     0% {
                         background: white;
@@ -1032,6 +1178,7 @@
                         background: #3c3c3c;
                     }
                 }
+
                 @keyframes timer {
                     1% {
                         content: '1%';
@@ -1431,18 +1578,19 @@
                 }
 
                 .barfil {
-                    
                     animation: fillbarload 4s 1;
                     animation-fill-mode: forwards;
                 }
-                .counanima:before { 
+
+                .counanima:before {
                     content: '0%';
-                    animation: timer 6s 1; animation-delay:2s;
+                    animation: timer 6s 1;
+                    animation-delay: 2s;
                     animation-fill-mode: forwards;
                 }
             </style>
             <p onclick="clickenter()" id="counp1">Verificando recursos...</p>
-            <p id="countp"   > </p>
+            <p id="countp"> </p>
             <div id="barsection">
                 <div id="rom1"></div>
                 <div id="rom11"></div>    <div id="barmain">
@@ -1457,6 +1605,6 @@
         </div>
 
     </div>
-   
+
 </body>
 </html>
