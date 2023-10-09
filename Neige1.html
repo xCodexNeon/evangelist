@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,37 +34,40 @@
                         src:
                             ""
                     },
-                    {
-                        name: "Say my name",
-                        artist: "Genshin Impact Ost",
-                        src:
-                            "https://xevangelist.github.io/evangelist/saymyname.mp3?raw=true"
-                    },
-                    {
-                        name: "Tiny light",
-                        artist: "Akari Kito",
-                        src:
-                            "https://xevangelist.github.io/evangelist/TinyLight.mp3?raw=true"
-                    },
 
                     {
-                        name: "Sweet hurt",
-                        artist: "ReoNa",
+                        name: "Winding River",
+                        artist: "Genshin Impact Ost",
                         src:
-                            "https://xevangelist.github.io/evangelist/sweethurt.mp3?raw=true"
+                            "https://xevangelist.github.io/evangelist/winding.mp3?raw=true"
                     },
                     {
-                        name: "Aoki tsuki michite",
-                        artist: "Akira",
+                        name: "Orion",
+                        artist: "米津玄師 Kenshi Yonezu",
                         src:
-                            "https://xevangelist.github.io/evangelist/aoki.mp3?raw=true"
+                            "https://xevangelist.github.io/evangelist/orion.mp3?raw=true"
                     },
                     {
-                        name: "Little glee monster",
-                        artist: "Your Name",
+                        name: "BlackBird",
+                        artist: "Alter Bridge",
                         src:
-                            "https://xevangelist.github.io/evangelist/glee.mp3?raw=true"
+                            "https://xevangelist.github.io/evangelist/alter-bridge-blackbird.mp3?raw=true"
                     },
+                    {
+                        name: "Stratus",
+                        artist: "Moments in grace",
+                        src:
+                            "https://xevangelist.github.io/evangelist/Stratus.mp3?raw=true"
+                    },
+
+                   
+                    {
+                        name: "Broken wings",
+                        artist: "Alter Bridge",
+                        src:
+                            "https://xevangelist.github.io/evangelist/alter-bridge-broken-wings-hq.mp3?raw=true"
+                    },
+                 
 
 
 
@@ -232,36 +235,270 @@
     
     <div id="mainscreen">
         <video autoplay="" loop="" muted="" id="video1" src="zhon.mp4" type="video/mp4">
+            <audio controls id="inprofile" class="mks">
+                <source src="https://xevangelist.github.io/evangelist/10.mp3?raw=true"></source>
+                <script>
+                    function inizializar() {
+                        $("#mainintro").addClass("outmain"); $("#mainintro").removeClass("intromain");
+                        $("#mainscreen").addClass("entrancemainscreen"); $("#mainscreen").removeClass("intromain");
+                    }
+                    $(function () {
+                        //take id of the audio and make a variable
+                        var audio = $("#inprofile")[0];
+
+                        $("#btnperfil").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+                        $("#iconmenu1").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+                        $("#click1").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+
+                    });
+
+                </script>
+            </audio>
+            <audio controls id="outprofile" class="mks">
+                <source src="https://xevangelist.github.io/evangelist/5.mp3?raw=true"></source>
+                <script>
+
+                    $(function () {
+                        //take id of the audio and make a variable
+                        var audio = $("#outprofile")[0];
+
+                        $("#iconmenu5").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+                        $("#btnback").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+                    });
+
+                </script>
+            </audio>
+            <audio controls id="clickmp3" class="mks">
+                <source src="https://xevangelist.github.io/evangelist/4.mp3?raw=true"></source>
+                <script>
+
+                    $(function () {
+                        //take id of the audio and make a variable
+                        var audio = $("#clickmp3")[0];
+
+                        $("body").click(function () {
+                            audio.play();
+                            console.log(audio);
+                        });
+
+                    });
+
+                </script>
+            </audio>
+            <audio controls id="hovers" class="mks">
+                <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+                <script>
+
+                    $(function () {
+                        //take id of the audio and make a variable
+                        var audio = $("#hovers")[0];
+
+                        //eventhandler on hover with play() function
+                        $("#click1").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#click2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#click3").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btn_bak_in").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#text_bak_in").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnback").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btncloseconfig").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btncloseconfig2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#butonclosesections").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#imgbackfrds").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#antepost").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#antepost2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#userlucia").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#userneige").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#userhank").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu1").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu3").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu4").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu5").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#iconmenu6").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil3").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil4").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil5").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#btnperfil6").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu1").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu3").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu4").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu5").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu6").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu7").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu8").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu9").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu10").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu11").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu12").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu13").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu14").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu15").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu16").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu17").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu18").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu19").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menu20").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menuconfig1").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menuconfig2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#menuconfig3").mouseenter(function () {
+                            audio.play();
+                        });
+
+                        $("#btneye2").click(function () {//Cambiar body por main pageeeee
+                            audio.play();
+                            console.log(audio);
+                        });
+
+                    });
+
+                </script>
+            </audio>
 
             <script>
                 $('video').coverVid(1920, 1080);
-            </script> 
-             <script>
+            </script>
+            <script>
 
-                    function openconfig() {
+                function openconfig() {
 
-                        $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
-                    }
-                    function closeconfig() {
+                    $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
+                }
+                function closeconfig() {
 
-                        $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
-                    }
-                    function enterprofile() {
-                        $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
-                    } function outprofile() {
-                        $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+                    $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
+                }
+                function enterprofile() {
+                    $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
+                } function outprofile() {
+                    $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
 
-                    } function outchat() {
-                        $("#chat").addClass("nochat"); $("#chat").removeClass("sichat");
-                    }
-                    function openchat() {
-                        $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
-                 }
-                 function openmens() {
-                     outprofile();
-                     openchat()
-                 }
-                </script>
+                } function outchat() {
+                    $("#chat").addClass("nochat"); $("#chat").removeClass("sichat");
+                }
+                function openchat() {
+                    $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
+                }
+                function openmens() {
+                    outprofile();
+                    openchat()
+                }
+            </script>
         </video>
 
         <div id="main">
@@ -594,6 +831,7 @@
                     width: 15%;
                     left: 5%;
                 }
+
                 #ptext4 {
                     color: #6f5229;
                     position: absolute;
@@ -604,6 +842,7 @@
                     opacity: .9;
                     font-weight: lighter;
                 }
+
                 #ptext5 {
                     color: #6f5229;
                     position: absolute;
@@ -611,6 +850,17 @@
                     letter-spacing: .2vw;
                     top: -5%;
                     left: 65%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #neigereg {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: .8vw;
+                    top: 84%;
+                    text-shadow: .1vw .1vw .2vw #6f5229;
+                    left: 5%;
                     opacity: .9;
                     font-weight: lighter;
                 }
@@ -669,7 +919,7 @@
                 <p id="text1">你认为这...</p>
                 <p id="text2">这是一切的终结吗？</p>
 
-
+                <p id="neigereg">Neige [SongBird] 1511990900</p>
             </div>
             <div id="mainimg">
                 <img src="https://i.postimg.cc/XJ808W8z/zhonblack.png" id="mainblackrend" />
@@ -744,8 +994,8 @@
                         position: absolute;
                         right: 0;
                         background-image: url("https://i.postimg.cc/kX1Kqxgh/w2.png");
-                        width: .8vw;
-                        height: .8vw;
+                        width: .9vw;
+                        height: .9vw;
                         background-repeat: no-repeat;
                         background-size: contain;
                     }
@@ -1402,6 +1652,7 @@
                             left: 25%;
                             position: absolute;
                         }
+
                         #frd7 {
                             width: 22%;
                             height: 33%;
@@ -2377,12 +2628,12 @@
 
                                 </div>
                                 <!--<div class="butplayer">
-                            <div class="butpl">
-                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-                                <div id="stop"> </div>
-                            </div>
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                    <div id="stop"> </div>
+                                </div>
 
-                        </div>-->
+                            </div>-->
                             </div>
 
 
@@ -3031,7 +3282,9 @@
                                 height: 100%;
                                 background: rgba(0,0,0,.2);
                                 top: 0;
-                                left: 0; overflow-y:auto; overflow-x:unset;
+                                left: 0;
+                                overflow-y: auto;
+                                overflow-x: unset;
                                 border-radius: .7vw;
                             }
 
@@ -3186,16 +3439,19 @@
                                 left: 75%;
                                 top: 60%;
                             }
-                            #queenfirm { position:relative; right:0;
-                                         margin-bottom:10%;
+
+                            #queenfirm {
+                                position: relative;
+                                right: 0;
+                                margin-bottom: 10%;
                             }
                         </style>
                         <div id="neigefirm" class="sifirmx">
-                            <img src="https://i.postimg.cc/y6bjRZZq/Item-Gladiator-s-Nostalgia.webp" id="imgneiigerose" style="left:-1%; top:110%"/>
+                            <img src="https://i.postimg.cc/y6bjRZZq/Item-Gladiator-s-Nostalgia.webp" id="imgneiigerose" style="left:-1%; top:110%" />
                             <img src="https://i.postimg.cc/wMR60GQY/UI-Item-Icon-100072.png" id="imgneigebutter" style="left:75%" />
                             <div id="contenido">
                                 <p id="pnota">Notas de la reina:</p>
-                               <img src="https://i.postimg.cc/xTwKzzXd/IMG-20231008-WA0051.jpg" id="queenfirm" />
+                                <img src="https://i.postimg.cc/xTwKzzXd/IMG-20231008-WA0051.jpg" id="queenfirm" />
 
 
                             </div>
@@ -3231,7 +3487,7 @@
                                 <p id="pfechafirm">Al día 06 de Octubre 2023</p>
                                 <p id="pcontfirma">
 
-                                    
+
                                     Mientras más te conozco, más miedo y pánico tengo, a pesar de eso eres mi amigo, aún así, si me sales en las noches me daría un infarto.
 
                                     Con cariño Aby
@@ -3252,18 +3508,191 @@
                 </div>
 
             </div>
-       
-        <div id="firmmrr">
+
+            <div id="firmmrr">
+                <style>
+                    #firmmrr {
+                        position: absolute;
+                        width: 5%;
+                        height: 4%;
+                        background: rgba(0,0,0,.2);
+                        border: .1vw solid rgb(225, 166, 105);
+                        right: 1%;
+                        bottom: 1%;
+                        color: white;
+                        font-size: .9vw;
+                        text-align: center;
+                    }
+
+                        #firmmrr p {
+                            margin-top: .5vw;
+                        }
+                </style>
+                <p>Saikai</p>
+            </div>
+
+        </div>
+
+        <div id="mainintro">
             <style>
-                #firmmrr { position:absolute; width:5%; height:4%; background:rgba(0,0,0,.2); border:.1vw solid rgb(225, 166, 105); right:1%; bottom:1%; color:white; font-size:.9vw;
-                           text-align:center;
+                #mainintro {
+                    z-index: 9999;
+                    width: 100%;
+                    height: 100%;
+                    background: white;
+                    position: absolute;
                 }
-                #firmmrr p{ margin-top:.5vw;
+
+                #mainimg1 {
+                    position: absolute;
+                    width: 36%;
+                    left: 32%;
+                    opacity: 0;
+                    top: 30%;
+                    animation: animaentrance 3s 1;
+                }
+
+                #mainimg2 {
+                    position: absolute;
+                    width: 36%;
+                    opacity: 0;
+                    left: 32%;
+                    top: 30%;
+                    animation: animaentrance 3s 1;
+                    animation-delay: 3s;
+                }
+
+                #mainimg3 {
+                    opacity: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    animation: animaentrance2 3s 1;
+                    animation-delay: 6s;
+                    animation-fill-mode: forwards;
+                }
+
+                #min3 {
+                    position: absolute;
+                    width: 80%;
+                    height: 100%;
+                    left: 10%;
+                }
+
+                #adv1 {
+                    z-index: 2;
+                    text-align: center;
+                    top: 20%;
+                    position: relative;
+                    border: 0;
+                    text-transform: uppercase;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 2.5vw;
+                }
+
+                #adv2 {
+                    z-index: 2;
+                    text-align: center;
+                    width: 70%;
+                    left: 15%;
+                    top: 30%;
+                    color: dimgray;
+                    position: relative;
+                    border: 0;
+                    color: black;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.5vw;
+                }
+
+                #avd3 {
+                    z-index: 2;
+                    text-align: center;
+                    text-transform: uppercase;
+                    top: 35%;
+                    color: dimgray;
+                    position: relative;
+                    border: 0;
+                    font-family: 'HYWenHei-85W';
+                    /*font-family: 'Signika', sans-serif;*/
+                    font-size: 1.2vw;
+                    animation: blinktxt1 1s infinite;
+                }
+
+                @-webkit-keyframes blinktxt1 {
+                    0% {
+                        opacity: .6;
+                    }
+
+                    50% {
+                        opacity: .3;
+                    }
+
+                    100% {
+                        opacity: .6;
+                    }
+                }
+
+                @-webkit-keyframes animaentrance2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                @-webkit-keyframes animaentrance {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    40% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                #mainintro:target {
+                    opacity: 0;
+                    z-index: -2;
+                }
+
+                a {
+                    text-decoration: none;
                 }
             </style>
-            <p>Saikai</p>
-        </div>
-        
+
+            <img id="mainimg1" src="https://i.postimg.cc/MKThF7P0/Ho-Yoverse-Logo.png" />
+            <img id="mainimg2" src="https://i.postimg.cc/PrPWrvJT/Genshin-Impact-logo-svg.png" />
+
+            <div id="mainimg3">
+
+                <img src="https://i.postimg.cc/sDqpBfGS/intro.png" id="min3" /> <p id="adv1">Advertencia: Lee antes de iniciar</p>
+
+                <p id="adv2">
+                    Este XatSpace sólo es una réplica y represantación visual del videojuego Genshin Impact. Esta simulación sólo es estética,
+                    no existe riesgo alguno para el usuario que visualice esta simulación. En ningún momento
+                    se le solicitará al usuario a ingresar sus datos reales, los datos ingresados pueden ser cualquiera y NO se guardan ni se almacenan.
+                    <br /> <br /> Este XatSpace está desarrollado por "Neige" 
+
+
+                </p>
+                <a id="asongplay" href="#mainintro"> <p id="avd3">Clic para continuar...</p></a>
+            </div>
+
+
         </div>
     </div>
 
