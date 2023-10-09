@@ -1,0 +1,3273 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script type="text/javascript" src="loaoins.js"></script>
+    <script type="text/javascript" src="tweenMax3.min.js"></script>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            imgbar = $("#fillimgbar");
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Radio off",
+                        artist: "Radio off",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "Say my name",
+                        artist: "Genshin Impact Ost",
+                        src:
+                            "https://xevangelist.github.io/evangelist/saymyname.mp3?raw=true"
+                    },
+                    {
+                        name: "Tiny light",
+                        artist: "Akari Kito",
+                        src:
+                            "https://xevangelist.github.io/evangelist/TinyLight.mp3?raw=true"
+                    },
+
+                    {
+                        name: "Sweet hurt",
+                        artist: "ReoNa",
+                        src:
+                            "https://xevangelist.github.io/evangelist/sweethurt.mp3?raw=true"
+                    },
+                    {
+                        name: "Aoki tsuki michite",
+                        artist: "Akira",
+                        src:
+                            "https://xevangelist.github.io/evangelist/aoki.mp3?raw=true"
+                    },
+                    {
+                        name: "Little glee monster",
+                        artist: "Your Name",
+                        src:
+                            "https://xevangelist.github.io/evangelist/glee.mp3?raw=true"
+                    },
+
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                //artistname.html();
+                musicName.html(curSong.name + " / " + curSong.artist);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+                imgbar.css("left", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 5;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#mainintro").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+    <style>
+        /*  @font-face {
+            font-family: 'HYWenHei-85W';
+            src: url('HYWenHei-HEW.woff2') format('woff2'), url('HYWenHei-HEW.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }*/
+        html, button, body, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+
+        @font-face {
+            font-family: 'HYWenHei-85W';
+            font-style: normal;
+            font-weight: normal;
+            src: local('HYWenHei-85W'), url('zhcn.woff') format('woff');
+        }
+
+        body {
+            font-family: 'HYWenHei-85W';
+            overflow: hidden;
+            background: white;
+        }
+
+        .covervid-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        video {
+            top: -10%;
+            transform: scaleX(1.15);
+            overflow: hidden;
+            height: 100%;
+            left: 0%;
+            width: 100%;
+            position: absolute;
+        }
+
+
+        html, button, .center-center, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+    
+    <div id="mainscreen">
+        <video autoplay="" loop="" muted="" id="video1" src="zhon.mp4" type="video/mp4">
+
+            <script>
+                $('video').coverVid(1920, 1080);
+            </script> 
+             <script>
+
+                    function openconfig() {
+
+                        $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
+                    }
+                    function closeconfig() {
+
+                        $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
+                    }
+                    function enterprofile() {
+                        $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
+                    } function outprofile() {
+                        $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+
+                    } function outchat() {
+                        $("#chat").addClass("nochat"); $("#chat").removeClass("sichat");
+                    }
+                    function openchat() {
+                        $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
+                 }
+                 function openmens() {
+                     outprofile();
+                     openchat()
+                 }
+                </script>
+        </video>
+
+        <div id="main">
+            <style>
+                #main {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+
+                #main1 {
+                    background: #E6D4B3;
+                    height: 27.5%;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    position: absolute;
+                }
+
+                #main2 {
+                    background: #E6D4B3;
+                    height: 27.5%;
+                    left: 0;
+                    top: 72.5%;
+                    position: absolute;
+                    width: 100%;
+                }
+
+                #mainmed {
+                    box-shadow: 0vw 0vw 2vw black;
+                    z-index: 3;
+                    height: 45%;
+                    left: -10%;
+                    top: 27.5%;
+                    position: absolute;
+                    width: 120%;
+                }
+
+                #mainimg {
+                    position: absolute;
+                    width: 40%;
+                    left: 25%;
+                    top: 10%;
+                    height: 100%;
+                    z-index: 4;
+                }
+
+                #mainrender {
+                    position: absolute;
+                    width: 160%;
+                    left: -40%;
+                    top: -15%;
+                }
+
+                #mainblackrend {
+                    opacity: .9;
+                    /*transform: scale(1.1);*/
+                    position: absolute;
+                    width: 160%;
+                    left: -43%;
+                    top: -14%;
+                }
+
+                #imgarm {
+                    position: absolute;
+                    width: 50%;
+                    right: -4%;
+                    bottom: -3%;
+                    filter: blur(3px) grayscale(60%) brightness(30%);
+                    z-index: 5;
+                }
+
+                #jero1 {
+                    position: absolute;
+                    height: 90%;
+                    right: 0%;
+                    top: 5%;
+                    opacity: .2;
+                }
+
+                #jero2 {
+                    transform: scaleX(-1);
+                    position: absolute;
+                    height: 90%;
+                    left: 0%;
+                    top: 5%;
+                    opacity: .2;
+                }
+
+                #neigemain {
+                    height: 62%;
+                    position: absolute;
+                    left: 44%;
+                    top: 10%;
+                }
+
+                #backjero1 {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    opacity: .2;
+                }
+
+                #divp0 {
+                    position: absolute;
+                    width: 6%;
+                    height: 5%;
+                    background: rgba(0,0,0,.7);
+                    left: 20%;
+                    top: 15%;
+                }
+
+                #divp1 {
+                    position: absolute;
+                    width: 12%;
+                    height: 8%;
+                    background: rgba(0,0,0,.7);
+                    left: 20%;
+                    top: 20%;
+                }
+
+                    #divp1 p {
+                        color: white;
+                        letter-spacing: .2vw;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp2 {
+                    position: absolute;
+                    width: 19%;
+                    height: 11%;
+                    background: rgba(0,0,0,.7);
+                    left: 15%;
+                    top: 31%;
+                }
+
+                    #divp2 p {
+                        color: white;
+                        opacity: .8;
+                        font-size: 1.5vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .3vw;
+                    }
+
+                #divp3 {
+                    position: absolute;
+                    width: 16%;
+                    height: 8%;
+                    background: rgba(0,0,0,.7);
+                    left: 13%;
+                    top: 45%;
+                }
+
+                    #divp3 p {
+                        color: white;
+                        letter-spacing: .2vw;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp4 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 118%;
+                    background: rgba(0,0,0,.7);
+                    left: 56%;
+                    top: 5%;
+                }
+
+                    #divp4 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp5 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 60%;
+                    background: rgba(0,0,0,.7);
+                    left: 58.5%;
+                    top: 5%;
+                }
+
+                    #divp5 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp6 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 30%;
+                    background: rgba(0,0,0,.7);
+                    left: 61%;
+                    top: 5%;
+                }
+
+                    #divp6 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #text1 {
+                    color: #D7AF68;
+                    position: absolute;
+                    font-size: 2.8vw;
+                    top: -2%;
+                    left: 60%;
+                    font-weight: lighter;
+                }
+
+                #text2 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.3vw;
+                    top: 32%;
+                    left: 63%;
+                    font-weight: lighter;
+                }
+
+                #meteoro {
+                    position: absolute;
+                    height: 10vw;
+                    width: 10vw;
+                    left: 60%;
+                    animation: meteor 4s infinite;
+                }
+
+                @keyframes meteor {
+                    0% {
+                        top: 0%;
+                    }
+
+                    50% {
+                        top: 4%;
+                    }
+
+                    100% {
+                        top: 0%;
+                    }
+                }
+
+                #meteoroblack {
+                    position: absolute;
+                    height: 10vw;
+                    width: 10vw;
+                    animation: meteorblack 4s infinite;
+                    left: 58%;
+                    opacity: .8;
+                }
+
+                @keyframes meteorblack {
+                    0% {
+                        top: 1%;
+                    }
+
+                    50% {
+                        top: 5%;
+                    }
+
+                    100% {
+                        top: 1%;
+                    }
+                }
+
+                #imghoja1 {
+                    width: 4vw;
+                    height: 4vw;
+                    right: 10%;
+                    top: 78%;
+                    z-index: 5;
+                    position: absolute;
+                }
+
+                #ptext1 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.7vw;
+                    letter-spacing: .1vw;
+                    top: 62%;
+                    left: 66%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #ptext2 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.6vw;
+                    letter-spacing: .2vw;
+                    top: 2%;
+                    left: 23%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #ptext3 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 3.2vw;
+                    letter-spacing: .2vw;
+                    top: 8%;
+                    left: 26.3%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #geologo {
+                    position: absolute;
+                    width: 15%;
+                    left: 5%;
+                }
+                #ptext4 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    top: -5%;
+                    left: 50%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+                #ptext5 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    top: -5%;
+                    left: 65%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+            </style>
+            <div id="main1">
+                <img src="https://i.postimg.cc/mL0HCw9W/123.png" id="backjero1" />
+                <img src="https://i.postimg.cc/pTNHKncW/94810652-dibujado-a-mano-negro-l-neas-de-doodle-l-neas-de-pincel.png" id="neigemain" />
+                <img src="https://i.postimg.cc/wTZdmjxT/w2.png" id="imghoja1" />
+                <p id="ptext1">雪·在這個秋天之下</p>
+                <p id="ptext2">訂單現在開始·在我的矛下</p>
+                <p id="ptext3">模糊的世界</p>
+                <img src="https://i.postimg.cc/MG7y2H3s/4883130-middle.png" id="geologo" />
+                <p id="ptext4">在第 09 天</p><p id="ptext5"><p id="ptext5">2023 年 10 月</p></p>
+            </div>
+            <div id="mainmed">
+                <div id="divp0"> </div>
+                <div id="divp1"><p>無論遇到什麼逆境.</p></div>
+                <div id="divp2"><p>我會用我生命中的每一秒來愛你.</p></div>
+                <div id="divp3"><p>就算死了，我也會去找你…</p></div>
+
+                <div id="divp4">
+                    <p>
+                        享<br />
+                        受<br />
+                        你<br />
+                        的<br />
+                        不<br />
+                        安<br />
+                        全<br />
+                        感<br />
+                        如<br />
+                        何<br />
+                        逐<br />
+                        渐<br />
+                        摧<br />
+                        毁<br />
+                        你<br />
+                        的<br />
+                        理<br />
+                        智
+                    </p>
+                </div> <div id="divp5">
+                    <p>
+                        品<br />味<br />不<br />确<br />定<br />性<br />和<br />不<br />安
+                    </p>
+                </div>
+                <div id="divp6">
+                    <p>
+                        尝<br />试<br />恐<br />惧
+                    </p>
+                </div>
+            </div>
+            <div id="main2">
+                <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero2" />
+                <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero1" />
+                <p id="text1">你认为这...</p>
+                <p id="text2">这是一切的终结吗？</p>
+
+
+            </div>
+            <div id="mainimg">
+                <img src="https://i.postimg.cc/XJ808W8z/zhonblack.png" id="mainblackrend" />
+                <img src="https://i.postimg.cc/mkgWpnp2/zhongli.png" id="mainrender" />
+
+                <img src="https://i.postimg.cc/Qts31Cp7/meteorblack.png" id="meteoroblack" /> <img src="https://i.postimg.cc/Bv23jH1s/meteor.png" id="meteoro" />
+            </div>
+            <img id="imgarm" src="https://i.postimg.cc/XJmV9phV/fb1d7452e5dbc3b112a57a78140e3149.png" />
+
+            <div id="mainau" class="sioto">
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <style>
+                    .nooto {
+                        opacity: 0;
+                    }
+
+                    .sioto {
+                        opacity: 1;
+                    }
+
+                    #mainau {
+                        position: absolute;
+                        width: 100%;
+                        height: 120%;
+                        top: -20%;
+                        left: 0;
+                        perspective: 1200px;
+                        overflow: hidden;
+                        z-index: 5;
+                    }
+
+                    .leaf {
+                        position: absolute;
+                        right: 0;
+                        background-image: url("https://i.postimg.cc/kX1Kqxgh/w2.png");
+                        width: .8vw;
+                        height: .8vw;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+
+                        .leaf:nth-child(1) {
+                            filter: blur(1px);
+                            top: 8vh;
+                            right: -58vh;
+                        }
+
+                        .leaf:nth-child(2) {
+                            filter: blur(1px);
+                            top: 64vh;
+                            right: -30vh;
+                        }
+
+                        .leaf:nth-child(3) {
+                            filter: blur(1px);
+                            top: 67vh;
+                            right: -37vh;
+                        }
+
+                        .leaf:nth-child(4) {
+                            filter: blur(1px);
+                            top: 58vh;
+                            right: -90vh;
+                        }
+
+                        .leaf:nth-child(5) {
+                            filter: blur(1px);
+                            top: 85vh;
+                            right: -3vh;
+                        }
+
+                        .leaf:nth-child(6) {
+                            filter: blur(1px);
+                            top: 45vh;
+                            right: -41vh;
+                        }
+
+                        .leaf:nth-child(7) {
+                            filter: blur(1px);
+                            top: 22vh;
+                            right: -86vh;
+                        }
+
+                        .leaf:nth-child(8) {
+                            filter: blur(1px);
+                            top: 35vh;
+                            right: -32vh;
+                        }
+
+                        .leaf:nth-child(9) {
+                            filter: blur(1px);
+                            top: 41vh;
+                            right: -65vh;
+                        }
+
+                        .leaf:nth-child(10) {
+                            filter: blur(1px);
+                            top: 77vh;
+                            right: -42vh;
+                        }
+
+                        .leaf:nth-child(11) {
+                            filter: blur(1px);
+                            top: 76vh;
+                            right: -57vh;
+                        }
+
+                        .leaf:nth-child(12) {
+                            filter: blur(1px);
+                            top: 29vh;
+                            right: -12vh;
+                        }
+
+                        .leaf:nth-child(13) {
+                            filter: blur(1px);
+                            top: 23vh;
+                            right: -84vh;
+                        }
+
+                        .leaf:nth-child(14) {
+                            filter: blur(1px);
+                            top: 30vh;
+                            right: -90vh;
+                        }
+
+                        .leaf:nth-child(15) {
+                            filter: blur(1px);
+                            top: 97vh;
+                            right: -53vh;
+                        }
+
+                        .leaf:nth-child(16) {
+                            filter: blur(1px);
+                            top: 87vh;
+                            right: -53vh;
+                        }
+
+                        .leaf:nth-child(17) {
+                            filter: blur(1px);
+                            top: 57vh;
+                            right: -56vh;
+                        }
+
+                        .leaf:nth-child(18) {
+                            filter: blur(1px);
+                            top: 46vh;
+                            right: -71vh;
+                        }
+
+                        .leaf:nth-child(19) {
+                            filter: blur(1px);
+                            top: 72vh;
+                            right: -42vh;
+                        }
+
+                        .leaf:nth-child(20) {
+                            filter: blur(1px);
+                            top: 7vh;
+                            right: -18vh;
+                        }
+                </style>
+                <script>
+
+                    $(".leaf").each(function () {
+                        var tl = new TimelineMax({
+                            repeat: -1
+                        });
+                        tl.to(this, 18 + Math.random() * 10, {
+                            rotationX: Math.random() * 3360,
+                            rotationY: Math.random() * 3360,
+                            rotationZ: Math.random() * 3360,
+                            z: Math.random() * 30,
+                            x: -window.innerWidth * 3,
+                            y: window.innerWidth / 2,
+                            ease: Power2.easeOut,
+                            onUpdate: (e) => {
+                                //var x = this.vars.css.x;
+
+                                if ($(this).position().left < -100) {
+                                    tl.seek(0);
+                                }
+                            }
+                        });
+                    });
+
+                </script>
+            </div>
+
+
+            <div id="barmenu">
+                <style>
+                    #barmenu {
+                        z-index: 100;
+                        position: absolute;
+                        width: 4%;
+                        background: rgb(74,82,101);
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        border-left: .2vw solid gray;
+                        border-right: .2vw solid gray;
+                    }
+
+                    #iconprofile {
+                        position: absolute;
+                        width: 100%;
+                    }
+
+                    #baricons {
+                        position: absolute;
+                        width: 80%;
+                        height: 65%;
+                        left: 10%;
+                        top: 35%;
+                    }
+
+                    #iconmenu1 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 6%;
+                        left: .2vw;
+                    }
+
+                    #iconmenu2 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 19%;
+                        left: .2vw;
+                    }
+
+                    #iconmenu3 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 33%;
+                        left: .2vw;
+                    }
+
+                    #iconmenu4 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 46%;
+                        left: .2vw;
+                    }
+
+                    #iconmenu6 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 60%;
+                        left: .2vw;
+                    }
+
+                        #iconmenu6:hover {
+                            width: 3vw;
+                            height: 3vw;
+                            left: .1vw;
+                            top: 59.5%;
+                        }
+
+                    #iconmenu5 {
+                        width: 2.8vw;
+                        height: 2.8vw;
+                        position: absolute;
+                        top: 87%;
+                        left: .2vw;
+                    }
+
+                        #iconmenu5:hover {
+                            width: 3vw;
+                            height: 3vw;
+                            left: .1vw;
+                            top: 86.5%;
+                        }
+
+                    .iconim {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #iconmenu1:hover {
+                        top: 5.5%;
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                    }
+
+                    #iconmenu2:hover {
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                        top: 18.5%;
+                    }
+
+                    #iconmenu3:hover {
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                        top: 32.5%;
+                    }
+
+                    #iconmenu4:hover {
+                        width: 3vw;
+                        height: 3vw;
+                        left: .1vw;
+                        top: 45.5%;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/1RjXd9qf/gl.png" id="iconprofile" />
+
+                <div id="baricons">
+                    <div id="iconmenu1" class="iconmnu" onclick="enterprofile();"> <img class="iconim" src="https://i.postimg.cc/Gm43YDJN/cv.png" /></div>
+                    <div id="iconmenu2" onclick="entersectionfirm();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
+                    <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
+                    <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
+                    <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
+                    <div id="iconmenu5" onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                </div>
+
+            </div>
+
+            <div id="profil" class="outprofile">
+                <style>
+                    .enterprofile {
+                        left: 4.5%;
+                    }
+
+                    .outprofile {
+                        left: -35%;
+                    }
+
+                    #profil {
+                        position: absolute;
+                        width: 35%;
+                        height: 100%;
+                        background: rgba(255,255,255,.8); /*left:4.5%;*/
+                        z-index: 99;
+                        transition: all 1.5s ease;
+                    }
+
+                    #card {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                        top: 1.5%;
+                    }
+
+                    #imgbkgcard {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+
+                <div id="card">
+                    <img id="imgbkgcard" src="https://i.postimg.cc/g26zFnm9/UI-Name-Card-Pic-Zhongli-P.png" />
+
+                    <div id="imgprofilex">
+                        <style>
+                            #imgprofilex {
+                                width: 7.6vw;
+                                height: 7.6vw;
+                                border-radius: 50%;
+                                border: .3vw solid rgba(0,0,0,.1);
+                                position: absolute;
+                                top: 7%;
+                                left: 6%;
+                            }
+
+                            #imgprof2 {
+                                width: 6.1vw;
+                                height: 6.1vw;
+                                position: absolute;
+                                left: .4vw;
+                                top: .4vw;
+                                overflow: hidden;
+                                border-radius: 50%;
+                                background: #ff6a00;
+                                border: .3vw solid white;
+                            }
+
+                                #imgprof2 img {
+                                    position: absolute;
+                                    width: 100%;
+                                    transform: scale(1.1);
+                                }
+                        </style>
+                        <div id="imgprof2">
+                            <img src="https://i.postimg.cc/59wKfPk7/zhongli.png" />
+                        </div>
+                    </div>
+
+                    <div id="uidbar">
+                        <style>
+                            #uidbar {
+                                width: 28%;
+                                height: 1.3vw;
+                                border: .1vw solid darkgray;
+                                border-radius: 1vw;
+                                position: absolute;
+                                left: 3%;
+                                top: 58%;
+                                background: rgba(74,82,101,.6);
+                            }
+
+                                #uidbar p {
+                                    font-family: 'HYWenHei-85W';
+                                    color: white;
+                                    text-align: center;
+                                    font-size: 1vw;
+                                    position: relative;
+                                    top: -.9vw;
+                                }
+
+                            #icncopy {
+                                position: absolute;
+                                width: 1.5vw;
+                                top: 70%;
+                                left: 8%;
+                            }
+
+                            #pcopy {
+                                position: absolute;
+                                top: 63.5%;
+                                left: 13%;
+                                color: white;
+                                opacity: .4;
+                            }
+                        </style>
+                        <p>UID 63852469</p>
+                    </div>
+                    <img src="https://i.postimg.cc/HLHfY6p3/w2.png" id="icncopy" /> <p id="pcopy">Copiar</p>
+                    <div id="contentcard">
+                        <style>
+                            #contentcard {
+                                position: absolute;
+                                width: 60%;
+                                height: 83%;
+                                top: 10%;
+                                right: 5%;
+                            }
+
+                            #namecard {
+                                position: absolute;
+                                width: 100%;
+                                height: 16%;
+                                background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.2) 25%,rgba(0,0,0,.2) 100%);
+                            }
+
+                                #namecard p {
+                                    color: white;
+                                    font-size: 2vw;
+                                    position: absolute;
+                                    top: -1.95vw;
+                                }
+
+                            #diveditname {
+                                background: rgb(236,229,216);
+                                position: absolute;
+                                width: 9.5%;
+                                border-radius: .2vw;
+                                height: 85%;
+                                right: -2%;
+                                top: 5%;
+                            }
+
+                                #diveditname img {
+                                    position: absolute;
+                                    width: 90%;
+                                    top: 10%;
+                                }
+
+                            #pcardsub {
+                                position: absolute;
+                                top: 13%;
+                                color: white;
+                                font-size: 1.2vw;
+                            }
+
+                            #rankcard {
+                                position: absolute;
+                                width: 100%;
+                                top: 46%;
+                                height: 12%;
+                                background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.1) 25%,rgba(0,0,0,.2) 100%);
+                            }
+
+                            #worldcard {
+                                position: absolute;
+                                width: 100%;
+                                top: 76%;
+                                height: 12%;
+                                background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.1) 25%,rgba(0,0,0,.2) 100%);
+                            }
+
+                                #rankcard img, #worldcard img {
+                                    position: absolute;
+                                    width: 2.5vw;
+                                    right: -2%;
+                                    top: -20%;
+                                }
+
+                                #rankcard p, #worldcard p {
+                                    color: white;
+                                    font-size: 1.3vw;
+                                    position: absolute;
+                                    top: -1.2vw;
+                                }
+
+                            #expbar {
+                                position: absolute;
+                                width: 100%;
+                                top: 60%;
+                                height: 14%;
+                            }
+
+                                #expbar img {
+                                    position: absolute;
+                                    width: 1.8vw;
+                                }
+
+                            #expebar {
+                                width: 90%;
+                                height: 17%;
+                                background: rgba(0,0,0,.4);
+                                bottom: 13%;
+                                right: 0;
+                                position: absolute;
+                            }
+
+                            #exxp {
+                                position: absolute;
+                                width: 35%;
+                                height: 100%;
+                                background: linear-gradient(rgb(126,171,33),rgb(202,254,103),rgb(126,171,33) );
+                            }
+
+                            #expp {
+                                position: absolute;
+                                color: white;
+                                left: 10%;
+                                font-size: .8vw;
+                                top: -.6vw;
+                            }
+
+                            #expp2 {
+                                position: absolute;
+                                color: white;
+                                right: 0;
+                                font-size: .8vw;
+                                top: -.6vw;
+                            }
+
+                            #cumpp {
+                                position: absolute;
+                                color: white;
+                                top: 85%;
+                                font-size: 1.2vw;
+                            }
+
+                            #cumpp2 {
+                                position: absolute;
+                                color: white;
+                                top: 85%;
+                                right: 0;
+                                font-size: 1.2vw;
+                            }
+                        </style>
+                        <div id="namecard">
+                            <p>Neige</p> <div id="diveditname"><img src="https://i.postimg.cc/Wzv4dkBS/11-1.png" /></div>
+                        </div>
+                        <p id="pcardsub">Te Esperare Ante Mil Inviernos..</p>
+                        <div id="rankcard">
+                            <p>Rango de aventura⠀⠀⠀⠀⠀17</p> <img src="https://i.postimg.cc/Wb8jTKXd/11-4.png" />
+                        </div>
+                        <div id="expbar">
+                            <img src="https://i.postimg.cc/85yKZ2G6/11-2.png" />
+                            <p id="expp">EXP de aventura</p> <p id="expp2">97012 / 312825</p>
+                            <div id="expebar"><div id="exxp"></div></div>
+                        </div>
+
+                        <div id="worldcard">
+                            <p>Nivel de mundo⠀⠀⠀⠀⠀⠀⠀⠀ 0</p> <img src="https://i.postimg.cc/Wb8jTKXd/11-4.png" />
+                        </div>
+                        <p id="cumpp">Cumpleaños</p><p id="cumpp2">13 Feb</p>
+                    </div>
+
+                </div>
+                <script>
+                    function alertgallery() { $("#amenualerts").removeClass("noalert"); $("#amenualerts").addClass("sialert"); }
+                    function quitalert() { $("#amenualerts").removeClass("sialert"); $("#amenualerts").addClass("noalert"); }
+
+                    function enterfriends() {
+                        $("#menufriends").removeClass("outfriends"); $("#menufriends").addClass("enterfriends");
+                    } function outfriends() {
+                        $("#menufriends").addClass("outfriends"); $("#menufriends").removeClass("enterfriends");
+                    }
+
+                    function outssections() {
+                        $("#archive").addClass("noarchive"); $("#archive").removeClass("siarchive");
+                    }
+                </script>
+                <div id="menufriends" class="outfriends">
+                    <style>
+                        #menufriends {
+                            z-index: 10;
+                            border-radius: 1vw;
+                            width: 96%;
+                            height: 61%;
+                            background-image: url(https://i.postimg.cc/15yrv2VZ/frdsback.jpg);
+                            background-size: cover;
+                            top: 38%;
+                            transition: all 1s ease;
+                            position: absolute;
+                        }
+
+                        .enterfriends {
+                            left: 2%;
+                        }
+
+                        .outfriends {
+                            left: -102%;
+                        }
+
+                        #frd1 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 30%;
+                            left: 1.5%;
+                            position: absolute;
+                        }
+
+                        #frd2 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 30%;
+                            left: 25%;
+                            position: absolute;
+                        }
+
+                        #frd3 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 30%;
+                            left: 48.5%;
+                            position: absolute;
+                        }
+
+                        #frd4 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 30%;
+                            left: 72%;
+                            position: absolute;
+                        }
+
+                        #frd5 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 65%;
+                            left: 1.5%;
+                            position: absolute;
+                        }
+
+                        #frd6 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 65%;
+                            left: 25%;
+                            position: absolute;
+                        }
+                        #frd7 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 65%;
+                            left: 48.5%;
+                            position: absolute;
+                        }
+
+                        #imgsobrefriend {
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                            z-index: 10;
+                        }
+
+                        #charimg {
+                            width: 100%;
+                            position: absolute;
+                            top: 10%;
+                            z-index: 7;
+                            left: 0;
+                        }
+
+                        #namefriend {
+                            text-align: center;
+                            position: relative;
+                            top: -30%;
+                            z-index: 11;
+                        }
+
+                        #pfrds {
+                            color: white;
+                            position: absolute;
+                            top: 2%;
+                            left: 2%;
+                            font-size: 1.3vw;
+                        }
+
+                        #imgbackfrds {
+                            width: 3vw;
+                            height: 3vw;
+                            top: 4%;
+                            right: 5%;
+                            position: absolute;
+                        }
+                    </style>
+                    <p id="pfrds">Amigos:</p> <img onclick="outfriends();" id="imgbackfrds" src="https://i.postimg.cc/fk4Lg6BQ/back.png" />
+
+                    <div id="frd1">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/Bv1sLsTv/Hu-Tao.png" id="charimg" />
+                        <p id="namefriend">Saikai♥️</p>
+                    </div>
+                    <div id="frd2">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/bvzJCYF0/tumblr-607eb4ba44ee767fdb9ab02969388ee9-d7d93853-400.png" id="charimg" />
+                        <p id="namefriend">Lucia</p>
+                    </div>
+                    <div id="frd3">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/85pZzvXF/Raiden-Shogun-Icon.png" id="charimg" />
+                        <p id="namefriend">Rose</p>
+                    </div>
+                    <div id="frd4">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/cHzLLR1T/wanderer-faruzan-icon-via-anonsbelle-v0-qxijbbz5aiy91.png" id="charimg" />
+                        <p id="namefriend">Mythes</p>
+                    </div>
+                    <div id="frd5">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/qRjx9Whz/tumblr-5289e26df4a0c0656581aeab030bad03-e8afe741-400.png" id="charimg" />
+                        <p id="namefriend">Saeroyi</p>
+                    </div>
+                    <div id="frd6">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/7Z1gf597/Personaje-Ganyu.webp" id="charimg" />
+                        <p id="namefriend">Lala</p>
+                    </div>
+                    <div id="frd7">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/BnfTSTT4/Kirara-Icon.webp" id="charimg" />
+                        <p id="namefriend">Aby</p>
+                    </div>
+                </div>
+
+
+
+                <div id="menus">
+                    <style>
+                        #menus {
+                            width: 96%;
+                            height: 61%;
+                            top: 38%;
+                            left: 2%;
+                            position: absolute;
+                        }
+
+
+
+                        #line1 {
+                            height: 20%;
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #line2 {
+                            top: 20%;
+                            height: 20%;
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #line3 {
+                            top: 40%;
+                            height: 20%;
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #line4 {
+                            top: 60%;
+                            height: 20%;
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #line5 {
+                            top: 80%;
+                            height: 20%;
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        .menues {
+                            transition: all .3s ease;
+                            width: 20%;
+                            margin: 1%;
+                            background: rgb(74,82,101);
+                            height: 90%;
+                            float: left;
+                        }
+
+                            .menues:hover {
+                                position: relative;
+                                width: 21%;
+                                margin: .5%;
+                                height: 94%;
+                                margin-left: .5%;
+                            }
+
+                        #menu1, #menu5, #menu9, #menu13, #menu17 {
+                            margin-left: 7%;
+                        }
+
+                            #menu1:hover, #menu5:hover, #menu9:hover, #menu13:hover, #menu17:hover {
+                                margin-left: 6.5%;
+                            }
+
+                        #menu4:hover {
+                            margin-left: .5%;
+                        }
+
+                        .menues img {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    <div id="line1">
+                        <div id="menu1" class="menues"><a id="mn1" href="https://xat.com/store"><img src="https://i.postimg.cc/XvXnF91w/1.png" /></a></div>
+                        <div id="menu2" class="menues"><img src="https://i.postimg.cc/wvmH4gpM/2.png" /></div>
+                        <div id="menu3" onclick="enterfriends();" class="menues"><img src="https://i.postimg.cc/R084Tq22/3.png" /></div>
+                        <div id="menu4" class="menues"><img src="https://i.postimg.cc/MHJwhN6D/4.png" /></div>
+                    </div>
+                    <div id="line2">
+                        <div id="menu5" onclick="openarchive1(); outchat();" class="menues"><img src="https://i.postimg.cc/tJn5VvWL/5.png" /></div>
+                        <div id="menu6" class="menues"><img src="https://i.postimg.cc/WtR7mm7t/6.png" /></div>
+                        <div id="menu7" onclick="openarchive5(); outchat();" class="menues"><img src="https://i.postimg.cc/XNTM1THB/7.png" /></div>
+                        <div id="menu8" class="menues"><img src="https://i.postimg.cc/T2yM9R9X/8.png" /></div>
+                    </div>
+                    <div id="line3">
+                        <div id="menu9" onclick="openarchive2(); outchat();" class="menues"><img src="https://i.postimg.cc/tCPKK2wS/9.png" /></div>
+                        <div id="menu10" class="menues"><a id="mn10" href="https://xat.com/either"><img src="https://i.postimg.cc/HLWF7HxR/10.png" /></a></div>
+                        <div id="menu11" class="menues"><img src="https://i.postimg.cc/13QksDZ9/11.png" /></div>
+                        <div id="menu12" onclick="openarchive3(); outchat();" class="menues"><img src="https://i.postimg.cc/d0Wp2XZ1/12.png" /></div>
+                    </div>
+                    <div id="line4">
+                        <a onclick="alertgallery();" id="mn13"><div id="menu13" class="menues"><img src="https://i.postimg.cc/MpmhTXW1/13.png" /></div></a>
+                        <div id="menu14" class="menues"><img src="https://i.postimg.cc/QtHP0bcq/14.png" /></div>
+                        <div id="menu15" class="menues"><a href="https://xevangelist.github.io/evangelist/Neige.html" id="mn15"><img src="https://i.postimg.cc/6qZPNpj2/15.png" /></a></div>
+                        <div id="menu16" class="menues"><img src="https://i.postimg.cc/QtwzPTbZ/16.png" /></div>
+                    </div>
+                    <div id="line5">
+                        <div id="menu17" onclick="entersectionposts();" class="menues"><img src="https://i.postimg.cc/8kf9vZpp/17.png" /></div>
+                        <div id="menu18" class="menues"><img src="https://i.postimg.cc/15xTrDXp/18.png" /></div>
+                        <div id="menu19" onclick="entersectionfirm();" class="menues"><img src="https://i.postimg.cc/BQxzYtPR/19.png" /></div>
+                        <div id="menu20" class="menues"><img src="https://i.postimg.cc/9QCnvVG0/20.png" /></div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="configuration" class="noconfig">
+                <style>
+                    #configuration {
+                        width: 96%;
+                        left: 4%;
+                        height: 100%;
+                        background: rgba(42,55,82,.6);
+                        position: absolute;
+                        backdrop-filter: blur(8px);
+                    }
+
+                    .noconfig {
+                        z-index: -1;
+                    }
+
+                    .siconfig {
+                        z-index: 9;
+                    }
+
+                    #emblemback {
+                        position: absolute;
+                        filter: invert(100%) blur(3px);
+                        opacity: .1;
+                        width: 35%;
+                        left: -15%;
+                        top: -10%;
+                    }
+
+                    #imgcog {
+                        position: absolute;
+                        width: 4vw;
+                        left: 5%;
+                        top: 2%;
+                    }
+
+                    #pconfig {
+                        position: absolute;
+                        color: rgb(210,188,142);
+                        left: 10%;
+                        top: 1%;
+                    }
+
+                    #btncloseconfig {
+                        position: absolute;
+                        width: 3vw;
+                        right: 5%;
+                        top: 2%;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
+                <img src="https://i.postimg.cc/QtpHkdvX/COG.png" id="imgcog" /><p id="pconfig">Ajustes / configuración</p>
+                <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="closeconfig();" />
+                <div id="abtnsconfig">
+                    <style>
+                        #abtnsconfig {
+                            position: absolute;
+                            width: 17%;
+                            left: 9%;
+                            height: 80%;
+                            top: 12%;
+                            color: white;
+                        }
+
+                        #menuconfig1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 7%;
+                        }
+
+                        #menuconfig2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 7%;
+                            top: 9%;
+                        }
+
+                        #menuconfig3 {
+                            position: absolute;
+                            width: 100%;
+                            height: 7%;
+                            top: 18%;
+                        }
+
+                        #p1config {
+                            position: absolute;
+                            left: 15%;
+                        }
+
+                        @-webkit-keyframes blink {
+                            0% {
+                                opacity: .5;
+                            }
+
+                            50% {
+                                opacity: .3;
+                            }
+
+                            100% {
+                                opacity: .5;
+                            }
+                        }
+
+                        .animabackconfig {
+                            animation: blink 1s infinite;
+                        }
+
+                        .outanimavackconfig {
+                            opacity: 0;
+                        }
+
+                        .selectedicon {
+                            width: 2.3vw;
+                            height: 2.3vw;
+                            left: -2%;
+                            top: 11%;
+                            background-image: url(https://i.postimg.cc/Gtd9M11v/SELECTX.png);
+                            background-size: contain;
+                        }
+
+                        .noselectedicon {
+                            background-image: url(https://i.postimg.cc/Y0R0ZypZ/UNSELECTEX.png);
+                            background-size: contain;
+                            width: 1.5vw;
+                            height: 1.5vw;
+                            top: 22%;
+                        }
+
+                        .selectedp {
+                            top: -1vw;
+                            font-size: 1.5vw;
+                        }
+
+                        .noselectedp {
+                            top: -.5vw;
+                            font-size: 1vw;
+                        }
+
+                        #mnuconfback1, #mnuconfback2, #mnuconfback3 {
+                            position: absolute;
+                            width: 100%;
+                            height: 30%;
+                            top: 35%;
+                            background: white;
+                            border-radius: 50%;
+                            filter: blur(7px);
+                        }
+
+                        #p2config, #p3config {
+                            position: absolute;
+                            left: 15%;
+                        }
+
+                        #selectedicon {
+                            position: absolute;
+                        }
+
+                        #selectedicon2, #selectedicon3 {
+                            position: absolute;
+                        }
+                    </style>
+                    <script>
+                        function onmove1() {
+                            $("#mnuconfback2").removeClass("animabackconfig"); $("#selectedicon2").removeClass("selectedicon"); $("#p2config").removeClass("selectedp");
+                            $("#mnuconfback2").addClass("outanimavackconfig"); $("#selectedicon2").addClass("noselectedicon"); $("#p2config").addClass("noselectedp");
+
+                            $("#mnuconfback1").addClass("animabackconfig"); $("#selectedicon").addClass("selectedicon"); $("#p1config").addClass("selectedp");
+                            $("#mnuconfback1").removeClass("outanimavackconfig"); $("#selectedicon").removeClass("noselectedicon"); $("#p1config").removeClass("noselectedp");
+
+                            $("#mnuconfback3").removeClass("animabackconfig"); $("#selectedicon3").removeClass("selectedicon"); $("#p3config").removeClass("selectedp");
+                            $("#mnuconfback3").addClass("outanimavackconfig"); $("#selectedicon3").addClass("noselectedicon"); $("#p3config").addClass("noselectedp");
+
+                        }
+
+                        function onmove2() {
+                            $("#mnuconfback1").removeClass("animabackconfig"); $("#selectedicon").removeClass("selectedicon"); $("#p1config").removeClass("selectedp");
+                            $("#mnuconfback1").addClass("outanimavackconfig"); $("#selectedicon").addClass("noselectedicon"); $("#p1config").addClass("noselectedp");
+
+                            $("#mnuconfback2").addClass("animabackconfig"); $("#selectedicon2").addClass("selectedicon"); $("#p2config").addClass("selectedp");
+                            $("#mnuconfback2").removeClass("outanimavackconfig"); $("#selectedicon2").removeClass("noselectedicon"); $("#p2config").removeClass("noselectedp");
+
+                            $("#mnuconfback3").removeClass("animabackconfig"); $("#selectedicon3").removeClass("selectedicon"); $("#p3config").removeClass("selectedp");
+                            $("#mnuconfback3").addClass("outanimavackconfig"); $("#selectedicon3").addClass("noselectedicon"); $("#p3config").addClass("noselectedp");
+
+                        }
+                        function onmove3() {
+                            $("#mnuconfback1").removeClass("animabackconfig"); $("#selectedicon").removeClass("selectedicon"); $("#p1config").removeClass("selectedp");
+                            $("#mnuconfback1").addClass("outanimavackconfig"); $("#selectedicon").addClass("noselectedicon"); $("#p1config").addClass("noselectedp");
+
+                            $("#mnuconfback3").addClass("animabackconfig"); $("#selectedicon3").addClass("selectedicon"); $("#p3config").addClass("selectedp");
+                            $("#mnuconfback3").removeClass("outanimavackconfig"); $("#selectedicon3").removeClass("noselectedicon"); $("#p3config").removeClass("noselectedp");
+
+                            $("#mnuconfback2").removeClass("animabackconfig"); $("#selectedicon2").removeClass("selectedicon"); $("#p2config").removeClass("selectedp");
+                            $("#mnuconfback2").addClass("outanimavackconfig"); $("#selectedicon2").addClass("noselectedicon"); $("#p2config").addClass("noselectedp");
+
+                        }
+                    </script>
+
+                    <div id="menuconfig1" onmouseover="onmove1();" onclick="open1section()">
+                        <div id="mnuconfback1" class="animabackconfig"></div>
+                        <div id="selectedicon" class="selectedicon"></div><p id="p1config" class="selectedp">Animación/fondo</p>
+                    </div>
+                    <div id="menuconfig2" onmouseover="onmove2()" onclick="open2section()">
+                        <div id="mnuconfback2" class="outanimavackconfig"></div>
+                        <div id="selectedicon2" class="noselectedicon"></div><p id="p2config" class="noselectedp">Brillo / Sonido</p>
+                    </div>
+                    <div id="menuconfig3" onmouseover="onmove3();" onclick="open3section()">
+                        <div id="mnuconfback3" class="outanimavackconfig"></div>
+                        <div id="selectedicon3" class="noselectedicon"></div><p id="p3config" class="noselectedp">About</p>
+                    </div>
+                </div>
+
+                <div id="sectionsconfig">
+                    <style>
+                        #sectionsconfig {
+                            position: absolute;
+                            width: 60%;
+                            height: 70%;
+                            left: 30%;
+                            top: 11%;
+                        }
+
+                        #sectionbackground {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #barfondo {
+                            position: absolute;
+                            width: 100%;
+                            height: 8%;
+                            top: 10%;
+                        }
+
+                        #barfondo2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 8%;
+                            top: 30%;
+                        }
+
+                        #fondo {
+                            color: white;
+                        }
+
+                        #bkgbar {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #contentfondo {
+                            position: absolute;
+                            width: 20%;
+                            height: 70%;
+                            text-align: center;
+                            top: 10%;
+                            right: 5%;
+                        }
+
+                        #contentboxfondo {
+                            transition: all .5s ease;
+                            overflow: hidden;
+                            color: white;
+                            position: absolute;
+                            width: 27%;
+                            top: 100%;
+                            background: rgb(72,83,101);
+                            right: 0;
+                            border-radius: 1.2vw;
+                            text-align: center;
+                            font-size: 1vw;
+                        }
+
+                        .closemenufondo {
+                            width: 0;
+                            opacity: 0;
+                            z-index: -1;
+                        }
+
+                        .openmenufondo {
+                            width: 300%;
+                            opacity: 1;
+                            z-index: 2;
+                        }
+
+                        #pcontentfondo {
+                            color: rgba(74,82,101,1);
+                            margin-top: .2vw;
+                        }
+
+                        #subtpfondo {
+                            position: relative;
+                            left: 3%;
+                            color: rgba(74,82,101,1);
+                            margin-top: .5vw;
+                        }
+
+                        #pcntbx1, #pcntbx2, #pcntbx3 {
+                            width: 98%;
+                            height: auto;
+                            margin: 0;
+                            border-radius: 1.3vw;
+                            left: 1%;
+                            padding-top: .8vw;
+                            position: relative;
+                            padding-bottom: .8vw;
+                        }
+
+                        .selectedtheme {
+                            background: rgb(96,105,122);
+                        }
+
+                        .noselectedtheme {
+                            background: inherit;
+                        }
+
+                        #btnopenmenufondo {
+                            width: 1vw;
+                            height: 1vw;
+                            right: 1.5%;
+                            top: 30%;
+                            position: absolute;
+                        }
+
+                        #efecto {
+                            position: absolute;
+                            top: 20%;
+                            color: white;
+                        }
+
+                        #mfpsi, #mfpno {
+                            position: relative;
+                            margin-top: .5vw;
+                        }
+
+                        #mfpsi {
+                            left: 80%;
+                            top: -100%;
+                        }
+
+                        #mfpno {
+                            left: 86%;
+                            top: -100%;
+                        }
+
+                        .noselect {
+                            color: rgba(74,82,101,1);
+                            font-size: 1vw;
+                        }
+
+                        .siselect {
+                            color: rgb(110, 122, 152);
+                            font-size: 1.4vw;
+                        }
+                    </style>
+                    <script>
+                        var x = 0;
+                        function simari() {
+                            $("#mfpsi").removeClass("noselect"); $("#mfpsi").addClass("siselect");
+                            $("#mfpno").addClass("noselect"); $("#mfpno").removeClass("siselect");
+                            $("#mainau").removeClass("nooto"); $("#mainau").addClass("sioto");
+                        }
+                        function nomari() {
+                            $("#mfpsi").addClass("noselect"); $("#mfpsi").removeClass("siselect");
+                            $("#mfpno").removeClass("noselect"); $("#mfpno").addClass("siselect");
+                            $("#mainau").addClass("nooto"); $("#mainau").removeClass("sioto");
+                        }
+                        function brillo5() {
+                            $("#brillo5").removeClass("noselect"); $("#brillo5").addClass("siselect");
+                            $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                            $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                            $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                            $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                            $("p").css({ 'opacity': '1' });
+                        }
+                        function brillo4() {
+                            $("#brillo4").removeClass("noselect"); $("#brillo4").addClass("siselect");
+                            $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                            $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                            $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                            $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                            $("p").css({ 'opacity': '.7' });
+                        }
+                        function brillo3() {
+                            $("#brillo3").removeClass("noselect"); $("#brillo3").addClass("siselect");
+                            $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                            $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                            $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                            $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                            $("p").css({ 'opacity': '.5' });
+                        }
+                        function brillo2() {
+                            $("#brillo2").removeClass("noselect"); $("#brillo2").addClass("siselect");
+                            $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                            $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                            $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                            $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                            $("p").css({ 'opacity': '.3' });
+                        }
+                        function brillo1() {
+                            $("#brillo1").removeClass("noselect"); $("#brillo1").addClass("siselect");
+                            $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                            $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                            $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                            $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                            $("p").css({ 'opacity': '.1' });
+                        }
+
+
+
+                        function open1section() {
+                            $("#sectionbackground").addClass("thisfirst"); $("#sectionbackground").removeClass("thisbk");
+                            $("#sectionmusic").removeClass("thisfirst"); $("#sectionmusic").addClass("thisbk");
+                            $("#sectionabout").removeClass("thisfirst"); $("#sectionabout").addClass("thisbk");
+                        }
+                        function open2section() {
+                            $("#sectionbackground").remove("thisfirst"); $("#sectionbackground").addClass("thisbk");
+                            $("#sectionmusic").addClass("thisfirst"); $("#sectionmusic").removeClass("thisbk");
+                            $("#sectionabout").removeClass("thisfirst"); $("#sectionabout").addClass("thisbk");
+                        }
+                        function open3section() {
+                            $("#sectionbackground").removeClass("thisfirst"); $("#sectionbackground").addClass("thisbk");
+                            $("#sectionmusic").removeClass("thisfirst"); $("#sectionmusic").addClass("thisbk");
+                            $("#sectionabout").addClass("thisfirst"); $("#sectionabout").removeClass("thisbk");
+                        }
+
+
+                        function openconfig() {
+
+                            $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
+                        }
+                        function closeconfig() {
+
+                            $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
+                        }
+                        function openmenufondo() { $("#contentboxfondo").addClass("openmenufondo"); $("#contentboxfondo").removeClass("closemenufondo"); }
+
+                        function select1() {
+                            x = 0;
+                        } function select2() {
+                            x = 1;
+                        } function select3() {
+                            x = 2;
+                        }
+                        function selectedtheme2() {
+                            theme1 = "Piercer Lance";
+                            theme2 = "Majesty of Geo";
+                            theme3 = "Phantom fire";
+
+                            if (x == 0) {
+                                $("#pcontentfondo").text(theme1);
+
+                            }
+                            if (x == 1) {
+                                $("#pcontentfondo").text(theme2);
+
+                            }
+                            if (x == 2) {
+
+                                $("#pcontentfondo").text(theme3);
+
+                            }
+                            else {
+
+
+                            }
+
+                        }
+
+                        function selectedtheme() {
+                            theme1 = "Piercer Lance";
+                            theme2 = "Majesty of Geo";
+                            theme3 = "Phantom fire";
+
+                            if (x == 0) {
+                                $("#video1").attr("src", "zhon.mp4");
+                                $("#contentboxfondo").removeClass("openmenufondo"); $("#contentboxfondo").addClass("closemenufondo");
+                                $("#pcontentfondo").text(theme1);
+
+
+                                $("#pcntbx1").addClass("selectedtheme");
+                                $("#pcntbx2").removeClass("selectedtheme");
+                                $("#pcntbx3").removeClass("selectedtheme");
+                                $("#pcntbx1").removeClass("noselectedtheme");
+                                $("#pcntbx2").addClass("noselectedtheme");
+                                $("#pcntbx3").addClass("noselectedtheme");
+                            }
+                            if (x == 1) {
+                                $("#video1").attr("src", "zhon1.mp4");
+                                $("#pcontentfondo").text(theme2);
+                                $("#contentboxfondo").removeClass("openmenufondo"); $("#contentboxfondo").addClass("closemenufondo");
+                                $("#pcntbx2").addClass("selectedtheme");
+                                $("#pcntbx1").removeClass("selectedtheme");
+                                $("#pcntbx3").removeClass("selectedtheme");
+                                $("#pcntbx2").removeClass("noselectedtheme");
+                                $("#pcntbx1").addClass("noselectedtheme");
+                                $("#pcntbx3").addClass("noselectedtheme");
+                            }
+                            if (x == 2) {
+                                $("#contentboxfondo").removeClass("openmenufondo"); $("#contentboxfondo").addClass("closemenufondo");
+                                $("#video1").attr("src", "live.mp4");
+                                $("#pcontentfondo").text(theme3);
+                                $("#pcntbx3").addClass("selectedtheme");
+                                $("#pcntbx2").removeClass("selectedtheme");
+                                $("#pcntbx1").removeClass("selectedtheme");
+                                $("#pcntbx3").removeClass("noselectedtheme");
+                                $("#pcntbx2").addClass("noselectedtheme");
+                                $("#pcntbx1").addClass("noselectedtheme");
+                            }
+                            else {
+
+
+                            }
+
+                        }
+
+                    </script>
+                    <div id="sectionbackground" class="thisfirst">
+
+
+                        <p id="fondo">Fondo animado:</p>
+                        <div id="barfondo">
+                            <img src="https://i.postimg.cc/Pq8Jznxr/Screenshot-2023-09-20-22-14-42-21-e80eb31669cc7edfbce1531f4d25a535.png" id="bkgbar" />
+                            <p id="subtpfondo">Tipo de fondo animado:</p>
+                            <div onclick="openmenufondo();" id="btnopenmenufondo"></div>
+                            <div id="contentfondo">
+                                <p id="pcontentfondo"></p>
+                            </div>
+                            <div id="contentboxfondo" class="closemenufondo">
+                                <p id="pcntbx1" class="selectedtheme" onclick="select1(); selectedtheme();">Piercer Lance</p>
+                                <p id="pcntbx2" class="noselectedtheme" onclick="select2(); selectedtheme();">Majesty of Geo</p>
+                                <p id="pcntbx3" class="noselectedtheme" onclick="select3(); selectedtheme();">Phantom fire</p>
+                            </div>
+                        </div>
+
+                        <p id="efecto">Efecto de pantalla:</p>
+                        <div id="barfondo2">
+                            <img src="https://i.postimg.cc/MTHx5Ft6/bar.png" id="bkgbar" />
+                            <p id="subtpfondo">¿Activar "Autumn begins"?:</p>
+                            <span id="mfpsi" class="siselect" onclick="simari();">Si</span> <span id="mfpno" onclick="nomari();" class="noselect">No</span>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+                <div id="sectionmusic" class="thisbk">
+                    <style>
+                        .thisfirst {
+                            opacity: 1;
+                            z-index: 10;
+                        }
+
+                        .thisbk {
+                            opacity: 0;
+                            z-index: -1;
+                        }
+
+                        #sectionmusic {
+                            position: absolute;
+                            width: 60%;
+                            height: 70%;
+                            left: 30%;
+                            top: 11%;
+                        }
+
+                        #areabrillos {
+                            position: absolute;
+                            width: 20%;
+                            height: 70%;
+                            top: 10%;
+                            right: 3%;
+                        }
+
+                            #areabrillos span {
+                                margin-left: 1vw;
+                            }
+                    </style>
+
+                    <p id="fondo">Sonido / Música:</p>
+                    <div id="barfondo">
+                        <img src="https://i.postimg.cc/MTHx5Ft6/bar.png" id="bkgbar" />
+
+                        <div id="Aaudio">
+                            <style>
+                                #profile {
+                                    z-index: 9;
+                                }
+
+                                #Aaudio {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                #abtnaud {
+                                    position: absolute;
+                                    width: 20%;
+                                    height: 70%;
+                                    right: 28%;
+                                }
+
+                                .butplayer {
+                                    filter: blur(0px) hue-rotate(450deg);
+                                    float: left;
+                                    height: 1vw;
+                                    top: -.25vw;
+                                    width: 1vw;
+                                    margin-left: 1vw;
+                                    position: relative;
+                                }
+
+                                .butpl {
+                                    position: absolute;
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    left: 0;
+                                    top: .3vw;
+                                    border-radius: .2vw;
+                                }
+
+                                    .butpl:hover {
+                                        filter: blur(0px) hue-rotate(550deg) invert(100%);
+                                    }
+
+                                    .butpl img {
+                                        position: absolute;
+                                        width: 1.5vw;
+                                        height: 1.5vw;
+                                        /*filter: invert(100%);*/
+                                        left: .07vw;
+                                        top: .1vw;
+                                    }
+
+                                #pause, #play, #next, #prev, #stop {
+                                    width: 2vw;
+                                    height: 2vw;
+                                    position: absolute;
+                                    left: 0;
+                                }
+
+                                .progress-bar {
+                                    top: 40%;
+                                    right: 3%;
+                                    width: 20%;
+                                    border-radius: .3vw;
+                                    background: rgb(74,82,101);
+                                    height: .35vw;
+                                    position: absolute;
+                                }
+
+                                .fillBar {
+                                    background: rgb(116, 129, 160);
+                                    width: 0;
+                                    height: .35vw;
+                                }
+
+
+                                /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                                .artist-name {
+                                    position: absolute;
+                                    width: 88%;
+                                    left: 10%;
+                                    height: 100%;
+                                    top: 70%;
+                                    letter-spacing: .1vw;
+                                    font-size: .5vw;
+                                    color: #b21160;
+                                }
+
+                                #AT_time {
+                                    width: 70%;
+                                    height: 1vw;
+                                    top: 63%;
+                                    left: 80%;
+                                    position: absolute;
+                                }
+
+                                    #AT_time p {
+                                        position: absolute;
+                                        letter-spacing: .1vw;
+                                        font-size: .5vw;
+                                        color: lightgray;
+                                    }
+
+                                .time {
+                                    position: absolute;
+                                    left: -1.5vw;
+                                    top: 0vw;
+                                    letter-spacing: .1vw;
+                                    font-size: .6vw;
+                                    overflow: hidden;
+                                    color: rgb(74,82,101);
+                                }
+
+                                #name_sng {
+                                    position: relative;
+                                    float: left;
+                                }
+
+                                #namesong {
+                                    position: relative;
+                                    left: 3%;
+                                    color: rgba(74,82,101,1);
+                                    margin-top: .5vw;
+                                }
+
+                                #fillimgbar {
+                                    width: 1vw;
+                                    height: 1vw;
+                                    position: absolute;
+                                    top: -.4vw;
+                                    left: -3%;
+                                }
+                            </style>
+                            <div class="progress-bar">
+                                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+                            </div>
+
+
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                            <div> </div>
+
+                            <div id="abtnaud">
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                        <div id="prev" class="fas fa-backward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                                        <div id="play"> </div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                        <div id="next" class="fas fa-forward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                        <div id="pause"> </div>
+                                    </div>
+
+                                </div>
+                                <!--<div class="butplayer">
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
+
+                        </div>-->
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+                    </div>
+                    <p id="efecto">Brillo del texto:</p>
+                    <div id="barfondo2">
+                        <img src="https://i.postimg.cc/MTHx5Ft6/bar.png" id="bkgbar" />
+                        <p id="subtpfondo">Ajustar brillo del texto:</p>
+
+                        <div id="areabrillos">
+                            <span id="brillo1" onclick="brillo1();" class="noselect">1</span>
+                            <span id="brillo2" onclick="brillo2();" class="noselect">2</span>
+                            <span id="brillo3" onclick="brillo3();" class="noselect">3</span>
+                            <span id="brillo4" onclick="brillo4();" class="noselect">4</span>
+                            <span id="brillo5" onclick="brillo5();" class="siselect">5</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="sectionabout" class="thisbk">
+                    <style>
+                        #sectionabout {
+                            position: absolute;
+                            width: 60%;
+                            height: 70%;
+                            left: 30%;
+                            top: 11%;
+                        }
+
+                        #revneige {
+                            color: rgb(236,229,216);
+                            line-height: 2vw;
+                        }
+
+                        #imgneige {
+                            position: absolute;
+                            width: 10vw;
+                            right: 5%;
+                            bottom: 0;
+                            filter: invert(100%);
+                        }
+                    </style>
+                    <p id="revneige">
+
+
+
+
+
+                        A.I. TERMINAL V tech 5.38 - HOST is up (0.025s latency)
+                        Genshin Impact UI interface V0.91 REV 1.00 <br />
+                        IMACC NAME: BLACKLARCH 4CL454<br />
+
+                        IMACC TYPE: TAIMAT IMAGE<br />
+
+                        ICCKS COMPRESSED (Q) 444445555<br />
+
+                        LOAD ADRESS 0000x112244-000000000000000<br />
+
+                        NetWire_Seed: d869db7fe62fb07c25a0403ecaea55031744b5fb# IMPACTPROTOCOL
+                        6520-444<br /><br /><br />
+
+                        USERNAME: Guest<br />
+                        PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br /><br />
+                        <br />
+
+                        Authenticatting credentials... 100%<br />
+
+                        Accessing File '/srd/slab/ara/:dt_000000319/falc_min'...     Done!<br />
+
+                        This place was made by Negie, based in Genshin Impact.<br />
+                        A xatspace powered by Neige©.<br />
+                        Xatspace.me all rights reserved xat.com<br />
+                    </p>
+                    <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="imgneige" />
+
+
+                </div>
+            </div>
+
+            <div id="chat" class="nochat">
+                <style>
+                    .nochat {
+                        left: -100%;
+                    }
+
+                    .sichat {
+                        left: 4%;
+                    }
+
+                    #chat {
+                        position: absolute;
+                        width: 60%;
+                        height: 100%;
+                        transition: all 1s ease;
+                        background-image: linear-gradient(270deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
+                        z-index: 7;
+                    }
+
+                    #barchat {
+                        position: absolute;
+                        left: 1%;
+                        height: 100%;
+                        width: 27%;
+                    }
+
+                    #imgbarchat {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #diviconsaikai1 {
+                        position: absolute;
+                        width: 3vw;
+                        height: 3vw;
+                        background: rgb(74,82,101);
+                        overflow: hidden;
+                        border-radius: 50%;
+                        top: 13.5%;
+                        left: 12%;
+                    }
+
+                    #iconsaikai1 {
+                        width: 100%;
+                    }
+
+                    #pnicksaik {
+                        position: absolute;
+                        color: white;
+                        left: 35%;
+                        top: 13%;
+                    }
+
+                    #btnback {
+                        position: absolute;
+                        width: 20%;
+                        height: 7%;
+                        top: 2%;
+                        left: 10%;
+                        border-radius: 50%;
+                    }
+                </style>
+                <div id="barchat">
+                    <img id="imgbarchat" src="https://i.postimg.cc/0QYRSbJ1/barchat.png" />
+                    <div id="btnback" onclick="outchat();"></div>
+                    <div id="diviconsaikai1">
+                        <img id="iconsaikai1" src="https://i.postimg.cc/59wKfPk7/zhongli.png" />
+                    </div>
+                    <p id="pnicksaik"> Neige</p>
+
+                </div>
+                <div id="areachat">
+                    <div id="barscroll">
+                        <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr1" />
+                        <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr2" />
+                    </div>
+                    <style>
+                        #areachat {
+                            width: 50%;
+                            left: 30%;
+                            height: 100%;
+                            position: absolute;
+                        }
+
+                        #scr1 {
+                            position: absolute;
+                            width: 1vw;
+                            top: -1vw;
+                            right: -.4vw;
+                        }
+
+                        #scr2 {
+                            transform: rotate(180deg);
+                            position: absolute;
+                            width: 1vw;
+                            bottom: -1vw;
+                            right: -.42vw;
+                        }
+
+                        #areaaddmsn {
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            bottom: 0;
+                            border-top: .15vw solid rgba(74,82,101.6);
+                        }
+
+                        #text_bak_in {
+                            position: absolute;
+                            width: 50%;
+                            border: .15vw solid rgba(74,82,101.6);
+                            height: 2.5vw;
+                            border-radius: 2vw;
+                            left: 12%;
+                            top: 20%;
+                            overflow: hidden;
+                            text-align: left;
+                        }
+
+                        #textadd {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background: transparent;
+                            text-decoration: none;
+                            border: none;
+                            color: rgb(74,82,101);
+                            top: 0;
+                            left: 0;
+                            font-size: 1vw;
+                            padding: .6vw;
+                        }
+
+                        #btn_bak_in {
+                            width: 30%;
+                            height: 2.8vw;
+                            background: lightgray;
+                            left: 70%;
+                            border-radius: 2vw;
+                            position: absolute;
+                            top: 20%;
+                            font-family: 'HYWenHei-85W';
+                            overflow: hidden;
+                        }
+
+                        #btnadd {
+                            margin-left: 10%;
+                            position: absolute;
+                            height: 96%;
+                            top: 2%;
+                            width: 97%;
+                            left: 1%;
+                        }
+
+                        #p_btn_se {
+                            position: relative;
+                            text-align: center;
+                            top: -.5vw;
+                        }
+
+                        #circle {
+                            width: 2vw;
+                            height: 2vw;
+                            border-radius: 50%;
+                            left: -2%;
+                            top: 15%;
+                            background: rgba(0,0,0,.8);
+                            position: absolute;
+                        }
+
+                        #subcircle {
+                            width: 30%;
+                            height: 30%;
+                            border: .3vw solid rgb(187,115,41);
+                            border-radius: 50%;
+                            left: 20%;
+                            top: 20%;
+                            position: absolute;
+                        }
+
+                        #areamensajes {
+                            position: absolute;
+                            width: 100%;
+                            height: 74%;
+                            top: 13%;
+                            overflow: auto;
+                        }
+
+                        #barscroll {
+                            width: .2vw;
+                            height: 74%;
+                            top: 13%;
+                            right: .2vw;
+                            position: absolute;
+                            background: rgba(74,82,101,.2);
+                        }
+
+                        #areamensajes::-webkit-scrollbar {
+                            width: .6vw;
+                            border-radius: .5vw;
+                            background: transparent;
+                        }
+
+                        #areamensajes {
+                            overflow-x: hidden;
+                        }
+
+                            #areamensajes::-webkit-scrollbar-thumb {
+                                border-radius: 1vw;
+                                background: lightgray;
+                                width: .6vw;
+                            }
+
+                        #msnguest, #msnsaikai {
+                            width: 100%;
+                            height: auto;
+                            position: relative;
+                        }
+
+                            #msnguest:first-child {
+                                margin-top: 1vw;
+                            }
+
+                        #diviconguest {
+                            width: 5vw;
+                            height: 5vw;
+                            background: rgb(74,82,101);
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+
+                        #diviconsaikai {
+                            width: 5vw;
+                            position: relative;
+                            height: 5vw;
+                            left: 80%;
+                            background: rgb(74,82,101);
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+
+                        #iconguest, #iconsaikai {
+                            width: 100%;
+                        }
+
+                        #regname {
+                            color: white;
+                            font-size: .9vw;
+                            position: relative;
+                            top: -6vw;
+                            left: 20%;
+                        }
+
+                        #regname2 {
+                            color: white;
+                            font-size: .9vw;
+                            position: absolute;
+                            top: -1vw;
+                            left: 65%;
+                        }
+
+                        #areamensaj {
+                            background: rgb(74,82,101);
+                            height: auto;
+                            border-radius: 0 2vw 2vw 2vw;
+                            width: auto;
+                            position: relative;
+                            left: 20%;
+                            top: -6vw;
+                            padding: .8vw;
+                            color: white;
+                        }
+
+                        #areamensaj2 {
+                            background: rgb(74,82,101);
+                            height: auto;
+                            border-radius: 2vw 0vw 2vw 2vw;
+                            width: auto;
+                            position: relative;
+                            left: 66%;
+                            top: -3vw;
+                            padding: .8vw;
+                            color: white;
+                        }
+
+                        #areatop {
+                            width: 100%;
+                            height: 10%;
+                            top: 0;
+                            overflow: hidden;
+                            position: absolute;
+                            border-bottom: .15vw solid rgba(74,82,101.6);
+                        }
+                    </style>
+                    <div id="areamensajes">
+                        <div id="msnguest">
+                            <div id="diviconguest">
+                                <img id="iconguest" src="https://i.postimg.cc/fLybs2sJ/tumblr-25262f373b5c945b762a8fc82f3d6105-49287d65-400.png" />
+                            </div>
+                            <p id="regname">Guest</p>
+                            <content id="areamensaj">
+
+                                Hola!
+                            </content>
+                        </div>
+                        <div id="msnsaikai">
+                            <div id="diviconsaikai">
+                                <img id="iconsaikai" src="https://i.postimg.cc/59wKfPk7/zhongli.png" />
+                            </div>
+                            <p id="regname2">Neige</p>
+                            <content id="areamensaj2">
+                                ...
+                            </content>
+
+                        </div>
+                    </div>
+                    <script>
+                        function add_mess() {
+
+                            var textt = $('#textadd').val();
+                            $('#areamensajes').append('<div id="msnguest"> <div id="diviconguest"><img id="iconguest" src="https://i.postimg.cc/fLybs2sJ/tumblr-25262f373b5c945b762a8fc82f3d6105-49287d65-400.png" /></div> <p id="regname">Guest</p><content id="areamensaj">' + textt + '</content>  </div > ');
+
+                        }
+
+
+                        function arriba() {
+                            $("#areamensajes").animate({ scrollTop: 1000 }, 600);
+                            return false;
+                        }
+                    </script>
+                    <div id="areatop">
+                        <style>
+                            #areatop img {
+                                position: absolute;
+                                width: 3vw;
+                                right: 0%;
+                                top: 35%;
+                            }
+
+                            #namegeu {
+                                position: relative;
+                                text-align: center;
+                                color: white;
+                                font-size: 1.5vw;
+                                top: 20%;
+                            }
+                        </style>
+                        <p id="namegeu">Neige</p><img src="https://i.postimg.cc/FsB09Ngg/3puntos.png" />
+                    </div>
+                    <div id="areaaddmsn">
+                        <div id="text_bak_in">
+                            <textarea id="textadd" maxlength="22" placeholder="Toca para escribir"></textarea>
+                        </div>
+                        <div id="btn_bak_in">
+                            <div id="btnadd" onclick="add_mess(); arriba(); to_bot();"><p id="p_btn_se">Enviar</p><div id="circle"><div id="subcircle"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="firmas" class="nosectfirm">
+                <style>
+                    .nosectfirm {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+
+                    .sisectfirm {
+                        opacity: 1;
+                        z-index: 7;
+                    }
+
+                    #firmas {
+                        width: 96%;
+                        left: 4%;
+                        height: 100%;
+                        background: rgba(42,55,82,.6);
+                        position: absolute;
+                        backdrop-filter: blur(8px);
+                    }
+
+                    #emblemback {
+                        position: absolute;
+                        filter: invert(100%) blur(3px);
+                        opacity: .1;
+                        width: 35%;
+                        left: -15%;
+                        top: -10%;
+                    }
+
+                    #mainfirmas {
+                        border: .2vw solid rgb(74,82,101);
+                        width: 100%;
+                        height: 76%;
+                        position: absolute;
+                        top: 12%;
+                    }
+
+                    .backneige {
+                        background-image: url(https://i.postimg.cc/RVVYD2dt/anime-girls-genshin-impact-hutao-genshin-impact-hd-wallpaper-532952fa915d499043408383c49b17f1.jpg);
+                        background-size: cover;
+                    }
+
+                    .backlu {
+                        background-image: url(https://c.wallhere.com/photos/16/84/Genshin_Impact_artwork_Ganyu_Genshin_Impact_anime_girls_blue_hair_horns_goat_girl_goat_ears-2180085.jpg!d);
+                        background-size: cover;
+                    }
+
+                    .backhank {
+                        background-image: url(https://i.postimg.cc/qMbDBFkT/genshin-impacts-web-event-backgrounds-all-that-ive-found-so-v0-3vhql15s4lv81.png);
+                        background-size: cover;
+                    }
+
+                    #iconfirmas {
+                        position: absolute;
+                        width: 4vw;
+                        left: 6%;
+                        top: 2%;
+                    }
+
+                    #titlef {
+                        position: absolute;
+                        font-size: 1.7vw;
+                        left: 11%;
+                        top: 1%;
+                        color: rgb(215, 164, 113);
+                    }
+                </style>
+                <script>
+                    function entersectionfirm() {
+                        outprofile();
+                        outchat();
+                        outssections(); $("#firmas").removeClass("nosectfirm"); $("#firmas").addClass("sisectfirm");
+                    }
+                    function outsectfirm() {
+                        $("#firmas").removeClass("sisectfirm"); $("#firmas").addClass("nosectfirm");
+                    }
+                    function selectuser1() {
+                        $("#userneige").removeClass("nouser"); $("#userneige").addClass("siuser");
+                        $("#userlucia").addClass("nouser"); $("#userlucia").removeClass("siuser");
+                        $("#userhank").removeClass("siuser"); $("#userhank").addClass("nouser");
+                        $("#mainfirmas").removeClass("backlu"); $("#mainfirmas").removeClass("backhank"); $("#mainfirmas").addClass("backneige");
+
+                        $("#neigefirm").removeClass("nofirmx"); $("#neigefirm").addClass("sifirmx");
+                        $("#lufirm").addClass("nofirmx"); $("#lufirm").removeClass("sifirmx");
+                        $("#hankfirm").removeClass("sifirmx"); $("#hankfirm").addClass("nofirmx");
+                    }
+                    function selectuser2() {
+                        $("#userneige").removeClass("siuser"); $("#userneige").addClass("nouser");
+                        $("#userlucia").addClass("siuser"); $("#userlucia").removeClass("nouser");
+                        $("#userhank").removeClass("siuser"); $("#userhank").addClass("nouser");
+                        $("#mainfirmas").addClass("backlu"); $("#mainfirmas").removeClass("backhank"); $("#mainfirmas").removeClass("backneige");
+
+                        $("#neigefirm").removeClass("sifirmx"); $("#neigefirm").addClass("nofirmx");
+                        $("#lufirm").addClass("sifirmx"); $("#lufirm").removeClass("nofirmx");
+                        $("#hankfirm").removeClass("sifirmx"); $("#hankfirm").addClass("nofirmx");
+                    }
+                    function selectuser3() {
+                        $("#userneige").removeClass("siuser"); $("#userneige").addClass("nouser");
+                        $("#userlucia").addClass("nouser"); $("#userlucia").removeClass("siuser");
+                        $("#userhank").removeClass("nouser"); $("#userhank").addClass("siuser");
+                        $("#mainfirmas").removeClass("backlu"); $("#mainfirmas").addClass("backhank"); $("#mainfirmas").removeClass("backneige");
+
+                        $("#neigefirm").removeClass("sifirmx"); $("#neigefirm").addClass("nofirmx");
+                        $("#lufirm").addClass("nofirmx"); $("#lufirm").removeClass("sifirmx");
+                        $("#hankfirm").removeClass("nofirmx"); $("#hankfirm").addClass("sifirmx");
+                    }
+                </script>
+                <img src="https://i.postimg.cc/rsM7ZqFG/ghf.png" id="emblemback" />
+                <img src="https://i.postimg.cc/Z5Gp3LM9/19.png" id="iconfirmas" />
+                <p id="titlef">Firmas</p>
+                <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="outsectfirm();" />
+                <div id="mainfirmas" class="backneige">
+                    <div id="barusers">
+                        <style>
+                            #barusers {
+                                width: 19%;
+                                height: 112%;
+                                top: -3%;
+                                left: 10%;
+                                position: absolute;
+                            }
+
+                            #fondfirmas {
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            #baruserbtns {
+                                position: absolute;
+                                width: 104%;
+                                height: 100%;
+                                top: 0;
+                                left: -2%;
+                            }
+
+                            #userneige {
+                                position: absolute;
+                                width: 100%;
+                                height: 12%;
+                                top: 5%;
+                            }
+
+                            #imguserneige, #imguserhank, #imguserlucia {
+                                width: 100%;
+                                position: absolute;
+                                top: 8%;
+                            }
+
+                            #userlucia {
+                                position: absolute;
+                                width: 100%;
+                                height: 12%;
+                                top: 17%;
+                            }
+
+                            #userhank {
+                                position: absolute;
+                                width: 100%;
+                                height: 12%;
+                                top: 29%;
+                            }
+
+                            .siuser {
+                                opacity: 1;
+                            }
+
+                            .nouser {
+                                opacity: 0;
+                            }
+                        </style>
+                        <img src="https://i.postimg.cc/BQK5fY1m/firmasback.png" id="fondfirmas" />
+                        <div id="baruserbtns">
+                            <div id="userneige" onclick="selectuser1();" class="siuser">
+                                <img id="imguserneige" src="https://i.postimg.cc/sfS8wcgR/neigeselected.png" />
+                            </div>
+                            <div id="userlucia" onclick="selectuser2();" class="nouser">
+                                <img id="imguserlucia" src="https://i.postimg.cc/QCLzjBSP/backkagura.png" />
+
+                            </div>
+                            <div id="userhank" onclick="selectuser3();" class="nouser">
+                                <img id="imguserhank" src="https://i.postimg.cc/VvjVvYVN/hankselected.png" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contfirms">
+                        <style>
+                            #contfirms {
+                                position: absolute;
+                                width: 59%;
+                                height: 80%;
+                                right: 5%;
+                                top: 10%;
+                            }
+
+                            #neigefirm {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0,0,0,.2);
+                                top: 0;
+                                left: 0; overflow-y:auto; overflow-x:unset;
+                                border-radius: .7vw;
+                            }
+
+                            #lufirm {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0,0,0,.2);
+                                top: 0;
+                                left: 0;
+                                border-radius: .7vw;
+                            }
+
+                            #hankfirm {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0,0,0,.2);
+                                top: 0;
+                                left: 0;
+                                border-radius: .7vw;
+                            }
+
+                            .nofirmx {
+                                z-index: -1;
+                                opacity: 0;
+                            }
+
+                            .sifirmx {
+                                z-index: 3;
+                                opacity: 1;
+                            }
+
+                            #imgneiigerose {
+                                position: absolute;
+                                width: 19vw;
+                                top: 60%;
+                                left: -10%;
+                                transform: scaleX(-1);
+                            }
+
+                            #imgneigebutter {
+                                position: absolute;
+                                width: 14vw;
+                                animation: animabuter 5s infinite;
+                                left: 5%;
+                            }
+
+                            @keyframes animabuter {
+                                0% {
+                                    top: 30%;
+                                }
+
+                                50% {
+                                    top: 35%;
+                                }
+
+                                100% {
+                                    top: 30%;
+                                }
+                            }
+
+                            #contenido {
+                                position: absolute;
+                                width: 60%;
+                                height: 90%;
+                                top: 5%;
+                                right: 10%;
+                            }
+
+                            #btnreg1 {
+                                position: absolute;
+                                top: 90%;
+                                width: 100%;
+                                height: 10%;
+                                right: -4%;
+                            }
+
+                            #pnota {
+                                color: white;
+                                font-size: 1.2vw;
+                                text-align: right;
+                                top: -1vw;
+                                position: relative;
+                            }
+
+                            #ptitlefirm {
+                                color: white;
+                                font-size: 2.2vw;
+                                position: relative;
+                                top: -2vw;
+                            }
+
+                            #ptitlefirm2 {
+                                color: white;
+                                left: -25%;
+                                font-size: 2.2vw;
+                                width: 128%;
+                                position: relative;
+                                top: -2vw;
+                            }
+
+                            #pfechafirm {
+                                color: #e1d982;
+                                position: relative;
+                                top: -4vw;
+                                font-size: 1vw;
+                            }
+
+                            #pcontfirma {
+                                color: white;
+                                font-size: 1.2vw;
+                                opacity: .8;
+                                position: relative;
+                                top: -4vw;
+                            }
+
+                            #firmareg {
+                                color: #e1d982;
+                                font-size: 1vw;
+                                background: rgb(74,82,101);
+                                padding: .7vw;
+                                width: 50%;
+                                text-align: center;
+                                position: relative;
+                                left: 50%;
+                                top: -10%;
+                            }
+
+                            #firmareg2 {
+                                color: #e1d982;
+                                font-size: 1vw;
+                                background: rgb(74,82,101);
+                                padding: .7vw;
+                                width: 50%;
+                                text-align: center;
+                                position: relative;
+                                left: 60%;
+                                top: -31%;
+                            }
+
+                            #firmneigeimg {
+                                position: relative;
+                                width: 75%;
+                                top: -16%;
+                            }
+
+                            #firmdi {
+                                filter: invert(100%) blur(.5px);
+                                width: 9vw;
+                                position: absolute;
+                                left: 75%;
+                                top: 60%;
+                            }
+                            #queenfirm { position:relative; right:0;
+                                         margin-bottom:10%;
+                            }
+                        </style>
+                        <div id="neigefirm" class="sifirmx">
+                            <img src="https://i.postimg.cc/y6bjRZZq/Item-Gladiator-s-Nostalgia.webp" id="imgneiigerose" style="left:-1%; top:110%"/>
+                            <img src="https://i.postimg.cc/wMR60GQY/UI-Item-Icon-100072.png" id="imgneigebutter" style="left:75%" />
+                            <div id="contenido">
+                                <p id="pnota">Notas de la reina:</p>
+                               <img src="https://i.postimg.cc/xTwKzzXd/IMG-20231008-WA0051.jpg" id="queenfirm" />
+
+
+                            </div>
+                        </div>
+                        <div id="lufirm" class="nofirmx">
+                            <img src="https://i.postimg.cc/brvY1FWP/Item-Fragile-Resin.webp" id="imgneiigerose" />
+                            <img src="https://i.postimg.cc/fygzCfQ9/guide-of-ballad-material-genshin-wiki-guide.png" id="imgneigebutter" />
+                            <div id="contenido">
+                                <p id="pnota">Notas de la bufona:</p>
+                                <p id="ptitlefirm">Don gris ...</p>
+                                <p id="pfechafirm">Al día 08 de Octubre 2023</p>
+                                <p id="pcontfirma">
+                                    primero que nada muchas gracias por permitirme este espacio, segundo Francia y tercero:
+                                    compartimos el mismo gusto de la programación. Gracias a ti he indagado mas en el js y me he animado a hacer mi propio space (aun no lo he terminado jsjs)  ,que te vaya genial y si algún día tienes novio preséntalo para darles mi bendición! atte. Lala
+                                </p>
+                                <p id="firmareg">ShatteredDoLL / 291296788)</p>
+                                <div id="btnreg1">
+                                    <div id="btn_bak_in">
+                                        <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="hankfirm" class="nofirmx">
+                            <style>
+                            </style>
+                            <img src="https://i.postimg.cc/yNnTLDWH/Item-Electroculus.webp" id="imgneiigerose" />
+                            <img src="https://i.postimg.cc/nLnkK4F2/Genshin-Impact-UI-Mall-Purchase-Resin-Monthly.png" id="imgneigebutter" />
+                            <div id="contenido">
+                                <p id="pnota">Notas de la agraciada:</p>
+                                <p id="ptitlefirm">Para Gris:</p>
+                                <p id="pfechafirm">Al día 06 de Octubre 2023</p>
+                                <p id="pcontfirma">
+
+                                    
+                                    Mientras más te conozco, más miedo y pánico tengo, a pesar de eso eres mi amigo, aún así, si me sales en las noches me daría un infarto.
+
+                                    Con cariño Aby
+                                </p>
+                                <p id="firmareg">AhriWithHeaL / 276479585</p>
+                                <div id="btnreg1">
+                                    <div id="btn_bak_in">
+                                        <div id="btnadd"><p id="p_btn_se">Regresar</p><div id="circle"><div id="subcircle"></div></div></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+       
+        <div id="firmmrr">
+            <style>
+                #firmmrr { position:absolute; width:5%; height:4%; background:rgba(0,0,0,.2); border:.1vw solid rgb(225, 166, 105); right:1%; bottom:1%; color:white; font-size:.9vw;
+                           text-align:center;
+                }
+                #firmmrr p{ margin-top:.5vw;
+                }
+            </style>
+            <p>Saikai</p>
+        </div>
+        
+        </div>
+    </div>
+
+
+
+</body>
+</html>
