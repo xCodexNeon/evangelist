@@ -308,6 +308,34 @@
                         //take id of the audio and make a variable
                         var audio = $("#hovers")[0];
 
+                        $("#afr").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd1").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd2").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd3").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd4").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd5").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd6").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd8").mouseenter(function () {
+                            audio.play();
+                        });
+                        $("#frd7").mouseenter(function () {
+                            audio.play();
+                        });
+
                         //eventhandler on hover with play() function
                         $("#click1").mouseenter(function () {
                             audio.play();
@@ -1576,9 +1604,22 @@
                             background-size: cover;
                             top: 38%;
                             transition: all 1s ease;
-                            position: absolute;
+                            position: absolute; 
+                            overflow:auto;
                         }
+                            #menufriends::-webkit-scrollbar {
+                                width: .6vw;
+                                border-radius: .5vw;
+                                background: #f24b4b
+                            }
 
+                        
+
+                        #menufriends::-webkit-scrollbar-thumb {
+                            border-radius: 1vw;
+                            background: lightgray;
+                            width: .6vw;
+                        }
                         .enterfriends {
                             left: 2%;
                         }
@@ -1664,6 +1705,28 @@
                             position: absolute;
                         }
 
+                        #frd8 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 65%;
+                            left: 72%;
+                            position: absolute;
+                        }
+
+                        #frd9 {
+                            width: 22%;
+                            height: 33%;
+                            background: rgb(187,115,41);
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            top: 100%;
+                            left: 1.5%; margin-bottom:1.5%;
+                            position: absolute;
+                        }
+
                         #imgsobrefriend {
                             width: 100%;
                             height: 100%;
@@ -1707,40 +1770,50 @@
                     <p id="pfrds">Amigos:</p> <img onclick="outfriends();" id="imgbackfrds" src="https://i.postimg.cc/fk4Lg6BQ/back.png" />
 
                     <div id="frd1">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/Lynette">  <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/Bv1sLsTv/Hu-Tao.png" id="charimg" />
                         <p id="namefriend">Saikai♥️</p>
                     </div>
                     <div id="frd2">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/Kagura"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/bvzJCYF0/tumblr-607eb4ba44ee767fdb9ab02969388ee9-d7d93853-400.png" id="charimg" />
                         <p id="namefriend">Lucia</p>
                     </div>
                     <div id="frd3">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/Rose"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/85pZzvXF/Raiden-Shogun-Icon.png" id="charimg" />
                         <p id="namefriend">Rose</p>
                     </div>
                     <div id="frd4">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/Schroederz"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/cHzLLR1T/wanderer-faruzan-icon-via-anonsbelle-v0-qxijbbz5aiy91.png" id="charimg" />
                         <p id="namefriend">Mythes</p>
                     </div>
                     <div id="frd5">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/Saeroyi"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/qRjx9Whz/tumblr-5289e26df4a0c0656581aeab030bad03-e8afe741-400.png" id="charimg" />
                         <p id="namefriend">Saeroyi</p>
                     </div>
                     <div id="frd6">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/ShatteredDoLL"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/7Z1gf597/Personaje-Ganyu.webp" id="charimg" />
                         <p id="namefriend">Lala</p>
                     </div>
                     <div id="frd7">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <a href="https://xat.me/AhriWithHeaL"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
                         <img src="https://i.postimg.cc/BnfTSTT4/Kirara-Icon.webp" id="charimg" />
                         <p id="namefriend">Aby</p>
                     </div>
+                    <div id="frd8">
+                        <a href="https://xat.me/xJustiifyx"> <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" /></a>
+                        <img src="https://i.postimg.cc/2S5LWfjx/Fischl-Icon.webp" id="charimg" />
+                        <p id="namefriend">Sivi</p>
+                    </div>
+                    <!--<div id="frd9">
+                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                        <img src="https://i.postimg.cc/cHzLLR1T/wanderer-faruzan-icon-via-anonsbelle-v0-qxijbbz5aiy91.png" id="charimg" />
+                        <p id="namefriend">Mythes</p>
+                    </div>-->
                 </div>
 
 
@@ -3522,18 +3595,21 @@
                         color: white;
                         font-size: .9vw;
                         text-align: center;
+                        z-index:999999;
                     }
-
+                    #afr {
+                        color: white; text-decoration:none;
+                    }
                         #firmmrr p {
                             margin-top: .5vw;
                         }
                 </style>
-                <p>Saikai</p>
+                <a id="afr" href="https://xat.me/Lynette"><p>Saikai</p></a>
             </div>
 
         </div>
 
-        <div id="mainintro">
+        <!--<div id="mainintro">
             <style>
                 #mainintro {
                     z-index: 9999;
@@ -3693,7 +3769,7 @@
             </div>
 
 
-        </div>
+        </div>-->
     </div>
 
 
