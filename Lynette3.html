@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="anticlockwise_styles.css">
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script type="text/javascript" src="canvas2image.js"></script>
+    <script type="text/javascript" src="html2canvas.min.js"></script>
 
     <style>
     </style>
@@ -154,7 +156,7 @@
                 }
                 playSong();
             });
-          
+
             $("#next").click(function next() {
                 CurrentSong++;
                 if (CurrentSong > 5) {
@@ -187,13 +189,14 @@
 
         @keyframes animaentrancemain {
             0% {
-               opacity:0;
+                opacity: 0;
             }
- 
+
             100% {
-                opacity:1;
+                opacity: 1;
             }
         }
+
         @keyframes animaoutmain {
             0% {
                 opacity: 1;
@@ -203,13 +206,14 @@
                 opacity: 0;
             }
         }
-        #mainscreen { opacity:0;
-                     
+         #mainscreen { opacity:0;  
+
         }
         .entrancemainscreen {
             animation: animaentrancemain 6s 1;
             animation-fill-mode: forwards;
         }
+
         @font-face {
             font-family: 'HYWenHei-85W';
             font-style: normal;
@@ -240,33 +244,48 @@
             width: 100%;
             position: absolute;
         }
+
         #mainintro {
             position: absolute;
             width: 0;
             left: 0;
             background-image: url(https://i.postimg.cc/PqCrPs7G/maiiin.jpg);
-            background-size: contain; background-repeat:no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
             height: 100%;
             width: 100%;
-           
         }
-        .intromain { z-index:999999999999999;
+
+        .intromain {
+            z-index: 999999999999999;
             animation: animaentrancemain 4s 1;
             animation-fill-mode: forwards;
         }
-        .outmain { z-index:-1;
+
+        .outmain {
+            z-index: -1;
             animation: animaoutmain 2s 1;
             animation-fill-mode: forwards;
         }
-            #mainintro p { position:absolute; color:rgb(74,82,101); top:67%;  opacity:.6;left:43%; animation:bg 1s infinite;  
-            }
+
+        #mainintro p {
+            position: absolute;
+            color: rgb(74,82,101);
+            top: 67%;
+            opacity: .6;
+            left: 43%;
+            animation: bg 1s infinite;
+        }
 
         @keyframes bg {
             0% {
-                opacity:.6;
+                opacity: .6;
             }
-            50% { opacity:.3;
+
+            50% {
+                opacity: .3;
             }
+
             100% {
                 opacity: .6;
             }
@@ -276,13 +295,15 @@
             cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
         }
     </style>
+    <!-- ========== Font Awesome ========== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 
 
-<body>
+<body class="all" onclick="digi();">
     <script>
         function enterprofile() {
             $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
@@ -295,13 +316,18 @@
         function openchat() {
             $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
         }
+        function enterclock() {
+            $("#clock").removeClass("noclock"); $("#clock").addClass("siclock");
+        } function outclock() {
+            $("#clock").removeClass("siclock"); $("#clock").addClass("noclock");
+        }
     </script>
    
     <div id="mainintro" onclick="inizializar()" class="intromain">
         <p>Da  clic para continuar</p>
     </div>
 
-    <div id="mainscreen">
+    <div id="mainscreen" class="mainscreen">
         <style>
             .mks {
                 position: fixed;
@@ -569,7 +595,7 @@
             </script>
         </audio>
 
-        <div id="context">
+        <!--<div id="context">
             <style>
                 div#context ul {
                     list-style: none;
@@ -686,7 +712,7 @@
                 </li>
                 <li><a href="#bd" id="click3" onclick="openconfig();" class="btnclickk"><img id="imgli" src="https://i.postimg.cc/XqQhpb5X/acerca-de.png" />A cerca de...</a></li>
             </ul>
-        </div>
+        </div>-->
 
 
         <video autoplay="" loop="" muted="" id="video1" src="tao1.mp4" type="video/mp4">
@@ -1151,15 +1177,263 @@
             <img src="https://i.postimg.cc/1RjXd9qf/gl.png" id="iconprofile" />
 
             <div id="baricons">
-                <div id="iconmenu1" class="iconmnu"> <img class="iconim" src="https://i.postimg.cc/VL1KDY4M/c.png" /></div>
+                <div id="iconmenu1" class="iconmnu">
+                    <img class="iconim" src="https://i.postimg.cc/VL1KDY4M/c.png" />
+
+                    <script>
+                        // from https://stackoverflow.com/questions/4912092/using-html5-canvas-javascript-to-take-in-browser-screenshots
+
+                        // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia
+                        // see: https://www.webrtc-experiment.com/Pluginfree-Screen-Sharing/#20893521368186473
+                        // see: https://github.com/muaz-khan/WebRTC-Experiment/blob/master/Pluginfree-Screen-Sharing/conference.js
+
+                        function getDisplayMedia(options) {
+                            if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+                                return navigator.mediaDevices.getDisplayMedia(options)
+                            }
+                            if (navigator.getDisplayMedia) {
+                                return navigator.getDisplayMedia(options)
+                            }
+                            if (navigator.webkitGetDisplayMedia) {
+                                return navigator.webkitGetDisplayMedia(options)
+                            }
+                            if (navigator.mozGetDisplayMedia) {
+                                return navigator.mozGetDisplayMedia(options)
+                            }
+                            throw new Error('getDisplayMedia is not defined')
+                        }
+
+                        function getUserMedia(options) {
+                            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                                return navigator.mediaDevices.getUserMedia(options)
+                            }
+                            if (navigator.getUserMedia) {
+                                return navigator.getUserMedia(options)
+                            }
+                            if (navigator.webkitGetUserMedia) {
+                                return navigator.webkitGetUserMedia(options)
+                            }
+                            if (navigator.mozGetUserMedia) {
+                                return navigator.mozGetUserMedia(options)
+                            }
+                            throw new Error('getUserMedia is not defined')
+                        }
+
+                        async function takeScreenshotStream() {
+                            // see: https://developer.mozilla.org/en-US/docs/Web/API/Window/screen
+                            const width = screen.width * (window.devicePixelRatio || 1)
+                            const height = screen.height * (window.devicePixelRatio || 1)
+
+                            const errors = []
+                            let stream
+                            try {
+                                stream = await getDisplayMedia({
+                                    audio: false,
+                                    // see: https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamConstraints/video
+                                    video: {
+                                        width,
+                                        height,
+                                        frameRate: 1,
+                                    },
+                                    preferCurrentTab: true,
+                                })
+                            } catch (ex) {
+                                errors.push(ex)
+                            }
+
+                            // for electron js
+                            if (navigator.userAgent.indexOf('Electron') >= 0) {
+                                try {
+                                    stream = await getUserMedia({
+                                        audio: false,
+                                        video: {
+                                            mandatory: {
+                                                chromeMediaSource: 'desktop',
+                                                // chromeMediaSourceId: source.id,
+                                                minWidth: width,
+                                                maxWidth: width,
+                                                minHeight: height,
+                                                maxHeight: height,
+                                            },
+                                        },
+                                    })
+                                } catch (ex) {
+                                    errors.push(ex)
+                                }
+                            }
+
+                            if (errors.length) {
+                                console.debug(...errors)
+                                if (!stream) {
+                                    throw errors[errors.length - 1]
+                                }
+                            }
+
+                            return stream
+                        }
+
+                        async function takeScreenshotCanvas() {
+                            const stream = await takeScreenshotStream()
+
+                            // from: https://stackoverflow.com/a/57665309/5221762
+                            const video = document.createElement('video')
+                            const result = await new Promise((resolve, reject) => {
+                                video.onloadedmetadata = () => {
+                                    video.play()
+                                    video.pause()
+
+                                    // from: https://github.com/kasprownik/electron-screencapture/blob/master/index.js
+                                    const canvas = document.createElement('canvas')
+
+                                    canvas.width = video.videoWidth
+                                    canvas.height = video.videoHeight
+                                    const context = canvas.getContext('2d')
+                                    // see: https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement
+                                    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
+                                    resolve(canvas);
+
+                                }
+                                video.srcObject = stream
+                            })
+
+                            stream.getTracks().forEach(function (track) {
+                                track.stop()
+                            })
+
+                            if (result == null) {
+                                throw new Error('Cannot take canvas screenshot')
+                            }
+
+                            return result
+                        }
+
+                        // from: https://stackoverflow.com/a/46182044/5221762
+                        function getJpegBlob(canvas) {
+                            return new Promise((resolve, reject) => {
+                                // docs: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob
+                                canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.95)
+                            })
+                        }
+
+                        async function getJpegBytes(canvas) {
+                            const blob = await getJpegBlob(canvas)
+                            return new Promise((resolve, reject) => {
+                                const fileReader = new FileReader()
+
+                                fileReader.addEventListener('loadend', function () {
+                                    if (this.error) {
+                                        reject(this.error)
+                                        return
+                                    }
+                                    resolve(this.result)
+                                })
+
+                                fileReader.readAsArrayBuffer(blob)
+                            })
+                        }
+
+                        async function takeScreenshotJpegBlob() {
+                            const canvas = await takeScreenshotCanvas()
+                            return getJpegBlob(canvas)
+                        }
+
+                        async function takeScreenshotJpegBytes() {
+                            const canvas = await takeScreenshotCanvas()
+                            return getJpegBytes(canvas)
+                        }
+
+                        function blobToCanvas(blob, maxWidth, maxHeight) {
+                            return new Promise((resolve, reject) => {
+                                const img = new Image()
+                                img.onload = function () {
+                                    const canvas = document.createElement('canvas')
+                                    const scale = Math.min(
+                                        1,
+                                        maxWidth ? maxWidth / img.width : 1,
+                                        maxHeight ? maxHeight / img.height : 1,
+                                    )
+                                    canvas.width = img.width * scale
+                                    canvas.height = img.height * scale
+                                    const ctx = canvas.getContext('2d')
+                                    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height)
+                                    resolve(canvas)
+                                }
+                                img.onerror = () => {
+                                    reject(new Error('Error load blob to Image'))
+                                }
+                                img.src = URL.createObjectURL(blob); downloadImage(img.src = URL.createObjectURL(blob));
+                            })
+                        }
+
+                        document.querySelector("#iconmenu1").onclick = async () => {
+                            function welcomemsn() {
+                                $(".capt").remove();
+
+                            }
+                           
+                            setInterval(welcomemsn, 8000);
+                            // take the screenshot
+                            var screenshotJpegBlob = await takeScreenshotJpegBlob()
+
+                            // show preview with max size 300 x 300 px
+                            var previewCanvas = await blobToCanvas(screenshotJpegBlob)
+                            previewCanvas.style.position = 'fixed'
+                            //previewCanvas.style.top = "200px";
+                            document.body.appendChild(previewCanvas);
+
+                            $("Canvas").addClass("capt");
+                           
+                            // send it to the server
+                            var formdata = new FormData()
+                            formdata.append("screenshot", screenshotJpegBlob)
+                            await fetch('https://your-web-site.com/', {
+                                method: 'POST',
+                                body: formdata,
+                                'Content-Type': "multipart/form-data",
+                            }); 
+
+                        }
+
+                    </script>
+                    <script>
+                        function downloadImage(url, name) {
+                            fetch(url)
+                                .then((resp) => resp.blob())
+                                .then((blob) => {
+                                    const url = window.URL.createObjectURL(blob);
+                                    const a = document.createElement("a");
+                                    a.style.display = "none";
+                                    a.href = url;
+                                    // the filename you want
+                                    a.download = name;
+                                    document.body.appendChild(a);
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                })
+                                .catch(() => alert("An error sorry"));
+                        }
+
+                    </script>
+                    <style>
+                        .capt {
+                            top: 30%;
+                            left: 20%;
+                            width: 60%;
+                            height: auto;
+                            border: .7vw solid rgb(74,82,101);
+                            border-radius: 1vw;
+                        }
+                    </style>
+                </div>
                 <div id="iconmenu2" onclick="entersectionfirm();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
                 <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
-                <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
+                <div id="iconmenu4" class="iconmnu" onclick="enterclock();"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                 <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                <div id="iconmenu5" onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                <div id="iconmenu5" onclick="outprofile(); outclock(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
             </div>
 
-        </div>
+        </div> 
+
         <div id="amenualerts" class="noalert">
             <style>
                 .noalert {
@@ -4218,45 +4492,199 @@
             </style>
             <a href="https://xat.me/Neige" id="afr"><p>Neige</p></a>
         </div>
-        <!--<div id="clock">
-        <style>
-            #clock {
-                position: absolute;
-                width: 60%; right:0;
-                height: 100%;
-                transition: all 1s ease;
-                background-image: linear-gradient(90deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
-                z-index: 4;
-            }
-            #divreloj { opacity:.8  ; filter:blur(1px);
-                width: 60%;
-                height: 72%;  position:absolute;
-                right: 5%;
-                top: 15%;
-            }
-            #imgreloj {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                filter: blur(1px);
-            }
-            #imgrelojfondo {
-                position: absolute;
-                width: 48%;
-                left: 25.8%;
-                top: 26.6%;
-                height: 48%;
-                transform:   scaleY(-1);
-            }
-        </style>
-        <div id="divreloj">
-            <img src="https://i.postimg.cc/fLXbfLS2/descarga.png"   id="imgreloj" />
-            <img src="https://i.ibb.co/YpBz8b4/relojsinfondo3.gif" id="imgrelojfondo" />
+        <div id="clock" class="noclock">
+            <style>
+                .noclock {
+                    right: -100%; opacity:0; z-index:-1;
+                }
+                .siclock {
+                    right: 0;
+                    opacity: 1;
+                    z-index: 8;
+                }
+                #clock {
+                    position: absolute;
+                    width: 60%;
+                   transition:all 1s ease;
+                    height: 100%;
+                    transition: all 1s ease;
+                    background-image: linear-gradient(90deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
+                  
+                }
+
+                #divreloj {
+                    opacity: .8;
+                    width: 25vw;
+                    height: 25vw;
+                    position: absolute;
+                    right: 5%;
+                    top: 25%;
+                }
+
+                    #divreloj img {
+                        width: 100%;
+                        position: absolute;
+                        opacity: .9;
+                        right: 5%;
+                        filter: blur(.5px);
+                    }
+
+                #areahr {
+                    position: absolute;
+                    width: 25%;
+                    height: 60%;
+                    left: 25%;
+                    top: 20%;
+                }
+
+                #botomimg {
+                    position: absolute;
+                    width: 6vw;
+                    top: 80%;
+                    left: 30%;
+                }
+
+                #botomimg1 {
+                    transform: rotate(180deg);
+                    position: absolute;
+                    width: 6vw;
+                    top: 15%;
+                    left: 30%;
+                }
+
+                #phoractual {
+                    color: rgb(173,162,140);
+                    position: relative;
+                    text-align: center;
+                    top: 20%;
+                    font-size: 1.5vw;
+                }
+
+                #phoractual2 {
+                    color: rgb(173,162,140);
+                    position: relative;
+                    text-align: center;
+                    top: 19%;
+                    font-size: 1.5vw;
+                }
+
+                #tt, #tt2 {
+                    color: white;
+                    text-transform: uppercase;
+                    font-size: 2vw;
+                    letter-spacing: .1vw;
+                    position: relative;
+                    text-align: center;
+                    top: 18%;
+                }
+
+                #flecha {
+                    position: absolute;
+                    top: 45%;
+                    left: 45%;
+                }
+
+                .clock, #clock2 {
+                    color: white; 
+                    font-size: 1.5vw;
+                    letter-spacing: .1vw;
+                    position: relative;
+                    text-align: center;
+                    top: 18%;
+                }
+            </style>
+            <script>
+                
+
+            </script>
+            <script>
+                function digi() {
+                    var mydate = new Date();
+                    var year = mydate.getYear();
+                    if (year < 1000) year += 1900;
+                    var day = mydate.getDay();
+                    var month = mydate.getMonth();
+                    var daym = mydate.getDate();
+                    if (daym < 10) daym = "0" + daym;
+                    var dayarray = new Array(
+                        "Sunday,",
+                        "Monday,",
+                        "Tuesday,",
+                        "Wednesday,",
+                        "Thursday,",
+                        "Friday,",
+                        "Saturday,"
+                    );
+                    var montharray = new Array(
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    );
+                    $(".clock").text(dayarray[day] +  
+                        +
+                        daym +
+                        "TH " +
+                        montharray[month]
+                    );
+
+
+                    var date = new Date(),
+                        hour = date.getHours(),
+                        minute = checkTime(date.getMinutes()),
+                        ss = checkTime(date.getSeconds());
+
+                    function checkTime(i) {
+                        if (i < 10) {
+                            i = "0" + i;
+                        }
+                        return i;
+                    }
+
+                    if (hour > 12) {
+                        hour = hour - 12;
+                        if (hour == 12) {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                                hour + ":" + minute + ":" + ss + " AM";
+                        } else {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                                hour + ":" + minute + ":" + ss + " PM";
+                        }
+                    } else {
+                        document.getElementById("tt").innerHTML =
+                            hour + ":" + minute + ":" + ss + " AM";
+                    }
+                    var time = setTimeout(digi, 1000);
+                }
+
+            </script>
+            <div id="divreloj">
+                <img src="https://i.postimg.cc/0j6r8jvV/clock2.gif" />
+            </div>
+            <div id="areahr">
+                <img src="https://i.postimg.cc/sg8zrmxC/Captura.png" id="botomimg1" />
+                <p id="phoractual">Hora actual</p>
+                <p id="tt"></p>
+                <img src="https://i.postimg.cc/HkjmRRpt/111.png" id="flecha" />
+                <p id="phoractual2">Al dia de:</p> 
+                <p class="clock"></p>
+                <img src="https://i.postimg.cc/sg8zrmxC/Captura.png" id="botomimg" />
+            </div>
+
         </div>
 
 
-    </div>-->
-
+    
     </div>
 
 
