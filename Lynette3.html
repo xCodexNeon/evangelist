@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -244,6 +244,16 @@
             width: 100%;
             position: absolute;
         }
+        #video3 {
+            filter:hue-rotate(120deg);
+            top: 0;
+            transform: scale(2);
+            overflow: hidden;
+            height: 100%;
+            left: 1%;
+            width: 100%;
+            position: absolute;
+        }
 
         #mainintro {
             position: absolute;
@@ -321,6 +331,13 @@
         } function outclock() {
             $("#clock").removeClass("siclock"); $("#clock").addClass("noclock");
         }
+
+        function enterdesi() {
+            $("#designs").removeClass("nodesign"); $("#designs").addClass("sidesign");
+        } function outdesi() {
+            $("#designs").addClass("nodesign"); $("#designs").removeClass("sidesign");
+
+        } 
     </script>
    
     <div id="mainintro" onclick="inizializar()" class="intromain">
@@ -585,6 +602,115 @@
                         audio.play();
                     });
 
+
+                    $("#iconi").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall7").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall8").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall9").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall10").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall11").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall12").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall13").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall14").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall15").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall16").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall17").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall18").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall19").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#wall20").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des7").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des8").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des9").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des10").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des11").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des12").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des13").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#des14").mouseenter(function () {
+                        audio.play();
+                    });
                     $("#btneye2").click(function () {//Cambiar body por main pageeeee
                         audio.play();
                         console.log(audio);
@@ -1429,7 +1555,7 @@
                 <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
                 <div id="iconmenu4" class="iconmnu" onclick="enterclock();"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                 <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                <div id="iconmenu5" onclick="outprofile(); outclock(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                <div id="iconmenu5" onclick="outprofile(); outclock(); closeconfig(); outsectfirm(); outchat(); outssections(); outdesi();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
             </div>
 
         </div> 
@@ -1779,13 +1905,13 @@
             </script>
             <div id="menufriends" class="outfriends">
                 <style>
-                    #menufriends {
+                    #menufriends { overflow:hidden;
                         z-index: 10;
                         border-radius: 1vw;
                         width: 96%;
                         height: 61%;
-                        background-image: url(https://i.postimg.cc/15yrv2VZ/frdsback.jpg);
-                        background-size: cover;
+                        /*  background-image: url(https://i.postimg.cc/15yrv2VZ/frdsback.jpg);
+                        background-size: cover;*/
                         top: 38%;
                         transition: all 1s ease;
                         position: absolute;
@@ -1905,6 +2031,14 @@
                         position: absolute;
                     }
                 </style>
+                <video autoplay="" loop="" muted="" id="video3" src="stars.mp4" type="video/mp4">
+
+                    <script>
+                        $('video').coverVid(1920, 1080);
+                    </script>
+
+
+                </video>
                 <p id="pfrds">Amigos:</p> <img onclick="outfriends();" id="imgbackfrds" src="https://i.postimg.cc/fk4Lg6BQ/back.png" />
 
                 <div id="frd1">
@@ -2030,7 +2164,7 @@
                 </div>
                 <div id="line2">
                     <div id="menu5" onclick="openarchive1(); outchat();" class="menues"><img src="https://i.postimg.cc/tJn5VvWL/5.png" /></div>
-                    <div id="menu6" class="menues"><img src="https://i.postimg.cc/WtR7mm7t/6.png" /></div>
+                    <div id="menu6" onclick="selectedthemex2(); enterdesi(); outprofile();" class="menues"><img src="https://i.postimg.cc/WtR7mm7t/6.png" /></div>
                     <div id="menu7" onclick="openarchive5(); outchat();" class="menues"><img src="https://i.postimg.cc/XNTM1THB/7.png" /></div>
                     <div id="menu8" class="menues"><img src="https://i.postimg.cc/T2yM9R9X/8.png" /></div>
                 </div>
@@ -2041,7 +2175,7 @@
                     <div id="menu12" onclick="openarchive3(); outchat();" class="menues"><img src="https://i.postimg.cc/d0Wp2XZ1/12.png" /></div>
                 </div>
                 <div id="line4">
-                    <a onclick="alertgallery();" id="mn13"><div id="menu13" class="menues"><img src="https://i.postimg.cc/MpmhTXW1/13.png" /></div></a>
+                    <a onclick="selectedthemex2(); enterdesi(); outprofile();" id="mn13"><div id="menu13" class="menues"><img src="https://i.postimg.cc/MpmhTXW1/13.png" /></div></a>
                     <div id="menu14" class="menues"><img src="https://i.postimg.cc/QtHP0bcq/14.png" /></div>
                     <div id="menu15" class="menues"><a href="https://xevangelist.github.io/evangelist/Yuki.html" id="mn15"><img src="https://i.postimg.cc/6qZPNpj2/15.png" /></a></div>
                     <div id="menu16" class="menues"><img src="https://i.postimg.cc/QtwzPTbZ/16.png" /></div>
@@ -2262,7 +2396,7 @@
                 <img src="https://i.postimg.cc/BZhFL0h1/4.png" />
             </div>
             <div id="btnperfil5">
-                <a id="bn5" onclick="alertgallery();"> <img src="https://i.postimg.cc/ZKCd6Mgs/5.png" /></a>
+                <a id="bn5" onclick="selectedthemex2(); enterdesi();"> <img src="https://i.postimg.cc/ZKCd6Mgs/5.png" /></a>
             </div>
             <div id="btnperfil6">
                 <img src="https://i.postimg.cc/8P9r4bgp/6.png" />
@@ -2625,7 +2759,7 @@
                     }
                 </style>
                 <script>
-                    var x = 0;
+                    var x = 0; 
                     function simari() {
                         $("#mfpsi").removeClass("noselect"); $("#mfpsi").addClass("siselect");
                         $("#mfpno").addClass("noselect"); $("#mfpno").removeClass("siselect");
@@ -4683,7 +4817,789 @@
 
         </div>
 
+        <div id="designs" class="nodesign">
+            <video autoplay="" loop="" muted="" id="video2" src="stars.mp4" type="video/mp4">
 
+                <script>
+                    $('video').coverVid(1920, 1080);
+                </script>
+
+
+            </video>
+            <style>
+                #designs {
+                    width: 96%;
+                    left: 4%;
+                    height: 100%;
+                    top: 0;
+                    position: absolute;
+                   
+                }
+
+                #areadesigns {
+                    position: absolute;
+                    width: 35%;
+                    left: 2%;
+                    height: 80%;
+                    top: 10%;
+                    border-top: .1vw solid rgba(74,82,101,.3);
+                    border-bottom: .1vw solid rgba(74,82,101,.3);
+                }
+
+                #imgcog2 {
+                    position: absolute;
+                    width: 4vw;
+                    left: 2%;
+                    top: 2%;
+                }
+
+                #pconfig2 {
+                    position: absolute;
+                    color: rgb(210,188,142);
+                    left: 7%;
+                    top: 1%;
+                    font-size: 1.4vw;
+                }
+
+                #arepics {
+                    position: absolute;
+                    width: 100%;
+                    height: 96%;
+                    top: 2%;
+                    overflow: auto;
+                    
+                }
+                #arewall {
+                    position: absolute;
+                    width: 100%;
+                    height: 96%;
+                    top: 2%;
+                    overflow: auto;
+                   
+                }
+                #barscroll2 {
+                    width: .2vw;
+                    height: 92%;
+                    top: 4%;
+                    border-radius: 1vw;
+                    right: .2vw;
+                    position: absolute;
+                    background: rgba(74,82,101,.2);
+                }
+
+                #arepics::-webkit-scrollbar, #arewall::-webkit-scrollbar {
+                    width: .6vw;
+                    border-radius: .5vw;
+                    background: transparent;
+                }
+
+                #arepics, #arepics {
+                    overflow-x: hidden;
+                }
+
+                    #arepics::-webkit-scrollbar-thumb, #arewall::-webkit-scrollbar-thumb {
+                        border-radius: 1vw;
+                        background: lightgray;
+                        width: .6vw;
+                    }
+                .nosel {
+                    opacity: 0;
+                    z-index: -1;
+                }
+                .sisel {
+                    opacity: 1;
+                    z-index: 1;
+                }
+            </style>
+            <img src="https://i.postimg.cc/vmB6ySnv/Captura.png" id="imgcog2" /><p id="pconfig2">Galería de diseños</p>
+            <img src="https://i.postimg.cc/mDxPHHXX/CLOSE.png" id="btncloseconfig" onclick="closeconfig();" />
+            <div id="areadesigns">
+                <div id="barscroll2">
+                    <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr1" />
+                    <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr2" />
+                </div>
+                <div id="arepics" class="sisel">
+                    <style>
+                        #des1:hover, #des2:hover, #des3:hover, #des4:hover, #des6:hover, #des5:hover, #des7:hover, #des8:hover, #des9:hover, #des10:hover, #des11:hover, #des12:hover,
+                        #des13:hover, #des14:hover,
+                        #wall1:hover, #wall2:hover, #wall3:hover, #wall4:hover, #wall5:hover, #wall6:hover, #wall7:hover, #wall8:hover, #wall9:hover, #wall10:hover,
+                        #wall11:hover, #wall12:hover, #wall13:hover, #wall14:hover, #wall15:hover, #wall16:hover, #wall17:hover, #wall18:hover, #wall19:hover, #wall20:hover{
+                            box-shadow: 0 0 .8vw white;
+                        }
+
+                        #des1 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 2%;
+                            top: 1.5%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des2 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 26%;
+                            top: 1.5%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des3 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 50%;
+                            top: 1.5%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des4 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 74%;
+                            top: 1.5%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des5 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 2%;
+                            top: 19%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des6 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 26%;
+                            top: 19%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des7 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 50%;
+                            top: 19%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des8 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 74%;
+                            top: 19%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des9 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 2%;
+                            top: 37%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des10 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 26%;
+                            top: 37%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des11 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 50%;
+                            top: 37%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des12 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 74%;
+                            top: 37%;
+                            background: Red;
+                            height: 15%;
+                        }
+                        #des13 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 50%;
+                            top: 55%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+                        #des14 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 74%;
+                            top: 55%;
+                            background: Red;
+                            height: 15%;
+                        }
+
+
+                        .imgbacks {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    <div id="des1" onclick="pback1();"><img class="imgbacks" src="https://i.ibb.co/vHgqxWh/vaaaa.png" /></div>
+                    <div id="des2" onclick="pback2();"><img class="imgbacks" src="https://i.postimg.cc/nLS8Jbs2/53254311988-b4749bb55f-o.png" /></div>
+                    <div id="des3" onclick="pback3();"><img class="imgbacks" src="https://i.postimg.cc/V6tKH3Xd/53249274255-ef36ecfafe-o.png" /></div>
+                    <div id="des4" onclick="pback4();"><img class="imgbacks" src="https://i.postimg.cc/s2qnmVQk/53248762241-f16cb0b29d-o.png" /></div>
+                    <div id="des5" onclick="pback5();"><img class="imgbacks" src="https://i.postimg.cc/vmhYxN4x/53131015635-22e3c0ab00-o.png" /></div>
+                    <div id="des6" onclick="pback6();"><img class="imgbacks" src="https://i.postimg.cc/3xgJYR7B/53022751447-f233fd4b51-o.png" /></div>
+                    <div id="des7" onclick="pback7();"><img class="imgbacks" src="https://i.postimg.cc/tgpRTj4H/53023326181-5632378d28-o.png" /></div>
+                    <div id="des8" onclick="pback8();"><img class="imgbacks" src="https://i.postimg.cc/mgx2vMxk/53023719595-90081ca224-o.png" /></div>
+                    <div id="des9" onclick="pback9();"><img class="imgbacks" src="https://i.postimg.cc/hjGCbp05/53023815253-9880298199-o.png" /></div>
+                    <div id="des10" onclick="pback10();"><img class="imgbacks" src="https://i.postimg.cc/DZYxCLjy/53023498844-9887885c2e-o.png" /></div>
+                    <div id="des11" onclick="pback11();"><img class="imgbacks" src="https://i.postimg.cc/jqBb27xb/53023719705-2d69e79444-o.png" /></div>
+                    <div id="des12" onclick="pback12();"><img class="imgbacks" src="https://i.postimg.cc/3Nsnh7Qs/53023815093-698f435262-o.png" /></div>
+                    <div id="des13" onclick="pback13();"><img class="imgbacks" src="https://i.postimg.cc/jjcg7Gyf/53023326566-903c358983-o.png" /></div>
+                    <div id="des14" onclick="pback14();"><img class="imgbacks" src="https://i.postimg.cc/nVXxnkt2/53023326326-fac832c21b-o.png" /></div>
+
+                </div>
+
+                <div id="arewall" class="nosel">
+
+                    <style>
+                        #wall1 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 2%;
+                            top: 1.5%;
+                            height: 25%;
+                        }
+
+                        #wall2 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 28%;
+                            left: 26%;
+                            top: 1.5%;
+                            height: 15%;
+                        }
+
+                        #wall3 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 37%;
+                            left: 56%;
+                            top: 1.5%;
+                            height: 15%;
+                        }
+
+                        #wall4 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 46%;
+                            left: 26%;
+                            top: 19%;
+                            height: 15%;
+                        }
+
+                        #wall5 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 19%;
+                            left: 74%;
+                            top: 19%;
+                            height: 25%;
+                        }
+                        #wall6 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 2%;
+                            top: 29%;
+                            height: 27%;
+                        }
+                        #wall7 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 26%;
+                            top: 36%;
+                            height: 20%;
+                        }
+                        #wall8 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 22%;
+                            left: 50%;
+                            top: 36%;
+                            height: 20%;
+                        }
+                        #wall9 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 19%;
+                            left: 74%;
+                            top: 46%;
+                            height: 25%;
+                        }
+                        #wall10 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 26%;
+                            left: 2%;
+                            top: 58%;
+                            height: 18%;
+                        }
+                        #wall11 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 26%;
+                            left: 30%;
+                            top: 58%;
+                            height: 18%;
+                        }
+                        #wall12 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 14%;
+                            left: 58%;
+                            top: 58%;
+                            height: 18%;
+                        }
+                        #wall13 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 40%;
+                            left: 2%;
+                            top: 78%;
+                            height: 18%;
+                        }
+                        #wall14 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 28%;
+                            left: 44%;
+                            top: 78%;
+                            height: 18%;
+                        }
+                        #wall15 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 19%;
+                            left: 74%;
+                            top: 73%;
+                            height: 23%;
+                        }
+                        #wall16 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 28%;
+                            left: 2%;
+                            top: 98%;
+                            height: 18%;
+                        }
+                        #wall17 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 15%;
+                            left: 32%;
+                            top: 98%;
+                            height: 18%;
+                        }
+                        #wall18 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 44%;
+                            left: 49%;
+                            top: 98%;
+                            height: 18%;
+                        }
+                        #wall19 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 47%;
+                            left: 2%;
+                            top: 118%;
+                            height: 18%;
+                        }
+                        #wall20 {
+                            overflow: hidden;
+                            border-radius: .3vw;
+                            transition: all .5s ease;
+                            position: absolute;
+                            width: 42%;
+                            left: 51%;
+                            top: 118%;
+                            height: 18%;
+                        }
+                        .imgwalls {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+
+                    <div id="wall1" onclick="pwall1();"><img class="imgwalls" src="https://i.postimg.cc/DZnqqgqb/53255194167-b08f1695ef-o.png" /></div>
+                    <div id="wall2" onclick="pwall2();"><img class="imgwalls" src="https://i.postimg.cc/vmR7mMTh/53249095323-a9e890b857-o.png" /></div>
+                    <div id="wall3" onclick="pwall3();"><img class="imgwalls" src="https://i.postimg.cc/wjRcH3q3/53130811744-8078543289-o.png" /></div>
+                    <div id="wall4" onclick="pwall4();"><img class="imgwalls" src="https://i.postimg.cc/kG7fgCjz/53023720025-acde59628d-o.png" /></div>
+                    <div id="wall5" onclick="pwall5();"><img class="imgwalls" src="https://i.postimg.cc/pr0YVF55/53023814963-89018f1291-o.png" /></div>
+                    <div id="wall6" onclick="pwall6();"><img class="imgwalls" src="https://i.postimg.cc/8z7w5tHp/53023326576-d81bd3d587-o.png" /></div>
+                    <div id="wall7" onclick="pwall7();"><img class="imgwalls" src="https://i.postimg.cc/WbWXTQ0Y/53023719805-4563e30f09-o.png" /></div>
+                    <div id="wall8" onclick="pwall8();"><img class="imgwalls" src="https://i.postimg.cc/dVg6TrH8/53023815563-961d26ae05-o.png" /></div>
+                    <div id="wall9" onclick="pwall9();"><img class="imgwalls" src="https://i.postimg.cc/vBttjjQz/53023326161-40c0187247-o.png" /></div>
+                    <div id="wall10" onclick="pwall10();"><img class="imgwalls" src="https://i.postimg.cc/ZnYxhcnh/53023719655-1462f1de4b-o.png" /></div>
+                    <div id="wall11" onclick="pwall11();"><img class="imgwalls" src="https://i.postimg.cc/dQ95S73Y/53022751862-23d7d6d749-o.png" /></div>
+                    <div id="wall12" onclick="pwall12();"><img class="imgwalls" src="https://i.postimg.cc/vmWrgj6s/53247923507-2234593656-o.png" /></div>
+                    <div id="wall13" onclick="pwall13();"><img class="imgwalls" src="https://i.postimg.cc/wvXwzMkD/53023720065-a8b5ab5330-o.png" /></div>
+                    <div id="wall14" onclick="pwall14();"><img class="imgwalls" src="https://i.postimg.cc/sDDTFVGZ/53023498959-38cc55790c-o.png" /></div>
+                    <div id="wall15" onclick="pwall15();"><img class="imgwalls" src="https://i.postimg.cc/R0fR1hy2/53023498739-c19a80f722-o.png" /></div>
+                    <div id="wall16" onclick="pwall16();"><img class="imgwalls" src="https://i.postimg.cc/hPj1ypNL/53023498599-013eb80992-o.png" /></div>
+                    <div id="wall17" onclick="pwall17();"><img class="imgwalls" src="https://i.postimg.cc/jdFQGyrG/53022751762-5f795237a6-o.png" /></div>
+                    <div id="wall18" onclick="pwall18();"><img class="imgwalls" src="https://i.postimg.cc/zBrkx51v/53023326216-0b9a28955b-o.png" /></div>
+                    <div id="wall19" onclick="pwall19();"><img class="imgwalls" src="https://i.postimg.cc/qqQQtFSR/53023498974-6d0a2e966f-o.png" /></div>
+                    <div id="wall20" onclick="pwall20();"><img class="imgwalls" src="https://i.postimg.cc/gc4KHftc/53023498589-a81639f7a3-o.png" /></div>
+                </div>
+
+
+            </div>
+            <div id="filters"  >
+                <script> 
+                    var r = 0;
+                    function selectx1() {
+                        r = 0;
+                    } function selectx2() {
+                        r = 1;
+                    }
+                    function selectedthemex2() {
+                        themex1 = "PCBacks";
+                        themex2 = "Diseños varios"; 
+
+                        if (r == 0) {
+                            $("#pcontentfondo1").text(themex1);
+
+                        }
+                        if (r == 1) {
+                            $("#pcontentfondo1").text(themex2);
+
+                        }
+                        
+                        else {
+
+
+                        }
+
+                    }
+                    function selectedthemex() {
+                        theme1 = "PCBacks";
+                        theme2 = "Diseños varios"; 
+
+                        if (r == 0) {
+                            $("#arepics").addClass("sisel"); $("#arepics").removeClass("nosel"); 
+                            $("#arewall").addClass("nosel"); $("#arewall").removeClass("sisel"); 
+                            $("#contentboxfondo1").removeClass("openmenufondo"); $("#contentboxfondo1").addClass("closemenufondo");
+                            $("#pcontentfondo1").text(themex1);
+
+
+                            $("#pcntbxx1").addClass("selectedtheme");
+                            $("#pcntbxx2").removeClass("selectedtheme"); 
+                            $("#pcntbxx1").removeClass("noselectedtheme");
+                            $("#pcntbxx2").addClass("noselectedtheme"); 
+                        }
+                        if (r == 1) {
+                            $("#arepics").addClass("nosel"); $("#arepics").removeClass("sisel");
+                            $("#arewall").addClass("sisel"); $("#arewall").removeClass("nosel"); 
+                            $("#pcontentfondo1").text(themex2);
+                            $("#contentboxfondo1").removeClass("openmenufondo"); $("#contentboxfondo1").addClass("closemenufondo");
+                            $("#pcntbxx2").addClass("selectedtheme");
+                            $("#pcntbxx1").removeClass("selectedtheme"); 
+                            $("#pcntbxx2").removeClass("noselectedtheme");
+                            $("#pcntbxx1").addClass("noselectedtheme"); 
+                        }
+                         
+                        else {
+
+
+                        }
+
+                    }
+
+                    function openmenufondo1() { $("#contentboxfondo1").addClass("openmenufondo"); $("#contentboxfondo1").removeClass("closemenufondo"); }
+
+                </script>
+                <style>
+                    .nodesign { opacity:0; z-index:-1;
+                    }
+                    .sidesign {
+                        z-index: 9; opacity:1;
+                    }
+                    #pcntbxx1, #pcntbxx2  {
+                        width: 98%;
+                        height: auto;
+                        margin: 0;
+                        border-radius: 1.3vw;
+                        left: 1%;
+                        padding-top: .8vw;
+                        position: relative;
+                        padding-bottom: .8vw;
+                    }
+                    #filters {
+                        position: absolute;
+                        width: 35%;
+                        left: 2%;
+                        top: 92%;
+                        height: 6%;
+                    }
+
+                    #areafilters {
+                        position: absolute;
+                        width: 80%;
+                        left: 10%;
+                        height: 100%;
+                    }
+
+                    #imgfilteback {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                    }
+                    #imbut1 {
+                        height: 100%;
+                        position: absolute;
+                       left:0;
+                    }
+                    #imbut2 {
+                        height: 100%;
+                        position: absolute;
+                        right: 0;
+                    }
+                    #iconi {
+                        position: absolute;
+                        width: 1.5vw;
+                        right: 5%;
+                        top: 40%; animation: iconii 2s infinite;
+                    }
+                    @keyframes iconii{
+                        0% {
+                            top: 42%;
+                        }
+                        50% {
+                            top:32%;
+                        }
+
+                        100% {
+                            top: 42%;
+                        }
+                    }
+                    #pnorm { position:absolute; top:-12%; left:5%; 
+                    }
+                    #contentfondo1 {
+                        position: absolute;
+                        width: 40%;
+                        height: 70%;
+                        text-align: center;
+                        top: 10%;
+                        right: 11%;  
+                    }
+                    #pcontentfondo1 {
+                        color: rgba(74,82,101,1);
+                        margin-top: .5vw;
+                    }
+                    #contentboxfondo1 {
+                        transition: all .5s ease;
+                        overflow: hidden;
+                        color: white;
+                        position: absolute;
+                        width: 37%;
+                        top: -200%;
+                        background: rgb(72,83,101);
+                        right: 0;
+                        border-radius: 1.2vw;
+                        text-align: center;
+                        font-size: 1vw;
+                    }
+                </style> 
+                <img id="imbut1" src="https://i.postimg.cc/CL4GV25R/12.png" />
+                <img id="imbut2" src="https://i.postimg.cc/HksQWt8B/32.png" />
+                <div id="areafilters">
+                    <img id="imgfilteback" src="https://i.postimg.cc/gJqJ6ffR/11.png" />
+                    <p id="pnorm">Ordenar por:</p>
+                    <div id="contentfondo1">
+                        <p id="pcontentfondo1"></p>
+                    </div>
+                    <div id="contentboxfondo1"  class="closemenufondo">
+                        <p id="pcntbxx1" class="selectedtheme" onclick="selectx1(); selectedthemex();">PCBacks</p>
+                        <p id="pcntbxx2" class="noselectedtheme" onclick="selectx2(); selectedthemex();">Diseños varios</p> 
+                    </div>
+                    <img src="https://i.postimg.cc/kgyH28T1/1222.png" id="iconi" onclick="openmenufondo1();" />
+                </div>
+            </div>
+     
+        <div id="fondogrande">
+            <style>
+                #fondogrande { position:absolute; width:55%; height:80%; right:5%; top:10%;  
+                }
+                #fondoselect {  
+                    position: absolute;
+                     min-width: 80%;
+                     min-height: 80%; 
+                    right: 10%;
+                    top: 10%;
+                }
+                /*.pcback1 {
+                    background-image: url(https://i.ibb.co/vHgqxWh/vaaaa.png);
+                    background-size: contain; background-repeat:no-repeat;
+                }*/
+                #imgfondoselect {
+                    max-width: 100%; max-height:120%;
+                    position: absolute;
+                    border-radius: .3vw;
+                    box-shadow: 0 0 .8vw white;
+                }
+            </style>
+            <script>
+                function pback1() { $("#imgfondoselect").attr("src", "https://i.ibb.co/vHgqxWh/vaaaa.png"); }
+                function pback2() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/nLS8Jbs2/53254311988-b4749bb55f-o.png"); }
+                function pback3() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/V6tKH3Xd/53249274255-ef36ecfafe-o.png"); }
+                function pback4() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/s2qnmVQk/53248762241-f16cb0b29d-o.png"); }
+                function pback5() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/vmhYxN4x/53131015635-22e3c0ab00-o.png"); }
+                function pback6() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/3xgJYR7B/53022751447-f233fd4b51-o.png"); }
+                function pback7() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/tgpRTj4H/53023326181-5632378d28-o.png"); }
+                function pback8() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/mgx2vMxk/53023719595-90081ca224-o.png"); }
+                function pback9() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/hjGCbp05/53023815253-9880298199-o.png"); }
+                function pback10() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/DZYxCLjy/53023498844-9887885c2e-o.png"); }
+                function pback11() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/jqBb27xb/53023719705-2d69e79444-o.png"); }
+                function pback12() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/3Nsnh7Qs/53023815093-698f435262-o.png"); }
+                function pback13() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/jjcg7Gyf/53023326566-903c358983-o.png"); }
+                function pback14() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/nVXxnkt2/53023326326-fac832c21b-o.png"); }
+
+
+                function pwall1() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/DZnqqgqb/53255194167-b08f1695ef-o.png"); }
+                function pwall2() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/vmR7mMTh/53249095323-a9e890b857-o.png"); }
+                function pwall3() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/wjRcH3q3/53130811744-8078543289-o.png"); }
+                function pwall4() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/kG7fgCjz/53023720025-acde59628d-o.png"); }
+                function pwall5() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/pr0YVF55/53023814963-89018f1291-o.png"); }
+                function pwall6() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/8z7w5tHp/53023326576-d81bd3d587-o.png"); }
+                function pwall7() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/WbWXTQ0Y/53023719805-4563e30f09-o.png"); }
+                function pwall8() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/dVg6TrH8/53023815563-961d26ae05-o.png"); }
+                function pwall9() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/vBttjjQz/53023326161-40c0187247-o.png"); }
+                function pwall10() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/ZnYxhcnh/53023719655-1462f1de4b-o.png"); }
+                function pwall11() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/dQ95S73Y/53022751862-23d7d6d749-o.png"); }
+                function pwall12() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/vmWrgj6s/53247923507-2234593656-o.png"); }
+                function pwall13() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/wvXwzMkD/53023720065-a8b5ab5330-o.png"); }
+                function pwall14() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/sDDTFVGZ/53023498959-38cc55790c-o.png"); }
+                function pwall15() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/R0fR1hy2/53023498739-c19a80f722-o.png"); }
+                function pwall16() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/hPj1ypNL/53023498599-013eb80992-o.png"); }
+                function pwall17() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/jdFQGyrG/53022751762-5f795237a6-o.png"); }
+                function pwall18() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/zBrkx51v/53023326216-0b9a28955b-o.png"); }
+                function pwall19() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/qqQQtFSR/53023498974-6d0a2e966f-o.png"); }
+                function pwall20() { $("#imgfondoselect").attr("src", "https://i.postimg.cc/gc4KHftc/53023498589-a81639f7a3-o.png"); }
+
+            </script>
+            <div id="fondoselect" class="pcback1" >
+                <style>
+                 
+                </style>
+                <img   id="imgfondoselect" />
+             
+            </div>
+        </div>
+        
+        </div>
     
     </div>
 
