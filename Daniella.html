@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="covervid.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script>
+
+
+</head>
+
+<body>
+    
+
+    <header>
+      
+    </header>
+
+    <div id="mainscreen">
+        <video autoplay="" loop="" muted="" id="video1" src="coraline.mp4" type="video/mp4">
+            <script>
+                $('video').coverVid(1920, 1080);
+            </script>
+        </video>
+        <div id="contentmenu">
+            <div id="imglogo1">
+                <img id="imglaika" src="Laika.svg" />
+            </div>
+            <div id="imglogo2">
+                <img id="imglog" src="logo.png" />
+            </div>
+            <div id="menu1">
+                <a href="#imglogo">  <p id="Pmenus">Inicio</p></a>
+            </div>
+            <div id="menu2">
+                <a href="https://www.laika.com/our-films/coraline">   <p id="Pmenus">Página oficial</p></a>
+            </div>
+            <div id="menu3">
+                <a href="https://www.pinterest.com.mx/laikastudios/coraline/">  <p id="Pmenus">Galería</p></a>
+            </div>
+            <div id="menu4">
+                <a href="#acerca">   <p id="Pmenus">Acerca de</p></a>
+            </div>
+
+        </div>
+        <div id="barfoot">
+
+        </div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display&display=swap');
+            @font-face {
+                font-family: CoralineFont;
+                src: url(Coraline.ttf);
+            }
+            
+            body { scroll-behavior:smooth;
+                font-family: 'Wix Madefor Display', sans-serif;
+               overflow:hidden;
+            }
+            html {
+                scroll-behavior: smooth;
+                overflow: hidden;
+            }
+            #imglogo1 { width:14%; height:60%; left:15%;  position:absolute; top:10%; border-right:.1vw solid gray;
+            }
+            #imglogo2 {
+                width: 16%;
+                height: 60%;
+                left: 29%;
+                position: absolute;
+                top: 10%;
+                border-right: .1vw solid gray;
+            }
+            #menu1 {
+                width: 7%;
+                height: 30%;
+                left: 49%;
+                position: absolute;
+                top: 20%;
+                border-right: .1vw solid gray;
+            }
+            #menu2 {
+                width: 11%;
+                height: 30%;
+                left: 59%;
+                position: absolute;
+                top: 20%;
+                border-right: .1vw solid gray;
+            }
+            #menu3 {
+                width: 8%;
+                height: 30%;
+                left: 73%;
+                position: absolute;
+                top: 20%;
+                border-right: .1vw solid gray;
+            }
+            #menu4 {
+                width: 9%;
+                height: 30%;
+                left: 84%;
+                position: absolute;
+                top: 20%;
+            }
+            #imglaika { position:absolute; height:110%; left:20%; filter:invert(100%) grayscale(100%); top:-10%;
+            }
+            #imglog {
+                position: absolute;
+                height: 100%;
+                left: 10%;
+                filter: invert(100%) grayscale(100%);
+                top:  0%;
+            }
+            #Pmenus:hover  { color:#f3cc6d;
+            }
+            #Pmenus {
+                transition:all .5s ease;
+                color: white;
+                font-size: .6vw;
+                letter-spacing: .2vw;
+                font-family: CoralineFont;
+            }
+            #barfoot { position:absolute; width:100%; background:black; bottom:0; height:4%;
+            }
+            #barscroll {
+                width: .2vw;
+                height: 92%;
+                top: 4%;
+                right: 1%;
+                position: absolute;
+                background: rgba(74,82,101,.2);
+            }
+
+            #scr1 {
+                position: absolute;
+                width: 1vw;
+                top: -1vw;
+                right: -.4vw;
+            }
+
+            #scr2 {
+                transform: rotate(180deg);
+                position: absolute;
+                width: 1vw;
+                bottom: -1vw;
+                right: -.42vw;
+            }
+
+            #mainscreen {
+                overflow: hidden;
+                scroll-behavior: smooth;
+                 
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+
+            #content {
+              
+                position: fixed;
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+                overflow: auto;
+                /*position: absolute;*/
+                width: 99.2%;
+                height: 85%;
+                top: 11%;
+                left: 0;
+            }
+
+                #content::-webkit-scrollbar {
+                    width: .6vw;
+                    border-radius: .5vw;
+                    background: transparent;
+                }
+
+
+
+                #content::-webkit-scrollbar-thumb {
+                    border-radius: 1vw;
+                    background: rgba(74,82,101 );
+                    width: .6vw;
+                }
+
+            #contentmenu {
+                width: 100%;
+                height: 15%;
+                top: 0;
+                left: 0;
+                position: absolute;
+                background-image: linear-gradient(0deg,transparent 0%,rgba(0,0,0,.1) 5%,rgba(0,0,0,.7) 30%, rgba(0,0,0,1) 100%);
+            }
+            #imglogo{
+                position:absolute; top:40%; width:50%; left:25%;  
+            }
+           
+             
+        </style>
+        <div id="content">
+
+            <img src="logo.webp" id="imglogo" />
+
+            <div id="info">
+                <style>
+                    #info {
+                        width: 90%;
+                        height: 70%;
+                        position: absolute;
+                        top: 120%;
+                        /* background-image: url(Cor_news_bkg.jpg);*/
+                        left: 5%;
+                    }
+
+                    #div1 {
+                        width: 32%;
+                        height: 100%;
+                        /*background: black;*/
+                        left: 0;
+                        position: absolute;
+                        background-image: url(image_1440x900_Cor_triva_2.png);
+                        background-size: contain;
+                        background-repeat: no-repeat; text-align:center;
+                    }
+
+                    #div2 {
+                        width: 32%;
+                        left: 34%;
+                        height: 100%;
+                        background-image: url(Cor2.png);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        text-align: center;
+                    }
+
+                    #div3 {
+                        left: 68%;
+                        width: 32%;
+                        height: 100%;
+                        background-image: url(image_1440x900_Cor_triva_3.png);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        position: absolute;
+                    }
+
+                    #titleinfo, #titleclips {
+                        color: white;
+                        font-size: 2vw;
+                        letter-spacing: .2vw;
+                        font-family: CoralineFont;
+                    }
+                    #pdatos {
+                        color: white; margin-top:20%;
+                        font-size: 1vw;
+                        letter-spacing: .2vw;
+                        font-family: CoralineFont; top:.5vw;  
+                    }
+                    #datosp { width:84%; color:#f3cc6d; margin-left:8%;
+                    }
+                        #datosp span { font-weight:bold;
+                        }
+                </style>
+                <p id="titleinfo">Informacion:</p>
+                <div id="div1">
+                    <p id="pdatos">Datos:</p>
+                    <p id="datosp">
+                        Coraline y la puerta secreta es una película de animación stop motion estadounidense escrita y dirigida por Henry Selick, basada en la novela homónima de Neil Gaiman y estrenada por primera vez en salas de cine el 6 de febrero de 2009
+                        Coraline recibió la aclamación universal por la crítica, e hizo 16.850.000 dólares durante el primer fin de semana de estreno, ocupando el tercer lugar en la taquilla. En septiembre de 2009, la película había recaudado más de $124 millones a nivel mundial.
+                    </p>
+                </div>
+                <div id="div2">
+                    <p id="pdatos" style="filter:invert(100%);">Argumento:</p>
+                    <p id="datosp" style="filter:invert(50%);">
+                        Coraline gira en torno a una niña llamada Coraline Jones que, con tan solo 11 años de edad, sueña con vivir miles de experiencias.
+
+                        La pequeña acaba de mudarse junto a sus padres a Oregón. Según pasan los días, no puede evitar echar en falta a todos los amigos que ha dejado en Michigan. Además, desde que llegaron al nuevo vecindario, Caroline siente que su familia está cada vez más ocupada 
+                        y le prestan menos atención.  
+                    </p>
+                </div>
+                <div id="div3" style="line-height:2vw;">
+                    <p id="pdatos" style="text-align: center;">Personajes:</p>
+                    <p id="datosp">
+                        <span>☉ Coraline Jones:</span> Protagonista<br />
+                        <span>☉ Mel Jones:</span> Madre<br />
+                        <span>☉ Charlie Jones:</span> Padre<br />
+                        <span>☉ El Gato:</span> principal guía y ayudante<br />
+                        <span>☉ La Otra Madre:</span> Antagonista<br />
+                        <span>☉ El Otro Padre:</span> Creación de la otra madre<br />
+                        <span>☉ Wybie Lovat::</span> Compañero<br />
+                    </p>
+                </div>
+            </div>
+            <div id="trailers">
+                <style>
+                    #trailers {
+                        width: 90%;
+                        height: 90%;
+                        position: absolute;
+                        top: 230%;  
+                        /* background-image: url(Cor_news_bkg.jpg);*/
+                        left: 5%;
+                    }
+                    #trailervid { border:.5vw solid rgba(128,76,142,.7); border-radius:.5vw; 
+                    }
+                    #detrasvid{
+                        border: .5vw solid rgba(128,76,142,.7);
+                        border-radius: .5vw;
+                         position:absolute; right:0; top:21%;
+                    }
+                   
+
+                    #titleinfo {
+                        color: white;
+                        font-size: 2vw;
+                        letter-spacing: .2vw;
+                        font-family: CoralineFont;
+                    }
+                    #trailerinfo {
+                        color: white;
+                        font-size: 1vw;
+                        letter-spacing: .2vw;
+                        font-family: CoralineFont;
+                    }
+                    #trailerinfo2 { position:absolute; right:15%; top:84%;
+                        color: white;
+                        font-size: 1vw;
+                        letter-spacing: .2vw;
+                        font-family: CoralineFont;
+                    }
+                </style>
+                <p id="titleclips">Trailers y clips:</p>
+                <iframe id="trailervid" width="560" height="315" src="https://www.youtube.com/embed/rvPYIBM3RN4?si=En65S1lTacrTwRxv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p id="trailerinfo">Coraline | Trailer oficial</p>
+                <iframe id="detrasvid" width="560" height="315" src="https://www.youtube.com/embed/mx3uvEeEhCE?si=JAq_vEK7wH1Jg0Nz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p id="trailerinfo2">Coraline | Detrás de cámaras</p>
+            </div>
+            <div id="acerca">
+
+                <style>
+                    #acerca {
+                        width: 100%;
+                        height: 20%;
+                        top: 380%;
+                        position: absolute;
+                    }
+
+                    #footer {
+                        width: 60%;
+                        height: 100%;
+                        position: absolute;
+                        background: black;
+                    }
+
+                    #barimg {
+                        position: absolute;
+                        height: 100%;
+                        width: 6%;
+                        left: 60%;
+                    }
+
+                    #logostudio {
+                        position: absolute;
+                        height: 80%;
+                        left: 5%;
+                        top: 20%;
+                        border-right: .1vw solid gray;
+                    }
+
+                    #pabout {
+                        position: absolute;
+                        color: gray;
+                        letter-spacing: .2vw;
+                        font-size: .8vw;
+                        left: 18%;
+                        top: 20%;
+                        line-height: 1.7vw;
+                    }
+
+                    #pabout1 {
+                        position: absolute;
+                        color: gray;
+                        letter-spacing: .2vw;
+                        font-size: .8vw;
+                        left: 65%;
+                        top: 50%;
+                        line-height: 1.7vw;
+                    }
+                    #pabout2 {
+                        position: absolute;
+                        color: gray;
+                        letter-spacing: .2vw;
+                        font-size: .8vw;
+                        left: 67%;
+                        top: 70%;
+                        line-height: 1.7vw;
+                    }
+                </style>
+                <img src="bar.png" id="barimg" />
+                <div id="footer">
+                    <img src="images.png" id="logostudio" />
+                    <p id="pabout">
+                        ☉Una pagina web desarrollada por [Nombre de alumna]<br />
+                        ☉[Nombre de clase] | [periodo] | [firma]<br />
+                        ☉[fecha del día]
+
+                    </p>
+
+                </div> <p id="pabout1">
+                    ☉Laika Studios© | Coraline®
+
+                </p>
+                       <p id="pabout2">
+                           ☉Todos los derechos reservados
+
+                       </p>
+            </div>
+
+        </div>
+        <div id="barscroll">
+            <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr1" />
+            <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr2" />
+        </div>
+        <div id="cubemenus">
+            <img src="menu.png" id="linmenu" />
+            <style>
+                #linmenu { position:absolute; width:3vw; height:3vw; left:1vw; top:1vw; filter:invert(100%);
+                }
+                #cubemenus {
+                    width: 5vw;
+                    height: 5vw;
+                    background: #171717;
+                    position: fixed;
+                    top: 2%;
+                    left: 1%;
+                }
+
+                #p1, #p2, #p3, #p4 {
+                    color: white;
+                    font-size: .9vw;
+                    letter-spacing: .2vw; position:absolute;
+                    width: 200%; opacity:0; top:50%; transition:all 1s ease;
+                }
+                #cubemenus:hover #p1 {
+                    top: 90%; opacity:1; 
+                }
+                #cubemenus:hover #p2 {
+                    top: 120%;
+                     
+                    opacity: 1;
+                }
+                #cubemenus:hover #p3 {
+                    top: 150%;
+                    opacity: 1;
+                }
+                #cubemenus:hover #p4 {
+                    top: 180%;
+                    opacity: 1;
+                }
+                #p1:hover, #p2:hover, #p3:hover, #p4:hover {
+                    color: #f18080;
+                }
+                #p1 {
+                }
+                #p2 {
+                    transition-delay: .1s;
+                }
+                #p3 {
+                   
+                    transition-delay: .2s;
+                }
+                #p4 { 
+                    transition-delay: .3s;
+                }
+                a {
+                    text-decoration: none;
+                }
+            </style>
+
+            <a href="#info"><p id="p1">☉ Información</p></a>
+            <a href="https://es.wikipedia.org/wiki/Coraline_(pel%C3%ADcula)"><p id="p2">☉ Wiki </p></a>
+            <a href="#trailers"><p id="p3">☉ Clips </p></a>
+            <a href="#acerca"><p id="p4">☉ Acerca de</p></a>
+        </div>
+    </div>
+
+</body>
+</html>
