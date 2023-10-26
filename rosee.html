@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +43,10 @@
             animation: moveleft 3s 1;
             animation-fill-mode: forwards;
         }
-
+        .mainright {
+            animation: moveright 3s 1;
+            animation-fill-mode: forwards;
+        }
         @-webkit-keyframes moveleft {
             0% {
                 left: 0%;
@@ -51,6 +54,15 @@
 
             100% {
                 left: -101%;
+            }
+        }
+        @-webkit-keyframes moveright {
+            0% {
+                left: -101%;
+            }
+
+            100% {
+                left: 0%;
             }
         }
 
@@ -65,29 +77,56 @@
         }
     </style>
 
-    <script>
+    <script> 
+
+        function activatescroll() {
+            
+            $('#scrollactivate1').scroll(function () {
+                if ($(this).scrollTop() == 1) {
+                    $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
+                    $("#main").removeClass("mainright");
+                    $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
+                    $("#buton2").removeClass("noselected"); $("#buton2").addClass("selected");
+                }
+            });
+          
+        }
+ 
+
+        function enterfirst() {
+            $("#buton1").removeClass("noselected"); $("#buton1").addClass("selected");
+            $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
+            $("#main").removeClass("mainleft"); $("#main").addClass("mainright");
+            
+        } 
         function entersecond() {
+            $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
+            $("#buton2").removeClass("noselected"); $("#buton2").addClass("selected");
             $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
+            $("#main").removeClass("mainright");  
+
         } function outprofile() {
             $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+
         }
+       
     </script>
 
 
 </head>
-<body>
+<body onclick="activatescroll(); activatescroll2();">
 
     <div id="main" >
 
         <div id="butonssections">
             <style>
-                #butonssections {
+                #butonssections { 
                     position: fixed; text-align:center;
                     width: 1vw;
                     height: 15%; 
                     right: 1%;
                     top: 30%;
-                    z-index: 9999999999;
+                    z-index: 99999999999999;
                 }
                 #buton1, #buton2, #buton3, #buton4, #buton5 {   border-radius:50%; border:.1vw solid #171717; position:relative; margin-top:0; margin-bottom:.5vw;  filter:blur(1px);
                 }
@@ -99,7 +138,7 @@
                     background: transparent;
                 }
             </style>
-            <p id="buton1" class="selected">
+            <p id="buton1" class="selected" onclick="enterfirst();">
 
             </p>
             <p id="buton2" class="noselected" onclick="entersecond();">
@@ -117,12 +156,47 @@
         </div>
 
         <div id="mainpage" >
+            <div id="scrollactivate1">
+                <style>
+                    #scrollactivate1 {
+                        transform: rotate(180deg);
+                        opacity: 0;
+                        position: absolute;
+                        width: 90%;
+                        height: 100%;
+                        background: red;
+                        overflow: auto;
+                        z-index: 99999999999;
+                    }
+                    #backlinefont { 
+                        height: 30%;
+                        width: 40%;
+                        transform: rotate(-25deg);
+                        position: absolute;
+                        right: -20%;
+                        top: 71.4%;
+                        overflow: hidden;
+                    }
+                    #bkrel {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png); opacity:.1;
+                    }
+                </style>
+                
+                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+            </div>
+            <div id="backlinefont" class="linerose"><div id="bkrel"></div>
+
+</div>
             <div id="backrelieve">
-                <img src="https://i.postimg.cc/3JkxpyLg/halftone-background-7.png" />
+                <img src="https://i.postimg.cc/B61wJ1TF/halftone-background-7.png" />
             </div>
             <!--<img id="loggany" src="https://i.postimg.cc/T3P8rHf1/rose.png" />-->
             <div id="divi">
-                <img id="loggan" src="https://i.postimg.cc/T3P8rHf1/rose.png    " />
+                <img id="loggan" src="https://i.postimg.cc/yx4pxYjb/rose.png" />
 
                 <style>
                     #backrelieve {
@@ -132,14 +206,13 @@
                         height: 100%;
                         top: 0;
                         z-index: 11;
-                        opacity: .7;
+                        opacity: .6;
                     }
 
                         #backrelieve img {
                             position: absolute;
                             width: 100%;
-                            height: 100%;
-                            filter: invert(80%);
+                            height: 100%; 
                         }
 
                     #mainpage {
@@ -148,14 +221,14 @@
                         height: 100%;
                         left: 0;
                         top: 0;
-                        background: #C8B0D7;
+                        background: white;
                     }
 
                     #divi {
                         width: 120%;
                         height: 120%;
                         overflow: hidden;
-                        background: #C8B0D7;
+                        background: white;
                         transform: rotate(25deg);
                         left: -45%;
                         top: -57%;
@@ -301,6 +374,7 @@
 
         </div>
         <div id="secondpage" class="linerose">
+           
             <div id="texture"></div>
 
             <style>
@@ -311,9 +385,9 @@
                     width: 100%;
                     height: 101%;
                     top: -1%;
-                    /**/ /**/ /*left:100%;*/
+                    left: 100%;
                     z-index: 9999;
-                    left: 0;
+                    /*left: 0;*/
                 }
 
                 .linerose {
@@ -326,6 +400,10 @@
 
                 .linezhon {
                     background: rgb(188,140,70);
+                }
+
+                .linelenin {
+                    background: #03a556;
                 }
 
                 #fontdiv {
@@ -784,6 +862,126 @@
         <img src="https://i.postimg.cc/vmDf4LWW/diamons.png" id="w3" />
         <img src="https://i.postimg.cc/6qVGkHXN/wish1.png" id="l1" />-->
             </div>
+            <div id="contentlenin" class="nofriend">
+                <style>
+                    #leninimg1 {
+                        top: -5%;
+                        left: 25%;
+                        position: absolute;
+                        width: 45%;
+                        /*transform: scaleX(-1);*/
+                    }
+
+                    #xw1 {
+                        position: absolute;
+                        width: 25%;
+                        top: 60%;
+                        left: 20%;
+                        /*transform: scaleX(-1);*/
+                    }
+
+                    #xw2 {
+                        position: absolute;
+                        width: 8%;
+                        top: 40%;
+                        left: 20%;
+                        transform: scaleX(-1);
+                        animation: animaw2 3s infinite;
+                    }
+
+                    #xw3 {
+                        position: absolute;
+                        width: 6%;
+                        top: 40%;
+                        left: 68%;
+                        animation: animaw4 2s infinite;
+                        transform: scaleX(-1);
+                    }
+
+                    #xl1 {
+                        position: absolute;
+                        width: 15%;
+                        top: 40%;
+                        left: 65%;
+                        /*transform: scaleX(-1);*/
+                        /*animation: animaw2 3s infinite; animation-delay:.7s;*/
+                    }
+
+                    #pregrose {
+                        left: 75%;
+                        line-height: 5vw;
+                        position: absolute;
+                        opacity: .7;
+                        font-size: 5vw;
+                        color: #2f2f2f;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #pregrose2 {
+                        left: 83%;
+                        line-height: 5vw;
+                        position: absolute;
+                        opacity: .7;
+                        font-size: 5vw;
+                        color: #2f2f2f;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #contentlenin {
+                        width: 65%;
+                        height: 100%;
+                        position: absolute;
+                        left: 8%;
+                    }
+
+                    #rossub {
+                        left: 89%;
+                        font-weight: bold;
+                        line-height: 1.5vw;
+                        position: absolute;
+                        opacity: .8;
+                        top: 10%;
+                        font-size: .7vw;
+                        color: #2f2f2f;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #rossub2 {
+                        left: 90.5%;
+                        font-weight: bold;
+                        line-height: 1.5vw;
+                        position: absolute;
+                        opacity: .8;
+                        top: 10%;
+                        font-size: .7vw;
+                        color: #2f2f2f;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #rossub3 {
+                        left: 92%;
+                        font-weight: bold;
+                        line-height: .8vw;
+                        position: absolute;
+                        opacity: .7;
+                        top: 11%;
+                        font-size: .5vw;
+                        color: gray;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+                </style>
+                <p id="pregrose">列<br />宁</p>
+                <p id="pregrose2"> L<br />E<br />N<br />I<br />N</p>
+                <p id="rossub">无<br />论<br />你<br />走<br />到<br />哪<br />里<br />都<br />跟<br />随<br />玫<br />瑰</p>
+                <p id="rossub2">愿<br />上<br />帝<br />指<br />引<br />你</p>
+                <p id="rossub3">莱<br />内<br />特 <br />1<br />5<br />1<br />5<br />3<br />0<br />2<br />5<br />2<br />0</p>
+                <img src="https://i.postimg.cc/Dz8jN5qP/tighnari-genshin-impact-character-render-by-deg5270-dfbypqf-414w-2x.png" id="leninimg1" />
+                <img src="https://i.postimg.cc/x1spgBbd/x1.png" id="xw1" />
+                <img src="https://i.postimg.cc/kXvpR2JK/3x.png" id="xw2" />
+                <img src="https://i.postimg.cc/t4Rm39Jf/4x.png" id="xw3" />
+                <img src="https://i.postimg.cc/jdb1jHbR/2x.png" id="xl1" />
+            </div>
+
             <div id="fontdiv">
                 <img src="https://i.postimg.cc/mkm6brbV/1.png" id="idbackfontimg" />
             </div>
@@ -1331,12 +1529,14 @@
                             position: relative;
                             top: -.3vw;
                         }
+
                     #ptitfrd2 {
                         position: absolute;
-                        width: 19.5%; background:#2f2f2f;
+                        width: 19.5%;
+                        background: #2f2f2f;
                         left: 66%;
                         top: 82%;
-                        height: 4%; 
+                        height: 4%;
                         text-align: center;
                     }
 
@@ -1344,9 +1544,11 @@
                             font-size: .8vw;
                             letter-spacing: .5vw;
                             font-weight: bold;
-                            position: relative; color:white;
+                            position: relative;
+                            color: white;
                             top: -.5vw;
                         }
+
                     #selectfrd {
                         width: 22%;
                         height: 18%;
@@ -1379,6 +1581,17 @@
                         left: 20%;
                         height: 100%;
                         border-left: .1vw solid #2f2f2f;
+                    }
+
+                    .selectedfriend2 {
+                        text-align: center;
+                        background: #03a556;
+                        width: 13%;
+                        height: 80%;
+                        left: 23.5%;
+                        top: 10%;
+                        position: absolute;
+                        border-radius: .3vw;
                     }
 
                     .noselectedfriend3 {
@@ -1484,6 +1697,14 @@
                         $("#secondpage").addClass("linetao");
                         $("#secondpage").removeClass("linerose");
                         $("#secondpage").removeClass("linezhon");
+                        $("#secondpage").removeClass("linelenin");
+                        $("#backlinefont").addClass("linetao");
+                        $("#backlinefont").removeClass("linerose");
+                        $("#backlinefont").removeClass("linezhon");
+                        $("#backlinefont").removeClass("linelenin");
+
+
+                       
 
                         $("#boxfires").addClass("sifires");
                         $("#boxfires").removeClass("nofires");
@@ -1496,11 +1717,19 @@
                         $("#contenttao").removeClass("nofriend");
                         $("#contentganyu").addClass("nofriend");
                         $("#contentganyu").removeClass("sifriend");
+                        $("#contentlenin").addClass("nofriend");
+                        $("#contentlenin").removeClass("sifriend");
                     }
                     function selectzhon() {
                         $("#secondpage").addClass("linezhon");
                         $("#secondpage").removeClass("linetao");
                         $("#secondpage").removeClass("linerose");
+                        $("#secondpage").removeClass("linelenin");
+                        $("#backlinefont").addClass("linezhon");
+                        $("#backlinefont").removeClass("linerose");
+                        $("#backlinefont").removeClass("linetao");
+                        $("#backlinefont").removeClass("linelenin");
+
 
                         $("#boxfires").addClass("nofires");
                         $("#boxfires").removeClass("sifires");
@@ -1513,11 +1742,18 @@
                         $("#contentzhon").removeClass("nofriend");
                         $("#contentganyu").addClass("nofriend");
                         $("#contentganyu").removeClass("sifriend");
+                        $("#contentlenin").addClass("nofriend");
+                        $("#contentlenin").removeClass("sifriend");
                     }
                     function selectrose() {
                         $("#secondpage").addClass("linerose");
                         $("#secondpage").removeClass("linetao");
                         $("#secondpage").removeClass("linezhon");
+                        $("#secondpage").removeClass("linelenin");
+                        $("#backlinefont").addClass("linerose");
+                        $("#backlinefont").removeClass("linetao");
+                        $("#backlinefont").removeClass("linezhon");
+                        $("#backlinefont").removeClass("linelenin");
 
                         $("#boxfires").addClass("nofires");
                         $("#boxfires").removeClass("sifires");
@@ -1530,8 +1766,34 @@
                         $("#contentzhon").removeClass("sifriend");
                         $("#contentganyu").addClass("sifriend");
                         $("#contentganyu").removeClass("nofriend");
+                        $("#contentlenin").addClass("nofriend");
+                        $("#contentlenin").removeClass("sifriend");
                     }
+                    function selectlenin() {
+                        $("#secondpage").addClass("linelenin");
+                        $("#secondpage").removeClass("linetao");
+                        $("#secondpage").removeClass("linezhon");
+                        $("#secondpage").removeClass("linerose");
+                        $("#backlinefont").addClass("linelenin");
+                        $("#backlinefont").removeClass("linerose");
+                        $("#backlinefont").removeClass("linezhon");
+                        $("#backlinefont").removeClass("linetao");
 
+
+                        $("#boxfires").addClass("nofires");
+                        $("#boxfires").removeClass("sifires");
+                        $("#mainau").addClass("nofires");
+                        $("#mainau").removeClass("sifires");
+
+                        $("#contenttao").addClass("nofriend");
+                        $("#contenttao").removeClass("sifriend");
+                        $("#contentzhon").addClass("nofriend");
+                        $("#contentzhon").removeClass("sifriend");
+                        $("#contentganyu").addClass("nofriend");
+                        $("#contentganyu").removeClass("sifriend");
+                        $("#contentlenin").addClass("sifriend");
+                        $("#contentlenin").removeClass("nofriend");
+                    }
                     function selectfrd5() {
                         $("#frd5").addClass("selectedfriend5"); $("#frd5").removeClass("noselectedfriend5");
                         $("#japname5").addClass("nameselected");
@@ -1575,6 +1837,20 @@
                         $("#japname1").removeClass("nameselected");
 
                     }
+                    function selectfrd2() {
+                        $("#frd2").addClass("selectedfriend2"); $("#frd2").removeClass("noselectedfriend2");
+                        $("#japname2").addClass("nameselected");
+
+                        $("#frd5").addClass("noselectedfriend5"); $("#frd5").removeClass("selectedfriend5");
+                        $("#japname5").removeClass("nameselected");
+                        $("#frd4").addClass("noselectedfriend4"); $("#frd4").removeClass("selectedfriend4");
+                        $("#japname4").removeClass("nameselected");
+                        $("#frd3").addClass("noselectedfriend3"); $("#frd3").removeClass("selectedfriend3");
+                        $("#japname3").removeClass("nameselected");
+                        $("#frd1").addClass("noselectedfriend1"); $("#frd1").removeClass("selectedfriend1");
+                        $("#japname1").removeClass("nameselected");
+
+                    }
                 </script>
                 <div id="aselectfrd">
                     <div id="frd11" class="noselectedfriend1">
@@ -1601,8 +1877,8 @@
                         <p id="japname1">灰<br />雪</p>
                     </div>
 
-                    <div id="frd2" class="noselectedfriend2">
-                        <p id="japname2">灰<br />雪</p>
+                    <div id="frd2" class="noselectedfriend2" onclick="selectlenin(); selectfrd2();">
+                        <p id="japname2">列<br />宁</p>
                     </div>
 
                     <div id="frd3" class="noselectedfriend3" onclick="selectzhon(); selectfrd3();">
@@ -1617,12 +1893,255 @@
                         <p id="japname5" class="nameselected">玫<br />瑰</p>
                     </div>
                 </div>
-            </div>
 
+
+
+            </div>
+            <div id="divlate">
+                <style>
+                    #divlate {
+                        position: absolute;
+                        width: 13%;
+                        height: 10%;
+                        top: 7%;
+                        left: 5%;
+                        text-align: center;
+                    }
+
+                    #titlesecc {
+                        color: dimgray;
+                        font-size: 1.7vw;
+                        font-weight: bold;
+                        position: relative;
+                        top: -2vw;
+                        letter-spacing: .2vw;
+                    }
+
+                    #titlesecc2 {
+                        color: dimgray;
+                        font-size: .7vw;
+                        font-weight: bold;
+                        position: relative;
+                        top: -3.5vw;
+                    }
+
+                    #pcruz {
+                        color: dimgray;
+                        left: 55%;
+                        font-size: 1.7vw;
+                        font-weight: bold;
+                        position: absolute;
+                        top: 78%;
+                        letter-spacing: .7vw;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        width: 8vw;
+                        filter: invert(100%);
+                        right: 2%;
+                        bottom: 4%;
+                    }
+                </style>
+                <p id="titlesecc">
+                    社交聊天列表
+                </p>
+                <p id="titlesecc2">
+                    第 2 部分 好友列表
+                </p>
+            </div>
+            <p id="pcruz">✚✚✚✚</p>
+            <img src="https://i.postimg.cc/9fJyjh92/Captura.png" id="qrimg" />
+            <div id="circ1">
+                <style>
+                    #circ1 {
+                        position: absolute;
+                        width: 6.8vw;
+                        height: 6.8vw;
+                        border-radius: 50%;
+                        border: .3vw solid #2f5d9d;
+                        right: 3%;
+                        top: 50%;
+                    }
+
+                    #circ2 {
+                        position: absolute;
+                        width: 2.5vw;
+                        height: 2.5vw;
+                        border: 1vw solid #2f5d9d;
+                        border-radius: 50%;
+                        background: white;
+                        right: 1.2vw;
+                        top: 1.2vw;
+                    }
+
+                    #points {
+                        position: absolute;
+                        width: .5vw;
+                        height: 10vw;
+                        top: 56.7%;
+                        right: 6.4%;
+                    }
+
+                    #point1 {
+                        width: .5vw;
+                        height: .5vw;
+                        background: #2f5d9d;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point2 {
+                        position: absolute;
+                        width: .5vw;
+                        height: .5vw;
+                        background: #2f5d9d;
+                        border-radius: 50%;
+                        top: 27%;
+                    }
+
+                    #point3 {
+                        position: absolute;
+                        width: .5vw;
+                        height: .5vw;
+                        background: #2f5d9d;
+                        border-radius: 50%;
+                        top: 54%;
+                    }
+
+                    #point4 {
+                        top: 81%;
+                        position: absolute;
+                        width: .5vw;
+                        height: .5vw;
+                        background: #2f5d9d;
+                        border-radius: 50%;
+                    }
+
+                    #points2 {
+                        position: absolute;
+                        width: .5vw;
+                        height: 6vw;
+                        top: 10%;
+                        filter: blur(1px);
+                        opacity: .8;
+                        right: 8%;
+                    }
+
+                    #point11 {
+                        width: .5vw;
+                        height: .5vw;
+                        background: white;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point22 {
+                        width: .4vw;
+                        left: .05vw;
+                        height: .4vw;
+                        top: 25%;
+                        background: #2f2f2f;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point33 {
+                        width: .4vw;
+                        left: .05vw;
+                        height: .4vw;
+                        top: 35%;
+                        background: #2f2f2f;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point44 {
+                        width: .4vw;
+                        left: .05vw;
+                        height: .4vw;
+                        top: 50%;
+                        background: #2f2f2f;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point55 {
+                        width: .4vw;
+                        left: .05vw;
+                        height: .4vw;
+                        top: 65%;
+                        background: #2f2f2f;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+
+                    #point66 {
+                        width: .5vw;
+                        height: .5vw;
+                        background: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        bottom: 0;
+                    }
+                </style>
+                <div id="circ2">
+
+                </div>
+            </div>
+            <div id="points">
+                <div id="point1"></div>
+                <div id="point2"></div>
+                <div id="point3"></div>
+                <div id="point4"></div>
+            </div>
+            <div id="points2">
+                <div id="point11"></div>
+                <div id="point22"></div>
+                <div id="point33"></div>
+                <div id="point44"></div>
+                <div id="point55"></div>
+                <div id="point66"></div>
+            </div>
+            <div id="secct2">
+                <style>
+                    #secct2 {
+                        position: absolute;
+                        width: 8%;
+                        height: 28%;
+                        left: 5%;
+                        top: 26%;
+                    }
+
+                    #sectt2div {
+                        width: 100%;
+                        border-bottom: .1vw solid darkgray;
+                        height: 10.5%;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                        #sectt2div p {
+                            position: relative;
+                            font-size: .9vw;
+                            letter-spacing: .2vw;
+                            font-weight: bold;
+                            color: gray;
+                            top: 0vw;
+                        }
+                </style>
+                <div id="sectt2div"><p>第1节</p></div>
+                <div id="sectt2div"><p>第2节</p></div>
+                <div id="sectt2div"><p>第3节</p></div>
+                <div id="sectt2div"><p>第4节</p></div>
+                <div id="sectt2div"><p>第5节</p></div>
+                <div id="sectt2div"><p>第6节</p></div>
+            </div>
         </div>
 
     </div>
   
 
 </body>
+</html>
 </html>
