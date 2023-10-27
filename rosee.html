@@ -79,33 +79,82 @@
 
     <script> 
 
-        function activatescroll() {
-            
+        function activatescroll12() { 
             $('#scrollactivate1').scroll(function () {
-                if ($(this).scrollTop() == 1) {
+                if ($(this).scrollTop() >= 1) {
                     $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
                     $("#main").removeClass("mainright");
-                    $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
-                    $("#buton2").removeClass("noselected"); $("#buton2").addClass("selected");
-                }
+                    entersecond();
+                    $('#scrollactivate1').href = '#firstscr';
+                     
+                } 
             });
           
         }
- 
+        function activatescroll23() {
+            $('#scrollactivate2').scroll(function () {
+                if ($(this).scrollTop() >= 1) {
+                    enterthird();
+                    $('#scrollactivate2').href = '#firstscr';
 
+                }
+                if ($(this).scrollTop() <= 0) {
+                    enterfirst();
+                    $('#scrollactivate2').href = '#firstscr';
+
+                }
+            });
+
+        }
+        function activatescroll34() {
+            $('#scrollactivate3').scroll(function () {
+                if ($(this).scrollTop() >= 1) {
+                    //enterthird();
+                    $('#scrollactivate3').href = '#firstscr';
+
+                }
+                if ($(this).scrollTop() <= 0) {
+                    entersecond(); 
+
+                }
+            });
+
+        }
         function enterfirst() {
             $("#buton1").removeClass("noselected"); $("#buton1").addClass("selected");
             $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
+            $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
+            $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
+
             $("#main").removeClass("mainleft"); $("#main").addClass("mainright");
-            
+            $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
         } 
         function entersecond() {
             $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
             $("#buton2").removeClass("noselected"); $("#buton2").addClass("selected");
+            $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
+            $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
+
             $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
             $("#main").removeClass("mainright");  
+            $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
+        }
+        function enterthird() {
+            $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
+            $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
+            $("#buton3").removeClass("noselected"); $("#buton3").addClass("selected");
+            $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
+            $("#thirdpage").removeClass("nothird"); $("#thirdpage").addClass("sithird");
+        }
+        function enterfour() {
+            $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
+            $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
+            $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
+            $("#buton4").removeClass("noselected"); $("#buton4").addClass("selected");
+            $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("mothird");
+        }
 
-        } function outprofile() {
+        function outprofile() {
             $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
 
         }
@@ -114,7 +163,7 @@
 
 
 </head>
-<body onclick="activatescroll(); activatescroll2();">
+<body onclick="activatescroll12(); activatescroll23(); activatescroll34();">
 
     <div id="main" >
 
@@ -144,10 +193,10 @@
             <p id="buton2" class="noselected" onclick="entersecond();">
 
             </p>
-            <p id="buton3" class="noselected">
+            <p id="buton3" class="noselected" onclick="enterthird();">
 
             </p>
-            <p id="buton4" class="noselected">
+            <p id="buton4" class="noselected" onclick="enterfour();">
 
             </p>
             <p id="buton5" class="noselected">
@@ -168,6 +217,8 @@
                         overflow: auto;
                         z-index: 99999999999;
                     }
+                        #scrollactivate1 img { height:10000%;
+                        }
                     #backlinefont { 
                         height: 30%;
                         width: 40%;
@@ -183,9 +234,8 @@
                         top: 0;
                         background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png); opacity:.1;
                     }
-                </style>
-                
-                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+                </style> 
+                <img id="firstscr" src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
                 <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
             </div>
             <div id="backlinefont" class="linerose"><div id="bkrel"></div>
@@ -374,7 +424,9 @@
 
         </div>
         <div id="secondpage" class="linerose">
-           
+
+
+
             <div id="texture"></div>
 
             <style>
@@ -1510,6 +1562,43 @@
             <div id="ptitfrd2">
                 <p>//社交聊天列表//</p>
             </div>
+            <div id="scrollactivate2">
+                <style>
+                    #scrollactivate2 {
+                        transform: rotate(180deg);
+                        opacity: 0;
+                        position: absolute;
+                        width: 95%;
+                        height: 100%;
+                        background: red;
+                        overflow: auto; 
+                    }
+
+                        #scrollactivate2 img {
+                            height: 10000%;
+                        }
+
+                    #backlinefont {
+                        height: 30%;
+                        width: 40%;
+                        transform: rotate(-25deg);
+                        position: absolute;
+                        right: -20%;
+                        top: 71.4%;
+                        overflow: hidden;
+                    }
+
+                    #bkrel {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png);
+                        opacity: .1;
+                    }
+                </style>
+                <img id="firstscr" src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+            </div>
             <div id="selectfrd">
                 <style>
                     #ptitfrd {
@@ -1704,7 +1793,7 @@
                         $("#backlinefont").removeClass("linelenin");
 
 
-                       
+
 
                         $("#boxfires").addClass("sifires");
                         $("#boxfires").removeClass("nofires");
@@ -2138,10 +2227,69 @@
                 <div id="sectt2div"><p>第6节</p></div>
             </div>
         </div>
+        <div id="thirdpage" class="nothird">
+            <style>
+                .nothird {
+                    top: 100%;
+                    opacity: 0;
+                }
 
+                .sithird {
+                    top: 0;
+                    opacity: 1;
+                }
+
+                #thirdpage {
+                    background: green;
+                    position: fixed;
+                    width: 100%;
+                    height: 101%;
+                    left: 0%;
+                    z-index: 99999;
+                    transition: all 1s ease;
+                    /*left: 0;*/
+                }
+            </style>
+            <div id="scrollactivate3">
+                <style>
+                    #scrollactivate3 {
+                        transform: rotate(180deg);
+                        opacity: 0;
+                        position: absolute;
+                        width: 95%;
+                        height: 100%;
+                        background: red;
+                        overflow: auto;
+                    }
+
+                        #scrollactivate3 img {
+                            height: 10000%;
+                        }
+
+                    #backlinefont {
+                        height: 30%;
+                        width: 40%;
+                        transform: rotate(-25deg);
+                        position: absolute;
+                        right: -20%;
+                        top: 71.4%;
+                        overflow: hidden;
+                    }
+
+                    #bkrel {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png);
+                        opacity: .1;
+                    }
+                </style>
+                <img id="firstscr" src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+            </div>
+        </div>
     </div>
   
 
 </body>
-</html>
 </html>
