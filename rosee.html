@@ -16,6 +16,170 @@
     <link rel="stylesheet" href="anticlockwise_styles.css">
     <script type="text/javascript" src="loaoins.js"></script>
     <script type="text/javascript" src="tweenMax3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            imgbar = $("#fillimgbar");
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Radio off",
+                        artist: "Radio off",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "Say my name",
+                        artist: "Genshin Impact Ost",
+                        src:
+                            "https://xevangelist.github.io/evangelist/saymyname.mp3?raw=true"
+                    },
+                    {
+                        name: "Tiny light",
+                        artist: "Akari Kito",
+                        src:
+                            "https://xevangelist.github.io/evangelist/TinyLight.mp3?raw=true"
+                    },
+
+                    {
+                        name: "Sweet hurt",
+                        artist: "ReoNa",
+                        src:
+                            "https://xevangelist.github.io/evangelist/sweethurt.mp3?raw=true"
+                    },
+                    {
+                        name: "Aoki tsuki michite",
+                        artist: "Akira",
+                        src:
+                            "https://xevangelist.github.io/evangelist/aoki.mp3?raw=true"
+                    },
+                    {
+                        name: "Little glee monster",
+                        artist: "Your Name",
+                        src:
+                            "https://xevangelist.github.io/evangelist/glee.mp3?raw=true"
+                    },
+
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                //artistname.html();
+                musicName.html(curSong.name + " / " + curSong.artist);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+                imgbar.css("left", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 5;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#mainintro").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+
     <style>
 
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
@@ -43,10 +207,12 @@
             animation: moveleft 3s 1;
             animation-fill-mode: forwards;
         }
+
         .mainright {
             animation: moveright 3s 1;
             animation-fill-mode: forwards;
         }
+
         @-webkit-keyframes moveleft {
             0% {
                 left: 0%;
@@ -56,6 +222,7 @@
                 left: -101%;
             }
         }
+
         @-webkit-keyframes moveright {
             0% {
                 left: -101%;
@@ -77,19 +244,19 @@
         }
     </style>
 
-    <script> 
+    <script>
 
-        function activatescroll12() { 
+        function activatescroll12() {
             $('#scrollactivate1').scroll(function () {
                 if ($(this).scrollTop() >= 1) {
                     $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
                     $("#main").removeClass("mainright");
                     entersecond();
                     $('#scrollactivate1').href = '#firstscr';
-                     
-                } 
+
+                }
             });
-          
+
         }
         function activatescroll23() {
             $('#scrollactivate2').scroll(function () {
@@ -114,7 +281,7 @@
 
                 }
                 if ($(this).scrollTop() <= 0) {
-                    entersecond(); 
+                    entersecond();
 
                 }
             });
@@ -128,7 +295,7 @@
 
             $("#main").removeClass("mainleft"); $("#main").addClass("mainright");
             $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
-        } 
+        }
         function entersecond() {
             $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
             $("#buton2").removeClass("noselected"); $("#buton2").addClass("selected");
@@ -136,7 +303,7 @@
             $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
 
             $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
-            $("#main").removeClass("mainright");  
+            $("#main").removeClass("mainright");
             $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
         }
         function enterthird() {
@@ -158,53 +325,17 @@
             $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
 
         }
-       
+
     </script>
 
 
 </head>
 <body onclick="activatescroll12(); activatescroll23(); activatescroll34();">
 
-    <div id="main" >
+    <div id="main">
 
-        <div id="butonssections">
-            <style>
-                #butonssections { 
-                    position: fixed; text-align:center;
-                    width: 1vw;
-                    height: 15%; 
-                    right: 1%;
-                    top: 30%;
-                    z-index: 99999999999999;
-                }
-                #buton1, #buton2, #buton3, #buton4, #buton5 {   border-radius:50%; border:.1vw solid #171717; position:relative; margin-top:0; margin-bottom:.5vw;  filter:blur(1px);
-                }
-                .selected { background:#171717; width:.9vw; height:.9vw; margin-left:-.15vw;
-                }
-                .noselected {
-                    width: .6vw;
-                    height: .6vw;
-                    background: transparent;
-                }
-            </style>
-            <p id="buton1" class="selected" onclick="enterfirst();">
 
-            </p>
-            <p id="buton2" class="noselected" onclick="entersecond();">
-
-            </p>
-            <p id="buton3" class="noselected" onclick="enterthird();">
-
-            </p>
-            <p id="buton4" class="noselected" onclick="enterfour();">
-
-            </p>
-            <p id="buton5" class="noselected">
-
-            </p>
-        </div>
-
-        <div id="mainpage" >
+        <div id="mainpage">
             <div id="scrollactivate1">
                 <style>
                     #scrollactivate1 {
@@ -217,9 +348,12 @@
                         overflow: auto;
                         z-index: 99999999999;
                     }
-                        #scrollactivate1 img { height:10000%;
+
+                        #scrollactivate1 img {
+                            height: 10000%;
                         }
-                    #backlinefont { 
+
+                    #backlinefont {
                         height: 30%;
                         width: 40%;
                         transform: rotate(-25deg);
@@ -228,19 +362,22 @@
                         top: 71.4%;
                         overflow: hidden;
                     }
+
                     #bkrel {
                         width: 100%;
                         height: 100%;
                         top: 0;
-                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png); opacity:.1;
+                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png);
+                        opacity: .1;
                     }
-                </style> 
+                </style>
                 <img id="firstscr" src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
                 <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
             </div>
-            <div id="backlinefont" class="linerose"><div id="bkrel"></div>
+            <div id="backlinefont" class="linerose">
+                <div id="bkrel"></div>
 
-</div>
+            </div>
             <div id="backrelieve">
                 <img src="https://i.postimg.cc/B61wJ1TF/halftone-background-7.png" />
             </div>
@@ -262,7 +399,7 @@
                         #backrelieve img {
                             position: absolute;
                             width: 100%;
-                            height: 100%; 
+                            height: 100%;
                         }
 
                     #mainpage {
@@ -333,11 +470,13 @@
                     #pname {
                         transform: rotate(-65deg);
                         position: absolute;
-                        color: black; font-size:.7vw; letter-spacing:.1vw;
+                        color: black;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
                         font-family: "Roboto", Arial, sans-serif;
                         left: 60%;
                         z-index: 10;
-                        top: 64%; 
+                        top: 64%;
                     }
                 </style>
 
@@ -358,10 +497,23 @@
 
             <div id="maincontent">
                 <style>
-                    #maincontent { width:77%; left:2%; top:3%; height:94%; position:absolute;   z-index:12;
+                    #maincontent {
+                        width: 77%;
+                        left: 2%;
+                        top: 3%;
+                        height: 94%;
+                        position: absolute;
+                        z-index: 12;
                     }
-                    #ganyufirm { position:absolute; width:12vw; opacity:.7; left:0%; top:62%;
+
+                    #ganyufirm {
+                        position: absolute;
+                        width: 12vw;
+                        opacity: .7;
+                        left: 0%;
+                        top: 62%;
                     }
+
                     #mainnik {
                         font-family: 'Archivo Black', sans-serif;
                         position: absolute;
@@ -370,20 +522,38 @@
                         top: 5%;
                         opacity: .8;
                     }
+
                     #submainp {
-                        font-family: "Roboto", Arial, sans-serif; font-size:.8vw; position:absolute; top:33%; letter-spacing:.1vw; left:.5%; opacity:.8;
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-size: .8vw;
+                        position: absolute;
+                        top: 33%;
+                        letter-spacing: .1vw;
+                        left: .5%;
+                        opacity: .8;
                     }
+
                     #psubtext {
                         width: 30%;
                         font-family: "Roboto", Arial, sans-serif;
                         font-size: .7vw;
                         position: absolute;
-                        top: 36%; 
+                        top: 36%;
                         left: .5%;
                         opacity: .7;
                     }
-                    #icongyn { width:5vw; height:2.5vw; background:Red; border-radius:.8vw; position:absolute; top:50%; left:15%; overflow:hidden;
+
+                    #icongyn {
+                        width: 5vw;
+                        height: 2.5vw;
+                        background: Red;
+                        border-radius: .8vw;
+                        position: absolute;
+                        top: 50%;
+                        left: 15%;
+                        overflow: hidden;
                     }
+
                     #mailrose {
                         font-family: "Roboto", Arial, sans-serif;
                         position: absolute;
@@ -394,7 +564,12 @@
                         top: 53%;
                         opacity: .8;
                     }
-                    #icongyn img{ width:5vw; height:5vw; top:-1.55vw; position:absolute;
+
+                    #icongyn img {
+                        width: 5vw;
+                        height: 5vw;
+                        top: -1.55vw;
+                        position: absolute;
                     }
                 </style>
                 <p id="mainnik">ROSE</p>
@@ -910,9 +1085,9 @@
                 <img src="https://i.postimg.cc/Qts31Cp7/meteorblack.png" id="meteoroblack" /> <img src="https://i.postimg.cc/Bv23jH1s/meteor.png" id="meteoro" />
 
                 <!--<img src="https://i.postimg.cc/T1vDNzB9/wish4.png" id="w1" />
-        <img src="https://i.postimg.cc/yN59cgP2/wish2.png" id="w2" />
-        <img src="https://i.postimg.cc/vmDf4LWW/diamons.png" id="w3" />
-        <img src="https://i.postimg.cc/6qVGkHXN/wish1.png" id="l1" />-->
+            <img src="https://i.postimg.cc/yN59cgP2/wish2.png" id="w2" />
+            <img src="https://i.postimg.cc/vmDf4LWW/diamons.png" id="w3" />
+            <img src="https://i.postimg.cc/6qVGkHXN/wish1.png" id="l1" />-->
             </div>
             <div id="contentlenin" class="nofriend">
                 <style>
@@ -1571,7 +1746,7 @@
                         width: 95%;
                         height: 100%;
                         background: red;
-                        overflow: auto; 
+                        overflow: auto;
                     }
 
                         #scrollactivate2 img {
@@ -2240,16 +2415,430 @@
                 }
 
                 #thirdpage {
-                    background: green;
+                    backdrop-filter: blur(10px);
                     position: fixed;
                     width: 100%;
                     height: 101%;
                     left: 0%;
-                    z-index: 99999;
+                    z-index: 9999999999;
                     transition: all 1s ease;
                     /*left: 0;*/
                 }
+
+                #areaaudio {
+                    width: 70%;
+                    height: 80%;
+                    top: 10%;
+                    left: 15%;
+                    position: absolute;
+                    border-radius: .5vw;
+                    box-shadow: 0 0 1vw black;
+                    background: rgba(255,255,255,.6);
+                    backdrop-filter: blur(10px);
+                    overflow: hidden;
+                }
+
+                #imgrepro {
+                    position: absolute;
+                    height: 95%;
+                    top: 5%;
+                    left: 0%;
+                }
             </style>
+
+            <div id="areaaudio">
+                <img src="https://i.postimg.cc/4yTppW24/ganyu-render-genshin-impact-by-criticalgalaxy-dfm4pix-fullview.png" id="imgrepro" />
+
+                <div id="areadatos">
+                    <style>
+                        #areadatos {
+                            position: absolute;
+                            width: 54%;
+                            left: 43%;
+                            top: 5%;
+                            height: 90%;
+                        }
+
+                        #barmenus {
+                            position: absolute;
+                            height: 10%;
+                            position: absolute;
+                            width: 100%;
+                            top: 0;
+                            left: 0;
+                            background-image: linear-gradient(90deg,transparent 0%,rgba(50,119,255,.2) 25%,rgba(50,119,255,.5) 100%);
+                        }
+
+                        #barsmed {
+                            position: absolute;
+                            height: 25%;
+                            width: 100%;
+                            top: 63%;
+                            left: 0;
+                        }
+
+                        #divbar1 {
+                            height: 45%;
+                            width: 45%;
+                            top: 0;
+                            left: 0;
+                            position: absolute;
+                        }
+
+                        #divbar2 {
+                            height: 45%;
+                            width: 45%;
+                            top: 50%;
+                            left: 0;
+                            position: absolute;
+                        }
+
+                        #divbar3 {
+                            height: 45%;
+                            width: 45%;
+                            top: 0;
+                            left: 55%;
+                            position: absolute;
+                        }
+
+                        #divbar4 {
+                            height: 45%;
+                            width: 45%;
+                            top: 50%;
+                            left: 55%;
+                            position: absolute;
+                        }
+
+                        .barsect {
+                            position: absolute;
+                            width: 100%;
+                            top: 10%;
+                            height: 20%;
+                            background: #2f5d9d;
+                            border-radius: .5vw;
+                            overflow: hidden;
+                            box-shadow: 0 0 .5vw #2f5d9d;
+                        }
+
+                        .fillbarsecr {
+                            position: absolute;
+                            width: 55%;
+                            height: 100%;
+                            border-radius: 0 .3vw .3vw 0;
+                            top: 0;
+                            background: #a8cafa;
+                        }
+
+                        .pbarsect {
+                            font-family: "Roboto", Arial, sans-serif;
+                            text-align: center;
+                            margin-top: 1.6vw;
+                            font-size: 1vw;
+                            font-weight: bold;
+                            letter-spacing: .1vw;
+                            color: #86ACF8;
+                        }
+                            .spanp { color:#c0d7f6
+                            }
+                        #fb1 { width:80%;
+                        }
+                        #fb2 {
+                            width: 70%;
+                        }
+                        #fb3 {
+                            width: 30%;
+                        }
+                    </style>
+                    <div id="barmenus">
+
+                    </div>
+
+                    <div id="profile">
+                        <style>
+                            #profile {
+                                width: 100%;
+                                height: 30%;
+                                top: 12%;
+                                position: absolute;
+                            }
+
+                            #iconprof {
+                                width: 8vw;
+                                position: absolute;
+                                right: 5%;
+                                border: .5vw solid #9abdef;
+                                border-radius: .4vw;
+                                top: 10%;
+                            }
+
+                            .pprofile {
+                                font-family: "Roboto", Arial, sans-serif;
+                                margin-left: 5%;
+                                font-size: .8vw;
+                                font-weight: bold;
+                                letter-spacing: .2vw;
+                                line-height: .7vw;
+                                color: #86ACF8;
+                            }
+
+
+                            .spanp1 {
+                                color: #c0d7f6
+                            }
+
+                            #ptextx {
+                                letter-spacing: .1vw;
+                                font-size: .7vw;
+                                font-family: "Roboto", Arial, sans-serif;
+                                width: 90%;
+                                height: 10%;
+                                background: rgba(255,255,255,.5);
+                                top: 42%;
+                                left: 5%;
+                                position: absolute;
+                                border-radius: .5vw;
+                                text-align: center;
+                                color: darkgray; padding:.5vw;
+                            }
+                        </style>
+                        <img id="iconprof" src="https://i.postimg.cc/mg4Dsthn/depx64z-1c40493f-c124-4861-b220-d3374112778f.jpg" />
+                        <p class="pprofile">Name: <span class="spanp1">Rose</span></p>
+                        <p class="pprofile">Age: <span class="spanp1">20+</span></p>
+                        <p class="pprofile">Zodiac: <span class="spanp1">??</span></p>
+                        <p class="pprofile">Location: <span class="spanp1">Fexbots</span></p>
+                        <p class="pprofile">Ocuppation: <span class="spanp1">Dreamer</span></p>
+                        <p class="pprofile">Pronuns: <span class="spanp1">She/Her</span></p>
+                    </div>
+
+                    <div id="ptextx">
+                        La nuit n'en finit pas Je deviens transparente Tu disparais très loin J'oublie nos existences Le manque étouffe chaque visage M'èloigne et me rapproche De faux semblants Dont je deviens l'apparence Et dans cette chambre triste Je vieillis peu à peu Ton absence me guide Vers des murs silencieux
+                    </div>
+
+                    <div id="barsmed">
+                        <div id="divbar1">
+                            <div class="barsect"><div id="fb1" class="fillbarsecr"></div></div>
+                            <p class="pbarsect">Dancing | <span class="spanp">跳舞</span></p>
+                        </div>
+                        <div id="divbar2">
+                            <div class="barsect"><div  id="fb2" class="fillbarsecr"></div></div>
+                            <p class="pbarsect">Writting | <span class="spanp">写作</span></p>
+                        </div>
+                        <div id="divbar3">
+                            <div class="barsect"><div  id="fb3" class="fillbarsecr"></div></div>
+                            <p class="pbarsect">Piano | <span class="spanp">钢琴</span></p>
+                        </div>
+                        <div id="divbar4">
+                            <div class="barsect"><div class="fillbarsecr"></div></div>
+                            <p class="pbarsect">Gardering | <span class="spanp">衣柜</span></p>
+                        </div>
+                    </div>
+
+                    <div id="Aaudio">
+                        <style>
+                            #profile {
+                                z-index: 9;
+                            }
+
+                            #Aaudio {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            #abtnaud {
+                                position: absolute;
+                                width: 20%;
+                                height: 70%;
+                                right: 40%;
+                                top: 95%;
+                            }
+
+                            .butplayer {
+                                filter: blur(0px) hue-rotate(250deg);
+                                float: left;
+                                height: 1vw;
+                                top: -.25vw;
+                                width: 1vw;
+                                margin-left: 1vw;
+                                position: relative;
+                            }
+
+                            .butpl {
+                                position: absolute;
+                                width: 1.5vw;
+                                height: 1.5vw;
+                                left: 0;
+                                top: .3vw;
+                                border-radius: .2vw;
+                            }
+
+                                .butpl:hover {
+                                    filter: blur(0px) hue-rotate(550deg) invert(100%);
+                                }
+
+                                .butpl img {
+                                    position: absolute;
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    /*filter: invert(100%);*/
+                                    left: .07vw;
+                                    top: .1vw;
+                                }
+
+                            #pause, #play, #next, #prev, #stop {
+                                width: 2vw;
+                                height: 2vw;
+                                position: absolute;
+                                left: 0;
+                            }
+
+                            .progress-bar {
+                                top: 90%;
+                                right: 0%;
+                                width: 100%;
+                                border-radius: .3vw;
+                                background: #2f5d9d;
+                                height: .5vw;
+                                position: absolute;
+                            }
+
+                            .fillBar {
+                                background: #97bbed;
+                                width: 0;
+                                height: .5vw;
+                            }
+
+
+                            /* #namesong {
+                                position: absolute;
+                                width: 100%;
+                                height: 70%;
+                                top: 10%;
+                                font-weight: bold;
+                                color: #b21160;
+                                letter-spacing: .1vw;
+                                font-size: .55vw;
+                            }*/
+
+                            .artist-name {
+                                position: absolute;
+                                width: 88%;
+                                left: 10%;
+                                height: 100%;
+                                top: 70%;
+                                letter-spacing: .1vw;
+                                font-size: .5vw;
+                                color: #b21160;
+                            }
+
+                            #AT_time {
+                                width: 10%;
+                                height: 1vw;
+                                top: 8%;
+                                right: 1%;
+                                position: absolute;
+                            }
+
+                                #AT_time p {
+                                    position: absolute;
+                                    letter-spacing: .1vw;
+                                    font-size: .5vw;
+                                    color: lightgray;
+                                }
+
+                            .time {
+                                position: absolute;
+                                left: -1.5vw;
+                                top: 0vw;
+                                letter-spacing: .1vw;
+                                font-size: .6vw;
+                                overflow: hidden;
+                                color: white;
+                            }
+
+                            #name_sng {
+                                position: relative;
+                                float: left;
+                            }
+
+                            #namesong {
+                                position: absolute;
+                                right: 3%;
+                                color: white;
+                                text-shadow: 0 0 .5vw #2f5d9d;
+                                font-size: 1.5vw;
+                                letter-spacing: .1vw;
+                                font-family: "Roboto", Arial, sans-serif;
+                                margin-top: .8vw;
+                            }
+
+                            #fillimgbar {
+                                width: 1vw;
+                                height: 1vw;
+                                position: absolute;
+                                top: -.3vw;
+                                left: -1%;
+                            }
+                        </style>
+                        <div class="progress-bar">
+                            <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+                        </div>
+
+
+                        <div id="AT_time"><div class="time"></div></div>
+                        <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                        <div> </div>
+
+                        <div id="abtnaud">
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                    <div id="prev" class="fas fa-backward"><p></p></div>
+                                </div>
+
+                            </div>
+                            <!--<div class="butplayer">
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                                <div id="play"> </div>
+                            </div>
+
+                        </div>-->
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                    <div id="pause"> </div>
+                                </div>
+
+                            </div>
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                    <div id="next" class="fas fa-forward"><p></p></div>
+                                </div>
+
+                            </div>
+
+                            <!--<div class="butplayer">
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
+
+                        </div>-->
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
             <div id="scrollactivate3">
                 <style>
                     #scrollactivate3 {
@@ -2257,11 +2846,11 @@
                         opacity: 0;
                         position: absolute;
                         width: 95%;
-                        height: 100%;
+                        height: 80%;
                         background: red;
                         overflow: auto;
                     }
-
+                        /**/
                         #scrollactivate3 img {
                             height: 10000%;
                         }
@@ -2288,6 +2877,59 @@
                 <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
             </div>
         </div>
+
+
+        <div id="butonssections">
+            <style>
+                #butonssections {
+                    position: fixed;
+                    text-align: center;
+                    width: 1vw;
+                    height: 15%;
+                    right: 1%;
+                    top: 30%;
+                    z-index: 99999999999999999999999999999999;
+                }
+
+                #buton1, #buton2, #buton3, #buton4, #buton5 {
+                    border-radius: 50%;
+                    border: .1vw solid #171717;
+                    position: relative;
+                    margin-top: 0;
+                    margin-bottom: .5vw;
+                    filter: blur(1px);
+                }
+
+                .selected {
+                    background: #171717;
+                    width: .9vw;
+                    height: .9vw;
+                    margin-left: -.15vw;
+                }
+
+                .noselected {
+                    width: .6vw;
+                    height: .6vw;
+                    background: transparent;
+                }
+            </style>
+            <p id="buton1" class="selected" onclick="enterfirst();">
+
+            </p>
+            <p id="buton2" class="noselected" onclick="entersecond();">
+
+            </p>
+            <p id="buton3" class="noselected" onclick="enterthird();">
+
+            </p>
+            <p id="buton4" class="noselected" onclick="enterfour();">
+
+            </p>
+            <p id="buton5" class="noselected">
+
+            </p>
+        </div>
+
     </div>
   
 
