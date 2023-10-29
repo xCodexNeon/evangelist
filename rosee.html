@@ -276,7 +276,7 @@
         function activatescroll34() {
             $('#scrollactivate3').scroll(function () {
                 if ($(this).scrollTop() >= 1) {
-                    //enterthird();
+                    enterfour();
                     $('#scrollactivate3').href = '#firstscr';
 
                 }
@@ -292,9 +292,12 @@
             $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
             $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
             $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
+            $("#fivepage").removeClass("sifi"); $("#fivepage").addClass("nofi");
 
             $("#main").removeClass("mainleft"); $("#main").addClass("mainright");
             $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
+            $("#fourthpage").removeClass("sifourth"); $("#fourthpage").addClass("nofourth"); $("#buton5").removeClass("selected"); $("#buton5").addClass("noselected");
+
         }
         function entersecond() {
             $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
@@ -305,13 +308,19 @@
             $("#main").removeClass("outprofile"); $("#main").addClass("mainleft");
             $("#main").removeClass("mainright");
             $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("nothird");
+            $("#fourthpage").removeClass("sifourth"); $("#fourthpage").addClass("nofourth"); $("#buton5").removeClass("selected"); $("#buton5").addClass("noselected");
+            $("#fivepage").removeClass("sifi"); $("#fivepage").addClass("nofi");
+
         }
         function enterthird() {
             $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
             $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
             $("#buton3").removeClass("noselected"); $("#buton3").addClass("selected");
             $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
-            $("#thirdpage").removeClass("nothird"); $("#thirdpage").addClass("sithird");
+            $("#fourthpage").removeClass("sifourth"); $("#fourthpage").addClass("nofourth");
+            $("#thirdpage").removeClass("nothird"); $("#thirdpage").addClass("sithird"); $("#buton5").removeClass("selected"); $("#buton5").addClass("noselected");
+            $("#fivepage").removeClass("sifi"); $("#fivepage").addClass("nofi");
+
         }
         function enterfour() {
             $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
@@ -319,6 +328,20 @@
             $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
             $("#buton4").removeClass("noselected"); $("#buton4").addClass("selected");
             $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("mothird");
+            $("#buton5").removeClass("selected"); $("#buton5").addClass("noselected");
+            $("#fourthpage").removeClass("nofourth"); $("#fourthpage").addClass("sifourth");
+            $("#fivepage").removeClass("sifi"); $("#fivepage").addClass("nofi");
+        }
+        function enterfvive() {
+            $("#buton1").removeClass("selected"); $("#buton1").addClass("noselected");
+            $("#buton2").removeClass("selected"); $("#buton2").addClass("noselected");
+            $("#buton3").removeClass("selected"); $("#buton3").addClass("noselected");
+            $("#buton4").removeClass("selected"); $("#buton4").addClass("noselected");
+            $("#buton5").removeClass("noselected"); $("#buton5").addClass("selected");
+
+            $("#thirdpage").removeClass("sithird"); $("#thirdpage").addClass("mothird");
+            $("#fourthpage").removeClass("sifourth"); $("#fourthpage").addClass("nofourth");
+            $("#fivepage").removeClass("nofi"); $("#fivepage").addClass("sifi");
         }
 
         function outprofile() {
@@ -2877,7 +2900,943 @@
                 <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
             </div>
         </div>
+        <div id="fourthpage" class="nofourth">
+            <style>
+                
+                .nofourth {
+                    top: -100%;
+                    opacity: 0;
+                }
 
+                .sifourth {
+                    top: 0;
+                    opacity: 1;
+                }
+
+                #fourthpage {
+                    backdrop-filter: blur(10px);
+                    position: fixed;
+                    background: rgba(255,255,255,.5);
+                    width: 100%;
+                    height: 101%;
+                    left: 0%;
+                    
+                    z-index: 9999999999;
+                    transition: all 1s ease; overflow:hidden;
+                    /*left: 0;*/
+                }
+                #areainfo { width:25%; left:3%; top:5%; position:absolute;   height:90%;
+                }
+                #areaimgs { height:98%; width:66%; right:3%;   position:absolute; top:2%; overflow:auto;
+                }
+                #minicon { position:absolute; width:4vw; left:0%; top:5%;
+                }
+                #correop {
+                    font-family: "Roboto", Arial, sans-serif; color:#2f5d9d; font-weight:bold; letter-spacing:.2vw; font-size:1vw; text-decoration:underline; left:18%; top:9%; position:absolute;
+                }
+                #infobox { position:absolute; height:30%; background:#7faff2; width:90%; top:18%;  border-radius: 0 .7vw .7vw .7vw;
+                }
+                #sticker { position:absolute; width:13vw; left:0; top:75%;
+                }
+                #infobox h1 {
+                    font-family: "Roboto", Arial, sans-serif;
+                    color: white;
+                    font-weight: bold;
+                    letter-spacing: .2vw;
+                    font-size: 1.8vw; margin-left:2vw;
+                }
+                #infobox p {
+                    font-family: "Roboto", Arial, sans-serif;
+                    color: white;
+                    /*font-weight: bold;*/
+                    letter-spacing: .1vw;
+                    font-size: .8vw;
+                    margin-left: 2vw;
+                }
+                #areainfo span {
+                    font-family: "Roboto", Arial, sans-serif;
+                    color: #2f5d9d;
+                    /*font-weight: bold;*/
+                    letter-spacing: .1vw;
+                    font-size: .8vw;
+                    margin-left: .5vw;  position:relative; top:50%;
+                }
+            </style>
+
+            <div id="areainfo">
+                <img src="https://i.postimg.cc/gjcZX9n8/sticker-3.png" id="minicon" /> <a id="correop">@Rose001</a>
+                <div id="infobox">
+                    <h1>Gallery:</h1>
+                    <p>Ganyu imgs and gifs</p>
+                    <p>Return to main</p>
+                </div>
+                <span>Section 1 |</span><span>Section 2 |</span><span>Section 3 |</span><span>Section 5 </span>
+                <img src="https://i.postimg.cc/QC6Wc6TP/sticker-5.png" id="sticker" />
+
+            </div>
+            <div id="areaimgs">
+                <style>
+                    #cubeimg {
+                        max-width: 20vw;
+                        height: auto; border-radius: 0 .4vw .4vw .4vw; overflow:hidden;
+                        background: #7cb3ff;
+                        position: relative;
+                        margin: 1vw;
+                        float: left;
+                    }
+
+                        #cubeimg img {
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                        }
+
+                    #lineimg1 {
+                        position: absolute;
+                        width: 22vw; 
+                        left: 0;
+                        top: 0;
+                    }
+                    #lineimg2 {
+                        position: absolute;
+                        width: 22vw; 
+                        left: 22vw;
+                        top: 0;
+                    }
+                    #lineimg3 {
+                        position: absolute;
+                        width: 22vw; 
+                        left: 44vw;
+                        top: 0;
+                    }
+                    #cubeimg p {
+                        font-family: "Roboto", Arial, sans-serif;
+                        color: white;
+                        /*font-weight: bold;*/
+                        letter-spacing: .1vw; margin-left:1vw;
+                        font-size: .8vw;
+                    }
+                    #cubeimg b {
+                        font-family: "Roboto", Arial, sans-serif;
+                        color: #2f5d9d;
+                        /*font-weight: bold;*/
+                        letter-spacing: .05vw;
+                        margin-left: 1vw;
+                        font-size: .8vw; padding-bottom:2vw;
+                    }
+                </style>
+
+                <div id="lineimg1">
+                    <div id="cubeimg" style="margin-top:3vw;">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>Posted 4 years ago with 21,124 notes<br />⠀</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/tgS334GD/9b4519cc-c478-4327-9d0d-aef7cc682948.jpg" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+
+                </div>
+                <div id="lineimg2">
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/tgS334GD/9b4519cc-c478-4327-9d0d-aef7cc682948.jpg" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+
+                </div>
+                <div id="lineimg3">
+                    <div id="cubeimg" style="margin-top:5vw;">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/ht0bG0Ck/ganyu.gif" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+                    <div id="cubeimg">
+                        <img src="https://i.postimg.cc/tgS334GD/9b4519cc-c478-4327-9d0d-aef7cc682948.jpg" />
+                        <p>description</p>
+                        <b>#tags</b>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="fivepage" class="nofi">
+            <style>
+                .nofi {
+                    z-index: -100;
+                    opacity: 0;
+                }
+
+                .sifi {
+                    z-index: 9999999999;
+                    opacity: 1;
+                }
+
+                #fivepage {
+                    backdrop-filter: blur(10px);
+                    position: fixed;
+                    background: rgba(134,172,248,.5);
+                    width: 100%;
+                    height: 101%;
+                    left: 0%;
+                    top: 0;
+                    z-index: 9999999999;
+                    transition: all 1s ease;
+                    overflow: hidden;
+                    /*left: 0;*/
+                }
+
+                #videogany {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transform: scaleX(1.2);
+                }
+
+                #lastp {
+                    font-family: 'Times New Roman';
+                    z-index: 999;
+                    position: fixed;
+                    font-size: 6vw;
+                    color: #2f5d9d;
+                    opacity: 0.6;
+                    left: 3%;
+                }
+
+                #lastp2 {
+                    font-family: 'Times New Roman';
+                    z-index: 999;
+                    top: 13%;
+                    position: fixed;
+                    font-size: 1.2vw;
+                    color: #2f5d9d;
+                    opacity: 0.6;
+                    left: 3%;
+                    letter-spacing: .1vw;
+                }
+            </style>
+
+            <i id="lastp">Rose...</i>
+            <i id="lastp2">Sigue a las rosas, donde quiera que vayas...</i>
+            <video autoplay="" loop="" muted="" id="videogany" src="ganyu.mp4" type="video/mp4">
+            </video>
+            <div id="div_bott">
+                <style>
+                    #codesp {
+                        position: absolute;
+                        width: 2vw;
+                        height: 12vw;
+                        left: 1%;
+                        top: -40%;
+                        opacity: .6;
+                        z-index: 2;
+                    }
+
+                        #codesp p {
+                            line-height: .2vw;
+                            filter: contrast(130%);
+                            font-family: 'Oswald', sans-serif;
+                            color: rgb(238 40 40);
+                            letter-spacing: .05vw;
+                            font-size: .6vw;
+                            left: .4vw;
+                        }
+
+                    @keyframes flicker {
+
+                        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                            opacity: 1;
+                        }
+
+                        20%, 24%, 55%, 67% {
+                            opacity: 0.4;
+                        }
+                    }
+
+                    .cpdw {
+                        font-size: 1vw;
+                        animation: flicker 5s infinite;
+                    }
+
+                    .cpdw8 {
+                        animation-delay: .2s;
+                        animation: flicker 5s infinite;
+                    }
+
+                    .cpdw3 {
+                        animation-delay: .4s;
+                        animation: flicker 5s infinite;
+                    }
+
+                    .cpdw1 {
+                        animation: flicker 3s infinite;
+                        animation-delay: .6s;
+                    }
+
+                    .cpdw5 {
+                        animation: flicker 3s infinite;
+                        animation-delay: .8s;
+                    }
+
+                    .cpdw2 {
+                        animation: flicker 3s infinite;
+                        animation-delay: .1s;
+                    }
+
+                    .cpdw7 {
+                        animation: flicker 3s infinite;
+                        animation-delay: .9s;
+                    }
+
+                    .cpdw4 {
+                        animation: flicker 3s infinite;
+                        animation-delay: .3s;
+                    }
+
+                    .cpdw6 {
+                        animation-delay: .5s;
+                        animation: flicker 3s infinite;
+                    }
+
+                    #lin_codes3-x {
+                        position: absolute;
+                        line-height: .4vw;
+                        font-family: 'Oswald', sans-serif;
+                        font-size: .3vw;
+                        color: rgba(199,48,48.3);
+                        letter-spacing: .05vW;
+                        left: 56%;
+                        top: 250%;
+                    }
+
+                    #r-p2, #r-p3 {
+                        position: absolute;
+                        line-height: .1vw;
+                        font-family: 'Oswald', sans-serif;
+                        font-size: .3vw;
+                        color: rgba(199,48,48.3);
+                        letter-spacing: .05vW;
+                        top: 250%;
+                        transform: rotateZ(.4deg);
+                    }
+
+                    #r-p3 {
+                        left: 4.5%;
+                        filter: contrast(120%);
+                    }
+
+                    #b_img_q {
+                        position: absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        top: 250%;
+                        filter: contrast(90%);
+                        left: .5%;
+                        opacity: .5;
+                    }
+
+                    #b_img_q2 {
+                        opacity: .5;
+                        position: absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        top: 250%;
+                        filter: contrast(90%);
+                        left: 2.5%;
+                    }
+
+                    #img_ev {
+                        width: 100%;
+                        height: 20%;
+                        position: absolute;
+                        top: 40%;
+                    }
+
+                    #ev_map {
+                        position: absolute;
+                        width: 100%;
+                        height: 50vh;
+                        top: -16vh;
+                    }
+
+                    #baseimg {
+                        position: absolute;
+                        width: 40%;
+                        height: 35%;
+                        top: 78%;
+                        left: 69%;
+                        opacity: .3;
+                        filter: grayscale(50%);
+                        transition: all 1s ease;
+                    }
+
+                        #baseimg:hover {
+                            opacity: .8;
+                            filter: grayscale(10%);
+                        }
+
+                    #bakl_3 {
+                        width: 7vw;
+                        position: absolute;
+                        left: 60%;
+                    }
+
+                    #bakl_4 {
+                        top: -2vw;
+                        width: 14vw;
+                        position: absolute;
+                        left: 12%;
+                    }
+
+                    #bakl_1 {
+                        top: -5.5vw;
+                        width: 4vw;
+                        position: absolute;
+                        left: 56%;
+                    }
+
+                    #bakl_2 {
+                        top: -3vw;
+                        width: 5vw;
+                        position: absolute;
+                        left: 39%;
+                    }
+
+                    #bakl_main {
+                        top: 2vw;
+                        width: 9vw;
+                        height: auto;
+                        position: absolute;
+                        left: 42%;
+                    }
+
+                        #bakl_main:hover #img_mn_2 {
+                            opacity: 0;
+                        }
+
+                    #img_mn_1 {
+                        position: absolute;
+                        width: 100%;
+                        transition: all .5s ease;
+                    }
+
+                    #img_mn_2 {
+                        transition: all .5s ease;
+                        opacity: 1;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    #div_bott {
+                        width: 100%;
+                        right: 0;
+                        background: transparent;
+                        position: fixed;
+                        height: 50%;
+                        top: 49%;
+                        overflow: hidden;
+                    }
+
+                        #div_bott:target #prueba {
+                            top: 0;
+                        }
+
+                        #div_bott a {
+                            text-decoration: none;
+                            color: black;
+                        }
+
+                    #prueba {
+                        transition: all .5s ease;
+                        top: 68%;
+                        cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+                        filter: blur(.5px);
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        left: 0;
+                        overflow: hidden;
+                        /*clip-path: polygon(0% 99%, 0 19%, 6% 19%, 5% 24%, 8% 24%, 7% 20%, 13% 19%, 16% 8%, 19% 28%, 22% 13%, 23% 17%, 32% 17%, 33% 12%, 44% 12%, 46% 20%, 48% 7%, 49% 14%, 59% 13%, 61% 3%, 65% 23%, 67% 7%, 68% 12%, 69% 13%, 69% 17%, 71% 18%, 70% 13%, 78% 13%, 76% 18%, 79% 18%, 78% 14%, 85% 13%, 88% 0, 92% 14%, 100% 15%, 100% 100%);*/
+                    }
+
+                    #btm_crd {
+                        position: absolute;
+                        clip-path: polygon(0 0, 100% 0, 100% 71%, 92% 100%, 0 100%);
+                        background: #dc4343;
+                        height: 2.6vw;
+                        width: 9vw;
+                        z-index: 99;
+                        top: 14%;
+                        right: 1%;
+                    }
+
+                    #btm_crd2 {
+                        position: absolute;
+                        clip-path: polygon(0 0, 100% 0, 100% 71%, 92% 100%, 0 100%);
+                        background: rgb(10 1 1);
+                        height: 92%;
+                        width: 98%;
+                        top: 4%;
+                        right: 1%;
+                    }
+
+                    .glitch-container {
+                        border-left: .3vw solid rgb(0 154 255);
+                        height: 2.5vw;
+                        position: absolute;
+                        right: 5%;
+                        top: -5.3vw;
+                        width: 10vw;
+                    }
+
+                    @keyframes drift6 {
+                        0% {
+                            opacity: 1;
+                        }
+
+                        49% {
+                            opacity: 1;
+                        }
+
+                        50% {
+                            opacity: 0;
+                        }
+
+                        100% {
+                            opacity: 0;
+                        }
+                    }
+
+                    #span_g {
+                        animation: drift6 1s infinite;
+                    }
+
+                    .glitch-container a {
+                        font-family: 'Oswald', sans-serif;
+                    }
+
+                    .glitch-container:hover a {
+                        text-shadow: 0 0 1vw rgb(0 154 255);
+                        color: rgb(0 154 255);
+                    }
+
+                    .glitch-container a, a::after {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        font-weight: 900;
+                        background: linear-gradient(135deg,#FFFF62 95%, transparent 5%);
+                        border: 0;
+                        letter-spacing: 1.8px;
+                        line-height: 1.25em;
+                        position: relative;
+                        text-transform: uppercase;
+                    }
+
+                        .glitch-container a::after {
+                            width: 100%;
+                            height: 100%;
+                            --slice-0: inset(50% 50% 50% 50%);
+                            --slice-1: inset(80% -6px 0 0);
+                            --slice-2: inset(50% -6px 30% 0);
+                            --slice-3: inset(10% -6px 85% 0);
+                            --slice-4: inset(40% -6px 43% 0);
+                            --slice-5: inset(80% -6px 5% 0);
+                            content: 'V_XRTK009_XX5';
+                            display: flex;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            background: linear-gradient(135deg,#FFFF62 95%, #000 5%);
+                            text-shadow: -3px -3px 0 #000, 3px 3px 0 #ff0;
+                            clip-path: var(--slice-0);
+                        }
+
+                        .glitch-container a:hover::after {
+                            animation: glitch 1s;
+                            animation-timing-function: steps(2,end);
+                        }
+
+                    @keyframes glitch {
+                        0% {
+                            clip-path: var(--slice-1);
+                            transform: translate(-20px, -10px);
+                        }
+
+                        10% {
+                            clip-path: var(--slice-3);
+                            transform: translate(10px, 10px);
+                        }
+
+                        20% {
+                            clip-path: var(--slice-1);
+                            transform: translate(-10px, 10px);
+                        }
+
+                        30% {
+                            clip-path: var(--slice-3);
+                            transform: translate(0px, 5px);
+                        }
+
+                        40% {
+                            clip-path: var(--slice-2);
+                            transform: translate(-5px, 0px);
+                        }
+
+                        50% {
+                            clip-path: var(--slice-3);
+                            transform: translate(5px, 0px);
+                        }
+
+                        60% {
+                            clip-path: var(--slice-4);
+                            transform: translate(5px, 10px);
+                        }
+
+                        70% {
+                            clip-path: var(--slice-2);
+                            transform: translate(-10px, 10px);
+                        }
+
+                        80% {
+                            clip-path: var(--slice-5);
+                            transform: translate(20px, -10px);
+                        }
+
+                        90% {
+                            clip-path: var(--slice-1);
+                            transform: translate(-10px, 0px);
+                        }
+
+                        100% {
+                            clip-path: var(--slice-1);
+                            transform: translate(0);
+                        }
+                    }
+
+                    @keyframes drift7 {
+                        0% {
+                            opacity: 0;
+                        }
+
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+
+                    #div_bott:target #xt_crdts {
+                        opacity: 0;
+                    }
+
+                    #xt_crdts {
+                        position: absolute;
+                        height: 2vw;
+                        width: 50%;
+                        top: -5vw;
+                        left: 20%;
+                        transition: all .3s ease;
+                    }
+
+                        #xt_crdts p {
+                            position: absolute;
+                            top: 0vw;
+                            letter-spacing: .2vw;
+                            font-size: .8vw;
+                            color: #dc4343;
+                            left: 30%;
+                            font-family: 'Oswald', sans-serif;
+                        }
+
+                    #img_logs {
+                        position: absolute;
+                        width: 40%;
+                        height: 21vh;
+                        left: 15%;
+                        top: -2.5vw;
+                        border-bottom: .2vw solid #dc4343;
+                    }
+
+                        #img_logs img {
+                            width: 100%;
+                        }
+
+                    #p_divbott:after {
+                        content: "ABOUT";
+                    }
+
+                    #div_bott:target #p_divbott2 {
+                        z-index: 11;
+                    }
+
+                    #div_bott:target #p_divbott:after {
+                        content: "CLOSE";
+                    }
+
+                    #p_divbott2 {
+                        width: 10vw;
+                        height: 2.5vw;
+                        position: absolute;
+                        right: 5%;
+                        top: -5.2vw;
+                        z-index: -1;
+                    }
+
+                    #corr_ev {
+                        overflow: hidden;
+                        position: absolute;
+                        width: 20%;
+                        height: 3vw;
+                        left: 35%;
+                        top: 210%;
+                        clip-path: polygon(100% 0, 100% 68%, 96% 100%, 0 100%, 0 0);
+                    }
+
+                        #corr_ev button {
+                            color: black;
+                            font-weight: bold;
+                            font-size: 1vw;
+                            letter-spacing: .1vw;
+                            font-family: 'Oswald', sans-serif;
+                            position: absolute;
+                            width: 4vw;
+                            height: 100%;
+                            right: 0;
+                            background: #dc4343;
+                        }
+
+                    #text_1 {
+                        width: 76%; /*background:#280202;*/
+                        color: yellow;
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        font-family: 'Oswald', sans-serif;
+                        -webkit-user-modify: read-write;
+                        position: absolute;
+                        height: 88%;
+                        top: 4%;
+                        left: 2%;
+                        outline: none;
+                        border: .1vw solid #dc4343;
+                        background: #171717;
+                    }
+
+                    #texp {
+                        padding: .5vw;
+                    }
+
+                    #logo_sm {
+                        position: absolute;
+                        width: 45%;
+                        left: 25%;
+                        top: 2.5vw;
+                        filter: contrast(120%);
+                        transition: all .5s ease;
+                        opacity: .4;
+                    }
+
+                    #baseimg:hover #logo_sm {
+                        opacity: 1;
+                        filter: contrast(100%);
+                    }
+
+                    @keyframes example {
+                        0% {
+                            -webkit-filter: saturate(8);
+                            filter: saturate(8);
+                            left: 30px;
+                        }
+
+                        25% {
+                            -webkit-filter: hue-rotate(180deg);
+                            filter: hue-rotate(180deg);
+                            right: 30px;
+                        }
+
+                        50% {
+                            -webkit-filter: invert(.8);
+                            filter: invert(.8);
+                            top: 30px;
+                        }
+
+                        100% {
+                            -webkit-filter: hue-rotate(0deg);
+                            filter: hue-rotate(0deg);
+                            bottom: 30px;
+                        }
+                    }
+
+                    #baseimg:hover #logo_sm:hover {
+                        position: relative;
+                        animation-name: example;
+                        animation-duration: .15s;
+                        cursor: pointer;
+                    }
+
+                    #crdt_tex {
+                        position: absolute;
+                        left: 15%;
+                        width: 15%;
+                        height: 2.5vw;
+                        top: 218%;
+                        font-family: 'Oswald', sans-serif;
+                    }
+
+                    #crdt_tex2 {
+                        font-size: 1vw;
+                        color: gray;
+                        letter-spacing: .1vw;
+                        top: -1vw;
+                        position: absolute;
+                    }
+
+                    #crdt_tex3 {
+                        font-size: .6vw;
+                        color: #dc4343;
+                        text-shadow: 0 0 .5vw #dc4343;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        text-shadow: 0 0 .5vw #dc4343;
+                        position: absolute;
+                    }
+
+                    #mens {
+                        font-family: 'Poiret One', cursive;
+                    }
+
+                        #mens p {
+                            position: absolute;
+                            color: lightgray;
+                            font-size: 1.3vw;
+                            top: -.6vw;
+                            transition: all .5s ease;
+                        }
+
+                            #mens p:hover {
+                                color: #ff6464;
+                            }
+
+                    #men_p_1 {
+                        left: 2vw;
+                    }
+
+                    #men_p_2 {
+                        left: 7vw;
+                    }
+
+                    #men_p_3 {
+                        left: 11vw;
+                    }
+
+                    #men_p_4 {
+                        left: 15.5vw;
+                    }
+                </style>
+
+                <div id="prueba">
+
+                    <!--<div id="btm_crd"><div id="btm_crd2">ABOUT</div></div>-->
+
+
+                    <div id="img_ev">
+                        <div id="back_st1"></div>
+                        <img src="https://i.postimg.cc/TPLN507C/bse.png" id="ev_map" />
+                        <div id="xt_crdts"><p>NEIGE&LYNETTE_V.1533252890® all Rights Reserved 2023©<span id="span_g">_</span></p></div>
+                        <div class="glitch-container">
+                            <a href="#div_bott"><p id="p_divbott"></p><span id="span_g">_</span></a>
+
+                        </div>
+                        <a id="a_div_2" href="#sect4"><div id="p_divbott2"></div></a>
+                        <div id="img_logs">
+                            <img src="https://i.postimg.cc/851wpC3w/Sin-t-tulo.png" />
+                        </div>
+                        <div id="corr_ev">
+                            <button>SEND<span id="span_g">_</span></button>
+                            <div id="text_1"><div id="texp">E-MAIL://><span id="span_g">_</span> </div></div>
+                        </div>
+                        <div id="crdt_tex">
+                            <p id="crdt_tex2">CONTACT ME:<span id="span_g">_</span></p>
+                            <p id="crdt_tex3">NEIGE_V.1.0000001 // LYNETTE_V.2.099912 2023</p>
+                        </div>
+                        <div id="baseimg">
+                            <img src="https://i.postimg.cc/63S9LMtq/11.png" id="bakl_1" />
+                            <img src="https://i.postimg.cc/hvdKCVtr/22.png" id="bakl_2" />
+                            <img src="https://i.postimg.cc/T3mWyWjn/3.png" id="bakl_3" />
+                            <img src="https://i.postimg.cc/MXJqgXc8/44.png" id="bakl_4" />
+                            <div id="bakl_main">
+                                <img id="img_mn_1" src="https://i.postimg.cc/1zh766kS/p2.png" />
+                                <img id="img_mn_2" src="https://i.postimg.cc/gcXR95wM/p1.png" />
+                                <img id="logo_sm" src="https://i.postimg.cc/R0qrR86R/sk.png" />
+                            </div>
+
+                        </div>
+                        <img src="https://i.postimg.cc/xChVw08c/cosa-bateria-llena.png" id="b_img_q" />
+                        <img src="https://i.postimg.cc/NFXvYW2b/blanco.png" id="b_img_q2" /><div id="r-p3">
+                            <p>IMACC NAME: BLACKLARCH 4CL454</p>
+                            <p>IMACC TYPE: TAIMAT IMAGE</p>
+                            <p>ICCKS COMPRESSED (Q) 444445555</p>
+                            <p>LOAD ADRESS 0000x112244-000000000000000</p>
+                        </div>
+                        <div id="codesp">
+                            <p class="cpdw">-</p>
+                            <p class="cpdw1">00100</p>
+                            <p class="cpdw2">10000</p>
+                            <p class="cpdw3">00001</p>
+                            <p class="cpdw4">10000</p>
+                            <p class="cpdw">-</p>
+                            <p class="cpdw5">01000</p>
+                            <p class="cpdw6">10000</p>
+                            <p class="cpdw7">00001</p>
+                            <p class="cpdw8">00010</p>
+                            <br />
+                            <p class="cpdw">-</p>
+                        </div>
+                        <div id="lin_codes3-x">
+                            <p>
+                                HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                                HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;HSS440 &nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
 
         <div id="butonssections">
             <style>
@@ -2925,7 +3884,7 @@
             <p id="buton4" class="noselected" onclick="enterfour();">
 
             </p>
-            <p id="buton5" class="noselected">
+            <p id="buton5" class="noselected" onclick="enterfvive();">
 
             </p>
         </div>
