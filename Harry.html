@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+  
+</head>
+
+<body>
+    
+ <div id="main">
+     <style>
+         @font-face {
+             font-family: HarryFont;
+             src: url(harry.TTF);
+         }
+         #main { position:absolute; width:101%; height:101%; overflow:auto; left:-1%; top:-1%; scroll-behavior:smooth;
+         }
+             #main::-webkit-scrollbar {
+                 width: .6vw;
+                 border-radius: .5vw;
+                 background: rgba(34, 34, 34,1);
+             }
+
+
+
+             #main::-webkit-scrollbar-thumb {
+                 border-radius: 1vw;
+                 background: dimgray;
+                 width: .6vw;
+             }
+         #main1{
+             position: absolute;
+             width: 100%;
+             height: 100%;
+         }
+
+         #imgback1 {
+             position:absolute; width:100%; height:100%;
+         }
+         #degradbar {
+             position: absolute;
+             width: 100%;
+             height: 30%;
+             top: 70%;
+             background-image: linear-gradient(180deg,transparent 0%,rgba(34, 34, 34,.6) 20%,rgba(34, 34, 34,1) 100%);
+         }
+         #menus { width:90%; height:10%; border-radius:.5vw; background:rgba(255,255,255,.6); top:5%; left:5%; position:fixed; z-index:10;
+         }
+         #harrylogo { position:absolute; height:70%; top:15%; left:2%;
+         }
+         #pinfo {
+             font-family: 'Barlow', sans-serif;
+             font-size: 1.5vw;
+             letter-spacing: .1vw;
+             font-weight: bold;
+             color: #5E3F25;
+             left: 63%;
+             top: 32%;
+             text-decoration: none;
+             position: absolute;
+         }
+         #pinfo2 {
+             font-family: 'Barlow', sans-serif;
+             font-size: 1.5vw;
+             letter-spacing: .1vw;
+             font-weight: bold;
+             color: #5E3F25;
+             left: 80%; top:32%; text-decoration:none;
+             position: absolute;
+         }
+         #pinfo3 {
+             top: 32%;
+             text-decoration: none;
+             font-family: 'Barlow', sans-serif;
+             font-size: 1.5vw;
+             letter-spacing: .1vw;
+             font-weight: bold;
+             color: #5E3F25;
+             left: 90%;
+             position: absolute;
+         }
+        
+         #harrylogob { position:absolute; width:25vw; left:5%; top:77%; mix-blend-mode:difference; filter:invert(70%); 
+         }
+         #peliculaslinks { position:absolute; width:64%; left:32%; height:15%;   top:80%; opacity:.8;
+         }
+             #peliculaslinks div { width:12.2%; height:80%; top:10%;   float:left; border-left:.1vw solid #5E3F25; text-align:center; 
+             }
+             #peliculaslinks p {
+                 font-family: HarryFont;
+                 font-size: 1.3vw;
+                 letter-spacing: .1vw; 
+                 color: #e4af82;
+                 left: 80%;
+             }
+            #pseries { position:absolute; top:86%;
+                 font-family: HarryFont;
+                 font-size: 2vw;
+                 letter-spacing: .1vw;
+                 color: gray;
+                 left: 12%;
+             }
+     </style>
+     <div id="main1">
+         <img src="1102284.jpg" id="imgback1" />
+         <div id="menus">
+             <img src="harrylogo.png" id="harrylogo" />
+             <a href="#main2" id="pinfo">Información</a>
+             <a href="https://es.wikipedia.org/wiki/Harry_Potter" id="pinfo2"> Wiki</a>
+             <a href="https://www.pinterest.com.mx/germanpmarin/harry-potter/" id="pinfo3">Galería</a>
+         </div>
+
+         
+       
+         <div id="degradbar"></div>
+         <img src="harrylogo.png" id="harrylogob" />
+         <p id="pseries">Serie de peliculas</p>
+         <div id="peliculaslinks">
+
+             <div><p>Y la piedra <br />filosofal</p></div>
+             <div><p>Y la camara <br />secreta</p></div>
+             <div><p>Y el prisionero <br />de Azkaban</p></div>
+             <div><p>Y el caliz  <br />de fuego</p></div>
+             <div><p>Y la orden del <br />fenix</p></div>
+             <div><p>Y el misterio  <br />del principe</p></div>
+             <div><p>Y las reliquias <br />de la muerte 1</p></div>
+             <div><p>Y las reliquias <br />de la muerte 2</p></div>
+         </div>
+      
+     </div>
+     <div id="main2">
+         <div id="divbar"></div>
+         <style>
+             #main2 {
+                 position: absolute;
+                 background: rgb(34, 34, 34);
+                 top: 100%;
+                 width: 100%;
+                 height: 60%;
+             }
+
+             #divbar {
+                 position: absolute;
+                 width: 90%;
+                 left: 5%;
+                 top: 3%;
+                 opacity: .2;
+                 background: #5E3F25;
+                 height: .1vw;
+             }
+
+             #welcomep {
+                 width: 40%;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 3vw;
+                 color: darkgray;
+                 left: 5%;
+                 position: absolute;
+             }
+
+             #butonweb {
+                 position: absolute;
+                 background: lightgray;
+                 width: 15%;
+                 height: 10%;
+                 top: 30%;
+                 border-radius: .4vw;
+                 left: 80%;
+                 position: absolute;
+             }
+
+                 #butonweb p {
+                     text-align: center;
+                     font-size: 1.5vw;
+                     font-family: 'Times New Roman';
+                     position: relative;
+                     top: -1vw;
+                 }
+
+             #psub {
+                 text-align: right;
+                 width: 40%;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+                 color: darkgray;
+                 right: 5%;
+                 top: 40%;
+                 position: absolute;
+             }
+
+             #infoextra {
+                 width: 40%;
+                 right: 5%;
+                 top: 63%;
+                 height: 15%;
+                 position: absolute;
+             }
+
+             #extra1 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 0;
+             }
+
+             #extra2 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 33.3%;
+             }
+
+             #extra3 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 66.6%;
+             }
+
+             #infoextra p {
+                 text-align: right;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             .bs {
+                 left: 64%;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             .bs1 {
+                 left: 56%;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             #ntimg {
+                 width: 3vw;
+                 height: 2.2vw;
+                 position: absolute;
+                 left: 65%;
+                 top: 65%;
+             }
+
+             #hboimg {
+                 width: 2vw;
+                 filter: invert(100%);
+                 position: absolute;
+                 left: 83%;
+                 top: 80%;
+             }
+             #pabout {
+                 font-family: 'Barlow', sans-serif;
+                 text-align: right;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .1vw;
+                 font-size: .8vw;
+                 right:5%;
+                 top: 80%;
+                 line-height: 1vw; opacity:.5;
+             }
+
+             #pabout1 {
+                 text-align: right;
+                 font-family: 'Barlow', sans-serif;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .2vw;
+                 font-size: .8vw;
+                 left: 65%;
+                 top: 50%;
+                 line-height: 1.7vw;
+             }
+
+             #pabout2 {
+                 font-family: 'Barlow', sans-serif;
+                 text-align: right;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .2vw;
+                 font-size: .8vw;
+                 left: 67%;
+                 top: 70%;
+                 line-height: 1.7vw;
+             }
+         </style>
+         <p id="welcomep">
+             Ven a disfrutar el mundo mágico como nunca antes, y únete a nosotros para volar más allá de los terrenos del castillo de Hogwarts.
+             Enfréntate al Bosque Prohibido, donde descubrirás mágicas y extrañas criaturas en una nueva y emocionante aventura.
+         </p>
+         <a href="https://www.wizardingworld.com/">
+             <button id="butonweb">
+                 <p>Website oficial</p>
+             </button>
+         </a>
+         <p id="psub">
+             Harry Potter es una serie de novelas fantásticas escrita por la autora británica J. K. Rowling, en la que se describen las aventuras del joven aprendiz de magia y hechicería Harry Potter y sus amigos Hermione Granger y Ron Weasley, durante los años que pasan en el Colegio Hogwarts de Magia y Hechicería.
+         </p>
+         <div id="infoextra">
+             <div id="extra1"> <p>Fechas de actividad</p><b class="bs">2001 - 2011</b></div>
+             <div id="extra2"><p>Publisher</p><b class="bs1">J. K. Rowling</b></div>
+             <div id="extra3"><p>Disponible en:</p> <img src="netflix.webp" id="ntimg" /> <img src="hbo.png" id="hboimg" /></div>
+         </div>
+         <p id="pabout">
+             ☉Una pagina web desarrollada por [Nombre de alumna]<br />
+             ☉[Nombre de clase] | [periodo] | [firma]<br />
+             ☉[fecha del día]
+
+         </p>
+     </div>
+ </div>
+  
+</body>
+</html>
