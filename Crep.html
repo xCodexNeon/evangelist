@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+  
+</head>
+
+<body>
+    
+ <div id="main">
+     <style>
+         @font-face {
+             font-family: crepFont;
+             src: url(crep.ttf);
+         }
+         #main { position:absolute; width:101%; height:101%; overflow:auto; left:-1%; top:-1%; scroll-behavior:smooth; 
+         }
+             #main::-webkit-scrollbar {
+                 width: .6vw;
+                 border-radius: .5vw;
+                 background: rgba(34, 34, 34,1);
+             }
+
+
+
+             #main::-webkit-scrollbar-thumb {
+                 border-radius: 1vw;
+                 background: dimgray;
+                 width: .6vw;
+             }
+         #main1 {
+             position: absolute;
+             background-image: url(full.jpg);
+             background-attachment: fixed;
+             background-size: cover;
+             width: 100%;
+             height: 100%;
+             z-index:121;
+         }
+
+         #imgback1 {
+             position:absolute; width:100%; height:100%;
+         }
+         #degradbar {
+             position: absolute;
+             width: 100%;
+             height: 15%;
+             top: 85%; z-index:11;
+            
+             background:black;
+         }
+         #menus { width:100%; height:10%;   background:rgba(0,0,0,1); left:0;  position:fixed; z-index:10;
+         }
+         #harrylogo { position:absolute; height:80%; top:10%; left:2%;
+         }
+         #pinfo {
+             font-family: crepFont;
+             font-size: 1.5vw;
+             letter-spacing: .1vw; 
+             color: silver;
+             left: 63%;
+             top: 32%;
+             text-decoration: none;
+             position: absolute;
+         }
+         #pinfo2 {
+             font-family: crepFont;
+             font-size: 1.5vw;
+             letter-spacing: .1vw;
+             color: silver;
+             left: 78%;
+             top: 32%;
+             text-decoration: none;
+             position: absolute;
+         }
+         #pinfo3 {
+             top: 32%;
+             text-decoration: none;
+             font-size: 1.5vw;
+             letter-spacing: .1vw;
+             font-family: crepFont;
+             color: silver;
+             left: 90%;
+             position: absolute;
+         }
+        
+         #harrylogob { position:absolute; width:25vw; left:5%; top:77%; mix-blend-mode:difference; filter:invert(70%); 
+         }
+         #peliculaslinks { position:absolute; width:64%; left:32%; height:15%;   top:80%; opacity:.8;
+         }
+             #peliculaslinks div { width:12.2%; height:80%; top:10%;   float:left; border-left:.1vw solid #5E3F25; text-align:center; 
+             }
+             #peliculaslinks p {
+                 font-family: HarryFont;
+                 font-size: 1.3vw;
+                 letter-spacing: .1vw; 
+                 color: #e4af82;
+                 left: 80%;
+             }
+            #pseries { position:absolute; top:86%;
+                 font-family: HarryFont;
+                 font-size: 2vw;
+                 letter-spacing: .1vw;
+                 color: gray;
+                 left: 12%;
+             }
+         #mainlogo { width:40%; left:30%; top:-90%; position:absolute;
+         }
+         #bardeg1 { width:15%; height:100%; left:0; top:0; position:absolute;
+             background-image: linear-gradient(270deg,transparent 0%,rgba(0,0,0,.6) 20%,rgba(0,0,0,1) 100%);
+         }
+         #bardeg2 {
+             width: 15%;
+             height: 100%;
+             right: 0;
+             top: 0;
+             position: absolute;
+             background-image: linear-gradient(90deg,transparent 0%,rgba(0,0,0,.6) 20%,rgba(0,0,0,1) 100%);
+         }
+         #bardeg3 {
+             width: 100%;
+             height: 15%;
+             right: 0;
+             top: 5%;
+             position: fixed;
+             background-image: linear-gradient(0deg,transparent 0%,rgba(0,0,0,.6) 20%,rgba(0,0,0,1) 100%);
+         }
+         #filt { position:absolute; width:100%; height:100%; top:0; opacity:.2;
+         }
+     </style>
+     <div id="main1">
+         <img src="snow.gif" id="filt" />
+         <div id="bardeg1"></div>
+         <div id="bardeg2"></div>
+         <div id="bardeg3"></div>
+         
+         <div id="menus">
+             <img src="crep.png" id="harrylogo" />
+             <a href="#main2" id="pinfo">Información</a>
+             <a href="https://es.wikipedia.org/wiki/Harry_Potter" id="pinfo2"> Wiki</a>
+             <a href="https://www.pinterest.com.mx/germanpmarin/harry-potter/" id="pinfo3">Mas...</a>
+         </div>
+
+
+
+         <div id="degradbar">
+             <img src="crep.png" id="mainlogo" />
+
+         </div>
+
+     </div>
+     <div id="main2">
+        
+         <style>
+             #main2 {
+                 position: absolute;
+                 background: black;
+                 top: 100%;
+                 width: 100%;
+                 height: 76%;
+             }
+
+           
+
+             #welcomep {
+                 width: 40%;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 3vw;
+                 color: darkgray;
+                 left: 5%;
+                 position: absolute;
+             }
+
+             #butonweb {
+                 position: absolute;
+                 background: lightgray;
+                 width: 15%;
+                 height: 10%;
+                 top: 30%;
+                 border-radius: .4vw;
+                 left: 80%;
+                 position: absolute;
+             }
+
+                 #butonweb p {
+                     text-align: center;
+                     font-size: 1.5vw;
+                     font-family: crepFont;
+                     position: relative;
+                     top: -.8vw;
+                 }
+             #butonweb2 {
+                 position: absolute;
+                 background: lightgray;
+                 width: 25%;
+                 height: 12%;
+                 top: 82%;
+                 border-radius: .4vw;
+                 left: 70%;
+                 position: absolute;
+             }
+
+                 #butonweb2 p {
+                     text-align: center;
+                     font-size: 1.5vw;
+                     font-family: crepFont;
+                     position: relative;
+                     top: -.8vw;
+                 }
+
+             #psub {
+                 text-align: right;
+                 width: 40%;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+                 color: darkgray;
+                 right: 5%;
+                 top: 40%;
+                 position: absolute;
+             }
+
+             #infoextra {
+                 width: 40%;
+                 right: 5%;
+                 top: 63%;
+                 height: 15%;
+                 position: absolute;
+             }
+
+             #extra1 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 0;
+             }
+
+             #extra2 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 33.3%;
+             }
+
+             #extra3 {
+                 width: 33.3%;
+                 height: 100%;
+                 position: absolute;
+                 left: 66.6%;
+             }
+
+             #infoextra p {
+                 text-align: right;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             .bs {
+                 left: 64%;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             .bs1 {
+                 left: 26%;
+                 position: relative;
+                 color: dimgray;
+                 font-family: 'Barlow', sans-serif;
+                 font-size: 1vw;
+                 letter-spacing: .1vw;
+             }
+
+             #ntimg {
+                 width: 3vw;
+                 height: 2.2vw;
+                 position: absolute;
+                 left: 65%;
+                 top: 65%;
+             }
+
+             #hboimg {
+                 width: 2vw;
+                 filter: invert(100%);
+                 position: absolute;
+                 left: 83%;
+                 top: 80%;
+             }
+             #pabout {
+                 font-family: 'Barlow', sans-serif;
+                 text-align: right;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .1vw;
+                 font-size: .8vw;
+                 right:5%;
+                 top: 80%;
+                 line-height: 1vw; opacity:.5;
+             }
+
+             #pabout1 {
+                 text-align: right;
+                 font-family: 'Barlow', sans-serif;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .2vw;
+                 font-size: .8vw;
+                 left: 65%;
+                 top: 50%;
+                 line-height: 1.7vw;
+             }
+
+             #pabout2 {
+                 font-family: 'Barlow', sans-serif;
+                 text-align: right;
+                 position: absolute;
+                 color: gray;
+                 letter-spacing: .2vw;
+                 font-size: .8vw;
+                 left: 67%;
+                 top: 70%;
+                 line-height: 1.7vw;
+             }
+             #vid { position:absolute; width:40%; height:60%;    top:20%; left:3%;
+             }
+             #bord1 { width:100%; position:absolute; top:-3%;
+             }
+             #bord2 {
+                 width: 100%; transform:scaleX(-1);
+                 position: absolute;
+                 bottom: -3%;
+             }
+             #contvid { position:absolute; width:100%; height:100%;   overflow:hidden; border-radius:1vw;
+             }
+         </style>
+        
+         <div id="vid">
+
+             <div id="contvid">
+                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UBbpGSszXtU?si=FsgJuSZ-AK8dXXg5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+             </div>
+             <img src="bord.png" id="bord1" />
+             <img src="bord.png" id="bord2" />
+         </div>
+
+         <a href="#main">
+             <button id="butonweb">
+                 <p>Mas información</p>
+             </button>
+         </a>
+         <p id="psub">
+             Bella Swan se va a vivir con su padre, al pueblo de Forks, donde conoce a Edward, un atractivo y misterioso chico con un gran secreto: es un vampiro. Pero la familia del chico guarda una peculiaridad: no se alimenta de sangre humana.
+         </p>
+         <div id="infoextra">
+             <div id="extra1"> <p>Fechas de actividad</p><b class="bs">2008 - 2012</b></div>
+             <div id="extra2"><p>Publisher</p><b class="bs1"> Summit Entertainment</b></div>
+             <div id="extra3"><p>Disponible en:</p> <img src="netflix.webp" id="ntimg" /> <img src="hbo.png" id="hboimg" /></div>
+         </div>
+         <p id="pabout">
+             ☉Una pagina web desarrollada por [Nombre de alumna]<br />
+             ☉[Nombre de clase] | [periodo] | [firma]<br />
+             ☉[fecha del día]
+
+         </p>
+         <div id="subemnu">
+             <style>
+
+                 #subemnu {
+                     position: absolute;
+                     width: 50%;
+                     top: 10%;
+                     height: 80%;
+                     background: black;
+                     right: 100%;
+                 }
+
+                 #main:target #subemnu {
+                     right: 3%;
+                 }
+
+                 #imglogo {
+                     position: absolute;
+                     width: 40%;
+                     top: 0;
+                     left: 30%;
+                     filter: invert(100%);
+                 }
+
+                 #pcont {
+                     text-align: center;
+                     font-family: 'Barlow', sans-serif;
+                     position: relative;
+                     color: gray;
+                     letter-spacing: .1vw;
+                     font-size: 1.3vw;
+                     top: 20%;
+                     line-height: 1.7vw;
+                 }
+
+                 #ppelis {
+                     text-align: left;
+                     font-family: crepFont;
+                     position: relative;
+                     color: gray;
+                     letter-spacing: .1vw;
+                     font-size: 1.2vw;
+                     top: 30%;
+                 }
+             </style>
+             <img src="crepu.png" id="imglogo" />
+             <p id="pcont">
+                 Crepúsculo: la saga es una serie de cinco películas de fantasía romántica de Summit Entertainment, basada en las cuatro novelas de la autora estadounidense Stephenie Meyer.
+                 Las estrellas de la película fueron Kristen Stewart, Robert Pattinson, y Taylor Lautner. La serie ha recaudado $3300 millones en ingresos mundiales. Consiste, hasta ahora, en cinco películas.
+
+             </p>
+             <p id="ppelis">
+
+                 >Crepúsculo <br />
+                 >The Twilight Saga: New Moon <br />
+                 >The Twilight Saga: Eclipse <br />
+                 >The Twilight Saga: Breaking Dawn <br />
+                 >The Twilight Saga: Breaking Dawn  <br />
+
+             </p>
+             <a href="#">
+                 <button id="butonweb2">
+                     <p>Regresar</p>
+                 </button>
+             </a>
+         </div>
+     </div>
+ </div>
+  
+</body>
+</html>
