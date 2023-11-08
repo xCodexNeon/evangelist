@@ -14,14 +14,21 @@
     <script type="text/javascript" src="countdown.js"></script>
     <script type="text/javascript" src="countdown.min.js"></script>
     <script type="text/javascript" src="mgGlitch.min.js"></script>
+    <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+    <script type="text/javascript">
+        videojs.getPlayer('myPlayerID').ready(function () {
+            // Get a reference to the player
+            var myPlayer = this;
 
+            myPlayer.backgroundPlaylistRandom();
+        });
+    </script>
     <style>
         #main {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            
             font-family: 'Oswald', sans-serif;
         }
 
@@ -283,7 +290,7 @@
         }
     </style>
     <style>
-      
+
         #menu {
             width: 24%;
             height: 100%;
@@ -300,7 +307,7 @@
             opacity: .1;
         }
 
-        
+
         #c1 {
             position: absolute;
             top: 3%;
@@ -1025,7 +1032,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: black; 
+            background: black;
             overflow: hidden;
         }
 
@@ -2993,10 +3000,9 @@
         }
 
         #matrix {
-            
             cursor: none;
         }
- 
+
 
         #Inv:target #a_in, #M_N:target #a_in {
             opacity: 0;
@@ -3016,7 +3022,7 @@
             position: absolute;
         }
 
-        
+
         #Player_1:target {
             z-index: 9;
             opacity: 1;
@@ -3963,7 +3969,6 @@
 
         #div_p_mess {
             width: 97%;
-            
             margin-bottom: .6vw;
         }
 
@@ -4836,7 +4841,7 @@
             $("#matrix").removeClass("nomatrix");
             outmess();
             outmenu();
-}
+        }
         function outmatrix() {
             $("#matrix").addClass("nomatrix");
             $("#matrix").removeClass("simatrix");
@@ -4849,8 +4854,8 @@
         }
         function outmenu() {
             $("#Player_1").addClass("nomatrix");
-            $("#Player_1").removeClass("simatrix"); 
-              
+            $("#Player_1").removeClass("simatrix");
+
         }
         function inmess() {
             $("#mess").addClass("simatrix");
@@ -4865,7 +4870,7 @@
         function inadv() {
             $("#adver").addClass("simatrix");
             $("#adver").removeClass("nomatrix");
-            
+
         } function outadv() {
             $("#adver").addClass("nomatrix");
             $("#adver").removeClass("simatrix");
@@ -4885,20 +4890,42 @@
             $("#mess").addClass("nomatrix");
             $("#mess").removeClass("simatrix");
         }
+        function inplayerui() {
+            $("#playerui").addClass("simatrix");
+            $("#playerui").removeClass("nomatrix");
 
+        } function outplayerui() {
+            $("#playerui").addClass("nomatrix");
+            $("#playerui").removeClass("simatrix");
 
+        }
+        function outmain1() {
+            $("#intro1").addClass("nomatrix");
+            $("#intro1").removeClass("simatrix");
+            $("#Main_play").addClass("simatrix");
+            $("#Main_play").removeClass("nomatrix");
+        }
+        function outmainx() {
+            $("#Main_play").addClass("outmainpage");
+           
+            $(".inv0").addClass("nomatrix");
+            $(".inv0").removeClass("simatrix");
+            $(".inv1").addClass("simatrix");
+            $(".inv1").removeClass("nomatrix");
+        }
         function backmain() {
             outmess();
             outmenu();
             outmatrix();
             outsocial();
+            outplayerui();
         }
 
     </script>
 </head>
 
  
-<body onclick="digi()">
+<body onclick="digi(); chngevid();"  >
     <script>
         $(document).on("click mousemove", ".box", function (e) {
             var x = e.clientX;
@@ -5001,7 +5028,25 @@
                 musicName.html(audioData[CurrentSong].name);
                 song.src = audioData[CurrentSong].src;
             }
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
 
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
             function playSong() {
                 var curSong = audioData[CurrentSong];
                 artistname.html(curSong.artist);
@@ -5037,7 +5082,7 @@
                 $(".time").html(indicatorLabel);
             });
             //////
-            $("#a_in").click(function playOrPause() {
+            $("#intro1").click(function playOrPause() {
                 if (song.paused) {
                     song.play();
                     playing = true;
@@ -5121,166 +5166,173 @@
     </script>
 
     <div id="M_N" class="box">
-        <a id="a_in" href="#M_N" onclick="heartbeat.play();">
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+        <style>
+            audio {
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+            }
+            /*#M_N:target*/
 
-                body {
-                    background: black;
-                    width: 100%;
-                    height: 100%;
-                    overflow: hidden;
-                    cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
-                }
+            #main {
+                animation: toin 2s 1;
+                animation-fill-mode: forwards;
+            }
+        </style>
+        <audio controls id="outprofile" class="mks">
+            <source src="closemenu.wav"></source>
+            <script>
 
-                #Main_play, #M_N {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    background: black;
-                    font-family: 'Oswald', sans-serif;
-                }
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#outprofile")[0];
 
-                #video4 {
-                    opacity: .4;
-                }
+                    $("#Men_sel5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#p_mess_4").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                });
 
-                /*#M_N:target*/ #main {
-                    animation: toin 2s 1;
-                    animation-fill-mode: forwards;
-                }
+            </script>
+        </audio>
+        <audio controls id="inmain" class="mks">
+            <source src="openmain.wav"></source>
+            <script>
 
-                #M_N:target #Main_play {
-                    z-index: -1;
-                    opacity: 0;
-                }
-
-                #Inv:target #a_in, #M_N:target #a_in {
-                    opacity: 0;
-                }
-
-                #m_int {
-                    position: absolute;
-                    left: 37.5%;
-                    top: 57%;
-                    font-size: .5vw;
-                    font-weight: bold;
-                    color: #FF5B5B;
-                    letter-spacing: .15vw;
-                }
-
-                #m_int2 {
-                    position: absolute;
-                    left: 40.5%;
-                    top: 75%;
-                    font-size: .5vw;
-                    font-weight: bold;
-                    color: #FF5B5B;
-                    letter-spacing: .15vw;
-                }
-
-                #In_mnu {
-                    text-align: center;
-                    position: absolute;
-                    top: 60%;
-                    width: 25%;
-                    left: 37.5%;
-                    transform: rotateZ(1deg);
-                    height: 4vw; /*box-shadow: 0 0 .2vw #f54141;*/
-                    border: .1vw solid #FF5B5B;
-                }
-
-                #cub {
-                    position: absolute;
-                    top: 71%;
-                    width: 20%;
-                    left: 40%;
-                    transform: rotateZ(1deg);
-                    height: 2vw; /*box-shadow: 0 0 .2vw #f54141;*/
-                    border: .1vw solid #FF5B5B;
-                }
-
-                @keyframes flicker4 {
-
-                    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                        color: rgba(199,48,48,.8);
-                    }
-
-                    20%, 24%, 55% {
-                        color: #FF5B5B;
-                    }
-                }
-
-                #In_mnu span {
-                    margin-top: .5vw;
-                    animation: flicker4 1s infinite;
-                    text-shadow: 0 0 .5vw #f54141;
-                    font-size: 2.2vw;
-                    font-weight: bold;
-                    /*filter: contrast(150%);*/
-                    /*color: rgba(199,48,48,1);*/
-                    letter-spacing: .2vw;
-                    opacity: .7;
-                }
-
-                #In_mnu img {
-                    width: 2.2vw;
-                    margin-top: .6vw;
-                }
-
-                #botbar {
-                    width: 60%;
-                    height: 0;
-                    border-bottom: .1vw solid #FF5B5B;
-                    position: absolute;
-                    top: 80%;
-                    left: 20%;
-                    opacity: .3;
-                }
-
-                #cub img {
-                    width: 2vw;
-                    filter: contrast(140%);
-                    position: absolute;
-                    left: .8vw;
-                    top: .2vw;
-                }
-
-                #pd_1x, #pd_2x {
-                    position: absolute;
-                    left: 20%;
-                    top: -10%;
-                    font-size: .5vw;
-                    opacity: .9;
-                    color: #FF5B5B;
-                }
-
-                #pd_2, #pd_2x {
-                    top: 20%;
-                }
-            </style>
-            <div id="Main_play">
-                <video id="video4" autoplay="" loop="" muted="">
-                    <source src="https://xevangelist.github.io/evangelist/Cyberpunk%202077%20-%20Title%20screen%20(ambient)%20(1).mp4" type="video/mp4">
-                    <script>
-                        $('#video4').coverVid(1920, 1080);
-                    </script>
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#inmain")[0];
+                    var x = 1;
+                    $("#Main_play").click(function () {
+                        audio.play();
+                        console.log(audio);
 
 
-                </video>
-                <p id="m_int">LOADING_MAINMENU 100%</p>
-                <div id="In_mnu">
-                    <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
-                </div>
-                <div id="cub">
-                    <img src="https://i.postimg.cc/ryCD760W/triangulo2.png" />
-                    <p id="pd_1x">/00442923402.39 NIGHT CITY CORP RECORD DATABASE 29 _3.44443/213 XC899</p>
-                    <p id="pd_2x">4422344223442233//0044223402.3900029 _3.800 </p>
-                </div>
-                <p id="m_int2">| ICL_HC 9_45000000048</p>
-                <div id="botbar"></div>
-            </div>
-        </a>
+
+                    });
+
+
+                });
+
+
+            </script>
+        </audio>
+        <audio controls id="inmenu" class="mks">
+            <source src="openmenu.wav"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#inmenu")[0];
+                    var x = 1;
+                    $("#Main_play").click(function () {
+
+                        temporizadorDeRetraso();
+                        function temporizadorDeRetraso() {
+                            identificadorTiempoDeEspera = setTimeout(entrancesecon, 3800);
+                        }
+                        function entrancesecon() {
+                            audio.play();
+                            console.log(audio);
+
+                        }
+
+
+                    });
+
+
+                });
+
+
+            </script>
+        </audio>
+
+        <audio controls id="opensecc" class="mks">
+            <source src="opensection.wav"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#opensecc")[0];
+
+                    $(".ms1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".ms2").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".ms3").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".ms4").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".ms5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".Men_sel").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".Men_sel2").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".Men_sel3").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".Men_sel4").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#p_mess_6").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#p_mess_2").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".p_mess_4").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $(".p_mess_5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                });
+
+            </script>
+        </audio>
+
+        <audio controls id="clickm" class="mks">
+            <source src="click.wav"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#clickm")[0];
+
+                    $("body").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    }); 
+                });
+
+            </script>
+        </audio>
+
 
 
         <div id="main">
@@ -5480,64 +5532,6 @@
                     <img src="https://i.postimg.cc/bYtp7MYq/2077.png" id="lo2" />
                 </div>
 
-                <audio controls id="makesound">
-                    <source src="https://xevangelist.github.io/evangelist/click.mp3?raw=true"></source>
-                    <script>
-
-                        $(function () {
-                            //take id of the audio and make a variable
-                            var audio = $("#makesound")[0];
-
-                            //eventhandler on hover with play() function
-                            $(".ms1").mouseenter(function () {
-                                audio.play();
-                            });
-                            $(".ms2").mouseenter(function () {
-                                audio.play();
-                            });
-                            $(".ms3").mouseenter(function () {
-                                audio.play();
-                            });
-                            $(".ms4").mouseenter(function () {
-                                audio.play();
-                            });
-                            $(".ms5").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#Men_sel1").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#Men_sel2").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#Men_sel3").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#Men_sel4").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#Men_sel5").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#next").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#prev").mouseenter(function () {
-                                audio.play();
-                            });
-                            $("#btonm").mouseenter(function () {
-                                audio.play();
-                            });
-                            //additional eventhandler on button click
-                            $("#M_N").click(function () {
-                                audio.play();
-                                console.log(audio);
-                            });
-
-                        });
-
-                    </script>
-                </audio>
 
 
                 <div id="a_menu">
@@ -5953,14 +5947,14 @@
                         <p id="p_sel">CONSOLE</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                     </div>
-                    <div id="m_s" class="ms4">
+                    <div id="m_s" class="ms4" onclick="inplayerui();">
                         <img class="imgbakms" src="https://i.postimg.cc/02x0tDzY/w.png" />
                         <p id="p_sel">PLAYER_UI.V2</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                     </div>
                     <div id="m_s" class="ms5">
                         <img class="imgbakms" src="https://i.postimg.cc/02x0tDzY/w.png" />
-                        <p id="p_sel">ABOUT</p>
+                        <p id="p_sel">CONFIGURATION</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                     </div>
 
@@ -7626,13 +7620,13 @@
                 <p id="mnus_pss">90%</p><p id="mnus_pss2">85%</p><p id="mnus_pss3">56%</p>
             </div>
             <div id="menues2">
-                  <div onclick="inmess();" class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div> 
+                <div onclick="inmess();" class="Men_sel" id="Men_sel1"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/pXYNWbH3/hexagono.png" class="icon_ms" /><p class="p_ms_1_1">MESSAGES</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
                 <div class="Men_sel" id="Men_sel2"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/7ZxFbsPh/mitad.png" class="icon_ms" /><p class="p_ms_1_1">INVASION</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
                 <div onclick="insocial();" class="Men_sel" id="Men_sel3"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/HWMDN8PY/hexagono-1.png" class="icon_ms" /><p class="p_ms_1_1">SOCIALS</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
-                <a  >
-                    <div class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">PLAYER UI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
+                <a>
+                    <div onclick="inplayerui();" class="Men_sel" id="Men_sel4"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/Gh1wn3Zk/hexagono-2.png" class="icon_ms" /><p class="p_ms_1_1">PLAYER UI</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
                 </a>
-                  <div onclick="outmenu();" class="Men_sel" id="Men_sel5"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/3Nms0zD4/prioridad.png" class="icon_ms" /><p class="p_ms_1_1">RETURN</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div> 
+                <div onclick="outmenu();" class="Men_sel" id="Men_sel5"><img class="img_mnS" src="https://i.postimg.cc/7Pn8QdxZ/Shards-Menu-Cybeukuurpunk.png" /><img class="img_mnS2" src="https://i.postimg.cc/FzZMddPL/sel2.png" /><img src="https://i.postimg.cc/3Nms0zD4/prioridad.png" class="icon_ms" /><p class="p_ms_1_1">RETURN</p><p class="p_text_d">MAIN_MENU007XX<br />CDKS_9000_TK0</p></div>
             </div>
             <div id="hour_dr">
                 <div id="hour_t">
@@ -7712,7 +7706,7 @@
                 #adver {
                     position: absolute;
                     width: 100%;
-                    height: 100%; 
+                    height: 100%;
                 }
 
                 #advback {
@@ -7746,7 +7740,7 @@
             <div id="advback">
 
             </div>
-            <div id="contenadv" >
+            <div id="contenadv">
                 <style>
                     #contenadv {
                         position: absolute;
@@ -7856,30 +7850,31 @@
                     <p id="butyes">
                         YES
                     </p>
-                </div></a>>
-                <div id="butacc2" onclick="outadv();">
-                    <style>
-                        #butacc2 {
-                            position: absolute;
-                            width: 10%;
-                            height: 6%;
-                            top: 53%;
-                            left: 53%;
-                        }
-
-                        .imgbakbut2 {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            transform: scaleX(-1);
-                        }
-                    </style>
-                    <img class="imgbakbut2" src="https://i.postimg.cc/02x0tDzY/w.png" />
-                    <p id="butno">
-                        NO
-                    </p>
                 </div>
-</div>
+            </a>>
+            <div id="butacc2" onclick="outadv();">
+                <style>
+                    #butacc2 {
+                        position: absolute;
+                        width: 10%;
+                        height: 6%;
+                        top: 53%;
+                        left: 53%;
+                    }
+
+                    .imgbakbut2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        transform: scaleX(-1);
+                    }
+                </style>
+                <img class="imgbakbut2" src="https://i.postimg.cc/02x0tDzY/w.png" />
+                <p id="butno">
+                    NO
+                </p>
+            </div>
+        </div>
 
         <div id="mess" class="nomatrix">
             <div id="messback"></div>
@@ -7942,12 +7937,12 @@
 
             <div id="mess_top">
                 <div id="mess_mnu">
-                    <p id="p_mess_1">NIGHT CITY NETWARE</p> <a ><p onclick="inmenu()" id="p_mess_2">MENU</p></a>
+                    <p id="p_mess_1">NIGHT CITY NETWARE</p> <a><p onclick="inmenu()" id="p_mess_2">MENU</p></a>
                     <p id="p_mess_3">MESSAGES</p><div id="nmbr_mss"><p>04</p></div>
-                    <a  ><p onclick="backmain()" id="p_mess_4">MAIN</p></a>
+                    <a><p onclick="backmain()" id="p_mess_4">MAIN</p></a>
                     <a href="#Inv">
                         <p id="p_mess_5">INVASION</p>
-                    </a><a  >
+                    </a><a>
                         <p id="p_mess_6" onclick="insocial(); outmess();">SOCIALS</p>
                     </a>
                 </div>
@@ -8722,16 +8717,16 @@
                     <div id="classfrd" class="noselectfrd fbr3"></div>  <p id="nameregfrdx">Schroederz (1511990900)</p>
                     <p id="subfrdx">Mythez | BFF | silence</p>
                 </div>
-                <div class="linefrd">
+                <div class="linefrd" onclick="selectf4();">
                     <div id="classfrd" class="noselectfrd fbr4"></div>  <p id="nameregfrdx">kagura (1511990900)</p>
                     <p id="subfrdx">Lucia | FRD | Maiden</p>
                 </div>
-                <div class="linefrd">
+                <div class="linefrd" onclick="selectf5();">
                     <div id="classfrd" class="noselectfrd fbr5"></div> <p id="nameregfrdx">ROSE (10000051)</p>
                     <p id="subfrdx">ROSE | FRD | roses</p>
 
                 </div>
-                <div class="linefrd">
+                <div class="linefrd" onclick="selectf6();">
                     <div id="classfrd" class="noselectfrd fbr6"></div> <p id="nameregfrdx">Saeroyi (1409430936)</p>
                     <p id="subfrdx">esme | frd | genesis</p>
 
@@ -9012,50 +9007,178 @@
                     $(".fbr8").removeClass("selectfrd");
                     $(".fbr9").addClass("noselectfrd");
                     $(".fbr9").removeClass("selectfrd");
-                } 
+                }
+                function selectf4() {
+                    $(".frd4").addClass("simatrix");
+                    $(".frd4").removeClass("nomatrix");
+
+                    $(".frd1").addClass("nomatrix");
+                    $(".frd1").removeClass("simatrix");
+                    $(".frd3").addClass("nomatrix");
+                    $(".frd3").removeClass("simatrix");
+                    $(".frd2").addClass("nomatrix");
+                    $(".frd2").removeClass("simatrix");
+                    $(".frd5").addClass("nomatrix");
+                    $(".frd5").removeClass("simatrix");
+                    $(".frd6").addClass("nomatrix");
+                    $(".frd6").removeClass("simatrix");
+                    $(".frd7").addClass("nomatrix");
+                    $(".frd7").removeClass("simatrix");
+                    $(".frd8").addClass("nomatrix");
+                    $(".frd8").removeClass("simatrix");
+                    $(".frd9").addClass("nomatrix");
+                    $(".frd9").removeClass("simatrix");
+
+                    $(".fbr4").addClass("selectfrd");
+                    $(".fbr4").removeClass("noselectfrd");
+
+                    $(".fbr1").addClass("noselectfrd");
+                    $(".fbr1").removeClass("selectfrd");
+                    $(".fbr3").addClass("noselectfrd");
+                    $(".fbr3").removeClass("selectfrd");
+                    $(".fbr2").addClass("noselectfrd");
+                    $(".fbr2").removeClass("selectfrd");
+                    $(".fbr5").addClass("noselectfrd");
+                    $(".fbr5").removeClass("selectfrd");
+                    $(".fbr6").addClass("noselectfrd");
+                    $(".fbr6").removeClass("selectfrd");
+                    $(".fbr7").addClass("noselectfrd");
+                    $(".fbr7").removeClass("selectfrd");
+                    $(".fbr8").addClass("noselectfrd");
+                    $(".fbr8").removeClass("selectfrd");
+                    $(".fbr9").addClass("noselectfrd");
+                    $(".fbr9").removeClass("selectfrd");
+                }
+                function selectf5() {
+                    $(".frd5").addClass("simatrix");
+                    $(".frd5").removeClass("nomatrix");
+
+                    $(".frd1").addClass("nomatrix");
+                    $(".frd1").removeClass("simatrix");
+                    $(".frd3").addClass("nomatrix");
+                    $(".frd3").removeClass("simatrix");
+                    $(".frd4").addClass("nomatrix");
+                    $(".frd4").removeClass("simatrix");
+                    $(".frd2").addClass("nomatrix");
+                    $(".frd2").removeClass("simatrix");
+                    $(".frd6").addClass("nomatrix");
+                    $(".frd6").removeClass("simatrix");
+                    $(".frd7").addClass("nomatrix");
+                    $(".frd7").removeClass("simatrix");
+                    $(".frd8").addClass("nomatrix");
+                    $(".frd8").removeClass("simatrix");
+                    $(".frd9").addClass("nomatrix");
+                    $(".frd9").removeClass("simatrix");
+
+                    $(".fbr5").addClass("selectfrd");
+                    $(".fbr5").removeClass("noselectfrd");
+
+                    $(".fbr1").addClass("noselectfrd");
+                    $(".fbr1").removeClass("selectfrd");
+                    $(".fbr3").addClass("noselectfrd");
+                    $(".fbr3").removeClass("selectfrd");
+                    $(".fbr4").addClass("noselectfrd");
+                    $(".fbr4").removeClass("selectfrd");
+                    $(".fbr2").addClass("noselectfrd");
+                    $(".fbr2").removeClass("selectfrd");
+                    $(".fbr6").addClass("noselectfrd");
+                    $(".fbr6").removeClass("selectfrd");
+                    $(".fbr7").addClass("noselectfrd");
+                    $(".fbr7").removeClass("selectfrd");
+                    $(".fbr8").addClass("noselectfrd");
+                    $(".fbr8").removeClass("selectfrd");
+                    $(".fbr9").addClass("noselectfrd");
+                    $(".fbr9").removeClass("selectfrd");
+                }
+                function selectf6() {
+                    $(".frd6").addClass("simatrix");
+                    $(".frd6").removeClass("nomatrix");
+
+                    $(".frd1").addClass("nomatrix");
+                    $(".frd1").removeClass("simatrix");
+                    $(".frd3").addClass("nomatrix");
+                    $(".frd3").removeClass("simatrix");
+                    $(".frd4").addClass("nomatrix");
+                    $(".frd4").removeClass("simatrix");
+                    $(".frd2").addClass("nomatrix");
+                    $(".frd2").removeClass("simatrix");
+                    $(".frd5").addClass("nomatrix");
+                    $(".frd5").removeClass("simatrix");
+                    $(".frd7").addClass("nomatrix");
+                    $(".frd7").removeClass("simatrix");
+                    $(".frd8").addClass("nomatrix");
+                    $(".frd8").removeClass("simatrix");
+                    $(".frd9").addClass("nomatrix");
+                    $(".frd9").removeClass("simatrix");
+
+                    $(".fbr6").addClass("selectfrd");
+                    $(".fbr6").removeClass("noselectfrd");
+
+                    $(".fbr1").addClass("noselectfrd");
+                    $(".fbr1").removeClass("selectfrd");
+                    $(".fbr3").addClass("noselectfrd");
+                    $(".fbr3").removeClass("selectfrd");
+                    $(".fbr4").addClass("noselectfrd");
+                    $(".fbr4").removeClass("selectfrd");
+                    $(".fbr2").addClass("noselectfrd");
+                    $(".fbr2").removeClass("selectfrd");
+                    $(".fbr5").addClass("noselectfrd");
+                    $(".fbr5").removeClass("selectfrd");
+                    $(".fbr7").addClass("noselectfrd");
+                    $(".fbr7").removeClass("selectfrd");
+                    $(".fbr8").addClass("noselectfrd");
+                    $(".fbr8").removeClass("selectfrd");
+                    $(".fbr9").addClass("noselectfrd");
+                    $(".fbr9").removeClass("selectfrd");
+                }
 
 
-            function selectf8() {
-            $(".frd8").addClass("simatrix");
-            $(".frd8").removeClass("nomatrix");
 
-            $(".frd1").addClass("nomatrix");
-            $(".frd1").removeClass("simatrix");
-            $(".frd3").addClass("nomatrix");
-            $(".frd3").removeClass("simatrix");
-            $(".frd4").addClass("nomatrix");
-            $(".frd4").removeClass("simatrix");
-            $(".frd5").addClass("nomatrix");
-            $(".frd5").removeClass("simatrix");
-            $(".frd6").addClass("nomatrix");
-            $(".frd6").removeClass("simatrix");
-            $(".frd7").addClass("nomatrix");
-            $(".frd7").removeClass("simatrix");
-            $(".frd2").addClass("nomatrix");
-            $(".frd2").removeClass("simatrix");
-            $(".frd9").addClass("nomatrix");
-            $(".frd9").removeClass("simatrix");
 
-            $(".fbr8").addClass("selectfrd");
-            $(".fbr8").removeClass("noselectfrd");
 
-            $(".fbr1").addClass("noselectfrd");
-            $(".fbr1").removeClass("selectfrd");
-            $(".fbr3").addClass("noselectfrd");
-            $(".fbr3").removeClass("selectfrd");
-            $(".fbr4").addClass("noselectfrd");
-            $(".fbr4").removeClass("selectfrd");
-            $(".fbr5").addClass("noselectfrd");
-            $(".fbr5").removeClass("selectfrd");
-            $(".fbr6").addClass("noselectfrd");
-            $(".fbr6").removeClass("selectfrd");
-            $(".fbr7").addClass("noselectfrd");
-            $(".fbr7").removeClass("selectfrd");
-            $(".fbr2").addClass("noselectfrd");
-            $(".fbr2").removeClass("selectfrd");
-            $(".fbr9").addClass("noselectfrd");
-            $(".fbr9").removeClass("selectfrd");
-            }</script>
+                function selectf8() {
+                    $(".frd8").addClass("simatrix");
+                    $(".frd8").removeClass("nomatrix");
+
+                    $(".frd1").addClass("nomatrix");
+                    $(".frd1").removeClass("simatrix");
+                    $(".frd3").addClass("nomatrix");
+                    $(".frd3").removeClass("simatrix");
+                    $(".frd4").addClass("nomatrix");
+                    $(".frd4").removeClass("simatrix");
+                    $(".frd5").addClass("nomatrix");
+                    $(".frd5").removeClass("simatrix");
+                    $(".frd6").addClass("nomatrix");
+                    $(".frd6").removeClass("simatrix");
+                    $(".frd7").addClass("nomatrix");
+                    $(".frd7").removeClass("simatrix");
+                    $(".frd2").addClass("nomatrix");
+                    $(".frd2").removeClass("simatrix");
+                    $(".frd9").addClass("nomatrix");
+                    $(".frd9").removeClass("simatrix");
+
+                    $(".fbr8").addClass("selectfrd");
+                    $(".fbr8").removeClass("noselectfrd");
+
+                    $(".fbr1").addClass("noselectfrd");
+                    $(".fbr1").removeClass("selectfrd");
+                    $(".fbr3").addClass("noselectfrd");
+                    $(".fbr3").removeClass("selectfrd");
+                    $(".fbr4").addClass("noselectfrd");
+                    $(".fbr4").removeClass("selectfrd");
+                    $(".fbr5").addClass("noselectfrd");
+                    $(".fbr5").removeClass("selectfrd");
+                    $(".fbr6").addClass("noselectfrd");
+                    $(".fbr6").removeClass("selectfrd");
+                    $(".fbr7").addClass("noselectfrd");
+                    $(".fbr7").removeClass("selectfrd");
+                    $(".fbr2").addClass("noselectfrd");
+                    $(".fbr2").removeClass("selectfrd");
+                    $(".fbr9").addClass("noselectfrd");
+                    $(".fbr9").removeClass("selectfrd");
+                }
+
+            </script>
 
 
             <div id="frddats" class="simatrix frd1">
@@ -9089,7 +9212,7 @@
 
                     <p id="codesddiv" style="left:80%;"> MODEL_LINE____1.20000A</p>
                 </div>
-                <img src="https://i.postimg.cc/76PWTwTW/icon.png" id="iconprofile" />
+                <img src="https://i.postimg.cc/yxYVGdJf/Captura.png" id="iconprofile" />
                 <p id="pnamereg">GRISATRE</p>
             </div>
             <div id="frddats" class="nomatrix frd2">
@@ -9157,8 +9280,99 @@
                 <img src="https://i.postimg.cc/3NDLpB3k/8a3d912ac3d30e54822d268a533deddc.png" id="iconprofile" />
                 <p id="pnamereg">MYT</p>
             </div>
+            <div id="frddats" class="nomatrix frd4">
+                <!--kagura-->
 
 
+                <p id="titsocial">
+                    LIST MEDIA_SRC000x000010
+                </p>
+                <div id="linmed">
+
+                </div>
+                <img id="imgmouse1" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" />
+                <p id="m_pimgx">Select</p>
+                <div id="divbar1">
+                    <img src="https://i.postimg.cc/NF33qR2h/cd.png" />
+                    <p id="namerege" style="text-transform:uppercase">kagura. </p>
+                    <p id="codesddiv"> TKS_TCKAS_#QQQQ01</p>
+                </div>
+                <p id="ptextdescrip">
+                    I wanna talk to you in 20 years and forget my mistakes<br />
+                    I wanna see you all again before it fades away.<br />
+
+                    Took my chances<br />
+                    But these days slip away<br />
+                    Waiting on nothing is my ball and chain<br />
+                    Am I running in circles?<br />
+                    Watching my time drain<br />
+
+                    Starting with the countdown<br />
+                    Dealing with the comedown<br />
+                    I better start planning my escape
+                </p>
+                <div id="divbar2">
+
+                    <p id="codesddiv" style="left:80%;"> MODEL_LINE____1.20000A</p>
+                </div>
+                <img src="https://i.postimg.cc/xTMHQpqL/Captura.png" id="iconprofile" />
+                <p id="pnamereg">LUCIA</p>
+            </div>
+            <div id="frddats" class="nomatrix frd5">
+                <!--rose-->
+
+
+                <p id="titsocial">
+                    LIST MEDIA_SRC000x000010
+                </p>
+                <div id="linmed">
+
+                </div>
+                <img id="imgmouse1" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" />
+                <p id="m_pimgx">Select</p>
+                <div id="divbar1">
+                    <img src="https://i.postimg.cc/NF33qR2h/cd.png" />
+                    <p id="namerege" style="text-transform:uppercase">rose. </p>
+                    <p id="codesddiv"> TKS_TCKAS_#QQQQ01</p>
+                </div>
+                <p id="ptextdescrip">
+                    follow the roses wherever you are
+                </p>
+                <div id="divbar2">
+
+                    <p id="codesddiv" style="left:80%;"> MODEL_LINE____1.20000A</p>
+                </div>
+                <img src="https://i.postimg.cc/qRJQ6V6f/Captura.png" id="iconprofile" />
+                <p id="pnamereg">ROSE</p>
+            </div>
+            <div id="frddats" class="nomatrix frd6">
+                <!--esme-->
+
+
+                <p id="titsocial">
+                    LIST MEDIA_SRC000x000010
+                </p>
+                <div id="linmed">
+
+                </div>
+                <img id="imgmouse1" src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" />
+                <p id="m_pimgx">Select</p>
+                <div id="divbar1">
+                    <img src="https://i.postimg.cc/NF33qR2h/cd.png" />
+                    <p id="namerege" style="text-transform:uppercase">saeroyi. </p>
+                    <p id="codesddiv"> TKS_TCKAS_#QQQQ01</p>
+                </div>
+                <p id="ptextdescrip">
+                    There's no better time to think on it all<br />
+                    My fear is that I'm losing it all
+                </p>
+                <div id="divbar2">
+
+                    <p id="codesddiv" style="left:80%;"> MODEL_LINE____1.20000A</p>
+                </div>
+                <img src="https://i.postimg.cc/76PWTwTW/icon.png" id="iconprofile" />
+                <p id="pnamereg">AKEMI</p>
+            </div>
 
 
             <div id="frddats" class="nomatrix frd8">
@@ -9189,6 +9403,955 @@
             </div>
 
         </div>
+
+        <div id="playerui" class="nomatrix">
+
+            <style>
+
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+                #playerui {
+                    cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    left: 0%;
+                    top: 0;
+                    background: black;
+                    overflow: hidden;
+                }
+
+
+
+                #mainz {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+
+                #cover {
+                    z-index: 9;
+                    transition: all .5s ease;
+                    width: 101%;
+                    height: 101%;
+                    position: absolute;
+                    left: -1%;
+                    top: -1%;
+                }
+
+                #maincover {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+                #loading {
+                    opacity: .7;
+                    width: 33%;
+                    height: 10%;
+                    position: absolute;
+                    right: 0;
+                    top: 2%;
+                    transform: rotateZ(-1deg);
+                }
+
+                .wrapper {
+                    filter: contrast(140%);
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+                }
+
+                    /*  .wrapper .progressCounter {
+                    text-align: right;
+                    font-size: 34px;
+                    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                }*/
+
+                    .wrapper .barz {
+                        width: 80%;
+                        box-shadow: 0 0 .3vw rgb(255,97,88);
+                        height: .8vw;
+                        background: transparent;
+                        border: .2vw solid rgb(255,97,88);
+                    }
+
+                        .wrapper .barz .flexiblebarz {
+                            height: 60%;
+                            margin-top: .35%;
+                            margin-left: 0%;
+                            background: rgb(255,97,88);
+                        }
+
+                #letter {
+                    position: absolute;
+                    line-height: .3vw;
+                    color: rgb(255,97,88);
+                    font-family: 'Oswald', sans-serif;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    text-shadow: 0 0 .5vw rgb(255,97,88);
+                }
+
+                .barz {
+                    margin-top: 8%;
+                }
+
+                #cd {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    border: .1vw solid rgb(255,97,88);
+                    right: 1.2vw;
+                    top: 0;
+                    box-shadow: 0 0 .3vw rgb(255,97,88);
+                }
+
+                #circle {
+                    width: 3vw;
+                    height: 3vw;
+                    border: .1vw solid rgb(255,97,88);
+                    position: absolute;
+                    top: .2vw;
+                    left: .2vw;
+                    /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
+                    border-radius: 50%;
+                }
+
+                #blok1 {
+                    width: 5vw;
+                    height: 2.9vw;
+                    position: absolute;
+                    background: black;
+                    top: .2vw;
+                    left: -1vw;
+                }
+
+                #blok2 {
+                    height: 5vw;
+                    width: 2.9vw;
+                    position: absolute;
+                    background: black;
+                    left: .2vw;
+                    top: -1vw;
+                }
+
+                #circle img {
+                    width: 82%;
+                    margin: 10%;
+                    animation: rotation 3s infinite linear;
+                }
+
+                @keyframes rotation {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(359deg);
+                    }
+                }
+
+                .v1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 110%;
+                    height: 110%;
+                }
+
+                #video1z {
+                    position: absolute;
+                    top: -10%;
+                    left: -10%;
+                    width: 120%;
+                    height: 120%;
+                }
+
+                #help1, #help2, #help3, #help4 {
+                    position: absolute;
+                    font-family: 'Oswald', sans-serif;
+                    color: #ff0000;
+                    font-size: 1.5vw;
+                    letter-spacing: .1vw;
+                    left: 2.5%;
+                    top: 88%;
+                    opacity: 0;
+                    transform: rotateZ(-1.2deg);
+                }
+
+                #help1 {
+                    animation: in1 20s infinite;
+                }
+
+                #help2 {
+                    animation: in2 20s infinite;
+                }
+
+                #help3 {
+                    animation: in3 20s infinite;
+                }
+
+                #help4 {
+                    opacity: 1;
+                    left: 50%;
+                    z-index: 99;
+                }
+
+                @keyframes in1 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    5% {
+                        opacity: 1;
+                    }
+
+                    20% {
+                        opacity: 1;
+                    }
+
+                    25% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes in2 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    30% {
+                        opacity: 0;
+                    }
+
+                    35% {
+                        opacity: 1;
+                    }
+
+                    55% {
+                        opacity: 1;
+                    }
+
+                    60% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes in3 {
+                    0% {
+                        opacity: 0;
+                    }
+
+
+                    60% {
+                        opacity: 0;
+                    }
+
+                    65% {
+                        opacity: 1;
+                    }
+
+                    90% {
+                        opacity: 1;
+                    }
+
+                    95% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+                #prct {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                #hidd {
+                    position: absolute;
+                    width: 6vw;
+                    height: 3vw;
+                    top: 90%;
+                    left: 43%;
+                    z-index: 9;
+                }
+
+                #eye1, #eye2 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 2vw;
+                    position: absolute;
+                    left: 1vw;
+                }
+
+                #eye2 {
+                    opacity: 0;
+                    z-index: -2;
+                    filter: contrast(150%);
+                }
+
+                #imey1 {
+                    width: 80%;
+                    margin-left: 10%;
+                }
+
+                #mainz:target #cover {
+                    opacity: 0;
+                }
+
+                #mainz:target #eye2 {
+                    opacity: 1;
+                    z-index: 2;
+                }
+
+                #mainz:target #eye1 {
+                    opacity: 0;
+                    z-index: -2;
+                }
+
+                #p_hid {
+                    position: absolute;
+                    font-family: 'Oswald', sans-serif;
+                    color: rgb(255,97,88);
+                    filter: contrast(250%);
+                    font-size: .4vw;
+                    top: 2vw;
+                    /*letter-spacing: .1vw;*/
+                }
+
+                #help4 {
+                    cursor: crosshair;
+                }
+            </style>
+
+
+            <div id="mainz">
+                <!--<video autoplay="" loop="" muted="">
+                <source src="C:/Users/jessf/Desktop/Ev/back.mp4" type="video/mp4">
+                <script>
+                    $('video').coverVid(1920, 1080);
+                </script>
+
+
+            </video>-->
+                <div class="v1">
+                    <video src="" class="viid" id="video1z" autoplay="" loop="" muted="">
+                    </video>
+
+                </div>
+
+                <script>
+                    $('video').coverVid(1920, 1080);
+                    function PRess_R() {
+                        tecla_R = event.keyCode;
+                        if (tecla_R == 82) { chngevid(); }
+
+                    }
+                    window.onkeydown = PRess_R;
+                </script>
+
+                <script>
+                    function chngevid() {
+                        $(function () { // <- dont need this you already have it
+
+                            // put all this towards the bottom after all the scroll magic stuff
+
+                            // these are where you list your videos
+                            // you can add as many as you need
+                            var video1Sources = [
+                                "https://xevangelist.github.io/evangelist/1.mp4",
+                                "https://xevangelist.github.io/evangelist/2.mp4",
+                                "https://xevangelist.github.io/evangelist/3.mp4",
+                                "https://xevangelist.github.io/evangelist/4.mp4",
+                                "https://xevangelist.github.io/evangelist/5.mp4",
+                                "https://xevangelist.github.io/evangelist/6.mp4",
+                                "https://xevangelist.github.io/evangelist/7.mp4",
+                                "https://xevangelist.github.io/evangelist/8.mp4",
+                                "https://xevangelist.github.io/evangelist/9.mp4",
+                                "https://xevangelist.github.io/evangelist/10.mp4",
+                                "https://xevangelist.github.io/evangelist/11.mp4",
+                                "https://xevangelist.github.io/evangelist/12.mp4",
+                            ];
+                            // see this one only has 2!
+                            var video2Sources = [
+                                "https://xevangelist.github.io/evangelist/1.mp4",
+                                "https://xevangelist.github.io/evangelist/2.mp4",
+                                "https://xevangelist.github.io/evangelist/3.mp4",
+                                "https://xevangelist.github.io/evangelist/4.mp4",
+                                "https://xevangelist.github.io/evangelist/5.mp4",
+                                "https://xevangelist.github.io/evangelist/6.mp4",
+                                "https://xevangelist.github.io/evangelist/7.mp4",
+                                "https://xevangelist.github.io/evangelist/8.mp4",
+                                "https://xevangelist.github.io/evangelist/9.mp4",
+                                "https://xevangelist.github.io/evangelist/10.mp4",
+                                "https://xevangelist.github.io/evangelist/11.mp4",
+                                "https://xevangelist.github.io/evangelist/12.mp4",
+                            ];
+
+                            // get a random url from each set
+                            var rand1 = video1Sources[Math.floor(Math.random() * video1Sources.length)],
+                                rand2 = video2Sources[Math.floor(Math.random() * video1Sources.length)];
+
+                            // set the srcs to the random videos
+                            $("#video1z").attr("src", rand1);
+
+                            $("#video2").attr("src", rand2);
+                        });
+                        class MousePan {
+                            constructor(options) {
+                                this.resize = this.resize.bind(this);
+                                this.onMousemove = this.onMousemove.bind(this);
+                                this.tick = this.tick.bind(this);
+                                this.$wrapper = options.el;
+                                this.ease = options.ease || .08;
+                                this.init();
+                            }
+
+                            init() {
+                                this.position = {
+                                    x: 0,
+                                    y: 0
+                                };
+
+                                this.destination = {
+                                    x: 0,
+                                    y: 0
+                                };
+
+                                this.size = {
+                                    x: 0,
+                                    y: 0,
+                                    offsetX: 0,
+                                    offsetY: 0,
+
+                                };
+
+                                this.resize();
+                                this.bindEvents();
+                                this.tick();
+                            }
+
+                            resize() {
+                                this.setWrapperSize();
+                                this.setWrapperPosition();
+                            }
+
+                            bindEvents() {
+                                window.addEventListener('mousemove', this.onMousemove);
+                                window.addEventListener('resize', this.resize);
+                            }
+
+                            /**
+                             * Sets the wrapper size based on its taller and wider childrens
+                             */
+                            setWrapperSize() {
+                                this.size = [].slice.call(this.$wrapper.childNodes).reduce(this.getMaxSize);
+                                this.size.offsetX = this.size.w - window.innerWidth;
+                                this.size.offsetY = this.size.h - window.innerHeight;
+                                this.$wrapper.style.width = `${this.size.w}px`;
+                                this.$wrapper.style.height = `${this.size.h}px`;
+                            }
+
+                            /**
+                             * Returns the max width and height between two objects
+                             * @param  {[type]} acc [description]
+* @param  {[type]} cur [description]
+* @return {[type]}     [description]
+*/
+                            getMaxSize(a, b) {
+                                a.w = a.nodeType !== undefined ? a.offsetWidth : a.w;
+                                a.h = a.nodeType !== undefined ? a.offsetHeight : a.h;
+                                a.w = a.w || 0;
+                                a.h = a.h || 0;
+                                const w = b.offsetWidth || 0;
+                                const h = b.offsetHeight || 0;
+                                return {
+                                    w: Math.max(a.w, w),
+                                    h: Math.max(a.h, h),
+                                };
+                            }
+
+                            /**
+                             * Centers wrapper
+                             * @return {[type]} [description]
+*/
+                            setWrapperPosition() {
+                                this.destination.x = .5 * this.size.offsetX;
+                                this.destination.y = .5 * this.size.offsetY;
+                            }
+
+                            onMousemove(e) {
+                                const x = e.clientX;
+                                const y = e.clientY;
+                                // Map destination x to the overflowing width;
+                                this.destination.x = this.size.offsetX > 0 ? this.map(x, 0, window.innerWidth, 0, this.size.offsetX) : 0;
+                                // Map destination y to the overflowing height;
+                                this.destination.y = this.size.offsetY > 0 ? this.map(y, 0, window.innerHeight, 0, this.size.offsetY) : 0;
+                            }
+
+                            tick() {
+                                // Put motion in the displacement of the wrapper
+                                // Instead of setting position = destination
+                                // We add the distance between the destination and the position to the position
+                                this.movePosition();
+                                this.$wrapper.style.transform = `translate3d(-${this.position.x}px, -${this.position.y}px, 0)`;
+                                window.requestAnimationFrame(this.tick);
+                            }
+
+                            /**
+                             * Calculates the new position based on the distance between the destination and the current position
+                             * We add a percentage to add the easing effect
+                             * https://codepen.io/rachsmith/post/animation-tip-lerp
+                             * @return {[type]} [description]
+*/
+                            movePosition() {
+                                this.position.x += (this.destination.x - this.position.x) * .08;
+                                this.position.y += (this.destination.y - this.position.y) * .08;
+                            }
+
+                            // Utils
+                            map(val, oldMin, oldMax, newMin, newMax) {
+                                return newMin + (val - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+                            }
+                        }
+                        new MousePan({
+                            el: document.querySelector('.v1'),
+                            ease: .20
+                        });
+
+                    }
+                </script>
+                <div id="cover">
+                    <img src="https://i.postimg.cc/sxVdmsdK/54bdf77a-b510-4d7d-b222-ab167708ce8d-mp4-000025692-1.png" id="maincover" />
+                    <div id="prct"></div>
+                    <div id="loading">
+                        <div class="wrapper">
+                            <div id="letter">
+                                <p>(CCKS COMPRESSED)</p>
+                                <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
+                            </div>
+                            <div class="barz">
+
+                                <div class="flexiblebar" data-percent="100" data-delay="99"></div>
+                                <script>
+                                    let flexiblebar = document.querySelector(".flexiblebar");
+                                    let progressCounter = document.querySelector(".progressCounter");
+
+                                    let count = 0;
+                                    let delayTime =
+                                        (0 * flexiblebar.dataset.delay) / flexiblebar.dataset.percent;
+
+                                    flexiblebar.style.background = flexiblebar.dataset.bg;
+
+                                    function progressBar() {
+                                        count++;
+                                        flexiblebar.style.width = `${count}%`;
+                                        progressCounter.innerHTML = `${count}%`;
+                                        if (count == flexiblebar.dataset.percent) {
+                                            clearInterval(stop);
+                                        }
+                                    }
+
+                                    let stop = setInterval(() => {
+                                        progressBar();
+                                    }, delayTime);
+
+                                </script>
+                            </div>
+                            <div id="cd">
+                                <div id="blok1"></div>
+                                <div id="blok2"></div>
+                                <div id="circle">
+                                    <img src="https://i.postimg.cc/jShdvhgc/1.png" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p id="help1">HOVER TO BACKGROUND TO SEE DETAILS</p>
+                    <p id="help2">PRESS "R" TO CHANGE BACKGROUND</p>
+                    <p onclick="outplayerui();" id="help3">PRESS HERE TO RETURN HOME</p>
+
+                </div>
+                <div id="hidd">
+                    <a href="#mainz"> <div id="eye1"><img src="https://i.postimg.cc/ncWzg1bt/view.png" id="imey1" /></div></a>
+                    <a href="#">
+                        <div id="eye2"><img src="https://i.postimg.cc/4dFkyB1f/hidden.png" id="imey1" /></div>
+                    </a>
+                    <p id="p_hid">VIEW_FULL_BACKGROUND 0xCC000 <br /> K-100000009 V1.000002</p>
+                </div>
+
+            </div>
+            <script src="https://players.brightcove.net/1752604059001/SJsf1FRVf_default/index.min.js"></script>
+
+        </div>
+
+        <div id="intro1" class="simatrix" onclick="outmain1();">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+            #intro1 {
+
+                background:black;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+
+
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+            #loading {
+
+                width: 33%;
+                height: 10%;
+                position: absolute;
+                right: 0;
+                top: 1%;
+            }
+
+            .wrapper {
+                filter: contrast(210%);
+                width: 100%;
+                position: absolute;
+                height: 100%;
+            }
+
+                /*  .wrapper .progressCounter {
+                    text-align: right;
+                    font-size: 34px;
+                    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                }*/
+
+                .wrapper .bar3 {
+                    width: 80%;
+                    box-shadow: 0 0 .3vw rgb(255,97,88);
+                    height: .8vw;
+                    background: transparent;
+                    border: .2vw solid rgb(255,97,88);
+                }
+
+                    .wrapper .bar3 .flexiblebar {
+                        height: 60%;
+                        margin-top: .35%;
+                        margin-left: 0%;
+                        background: rgb(255,97,88);
+                        animation:loadb 7s 1; animation-fill-mode:forwards;
+                    }
+            #warning {
+                position: absolute;
+                left: 67%;
+                top:  7%; height:200%;
+                text-shadow: 0 0 .5vw #f54141;
+                font-size: 1.2vw; opacity:0;
+                font-weight: bold;
+                color: rgba(199,48,48,1);
+                letter-spacing: .1vw;
+                animation:loadb1 0s 1;
+                animation-fill-mode:forwards; animation-delay:7s;
+            }
+            @keyframes loadb1 {
+
+                0% {
+                    opacity:0;
+                }
+
+                100% {
+                    opacity:1;
+                }
+            }
+            @keyframes loadb {
+
+                0%  {
+                   width:0;
+                }
+
+                100% {
+                    width:100%;
+                }
+            }
+            #letter {
+                position: absolute;
+                line-height: .3vw;
+                color: rgb(255,97,88);
+                font-family: 'Oswald', sans-serif;
+                font-size: .5vw;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 .5vw rgb(255,97,88);
+            }
+
+            .bar3 {
+                margin-top: 8%;
+            }
+
+            #cd {
+                position: absolute;
+                width: 3.5vw;
+                height: 3.5vw;
+                border: .1vw solid rgb(255,97,88);
+                right: 1.2vw;
+                top: 0;
+                box-shadow: 0 0 .3vw rgb(255,97,88);
+            }
+
+            #circle {
+                width: 3vw;
+                height: 3vw;
+                border: .1vw solid rgb(255,97,88);
+                position: absolute;
+                top: .2vw;
+                left: .2vw;
+                /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
+                border-radius: 50%;
+            }
+
+            #blok1 {
+                width: 5vw;
+                height: 2.9vw;
+                position: absolute;
+                background: black;
+                top: .2vw;
+                left: -1vw;
+            }
+
+            #blok2 {
+                height: 5vw;
+                width: 2.9vw;
+                position: absolute;
+                background: black;
+                left: .2vw;
+                top: -1vw;
+            }
+
+            #circle img {
+                width: 82%;
+                margin: 10%;
+                animation: rotation 3s infinite linear;
+            }
+
+            @keyframes rotation {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(359deg);
+                }
+            }
+        </style>
+        <div id="loading">
+            <div class="wrapper">
+                <div id="letter">
+                    <p>(CCKS COMPRESSED)</p>
+                    <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
+                </div>
+                <div class="bar3">
+
+                    <div class="flexiblebar" data-percent="100" data-delay="1"></div>
+
+                </div>
+                <div id="cd">
+                    <div id="blok1"></div>
+                    <div id="blok2"></div>
+                    <div id="circle">
+                        <img src="https://i.postimg.cc/jShdvhgc/1.png" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <p id="warning">CLICK TO CONTINUE_</p>
+
+    </div>
+        <div id="Main_play" class="nomatrix" onclick="outmainx();">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+            body {
+                background: black;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+            }
+
+            #Main_play, #M_N {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: black;
+                font-family: 'Oswald', sans-serif;
+            }
+
+            #video4 {
+                opacity: .4;
+            }
+
+
+
+
+
+            #m_int {
+                position: absolute;
+                left: 37.5%;
+                top: 57%;
+                font-size: .5vw;
+                font-weight: bold;
+                color: #FF5B5B;
+                letter-spacing: .15vw;
+            }
+
+            #m_int2 {
+                position: absolute;
+                left: 40.5%;
+                top: 75%;
+                font-size: .5vw;
+                font-weight: bold;
+                color: #FF5B5B;
+                letter-spacing: .15vw;
+            }
+
+            #In_mnu {
+                text-align: center;
+                position: absolute;
+                top: 60%;
+                width: 25%;
+                left: 37.5%;
+                transform: rotateZ(1deg);
+                height: 4vw; /*box-shadow: 0 0 .2vw #f54141;*/
+                border: .1vw solid #FF5B5B;
+            }
+
+            #cub {
+                position: absolute;
+                top: 71%;
+                width: 20%;
+                left: 40%;
+                transform: rotateZ(1deg);
+                height: 2vw; /*box-shadow: 0 0 .2vw #f54141;*/
+                border: .1vw solid #FF5B5B;
+            }
+
+            @keyframes flicker4 {
+
+                0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                    color: rgba(199,48,48,.8);
+                }
+
+                20%, 24%, 55% {
+                    color: #FF5B5B;
+                }
+            }
+
+            #In_mnu span {
+                margin-top: .5vw;
+                animation: flicker4 1s infinite;
+                text-shadow: 0 0 .5vw #f54141;
+                font-size: 2.2vw;
+                font-weight: bold;
+                /*filter: contrast(150%);*/
+                /*color: rgba(199,48,48,1);*/
+                letter-spacing: .2vw;
+                opacity: .7;
+            }
+
+            #In_mnu img {
+                width: 2.2vw;
+                margin-top: .6vw;
+            }
+
+            #botbar {
+                width: 60%;
+                height: 0;
+                border-bottom: .1vw solid #FF5B5B;
+                position: absolute;
+                top: 80%;
+                left: 20%;
+                opacity: .3;
+            }
+
+            #cub img {
+                width: 2vw;
+                filter: contrast(140%);
+                position: absolute;
+                left: .8vw;
+                top: .2vw;
+            }
+
+            #pd_1x, #pd_2x {
+                position: absolute;
+                left: 20%;
+                top: -10%;
+                font-size: .5vw;
+                opacity: .9;
+                color: #FF5B5B;
+            }
+
+            #pd_2, #pd_2x {
+                top: 20%;
+            }
+        </style>
+        <video id="video4" autoplay="" loop="" muted="">
+            <source src="https://xevangelist.github.io/evangelist/Cyberpunk%202077%20-%20Title%20screen%20(ambient)%20(1).mp4" type="video/mp4">
+            <script>
+                $('#video4').coverVid(1920, 1080);
+            </script>
+            <style>
+                .outmainpage {
+                    animation: ourmainp 0s 1;
+                    animation-delay: 4s;
+                    animation-fill-mode: forwards;
+                }
+
+                @keyframes ourmainp {
+
+                    0% {
+                        opacity: 1;
+                        z-index: 9999;
+                    }
+
+                    100% {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                }
+            </style>
+
+        </video>
+        <p id="m_int">LOADING_MAINMENU 100%</p>
+        <div id="In_mnu" class="simatrix inv0">
+            <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
+        </div>
+        <div id="In_mnu" class="inv1 nomatrix">
+            <span>INVADING...</span>
+        </div>
+        <div id="cub">
+            <img src="https://i.postimg.cc/ryCD760W/triangulo2.png" />
+            <p id="pd_1x">/00442923402.39 NIGHT CITY CORP RECORD DATABASE 29 _3.44443/213 XC899</p>
+            <p id="pd_2x">4422344223442233//0044223402.3900029 _3.800 </p>
+        </div>
+        <p id="m_int2">| ICL_HC 9_45000000048</p>
+        <div id="botbar"></div>
+    </div>
+
 
     </div>
 
