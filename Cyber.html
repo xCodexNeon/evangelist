@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
 <head>
@@ -4851,6 +4851,7 @@
             $("#Player_1").removeClass("nomatrix");
             outmess();
             outmatrix();
+            outconfig();
         }
         function outmenu() {
             $("#Player_1").addClass("nomatrix");
@@ -4881,7 +4882,18 @@
             $("#socials").addClass("simatrix");
             $("#socials").removeClass("nomatrix");
 
-        } function outsocial() {
+        }
+        function inconfig() {
+            $("#configuration").addClass("simatrix");
+            $("#configuration").removeClass("nomatrix");
+
+        } 
+        function outconfig() {
+            $("#configuration").addClass("nomatrix");
+            $("#configuration").removeClass("simatrix");
+
+        }
+        function outsocial() {
             $("#socials").addClass("nomatrix");
             $("#socials").removeClass("simatrix");
 
@@ -4919,13 +4931,14 @@
             outmatrix();
             outsocial();
             outplayerui();
+            outconfig();
         }
 
     </script>
 </head>
 
  
-<body onclick="digi(); chngevid();"  >
+<body onclick="digi(); "  >
     <script>
         $(document).on("click mousemove", ".box", function (e) {
             var x = e.clientX;
@@ -5101,7 +5114,15 @@
 
                 }
             });
+            $("#btnc1").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#btnc2").click(function () {
 
+                song.play();
+                playing = true;
+            });
             $("#prev").click(function prev() {
                 CurrentSong--;
                 if (CurrentSong < 0) {
@@ -5327,13 +5348,64 @@
                     $("body").click(function () {
                         audio.play();
                         console.log(audio);
-                    }); 
+                    });
                 });
 
             </script>
         </audio>
 
+        <audio controls id="setclx" class="mks">
+            <source src="settclick.wav"></source>
+            <script>
 
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#setclx")[0];
+
+                    $("#btnnextto2").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                
+                $("#btnnextto3").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnbackto2").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnbackto1").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc1").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc111").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc111").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc2").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc222").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btnc22").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                });
+            </script>
+        </audio>
 
         <div id="main">
 
@@ -5365,7 +5437,7 @@
             </div>
 
             <video id="vid1" autoplay="" loop="" muted="">
-                <source src="https://xevangelist.github.io/evangelist/back.mp4" type="video/mp4">
+                <source src="back.mp4" type="video/mp4">
                 <script>
                     $('#vid1').coverVid(1920, 1080);
                 </script>
@@ -5947,12 +6019,12 @@
                         <p id="p_sel">CONSOLE</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                     </div>
-                    <div id="m_s" class="ms4" onclick="inplayerui();">
+                    <div id="m_s" class="ms4" onclick="inplayerui(); chngevid();">
                         <img class="imgbakms" src="https://i.postimg.cc/02x0tDzY/w.png" />
                         <p id="p_sel">PLAYER_UI.V2</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
                     </div>
-                    <div id="m_s" class="ms5">
+                    <div id="m_s" class="ms5" onclick="inconfig()">
                         <img class="imgbakms" src="https://i.postimg.cc/02x0tDzY/w.png" />
                         <p id="p_sel">CONFIGURATION</p>
                         <img src="https://i.postimg.cc/bNywcgZr/huella-dactilar.png" id="img_h" />
@@ -10001,357 +10073,794 @@
 
         </div>
 
+
+        <div id="Main_play" class="nomatrix" onclick="outmainx(); sselect1();">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+                body {
+                    background: black;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
+                }
+
+                #Main_play, #M_N {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    font-family: 'Oswald', sans-serif;
+                }
+
+                #video4 {
+                    opacity: .4;
+                }
+
+
+
+
+
+                #m_int {
+                    position: absolute;
+                    left: 37.5%;
+                    top: 57%;
+                    font-size: .5vw;
+                    font-weight: bold;
+                    color: #FF5B5B;
+                    letter-spacing: .15vw;
+                }
+
+                #m_int2 {
+                    position: absolute;
+                    left: 40.5%;
+                    top: 75%;
+                    font-size: .5vw;
+                    font-weight: bold;
+                    color: #FF5B5B;
+                    letter-spacing: .15vw;
+                }
+
+                #In_mnu {
+                    text-align: center;
+                    position: absolute;
+                    top: 60%;
+                    width: 25%;
+                    left: 37.5%;
+                    transform: rotateZ(1deg);
+                    height: 4vw; /*box-shadow: 0 0 .2vw #f54141;*/
+                    border: .1vw solid #FF5B5B;
+                }
+
+                #cub {
+                    position: absolute;
+                    top: 71%;
+                    width: 20%;
+                    left: 40%;
+                    transform: rotateZ(1deg);
+                    height: 2vw; /*box-shadow: 0 0 .2vw #f54141;*/
+                    border: .1vw solid #FF5B5B;
+                }
+
+                @keyframes flicker4 {
+
+                    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                        color: rgba(199,48,48,.8);
+                    }
+
+                    20%, 24%, 55% {
+                        color: #FF5B5B;
+                    }
+                }
+
+                #In_mnu span {
+                    margin-top: .5vw;
+                    animation: flicker4 1s infinite;
+                    text-shadow: 0 0 .5vw #f54141;
+                    font-size: 2.2vw;
+                    font-weight: bold;
+                    /*filter: contrast(150%);*/
+                    /*color: rgba(199,48,48,1);*/
+                    letter-spacing: .2vw;
+                    opacity: .7;
+                }
+
+                #In_mnu img {
+                    width: 2.2vw;
+                    margin-top: .6vw;
+                }
+
+                #botbar {
+                    width: 60%;
+                    height: 0;
+                    border-bottom: .1vw solid #FF5B5B;
+                    position: absolute;
+                    top: 80%;
+                    left: 20%;
+                    opacity: .3;
+                }
+
+                #cub img {
+                    width: 2vw;
+                    filter: contrast(140%);
+                    position: absolute;
+                    left: .8vw;
+                    top: .2vw;
+                }
+
+                #pd_1x, #pd_2x {
+                    position: absolute;
+                    left: 20%;
+                    top: -10%;
+                    font-size: .5vw;
+                    opacity: .9;
+                    color: #FF5B5B;
+                }
+
+                #pd_2, #pd_2x {
+                    top: 20%;
+                }
+            </style>
+            <video id="video4" autoplay="" loop="" muted="">
+                <source src="https://xevangelist.github.io/evangelist/Cyberpunk%202077%20-%20Title%20screen%20(ambient)%20(1).mp4" type="video/mp4">
+                <script>
+                    $('#video4').coverVid(1920, 1080);
+                </script>
+                <style>
+                    .outmainpage {
+                        animation: ourmainp 0s 1;
+                        animation-delay: 4s;
+                        animation-fill-mode: forwards;
+                    }
+
+                    @keyframes ourmainp {
+
+                        0% {
+                            opacity: 1;
+                            z-index: 9999;
+                        }
+
+                        100% {
+                            opacity: 0;
+                            z-index: -1;
+                        }
+                    }
+                </style>
+
+            </video>
+            <p id="m_int">LOADING_MAINMENU 100%</p>
+            <div id="In_mnu" class="simatrix inv0">
+                <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
+            </div>
+            <div id="In_mnu" class="inv1 nomatrix">
+                <span>INVADING...</span>
+            </div>
+            <div id="cub">
+                <img src="https://i.postimg.cc/ryCD760W/triangulo2.png" />
+                <p id="pd_1x">/00442923402.39 NIGHT CITY CORP RECORD DATABASE 29 _3.44443/213 XC899</p>
+                <p id="pd_2x">4422344223442233//0044223402.3900029 _3.800 </p>
+            </div>
+            <p id="m_int2">| ICL_HC 9_45000000048</p>
+            <div id="botbar"></div>
+        </div>
+
         <div id="intro1" class="simatrix" onclick="outmain1();">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
-            #intro1 {
-
-                background:black;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-            }
-
+                #intro1 {
+                    background: black;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
 
 
-            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
-            #loading {
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 
-                width: 33%;
-                height: 10%;
-                position: absolute;
-                right: 0;
-                top: 1%;
-            }
+                #loading {
+                    width: 33%;
+                    height: 10%;
+                    position: absolute;
+                    right: 0;
+                    top: 1%;
+                }
 
-            .wrapper {
-                filter: contrast(210%);
-                width: 100%;
-                position: absolute;
-                height: 100%;
-            }
+                .wrapper {
+                    filter: contrast(210%);
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+                }
 
-                /*  .wrapper .progressCounter {
+                    /*  .wrapper .progressCounter {
                     text-align: right;
                     font-size: 34px;
                     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
                 }*/
 
-                .wrapper .bar3 {
-                    width: 80%;
-                    box-shadow: 0 0 .3vw rgb(255,97,88);
-                    height: .8vw;
-                    background: transparent;
-                    border: .2vw solid rgb(255,97,88);
-                }
-
-                    .wrapper .bar3 .flexiblebar {
-                        height: 60%;
-                        margin-top: .35%;
-                        margin-left: 0%;
-                        background: rgb(255,97,88);
-                        animation:loadb 7s 1; animation-fill-mode:forwards;
+                    .wrapper .bar3 {
+                        width: 80%;
+                        box-shadow: 0 0 .3vw rgb(255,97,88);
+                        height: .8vw;
+                        background: transparent;
+                        border: .2vw solid rgb(255,97,88);
                     }
-            #warning {
-                position: absolute;
-                left: 67%;
-                top:  7%; height:200%;
-                text-shadow: 0 0 .5vw #f54141;
-                font-size: 1.2vw; opacity:0;
-                font-weight: bold;
-                color: rgba(199,48,48,1);
-                letter-spacing: .1vw;
-                animation:loadb1 0s 1;
-                animation-fill-mode:forwards; animation-delay:7s;
-            }
-            @keyframes loadb1 {
 
-                0% {
-                    opacity:0;
-                }
+                        .wrapper .bar3 .flexiblebar {
+                            height: 60%;
+                            margin-top: .35%;
+                            margin-left: 0%;
+                            background: rgb(255,97,88);
+                            animation: loadb 7s 1;
+                            animation-fill-mode: forwards;
+                        }
 
-                100% {
-                    opacity:1;
-                }
-            }
-            @keyframes loadb {
-
-                0%  {
-                   width:0;
-                }
-
-                100% {
-                    width:100%;
-                }
-            }
-            #letter {
-                position: absolute;
-                line-height: .3vw;
-                color: rgb(255,97,88);
-                font-family: 'Oswald', sans-serif;
-                font-size: .5vw;
-                letter-spacing: .1vw;
-                text-shadow: 0 0 .5vw rgb(255,97,88);
-            }
-
-            .bar3 {
-                margin-top: 8%;
-            }
-
-            #cd {
-                position: absolute;
-                width: 3.5vw;
-                height: 3.5vw;
-                border: .1vw solid rgb(255,97,88);
-                right: 1.2vw;
-                top: 0;
-                box-shadow: 0 0 .3vw rgb(255,97,88);
-            }
-
-            #circle {
-                width: 3vw;
-                height: 3vw;
-                border: .1vw solid rgb(255,97,88);
-                position: absolute;
-                top: .2vw;
-                left: .2vw;
-                /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
-                border-radius: 50%;
-            }
-
-            #blok1 {
-                width: 5vw;
-                height: 2.9vw;
-                position: absolute;
-                background: black;
-                top: .2vw;
-                left: -1vw;
-            }
-
-            #blok2 {
-                height: 5vw;
-                width: 2.9vw;
-                position: absolute;
-                background: black;
-                left: .2vw;
-                top: -1vw;
-            }
-
-            #circle img {
-                width: 82%;
-                margin: 10%;
-                animation: rotation 3s infinite linear;
-            }
-
-            @keyframes rotation {
-                from {
-                    transform: rotate(0deg);
-                }
-
-                to {
-                    transform: rotate(359deg);
-                }
-            }
-        </style>
-        <div id="loading">
-            <div class="wrapper">
-                <div id="letter">
-                    <p>(CCKS COMPRESSED)</p>
-                    <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
-                </div>
-                <div class="bar3">
-
-                    <div class="flexiblebar" data-percent="100" data-delay="1"></div>
-
-                </div>
-                <div id="cd">
-                    <div id="blok1"></div>
-                    <div id="blok2"></div>
-                    <div id="circle">
-                        <img src="https://i.postimg.cc/jShdvhgc/1.png" />
-                    </div>
-                </div>
-            </div>
-
-        </div>
-         <p id="warning">CLICK TO CONTINUE_</p>
-
-    </div>
-        <div id="Main_play" class="nomatrix" onclick="outmainx();">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-
-            body {
-                background: black;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                cursor: url(https://i.postimg.cc/FKyGnj8N/cur2.png), zoom-in;
-            }
-
-            #Main_play, #M_N {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: black;
-                font-family: 'Oswald', sans-serif;
-            }
-
-            #video4 {
-                opacity: .4;
-            }
-
-
-
-
-
-            #m_int {
-                position: absolute;
-                left: 37.5%;
-                top: 57%;
-                font-size: .5vw;
-                font-weight: bold;
-                color: #FF5B5B;
-                letter-spacing: .15vw;
-            }
-
-            #m_int2 {
-                position: absolute;
-                left: 40.5%;
-                top: 75%;
-                font-size: .5vw;
-                font-weight: bold;
-                color: #FF5B5B;
-                letter-spacing: .15vw;
-            }
-
-            #In_mnu {
-                text-align: center;
-                position: absolute;
-                top: 60%;
-                width: 25%;
-                left: 37.5%;
-                transform: rotateZ(1deg);
-                height: 4vw; /*box-shadow: 0 0 .2vw #f54141;*/
-                border: .1vw solid #FF5B5B;
-            }
-
-            #cub {
-                position: absolute;
-                top: 71%;
-                width: 20%;
-                left: 40%;
-                transform: rotateZ(1deg);
-                height: 2vw; /*box-shadow: 0 0 .2vw #f54141;*/
-                border: .1vw solid #FF5B5B;
-            }
-
-            @keyframes flicker4 {
-
-                0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                    color: rgba(199,48,48,.8);
-                }
-
-                20%, 24%, 55% {
-                    color: #FF5B5B;
-                }
-            }
-
-            #In_mnu span {
-                margin-top: .5vw;
-                animation: flicker4 1s infinite;
-                text-shadow: 0 0 .5vw #f54141;
-                font-size: 2.2vw;
-                font-weight: bold;
-                /*filter: contrast(150%);*/
-                /*color: rgba(199,48,48,1);*/
-                letter-spacing: .2vw;
-                opacity: .7;
-            }
-
-            #In_mnu img {
-                width: 2.2vw;
-                margin-top: .6vw;
-            }
-
-            #botbar {
-                width: 60%;
-                height: 0;
-                border-bottom: .1vw solid #FF5B5B;
-                position: absolute;
-                top: 80%;
-                left: 20%;
-                opacity: .3;
-            }
-
-            #cub img {
-                width: 2vw;
-                filter: contrast(140%);
-                position: absolute;
-                left: .8vw;
-                top: .2vw;
-            }
-
-            #pd_1x, #pd_2x {
-                position: absolute;
-                left: 20%;
-                top: -10%;
-                font-size: .5vw;
-                opacity: .9;
-                color: #FF5B5B;
-            }
-
-            #pd_2, #pd_2x {
-                top: 20%;
-            }
-        </style>
-        <video id="video4" autoplay="" loop="" muted="">
-            <source src="https://xevangelist.github.io/evangelist/Cyberpunk%202077%20-%20Title%20screen%20(ambient)%20(1).mp4" type="video/mp4">
-            <script>
-                $('#video4').coverVid(1920, 1080);
-            </script>
-            <style>
-                .outmainpage {
-                    animation: ourmainp 0s 1;
-                    animation-delay: 4s;
+                #warning {
+                    position: absolute;
+                    left: 67%;
+                    top: 7%;
+                    height: 200%;
+                    text-shadow: 0 0 .5vw #f54141;
+                    font-size: 1.2vw;
+                    opacity: 0;
+                    font-weight: bold;
+                    color: rgba(199,48,48,1);
+                    letter-spacing: .1vw;
+                    animation: loadb1 0s 1;
                     animation-fill-mode: forwards;
+                    animation-delay: 7s;
                 }
 
-                @keyframes ourmainp {
+                @keyframes loadb1 {
 
                     0% {
-                        opacity: 1;
-                        z-index: 9999;
+                        opacity: 0;
                     }
 
                     100% {
-                        opacity: 0;
-                        z-index: -1;
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes loadb {
+
+                    0% {
+                        width: 0;
+                    }
+
+                    100% {
+                        width: 100%;
+                    }
+                }
+
+                #letter {
+                    position: absolute;
+                    line-height: .3vw;
+                    color: rgb(255,97,88);
+                    font-family: 'Oswald', sans-serif;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    text-shadow: 0 0 .5vw rgb(255,97,88);
+                }
+
+                .bar3 {
+                    margin-top: 8%;
+                }
+
+                #cd {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    border: .1vw solid rgb(255,97,88);
+                    right: 1.2vw;
+                    top: 0;
+                    box-shadow: 0 0 .3vw rgb(255,97,88);
+                }
+
+                #circle {
+                    width: 3vw;
+                    height: 3vw;
+                    border: .1vw solid rgb(255,97,88);
+                    position: absolute;
+                    top: .2vw;
+                    left: .2vw;
+                    /*box-shadow: 0 0 .3vw rgb(255,97,88);*/
+                    border-radius: 50%;
+                }
+
+                #blok1 {
+                    width: 5vw;
+                    height: 2.9vw;
+                    position: absolute;
+                    background: black;
+                    top: .2vw;
+                    left: -1vw;
+                }
+
+                #blok2 {
+                    height: 5vw;
+                    width: 2.9vw;
+                    position: absolute;
+                    background: black;
+                    left: .2vw;
+                    top: -1vw;
+                }
+
+                #circle img {
+                    width: 82%;
+                    margin: 10%;
+                    animation: rotation 3s infinite linear;
+                }
+
+                @keyframes rotation {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(359deg);
                     }
                 }
             </style>
+            <div id="loading">
+                <div class="wrapper">
+                    <div id="letter">
+                        <p>(CCKS COMPRESSED)</p>
+                        <span>LOAD ADRESS: 00001124400</span><span class="progressCounter"></span>
+                    </div>
+                    <div class="bar3">
 
-        </video>
-        <p id="m_int">LOADING_MAINMENU 100%</p>
-        <div id="In_mnu" class="simatrix inv0">
-            <span>PRESS </span><img src="https://i.postimg.cc/JhYTpWpN/clicker-del-mouse.png" /><span> TO CONTINUE.</span>
-        </div>
-        <div id="In_mnu" class="inv1 nomatrix">
-            <span>INVADING...</span>
-        </div>
-        <div id="cub">
-            <img src="https://i.postimg.cc/ryCD760W/triangulo2.png" />
-            <p id="pd_1x">/00442923402.39 NIGHT CITY CORP RECORD DATABASE 29 _3.44443/213 XC899</p>
-            <p id="pd_2x">4422344223442233//0044223402.3900029 _3.800 </p>
-        </div>
-        <p id="m_int2">| ICL_HC 9_45000000048</p>
-        <div id="botbar"></div>
-    </div>
+                        <div class="flexiblebar" data-percent="100" data-delay="1"></div>
 
+                    </div>
+                    <div id="cd">
+                        <div id="blok1"></div>
+                        <div id="blok2"></div>
+                        <div id="circle">
+                            <img src="https://i.postimg.cc/jShdvhgc/1.png" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <p id="warning">CLICK TO CONTINUE_</p>
+
+        </div>
+
+        <div id="configuration" class="nomatrix">
+            <style>
+                #configuration {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    --colors-bg--300: #1e181e;
+                    --colors-bg--500: #191a1e;
+                    --colors-primary--200: #f4908b;
+                    --colors-primary--300: #ea6f69;
+                    --colors-primary--500: #e8615a;
+                    --colors-primary--600: #9c3230;
+                    --colors-primary--700: #5e2122;
+                    --colors-primary--800: #451717;
+                    --colors-primary--900: #3c181a;
+                    --colors-secondary--500: #2be4ea;
+                    --colors-secondary--900: #295459;
+                    --colors-tertiary--500: #fed33f;
+                    --colors-on_bg--500: var(--colors-primary--500);
+                    --colors-on_tertiary--500: var(--colors-bg--300);
+                    --colors-on_primary--500: var(--colors-primary--200);
+                    --colors-active--500: #2bfea0;
+                    background-color: var(--colors-bg--500);
+                    animation: backdrow2 10s infinite;
+                    background-image: radial-gradient( ellipse at 0% 0%, #461616 0%, transparent 45% );
+                    background-size: 125% 125%;
+                    background-position-x: 0%;
+                }
+            </style>
+            <div id="messback"></div>
+            <div class="slider" id="xslz">
+                <div class="slide-track">
+                    <div class="slide">
+                    </div>
+
+                </div>
+            </div>
+            <div class="slider2" id="xslz">
+                <div class="slide-track">
+                    <div class="slide">
+                    </div>
+
+                </div>
+            </div>
+            <div id="codesp">
+                <p class="cpdw">-</p>
+                <p class="cpdw1">00100</p>
+                <p class="cpdw2">10000</p>
+                <p class="cpdw3">00001</p>
+                <p class="cpdw4">10000</p>
+                <p class="cpdw">-</p>
+                <p class="cpdw5">01000</p>
+                <p class="cpdw6">10000</p>
+                <p class="cpdw7">00001</p>
+                <p class="cpdw8">00010</p>
+                <br />
+                <p class="cpdw">-</p>
+            </div>
+            <div id="codesp2">
+                <p class="cpdw1">[&nbsp;&nbsp;00000000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p class="cpdw2">CDKSLUM000x0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p class="cpdw3">[OXOCTAC0000-OCXAK000000-|&nbsp;&nbsp;1&nbsp;&nbsp;%&nbsp;&nbsp;MBI]</p>
+            </div>
+            <div id="codesp3">
+                <p class="cpdwt">▲</p>
+                <p class="cpdwx">NO_0</p><br />
+                <p class="cpdwt2">▼</p>
+            </div>
+            <div id="battr">
+                <img src="https://i.postimg.cc/xChVw08c/cosa-bateria-llena.png" id="b_img_q" />
+                <img src="https://i.postimg.cc/NFXvYW2b/blanco.png" id="b_img_q2" /><div id="r-p3">
+                    <p>IMACC NAME: BLACKLARCH 4CL454</p>
+                    <p>IMACC TYPE: TAIMAT IMAGE</p>
+                    <p>ICCKS COMPRESSED (Q) 444445555</p>
+                    <p>LOAD ADRESS 0000x112244-000000000000000</p>
+                </div>
+                <div id="lin_codes3-x">
+                    <p>
+                        HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                        HSS440 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;HSS440 &nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o<br>
+
+                    </p>
+                </div>
+            </div>
+
+            <div id="mess_top">
+                <div id="mess_mnu">
+                    <p id="p_mess_1">NIGHT CITY NETWARE</p> <a><p onclick="inmenu()" id="p_mess_2">MENU</p></a>
+                    <p id="p_mess_3" style="left:55%;">CONFIGURATION</p>
+
+
+                    <p id="p_mess_5" onclick="backmain()">MAIN</p>
+
+
+                </div>
+                <div id="bord_top"></div>
+            </div>
+            <div id="areaconfig">
+                <style>
+                    #areaconfig {
+                        position: absolute;
+                        width: 60%;
+                        height: 60%;
+                        top: 20%;
+                        left: 20%;
+                    }
+
+                    .divbutcon {
+                        position: relative;
+                        height: 13%;
+                        width: 100%;
+                        margin-bottom: 2vw;
+                    }
+
+                    .divimgconf {
+                        position: absolute;
+                        width: 50%;
+                        right: 5%;
+                        top: 10%;
+                        height: 80%;
+                    }
+
+                    .b1 {
+                        background-image: url(https://i.postimg.cc/t4nbP9PX/b1.png);
+                        background-size: cover;
+                    }
+
+                    .b2 {
+                        background-image: url(https://i.postimg.cc/XqvSvW46/b2.png);
+                        background-size: cover;
+                    }
+
+                    .b3 {
+                        background-image: url(https://i.postimg.cc/D0YVJNwJ/b3.png);
+                        background-size: cover;
+                    }
+
+                    .ptextconf {
+                        position: relative;
+                        font-family: 'Oswald', sans-serif;
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        top: -.4vw;
+                        text-align: center;
+                        color: rgb(40 193 247);
+                    }
+
+                    #btnc1, #btnc11, #btnc111 {
+                        width: 47.5%;
+                        left: 2.5%;
+                        height: 90%;
+                        top: 5%;
+                        position: absolute;
+                    }
+
+                    .btncoffse {
+                        background-image: url(https://i.postimg.cc/Zqrh7jV2/ofunselect.png);
+                        background-size: cover;
+                    }
+
+                    .btncoffun {
+                        opacity: .2;
+                        background-image: url(https://i.postimg.cc/Zqrh7jV2/ofunselect.png);
+                        background-size: cover;
+                    }
+
+                    .btnconse {
+                        background-image: url(https://i.postimg.cc/85NgqWY5/onselect.png);
+                        background-size: cover;
+                    }
+
+                    .btnconun {
+                        opacity: .2;
+                        background-image: url(https://i.postimg.cc/1tB1PXxK/onunselect.png);
+                        background-size: cover;
+                    }
+
+                    #btnc2, #btnc22, #btnc222 {
+                        width: 47.5%;
+                        right: 2.5%;
+                        height: 90%;
+                        top: 5%;
+                        position: absolute;
+                    }
+
+                    .divbutcon span {
+                        position: relative;
+                        font-family: 'Oswald', sans-serif;
+                        font-size: 1.4vw;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        text-align: center;
+                        color: rgb(40 193 247);
+                        text-shadow: 0 0 .5vw rgb(40 193 247);
+                        left: 10%;
+                    }
+                </style>
+                <script>
+                    function selectoff1() {
+                        $("#btnc1").addClass("btncoffse");
+                        $("#btnc1").removeClass("btncoffun");
+                        $("#btnc2").addClass("btnconun");
+                        $("#btnc2").removeClass("btnconse");
+
+                    }
+                    function selecton1() {
+                        $("#btnc1").addClass("btncoffun");
+                        $("#btnc1").removeClass("btncoffse");
+                        $("#btnc2").addClass("btnconse");
+                        $("#btnc2").removeClass("btnconun");
+
+                    }
+                    function selectoff2() {
+                        $("#btnc11").addClass("btncoffse");
+                        $("#btnc11").removeClass("btncoffun");
+                        $("#btnc22").addClass("btnconun");
+                        $("#btnc22").removeClass("btnconse");
+
+                    }
+                    function selecton2() {
+                        $("#btnc11").addClass("btncoffun");
+                        $("#btnc11").removeClass("btncoffse");
+                        $("#btnc22").addClass("btnconse");
+                        $("#btnc22").removeClass("btnconun");
+
+                    }
+                    function selectoff3() {
+                        $("#btnc111").addClass("btncoffse");
+                        $("#btnc111").removeClass("btncoffun");
+                        $("#btnc222").addClass("btnconun");
+                        $("#btnc222").removeClass("btnconse");
+
+                    }
+                    function selecton3() {
+                        $("#btnc111").addClass("btncoffun");
+                        $("#btnc111").removeClass("btncoffse");
+                        $("#btnc222").addClass("btnconse");
+                        $("#btnc222").removeClass("btnconun");
+
+                    }
+
+
+                    function sselect1() {
+                        x = 0;
+                        selectedtheme2();
+                        selectedtheme();
+                    } function sselect2() {
+                        x = 1;
+                        selectedtheme2();
+                        selectedtheme();
+                    } function sselect3() {
+                        x = 2;
+                        selectedtheme2();
+                        selectedtheme();
+                    }
+                    function selectedtheme2() {
+                        theme1 = "CYBER TERMINAL";
+                        theme2 = "CYBERPUNK";
+                        theme3 = "THE HIEST";
+
+                        if (x == 0) {
+                            $("#themename").text(theme1);
+                            selectoff2(); selecton2();
+
+                        }
+                        if (x == 1) {
+                            $("#themename").text(theme2);
+                            selectoff2(); selecton2();
+                        }
+                        if (x == 2) {
+
+                            $("#themename").text(theme3);
+                            selectoff2(); selecton2();
+                        }
+                        else {
+
+
+                        }
+
+                    }
+                    function selectedtheme() {
+                        theme1 = "CYBER TERMINAL";
+                        theme2 = "CYBERPUNK";
+                        theme3 = "THE HIEST";
+
+                        if (x == 0) {
+                            $("#vid1").attr("src", "back.mp4");
+                            $("#themename").text(theme1);
+                            $("#bb1").addClass("b1");
+                            $("#bb1").removeClass("b2");
+                            $("#bb1").removeClass("b3");
+
+
+                            $("#pcntbx3").removeClass("selectedtheme");
+                            $("#pcntbx1").removeClass("noselectedtheme");
+                            $("#pcntbx2").addClass("noselectedtheme");
+                            $("#pcntbx3").addClass("noselectedtheme");
+                            $("#btnnextto2").removeClass("nobut");
+                            $("#btnnextto2").addClass("sibut");
+                            $("#btnnextto3").removeClass("sibut");
+                            $("#btnnextto3").addClass("nobut");
+
+                        }
+                        if (x == 1) {
+                            $("#vid1").attr("src", "logo.mp4");
+                            $("#pcontentfondo").text(theme2);
+                            $("#bb1").addClass("b2");
+                            $("#bb1").removeClass("b1");
+                            $("#bb1").removeClass("b3");
+                            $("#btnnextto2").removeClass("sibut");
+                            $("#btnnextto2").addClass("nobut");
+                            $("#btnbackto1").removeClass("nobut");
+                            $("#btnbackto1").addClass("sibut");
+                            $("#btnbackto2").removeClass("sibut");
+                            $("#btnbackto2").addClass("nobut");
+                            $("#btnnextto3").removeClass("nobut");
+                            $("#btnnextto3").addClass("sibut");
+
+
+
+                        }
+                        if (x == 2) {
+                            $("#vid1").attr("src", "hiest.mp4");
+                            $("#pcontentfondo").text(theme2);
+                            $("#bb1").addClass("b3");
+                            $("#bb1").removeClass("b1");
+                            $("#bb1").removeClass("b2");
+                            $("#btnbackto1").removeClass("sibut");
+                            $("#btnbackto1").addClass("nobut");
+                            $("#btnbackto2").removeClass("nobut");
+                            $("#btnbackto2").addClass("sibut");
+                        }
+                        else {
+
+
+                        }
+
+                    }
+                    var vid = document.getElementById("vid1");
+                    var aud = $("audio");
+                    function soundmute() { aud.remove(); }
+
+                    function playVid() {
+                        vid.play();
+                    }
+                    function pauseVid() {
+                        vid.pause();
+                    }
+
+                </script>
+                <style>
+                    #btnnextto2 {
+                        width: 8%;
+                        height: 70%;
+                        right: 5%;
+                        top: 20%;
+                        position: absolute;
+                    }
+
+                    #btnbackto1 {
+                        width: 8%;
+                        height: 70%;
+                        left: 5%;
+                        top: 20%;
+                        position: absolute;
+                    }
+
+                    .nobut {
+                        z-index: -1;
+                    }
+
+                    .sibut {
+                        z-index: 2;
+                    }
+
+                    #btnnextto3 {
+                        width: 8%;
+                        height: 70%;
+                        right: 5%;
+                        top: 20%;
+                        position: absolute;
+                    }
+
+                    #btnbackto2 {
+                        width: 8%;
+                        height: 70%;
+                        left: 5%;
+                        top: 20%;
+                        position: absolute;
+                    }
+                </style>
+                <div class="divbutcon">
+                    <span>THEME:</span>  <div id="bb1" class="divimgconf b1">
+                        <p class="ptextconf" id="themename"> </p>
+                        <div id="btnnextto2" onclick="sselect2();" class="sibut"></div>
+                        <div id="btnbackto1" onclick="sselect1();" class="sibut"></div> <div id="btnnextto3" class="nobut" onclick="sselect3();"></div>
+                        <div id="btnbackto2" onclick="sselect2();" class="nobut"></div>
+                    </div>
+                </div>
+
+
+
+                <div class="divbutcon">
+                    <span>RADIO:</span>
+                    <div class="divimgconf">
+                        <div id="btnc1" class="btncoffun" onclick="selectoff1();"></div>
+                        <div id="btnc2" class="btnconse" onclick="selecton1();"></div>
+                    </div>
+                </div>
+                <div class="divbutcon">
+                    <span>TEXT BRIGHTNESS:</span>   <div class="divimgconf b3"><p class="ptextconf">LEVEL 3</p></div>
+                </div>
+                <div class="divbutcon">
+                    <span>ANIMATED WALLPAPER:</span>
+                    <div class="divimgconf">
+                        <div id="btnc11" class="btncoffun" onclick="selectoff2(); pauseVid();"></div>
+                        <div id="btnc22" class="btnconse" onclick="selecton2(); playVid(); "></div>
+                    </div>
+                </div>
+                <div class="divbutcon">
+                    <span>SOUNDS EFFECTS:</span><div class="divimgconf">
+                        <div id="btnc111" class="btncoffun" onclick="selectoff3(); soundmute()"></div>
+                        <div id="btnc222" class="btnconse" onclick="selecton3();"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
