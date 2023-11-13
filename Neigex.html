@@ -1,0 +1,1085 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+        }
+
+
+        /*  body {
+            background-color: #333;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }*/
+
+        .equalizer {
+            font-size: 0;
+            opacity: .6;
+            position: absolute;
+            top: 85%;
+            transform: rotate(180deg);
+            left: 22%;
+        }
+
+            .equalizer i {
+                background-color: #fff;
+                content: "";
+                display: inline-block;
+                width: .21vw;
+                margin: 0 .21vw;
+                transition: all .5s ease;
+                transform-origin: bottom left;
+            }
+
+        i:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(2) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(3) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(4) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(5) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(6) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(7) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(8) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(9) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(10) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(11) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(12) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(13) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(14) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(15) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(16) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(17) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(18) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(19) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(20) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(21) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(22) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(23) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(24) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(25) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(26) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(27) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(28) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(29) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(30) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(31) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(32) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(33) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(34) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(35) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(36) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(37) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(38) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(39) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(40) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(41) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(42) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(43) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(44) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(45) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(46) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(47) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(48) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(49) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(50) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(51) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(52) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(53) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(54) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(55) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(56) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(57) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(58) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(59) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(60) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(61) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(62) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(63) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(64) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(65) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(66) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(67) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(68) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(69) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(70) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(71) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(72) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(73) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(74) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(75) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(76) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(77) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(78) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(79) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(80) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(81) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(82) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(83) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(84) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(85) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(86) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(87) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(88) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(89) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(90) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(91) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(92) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(93) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(94) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(95) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(96) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(97) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(98) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(99) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(100) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(101) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(102) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(103) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(104) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(105) {
+            animation-delay: 0.1s;
+        }
+
+        i:nth-of-type(106) {
+            animation-delay: 0.15s;
+        }
+
+        i:nth-of-type(107) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(108) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(109) {
+            animation-delay: 0.3s;
+        }
+
+        i:nth-of-type(110) {
+            animation-delay: 0.25s;
+        }
+
+        i:nth-of-type(111) {
+            animation-delay: 0.2s;
+        }
+
+        i:nth-of-type(112) {
+            animation-delay: 0.15s;
+        }
+
+        @-webkit-keyframes move-up-and-down {
+            0% {
+                opacity: 0.3;
+                transform: scaleY(0.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        @keyframes move-up-and-down {
+            0% {
+                opacity: 0.3;
+                transform: scaleY(0.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .playeq {
+            height: 0vw;
+        }
+
+        .stopeq {
+            height: 2vw;
+            animation: move-up-and-down 0.3s infinite alternate;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    
+    <div id="main">
+        <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+    <div id="uprgb">
+        <img src="https://i.postimg.cc/MGbnJcK6/upmain.png" />
+    </div>
+        <style>
+            #uprgb { z-index:9;
+                position: absolute;
+                left: 0;
+                top: 0; 
+                /*mix-blend-mode: hard-light;*/
+                opacity: 0.8;
+                width: 25vw;
+                height: 100%;
+                overflow: hidden;  
+                /*transform-origin : 50vw 300vh;*/
+            }
+                #uprgb img { position:absolute; height:100%; width:100%;
+                }
+            .rgbShiftSlider {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;  
+                /*mix-blend-mode: hard-light;*/
+                opacity: 0.95;
+                width: 25vw;
+                height: 100%;
+                overflow: hidden;
+                /*transform-origin : 50vw 300vh;*/
+               /* transform-origin: 50% 50%; */
+                border-right:.5vw solid #5e85a1;
+            }
+
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+            }
+
+            #main {
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                position: fixed;
+            }
+
+          
+        </style>
+
+      
+        <script>
+            // set images
+            // demo works but images are blocked by codepen Cors issue
+            var images = [
+                "https://i.postimg.cc/G3JxxQ02/w.jpg",
+                //"https://i.postimg.cc/T1JGXBh4/wallpaperflare-com-wallpaper-1.jpg",
+
+                //"https://i.postimg.cc/prJN650y/4174435.jpg"
+            ];
+            // instanciate slider
+            var rbgShiftSlider = new rbgShiftSlider({
+                nav: true,
+                navElement: ".scene-nav",
+                slideImages: images,
+                stageWidth: 700,
+                stageHeight: 1400,
+                displacementImage:
+                    "https://images.unsplash.com/photo-1498898733745-c8c6df58e4ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+                fullScreen: false,
+                transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                transitionGhostDuration: 0.25,
+                transitionFilterIntensity: 150,
+                transitionSpriteIntensity: 1,
+                mouseDispIntensity: 3,
+                
+                interactive: true,
+                autoPlay: true,
+                autoPlaySpeed: 12000
+            });
+
+        </script>
+    
+        <div id="divfoot">
+            <style>
+                #divfoot { position:absolute; width:74.5%; height:8%; top:92%; background:#171717; left:25.5%;
+                }
+            </style>
+        </div>
+
+        <div id="med">
+            <style>
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+                @font-face {
+                    font-family: textf;
+                    src: url(Onbase.otf);
+                }
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
+                #med {
+                    position: absolute;
+                    width: 43%;
+                    height: 90%;
+                    top: 1%;
+                    left: 27%; 
+                }
+
+                #contimg {
+                    background: linear-gradient(90deg,transparent 0%,rgba(158,229,255,.5) 5%,rgba(128,148,217,1) 100%);
+                    top: 60%;
+                    width: 70%;
+                    left: 17%;
+                    height: auto;
+                    position: absolute;
+                }
+
+                #imggif {
+                    position: relative;
+                    width: 94%;
+                    left: 3%;
+                    margin-top: 2%;
+                    margin-bottom: 2%;
+                    filter: hue-rotate(280deg) contrast(140%);
+                }
+
+                #aicons { width:13%; height:35%; top:8%;   position:absolute;
+                }
+                #ic1 { position:absolute; width:15%; left:15%; top:8%;  filter:  contrast(150%) brightness(80%);
+                }
+                #lefticon { width:5%; left:95%; position:absolute;
+                }
+                #aicons b { letter-spacing:.1vw; line-height:.5vw;
+                    position:absolute; top:-1vw; font-size:.8vw; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                }
+                #aicons img { width:100%; margin:0;
+                }
+                #aicons p {  color:darkgray;
+                    line-height: .3vw; 
+                    position: absolute;
+                    top: -1vw; top:108%;
+                    font-size: .4vw;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                }
+                #colr { position:absolute; width:8%; top:83%; left:-2%; 
+                }
+                #areafirm { width:70%; height:35%;   top:15%; left:20%; position:absolute;
+                }
+                #quote {
+                    font-family: textfirmFont; font-size:2.5vw; color:rgba(128,148,217,1); text-align:center;
+                }
+                #firmneige {
+                    font-family: neigefont;
+                    font-size: 4vw; opacity:.9;
+                    color: gray; position:relative; left:40%;
+                    text-align: center;
+                }
+                #mainp {
+                    color: darkgray; left:5%;
+                    line-height: .3vw;
+                    position: absolute;
+                    top: -1vw; width:30%;
+                    top: -.5%; color: darkgray;
+                    font-size: .4vw;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                }
+                #cub {
+                    position: absolute;  
+                    background: darkgray; left:0%;
+                    width: 1.6vw; opacity:.8;
+                    height: 1.6vw; top:.2vw ;
+                    color: darkgray; border-radius:.2vw;
+                }
+
+                .glitch {
+                    position: relative;
+                    font-size: 25px;
+                     
+                    line-height: 1.2;
+                    color: #fff;  
+                    letter-spacing: 5px;
+                    z-index: 1;
+                    animation: shift 1s ease-in-out infinite alternate;
+                }
+
+                    .glitch:before,
+                    .glitch:after {
+                        display: block;
+                        content: attr(data-glitch);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        opacity: 0.8;
+                    }
+
+                    .glitch:before {
+                        animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+                        color: rgba(128,148,217,.5);
+                        z-index: -1;
+                    }
+
+                    .glitch:after {
+                        animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+                        color: rgba(158,229,255,.2);
+                        z-index: -2;
+                    }
+
+                @keyframes glitch {
+                    0% {
+                        transform: translate(0);
+                    }
+
+                    20% {
+                        transform: translate(-3px, 3px);
+                    }
+
+                    40% {
+                        transform: translate(-3px, -3px);
+                    }
+
+                    60% {
+                        transform: translate(3px, 3px);
+                    }
+
+                    80% {
+                        transform: translate(3px, -3px);
+                    }
+
+                    to {
+                        transform: translate(0);
+                    }
+                }
+
+                @keyframes shift {
+                    0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+                        transform: skewX(0deg);
+                    }
+
+                    41% {
+                        transform: skewX(5deg);
+                    }
+
+                    42% {
+                        transform: skewX(-5deg);
+                    }
+
+                    59% {
+                        transform: skewX(10deg) skewY(5deg);
+                    }
+
+                    60% {
+                        transform: skewX(-10deg) skewY(-5deg);
+                    }
+
+                    63% {
+                        transform: skewX(5deg) skewY(-2deg);
+                    }
+
+                    70% {
+                        transform: skewX(-12deg) skewY(-10deg);
+                    }
+
+                    71% {
+                        transform: skewX(5deg) skewY(-5deg);
+                    }
+                }
+                #textserch {
+                    position: absolute;
+                    width: 30%;
+                    height: 3.5%;
+                    background: darkgray;
+                    border: none;
+                    border-radius: .7vw;
+                    left: 50%;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    font-size:.8vw; letter-spacing:.1vw; outline:none; 
+                }
+                #imgmic { position:absolute; left:83%; top:-.5%; filter:brightness(102%);
+                }
+            </style>
+            <div id="cub">
+
+            </div>
+            <input type="text" id="textserch" placeholder="Serach..." /> <img src="https://i.postimg.cc/RhV7wDcr/1.png" id="imgmic" />
+            <p id="mainp">
+
+                Allez, petite fille. Viens finir de tuer mon coeur noir
+
+                Ma cheiré...
+
+                Arrache-le de ce corps sans âme, tout comme j'ai arraché ce bonheur dans ta vie. Détruisez-le en petits fragments comme des centaines de papillons au cœur noir par une nuit froide et sombre sans étoiles...
+            </p> 
+            <img src="https://i.postimg.cc/52ssGfkY/d.png" id="colr" />
+            <div id="areafirm">
+                <p id="quote" class="glitch" data-glitch="You never know what can 
+                    happen in the blink of an eye">
+                    "You never know what can<br />
+                    happen in the blink of an eye"
+                </p>
+                <p id="firmneige">Neige...  </p>
+            </div>
+            <div id="aicons">
+                <b>▪SKYBLUE A<br />▪</b>
+                <img src="https://i.postimg.cc/QdXCHmtZ/5d736b28582176b1e7f023c4c615b0b5.jpg" />
+                <img src="https://i.postimg.cc/rpHwZL9q/b0e9977c5c481d2ed1a6b954502177a1.jpg" />
+                <img src="https://i.postimg.cc/cJCJcJwD/b5ddd92a8cd54c964640176341381b1f.jpg" />
+                <p>
+                    NEIGE<br />
+                    You never know what can<br />
+                    happen in the blink of an eye
+                </p>
+            </div>  
+            <img src="https://i.postimg.cc/cChjTwp2/e.png" id="ic1" />
+            <img src="https://i.postimg.cc/9Q5T1Kp3/r.png" id="lefticon" />
+            <div id="contimg">
+                <img src="https://i.postimg.cc/9MXYbZ16/016936d1aa03c0866feb51ea034a65d4.gif" id="imggif" />
+            </div>
+        </div>
+
+        <div id="third">
+            <img src="https://i.postimg.cc/28j2mx8J/60286.jpg"  id="backthir"/>
+            <style>
+                #backthir { position:absolute; width:100%; height:100%; opacity:.7;
+                }
+                #third {
+                    position: absolute;
+                    right: 0;
+                    width: 30%;
+                    height: 92%;
+                  
+                }
+                #areaposts::-webkit-scrollbar {
+                    width: .6vw;
+                    border-radius: .5vw;
+                    background: black;
+                }
+
+
+
+                #areaposts::-webkit-scrollbar-thumb {
+                    border-radius: 1vw;
+                    background: gray;
+                    width: .6vw;
+                }
+
+                #profil {
+                    position:absolute; width:100%; height:48%;  backdrop-filter:blur(9px); z-index:11;
+                }
+                #areaprof { position:absolute; width:90%; height:90%; left:5%; top:5%;  
+                }
+                #imgprofil {position:absolute; right:0; top:0; width:45%;
+                }
+                #barimg {position:absolute; width:.1vw; background:darkgray; height:90%; left:55%; opacity:.7;
+                }
+                #textlat {
+                    font-size: .6vw; letter-spacing:.15vw; opacity:.5;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    transform:rotate(270deg); position:absolute; top:41%; left:22%;
+                }
+                #imgcode { transform:scaleX(-1); position:absolute; left:-5%;
+                }
+                #foc {
+                    font-family: 'Times New Roman', Times, serif;
+                    position: absolute;
+                    color: gray;
+                    opacity: .7; font-size:.9vw;
+                    left: 60%;
+                    top: 75%;
+                }
+                #foc2 {
+                    font-family:'Times New Roman', Times, serif;
+                    position: absolute;
+                    color: gray; font-size:1.5vw;
+                    opacity: .7;
+                    left: 90%; font-weight:bold;
+                    top: 67%;
+                }
+                #textsub {
+                    font-size: .6vw;
+                    letter-spacing: .05vw;
+                    opacity: .5; width:35%; text-align:center;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                   
+                    position: absolute;
+                    top: 32%;
+                    left: 9%;
+                }
+            </style>
+            <div id="profil">
+                <div id="areaprof">
+                    <div id="barimg"></div>
+                    <img id="imgprofil" src="https://i.postimg.cc/rpPVchJV/627ec456b7f3686aaed395ffb94195d0.jpg" />
+                    <p id="foc">FOCALORS</p>
+                    <p id="foc2">02<br />13</p>
+                    <p id="textlat">NEIGE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀GRISATRE/GRIS</p>
+                    <img src="https://i.postimg.cc/nzmGGPSM/3.png" id="imgcode" />
+                    <p id="textsub">
+                        Lights out, is this who you really are?
+                        Can't look into your eyes,
+                        Your twisted mind,
+                        It's dark, so dark,
+                        We end it now,
+                        It ends right here, right now,
+                        Please tell me you brought the rope,
+                        Let's light up the sky,
+                        And fade into the night
+                        <br /><br />
+                        ◯⠀⠀◯⠀⠀◯⠀⠀◯
+                    </p>
+                </div>
+            </div>
+            <div id="areaposts">
+                <style>
+                    #areaposts {
+                        width: 100%;
+                        height: 100%;
+                        
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                    }
+                </style>
+                <style>
+                    .post1 {
+                        margin-top: 100%;
+                    }
+                    #post1 {
+                        position: relative;
+                        width: 50%;
+                        height: auto;
+                        background: white;
+                        left: 25%;
+                       margin-bottom:20%;
+                    }
+
+                    #headpost1 {
+                        position: relative;
+                        background: #d2d2d2;
+                        height: 2vw;
+                    }
+
+                    #headpost2 {
+                        width: 100%;
+                        position: relative;
+                        height: 2vw;
+                    }
+
+                        #headpost1 p, #headpost2 p {
+                            font-size: .6vw;
+                            letter-spacing: .05vw;
+                            position: relative;
+                            opacity: .5;
+                            top: 30%;
+                            left: 5%;
+                            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                        }
+
+                        #headpost1 span, #headpost2 span {
+                            font-size: .6vw;
+                            letter-spacing: .05vw;
+                            position: relative;
+                            opacity: .5;
+                            top: -70%;
+                            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                            left: 82%;
+                        }
+
+                    #contentp1 {
+                        font-size: .7vw;
+                        letter-spacing: .05vw;
+                        position: relative;
+                        opacity: .5;
+                        width: 70%;
+                        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                        left: 15%;
+                    }
+
+                    #contentp2 {
+                        font-size: .7vw;
+                        letter-spacing: .05vw;
+                        position: relative;
+                        opacity: .5;
+                        width: 70%;
+                        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                        left: 10%;
+                    }
+                    #imgpostsaikai { position:relative; width:100%;
+                    }
+                </style>
+                <div id="post1" class="post1">
+
+                    <div id="headpost1">
+                        <p>  NEIGE > GRIS | 02:17am</p><span>◯⠀◯</span>
+
+                    </div>
+                    <p id="contentp1">
+                        Living for the underground
+                        Dealing with the comedown
+                    </p> <i id="contentp2">
+                        －I better start planning my <br />⠀escape...
+                    </i> <div id="headpost2">
+                        <p>  －˟’̶̸̶トベールₓ؛~˖－ˣˣᶥᶥᶥ</p><span>◯⠀◯</span>
+
+                    </div>
+                </div>
+                <div id="post1">
+
+                    <div id="headpost1">
+                        <p>  LYNETTE > SAIKAI | 02:17am</p><span>◯⠀◯</span>
+
+                    </div>
+                    <p id="contentp1">
+                       My Grisi...
+                    </p>
+                    <img id="imgpostsaikai" src="https://i.postimg.cc/xTwKzzXd/IMG-20231008-WA0051.jpg" />
+                    <i id="contentp2">
+                        －I love you, my princess  
+                    </i> <div id="headpost2">
+                             <p>  －ღ’̶̸̶𝘍𝘢𝘳𝘦𝘸𝑒̅𝘭𝘭◜˻𝘉𝘭𝘶𝑒̅</p><span>◯⠀◯</span>
+
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+
+</body>
+</html>
