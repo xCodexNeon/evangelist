@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
@@ -13,6 +13,182 @@
     <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
     <script type="text/javascript" src="vue.global.js"></script>
     <script src="mgGlitch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            ima1 = $("#ima-00");
+            ima2 = $("#ima-10");
+            let audioData = [];
+
+            var song = new Audio();
+
+            //image.className = "image";
+
+            //var img2 = $(".static-card2");
+            //var flip = $(".flip-card2");
+
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "MUSIC OFF",
+                        artist: "MUTED",
+                        src:
+                            "",
+                        imagen1: "im-11",
+
+                    },
+                    {
+                        name: "La vaguelette",
+                        artist: "HOYO-MiX",
+                        src:
+                            "Lavaguelette.mp3", 
+                        imagen1: "im-22",
+
+                    },
+                    {
+                        name: "AVALON",
+                        artist: "ZERUEL",
+                        src:
+                            "Avalon.mp3",
+                        imagen1: "im-33",
+                    }
+                    ,
+                    {
+                        name: "FAUX SEMBLANTS",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true",
+                        imagen1: "im-44",
+                    }
+                    ,
+                    {
+                        name: "LA REINE TRAYEUSE",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/LaReine.mp3?raw=true",
+                        imagen1: "im-55",
+                    }
+                    ,
+                    {
+                        name: "Not Your Kind of People",
+                        artist: "Garbage",
+                        src:
+                            "https://xevangelist.github.io/evangelist/onlymp3.to%20-%20Garbage%20-%20Not%20Your%20Kind%20of%20People-KckCsw_JyJI-192k-1655163709308.mp3?raw=true",
+                        imagen1: "im-66",
+                    }
+                ];
+
+                artistname.html(audioData[CurrentSong].artist + " /");
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+                ima1.addClass(audioData[CurrentSong].imagen1)
+                ima2.addClass(audioData[CurrentSong].imagen1)
+                //img2.src = audioData[CurrentSong].img2;
+                //flip.src = audioData[CurrentSong].flip;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist + " /");
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                ima1.addClass(curSong.imagen1);
+                ima2.addClass(curSong.imagen1);
+                /* document.getElementById("img-1").src = curSong.img2;*/
+                //img2.src = curSong.src;
+                //flip.src = curSong.src;
+                song.play();
+                $("#btn-play").addClass("fa-pause");
+                $("#btn-play").removeClass("fa-play");
+
+                $("img").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+                var indicatorLabel = currentLabel + " / " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+
+            $("#btn-pause").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+                }
+                playSong();
+            });
+        });
+
+    </script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
@@ -21,7 +197,6 @@
 
         html,
         body, #main {
-            background:white;
             top: 0;
             left: 0;
             height: 100%;
@@ -636,9 +811,259 @@
     
         <div id="divfoot">
             <style>
-                #divfoot { position:absolute; width:74.5%; height:8%; top:92%; background:#171717; left:25.5%;
+                #divfoot {
+                    position: absolute;
+                    width: 74.5%;
+                    height: 8%;
+                    top: 92%;
+                    background: #171717;
+                    left: 25.5%;
                 }
-            </style>
+
+                #ima-00 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 3vw;
+                    left: 2%;
+                    top: .1vw;
+                    background-position-x: -2%;
+                }
+
+                #ima-00x {
+                    position: absolute;
+                    width: 3.2vw;
+                    height: 3.2vw;
+                    left: 2%;
+                    top: 15%;
+                    border: .1vw solid white;
+                }
+
+                .im-11 {
+                    background-image: url(https://i.postimg.cc/mDc26Nnp/muteaudio-79898.png);
+                    background-size: cover; filter:invert(90%);
+                }
+
+                .im-22 {
+                    background-image: url(https://i.postimg.cc/0QL2gKRk/La-vaguelette.webp);
+                    background-size: cover;
+                    z-index: 9;
+                    filter: invert(0%);
+                }
+
+                .im-33 {
+                    background-image: url(https://i.postimg.cc/Nj4My0TD/artworks-MQlnj-WGHKT88-Ty-At-IEz-UDA-t500x500.jpg);
+                    background-size: cover;
+                    z-index: 10;
+                    filter: invert(0%);
+                }
+
+                .im-44 {
+                    background-image: url(https://i.postimg.cc/cJkLm5F8/images.jpg);
+                    background-size: cover;
+                    z-index: 10;
+                    filter: invert(0%);
+                }
+
+                .im-55 {
+                    background-image: url(https://i.postimg.cc/cJkLm5F8/images.jpg);
+                    background-size: cover;
+                    z-index: 10;
+                    filter: invert(0%);
+                }
+
+                .im-66 {
+                    background-image: url(https://i.postimg.cc/8CzCLVmS/descarga.jpg);
+                    background-size: cover;
+                    z-index: 10;
+                    filter: invert(0%);
+                }
+            </style><div id="ima-00x">
+                <div id="ima-00" class="im-11"></div>
+            </div>
+            <div id="auid">
+                <style>
+                    #auid {
+                        text-transform: uppercase;
+                        font-family: "Roboto", Arial, sans-serif;
+                        position: absolute;
+                        width: 35%;
+                        height: 90%;
+                        top: 5%;
+                        left: 8%;
+                    }
+
+                    .player {
+                        z-index: 9;
+                    }
+
+                    .player-control {
+                        position: absolute;
+                        z-index: 999999999999999;
+                        top: 120%;
+                        right: 12%;
+                    }
+
+
+
+                    #namesong {
+                        position: absolute;
+                        width: 88%;
+                        height: 70%;
+                        top: 10%;
+                        color: darkgray;
+                        left: 0%;
+                        letter-spacing: .1vw;
+                        font-size: 1vw;
+                    }
+
+
+                    #name_sng {
+                        position: relative;
+                        float: left;
+                    }
+
+                    .progress-bar {
+                        width: 100%;
+                        background: lightgray;
+                        height: .2vw;
+                        position: absolute;
+                        top: 80%;
+                    }
+
+                    .fillBar {
+                        background: rgba(128,148,217,1);
+                        width: 0;
+                        height: .2vw;
+                    }
+
+                    #AT_time {
+                        width: 5vw;
+                        height: 1vw;
+                        top: 55%;
+                        left: 0;
+                        position: absolute;
+                    }
+
+                        #AT_time p {
+                            position: absolute;
+                            font-family: 'Oswald', sans-serif;
+                            letter-spacing: .1vw;
+                            font-size: .8vw;
+                            color: lightgray;
+                        }
+
+                    .time {
+                        position: absolute;
+                        left: 0vw;
+                        color: rgba(128,148,217,1);
+                        top: 1.2vw;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        overflow: hidden;
+                    }
+
+                    #cd_1 {
+                        width: 8vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 21vw;
+                        top: .3vw;
+                        overflow: hidden;
+                    }
+
+                    #cd_2 {
+                        width: 4.7vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 29vw;
+                        top: .3vw;
+                    }
+
+                    .artist-name {
+                        position: absolute;
+                        left: .1vw;
+                        top: 50%;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .6vw;
+                        color: lightgray;
+                    }
+
+                    #cd_2 p {
+                        position: absolute;
+                        top: 10%;
+                        letter-spacing: .05vw;
+                        font-size: .4vw;
+                        left: .4vw;
+                        color: rgba(199,48,48.3);
+                        line-height: .5vw;
+                    }
+                    #sectcrt {
+                        position: absolute;
+                        width: 40%;
+                        height: 45%;
+                        right:-14%;
+                        top: 20%;
+                    }
+
+                    #crt {
+                        font-family: 'Montserrat', sans-serif;
+                        color: white;
+                        font-size: .45vw;
+                        letter-spacing: .1vw;
+                        text-transform: uppercase;
+                        opacity: .7;
+                    }
+                    #frim { position:absolute; width:5vw; filter:invert(100%); right:27%; top:8%;
+                    }
+                </style>
+
+
+
+
+
+
+
+
+
+
+                <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+
+
+                <div class="progress-bar">
+                    <div class="fillBar"></div>
+                </div>
+                <div id="AT_time"><div class="time"></div></div>
+                <div class="artist-name"></div>
+
+
+
+                <div id="btn-pause" class="fas fa-forward"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" /></div>
+                <div id="pause" class="fas fa-forward"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" /></div>
+                <div id="play" class="fas fa-forward"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" /></div>
+
+
+
+
+
+
+
+
+            </div>
+
+            <div id="sectcrt">
+                <p id="crt">
+                    ●GRIS<br />
+                    灰色的 | 昏迷，黑色 | 吞 | 0001 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ●swallow | 000001<br />
+                    ●NEIGE | REIIZ | ●tous droits réservés ●xat.com ●2023
+                </p>
+
+            </div>
+            <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="frim" />
+
         </div>
 
         <div id="med">
@@ -877,6 +1302,36 @@
         <div id="third">
             <img src="https://i.postimg.cc/28j2mx8J/60286.jpg"  id="backthir"/>
             <style>
+                #btn-pause { position:absolute; width:1.5vw; height:1.5vw; right:20%; top:10%; filter:invert(100%);
+                }
+                #pause {
+                    position: absolute;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    right: 10%;
+                    top: 10%;
+                    filter: invert(100%);
+                }
+                #play {
+                    position: absolute;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    right: 0%;
+                    top: 10%;
+                    filter: invert(100%);
+                }
+
+                    #play img {
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #pause img {
+                        position: absolute;
+                        width: 100%;
+                    }
+                    #btn-pause img { position:absolute; width:100%;
+                    }
+
                 #backthir { position:absolute; width:100%; height:100%; opacity:.7;
                 }
                 #third {
@@ -914,6 +1369,16 @@
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                     transform:rotate(270deg); position:absolute; top:41%; left:22%;
                 }
+                #lynmrr {
+                    position: absolute;
+                    font-size: .6vw;
+                    letter-spacing: .15vw;
+                    opacity: .5; color:gray; text-decoration:none;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    left:60%; top:82%;
+                }
+                    #lynmrr span { color:rgb(62, 104, 247);
+                    }
                 #imgcode { transform:scaleX(-1); position:absolute; left:-5%;
                 }
                 #foc {
@@ -948,6 +1413,7 @@
                     <div id="barimg"></div>
                     <img id="imgprofil" src="https://i.postimg.cc/rpPVchJV/627ec456b7f3686aaed395ffb94195d0.jpg" />
                     <p id="foc">FOCALORS</p>
+                    <a id="lynmrr" href="https://xat.me/Lynette"><p >LYNETTE <span>♥️</span></p></a>
                     <p id="foc2">02<br />13</p>
                     <p id="textlat">NEIGE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀GRISATRE/GRIS</p>
                     <img src="https://i.postimg.cc/nzmGGPSM/3.png" id="imgcode" />
