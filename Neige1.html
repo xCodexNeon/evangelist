@@ -166,7 +166,7 @@
                 }
                 playSong();
             });
-            $("#mainintro").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+            $("#asongplay").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
                 CurrentSong++;
                 if (CurrentSong > 5) {
                     CurrentSong = 0;
@@ -525,6 +525,11 @@
                 function openmens() {
                     outprofile();
                     openchat()
+                }
+                function enterclock() {
+                    $("#clock").removeClass("noclock"); $("#clock").addClass("siclock");
+                } function outclock() {
+                    $("#clock").removeClass("siclock"); $("#clock").addClass("noclock");
                 }
             </script>
         </video>
@@ -900,7 +905,113 @@
                 <p id="ptext1">雪·在這個秋天之下</p>
                 <p id="ptext2">訂單現在開始·在我的矛下</p>
                 <p id="ptext3">模糊的世界</p>
-                <img src="https://i.postimg.cc/MG7y2H3s/4883130-middle.png" id="geologo" />
+                <div id="mapspace">
+                    <style>
+                        /*HOVEEEEEERs*/
+                        #menu3:hover, #iconmenu6:hover, #iconmenu5:hover, #btnperfil:hover, #btnperfil4:hover, #mn1:hover, #menu5:hover, #mn13:hover, #bn5:hover,
+                        #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover {
+                            cursor: url(https://i.postimg.cc/x8pr3bHz/high.png), zoom-in;
+                        }
+
+                        #mapspace {
+                            position: absolute;
+                            width: 20%;
+                            left: 6%;
+                            height: 28%;
+                            top: 2%;
+                        }
+
+                        #map {
+                            z-index: 2;
+                            width: 12vw;
+                            height: 12vw;
+                            border-radius: 50%;
+                            border: .15vw solid gray;
+                            position: absolute;
+                            left: 7%;
+                            top: 2%;
+                            overflow: hidden;
+                            opacity: .8;
+                        }
+
+                            #map img {
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                        #btnpaimon {
+                            position: absolute;
+                            width: 4.2vw;
+                            height: 4.2vw;
+                            top: 0%;
+                            left: -2%;
+                            z-index: 3;
+                        }
+
+                            #btnpaimon img {
+                                width: 100%;
+                                position: relative;
+                            }
+
+                        #btneye {
+                            position: absolute;
+                            width: 3.5vw;
+                            height: 3.5vw;
+                            top: 0;
+                            left: 60%;
+                        }
+
+                            #btneye img {
+                                width: 100%;
+                                position: relative;
+                            }
+
+                        #btneye2 {
+                            position: absolute;
+                            width: 3.5vw;
+                            height: 3.5vw;
+                            top: 0;
+                            left: 86%;
+                        }
+
+                            #btneye2 img {
+                                width: 100%;
+                                position: relative;
+                            }
+
+                        #btnmision {
+                            position: absolute;
+                            width: 3.5vw;
+                            height: 3.5vw;
+                            top: 70%;
+                            left: 2%;
+                            z-index: 3;
+                        }
+
+                            #btnmision img {
+                                width: 100%;
+                                position: relative;
+                            }
+                    </style>
+
+                    <div id="map">
+                        <img src="https://i.postimg.cc/FsPmDQsQ/minim.png" />
+                    </div>
+
+                    <div id="btnpaimon">
+                        <img src="https://i.postimg.cc/KjYgqqYz/2e2e2e2e.png" />
+                    </div>
+                    <div id="btneye">
+                        <img src="https://i.postimg.cc/MpBfFjzy/ee.png" />
+                    </div>
+                    <!--<div id="btneye2">
+                <img src="https://i.postimg.cc/7LMGx8Gh/wss.png" />
+            </div>-->
+                    <div id="btnmision" style="top:10vw;">
+                        <img src="https://i.postimg.cc/tgHnQCg8/rr.png" />
+                    </div>
+                </div>
+
                 <p id="ptext4">在第 09 天</p><p id="ptext5"><p id="ptext5">2023 年 10 月</p></p>
             </div>
             <div id="mainmed">
@@ -1302,12 +1413,205 @@
                 <img src="https://i.postimg.cc/1RjXd9qf/gl.png" id="iconprofile" />
 
                 <div id="baricons">
-                    <div id="iconmenu1" class="iconmnu" onclick="enterprofile();"> <img class="iconim" src="https://i.postimg.cc/Gm43YDJN/cv.png" /></div>
-                    <div id="iconmenu2" onclick="entersectionfirm();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
-                    <div id="iconmenu3" onclick="openmens();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
-                    <div id="iconmenu4" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
+                    <div id="iconmenu1" class="iconmnu" onclick="enterprofile(); outclock();"> <img class="iconim" src="https://i.postimg.cc/Gm43YDJN/cv.png" /></div>
+                    <div id="iconmenu2" onclick="entersectionfirm(); outclock();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/t4vDqFbt/cc.png" /></div>
+                    <div id="iconmenu3" onclick="openmens(); outclock();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/cJKhr64q/ccc.png" /></div>
+                    <div id="iconmenu4" class="iconmnu" onclick="enterclock(); digi();"><img class="iconim" src="https://i.postimg.cc/wTV0rSbr/cccc.png" /></div>
                     <div id="iconmenu6" onclick=" outprofile(); openconfig(); selectedtheme2(); outchat();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/Njjpvp3j/ccccc.png" /></div>
-                    <div id="iconmenu5" onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                    <div id="iconmenu5" onclick="outprofile(); closeconfig(); outsectfirm(); outchat(); outssections(); outclock();" class="iconmnu"><img class="iconim" src="https://i.postimg.cc/1zLH6Pf8/cccccc.png" /></div>
+                </div>
+
+            </div>
+            <div id="clock" class="noclock">
+                <style>
+                    .noclock {
+                        right: -100%;
+                        opacity: 0;
+                        z-index: -1;
+                    }
+
+                    .siclock {
+                        right: 0;
+                        opacity: 1;
+                        z-index: 8;
+                    }
+
+                    #clock {
+                        position: absolute;
+                        width: 60%;
+                        transition: all 1s ease;
+                        height: 100%;
+                        transition: all 1s ease;
+                        background-image: linear-gradient(90deg,transparent 0%,rgba(31,41,61,.8) 20%,rgba(31,41,61,.9) 100%);
+                    }
+
+                    #divreloj {
+                        opacity: .8;
+                        width: 25vw;
+                        height: 25vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 25%;
+                    }
+
+                        #divreloj img {
+                            width: 100%;
+                            position: absolute;
+                            opacity: .9;
+                            right: 5%;
+                            filter: blur(.5px);
+                        }
+
+                    #areahr {
+                        position: absolute;
+                        width: 25%;
+                        height: 60%;
+                        left: 25%;
+                        top: 20%;
+                    }
+
+                    #botomimg {
+                        position: absolute;
+                        width: 6vw;
+                        top: 80%;
+                        left: 30%;
+                    }
+
+                    #botomimg1 {
+                        transform: rotate(180deg);
+                        position: absolute;
+                        width: 6vw;
+                        top: 15%;
+                        left: 30%;
+                    }
+
+                    #phoractual {
+                        color: rgb(173,162,140);
+                        position: relative;
+                        text-align: center;
+                        top: 20%;
+                        font-size: 1.5vw;
+                    }
+
+                    #phoractual2 {
+                        color: rgb(173,162,140);
+                        position: relative;
+                        text-align: center;
+                        top: 19%;
+                        font-size: 1.5vw;
+                    }
+
+                    #tt, #tt2 {
+                        color: white;
+                        text-transform: uppercase;
+                        font-size: 2vw;
+                        letter-spacing: .1vw;
+                        position: relative;
+                        text-align: center;
+                        top: 18%;
+                    }
+
+                    #flecha {
+                        position: absolute;
+                        top: 45%;
+                        left: 45%;
+                    }
+
+                    .clock, #clock2 {
+                        color: white;
+                        font-size: 1.5vw;
+                        letter-spacing: .1vw;
+                        position: relative;
+                        text-align: center;
+                        top: 18%;
+                    }
+                </style>
+                <script>
+
+
+                </script>
+                <script>
+                    function digi() {
+                        var mydate = new Date();
+                        var year = mydate.getYear();
+                        if (year < 1000) year += 1900;
+                        var day = mydate.getDay();
+                        var month = mydate.getMonth();
+                        var daym = mydate.getDate();
+                        if (daym < 10) daym = "0" + daym;
+                        var dayarray = new Array(
+                            "Sunday,",
+                            "Monday,",
+                            "Tuesday,",
+                            "Wednesday,",
+                            "Thursday,",
+                            "Friday,",
+                            "Saturday,"
+                        );
+                        var montharray = new Array(
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December"
+                        );
+                        $(".clock").text(dayarray[day] +
+                            +
+                            daym +
+                            "TH " +
+                            montharray[month]
+                        );
+
+
+                        var date = new Date(),
+                            hour = date.getHours(),
+                            minute = checkTime(date.getMinutes()),
+                            ss = checkTime(date.getSeconds());
+
+                        function checkTime(i) {
+                            if (i < 10) {
+                                i = "0" + i;
+                            }
+                            return i;
+                        }
+
+                        if (hour > 12) {
+                            hour = hour - 12;
+                            if (hour == 12) {
+                                hour = checkTime(hour);
+                                document.getElementById("tt").innerHTML =
+                                    hour + ":" + minute + ":" + ss + " AM";
+                            } else {
+                                hour = checkTime(hour);
+                                document.getElementById("tt").innerHTML =
+                                    hour + ":" + minute + ":" + ss + " PM";
+                            }
+                        } else {
+                            document.getElementById("tt").innerHTML =
+                                hour + ":" + minute + ":" + ss + " AM";
+                        }
+                        var time = setTimeout(digi, 1000);
+                    }
+
+                </script>
+                <div id="divreloj">
+                    <img src="https://i.postimg.cc/0j6r8jvV/clock2.gif" />
+                </div>
+                <div id="areahr">
+                    <img src="https://i.postimg.cc/sg8zrmxC/Captura.png" id="botomimg1" />
+                    <p id="phoractual">Hora actual</p>
+                    <p id="tt"></p>
+                    <img src="https://i.postimg.cc/HkjmRRpt/111.png" id="flecha" />
+                    <p id="phoractual2">Al dia de:</p>
+                    <p class="clock"></p>
+                    <img src="https://i.postimg.cc/sg8zrmxC/Captura.png" id="botomimg" />
                 </div>
 
             </div>
@@ -1604,22 +1908,24 @@
                             background-size: cover;
                             top: 38%;
                             transition: all 1s ease;
-                            position: absolute; 
-                            overflow:auto;
+                            position: absolute;
+                            overflow: auto;
                         }
+
                             #menufriends::-webkit-scrollbar {
                                 width: .6vw;
                                 border-radius: .5vw;
                                 background: #f24b4b
                             }
 
-                        
 
-                        #menufriends::-webkit-scrollbar-thumb {
-                            border-radius: 1vw;
-                            background: lightgray;
-                            width: .6vw;
-                        }
+
+                            #menufriends::-webkit-scrollbar-thumb {
+                                border-radius: 1vw;
+                                background: lightgray;
+                                width: .6vw;
+                            }
+
                         .enterfriends {
                             left: 2%;
                         }
@@ -1723,7 +2029,8 @@
                             border-radius: .5vw;
                             overflow: hidden;
                             top: 100%;
-                            left: 1.5%; margin-bottom:1.5%;
+                            left: 1.5%;
+                            margin-bottom: 1.5%;
                             position: absolute;
                         }
 
@@ -1810,10 +2117,10 @@
                         <p id="namefriend">Sivi</p>
                     </div>
                     <!--<div id="frd9">
-                        <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
-                        <img src="https://i.postimg.cc/cHzLLR1T/wanderer-faruzan-icon-via-anonsbelle-v0-qxijbbz5aiy91.png" id="charimg" />
-                        <p id="namefriend">Mythes</p>
-                    </div>-->
+                <img src="https://i.postimg.cc/KjgTfsk6/friends.png" id="imgsobrefriend" />
+                <img src="https://i.postimg.cc/cHzLLR1T/wanderer-faruzan-icon-via-anonsbelle-v0-qxijbbz5aiy91.png" id="charimg" />
+                <p id="namefriend">Mythes</p>
+            </div>-->
                 </div>
 
 
@@ -2701,12 +3008,12 @@
 
                                 </div>
                                 <!--<div class="butplayer">
-                                <div class="butpl">
-                                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-                                    <div id="stop"> </div>
-                                </div>
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
 
-                            </div>-->
+                        </div>-->
                             </div>
 
 
@@ -3595,14 +3902,17 @@
                         color: white;
                         font-size: .9vw;
                         text-align: center;
-                        z-index:999999;
+                        z-index: 999999;
                     }
+
                     #afr {
-                        color: white; text-decoration:none;
+                        color: white;
+                        text-decoration: none;
                     }
-                        #firmmrr p {
-                            margin-top: .5vw;
-                        }
+
+                    #firmmrr p {
+                        margin-top: .5vw;
+                    }
                 </style>
                 <a id="afr" href="https://xat.me/Lynette"><p>Saikai</p></a>
             </div>
@@ -3765,7 +4075,7 @@
 
 
                 </p>
-                <a id="asongplay" href="#mainintro"> <p id="avd3">Clic para continuar...</p></a>
+                <a id="asongplay" href="#mainintro" > <p id="avd3">Clic para continuar...</p></a>
             </div>
 
 
