@@ -1,0 +1,1538 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            ima1 = $("#ima-00");
+            ima2 = $("#ima-10");
+            let audioData = [];
+
+            var song = new Audio();
+
+            //image.className = "image";
+
+            //var img2 = $(".static-card2");
+            //var flip = $(".flip-card2");
+
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "MUSIC OFF",
+                        artist: "MUTED",
+                        src:
+                            "",
+                        imagen1: "im-11",
+
+                    },
+                    {
+                        name: "La vaguelette",
+                        artist: "HOYO-MiX",
+                        src:
+                            "Lavaguelette.mp3",
+                        imagen1: "im-22",
+
+                    },
+                    {
+                        name: "AVALON",
+                        artist: "ZERUEL",
+                        src:
+                            "Avalon.mp3",
+                        imagen1: "im-33",
+                    }
+                    ,
+                    {
+                        name: "FAUX SEMBLANTS",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true",
+                        imagen1: "im-44",
+                    }
+                    ,
+                    {
+                        name: "LA REINE TRAYEUSE",
+                        artist: "AMESOEURS",
+                        src:
+                            "https://xevangelist.github.io/evangelist/LaReine.mp3?raw=true",
+                        imagen1: "im-55",
+                    }
+                    ,
+                    {
+                        name: "Not Your Kind of People",
+                        artist: "Garbage",
+                        src:
+                            "https://xevangelist.github.io/evangelist/onlymp3.to%20-%20Garbage%20-%20Not%20Your%20Kind%20of%20People-KckCsw_JyJI-192k-1655163709308.mp3?raw=true",
+                        imagen1: "im-66",
+                    }
+                ];
+
+                artistname.html(audioData[CurrentSong].artist + " /");
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+                ima1.addClass(audioData[CurrentSong].imagen1)
+                ima2.addClass(audioData[CurrentSong].imagen1)
+                //img2.src = audioData[CurrentSong].img2;
+                //flip.src = audioData[CurrentSong].flip;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist + " /");
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                ima1.addClass(curSong.imagen1);
+                ima2.addClass(curSong.imagen1);
+                /* document.getElementById("img-1").src = curSong.img2;*/
+                //img2.src = curSong.src;
+                //flip.src = curSong.src;
+                song.play();
+                $("#btn-play").addClass("fa-pause");
+                $("#btn-play").removeClass("fa-play");
+
+                $("img").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+                var indicatorLabel = currentLabel + " / " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+                animationspinpause();
+                endeq();
+            });
+            $("#play").click(function () {
+                animationspinplay();
+                song.play(); starteq()
+                playing = true;
+            });
+
+            $("#btn-pause").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+                    
+                }
+                if (CurrentSong == 0) {
+                    selectdsong1(); animationspinplay(); starteq()
+                }
+                if (CurrentSong == 1) {
+                    selectdsong2(); animationspinplay(); starteq()
+                } if (CurrentSong == 2) {
+                    selectdsong3(); animationspinplay(); starteq()
+                } if (CurrentSong == 3) {
+                    selectdsong4(); animationspinplay(); starteq()
+                }
+                playSong();
+            });
+        });
+        function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
+        function animationspinplay() {
+            $("#cdspin").css("-webkit-animation-play-state", "running"); }
+
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+        }
+
+ 
+    </style>
+
+
+
+
+</head>
+<body>
+    
+    <div id="main">
+
+        <div id="mainright">
+            <style>
+                #mainright {
+                    position: absolute;
+                    right: 0;
+                    width: 57%;
+                    height: 100%;
+                }
+
+                #barlat {
+                    position: absolute;
+                    width: 1vw;
+                    right: 0%;
+                    top: 3.5%;
+                    height: 50%;
+                    filter: sepia(1);
+                }
+
+                #barlat2 {
+                    transform: rotate(-90deg);
+                    position: absolute;
+                    width: 1vw;
+                    right: 35%;
+                    top: -18%;
+                    height: 40%;
+                    filter: sepia(1);
+                }
+
+                #barup1 {
+                    height: 1px;
+                    width: 70%;
+                    background: #C2B07A;
+                    top: 2.7%;
+                    position: absolute;
+                    left: 47.5%;
+                    opacity: .4;
+                }
+
+                #barup2 {
+                    height: 1px;
+                    width: 50.5%;
+                    background: #C2B07A;
+                    top: 3.5%;
+                    position: absolute;
+                    left: 46.5%;
+                    opacity: .4;
+                }
+
+                #romb {
+                    width: .7vw;
+                    height: .7vw;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    right: 1.7%;
+                    top: 1.9%;
+                    background: #C2B07A;
+                }
+
+                #barright1 {
+                    top: 1.9%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 60%;
+                    right: 2.3%;
+                    width: 1px;
+                }
+
+                #barright2 {
+                    top: 3.7%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 92%;
+                    right: 3%;
+                    width: 1px;
+                }
+
+                #imgsmoke {
+                    transform: rotate(90deg);
+                    position: absolute;
+                    right: 0;
+                    height: 51%;
+                    top: 23.5%;
+                    filter: sepia(1) blur(6px);
+                    right: -14%;
+                    opacity: .2;
+                    width: 78%;
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                @font-face {
+                    font-family: textf;
+                    src: url(Onbase.otf);
+                }
+
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
+
+                @font-face {
+                    font-family: neigefont2;
+                    src: url(neig.ttf);
+                }
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                #mark1 {
+                    color: #C2B07A;
+                    font-size: 2vw;
+                    position: absolute;
+                    letter-spacing: .2vw;
+                    width: 140%;
+                    top: 10%;
+                    right: 3.1%;
+                    filter: blur(2px);
+                    opacity: .3;
+                    font-family: neigefont2;
+                }
+
+                #mark2 {
+                    color: #C2B07A;
+                    font-size: 5vw;
+                    position: absolute;
+                    letter-spacing: .2vw;
+                    width: 130%;
+                    top: 9%;
+                    right: 3.1%;
+                    filter: blur(2px);
+                    opacity: .4;
+                    font-family: neigefont2;
+                }
+
+                #mainp {
+                    color: #C2B07A;
+                    font-size: 1.5vw;
+                    position: absolute;
+                    width: 130%;
+                    opacity: .9;
+                    top: 23%;
+                    letter-spacing: .1vw;
+                    filter: brightness(120%);
+                    right: -75%;
+                    text-shadow: .1vw .1vw .2vw white;
+                }
+
+                #mainp2 {
+                    color: white;
+                    font-size: 1.6vw;
+                    position: absolute;
+                    width: 130%;
+                    top: 24.5%;
+                    opacity: .4;
+                    letter-spacing: .1vw;
+                    filter: brightness(120%) blur(2px);
+                    right: -78%;
+                }
+
+                #trin1 {
+                    position: absolute;
+                    width: 3.2vw;
+                    height: 3.2vw;
+                    top: 89%;
+                    right: 2.7%;
+                }
+
+                #linlat3 {
+                    top: 41.6%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 50%;
+                    right: 48.5%;
+                    width: 1px;
+                }
+
+                #circle11 {
+                    width: .5vw;
+                    height: .5vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: 48.2%;
+                    z-index: 99999999999999999;
+                    top: 41%;
+                    background: #C2B07A;
+                }
+
+                #c21 {
+                    width: .4vw;
+                    height: .4vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: .05vw;
+                    left: .05vw;
+                    background: black;
+                }
+
+                #linlat4 {
+                    top: 41.6%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 53%;
+                    right: 50%;
+                    width: 1px;
+                }
+
+                #linlat5 {
+                    top: 91.5%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 1px;
+                    left: 51.6%;
+                    width: 40%;
+                }
+
+                #traing2 {
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    top: 88.8%;
+                    left: 51.1%;
+                    transform: scaleX(-1);
+                    position: absolute;
+                }
+
+                #backsubtext {
+                    position: absolute;
+                    top: 74%;
+                    left: 57%;
+                    width: 35%;
+                    opacity: .8;
+                    filter: brightness(70%);
+                    height: 10%;
+                }
+
+                #subtext {
+                    position: absolute;
+                    top: 74%;
+                    left: 57%;
+                    font-size: 1.2vw;
+                    width: 35%;
+                    overflow: hidden;
+                    height: 10%;
+                }
+
+                    #subtext p {
+                        font-family: neigefont;
+                        color: black;
+                        opacity: .9;
+                        padding-left: .3vw;
+                    }
+
+                #trilin {
+                    position: absolute;
+                    width: 8%;
+                    height: 3%;
+                    background: black;
+                    top: 76%;
+                    left: 46%;
+                }
+
+                    #trilin div {
+                        width: 2px;
+                        height: 40%;
+                        top: 30%;
+                        background: #C2B07A;
+                        margin-left: 1vw;
+                        float: left;
+                        position: relative;
+                        opacity: .7;
+                    }
+            </style>
+            <div id="barup1"></div>
+            <div id="barup2"></div>
+            <div id="romb"></div>
+            <div id="barright1"></div>
+            <div id="barright2"></div>
+            <img id="barlat2" src="https://i.postimg.cc/Y05pRXMk/Captura.png" />
+            <img id="barlat" src="https://i.postimg.cc/Y05pRXMk/Captura.png" />
+            <img src="https://i.postimg.cc/XJV6gph2/yAY52G.gif" id="imgsmoke" />
+            <marquee id="mark1" scrollamount="3">
+                Il fait froid,
+                La neige malvenue tombe
+                En de particules impalpables.
+            </marquee>
+            <marquee id="mark2" scrollamount="5">
+                Qui suis-je?
+                Qui es-tu? Et où sommes nous?
+            </marquee> <p id="mainp2">
+                ┌ 灰白的雪，漆黑而阴沉的夜｡ ┘
+            </p>
+            <p id="mainp">
+                ┌ 灰白的雪，漆黑而阴沉的夜｡ ┘
+            </p>
+            <img src="https://i.postimg.cc/T1V09jKF/Captura.png" id="trin1" />
+            <div id="linlat3"></div>
+            <div id="circle11">
+                <div id="c21">
+
+                </div>
+            </div>
+            <div id="linlat4"></div>
+            <div id="linlat5"></div>
+            <img src="https://i.postimg.cc/T1V09jKF/Captura.png" id="traing2" />
+            <div id="trilin">
+                <div></div><div></div><div></div>
+            </div>
+
+
+            <div id="divmainprof">
+                <style>
+                    #divmainprof {
+                        position: absolute;
+                        width: 55%;
+                        height: 22%;
+                        top: 55%;
+                        right: 5%;
+                    }
+
+                    #backprof {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #pprof1 {
+                        position: absolute;
+                        font-size: 1.7vw;
+                        font-weight: bold;
+                        right: 5%;
+                        top: -5%;
+                    }
+
+                    #pprof2 {
+                        position: absolute;
+                        font-size: 3vw;
+                        font-weight: bold;
+                        right: 5%;
+                        top: 5%;
+                        font-family: neigefont3;
+                    }
+
+                    #pprof3 {
+                        position: absolute;
+                        font-size: .8vw;
+                        font-weight: bold;
+                        right: 5%;
+                        top: 60%;
+                        letter-spacing: .1vw;
+                        font-family: neigefont3;
+                        text-align: right;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/brMVwcVh/ab.png" id="backprof" />
+                <p id="pprof1">代码名称 ┌ 灰白的雪｡┘</p>
+                <p id="pprof2">CODE: NEIGE</p>
+                <p id="pprof3">UN INMENSE GRISATRE FROID <br /> MYTHAG UNIVERSITY</p>
+            </div>
+
+            <img id="backsubtext" src="https://i.postimg.cc/j5mgSdfq/ab2.png" />
+            <div id="subtext">
+                <p>
+                    Y si el viento cortó mis alas, ya no vuelo pero
+                    aún puedo correr...
+                </p>
+
+            </div>
+            <div id="auid">
+                <style>
+                    #auid {
+                        text-transform: uppercase;
+                        font-family: "Roboto", Arial, sans-serif;
+                        position: absolute;
+                        width: 60%;
+                        height: 15%;
+                        top: 36%;
+                        right: 3%;
+                        /*overflow: hidden;*/
+                    }
+
+                    .player {
+                        z-index: 9;
+                    }
+
+                    .player-control {
+                        position: absolute;
+                        z-index: 999999999999999;
+                        top: 120%;
+                        right: 12%;
+                    }
+
+
+
+                    #namesong {
+                        position: absolute;
+                        width: 88%;
+                        height: 70%;
+                        top: 0%;
+                        color: darkgray;
+                        left: 0%;
+                        letter-spacing: .1vw;
+                        font-size: 1vw;
+                    }
+
+
+                    #name_sng {
+                        position: relative;
+                        float: left;
+                    }
+
+                    .progress-bar {
+                        width: 95%;
+                        background: #C2B07A;
+                        opacity: .8;
+                        height: .1vw;
+                        position: absolute;
+                        top: 35%;
+                    }
+
+                    .fillBar {
+                        background: rgba(255,255,255,.8);
+                        width: 0;
+                        height: .1vw;
+                    }
+
+                    #AT_time {
+                        width: 5vw;
+                        height: 1vw;
+                        top: 25%;
+                        right: 5%;
+                        position: absolute;
+                    }
+
+                        #AT_time p {
+                            position: absolute;
+                            font-family: 'Oswald', sans-serif;
+                            letter-spacing: .1vw;
+                            font-size: .8vw;
+                            color: lightgray;
+                        }
+
+                    .time {
+                        position: absolute;
+                        right: 0vw;
+                        color: #C2B07A;
+                        top: 1.2vw;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        overflow: hidden;
+                    }
+
+                    #cd_1 {
+                        width: 8vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 21vw;
+                        top: .3vw;
+                        overflow: hidden;
+                    }
+
+                    #cd_2 {
+                        width: 4.7vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 29vw;
+                        top: .3vw;
+                    }
+
+                    .artist-name {
+                        position: absolute;
+                        left: .1vw;
+                        top: 16%;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .6vw;
+                        color: #C2B07A;
+                        opacity: .6;
+                    }
+
+                    #cd_2 p {
+                        position: absolute;
+                        top: 10%;
+                        letter-spacing: .05vw;
+                        font-size: .4vw;
+                        left: .4vw;
+                        color: rgba(199,48,48.3);
+                        line-height: .5vw;
+                    }
+
+                    #sectcrt {
+                        position: absolute;
+                        width: 40%;
+                        height: 45%;
+                        right: -14%;
+                        top: 20%;
+                    }
+
+                    #crt {
+                        font-family: 'Montserrat', sans-serif;
+                        color: white;
+                        font-size: .45vw;
+                        letter-spacing: .1vw;
+                        text-transform: uppercase;
+                        opacity: .7;
+                    }
+
+                    #frim {
+                        position: absolute;
+                        width: 5vw;
+                        filter: invert(100%);
+                        right: 27%;
+                        top: 8%;
+                    }
+
+                    .butimg {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+
+                    #btn-pause {
+                        opacity: .7;
+                        position: absolute;
+                        z-index: 99999999999999999999;
+                        top: 40%;
+                        width: 2vw;
+                        height: 2vw;
+                        filter: invert(50%) sepia(1);
+                    }
+
+                    #pause {
+                        opacity: .7;
+                        position: absolute;
+                        filter: invert(100%);
+                        top: 43%;
+                        left: 5vw;
+                        width: 1.7vw;
+                        height: 1.7vw;
+                        z-index: 999999999999;
+                        filter: invert(50%) sepia(1);
+                    }
+
+                    #play {
+                        opacity: .7;
+                        position: absolute;
+                        filter: invert(50%) sepia(1);
+                        top: 40%;
+                        left: 2.5vw;
+                        width: 2vw;
+                        height: 2vw;
+                        z-index: 999999999999;
+                    }
+
+                    #cdspin {
+                        position: absolute;
+                        width: 2.5vw;
+                        height: 2.5vw;
+                        right: 3%;
+                        top: -18%;
+                        animation: rotation 3s infinite linear;
+                    }
+
+                    @keyframes rotation {
+                        from {
+                            transform: rotate(0deg);
+                        }
+
+                        to {
+                            transform: rotate(359deg);
+                        }
+                    }
+                </style>
+
+                <img src="https://i.postimg.cc/mZMQCD4f/c2.png" id="cdspin" />
+                <div id="areabars">
+                    <script>
+                        function starteq() {
+                            let lines = document.querySelectorAll(".vertical");
+
+                            function setEqualizer() {
+                                for (let i = 0; i < lines.length; i += 1) {
+                                    let line = lines[i];
+                                    line.style.animation = `equalizer ${Math.random() * (3 - 0.3) + 0.3
+                                        }s ease infinite`;
+                                    line.style.animationDirection = "alternate-reverse";
+                                }
+                            }
+
+                            setEqualizer();
+                        }
+                        function endeq() {
+                            let lines = document.querySelectorAll(".vertical");
+
+                            function setEqualizer() {
+                                for (let i = 0; i < lines.length; i += 1) {
+                                    let line = lines[i];
+                                    line.style.animation = `equalizer ${Math.random() * (3 - 0.3) + 0.3
+                                        }s ease 1`;
+                                    line.style.animation = pause;
+                                }
+                            }
+
+                            setEqualizer();
+                        }
+                    </script>
+                    <style>
+
+
+                        #areabars, #wrapper {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        #areabars {
+                            width: 30%;
+                            top: -22%;
+                            opacity: .7;
+                            height: 40%;
+                            right: 14%;
+                            position: absolute;
+                        }
+
+                        #wrapper {
+                            flex-direction: column;
+                        }
+
+                        #container {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+
+
+
+                        #lines {
+                            width: 50%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                        }
+
+                        .line {
+                            width: 100%;
+                            height: 1px;
+                            margin: 1px;
+                            background-color: rgb(255, 237, 202);
+                        }
+
+                        #equalizer {
+                            position: relative;
+                            width: 10vw;
+                            height: 5vw;
+                            filter: grayscale(50%);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        #horizontal {
+                            width: 32%;
+                            left: 0%;
+                            position: absolute;
+                            border: .1vw solid rgb(223, 152, 0);
+                        }
+
+                        #vertical-lines {
+                            position: absolute;
+                            width: 100%;
+                            height: 150px;
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .vertical {
+                            width: .2vw;
+                            height: .5vw;
+                            border-radius: 50%;
+                            background-color: rgb(223, 152, 0);
+                            background-color: rgb(223, 152, 0);
+                            animation-direction: alternate-reverse;
+                            margin: 1px;
+                        }
+
+                        @keyframes equalizer {
+                            from {
+                                height: 30%;
+                            }
+
+                            to {
+                                height: 5px;
+                            }
+                        }
+                    </style>
+                    <div id="wrapper">
+
+                        <div id="equalizer">
+                            <!--<div id="horizontal"></div>-->
+                            <div id="vertical-lines">
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                                <div class="vertical"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div id="areasongs" onclick="starteq();">
+
+                    <style>
+                        #areasongs {
+                            z-index: 999999999999999;
+                            position: absolute;
+                            width: 70%;
+                            height: 60%;
+                            overflow: hidden;
+                            left: 30%;
+                            top: 55%;
+                        }
+
+                        #song1, #song2, #song3, #song4 {
+                            width: 10%;
+                            height: 80%;
+                            position: absolute;
+                            top: 10%;
+                            transition: all 1s ease;
+                        }
+
+
+
+                        .noselectedsong1 {
+                            left: 70%;
+                        }
+
+                        .noselectedsong1 {
+                            left: 63%;
+                        }
+
+                        .noselectedsong2 {
+                            left: 75%;
+                        }
+
+                        .noselectedsong3 {
+                            left: 87%;
+                        }
+
+
+                        .selectedsong1 {
+                            animation: leftsong1 2s 1;
+                            animation-fill-mode: forwards;
+                        }
+
+                        .outsong {
+                            opacity: 0;
+                            left: 100%;
+                        }
+
+                        @keyframes leftsong1 {
+                            0% {
+                                left: 63%;
+                            }
+
+                            100% {
+                                left: 2%;
+                            }
+                        }
+
+                        #numsong {
+                            color: #C2B07A;
+                            font-size: 1.6vw;
+                            position: absolute;
+                            opacity: .9;
+                            left: 25%;
+                            top: -12%;
+                            font-family: 'Microsoft Himalaya';
+                        }
+
+                        #b1 {
+                            width: .2vw;
+                            height: 20%;
+                            background: #C2B07A;
+                            opacity: .4;
+                            left: 45%;
+                            top: 0;
+                            position: absolute;
+                            border-radius: .1vw;
+                        }
+
+                        #b2 {
+                            width: .2vw;
+                            height: 20%;
+                            background: #C2B07A;
+                            opacity: .4;
+                            left: 45%;
+                            bottom: 0;
+                            position: absolute;
+                            border-radius: .1vw;
+                        }
+                    </style>
+                    <script>
+                        function selectdsong2() {
+                            $("#song1").removeClass("selectedsong1");
+                            $("#song1").addClass("outsong");
+
+                            $("#song2").removeClass("noselectedsong2");
+                            $("#song2").addClass("selectedsong1");
+
+                            $("#song3").removeClass("noselectedsong3");
+                            $("#song3").addClass("noselectedsong2");
+
+                            $("#song4").removeClass("outsong");
+                            $("#song4").addClass("noselectedsong3");
+                        }
+                        function selectdsong3() {
+                            $("#song2").removeClass("selectedsong1");
+                            $("#song2").addClass("outsong");
+
+                            $("#song3").removeClass("noselectedsong2");
+                            $("#song3").addClass("selectedsong1");
+
+                            $("#song4").removeClass("noselectedsong3");
+                            $("#song4").addClass("noselectedsong2");
+
+                            $("#song1").removeClass("outsong");
+                            $("#song1").addClass("noselectedsong3");
+                        }
+                        function selectdsong4() {
+                            $("#song3").removeClass("selectedsong1");
+                            $("#song3").addClass("outsong");
+
+                            $("#song4").removeClass("noselectedsong2");
+                            $("#song4").addClass("selectedsong1");
+
+                            $("#song1").removeClass("noselectedsong3");
+                            $("#song1").addClass("noselectedsong2");
+
+                            $("#song2").removeClass("outsong");
+                            $("#song2").addClass("noselectedsong3");
+                        }
+                        function selectdsong1() {
+                            $("#song4").removeClass("selectedsong1");
+                            $("#song4").addClass("outsong");
+
+                            $("#song1").removeClass("noselectedsong2");
+                            $("#song1").addClass("selectedsong1");
+
+                            $("#song2").removeClass("noselectedsong3");
+                            $("#song2").addClass("noselectedsong2");
+
+                            $("#song3").removeClass("outsong");
+                            $("#song3").addClass("noselectedsong3");
+                        }
+                    </script>
+                    <div id="song1" class="selectedsong1" onclick="selectdsong1();">
+                        <div id="b1"></div>
+                        <p id="numsong">01</p>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="song2" class="noselectedsong2" onclick="selectdsong2();">
+                        <div id="b1"></div>
+                        <p id="numsong">02</p>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="song3" class="noselectedsong3" onclick="selectdsong3();">
+                        <div id="b1"></div>
+                        <p id="numsong">03</p>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="song4" class="outsong" onclick="selectdsong4();">
+                        <div id="b1"></div>
+                        <p id="numsong">04</p>
+                        <div id="b2"></div>
+                    </div>
+                </div>
+
+
+
+                <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+
+
+                <div class="progress-bar">
+                    <div class="fillBar"></div>
+                </div>
+                <div id="AT_time"><div class="time"></div></div>
+                <div class="artist-name"></div>
+
+
+
+                <div id="btn-pause"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" class="butimg" /></div>
+                <div id="pause"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" class="butimg" /></div>
+                <div id="play"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" class="butimg" /></div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <div id="mainleft">
+            <style>
+                #main {
+                    background: black;
+                }
+
+                #mainleft {
+                    position: absolute;
+                    width: 65%;
+                    height: 100%;
+                }
+
+                #imgbackmainleft {
+                    position: absolute;
+                    height: 100%;
+                    width: 170%;
+                }
+
+                #logneig {
+                    position: absolute;
+                    height: 18%;
+                    top: 20%;
+                    left: -5%;
+                    transform: rotate(-20deg);
+                }
+            </style>
+            <img id="imgbackmainleft" src="https://i.ibb.co/cg1Xb2g/asdsa3.png" />
+            <img id="logneig" src="https://i.postimg.cc/J0yjPH7b/cooltext449625731609260.png" />
+            <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+            <img src="https://i.postimg.cc/MKz1R9NS/neigecarn1.png" id="dateprof2" />
+            <img src="https://i.postimg.cc/qMyx33zn/neigecarn.png" id="dateprof" />
+            <style>
+                #dateprof {
+                    position: absolute;
+                    width: 40%;
+                    top: 60%;
+                    left: -5%;
+                    transform: rotate(65deg); /*box-shadow: .1vw -.1vw .5vw black;*/
+                    filter: sepia(.4) brightness(90%);
+                }
+
+                #dateprof2 {
+                    position: absolute;
+                    opacity: .5;
+                    width: 40%;
+                    top: 60%;
+                    left: -5%;
+                    transform: rotate(69deg); /*box-shadow: .1vw -.1vw .5vw black;*/
+                }
+
+                .rgbShiftSlider {
+                    filter: sepia(.2);
+                    display: block;
+                    position: absolute;
+                    left: 20%;
+                    top: 4%;
+                    /*mix-blend-mode: hard-light;*/
+                    opacity: 0.95;
+                    width: 40vw;
+                    height: 100%;
+                    overflow: hidden;
+                    /*transform-origin : 50vw 300vh;*/
+                    /* transform-origin: 50% 50%; */
+                }
+
+                canvas {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 0;
+                }
+
+                #main {
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    position: fixed;
+                }
+            </style>
+
+        </div>
+        <div id="gradient">
+            <style>
+                #gradient {
+                    width: 100%;
+                    height: 40%;
+                    top: 60%;
+                    position: absolute;
+                    background-image: linear-gradient(180deg,transparent 0%,rgba(0,0,0,.2) 40%,rgba(0,0,0,.6) 100%);
+                }
+            </style>
+        </div>
+
+        <div id="barleft">
+
+        </div>
+
+        <script>
+            function openprofile() {
+                $("#profilediv").addClass("siprofile");
+                $("#profilediv").removeClass("noprofile");
+            } function outprofile() {
+                $("#profilediv").addClass("noprofile");
+                $("#profilediv").removeClass("siprofile");
+            }
+        </script>
+        <div id="profilediv" class="noprofile">
+            <style>
+                .noprofile {
+                    z-index: -1;
+                    opacity: 0;
+                }
+
+                .siprofile {
+                    z-index: 1;
+                    opacity: 1;
+                }
+
+                #profileimg {
+                    position: absolute;
+                    width: 70%;
+                    transform: rotate(15deg);
+                    top: 30%;
+                    left: 30%;
+                }
+
+                #profilediv {
+                    position: absolute;
+                    width: 70%;
+                    height: 150%;
+                    backdrop-filter: blur(5px);
+                    transform: rotate(-22deg);
+                    left: -15%;
+                    top: -15%;
+                    background: rgba(0,0,0,.6);
+                }
+
+                #imgtitprof {
+                    position: absolute;
+                    opacity: .7;
+                    width: 45%;
+                    top: 11%;
+                    left: 30%;
+                }
+
+                #frdslist {
+                    position: absolute;
+                    width: 24%;
+                    height: 2vw;
+                    top: 23%;
+                    left: 45%;
+                    transform: rotate(21deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #frdslist p {
+                        float: left;
+                        margin-left: 1.7vw;
+                        color: #C2B07A;
+                        font-size: 1.5vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                        #frdslist p:hover {
+                            color: white;
+                        }
+
+                        #frdslist p:nth-child(1) {
+                            color: rgba(199,48,48.3)
+                        }
+
+                #optionslist {
+                    position: absolute;
+                    width: 34%;
+                    height: 2vw;
+                    top: 63%;
+                    left: 50%;
+                    transform: rotate(15deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #optionslist p {
+                        float: left;
+                        margin-right: 6vw;
+                        color: #C2B07A;
+                        font-size: 1.2vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                        #optionslist p:hover {
+                            color: rgba(199,48,48.3)
+                        }
+            </style>
+            <img id="imgtitprof" src="https://i.postimg.cc/Hsy0Q1JK/cooltext449701478632870.png" />
+            <img id="profileimg" src="https://i.postimg.cc/CxbZKFZh/neigeprest.png" />
+            <div id="frdslist">
+                <p id="pf1">I♥</p>  <p>II</p>  <p>III</p>  <p>IV</p> <p>V</p>
+            </div>
+            <div id="optionslist">
+                <p>ABOUT</p>  <p onclick="outprofile();">RETURN</p>
+            </div>
+        </div>
+
+        <div id="divfoter">
+            <style>
+                #divfoter {
+                    height: 5%;
+                    width: 100%;
+                    top: 95%;
+                    left: 0;
+                    position: absolute;
+                    background: rgba(0,0,0,.6);
+                    z-index: 99999999999999999999999;
+                }
+
+                #barleft {
+                    height: 95%;
+                    width: .3vw;
+                    background: #C2B07A;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 57%;
+                    transform: rotate(-23deg);
+                    opacity: .4;
+                }
+
+                #rombo1 {
+                    width: 1vw;
+                    height: 1vw;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    left: 1%;
+                    top: -.6vw;
+                    background: #C2B07A;
+                }
+
+                #lin1 {
+                    height: 2px;
+                    width: 69%;
+                    background: #C2B07A;
+                    left: 2%;
+                    position: absolute;
+                    opacity: .6;
+                    top: -.1vw;
+                }
+
+                #lin2 {
+                    height: 2px;
+                    width: 30%;
+                    background: #C2B07A;
+                    left: 71.8%;
+                    position: absolute;
+                    opacity: .6;
+                    top: -.1vw;
+                }
+
+                #circle1 {
+                    width: .5vw;
+                    height: .5vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 71.2%;
+                    top: -.2vw;
+                    background: #C2B07A;
+                }
+
+                #c2 {
+                    width: .4vw;
+                    height: .4vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: .05vw;
+                    left: .05vw;
+                    background: black;
+                }
+
+                #logom {
+                    position: absolute;
+                    width: 2vw;
+                    height: 2vw;
+                    bottom: 5%;
+                    left: 3%;
+                }
+            </style>
+
+            <img src="https://i.postimg.cc/GtSDvqrb/logomini.png" id="logom" onclick="openprofile();" style="cursor:pointer;"/>
+
+            <div id="rombo1">
+
+            </div>
+            <div id="circle1">
+                <div id="c2">
+
+                </div>
+            </div>
+            <div id="lin1">
+
+            </div>
+            <div id="lin2">
+
+            </div>
+        </div>
+        <script>
+            // set images
+            // demo works but images are blocked by codepen Cors issue
+            var images = [
+                "https://i.postimg.cc/mrgfXCJz/miyamura-izumi-by-dianaag-d8plqi7-pre.png",
+                //"https://i.postimg.cc/T1JGXBh4/wallpaperflare-com-wallpaper-1.jpg",
+
+                //"https://i.postimg.cc/prJN650y/4174435.jpg"
+            ];
+            // instanciate slider
+            var rbgShiftSlider = new rbgShiftSlider({
+                nav: true,
+                navElement: ".scene-nav",
+                slideImages: images,
+                stageWidth: 1300,
+                stageHeight: 1500,
+                displacementImage:
+                    "https://images.unsplash.com/photo-1498898733745-c8c6df58e4ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+                fullScreen: false,
+                transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                transitionGhostDuration: 0.25,
+                transitionFilterIntensity: 150,
+                transitionSpriteIntensity: 1,
+                mouseDispIntensity: 3,
+
+                interactive: true,
+                autoPlay: true,
+                autoPlaySpeed: 12000
+            });
+
+        </script>
+
+
+    </div>
+
+</body>
+</html>
