@@ -1,7 +1,7 @@
-﻿
+
 <!DOCTYPE html>
 
-<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title></title>
@@ -10,8 +10,8 @@
     <script type="text/javascript" src="TweenMax2.min.js"></script>
     <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
-    <script type="text/javascript" src="vue.global.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css"> 
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
     <script src="mgGlitch.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -185,7 +185,7 @@
                     CurrentSong = 0;
                     $("#ima-00").removeAttr("class");
                     $("#ima-10").removeAttr("class");
-                    
+
                 }
                 if (CurrentSong == 0) {
                     selectdsong1(); animationspinplay(); starteq()
@@ -202,7 +202,8 @@
         });
         function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
         function animationspinplay() {
-            $("#cdspin").css("-webkit-animation-play-state", "running"); }
+            $("#cdspin").css("-webkit-animation-play-state", "running");
+        }
 
     </script>
     <style>
@@ -218,12 +219,10 @@
             height: 100%;
             width: 100%;
             position: fixed;
-            /*background: black;*/
+            background: black;
             /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
             background-size: cover;
         }
-
- 
     </style>
 
 
@@ -231,9 +230,129 @@
 
 </head>
 <body>
-    
-    <div id="main">
 
+    <div id="main">
+        <audio controls id="hovers" class="mks">
+            <style>
+                .mks {
+                    position: fixed;
+                    opacity: 0;
+                }
+            </style>
+            <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#hovers")[0];
+                    $("#logom").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menup").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btn-pause").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#play").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pause").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pf1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pf2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pf3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pf4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pf5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#confp1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#confp2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#p4config").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#preturntoconfig").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pcntbx1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#pcntbx2").mouseenter(function () {
+                        audio.play();
+                    });
+
+                    $("#menuconfig1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig3").mouseenter(function () {
+                        audio.play();
+                    });
+
+
+
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="clickmp3" class="mks">
+            <source src="click.wav"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#clickmp3")[0];
+
+                    $("body").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+            <audio controls id="inprofile" class="mks">
+            <source src="open.wav"></source>
+            <script>
+                
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#inprofile")[0];
+
+                    $("#menup").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#logom").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#confp1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
         <div id="mainright">
             <style>
                 #mainright {
@@ -514,6 +633,36 @@
                         position: relative;
                         opacity: .7;
                     }
+
+                #circle12 {
+                    width: .5vw;
+                    height: .5vw;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: 53.2%;
+                    top: 6.5%;
+                    background: #C2B07A;
+                }
+
+                #bor2 {
+                    top: 6.9%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 1px;
+                    left: 15.6%;
+                    width: 31%;
+                }
+
+                #bor3 {
+                    top: 1.5%;
+                    position: absolute;
+                    background: #C2B07A;
+                    opacity: .4;
+                    height: 5%;
+                    left: 46.3%;
+                    width: 1px;
+                }
             </style>
             <div id="barup1"></div>
             <div id="barup2"></div>
@@ -550,8 +699,16 @@
             <div id="trilin">
                 <div></div><div></div><div></div>
             </div>
+            <div id="circle12">
+                <div id="c21">
 
+                </div>
+            </div>
+            <div id="bor2">
 
+            </div><div id="bor3">
+
+            </div>
             <div id="divmainprof">
                 <style>
                     #divmainprof {
@@ -1216,6 +1373,7 @@
                 }
             </style>
             <img id="imgbackmainleft" src="https://i.ibb.co/cg1Xb2g/asdsa3.png" />
+            <img src="https://i.postimg.cc/wv0rRWtk/logo-morimens.png" id="molog" />
             <img id="logneig" src="https://i.postimg.cc/FzWJSjMy/cooltext449629002913603.png" />
             <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
             <img src="https://i.postimg.cc/MKz1R9NS/neigecarn1.png" id="dateprof2" />
@@ -1291,10 +1449,54 @@
             function openprofile() {
                 $("#profilediv").addClass("siprofile");
                 $("#profilediv").removeClass("noprofile");
-            } function outprofile() {
+            }
+            function outprofile() {
                 $("#profilediv").addClass("noprofile");
                 $("#profilediv").removeClass("siprofile");
             }
+        </script>
+        <script>
+
+            function openfrd1() {
+                $("#friend1").addClass("siprofile");
+                $("#friend1").removeClass("noprofile");
+            }
+            function outfrd1() {
+                $("#friend1").addClass("noprofile");
+                $("#friend1").removeClass("siprofile");
+            }
+            function openfrd2() {
+                $("#friend2").addClass("siprofile");
+                $("#friend2").removeClass("noprofile");
+            }
+            function outfrd2() {
+                $("#friend2").addClass("noprofile");
+                $("#friend2").removeClass("siprofile");
+            }
+            function openfrd3() {
+                $("#friend3").addClass("siprofile");
+                $("#friend3").removeClass("noprofile");
+            }
+            function outfrd3() {
+                $("#friend3").addClass("noprofile");
+                $("#friend3").removeClass("siprofile");
+            }
+            function openabout() {
+                $("#aboutd").addClass("siprofile");
+                $("#aboutd").removeClass("noprofile");
+            }
+            function outabout() {
+                $("#aboutd").addClass("noprofile");
+                $("#aboutd").removeClass("siprofile");
+            }
+            function openconf() {
+                $("#divconfig").addClass("siprofile1");
+                $("#divconfig").removeClass("noprofile1");
+            } function outconf() {
+                $("#divconfig").addClass("noprofile1");
+                $("#divconfig").removeClass("siprofile1");
+            }
+
         </script>
         <div id="profilediv" class="noprofile">
             <style>
@@ -1304,8 +1506,20 @@
                 }
 
                 .siprofile {
-                    z-index: 1;
+                    z-index: 999;
                     opacity: 1;
+                }
+
+                .noprofile1 {
+                    z-index: -1;
+                    opacity: 0;
+                    left: -100%;
+                }
+
+                .siprofile1 {
+                    z-index: 999;
+                    opacity: 1;
+                    left: 0;
                 }
 
                 #profileimg {
@@ -1392,11 +1606,1330 @@
             <img id="imgtitprof" src="https://i.postimg.cc/Hsy0Q1JK/cooltext449701478632870.png" />
             <img id="profileimg" src="https://i.postimg.cc/BvMvVp7D/yukiprest.png" />
             <div id="frdslist">
-                <p id="pf1">I♥</p>  <p>II</p>  <p>III</p>  <p>IV</p> <p>V</p>
+                <p id="pf1" onclick="openfrd1();">I♥</p>  <p onclick="openfrd2();" id="pf2">II</p>  <p onclick="openfrd3();" id="pf3">III</p>  <p id="pf4">IV</p> <p id="pf5">V</p>
             </div>
             <div id="optionslist">
-                <p>ABOUT</p>  <p onclick="outprofile();">RETURN</p>
+                <p onclick="openconf();" id="confp1">CONFIG</p>  <p onclick="outprofile();" id="confp2">RETURN</p>
             </div>
+        </div>
+        <div id="friend1" class="noprofile">
+            <style>
+                .noprofile {
+                    z-index: -1;
+                    opacity: 0;
+                }
+
+                .siprofile {
+                    z-index: 99999999991;
+                    opacity: 1;
+                }
+
+                #profileimg {
+                    position: absolute;
+                    width: 70%;
+                    transform: rotate(15deg);
+                    top: 30%;
+                    left: 30%;
+                }
+
+                #friend1 {
+                    position: absolute;
+                    width: 70%;
+                    height: 150%;
+                    backdrop-filter: blur(5px);
+                    transform: rotate(-22deg);
+                    left: -15%;
+                    top: -15%;
+                    background: rgba(0,0,0,.6);
+                }
+
+                #imgfrd1 {
+                    position: absolute;
+                    width: 100%;
+                    left: 25%;
+                    top: 25%;
+                    transform: rotate(16deg);
+                }
+
+                #frdslist {
+                    position: absolute;
+                    width: 24%;
+                    height: 2vw;
+                    top: 23%;
+                    left: 45%;
+                    transform: rotate(21deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #frdslist p {
+                        float: left;
+                        margin-left: 1.7vw;
+                        color: #C2B07A;
+                        font-size: 1.5vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                        #frdslist p:hover {
+                            color: white;
+                        }
+
+                        #frdslist p:nth-child(1) {
+                            color: rgba(199,48,48.3)
+                        }
+
+                #optionslist1 {
+                    position: absolute;
+                    width: 34%;
+                    height: 2vw;
+                    top: 80%;
+                    left: 100%;
+                    transform: rotate(15deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #optionslist1 p {
+                        float: left;
+                        margin-right: 6vw;
+                        color: #C2B07A;
+                        font-size: 1.2vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                #prpof {
+                    transform: rotate(15deg);
+                    position: absolute;
+                    left: 60%;
+                    top: 25%;
+                    font-family: 'Times New Roman';
+                    color: black;
+                    z-index: 9;
+                    font-weight: bold;
+                    font-size: 1vw;
+                    text-shadow: .1vw .1vw .4vw black;
+                    opacity: .5;
+                    transition: all .5s ease;
+                    cursor: pointer;
+                }
+
+                    #optionslist1 p:hover, #prpof:hover {
+                        color: rgba(199,48,48.3)
+                    }
+
+                #textpostx {
+                    transform: rotate(15deg);
+                    position: absolute;
+                    width: 30%;
+                    height: 18%;
+                    left: 84%;
+                    top: 37%;
+                    margin-left: .5vw;
+                    font-size: .8vw;
+                    letter-spacing: .1vw;
+                    color: black;
+                    line-height: 1.1vw;
+                }
+
+                .textnormal {
+                    font-family: Consolas;
+                    opacity: .8;
+                }
+
+                .japtext {
+                    font-family: neigefont3;
+                    color: dimgray;
+                }
+            </style>
+            <img src="https://i.postimg.cc/T11GTgZN/neigefriend.png" id="imgfrd1" />
+            <div id="optionslist1">
+                <p onclick="outfrd1();">RETURN</p>
+            </div>
+            <p id="prpof">GO TO PROFILE</p>
+            <div id="textpostx">
+
+                <span class="textnormal">Neige de mars. Si inattendu</span> <br />
+                <span class="japtext">三月雪, 太出乎意料了</span><br />
+                <span class="textnormal">Tombe fragile autour de moi</span><br />
+                <span class="japtext">在我身边变得脆弱</span><br />
+                <span class="textnormal">Si fragile, si froid...</span><br />
+                <span class="japtext">如此优雅，如此冰冷</span><br />
+                <span class="textnormal">m'enveloppant de son étreinte glaciale</span><br />
+                <span class="japtext">将我包裹在它冰冷的怀抱中</span><br />
+                <span class="textnormal">Sous sa chaude délicatesse</span><br />
+                <span class="japtext">在它温暖的美味下</span><br />
+                <span class="textnormal">Celui que je veux toujours rester...</span><br />
+                <span class="japtext">我一直想留下的那个...</span>
+
+            </div>
+        </div>
+
+        <div id="friend2" class="noprofile">
+            <style>
+                .noprofile {
+                    z-index: -1;
+                    opacity: 0;
+                }
+
+                .siprofile {
+                    z-index: 99999999991;
+                    opacity: 1;
+                }
+
+                #profileimg {
+                    position: absolute;
+                    width: 70%;
+                    transform: rotate(15deg);
+                    top: 30%;
+                    left: 30%;
+                }
+
+                #friend2 {
+                    position: absolute;
+                    width: 70%;
+                    height: 150%;
+                    backdrop-filter: blur(5px);
+                    transform: rotate(-22deg);
+                    left: -15%;
+                    top: -15%;
+                    background: rgba(0,0,0,.6);
+                }
+
+                #imgfrd1 {
+                    position: absolute;
+                    width: 100%;
+                    left: 25%;
+                    top: 25%;
+                    transform: rotate(16deg);
+                }
+
+                #frdslist {
+                    position: absolute;
+                    width: 24%;
+                    height: 2vw;
+                    top: 23%;
+                    left: 45%;
+                    transform: rotate(21deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #frdslist p {
+                        float: left;
+                        margin-left: 1.7vw;
+                        color: #C2B07A;
+                        font-size: 1.5vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                        #frdslist p:hover {
+                            color: white;
+                        }
+
+                        #frdslist p:nth-child(1) {
+                            color: rgba(199,48,48.3)
+                        }
+
+                #optionslist1 {
+                    position: absolute;
+                    width: 34%;
+                    height: 2vw;
+                    top: 80%;
+                    left: 100%;
+                    transform: rotate(15deg);
+                    font-family: 'Times New Roman';
+                }
+
+                    #optionslist1 p {
+                        float: left;
+                        margin-right: 6vw;
+                        color: #C2B07A;
+                        font-size: 1.2vw;
+                        text-shadow: .2vw .2vw .2vw black;
+                        opacity: .7;
+                        transition: all .5s ease;
+                        cursor: pointer;
+                    }
+
+                #prpof {
+                    transform: rotate(15deg);
+                    position: absolute;
+                    left: 60%;
+                    top: 25%;
+                    font-family: 'Times New Roman';
+                    color: black;
+                    z-index: 9;
+                    font-weight: bold;
+                    font-size: 1vw;
+                    text-shadow: .1vw .1vw .4vw black;
+                    opacity: .5;
+                    transition: all .5s ease;
+                    cursor: pointer;
+                }
+
+                    #optionslist1 p:hover, #prpof:hover {
+                        color: rgba(199,48,48.3)
+                    }
+
+                #textpostx {
+                    transform: rotate(15deg);
+                    position: absolute;
+                    width: 30%;
+                    height: 18%;
+                    left: 84%;
+                    top: 37%;
+                    margin-left: .5vw;
+                    font-size: .8vw;
+                    letter-spacing: .1vw;
+                    color: black;
+                    line-height: 1.1vw;
+                }
+
+                .textnormal {
+                    font-family: Consolas;
+                    opacity: .8;
+                }
+
+                .japtext {
+                    font-family: neigefont3;
+                    color: dimgray;
+                }
+            </style>
+            <img src="https://i.postimg.cc/C1kPvB82/firmrose.png" id="imgfrd1" />
+            <div id="optionslist1">
+                <p onclick="outfrd2();">RETURN</p>
+            </div>
+            <p id="prpof">GO TO PROFILE</p>
+            <div id="textpostx">
+
+                <span class="textnormal">Sigue las rosas, donde quiera que vayas..</span> <br />
+                <span class="japtext">Rose</span><br />
+
+            </div>
+        </div>
+        <div id="friend3" class="noprofile">
+            <style>
+
+
+                #friend3 {
+                    position: absolute;
+                    width: 70%;
+                    height: 150%;
+                    backdrop-filter: blur(5px);
+                    transform: rotate(-22deg);
+                    left: -15%;
+                    top: -15%;
+                    background: rgba(0,0,0,.6);
+                }
+            </style>
+            <img src="https://i.postimg.cc/43r2bbYt/firmkagura.png" id="imgfrd1" />
+            <div id="optionslist1">
+                <p onclick="outfrd3();">RETURN</p>
+            </div>
+            <p id="prpof">GO TO PROFILE</p>
+            <div id="textpostx">
+
+                <span class="textnormal">
+                    Hola Linda...<br />
+
+                    nunca se como empezar esto pero nada aunque no hablemos tanto quiero que sepas que te quiero mucho y que sos una persona muy linda que me alegro de haber conocido, siempre que necesites algo voy a estar para apoyarte con lo que pueda te quiero muchisimo yuki espero siempre estes feliz xq asi me gusta verte
+
+                </span> <br />
+                <span class="japtext">Lucía</span><br />
+
+            </div>
+        </div>
+
+        <div id="boxfires" class="ag-fireflies_box sifires">
+            <style>
+                #boxfires {
+                    filter: sepia(1);
+                }
+
+                .sifires {
+                    opacity: 1;
+                }
+
+                .nofires {
+                    opacity: 0;
+                }
+            </style>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+        </div>
+
+
+        <div id="divconfig" class="noprofile1">
+            <style>
+                #divconfig {
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(16,28,45,.8);
+                    backdrop-filter: blur(10px);
+                    position: absolute;
+                    z-index: 99999999999;
+                }
+
+                #backconfig {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    opacity: .6;
+                }
+
+                #molog {
+                    position: absolute;
+                    top: 2%;
+                    left: 0%;
+                }
+
+                #titcong {
+                    font-family: neigefont3;
+                    color: white;
+                    font-size: 4vw;
+                    position: absolute;
+                    top: 64%;
+                    left: 2%;
+                    text-shadow: .2vw .2vw .5vw white;
+                }
+
+                #titabout {
+                    text-shadow: .2vw .2vw .5vw white;
+                    font-family: neigefont3;
+                    color: white;
+                    font-size: 1.5vw;
+                    position: absolute;
+                    top: 80%;
+                    left: 2%;
+                }
+            </style>
+            <img src="https://i.postimg.cc/vBzgdn4j/1a1f5fm6dubmbxkoj0dqvjmpkhr5m2k.jpg" id="backconfig" />
+            <img src="https://i.postimg.cc/wv0rRWtk/logo-morimens.png" id="molog" />
+
+            <p id="titcong">
+                配置和调整
+            </p>
+            <p id="titabout">
+                这个 信 空间是由 雪 与 施罗德茨 合作创建和设计的。<br />
+                2019年至2024年保留所有  信权利
+            </p>
+            <div id="abtnsconfig">
+                <style>
+                    #abtnsconfig {
+                        position: absolute;
+                        width: 17%;
+                        left: 80%;
+                        height: 80%;
+                        top: 65%;
+                        color: white;
+                        font-family: 'Times New Roman';
+                        letter-spacing: .1vw;
+                        font-weight: lighter;
+                    }
+
+                    #menuconfig1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 7%;
+                    }
+
+                    #menuconfig2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 7%;
+                        top: 9%;
+                    }
+
+                    #menuconfig3 {
+                        position: absolute;
+                        width: 100%;
+                        height: 7%;
+                        top: 18%;
+                    }
+
+                    #menuconfig4 {
+                        position: absolute;
+                        width: 100%;
+                        height: 7%;
+                        top: 27%;
+                    }
+
+                    #p1config {
+                        position: absolute;
+                        left: 15%;
+                    }
+
+                    @-webkit-keyframes blink {
+                        0% {
+                            opacity: .5;
+                        }
+
+                        50% {
+                            opacity: .3;
+                        }
+
+                        100% {
+                            opacity: .5;
+                        }
+                    }
+
+                    .animabackconfig {
+                        animation: blink 1s infinite;
+                    }
+
+                    .outanimavackconfig {
+                        opacity: 0;
+                    }
+
+                    .selectedicon {
+                        width: 2.3vw;
+                        height: 2.3vw;
+                        left: -2%;
+                        top: 11%;
+                        background-image: url(https://i.postimg.cc/Gtd9M11v/SELECTX.png);
+                        background-size: contain;
+                    }
+
+                    .noselectedicon {
+                        background-image: url(https://i.postimg.cc/Y0R0ZypZ/UNSELECTEX.png);
+                        background-size: contain;
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        top: 22%;
+                    }
+
+                    .selectedp {
+                        top: -1vw;
+                        font-size: 1.5vw;
+                    }
+
+                    .noselectedp {
+                        top: -.5vw;
+                        font-size: 1vw;
+                    }
+
+                    #mnuconfback1, #mnuconfback2, #mnuconfback3, #mnuconfback4 {
+                        position: absolute;
+                        width: 100%;
+                        height: 30%;
+                        top: 35%;
+                        background: white;
+                        border-radius: 50%;
+                        filter: blur(7px);
+                    }
+
+                    #p2config, #p3config, #p4config {
+                        position: absolute;
+                        left: 15%;
+                    }
+
+                    #selectedicon {
+                        position: absolute;
+                    }
+
+                    #selectedicon2, #selectedicon3, #selectedicon4 {
+                        position: absolute;
+                    }
+                </style>
+                <style>
+                    #sectionsconfig {
+                        position: absolute;
+                        width: 60%;
+                        height: 70%;
+                        left: 30%;
+                        top: 11%;
+                    }
+
+                    #sectionbackground {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #barfondo {
+                        position: absolute;
+                        width: 100%;
+                        height: 8%;
+                        top: 10%;
+                    }
+
+                    #barfondo2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 8%;
+                        top: 30%;
+                    }
+
+                    #fondo {
+                        color: white;
+                    }
+
+                    #bkgbar {
+                        position: absolute;
+                        width: 100%;
+                    }
+
+                    #contentfondo {
+                        position: absolute;
+                        width: 20%;
+                        height: 70%;
+                        text-align: center;
+                        top: -10%;
+                        right: 5%;
+                    }
+
+                    #contentboxfondo {
+                        transition: all .5s ease;
+                        overflow: hidden;
+                        color: white;
+                        position: absolute;
+                        width: 70%;
+                        top: 40%;
+                        background: rgba(0,0,0,.1);
+                        backdrop-filter: blur(5px);
+                        right: 15%;
+                        border-radius: .5vw;
+                        text-align: center;
+                        font-size: 1vw;
+                        font-family: 'Times New Roman';
+                        letter-spacing: .2vw;
+                    }
+
+                    .closemenufondo {
+                        width: 0;
+                        opacity: 0;
+                        z-index: -1;
+                    }
+
+                    .openmenufondo {
+                        width: 300%;
+                        opacity: 1;
+                        z-index: 2;
+                    }
+
+                    #pcontentfondo {
+                        color: rgba(74,82,101,1);
+                        margin-top: .2vw;
+                    }
+
+                    #subtpfondo {
+                        position: relative;
+                        left: 3%;
+                        color: rgba(74,82,101,1);
+                        margin-top: .5vw;
+                    }
+
+                    #pcntbx1, #pcntbx2, #pcntbx3 {
+                        width: 98%;
+                        height: auto;
+                        margin: 0;
+                        border-radius: .4vw;
+                        left: 1%;
+                        padding-top: .8vw;
+                        position: relative;
+                        padding-bottom: .8vw;
+                    }
+
+                    .selectedtheme {
+                        background: dimgray;
+                    }
+
+                    .noselectedtheme {
+                        /*background: inherit;*/
+                    }
+
+                    #btnopenmenufondo {
+                        width: 1vw;
+                        height: 1vw;
+                        right: 1.5%;
+                        top: 30%;
+                        position: absolute;
+                    }
+
+                    #efecto {
+                        position: absolute;
+                        top: 20%;
+                        color: white;
+                    }
+
+                    #mfpsi, #mfpno {
+                        position: relative;
+                        margin-top: .5vw;
+                    }
+
+                    #mfpsi {
+                        left: 80%;
+                        top: -100%;
+                    }
+
+                    #mfpno {
+                        left: 86%;
+                        top: -100%;
+                    }
+
+                    .noselect {
+                        color: rgba(74,82,101,1);
+                        font-size: 1vw;
+                    }
+
+                    .siselect {
+                        color: rgb(110, 122, 152);
+                        font-size: 1.4vw;
+                    }
+
+                    #menueffect {
+                        position: absolute;
+                        width: 104%;
+                        height: 35%;
+                        background: rgba(0,0,0,.4);
+                        left: -2%;
+                        backdrop-filter: blur(5px);
+                        border-radius: .3vw;
+                        border: .1vw solid rgba(74,82,101,1);
+                    }
+
+                    #titanimation {
+                        font-family: neigefont3;
+                        color: white;
+                        font-size: 2vw;
+                        position: relative;
+                        top: 0%;
+                        text-align: center;
+                        text-shadow: .2vw .2vw .5vw white;
+                    }
+
+                    #subti {
+                        font-family: neigefont3;
+                        color: white;
+                        font-size: .8vw;
+                        position: relative;
+                        top: 40%;
+                        text-align: center;
+                        text-shadow: .2vw .2vw .5vw white;
+                    }
+                </style>
+                <script>
+                    function onmove1() {
+                        $("#mnuconfback2").removeClass("animabackconfig"); $("#selectedicon2").removeClass("selectedicon"); $("#p2config").removeClass("selectedp");
+                        $("#mnuconfback2").addClass("outanimavackconfig"); $("#selectedicon2").addClass("noselectedicon"); $("#p2config").addClass("noselectedp");
+
+                        $("#mnuconfback1").addClass("animabackconfig"); $("#selectedicon").addClass("selectedicon"); $("#p1config").addClass("selectedp");
+                        $("#mnuconfback1").removeClass("outanimavackconfig"); $("#selectedicon").removeClass("noselectedicon"); $("#p1config").removeClass("noselectedp");
+                        $("#mnuconfback4").removeClass("animabackconfig"); $("#selectedicon4").removeClass("selectedicon"); $("#p4config").removeClass("selectedp");
+                        $("#mnuconfback4").addClass("outanimavackconfig"); $("#selectedicon4").addClass("noselectedicon"); $("#p4config").addClass("noselectedp");
+                        $("#mnuconfback3").removeClass("animabackconfig"); $("#selectedicon3").removeClass("selectedicon"); $("#p3config").removeClass("selectedp");
+                        $("#mnuconfback3").addClass("outanimavackconfig"); $("#selectedicon3").addClass("noselectedicon"); $("#p3config").addClass("noselectedp");
+
+                    }
+
+                    function onmove2() {
+                        $("#mnuconfback1").removeClass("animabackconfig"); $("#selectedicon").removeClass("selectedicon"); $("#p1config").removeClass("selectedp");
+                        $("#mnuconfback1").addClass("outanimavackconfig"); $("#selectedicon").addClass("noselectedicon"); $("#p1config").addClass("noselectedp");
+
+                        $("#mnuconfback2").addClass("animabackconfig"); $("#selectedicon2").addClass("selectedicon"); $("#p2config").addClass("selectedp");
+                        $("#mnuconfback2").removeClass("outanimavackconfig"); $("#selectedicon2").removeClass("noselectedicon"); $("#p2config").removeClass("noselectedp");
+                        $("#mnuconfback4").removeClass("animabackconfig"); $("#selectedicon4").removeClass("selectedicon"); $("#p4config").removeClass("selectedp");
+                        $("#mnuconfback4").addClass("outanimavackconfig"); $("#selectedicon4").addClass("noselectedicon"); $("#p4config").addClass("noselectedp");
+                        $("#mnuconfback3").removeClass("animabackconfig"); $("#selectedicon3").removeClass("selectedicon"); $("#p3config").removeClass("selectedp");
+                        $("#mnuconfback3").addClass("outanimavackconfig"); $("#selectedicon3").addClass("noselectedicon"); $("#p3config").addClass("noselectedp");
+
+                    }
+                    function onmove3() {
+                        $("#mnuconfback1").removeClass("animabackconfig"); $("#selectedicon").removeClass("selectedicon"); $("#p1config").removeClass("selectedp");
+                        $("#mnuconfback1").addClass("outanimavackconfig"); $("#selectedicon").addClass("noselectedicon"); $("#p1config").addClass("noselectedp");
+
+                        $("#mnuconfback3").addClass("animabackconfig"); $("#selectedicon3").addClass("selectedicon"); $("#p3config").addClass("selectedp");
+                        $("#mnuconfback3").removeClass("outanimavackconfig"); $("#selectedicon3").removeClass("noselectedicon"); $("#p3config").removeClass("noselectedp");
+
+                        $("#mnuconfback2").removeClass("animabackconfig"); $("#selectedicon2").removeClass("selectedicon"); $("#p2config").removeClass("selectedp");
+                        $("#mnuconfback2").addClass("outanimavackconfig"); $("#selectedicon2").addClass("noselectedicon"); $("#p2config").addClass("noselectedp");
+
+                        $("#mnuconfback4").removeClass("animabackconfig"); $("#selectedicon4").removeClass("selectedicon"); $("#p4config").removeClass("selectedp");
+                        $("#mnuconfback4").addClass("outanimavackconfig"); $("#selectedicon4").addClass("noselectedicon"); $("#p4config").addClass("noselectedp");
+                    }
+                    function onmove4() {
+                        $("#mnuconfback1").removeClass("animabackconfig"); $("#selectedicon").removeClass("selectedicon"); $("#p1config").removeClass("selectedp");
+                        $("#mnuconfback1").addClass("outanimavackconfig"); $("#selectedicon").addClass("noselectedicon"); $("#p1config").addClass("noselectedp");
+
+                        $("#mnuconfback4").addClass("animabackconfig"); $("#selectedicon4").addClass("selectedicon"); $("#p4config").addClass("selectedp");
+                        $("#mnuconfback4").removeClass("outanimavackconfig"); $("#selectedicon4").removeClass("noselectedicon"); $("#p4config").removeClass("noselectedp");
+
+                        $("#mnuconfback3").removeClass("animabackconfig"); $("#selectedicon3").removeClass("selectedicon"); $("#p3config").removeClass("selectedp");
+                        $("#mnuconfback3").addClass("outanimavackconfig"); $("#selectedicon3").addClass("noselectedicon"); $("#p3config").addClass("noselectedp");
+
+                        $("#mnuconfback2").removeClass("animabackconfig"); $("#selectedicon2").removeClass("selectedicon"); $("#p2config").removeClass("selectedp");
+                        $("#mnuconfback2").addClass("outanimavackconfig"); $("#selectedicon2").addClass("noselectedicon"); $("#p2config").addClass("noselectedp");
+
+                    }
+                </script>
+                <script>
+                    var x = 0;
+                    function simari() {
+                        $("#mfpsi").removeClass("noselect"); $("#mfpsi").addClass("siselect");
+                        $("#mfpno").addClass("noselect"); $("#mfpno").removeClass("siselect");
+                        $("#boxfires").removeClass("nofires"); $("#boxfires").addClass("sifires");
+                    }
+                    function nomari() {
+                        $("#mfpsi").addClass("noselect"); $("#mfpsi").removeClass("siselect");
+                        $("#mfpno").removeClass("noselect"); $("#mfpno").addClass("siselect");
+                        $("#boxfires").addClass("nofires"); $("#boxfires").removeClass("sifires");
+                    }
+                    function brillo5() {
+                        $("#brillo5").removeClass("noselect"); $("#brillo5").addClass("siselect");
+                        $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                        $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                        $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                        $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                        $("p").css({ 'opacity': '1' });
+                    }
+                    function brillo4() {
+                        $("#brillo4").removeClass("noselect"); $("#brillo4").addClass("siselect");
+                        $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                        $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                        $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                        $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                        $("p").css({ 'opacity': '.7' });
+                    }
+                    function brillo3() {
+                        $("#brillo3").removeClass("noselect"); $("#brillo3").addClass("siselect");
+                        $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                        $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                        $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                        $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                        $("p").css({ 'opacity': '.5' });
+                    }
+                    function brillo2() {
+                        $("#brillo2").removeClass("noselect"); $("#brillo2").addClass("siselect");
+                        $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                        $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                        $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                        $("#brillo1").addClass("noselect"); $("#brillo1").removeClass("siselect");
+                        $("p").css({ 'opacity': '.3' });
+                    }
+                    function brillo1() {
+                        $("#brillo1").removeClass("noselect"); $("#brillo1").addClass("siselect");
+                        $("#brillo4").addClass("noselect"); $("#brillo4").removeClass("siselect");
+                        $("#brillo3").addClass("noselect"); $("#brillo3").removeClass("siselect");
+                        $("#brillo2").addClass("noselect"); $("#brillo2").removeClass("siselect");
+                        $("#brillo5").addClass("noselect"); $("#brillo5").removeClass("siselect");
+                        $("p").css({ 'opacity': '.1' });
+                    }
+
+
+
+                    function open1section() {
+                        $("#sectionbackground").addClass("thisfirst"); $("#sectionbackground").removeClass("thisbk");
+                        $("#sectionmusic").removeClass("thisfirst"); $("#sectionmusic").addClass("thisbk");
+                        $("#sectionabout").removeClass("thisfirst"); $("#sectionabout").addClass("thisbk");
+
+                    }
+                    function open2section() {
+                        $("#sectionbackground").remove("thisfirst"); $("#sectionbackground").addClass("thisbk");
+                        $("#sectionmusic").addClass("thisfirst"); $("#sectionmusic").removeClass("thisbk");
+                        $("#sectionabout").removeClass("thisfirst"); $("#sectionabout").addClass("thisbk");
+
+                    }
+                    function open3section() {
+                        $("#sectionbackground").removeClass("thisfirst"); $("#sectionbackground").addClass("thisbk");
+                        $("#sectionmusic").removeClass("thisfirst"); $("#sectionmusic").addClass("thisbk");
+                        $("#sectionabout").addClass("thisfirst"); $("#sectionabout").removeClass("thisbk");
+                    }
+
+                    function efecto() { $("#boxfires").removeClass("nofires"); $("#boxfires").addClass("sifires"); }
+                    function noefecto() { $("#boxfires").addClass("nofires"); $("#boxfires").removeClass("sifires"); }
+                    function openconfig() {
+
+                        $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
+                    }
+                    function closeconfig() {
+
+                        $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
+                    }
+                    function openmenufondo() { $("#menueffect").addClass("openmenufondo"); $("#menueffect").removeClass("closemenufondo"); }
+
+                    function select1() {
+                        x = 0;
+                    } function select2() {
+                        x = 1;
+                    } function select3() {
+                        x = 2;
+                    }
+                    function selectedtheme2() {
+                        theme1 = "Sillent night";
+                        theme2 = "Fire Butterfly";
+                        theme3 = "Phantom fire";
+
+                        if (x == 0) {
+                            $("#pcontentfondo").text(theme1);
+
+
+                        }
+                        if (x == 1) {
+                            $("#pcontentfondo").text(theme2);
+
+                        }
+                        if (x == 2) {
+
+                            $("#pcontentfondo").text(theme3);
+
+                        }
+                        else {
+
+
+                        }
+
+                    }
+
+                    function selectedtheme() {
+                        theme1 = "Sillent night";
+                        theme2 = "Fire Butterfly";
+                        theme3 = "Phantom fire";
+
+                        if (x == 0) {
+                            $("#video1").attr("src", "tao1.mp4");
+                            $("#menueffect").removeClass("openmenufondo"); $("#menueffect").addClass("closemenufondo");
+                            $("#pcontentfondo").text(theme1);
+
+
+                            $("#pcntbx1").addClass("selectedtheme");
+                            $("#pcntbx2").removeClass("selectedtheme");
+                            $("#pcntbx3").removeClass("selectedtheme");
+                            $("#pcntbx1").removeClass("noselectedtheme");
+                            $("#pcntbx2").addClass("noselectedtheme");
+                            $("#pcntbx3").addClass("noselectedtheme");
+                        }
+                        if (x == 1) {
+                            $("#video1").attr("src", "tao2.mp4");
+                            $("#pcontentfondo").text(theme2);
+                            $("#menueffect").removeClass("openmenufondo"); $("#menueffect").addClass("closemenufondo");
+                            $("#pcntbx2").addClass("selectedtheme");
+                            $("#pcntbx1").removeClass("selectedtheme");
+                            $("#pcntbx3").removeClass("selectedtheme");
+                            $("#pcntbx2").removeClass("noselectedtheme");
+                            $("#pcntbx1").addClass("noselectedtheme");
+                            $("#pcntbx3").addClass("noselectedtheme");
+                        }
+                        if (x == 2) {
+                            $("#menueffect").removeClass("openmenufondo"); $("#menueffect").addClass("closemenufondo");
+                            $("#video1").attr("src", "tao3.mp4");
+                            $("#pcontentfondo").text(theme3);
+                            $("#pcntbx3").addClass("selectedtheme");
+                            $("#pcntbx2").removeClass("selectedtheme");
+                            $("#pcntbx1").removeClass("selectedtheme");
+                            $("#pcntbx3").removeClass("noselectedtheme");
+                            $("#pcntbx2").addClass("noselectedtheme");
+                            $("#pcntbx1").addClass("noselectedtheme");
+                        }
+                        else {
+
+
+                        }
+
+                    }
+
+                </script>
+                <div id="menuconfig1" onmouseover="onmove1();" onclick="openmenufondo();">
+                    <div id="mnuconfback1" class="animabackconfig"></div>
+                    <div id="selectedicon" class="selectedicon"></div><p id="p1config" class="selectedp">Animation</p>
+                </div>
+                <div id="menueffect" class="closemenufondo">
+                    <p id="titanimation">背景动画</p>
+                    <div id="contentboxfondo">
+                        <p id="pcntbx1" class="selectedtheme" onclick="select1(); selectedtheme(); efecto();">ON</p>
+                        <p id="pcntbx2" class="noselectedtheme" onclick="select2(); selectedtheme(); noefecto();">OFF</p>
+                        <!--<p id="pcntbx3" class="noselectedtheme" onclick="select3(); selectedtheme();">Phantom fire</p>-->
+                    </div>
+                    <p id="subti">disable background animation</p>
+                </div>
+
+                <div id="menuconfig2" onmouseover="onmove2()" onclick="open2section()">
+                    <div id="mnuconfback2" class="outanimavackconfig"></div>
+                    <div id="selectedicon2" class="noselectedicon"></div><p id="p2config" class="noselectedp">Old Xatspace</p>
+                </div>
+                <div id="menuconfig3" onmouseover="onmove3();" onclick="open3section(); openabout();">
+                    <div id="mnuconfback3" class="outanimavackconfig"></div>
+                    <div id="selectedicon3" class="noselectedicon"></div><p id="p3config" class="noselectedp">About</p>
+                </div>
+                <div id="menuconfig4" onmouseover="onmove4();" onclick=" outconf();">
+                    <div id="mnuconfback4" class="outanimavackconfig"></div>
+                    <div id="selectedicon4" class="noselectedicon"></div><p id="p4config" class="noselectedp">Return</p>
+                </div>
+            </div>
+
+            <div id="aboutd" class="noprofile">
+                <style>
+                    #aboutd {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        backdrop-filter: blur(5px);
+                    }
+
+                    #aboutdiv {
+                        position: absolute;
+                        width: 35%;
+                        height: 100%;
+                        left: 30%;
+                        transform: rotate(10deg);
+                    }
+
+                    #textpostx2 {
+                        transform: rotate(10deg);
+                        position: absolute;
+                        width: 30%;
+                        height: 18%;
+                        left: 34%;
+                        top: 41%;
+                        margin-left: .5vw;
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        color: black;
+                        line-height: 1.1vw;
+                    }
+
+                    #preturntoconfig {
+                        transform: rotate(10deg);
+                        position: absolute;
+                        width: 30%;
+                        height: 18%;
+                        left: 52%;
+                        top: 87%;
+                        margin-left: .5vw;
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        color: black;
+                        line-height: 1.1vw;
+                        transition: all .5s ease;
+                    }
+
+                        #preturntoconfig:hover {
+                            color: rgba(199,48,48.3);
+                        }
+                </style>
+                <img src="https://i.postimg.cc/1zKzywvD/asdsda.png" id="aboutdiv" />
+                <div id="textpostx2">
+
+                    <span class="textnormal"> A.I. TERMINAL V tech 5.38</span> <br />
+                    <span class="japtext">人工智能。 V 航站楼技术 5.38</span><br />
+                    <span class="textnormal">忘卻前夜 Morimens UI interface V0.11 REV 1.00</span><br />
+                    <span class="japtext"> 忘卻前夜 UI界面V0.11 REV 1.00</span><br />
+                    <span class="textnormal">LOAD ADRESS 0000x112244-000000000000000</span><br />
+                    <span class="japtext">加载地址0000x112244-000000000000000</span><br />
+                    <span class="textnormal"> This place was made by Negie, based in Morimens.</span><br />
+                    <span class="japtext">这个地方是由位于莫里门斯的 雪 创建的。</span><br />
+                    <span class="textnormal">In collaboration with Schroederz</span><br />
+                    <span class="japtext">与施罗德合作</span><br />
+
+                </div>
+
+                <p onclick="outabout();" id="preturntoconfig">RETURN</p>
+
+            </div>
+
         </div>
 
         <div id="divfoter">
@@ -1478,11 +3011,38 @@
                     height: 2vw;
                     bottom: 5%;
                     left: 3%;
+                    transition: all .5s ease;
+                }
+
+                    #logom:hover {
+                        filter: grayscale(100%);
+                    }
+
+                #menup {
+                    position: absolute;
+                    font-family: 'Times New Roman';
+                    color: #C2B07A;
+                    font-size: .75vw;
+                    letter-spacing: .1vw;
+                    left: .3%;
+                    top: 10%;
+                }
+
+                #letters {
+                    font-size: 1.6vw;
+                    font-family: 'Times New Roman';
+                    color: #C2B07A;
+                    position: absolute;
+                    left: 7%;
+                    top: -60%;
+                    opacity: .4;
+                    letter-spacing: .8vw;
                 }
             </style>
 
-            <img src="https://i.postimg.cc/GtSDvqrb/logomini.png" id="logom" onclick="openprofile();" style="cursor:pointer;"/>
-
+            <p id="menup" onclick="openprofile()">MENU</p>
+            <img src="https://i.postimg.cc/GtSDvqrb/logomini.png" id="logom" onclick="openprofile()" style="cursor:pointer;" />
+            <p id="letters">B⠀.⠀I⠀.⠀A⠀.⠀V⠀.</p>
             <div id="rombo1">
 
             </div>
@@ -1534,4 +3094,5 @@
     </div>
 
 </body>
+</html>
 </html>
