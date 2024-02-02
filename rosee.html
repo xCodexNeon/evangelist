@@ -1,4 +1,4 @@
-
+ y
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -286,6 +286,18 @@
                 }
             });
 
+        } function activatescroll54() {
+            $('#scrollactivate5').scroll(function () {
+                if ($(this).scrollTop() >= 1) {
+                    
+
+                }
+                if ($(this).scrollTop() <= 0) {
+                    enterfour();
+
+                }
+            });
+
         }
         function enterfirst() {
             $("#buton1").removeClass("noselected"); $("#buton1").addClass("selected");
@@ -353,7 +365,7 @@
 
 
 </head>
-<body onclick="activatescroll12(); activatescroll23(); activatescroll34();">
+<body onclick="activatescroll12(); activatescroll23(); activatescroll34(); activatescroll54();">
 
     <div id="main">
 
@@ -3087,8 +3099,12 @@
 
         <div id="fivepage" class="nofi">
             <style>
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
                 .nofi {
-                    z-index: -100;
+                    z-index: -10000;
                     opacity: 0;
                 }
 
@@ -3100,12 +3116,11 @@
                 #fivepage {
                     backdrop-filter: blur(10px);
                     position: fixed;
-                    background: rgba(134,172,248,.5);
+                    background: white;
                     width: 100%;
                     height: 101%;
                     left: 0%;
                     top: 0;
-                    z-index: 9999999999;
                     transition: all 1s ease;
                     overflow: hidden;
                     /*left: 0;*/
@@ -3121,33 +3136,112 @@
                 }
 
                 #lastp {
-                    font-family: 'Times New Roman';
+                    font-family: neigefont;
                     z-index: 999;
                     position: fixed;
-                    font-size: 6vw;
+                    font-size: 5vw;
                     color: #2f5d9d;
                     opacity: 0.6;
-                    left: 3%;
+                    left: 36%;
                 }
 
                 #lastp2 {
-                    font-family: 'Times New Roman';
+                    font-family: "Roboto", Arial, sans-serif;
                     z-index: 999;
-                    top: 13%;
+                    top: 19%;
                     position: fixed;
-                    font-size: 1.2vw;
+                    font-size: .8vw;
                     color: #2f5d9d;
                     opacity: 0.6;
-                    left: 3%;
+                    left: 36.5%;
                     letter-spacing: .1vw;
                 }
             </style>
+            <div id="scrollactivate5">
+                <style>
+                    #scrollactivate5 {
+                        transform: rotate(180deg);
+                        opacity:0;
+                        position: absolute; background:red;
+                        width: 95%; 
+                        z-index:1;
+                        height: 90%;
+                        background: red;
+                        overflow: auto;
+                    }
+                        /**/
+                        #scrollactivate5 img {
+                            height: 10000%;
+                        }
 
-            <i id="lastp">Rose...</i>
-            <i id="lastp2">Sigue a las rosas, donde quiera que vayas...</i>
-            <video autoplay="" loop="" muted="" id="videogany" src="ganyu.mp4" type="video/mp4">
-            </video>
-            <div id="div_bott">
+                    #backlinefont {
+                        height: 30%;
+                        width: 40%;
+                        transform: rotate(-25deg);
+                        position: absolute;
+                        right: -20%;
+                        top: 71.4%;
+                        overflow: hidden;
+                    }
+
+                    #bkrel {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        background-image: url(https://i.postimg.cc/gJ7n1f55/gh.png);
+                        opacity: .1;
+                    }
+                </style>
+                <img id="firstscr" src="https://i.postimg.cc/T3P8rHf1/rose.png" /> <img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+                <img src="https://i.postimg.cc/T3P8rHf1/rose.png" /><img src="https://i.postimg.cc/T3P8rHf1/rose.png" />
+            </div>
+            <p id="lastp">Rose</p>
+            <p id="lastp2">Sigue a las rosas, donde quiera que vayas...</p>
+          <style>
+              #imgg { position:absolute; height:100%; top:0; left:10%;
+              }
+              #phope { font-family:'Times New Roman';
+                       font-size:2vw; color:#83aeb4; position:absolute; left:36%; top:24%; opacity:.5; font-weight:bold;
+              }
+              #icongg { position:absolute; width:4vw; height:4vw; border-radius:50%; left:36%; top:30%;
+              }
+              #contentlastp {
+                  color: gray;
+                  opacity: .7;
+                  font-size: .7vw;
+                  letter-spacing: .1vw;
+                  position: absolute;
+                  top: 29%; width:12%;
+                  left: 41%;
+                  font-family: "Roboto", Arial, sans-serif;
+              }
+              #pcredits {
+                  color: gray; opacity:.7;
+                  font-size: .66vw;
+                  letter-spacing: .1vw;
+                  position: absolute;
+                  top: 86%;
+                  left: 36%;
+                  font-family: "Roboto", Arial, sans-serif;
+              }
+                  #pcredits span { color:#4f86d3; font-weight:bold;
+                  }
+                  #pcredits b { font-size:.4vw;
+                  }
+          </style>
+             <img src="https://i.postimg.cc/C0rqnLBs/2690a962d1bb61339199f674f51325eb.jpg" id="imgg" />
+            <i id="phope">Hope & roses</i>
+            <img src="https://i.postimg.cc/GpQNB4r4/94065c76f868ca2747ccdb07e19a02cb-6379960577494753517.webp" id="icongg" />
+            <p id="contentlastp">
+                I once read in an old book a phrase that said: “Fight a Chilin and you will regret it.” Actually, it's not that big of a deal. But if you need me to fight with you, I promise I'll give it my all.
+            </p>
+            <p id="pcredits">
+                Xatspace powered by <span>Neige</span> in colaboration with <span>Lynette</span><br />
+                Xat.com® all Rights reserved© 2024<br />
+                <b>Xatspace "hope and roses" Rev 0.9111.87 VER 1.00001 Powered by NeigeEngine</b>
+            </p>
+
+            <!--<div id="div_bott">
                 <style>
                     #codesp {
                         position: absolute;
@@ -3361,7 +3455,7 @@
                         background: transparent;
                         position: fixed;
                         height: 50%;
-                        top: 49%;
+                        top: 49%; z-index:2;
                         overflow: hidden;
                     }
 
@@ -3764,12 +3858,12 @@
                     }
                 </style>
 
-                <div id="prueba">
+                <div id="prueba">-->
 
                     <!--<div id="btm_crd"><div id="btm_crd2">ABOUT</div></div>-->
 
 
-                    <div id="img_ev">
+                    <!--<div id="img_ev">
                         <div id="back_st1"></div>
                         <img src="https://i.postimg.cc/TPLN507C/bse.png" id="ev_map" />
                         <div id="xt_crdts"><p>NEIGE&LYNETTE_V.1533252890® all Rights Reserved 2023©<span id="span_g">_</span></p></div>
@@ -3833,7 +3927,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
 
         </div>
