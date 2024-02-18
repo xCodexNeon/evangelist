@@ -1,0 +1,1397 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            ima1 = $("#ima-00");
+            ima2 = $("#ima-10");
+            let audioData = [];
+
+            var song = new Audio();
+
+            //image.className = "image";
+
+            //var img2 = $(".static-card2");
+            //var flip = $(".flip-card2");
+
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                         name: "Lady Maria (The Old Hunters)",
+                        artist: "Bloodborne Soundtrack OST",
+                        src:
+                            "maria.mp3",
+                        imagen1: "im-33",
+
+                    },
+                   
+                    {
+                        name: "La vaguelette",
+                        artist: "HOYO-MiX",
+                        src:
+                            "Lavaguelette.mp3",
+                        imagen1: "im-22",
+                      
+                    }
+                    ,
+                    { 
+                        name: "Winding River",
+                        artist: "Genshin Impact Ost",
+                        src:
+                            "https://xevangelist.github.io/evangelist/winding.mp3?raw=true"
+
+                    }  {
+                        name: "Life in ruins",
+                        artist: "The legend of Zelda: Breath of the wild",
+                        src:
+                            "ruins.mp3"
+
+                    }
+                ];
+
+                artistname.html(audioData[CurrentSong].artist + " /");
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+                ima1.addClass(audioData[CurrentSong].imagen1)
+                ima2.addClass(audioData[CurrentSong].imagen1)
+                //img2.src = audioData[CurrentSong].img2;
+                //flip.src = audioData[CurrentSong].flip;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist + " /");
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                ima1.addClass(curSong.imagen1);
+                ima2.addClass(curSong.imagen1);
+                /* document.getElementById("img-1").src = curSong.img2;*/
+                //img2.src = curSong.src;
+                //flip.src = curSong.src;
+                song.play();
+                $("#btn-play").addClass("fa-pause");
+                $("#btn-play").removeClass("fa-play");
+
+                $("img").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+                var indicatorLabel = currentLabel + " / " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+                animationspinpause();
+                endeq();
+            });
+            $("#play").click(function () {
+                animationspinplay();
+                song.play(); starteq()
+                playing = true;
+            });
+
+            $("#btn-pause").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+
+                }
+                if (CurrentSong == 0) {
+                    selectdsong1(); animationspinplay(); starteq()
+                }
+                if (CurrentSong == 1) {
+                    selectdsong2(); animationspinplay(); starteq()
+                } if (CurrentSong == 2) {
+                    selectdsong3(); animationspinplay(); starteq()
+                } if (CurrentSong == 3) {
+                    selectdsong4(); animationspinplay(); starteq()
+                }
+                playSong();
+            });
+            $("#textlyn3").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+
+                }
+                if (CurrentSong == 0) {
+                    selectdsong1(); animationspinplay(); starteq()
+                }
+                if (CurrentSong == 1) {
+                    selectdsong2(); animationspinplay(); starteq()
+                } if (CurrentSong == 2) {
+                    selectdsong3(); animationspinplay(); starteq()
+                } if (CurrentSong == 3) {
+                    selectdsong4(); animationspinplay(); starteq()
+                }
+                playSong();
+            });
+        });
+        function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
+        function animationspinplay() {
+            $("#cdspin").css("-webkit-animation-play-state", "running");
+        }
+
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background: black;
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+        }
+    </style>
+
+
+
+
+</head>
+<body id="this">
+
+
+    <!--<audio controls id="hovers" class="mks">
+        <style>
+            .mks {
+                position: fixed;
+                opacity: 0;
+            }
+        </style>
+        <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#hovers")[0];
+                $("#logom").mouseenter(function () {
+                    audio.play();
+                });
+                $("#menup").mouseenter(function () {
+                    audio.play();
+                });
+                $("#btn-pause").mouseenter(function () {
+                    audio.play();
+                });
+                $("#play").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pause").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pf1").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pf2").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pf3").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pf4").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pf5").mouseenter(function () {
+                    audio.play();
+                });
+                $("#confp1").mouseenter(function () {
+                    audio.play();
+                });
+                $("#confp2").mouseenter(function () {
+                    audio.play();
+                });
+                $("#p4config").mouseenter(function () {
+                    audio.play();
+                });
+                $("#preturntoconfig").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pcntbx1").mouseenter(function () {
+                    audio.play();
+                });
+                $("#pcntbx2").mouseenter(function () {
+                    audio.play();
+                });
+
+                $("#menuconfig1").mouseenter(function () {
+                    audio.play();
+                });
+                $("#menuconfig2").mouseenter(function () {
+                    audio.play();
+                });
+                $("#menuconfig3").mouseenter(function () {
+                    audio.play();
+                });
+
+
+
+
+            });
+
+        </script>
+    </audio>
+    <audio controls id="clickmp3" class="mks">
+        <source src="click.wav"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#clickmp3")[0];
+
+                $("body").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+
+            });
+
+        </script>
+    </audio>
+    <audio controls id="inprofile" class="mks">
+        <source src="open.wav"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#inprofile")[0];
+
+                $("#menup").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#logom").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#confp1").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+
+            });
+
+        </script>
+    </audio>-->
+
+    <div id="gradient">
+        <style>
+            #gradient {
+                width: 100%;
+                height: 40%;
+                top: 60%;
+                position: absolute;
+                background-image: linear-gradient(180deg,transparent 0%,rgba(0,0,0,.2) 40%,rgba(0,0,0,.6) 100%);
+            }
+        </style>
+    </div>
+
+
+    <script>
+        function openprofile() {
+            $("#profilediv").addClass("siprofile");
+            $("#profilediv").removeClass("noprofile");
+        }
+        function outprofile() {
+            $("#profilediv").addClass("noprofile");
+            $("#profilediv").removeClass("siprofile");
+        } function openmn() {
+            $("#main").addClass("simain");
+            $("#main").removeClass("nomain");
+            $("#mn2").addClass("nomain");
+            $("#mn2").removeClass("simain");
+        }
+
+    </script>
+    <script>
+
+        function openfrd1() {
+            $("#friend1").addClass("siprofile");
+            $("#friend1").removeClass("noprofile");
+        }
+        function outfrd1() {
+            $("#friend1").addClass("noprofile");
+            $("#friend1").removeClass("siprofile");
+        }
+        function openfrd2() {
+            $("#friend2").addClass("siprofile");
+            $("#friend2").removeClass("noprofile");
+        }
+        function outfrd2() {
+            $("#friend2").addClass("noprofile");
+            $("#friend2").removeClass("siprofile");
+        }
+        function openfrd3() {
+            $("#friend3").addClass("siprofile");
+            $("#friend3").removeClass("noprofile");
+        }
+        function outfrd3() {
+            $("#friend3").addClass("noprofile");
+            $("#friend3").removeClass("siprofile");
+        }
+        function openfrd4() {
+            $("#friend4").addClass("siprofile");
+            $("#friend4").removeClass("noprofile");
+        }
+        function outfrd4() {
+            $("#friend4").addClass("noprofile");
+            $("#friend4").removeClass("siprofile");
+        }
+        function openfrd5() {
+            $("#friend5").addClass("siprofile");
+            $("#friend5").removeClass("noprofile");
+        }
+        function outfrd5() {
+            $("#friend5").addClass("noprofile");
+            $("#friend5").removeClass("siprofile");
+        }
+        function openabout() {
+            $("#aboutd").addClass("siprofile");
+            $("#aboutd").removeClass("noprofile");
+        }
+        function outabout() {
+            $("#aboutd").addClass("noprofile");
+            $("#aboutd").removeClass("siprofile");
+        }
+        function openconf() {
+            $("#divconfig").addClass("siprofile1");
+            $("#divconfig").removeClass("noprofile1");
+        } function outconf() {
+            $("#divconfig").addClass("noprofile1");
+            $("#divconfig").removeClass("siprofile1");
+        }
+
+    </script>
+
+    <div id="Fmain" class="si">
+        <style>
+            #Fmain {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgb(32,32,32);
+            }
+
+            #mainmenu {
+                position: absolute;
+                width: 76%;
+                left: 12%;
+                height: 100%;
+                background: Red;
+                overflow: hidden;
+            }
+
+            #pluma {
+                position: absolute;
+                right: 0;
+                bottom: -7%;
+                width: 25%;
+                transform: scaleY(-1) scaleX(-1);
+            }
+
+            #div2 {
+                position: absolute;
+                width: 100%;
+                height: 5%;
+                top: 95%;
+                background-image: url(https://i.postimg.cc/8crvThbm/wq.png);
+            }
+
+            #divmain {
+                position: absolute;
+                width: 100%;
+               
+                top: 15%;
+                height: 80%;
+            }
+            .white {
+                background: white;
+            }
+            .black { background:rgb(49, 49, 49);
+            }
+            #div1 {
+                position: absolute;
+                width: 100%;
+                height: 15%;
+                top: 0%;
+                background-image: url(https://i.postimg.cc/8crvThbm/wq.png);
+            }
+
+            #bigp {
+                font-family: neigefont3;
+                font-size: 19vw;
+                color: gray;
+                opacity: .3;
+                position: absolute;
+                top: -21vw;
+                left: -1vw;
+            }
+
+            #mainren {
+                position: absolute;
+                width: 50%;
+                left: 2%;
+                top: 1%;
+            }
+
+            #filter {
+                width: 100%;
+                height: 100%;
+                background-image: url(https://i.postimg.cc/1t1047fY/5a934e84f67d2a61a118ec95b1d6cb74.gif);
+                position: absolute;
+                opacity: .02;
+                top: 0;
+            }
+
+            #plat {
+                position: absolute;
+                font-size: 1.8vw;
+                right: 15%;
+                top: 16%;
+                color: gray;
+                line-height: 2vw;
+            }
+
+            #plat2 {
+                position: absolute;
+                font-size: 2vw;
+                right: 15%;
+                top: 56%;
+                background: #171717;
+                color: #752727;
+                padding: .3vw;
+                padding-left: .8vw;
+                line-height: 2vw;
+            }
+
+            #pllat {
+                font-size: 3.5vw;
+                opacity: .3;
+                transform: rotate(90deg);
+                left: 75.5%;
+                top: 58%;
+                position: absolute;
+                font-weight: bold;
+            }
+
+            #buton {
+                position: absolute;
+                width: 3vw;
+                height: 3vw;
+                background: red;
+                right: 0;
+                top: 40%;
+            }
+        </style>
+        <script>
+            function calloptions() {
+                $("#Fmain").addClass("no");
+                $("#Fmain").removeClass("si");
+                $("#Mmain").addClass("si");
+                $("#Mmain").removeClass("no");
+                $("#textslado1").text("黑暗主题");
+                $("#textplado1").text("THEME OBSCURE");
+            }
+            function callmain() {
+                $("#Fmain").addClass("si");
+                $("#Fmain").removeClass("no");
+                $("#Mmain").addClass("no");
+                $("#Mmain").removeClass("si"); 
+            }
+        </script>
+        <div id="filter">
+
+        </div>
+        <div id="mainmenu">
+
+            <div id="div1"></div>
+            <div id="divmain" class="white">
+                <img src="https://i.postimg.cc/0NMZzJZr/12.png" id="mainren" />
+
+                <p id="pllat">
+                    Schroederz
+                </p>
+                <p id="plat">
+                    神<br />话<br />是<br />真<br />理<br />的<br />耳<br />语
+                </p>
+                <p id="plat2">
+                    神<br />话<br />与
+                </p>
+            </div>
+            <p id="bigp">话</p>
+            <div id="div2"></div>
+
+
+            <div id="buton" onclick="calloptions();">
+
+            </div>
+        </div>
+
+        <img src="https://i.postimg.cc/N0YkbPxq/sola-pluma-negra-aislada-fondo-blanco-36860-396.png" id="pluma" />
+    </div>
+
+    <div id="Mmain" class="no">
+        <style>
+            @font-face {
+                font-family: textfirmFont;
+                src: url(firm.otf);
+            }
+
+            @font-face {
+                font-family: textf;
+                src: url(Onbase.otf);
+            }
+
+            @font-face {
+                font-family: neigefont;
+                src: url(neige.otf);
+            }
+
+            @font-face {
+                font-family: neigefont2;
+                src: url(neig.ttf);
+            }
+
+            @font-face {
+                font-family: neigefont3;
+                src: url(PMINGLIU.ttf);
+            }
+
+            #Mmain {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: white;
+            }
+
+            #imgstones {
+                position: absolute;
+                width: 25%;
+                right: 12%;
+                top: 55%;
+                height: 35%;
+            }
+
+            #imgangel {
+                position: absolute;
+                width: 20%;
+                right: 12%;
+                height: 69%;
+                animation: todown 3s infinite;
+            }
+
+            @keyframes todown {
+                0% {
+                    top: 5.5%;
+                }
+
+                50% {
+                    top: 6.5%;
+                }
+
+                100% {
+                    top: 5.5%;
+                }
+            }
+
+            #mleft {
+                left: 0;
+                top: 0;
+                width: 12%;
+                height: 100%;
+                background: rgb(32, 32, 32);
+                position: absolute;
+            }
+
+            #mright {
+                right: 0;
+                top: 0;
+                width: 12.2%;
+                height: 100%;
+                background: rgb(32, 32, 32);
+                position: absolute;
+            }
+
+            #divfot {
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 5%;
+                background: black;
+                position: absolute;
+            }
+
+            #brush1 {
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                left: -5%;
+                filter: brightness(220%) contrast(75%);
+                transform: scaleY(-1) scaleX(-1);
+                top: 55%;
+            }
+
+            #contentmenus {
+                position: absolute;
+                width: 20%;
+                height: 40%;
+                top: 50%;
+                left: 40%;
+            }
+
+            #backmenus {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .giro1 {
+                animation: torow 1 2s;
+                animation-fill-mode: forwards;
+            }
+
+            .giro2 {
+                animation: torow2 1 2s;
+                animation-fill-mode: forwards;
+            }
+
+            #backmenusS {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                filter: brightness(0) blur(5px);
+            }
+
+            #bakfond {
+                width: 76%;
+                left: 12%;
+                top: 0;
+                height: 100%;
+                position: absolute;
+                transition: all 2s ease;
+            }
+
+            .backblack {
+                filter: brightness(20%);
+            }
+
+            .backnormal {
+                filter: brightness(100%);
+            }
+
+            @keyframes torow {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+
+                100% {
+                    transform: rotate(180deg);
+                }
+            }
+
+            @keyframes torow2 {
+                0% {
+                    transform: rotate(180deg);
+                }
+
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            #btn1 {
+                width: 25%;
+                height: 25%;
+                position: absolute;
+                left: 15%;
+                top: 36%;
+                z-index: 10;
+            }
+
+            .no {
+                opacity: 0;
+                z-index: -1;
+            }
+
+            .si {
+                opacity: 1;
+                z-index: 11;
+            }
+
+            #btn11 {
+                width: 25%;
+                height: 25%;
+                /*background: red;*/
+                position: absolute;
+                left: 15%;
+                top: 36%;
+            }
+
+            #textslado1 {
+                color: white;
+                font-family: neigefont3;
+                font-size: 1.2vw;
+                font-weight: lighter;
+                position: absolute;
+                top: 20%;
+            }
+
+            .txt1spancolor {
+                filter: invert(0%);
+                transition: all 2s ease;
+            }
+
+            .txt1spancolor2 {
+                filter: invert(100%);
+                transition: all 2s ease;
+            }
+
+            #textplado1 {
+                color: lightgray;
+                font-family: neigefont3;
+                font-size: .5vw;
+                letter-spacing: .05vw;
+                font-weight: lighter;
+                position: absolute;
+                top: 60%;
+            }
+
+            #btn2 {
+                width: 25%;
+                height: 25%;
+                position: absolute;
+                left: 15%;
+                top: 36%;
+            }
+        </style>
+        <script>
+
+
+
+            function toblack() {
+                $("#bakfond").addClass("backblack");
+                $("#bakfond").removeClass("backnormal");
+
+                $("#backmenus").addClass("giro1");
+                $("#backmenusS").addClass("giro1");
+                $("#backmenus").removeClass("giro2");
+                $("#backmenusS").removeClass("giro2");
+
+                $("#textslado1").text("正常主题");
+                $("#textplado1").text("NORMAL THEME");
+
+                $("#btn1").addClass("no");
+                $("#btn1").removeClass("si");
+                $("#btn2").addClass("si");
+                $("#btn2").removeClass("no");
+
+                $("#btn11").addClass("txt1spancolor2");
+                $("#btn11").removeClass("txt1spancolor");
+
+                $("#divmain").addClass("black");
+                $("#divmain").removeClass("white");
+            }
+            function tonormal() {
+                $("#bakfond").addClass("backnormal");
+                $("#bakfond").removeClass("backblack");
+
+                $("#backmenus").addClass("giro2");
+                $("#backmenusS").addClass("giro2");
+                $("#backmenus").removeClass("giro1");
+                $("#backmenusS").removeClass("giro1");
+
+                $("#textslado1").text("黑暗主题");
+                $("#textplado1").text("THEME OBSCURE");
+
+                $("#btn2").addClass("no");
+                $("#btn2").removeClass("si");
+                $("#btn1").addClass("si");
+                $("#btn1").removeClass("no");
+
+                $("#btn11").addClass("txt1spancolor");
+                $("#btn11").removeClass("txt1spancolor2");
+
+                $("#divmain").addClass("white");
+                $("#divmain").removeClass("black");
+            }
+
+        </script>
+
+
+
+        <img src="https://i.postimg.cc/tT7fSPvd/yuki-lu-loadingscreennotip.jpg" id="bakfond" class="backnormal" />
+
+        <img src="https://i.postimg.cc/GpGz1hG6/61b48e14354b718a752d98ff89d8ef6e-1.png" id="imgangel" />
+        <img src="https://i.postimg.cc/mD4jZfSk/www.png" id="imgstones" />
+        <div id="buton2" onclick="callmain();">
+            <style>
+                #buton2 {
+                    width: 5vw;
+                    height: 5vw;
+                    background: green; position:absolute;
+                    top: 30%;
+                    right: 20%;
+                }
+            </style>
+        </div>
+        <div id="contentmenus">
+            <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenusS" />
+            <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenus" />
+            <div id="btn11" class="txt1spancolor">
+                <span id="textslado1">
+
+                </span>
+                <p id="textplado1">
+
+                </p>
+            </div>
+            <div id="btn1" onclick="toblack();" class="si">
+
+            </div>
+
+            <div id="btn2" onclick="tonormal();" class="no">
+
+            </div>
+        </div>
+
+        <!--<img src="https://i.postimg.cc/Pxm61b46/brush-25483.png" id="brush1" />-->
+        <div id="mright">
+
+        </div>
+        <div id="mleft">
+
+        </div>
+        <div id="divfot">
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+   
+
+    <style>
+        .nomain {
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .simain {
+            background: white;
+            animation: toin 1s 1;
+            animation-fill-mode: forwards;
+            z-index: 99999999999999999999999999999999999;
+        }
+
+        #mainpage {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            top: 0;
+            left: 0;
+        }
+
+        #mn2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: toin 1s 1;
+            animation-fill-mode: forwards;
+        }
+
+        #imgbackmainpage {
+            position: absolute;
+            top: 2%;
+            left: 0%;
+            filter: invert(50%);
+        }
+
+        #textlyn {
+            font-family: neigefont3;
+            color: #EAD7B6;
+            font-size: 8vw;
+            position: absolute;
+            top: 65%;
+            font-weight: bold;
+            left: 3%;
+            text-shadow: .2vw .2vw 1vw black;
+            opacity: .75;
+            filter: blur(1px);
+        }
+
+        #textlyn2 {
+            font-family: neigefont2;
+            color: #C2B07A;
+            font-size: 2vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            top: 81%;
+            left: 23%;
+            text-shadow: .2vw .2vw .5vw black;
+            filter: blur(1px);
+        }
+
+        #textlyn3 {
+            filter: blur(.7px);
+            font-family: neigefont2;
+            color: #EAD7B6;
+            font-size: 1.4vw;
+            letter-spacing: .1vw;
+            position: absolute;
+            top: 60%;
+            left: 42%;
+            text-shadow: .2vw .2vw .5vw black;
+            animation: blk 2s infinite;
+            cursor: pointer;
+        }
+
+        #imglogo1 {
+            position: absolute;
+            width: 30%;
+            left: 35%;
+            filter: grayscale(50%);
+            top: 10%;
+        }
+
+        @keyframes blk {
+            0% {
+                opacity: .2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .2;
+            }
+        }
+
+        @keyframes toin {
+            0% {
+                opacity: 0;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <div id="boxfires" class="ag-fireflies_box sifires">
+        <style>
+            #boxfires {
+                filter: sepia(1);
+            }
+
+            .sifires {
+                opacity: 1;
+            }
+
+            .nofires {
+                opacity: 0;
+            }
+        </style>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+        <div class="ag-fireflies_item">
+            <div class="ag-fireflies_inner"></div>
+        </div>
+    </div>
+
+</body>
+</html>
