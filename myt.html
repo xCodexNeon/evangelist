@@ -1,4 +1,4 @@
-﻿
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -38,36 +38,21 @@
                 audioData = [
 
                     {
-                         name: "Lady Maria (The Old Hunters)",
-                        artist: "Bloodborne Soundtrack OST",
+                        name: "MUSIC OFF",
+                        artist: "MUTED",
                         src:
-                            "maria.mp3",
-                        imagen1: "im-33",
+                            "",
+                        imagen1: "im-11",
 
                     },
-                   
                     {
                         name: "La vaguelette",
                         artist: "HOYO-MiX",
                         src:
-                            "Lavaguelette.mp3",
+                            "darkambience.wav", 
                         imagen1: "im-22",
-                      
-                    }
-                    ,
-                    { 
-                        name: "Winding River",
-                        artist: "Genshin Impact Ost",
-                        src:
-                            "https://xevangelist.github.io/evangelist/winding.mp3?raw=true"
 
-                    }  {
-                        name: "Life in ruins",
-                        artist: "The legend of Zelda: Breath of the wild",
-                        src:
-                            "ruins.mp3"
-
-                    }
+                    } 
                 ];
 
                 artistname.html(audioData[CurrentSong].artist + " /");
@@ -154,60 +139,23 @@
             $("#pause").click(function () {
                 song.pause();
                 playing = false;
-                animationspinpause();
-                endeq();
             });
             $("#play").click(function () {
-                animationspinplay();
-                song.play(); starteq()
+
+                song.play();
                 playing = true;
             });
 
             $("#btn-pause").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 3) {
+                if (CurrentSong > 1) {
                     CurrentSong = 0;
                     $("#ima-00").removeAttr("class");
                     $("#ima-10").removeAttr("class");
-
-                }
-                if (CurrentSong == 0) {
-                    selectdsong1(); animationspinplay(); starteq()
-                }
-                if (CurrentSong == 1) {
-                    selectdsong2(); animationspinplay(); starteq()
-                } if (CurrentSong == 2) {
-                    selectdsong3(); animationspinplay(); starteq()
-                } if (CurrentSong == 3) {
-                    selectdsong4(); animationspinplay(); starteq()
-                }
-                playSong();
-            });
-            $("#textlyn3").click(function next() {
-                CurrentSong++;
-                if (CurrentSong > 3) {
-                    CurrentSong = 0;
-                    $("#ima-00").removeAttr("class");
-                    $("#ima-10").removeAttr("class");
-
-                }
-                if (CurrentSong == 0) {
-                    selectdsong1(); animationspinplay(); starteq()
-                }
-                if (CurrentSong == 1) {
-                    selectdsong2(); animationspinplay(); starteq()
-                } if (CurrentSong == 2) {
-                    selectdsong3(); animationspinplay(); starteq()
-                } if (CurrentSong == 3) {
-                    selectdsong4(); animationspinplay(); starteq()
                 }
                 playSong();
             });
         });
-        function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
-        function animationspinplay() {
-            $("#cdspin").css("-webkit-animation-play-state", "running");
-        }
 
     </script>
     <style>
@@ -236,86 +184,53 @@
 <body id="this">
 
 
-    <!--<audio controls id="hovers" class="mks">
+    <audio controls id="hovers" class="mks">
         <style>
             .mks {
                 position: fixed;
                 opacity: 0;
             }
         </style>
-        <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+        <source src="hover.mp3"></source>
         <script>
 
             $(function () {
                 //take id of the audio and make a variable
                 var audio = $("#hovers")[0];
-                $("#logom").mouseenter(function () {
+                $("#configbutton").mouseenter(function () {
                     audio.play();
                 });
-                $("#menup").mouseenter(function () {
+                $("#c1").mouseenter(function () {
                     audio.play();
                 });
-                $("#btn-pause").mouseenter(function () {
+                $("#c2").mouseenter(function () {
                     audio.play();
                 });
-                $("#play").mouseenter(function () {
+                $("#c3").mouseenter(function () {
                     audio.play();
                 });
-                $("#pause").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pf1").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pf2").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pf3").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pf4").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pf5").mouseenter(function () {
-                    audio.play();
-                });
-                $("#confp1").mouseenter(function () {
-                    audio.play();
-                });
-                $("#confp2").mouseenter(function () {
-                    audio.play();
-                });
-                $("#p4config").mouseenter(function () {
-                    audio.play();
-                });
-                $("#preturntoconfig").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pcntbx1").mouseenter(function () {
-                    audio.play();
-                });
-                $("#pcntbx2").mouseenter(function () {
+                $("#c4").mouseenter(function () {
                     audio.play();
                 });
 
-                $("#menuconfig1").mouseenter(function () {
+                $("#btn1").mouseenter(function () {
                     audio.play();
                 });
-                $("#menuconfig2").mouseenter(function () {
+                $("#btn2").mouseenter(function () {
                     audio.play();
                 });
-                $("#menuconfig3").mouseenter(function () {
+                $("#switchon").mouseenter(function () {
                     audio.play();
                 });
-
-
-
+                $("#switchoff").mouseenter(function () {
+                    audio.play();
+                });
 
             });
 
         </script>
     </audio>
-    <audio controls id="clickmp3" class="mks">
+    <!--<audio controls id="clickmp3" class="mks">
         <source src="click.wav"></source>
         <script>
 
@@ -331,24 +246,42 @@
             });
 
         </script>
-    </audio>
-    <audio controls id="inprofile" class="mks">
-        <source src="open.wav"></source>
+    </audio>-->
+    <audio controls id="switchmp3" class="mks">
+        <source src="sw.mp3"></source>
         <script>
 
             $(function () {
                 //take id of the audio and make a variable
-                var audio = $("#inprofile")[0];
+                var audio = $("#switchmp3")[0];
 
-                $("#menup").click(function () {
+                $("#switchon").click(function () {
                     audio.play();
                     console.log(audio);
                 });
-                $("#logom").click(function () {
+                $("#switchoff").click(function () {
                     audio.play();
                     console.log(audio);
                 });
-                $("#confp1").click(function () {
+
+
+            });
+
+        </script>
+    </audio>
+    <audio controls id="giromp3" class="mks">
+        <source src="butogiro.mp3"></source>
+        <script>
+
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#giromp3")[0];
+
+                $("#btn1").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#btn2").click(function () {
                     audio.play();
                     console.log(audio);
                 });
@@ -356,8 +289,25 @@
             });
 
         </script>
-    </audio>-->
+    </audio>
+    <audio controls id="openmp3" class="mks">
+        <source src="opencon.mp3"></source>
+        <script>
 
+            $(function () {
+                //take id of the audio and make a variable
+                var audio = $("#openmp3")[0];
+
+                $("#configbutton").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+               
+
+            });
+
+        </script>
+    </audio>
     <div id="gradient">
         <style>
             #gradient {
@@ -448,6 +398,7 @@
     </script>
 
     <div id="Fmain" class="si">
+
         <style>
             #Fmain {
                 position: absolute;
@@ -484,15 +435,18 @@
             #divmain {
                 position: absolute;
                 width: 100%;
-               
                 top: 15%;
                 height: 80%;
             }
+
             .white {
                 background: white;
             }
-            .black { background:rgb(49, 49, 49);
+
+            .black {
+                background: rgb(49, 49, 49);
             }
+
             #div1 {
                 position: absolute;
                 width: 100%;
@@ -571,7 +525,7 @@
             function calloptions() {
                 $("#Fmain").addClass("no");
                 $("#Fmain").removeClass("si");
-                $("#Mmain").addClass("si");
+                $("#Mmain").addClass("simenu");
                 $("#Mmain").removeClass("no");
                 $("#textslado1").text("黑暗主题");
                 $("#textplado1").text("THEME OBSCURE");
@@ -580,7 +534,7 @@
                 $("#Fmain").addClass("si");
                 $("#Fmain").removeClass("no");
                 $("#Mmain").addClass("no");
-                $("#Mmain").removeClass("si"); 
+                $("#Mmain").removeClass("simenu");
             }
         </script>
         <div id="filter">
@@ -588,7 +542,37 @@
         </div>
         <div id="mainmenu">
 
-            <div id="div1"></div>
+
+
+            <div id="div1">
+                <style>
+                    #firmmyt {
+                        font-family: textfirmFont;
+                        color: white;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 2%;
+                        top: -15%;
+                        opacity: .3;
+                    }
+
+                    #firmmyt2 {
+                        font-family: Roboto;
+                        color: white;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 2%;
+                        top: 40%;
+                        opacity: .2;
+                    }
+                </style>
+                <p id="firmmyt"> Schroederz</p>
+                <p id="firmmyt2"> 942659922 | MYTHEZ</p>
+
+            </div>
+
+
             <div id="divmain" class="white">
                 <img src="https://i.postimg.cc/0NMZzJZr/12.png" id="mainren" />
 
@@ -605,16 +589,775 @@
             <p id="bigp">话</p>
             <div id="div2"></div>
 
-
-            <div id="buton" onclick="calloptions();">
-
+            <div id="statsdiv">
+                <style>
+                    #statsdiv { position:absolute; width:30%; height:10%; top:59%;   right:21%;
+                    }
+                        #statsdiv p { text-align:right; color:gray; font-size:.7vw; letter-spacing:.1vw; font-family:Roboto;
+                        }
+                            #statsdiv p span { color:black;
+                            }
+                </style>
+                <p>
+                    <span>年龄</span> | XXIII (MMI)<br />
+                                                 <span>居住地和国家</span>  | Spain & Panama<br />
+                                                                                      <span>找我</span> | xat.com/Forest<br />
+                                                                                                                      <span>画廊和设计</span> | Gallery
+                </p>
             </div>
+            <div id="firmmain">
+                <style>
+                    #firmmain {
+                        position: absolute;
+                        width: 30%;
+                        height: 27%;  
+                        top: 30%;
+                        right: 21%;
+                    }
+
+                        #firmmain p {
+                            text-align: right;
+                            color: gray;
+                            font-size: .6vw;
+                            letter-spacing: .05vw;
+                            font-family: Roboto;
+                        }
+
+                            #firmmain p span {
+                                color: #b0b0b0; font-size:.55vw;
+                            }
+                </style>
+                <p>
+
+                    la realidad es basta e infinita<br />
+                    con tonalidades grises que predominan la mente y nublan la vista<br />
+                    <span>
+                        现实是粗糙而无限的，灰色调占据了心灵并遮蔽了视野
+                    </span>
+                    <br />
+                    oscurecen los pensamientos sin discresion<br />
+                    afligiendo el razonamiento y lastimando el corazón<br />
+                    <span>
+                        他们不加判断地使思想变得黑暗，折磨理智，伤害心灵。
+                    </span>
+                    <br />
+                    heridas que tardan en sanar<br />
+                    que no solo el tiempo puede tratar<br />
+                    <span>
+                        那些需要时间才能治愈的伤口，不仅是时间可以治愈的
+                    </span>
+                    <br />
+                    los susurros de la mente son los que mas destruyen<br />
+                    mientras que los ajenos, son los que los trozos unen<br />
+                    <span>
+                        心灵的低语是最具破坏性的，而其他人的低语则是将碎片连接在一起的。
+                    </span>
+                    <br />
+                    aferrarse y refugiarse en algo inesperado,<br />
+                    irreal y prudente para escapar del calvario<br />
+                    <span>
+                        坚持并寻求一些意想不到的、不真实的和谨慎的事物来逃避磨难
+                    </span>
+                    <br />
+                    como un mito en esta vida...<br />
+                    te puede mantener a salvo.<br />
+                                              <span>
+
+                                                  就像今生的神话一样……它可以保证你的安全。
+                                              </span>
+                </p>
+            </div>
+            <div id="imgsarea">
+                <style>
+                    #imgsarea { position:absolute; width:30%; height:10%; top:70%;  right:21%;
+                    }
+                        #imgsarea img { width:6vw; height:80%;   margin-left:1.3vw; border-radius:.5vw; box-shadow: .3vw .3vw .3vw gray;
+                        }
+                </style>
+                <img src="https://i.ibb.co/C6r7s1g/Fp5-Ps-Cg-Wc-AEYlg4.png" />
+                <img src="https://i.ibb.co/D1wKWp7/butterfly.png" />
+                <img  src="https://i.ibb.co/DC4jr8n/Fp5-Pcz-YXs-AEIc-NT.jpg"/>
+            </div>
+
+
         </div>
 
         <img src="https://i.postimg.cc/N0YkbPxq/sola-pluma-negra-aislada-fondo-blanco-36860-396.png" id="pluma" />
     </div>
+    <div id="boxfriends">
+        <style>
+            #boxfriends {
+                z-index: 100;
+                opacity: 1;
+                position: absolute;
+                width: 48%;
+                height: 8vw;
+                left: 30%;
+                top: 6.5%;
+            }
+
+            #c1 {
+                position: absolute;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+            }
+
+            #c2 {
+                position: absolute;
+                left: 28%;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+            }
+
+            #c3 {
+                position: absolute;
+                left: 54%;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+            }
+
+            #c4 {
+                position: absolute;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+                right: 0;
+            }
+
+                #c1:hover #clonec1, #c2:hover #clonec1, #c3:hover #clonec1, #c4:hover #clonec1 {
+                    transform: rotate(90deg);
+                }
+
+                #c1:hover #blackcircle, #c2:hover #blackcircle, #c3:hover #blackcircle, #c4:hover #blackcircle {
+                    filter: blur(5px);
+                    background: rgba(0,0,0,.7);
+                }
+
+                #c1:hover #clonec2, #c2:hover #clonec2, #c3:hover #clonec2, #c4:hover #clonec2 {
+                    opacity: 1;
+                }
+
+                #c1:hover #ltch, #c2:hover #ltch, #c3:hover #ltch, #c4:hover #ltch {
+                    color: #feb756;
+                }
+
+            #clonec1 {
+                position: absolute;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+                transition: all 2s ease;
+            }
+
+            #flecha1 {
+                width: .5vw;
+                position: absolute;
+                right: 0;
+                top: 49%;
+            }
+
+            #flecha2 {
+                transform: scaleX(-1);
+                width: .5vw;
+                position: absolute;
+                left: 0;
+                top: 49%;
+            }
+
+            #blackcircle {
+                position: absolute;
+                width: 85%;
+                height: 85%;
+                border-radius: 50%;
+                background: rgba(0,0,0,.5);
+                left: 7.5%;
+                top: 7.5%;
+                filter: blur(1px);
+                transition: all 2s ease;
+            }
+
+            #goldcircle {
+                width: 70%;
+                height: 70%;
+                position: absolute;
+                left: 14%;
+                top: 14.5%;
+                border-radius: 50%;
+                border: .1vw solid #ffc466;
+                overflow: hidden;
+            }
+
+                #goldcircle img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            #clonec2 {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.6);
+                transition: all 2s ease;
+                opacity: 0;
+            }
+
+                #clonec2 p {
+                    position: relative;
+                    text-align: center;
+                    color: white;
+                    opacity: .7;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    font-family: Roboto;
+                    top: 28%;
+                }
+
+            #boxtext {
+                position: absolute;
+                width: 100%;
+                height: 30%;
+                opacity: .9;
+                top: 98%;
+                text-align: center;
+            }
+
+            #ltch {
+                position: relative;
+                font-size: .6vw;
+                top: -15%;
+                font-weight: bold;
+                transition: all 2s ease;
+            }
+
+            #frdnum {
+                position: relative;
+                font-size: .6vw;
+                font-family: Roboto;
+                top: -35%;
+                color: darkgray;
+                letter-spacing: .1vw;
+                font-weight: bold;
+            }
+        </style>
+
+        <div id="c1">
+            <div id="clonec1">
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha1" />
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha2" />
+                <div id="blackcircle">
+
+                </div>
+
+            </div>
+            <div id="goldcircle">
+                <img src="https://i.postimg.cc/Xq5qBGgg/123.jpg" />
+                <div id="clonec2">
+                    <p>⪡NEIGE⪢</p>
+                </div>
+            </div>
+            <div id="boxtext">
+                <p id="ltch">
+                    优秀的人非常感谢 空间兄弟
+                </p>
+                <p id="frdnum">001 | XXIII</p>
+            </div>
+        </div>
+        <div id="c2">
+            <div id="clonec1">
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha1" />
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha2" />
+                <div id="blackcircle">
+
+                </div>
+            </div>
+            <div id="goldcircle">
+                <img src="https://i.imgur.com/tTgv0yF.png" />
+                <div id="clonec2">
+                    <p>KINGGEEDORAH</p>
+                </div>
+            </div>
+            <div id="boxtext">
+                <p id="ltch">这贝壳有艾滋病，掉号了</p>
+                <p id="frdnum">002 | XIX</p>
+            </div>
+        </div>
+        <div id="c3">
+            <div id="clonec1">
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha1" />
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha2" />
+                <div id="blackcircle">
+
+                </div>
+            </div>
+            <div id="goldcircle">
+                <img src="https://i.imgur.com/usfZkQd.png" />
+                <div id="clonec2">
+                    <p>⪡FRIEREN⪢</p>
+                </div>
+            </div>
+            <div id="boxtext">
+                <p id="ltch">好色之徒、雌雄同体和同性恋</p>
+                <p id="frdnum">003 | VII</p>
+            </div>
+        </div>
+        <div id="c4">
+            <div id="clonec1">
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha1" />
+                <img src="https://i.postimg.cc/7hHTw7b5/arrow-gold-icon-illustration-of-golden-particle-background-vector.png" id="flecha2" />
+                <div id="blackcircle">
+
+                </div>
+            </div>
+            <div id="goldcircle">
+                <img src="https://i.imgur.com/mioQrUb.png" />
+                <div id="clonec2">
+                    <p>⪡POOCKY⪢</p>
+                </div>
+            </div>
+            <div id="boxtext">
+                <p id="ltch">恰吉变性版</p>
+                <p id="frdnum">004 | XIV</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="configbutton" onclick="calloptions();">
+        <style>
+            #configbutton {
+                position: absolute;
+                width: 3%;
+                height: 20%;
+                right: 12%;
+                top: 15%;
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #cog {
+                width: 70%;
+                position: absolute;
+                top: 5%;
+                left: 15%;
+                opacity: .7;
+            }
+
+            #configbutton:hover #cog {
+                animation: rotation 3s infinite linear;
+            }
+
+            #configbutton:hover #confch {
+                color: #ffc466;
+            }
+
+            @keyframes rotation {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(359deg);
+                }
+            }
+
+            #confch {
+                font-family: neigefont3;
+                color: gray;
+                font-size: 1vw;
+                position: absolute;
+                top: 20%;
+                left: 40%;
+                transition: all 1s ease;
+            }
+
+            #confch2 {
+                font-family: Roboto;
+                color: gray;
+                font-size: .5vw;
+                position: absolute;
+                top: 26%;
+                left: 20%;
+                transition: all 1s ease;
+            }
+        </style>
+        <img id="cog" src="https://i.postimg.cc/CLd0ZNBw/pngegg-4.png" />
+        <p id="confch">
+            配<br />置<br />和<br />调<br />整
+        </p>
+        <p id="confch2">
+            S<br />E<br />T<br />T<br />I<br />N<br />G<br />S
+        </p>
+    </div>
+
+    <div id="sep">
+        <style>
+            #sep {
+                width: 20%;
+                height: 0;
+                opacity: .4;
+                border: .1vw gray dashed;
+                position: absolute;
+                top: 58%;
+                left: 52%;
+                z-index: 100;
+            }
+        </style>
+    </div>
+    <!--<div id="audiobox">
+        <style>
+         
+
+            #audiobox {
+                position: absolute;
+                width: 30%;
+                height: 30%;
+                top: 55%;
+                left: 43%;
+                z-index: 100;
+                background: red;
+            }
+        </style>
+        
+
+            
+        </style>
+         
+        <div id="btn-pause" class="fas fa-forward"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" /></div>
+        <div id="pause" class="fas fa-forward"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" /></div>
+        <div id="play" class="fas fa-forward"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" /></div>
+
+    </div>-->
 
     <div id="Mmain" class="no">
+        <div id="boxfires2" class="ag-fireflies_box sifires">
+            <style>
+                #boxfires {
+                    /*filter: sepia(1);*/ mix-blend-mode: difference;
+                    filter: grayscale(100%);
+                    transition: all 2s ease;
+                    z-index: 99;
+                }
+
+                #boxfires2 {
+                    /*filter: sepia(1);*/ mix-blend-mode: difference;
+                    filter: grayscale(100%);
+                    transition: all 2s ease;
+                    z-index: 99;
+                }
+
+                .sifires {
+                    opacity: 1;
+                }
+
+                .nofires {
+                    opacity: 0;
+                }
+            </style>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+        </div>
+
         <style>
             @font-face {
                 font-family: textfirmFont;
@@ -645,7 +1388,6 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background: white;
             }
 
             #imgstones {
@@ -721,6 +1463,7 @@
                 height: 40%;
                 top: 50%;
                 left: 40%;
+                z-index: 100;
             }
 
             #backmenus {
@@ -804,6 +1547,11 @@
                 z-index: 11;
             }
 
+            .simenu {
+                opacity: 1;
+                z-index: 100;
+            }
+
             #btn11 {
                 width: 25%;
                 height: 25%;
@@ -848,6 +1596,25 @@
                 position: absolute;
                 left: 15%;
                 top: 36%;
+            }
+
+            #titlecon2 {
+                position: absolute;
+                color: black;
+                filter: blur(2.5px);
+                top: -4.5%;
+                left: 13.5%;
+                font-size: 3vw;
+                font-family: neigefont3;
+            }
+
+            #titlecon {
+                position: absolute;
+                color: #ffc466;
+                top: -5%;
+                left: 13%;
+                font-size: 3vw;
+                font-family: neigefont3;
             }
         </style>
         <script>
@@ -909,17 +1676,14 @@
 
         <img src="https://i.postimg.cc/GpGz1hG6/61b48e14354b718a752d98ff89d8ef6e-1.png" id="imgangel" />
         <img src="https://i.postimg.cc/mD4jZfSk/www.png" id="imgstones" />
-        <div id="buton2" onclick="callmain();">
-            <style>
-                #buton2 {
-                    width: 5vw;
-                    height: 5vw;
-                    background: green; position:absolute;
-                    top: 30%;
-                    right: 20%;
-                }
-            </style>
-        </div>
+        <p id="titlecon2">
+            设置和配置
+        </p>
+
+        <p id="titlecon">
+            设置和配置
+        </p>
+
         <div id="contentmenus">
             <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenusS" />
             <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenus" />
@@ -940,6 +1704,64 @@
             </div>
         </div>
 
+
+        <div id="controleffect">
+            <style>
+                #controleffect {
+                    position: absolute;
+                    width: 25%;
+                    height: 30%;
+                    top: 10%;
+                    left: 15%;
+                    z-index: 100;
+                }
+
+                #switchon {
+                    height: 100%;
+                    position: absolute;
+                    left: 5%;
+                    transition: all 2s ease;
+                }
+
+                #switchoff {
+                    transition: all 2s ease;
+                    height: 100%;
+                    position: absolute;
+                    left: 40%;
+                }
+
+                .offs {
+                    filter: grayscale(50%) contrast(110%) brightness(50%);
+                    top: 15%;
+                }
+
+                .onns {
+                    filter: grayscale(0%);
+                    top: 0;
+                }
+            </style>
+            <script>
+                function offswitch() {
+                    $("#switchon").addClass("offs");
+                    $("#switchon").removeClass("onns");
+                    $("#switchoff").addClass("onns");
+                    $("#switchoff").removeClass("offs");
+                    $("#boxfires").addClass("nofires"); $("#boxfires").removeClass("sifires");
+                    $("#boxfires2").addClass("nofires"); $("#boxfires2").removeClass("sifires");
+                }
+                function onswitch() {
+                    $("#switchon").addClass("onns");
+                    $("#switchon").removeClass("offs");
+                    $("#switchoff").addClass("offs");
+                    $("#switchoff").removeClass("onns");
+                    $("#boxfires").removeClass("nofires"); $("#boxfires").addClass("sifires");
+                    $("#boxfires2").removeClass("nofires"); $("#boxfires2").addClass("sifires");
+                }
+            </script>
+            <img id="switchon" onclick="onswitch(); " class="onns" src="https://i.postimg.cc/KvKVhcs5/on.png" />
+            <img id="switchoff" onclick="offswitch();" class="offs" src="https://i.postimg.cc/PfVc7vKx/off.png" />
+        </div>
+
         <!--<img src="https://i.postimg.cc/Pxm61b46/brush-25483.png" id="brush1" />-->
         <div id="mright">
 
@@ -948,7 +1770,58 @@
 
         </div>
         <div id="divfot">
+            <style>
+                #sectcrt {
+                    position: absolute;
+                    width: 40%;
+                    height: 45%;
+                    right: -15%;
+                    top: 10%;
+                }
 
+                #crt {
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    font-size: .45vw;
+                    letter-spacing: .1vw;
+                    text-transform: uppercase;
+                    opacity: .7;
+                }
+
+                #frim {
+                    position: absolute;
+                    width: 4vw;
+                    filter: invert(100%);
+                    right: 25%;
+                    top: 8%;
+                }
+            </style>
+            <div id="sectcrt">
+                <p id="crt">
+                    ●GRIS & LYNETTE<br />
+                    灰色的 | 昏迷，黑色 | 吞 | 0001 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ●swallow | 000001<br />
+                    ●NEIGE | REIIZ | ●tous droits réservés ●xat.com ●2023
+                </p>
+
+            </div>
+            <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="frim" />
+        </div>
+        <div id="buton2" onclick="callmain();">
+            <style>
+                #buton2 {
+                    width: 5vw;
+                    height: 5vw;
+                    background: green;
+                    position: absolute;
+                    top: 30%;
+                    right: 20%;
+                    z-index: 1000;
+                }
+
+                #buton {
+                    z-index: 1000;
+                }
+            </style>
         </div>
     </div>
 
@@ -958,7 +1831,7 @@
 
 
 
-   
+
 
     <style>
         .nomain {
@@ -1080,11 +1953,13 @@
     <div id="boxfires" class="ag-fireflies_box sifires">
         <style>
             #boxfires {
-                filter: sepia(1);
+                /*filter: sepia(1);*/ mix-blend-mode: difference;
+                filter: grayscale(100%);
+                z-index: 99;
             }
 
             .sifires {
-                opacity: 1;
+                opacity: .6;
             }
 
             .nofires {
