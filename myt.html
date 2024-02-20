@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -104,7 +104,7 @@
                 $(".time").html(indicatorLabel);
             });
 
-            $("#btn-play").click(function playOrPause() {
+            $("#loadtext").click(function playOrPause() {
                 if (song.paused) {
                     song.play();
                     playing = true;
@@ -120,7 +120,7 @@
                 }
             });
 
-            $("#btn-play").click(function playOrPause() {
+            $("#loadtext").click(function playOrPause() {
                 if (song.paused) {
                     song.play();
                     playing = true;
@@ -136,17 +136,17 @@
                 }
             });
 
-            $("#pause").click(function () {
+            $("#divx3").click(function () {
                 song.pause();
                 playing = false;
             });
-            $("#play").click(function () {
+            $("#divx2").click(function () {
 
                 song.play();
                 playing = true;
             });
 
-            $("#btn-pause").click(function next() {
+            $("#mainpagex").click(function next() {
                 CurrentSong++;
                 if (CurrentSong > 1) {
                     CurrentSong = 0;
@@ -182,7 +182,28 @@
 
 </head>
 <body id="this">
+    <div id="audiobox">
+        <style>
 
+
+            #audiobox {
+                position: absolute;
+                width: 30%;
+                height: 30%;
+                top: 55%;
+                left: 43%;
+                z-index: -1; opacity:0;
+            }
+        </style>
+
+
+
+
+        <div id="btn-pause" class="fas fa-forward"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" /></div>
+        <div id="pause" class="fas fa-forward"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" /></div>
+        <div id="play" class="fas fa-forward"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" /></div>
+
+    </div>
 
     <audio controls id="hovers" class="mks">
         <style>
@@ -225,7 +246,9 @@
                 $("#switchoff").mouseenter(function () {
                     audio.play();
                 });
-
+                $("#buton2").mouseenter(function () {
+                    audio.play();
+                });
             });
 
         </script>
@@ -263,8 +286,14 @@
                     audio.play();
                     console.log(audio);
                 });
-
-
+                $("#divx2").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
+                $("#divx3").click(function () {
+                    audio.play();
+                    console.log(audio);
+                });
             });
 
         </script>
@@ -302,7 +331,7 @@
                     audio.play();
                     console.log(audio);
                 });
-               
+
 
             });
 
@@ -411,8 +440,7 @@
                 position: absolute;
                 width: 76%;
                 left: 12%;
-                height: 100%;
-                background: Red;
+                height: 100%; 
                 overflow: hidden;
             }
 
@@ -515,10 +543,11 @@
             #buton {
                 position: absolute;
                 width: 3vw;
-                height: 3vw;
-                background: red;
+                height: 3vw; 
                 right: 0;
                 top: 40%;
+            }
+            .sim { z-index:100;
             }
         </style>
         <script>
@@ -527,10 +556,14 @@
                 $("#Fmain").removeClass("si");
                 $("#Mmain").addClass("simenu");
                 $("#Mmain").removeClass("no");
+                $("#boxfriends").addClass("no");
+                $("#boxfriends").removeClass("sim");
                 $("#textslado1").text("黑暗主题");
                 $("#textplado1").text("THEME OBSCURE");
             }
             function callmain() {
+                $("#boxfriends").addClass("sim");
+                $("#boxfriends").removeClass("no");
                 $("#Fmain").addClass("si");
                 $("#Fmain").removeClass("no");
                 $("#Mmain").addClass("no");
@@ -568,7 +601,8 @@
                     }
                 </style>
                 <p id="firmmyt"> Schroederz</p>
-                <p id="firmmyt2"> 942659922 | MYTHEZ</p>
+                <p id="firmmyt2"> 942659922 | MYTHES</p>
+                <p id="firmmyt2"> 942659922 | MYTHES</p>
 
             </div>
 
@@ -591,18 +625,33 @@
 
             <div id="statsdiv">
                 <style>
-                    #statsdiv { position:absolute; width:30%; height:10%; top:59%;   right:21%;
+                    #statsdiv {
+                        position: absolute;
+                        width: 30%;
+                        height: 10%;
+                        top: 59%;
+                        right: 21%;
                     }
-                        #statsdiv p { text-align:right; color:gray; font-size:.7vw; letter-spacing:.1vw; font-family:Roboto;
+
+                        #statsdiv p {
+                            text-align: right;
+                            color: gray;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            font-family: Roboto;
                         }
-                            #statsdiv p span { color:black;
+
+                            #statsdiv p span {
+                                color: black;
                             }
+                    a { text-decoration:none; color:gray;
+                    }
                 </style>
                 <p>
                     <span>年龄</span> | XXIII (MMI)<br />
-                                                 <span>居住地和国家</span>  | Spain & Panama<br />
-                                                                                      <span>找我</span> | xat.com/Forest<br />
-                                                                                                                      <span>画廊和设计</span> | Gallery
+                    <span>居住地和国家</span>  | Stray<br />
+                    <span>找我</span> | <a href="https://xat.com/forest">xat.com/Forest</a><br />
+                    <span>画廊和设计</span> | <a href="https://www.flickr.com/people/mythes/">Gallery</a>
                 </p>
             </div>
             <div id="firmmain">
@@ -610,7 +659,7 @@
                     #firmmain {
                         position: absolute;
                         width: 30%;
-                        height: 27%;  
+                        height: 27%;
                         top: 30%;
                         right: 21%;
                     }
@@ -624,36 +673,37 @@
                         }
 
                             #firmmain p span {
-                                color: #b0b0b0; font-size:.55vw;
+                                color: #b0b0b0;
+                                font-size: .55vw;
                             }
                 </style>
                 <p>
 
-                    la realidad es basta e infinita<br />
+                    La realidad es basta e infinita<br />
                     con tonalidades grises que predominan la mente y nublan la vista<br />
                     <span>
                         现实是粗糙而无限的，灰色调占据了心灵并遮蔽了视野
                     </span>
                     <br />
-                    oscurecen los pensamientos sin discresion<br />
+                    Obscurecen los pensamientos sin discreción<br />
                     afligiendo el razonamiento y lastimando el corazón<br />
                     <span>
                         他们不加判断地使思想变得黑暗，折磨理智，伤害心灵。
                     </span>
                     <br />
-                    heridas que tardan en sanar<br />
+                    Heridas que tardan en sanar<br />
                     que no solo el tiempo puede tratar<br />
                     <span>
                         那些需要时间才能治愈的伤口，不仅是时间可以治愈的
                     </span>
                     <br />
-                    los susurros de la mente son los que mas destruyen<br />
+                    Los susurros de la mente son los que mas destruyen<br />
                     mientras que los ajenos, son los que los trozos unen<br />
                     <span>
                         心灵的低语是最具破坏性的，而其他人的低语则是将碎片连接在一起的。
                     </span>
                     <br />
-                    aferrarse y refugiarse en algo inesperado,<br />
+                    Aferrarse y refugiarse en algo inesperado,<br />
                     irreal y prudente para escapar del calvario<br />
                     <span>
                         坚持并寻求一些意想不到的、不真实的和谨慎的事物来逃避磨难
@@ -661,22 +711,33 @@
                     <br />
                     como un mito en esta vida...<br />
                     te puede mantener a salvo.<br />
-                                              <span>
+                    <span>
 
-                                                  就像今生的神话一样……它可以保证你的安全。
-                                              </span>
+                        就像今生的神话一样……它可以保证你的安全。
+                    </span>
                 </p>
             </div>
             <div id="imgsarea">
                 <style>
-                    #imgsarea { position:absolute; width:30%; height:10%; top:70%;  right:21%;
+                    #imgsarea {
+                        position: absolute;
+                        width: 30%;
+                        height: 10%;
+                        top: 70%;
+                        right: 21%;
                     }
-                        #imgsarea img { width:6vw; height:80%;   margin-left:1.3vw; border-radius:.5vw; box-shadow: .3vw .3vw .3vw gray;
+
+                        #imgsarea img {
+                            width: 6vw;
+                            height: 80%;
+                            margin-left: 1.3vw;
+                            border-radius: .5vw;
+                            box-shadow: .3vw .3vw .3vw gray;
                         }
                 </style>
                 <img src="https://i.ibb.co/C6r7s1g/Fp5-Ps-Cg-Wc-AEYlg4.png" />
                 <img src="https://i.ibb.co/D1wKWp7/butterfly.png" />
-                <img  src="https://i.ibb.co/DC4jr8n/Fp5-Pcz-YXs-AEIc-NT.jpg"/>
+                <img src="https://i.ibb.co/DC4jr8n/Fp5-Pcz-YXs-AEIc-NT.jpg" />
             </div>
 
 
@@ -684,11 +745,9 @@
 
         <img src="https://i.postimg.cc/N0YkbPxq/sola-pluma-negra-aislada-fondo-blanco-36860-396.png" id="pluma" />
     </div>
-    <div id="boxfriends">
+    <div id="boxfriends" class="sim">
         <style>
             #boxfriends {
-                z-index: 100;
-                opacity: 1;
                 position: absolute;
                 width: 48%;
                 height: 8vw;
@@ -1006,30 +1065,7 @@
             }
         </style>
     </div>
-    <!--<div id="audiobox">
-        <style>
-         
 
-            #audiobox {
-                position: absolute;
-                width: 30%;
-                height: 30%;
-                top: 55%;
-                left: 43%;
-                z-index: 100;
-                background: red;
-            }
-        </style>
-        
-
-            
-        </style>
-         
-        <div id="btn-pause" class="fas fa-forward"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" /></div>
-        <div id="pause" class="fas fa-forward"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" /></div>
-        <div id="play" class="fas fa-forward"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" /></div>
-
-    </div>-->
 
     <div id="Mmain" class="no">
         <div id="boxfires2" class="ag-fireflies_box sifires">
@@ -1388,6 +1424,7 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
+                transition: all 1s ease;
             }
 
             #imgstones {
@@ -1616,10 +1653,58 @@
                 font-size: 3vw;
                 font-family: neigefont3;
             }
+
+            #flecha1bk {
+                position: absolute;
+                width: 30%;
+                right: -15%;
+                height: 78%;
+                top: 11%;
+            }
+
+            #flech2 {
+                position: absolute;
+                width: 40%;
+                top: 38%;
+                animation: torow3 4s infinite;
+            }
+
+            @keyframes torow3 {
+                0% {
+                    right: -5%;
+                }
+
+                50% {
+                    right: 1%;
+                }
+
+                100% {
+                    right: -5%;
+                }
+            }
+
+            #cubech {
+                position: absolute;
+                width: 10%;
+                top: 45%;
+                left: 45%;
+                height: 10%;
+            }
         </style>
         <script>
 
-
+            function toplay() {
+                $("#divx2").addClass("press");
+                $("#divx2").removeClass("nopress");
+                $("#divx3").addClass("nopress");
+                $("#divx3").removeClass("press");
+            };
+            function tostop() {
+                $("#divx3").addClass("press");
+                $("#divx3").removeClass("nopress");
+                $("#divx2").addClass("nopress");
+                $("#divx2").removeClass("press");
+            };
 
             function toblack() {
                 $("#bakfond").addClass("backblack");
@@ -1671,11 +1756,12 @@
         </script>
 
 
-
         <img src="https://i.postimg.cc/tT7fSPvd/yuki-lu-loadingscreennotip.jpg" id="bakfond" class="backnormal" />
 
         <img src="https://i.postimg.cc/GpGz1hG6/61b48e14354b718a752d98ff89d8ef6e-1.png" id="imgangel" />
         <img src="https://i.postimg.cc/mD4jZfSk/www.png" id="imgstones" />
+
+
         <p id="titlecon2">
             设置和配置
         </p>
@@ -1687,6 +1773,9 @@
         <div id="contentmenus">
             <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenusS" />
             <img src="https://i.postimg.cc/t4WVqrCm/1rom.png" id="backmenus" />
+            <img src="https://i.postimg.cc/x1gSj0VF/2rom.png" id="cubech" />
+            <img id="flecha1bk" src="https://i.ibb.co/tCFkWs5/pico2.png" />
+            <img src="https://i.ibb.co/9VN8SdG/pico1.png" id="flech2" />
             <div id="btn11" class="txt1spancolor">
                 <span id="textslado1">
 
@@ -1703,6 +1792,76 @@
 
             </div>
         </div>
+        <style>
+            #imgreturn {
+                position: absolute;
+                top: -10%;
+                left: 73%;
+                height: 32%;
+                z-index: 100;
+                height: 100%;
+            }
+
+            #preturn {
+                font-size: .7vw;
+                color: white;
+                position: absolute;
+                left: 78%;
+                top: 40%;
+                z-index: 101;
+                font-family: Roboto;
+                opacity: .5;
+            }
+
+            #qrimg {
+                width: 8%;
+                position: absolute;
+                left: 40%;
+                top: 8%;
+            }
+
+            #subtext {
+                position: absolute;
+                font-size: .7vw;
+                letter-spacing: .1vw;
+                color: darkgray;
+                top: 35%;
+                left: 34%;
+            }
+
+            #subtext2 {
+                position: absolute;
+                font-size: .55vw;
+                letter-spacing: .05vw;
+                color: darkgray;
+                font-family: Roboto;
+                top: 23%;
+                left: 40%;
+            }
+
+            #subtext span {
+                color: #ffc466;
+            }
+
+            #divlat {
+                height: 88%;
+                width: 0;
+                border-left: .1vw dashed darkgray;
+                position: absolute;
+                top: 5%;
+                left: 50%;
+            }
+
+            #sounttitle {
+                position: absolute;
+                top: 0%;
+                left: 52%;
+                color: gray;
+                font-size: 4vw;
+                font-weight: bold;
+                font-family: Roboto;
+            }
+        </style>
 
 
         <div id="controleffect">
@@ -1760,9 +1919,122 @@
             </script>
             <img id="switchon" onclick="onswitch(); " class="onns" src="https://i.postimg.cc/KvKVhcs5/on.png" />
             <img id="switchoff" onclick="offswitch();" class="offs" src="https://i.postimg.cc/PfVc7vKx/off.png" />
+            <img src="https://i.postimg.cc/XqCbCxTv/cv2.png" id="imgreturn" />
+            <p id="preturn">
+                R<br />
+                E<br />
+                T<br />
+                U<br />
+                R<br />
+                N
+            </p>
         </div>
 
-        <!--<img src="https://i.postimg.cc/Pxm61b46/brush-25483.png" id="brush1" />-->
+        <img src="https://i.postimg.cc/tC8KLLYv/23.png" id="qrimg" />
+        <p id="subtext2">https://xat.me/Schroederz</p>
+        <p id="subtext">该空间的选项 <span>配置和调整</span> 和声音</p>
+
+        <p id="sounttitle">
+            SOUND
+        </p>
+        <div id="controlsaudio">
+            <style>
+                #controlsaudio {
+                    z-index: 100;
+                    position: absolute;
+                    width: 20%;
+                    height: 7%;
+                    left: 52%;
+                    top: 18%;
+                    border: .3vw solid gray;
+                }
+
+                #divx1 {
+                    position: absolute;
+                    background: gray;
+                    width: 25%;
+                    height: 100%;
+                }
+
+                #divx2 {
+                    position: absolute;
+                    width: 20%;
+                    left: 25%;
+                    height: 100%;
+                    border-right: .3vw solid gray;
+                }
+
+                .press {
+                    background: white;
+                }
+
+                .nopress {
+                    background: rgb(200, 200, 200);
+                }
+
+                #divx1 p {
+                    position: absolute;
+                    color: white;
+                    font-size: 2vw;
+                    top: -2vw;
+                }
+
+                #divx1 span {
+                    position: absolute;
+                    color: white;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    top: 1.2vw;
+                    font-family: Roboto;
+                    font-weight: bold;
+                    left: 1vw;
+                }
+
+                #divx2 img {
+                    opacity: .6;
+                    position: absolute;
+                    width: 3vw;
+                    top: .3vw;
+                    left: .6vw;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                }
+
+                #divx3 {
+                    position: absolute;
+                    width: 55%;
+                    left: 45%;
+                    height: 100%;
+                }
+
+                #stipsound {
+                    mix-blend-mode: difference;
+                    filter: invert(50%);
+                    position: absolute;
+                    color: white;
+                    font-size: 2vw;
+                    letter-spacing: .4vw;
+                    top: -1.4vw;
+                    font-family: Roboto;
+                    font-weight: bold;
+                    left: 2.5vw;
+                    z-index: 100;
+                }
+            </style>
+            <div id="divx1">
+                <p>*</p>
+                <span>STATUS</span>
+            </div>
+
+            <div id="divx3" class="nopress" onclick="tostop();">
+                <p id="stipsound">STOP</p>
+            </div> <div id="divx2" class="press" onclick="toplay();">
+                <img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" />
+            </div>
+        </div>
+        <div id="divlat">
+
+        </div>
         <div id="mright">
 
         </div>
@@ -1809,12 +2081,11 @@
         <div id="buton2" onclick="callmain();">
             <style>
                 #buton2 {
-                    width: 5vw;
-                    height: 5vw;
-                    background: green;
+                    width: 4%;
+                    height: 27%;
                     position: absolute;
-                    top: 30%;
-                    right: 20%;
+                    top: 8%;
+                    left: 34%;
                     z-index: 1000;
                 }
 
@@ -1825,6 +2096,168 @@
         </div>
     </div>
 
+    <div id="mainpagex" class="mnge" onclick="ocultpage();">
+        <style>
+            .mnge {
+                z-index: 999999999999999;
+                opacity: 1;
+            }
+
+            .mnge2 {
+                z-index: -9;
+                opacity: 0;
+            }
+
+            #mainpagex {
+                position: fixed;
+                background: rgba(0,0,0,0.6);
+                backdrop-filter: blur(5px);
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+
+
+            ul {
+                position: relative;
+                top: 30%;
+                margin: 0;
+                padding: 0;
+            }
+
+                ul li {
+                    font-size: 5vw;
+                    padding: 3em 0 0 0;
+                    list-style: none;
+                    position: absolute;
+                    color: lightgray;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    text-align: center;
+                    width: 100%;
+                    -webkit-backface-visibility: hidden;
+                    text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                    transition: opacity 0.4s ease;
+                }
+
+                    ul li:first-child {
+                        /* leave this one on as a background */
+                        opacity: 0.2 !important;
+                    }
+
+            #firmcoma {
+                filter: invert(100%);
+                width: 17vw;
+                position: absolute;
+                top: 20%;
+                left: 43%;
+            }
+
+            #loadtext {
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                top: 57%;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                position: relative;
+                font-size: .5vw;
+                letter-spacing: .1vw;
+                animation: loadanim 1s infinite;
+            }
+
+                #loadtext::before {
+                    animation: loadanim2 2s 1;
+                    animation-fill-mode: forwards;
+                    content: "chargement"
+                }
+
+            @keyframes loadanim {
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes loadanim2 {
+                0% {
+                    content: "chargement"
+                }
+
+                99% {
+                    content: "chargement"
+                }
+
+                100% {
+                    content: "Cliquez pour continuer"
+                }
+            }
+        </style>
+
+        <script>
+            function ocultpage() {
+                $("#mainpagex").removeClass("mnge");
+                $("#mainpagex").addClass("mnge2");
+            }
+        </script>
+
+        <p id="loadtext"></p>
+        <p id="firmmyt3"> Schroederz</p>
+        <style>
+            #firmmyt3 {
+                font-family: textfirmFont;
+                color: white;
+                font-size: 6vw;
+                position: absolute;
+                left:40%;
+                top: 20%;
+                opacity: .3;
+            }
+        </style>
+        <ul>
+            <script>
+                var items = document.getElementsByTagName("li");
+                var counter = 1;
+
+                setInterval(function () {
+                    items[counter - 1].style.opacity = 0;
+                    items[counter].style.opacity = 1;
+                    counter++;
+                    if (counter == items.length) {
+                        counter = 1;
+                        items[0].style.opacity = 1;
+                        items[items.length - 1].style.opacity = 0;
+                    }
+                }, 500);
+            </script>
+            <li>⣿</li>
+            <li>⣰</li>
+            <li>⣱</li>
+            <li>⣲</li>
+            <li>⣳</li>
+            <li>⣴</li>
+            <li>⣵</li>
+            <li>⣶</li>
+            <li>⣷</li>
+            <li>⣸</li>
+            <li>⣹</li>
+            <li>⣺</li>
+            <li>⣻</li>
+            <li>⣼</li>
+            <li>⣽</li>
+            <li>⣾</li>
+        </ul>
+    </div>
 
 
 
