@@ -1,0 +1,2426 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script type="text/javascript" src="loaoins.js"></script>
+    <script type="text/javascript" src="tweenMax3.min.js"></script>
+    <script type="text/javascript" src="covervid.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script>
+    <style>
+    </style>
+    <script>
+      
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            imgbar = $("#fillimgbar");
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+                    {
+                        name: "OFF",
+                        artist: "OFF",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "The Battle for Everyone's Souls",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song1.mp3"
+                    },
+
+                    {
+                        name: "full moon full life",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song2.mp3"
+                    },
+                    {
+                        name: "It's Going Down Now ",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song3.mp3"
+                    },
+                    {
+                        name: "Living with determination",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song4.mp3"
+                    },
+                    {
+                        name: "memories of the city",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song5.mp3"
+                    }
+
+ 
+
+
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                //artistname.html();
+                musicName.html(curSong.name + " / " + curSong.artist);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+                imgbar.css("left", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 5;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            function aleatorio() {
+              
+            }
+            $("#butonx").click(function next() {
+                var nx = Math.floor((Math.random() * 5) + 1);
+                document.getElementById("demo").innerHTML = nx;
+                var xn;
+                CurrentSong = nx;
+                document.getElementById("pre").innerHTML = CurrentSong;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#asongplay").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                CurrentSong++;
+                if (CurrentSong > 5) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+    <style>
+        /*  @font-face {
+            font-family: 'HYWenHei-85W';
+            src: url('HYWenHei-HEW.woff2') format('woff2'), url('HYWenHei-HEW.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }*/
+        html, button, body, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+
+        @font-face {
+            font-family: 'HYWenHei-85W';
+            font-style: normal;
+            font-weight: normal;
+            src: local('HYWenHei-85W'), url('zhcn.woff') format('woff');
+        }
+
+        body {
+            font-family: 'HYWenHei-85W';
+            overflow: hidden;
+            background: white;
+        }
+
+        .covervid-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        
+
+
+        html, button, .center-center, a {
+            cursor: url(https://i.postimg.cc/P54G1sSh/icon.png), zoom-in;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+    
+    <div id="mainscreen">
+
+
+
+        <audio controls id="inprofile" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/10.mp3?raw=true"></source>
+            <script>
+                function inizializar() {
+                    $("#mainintro").addClass("outmain"); $("#mainintro").removeClass("intromain");
+                    $("#mainscreen").addClass("entrancemainscreen"); $("#mainscreen").removeClass("intromain");
+                }
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#inprofile")[0];
+
+                    $("#btnperfil").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#iconmenu1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#click1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="outprofile" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/5.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#outprofile")[0];
+
+                    $("#iconmenu5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#btnback").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                });
+
+            </script>
+        </audio>
+        <audio controls id="clickmp3" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/4.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#clickmp3")[0];
+
+                    $("body").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="hovers" class="mks">
+            <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#hovers")[0];
+
+                    $("#afr").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd8").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#frd7").mouseenter(function () {
+                        audio.play();
+                    });
+
+                    //eventhandler on hover with play() function
+                    $("#click1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#click2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#click3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btn_bak_in").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#text_bak_in").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnback").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btncloseconfig").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btncloseconfig2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#butonclosesections").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#imgbackfrds").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#antepost").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#antepost2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userlucia").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userneige").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#userhank").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#iconmenu6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#btnperfil6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu7").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu8").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu9").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu10").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu11").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu12").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu13").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu14").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu15").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu16").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu17").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu18").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu19").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu20").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconfig3").mouseenter(function () {
+                        audio.play();
+                    });
+
+                    $("#btneye2").click(function () {//Cambiar body por main pageeeee
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+
+        <div id="Aaudio">
+            <style>
+               
+                #Aaudio {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%; opacity:0; z-index:-1;
+                }
+
+                #abtnaud {
+                    position: absolute;
+                    width: 20%;
+                    height: 70%;
+                    right: 28%;
+                }
+
+                .butplayer {
+                    filter: blur(0px) hue-rotate(450deg);
+                    float: left;
+                    height: 1vw;
+                    top: -.25vw;
+                    width: 1vw;
+                    margin-left: 1vw;
+                    position: relative;
+                }
+
+                .butpl {
+                    position: absolute;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    left: 0;
+                    top: .3vw;
+                    border-radius: .2vw;
+                }
+
+                    .butpl:hover {
+                        filter: blur(0px) hue-rotate(550deg) invert(100%);
+                    }
+
+                    .butpl img {
+                        position: absolute;
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        /*filter: invert(100%);*/
+                        left: .07vw;
+                        top: .1vw;
+                    }
+
+                #pause, #play, #next, #prev, #stop {
+                    width: 2vw;
+                    height: 2vw;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .progress-bar {
+                    top: 40%;
+                    right: 3%;
+                    width: 20%;
+                    border-radius: .3vw;
+                    background: rgb(74,82,101);
+                    height: .35vw;
+                    position: absolute;
+                }
+
+                .fillBar {
+                    background: rgb(116, 129, 160);
+                    width: 0;
+                    height: .35vw;
+                }
+
+
+                /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                .artist-name {
+                    position: absolute;
+                    width: 88%;
+                    left: 10%;
+                    height: 100%;
+                    top: 70%;
+                    letter-spacing: .1vw;
+                    font-size: .5vw;
+                    color: #b21160;
+                }
+
+                #AT_time {
+                    width: 70%;
+                    height: 1vw;
+                    top: 63%;
+                    left: 80%;
+                    position: absolute;
+                }
+
+                    #AT_time p {
+                        position: absolute;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        color: lightgray;
+                    }
+
+                .time {
+                    position: absolute;
+                    left: -1.5vw;
+                    top: 0vw;
+                    letter-spacing: .1vw;
+                    font-size: .6vw;
+                    overflow: hidden;
+                    color: rgb(74,82,101);
+                }
+
+                #name_sng {
+                    position: relative;
+                    float: left;
+                }
+
+                #namesong {
+                    position: relative;
+                    left: 3%;
+                    color: rgba(74,82,101,1);
+                    margin-top: .5vw;
+                }
+
+                #fillimgbar {
+                    width: 1vw;
+                    height: 1vw;
+                    position: absolute;
+                    top: -.4vw;
+                    left: -3%;
+                }
+            </style>
+            <div class="progress-bar">
+                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+            </div>
+
+
+            <div id="AT_time"><div class="time"></div></div>
+            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+            <div> </div>
+
+            <div id="abtnaud">
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                        <div id="prev" class="fas fa-backward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                        <div id="play"> </div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                        <div id="next" class="fas fa-forward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                        <div id="pause"> </div>
+                    </div>
+
+                </div>
+                <!--<div class="butplayer">
+                <div class="butpl">
+                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                    <div id="stop"> </div>
+                </div>
+
+            </div>-->
+            </div>
+
+
+
+        </div>
+
+
+
+        <p id="demo"></p><span id="pre"></span>
+        <script>
+
+            function openconfig() {
+
+                $("#configuration").addClass("siconfig"); $("#configuration").removeClass("noconfig");
+            }
+            function closeconfig() {
+
+                $("#configuration").removeClass("siconfig"); $("#configuration").addClass("noconfig");
+            }
+            function enterprofile() {
+                $("#profil").removeClass("outprofile"); $("#profil").addClass("enterprofile");
+            } function outprofile() {
+                $("#profil").addClass("outprofile"); $("#profil").removeClass("enterprofile");
+
+            } function outchat() {
+                $("#chat").addClass("nochat"); $("#chat").removeClass("sichat");
+            }
+            function openchat() {
+                $("#chat").addClass("sichat"); $("#chat").removeClass("nochat");
+            }
+            function openmens() {
+                outprofile();
+                openchat()
+            }
+            function enterclock() {
+                $("#clock").removeClass("noclock"); $("#clock").addClass("siclock");
+            } function outclock() {
+                $("#clock").removeClass("siclock"); $("#clock").addClass("noclock");
+            }
+        </script>
+
+        <div id="butonx" onclick="entermenux()">
+            <style>
+                #pre {
+                    z-index: -1;
+                    opacity: 0; color:red;
+                    top: 30%;
+                    left: 40%;
+                    font-size: 10vw;
+                    position: absolute;
+                }
+                #demo {
+                    z-index: -1;
+                    opacity: 0;
+                    top: 20%;
+                    left: 40%;
+                    font-size: 10vw;
+                    position: absolute;
+                }
+
+                #butonx {
+                    position: absolute;
+                    width: 10vw;
+                    height: 10vw;
+                    background: red;
+                    z-index: 99999;
+                }
+            </style>
+        </div>
+
+
+        <div id="main">
+            <img id="backgrand" src="yuki.jpg" />
+            <div id="mainau" class="sioto">
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <style>
+                    .nooto {
+                        opacity: 0;
+                    }
+
+                    .sioto {
+                        opacity: 1;
+                    }
+
+                    #mainau {
+                        filter: grayscale(80%);
+                        position: absolute;
+                        width: 100%;
+                        height: 120%;
+                        top: -20%;
+                        left: 0;
+                        perspective: 1200px;
+                        overflow: hidden;
+                    }
+
+                    .leaf {
+                        position: absolute;
+                        right: 0;
+                        background-image: url("li.png");
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+
+                        .leaf:nth-child(1) {
+                            filter: blur(1px);
+                            top: 8vh;
+                            right: -58vh;
+                        }
+
+                        .leaf:nth-child(2) {
+                            filter: blur(1px);
+                            top: 64vh;
+                            right: -30vh;
+                        }
+
+                        .leaf:nth-child(3) {
+                            filter: blur(1px);
+                            top: 67vh;
+                            right: -37vh;
+                        }
+
+                        .leaf:nth-child(4) {
+                            filter: blur(1px);
+                            top: 58vh;
+                            right: -90vh;
+                        }
+
+                        .leaf:nth-child(5) {
+                            filter: blur(1px);
+                            top: 85vh;
+                            right: -3vh;
+                        }
+
+                        .leaf:nth-child(6) {
+                            filter: blur(1px);
+                            top: 45vh;
+                            right: -41vh;
+                        }
+
+                        .leaf:nth-child(7) {
+                            filter: blur(1px);
+                            top: 22vh;
+                            right: -86vh;
+                        }
+
+                        .leaf:nth-child(8) {
+                            filter: blur(1px);
+                            top: 35vh;
+                            right: -32vh;
+                        }
+
+                        .leaf:nth-child(9) {
+                            filter: blur(1px);
+                            top: 41vh;
+                            right: -65vh;
+                        }
+
+                        .leaf:nth-child(10) {
+                            filter: blur(1px);
+                            top: 77vh;
+                            right: -42vh;
+                        }
+
+                        .leaf:nth-child(11) {
+                            filter: blur(1px);
+                            top: 76vh;
+                            right: -57vh;
+                        }
+
+                        .leaf:nth-child(12) {
+                            filter: blur(1px);
+                            top: 29vh;
+                            right: -12vh;
+                        }
+
+                        .leaf:nth-child(13) {
+                            filter: blur(1px);
+                            top: 23vh;
+                            right: -84vh;
+                        }
+
+                        .leaf:nth-child(14) {
+                            filter: blur(1px);
+                            top: 30vh;
+                            right: -90vh;
+                        }
+
+                        .leaf:nth-child(15) {
+                            filter: blur(1px);
+                            top: 97vh;
+                            right: -53vh;
+                        }
+
+                        .leaf:nth-child(16) {
+                            filter: blur(1px);
+                            top: 87vh;
+                            right: -53vh;
+                        }
+
+                        .leaf:nth-child(17) {
+                            filter: blur(1px);
+                            top: 57vh;
+                            right: -56vh;
+                        }
+
+                        .leaf:nth-child(18) {
+                            filter: blur(1px);
+                            top: 46vh;
+                            right: -71vh;
+                        }
+
+                        .leaf:nth-child(19) {
+                            filter: blur(1px);
+                            top: 72vh;
+                            right: -42vh;
+                        }
+
+                        .leaf:nth-child(20) {
+                            filter: blur(1px);
+                            top: 7vh;
+                            right: -18vh;
+                        }
+                </style>
+                <script>
+
+                    $(".leaf").each(function () {
+                        var tl = new TimelineMax({
+                            repeat: -1
+                        });
+                        tl.to(this, 18 + Math.random() * 10, {
+                            rotationX: Math.random() * 3360,
+                            rotationY: Math.random() * 3360,
+                            rotationZ: Math.random() * 3360,
+                            z: Math.random() * 30,
+                            x: -window.innerWidth * 3,
+                            y: window.innerWidth / 2,
+                            ease: Power2.easeOut,
+                            onUpdate: (e) => {
+                                //var x = this.vars.css.x;
+
+                                if ($(this).position().left < -100) {
+                                    tl.seek(0);
+                                }
+                            }
+                        });
+                    });
+
+                </script>
+            </div>
+
+            <div id="divlatup">
+                <style>
+                    .mks {
+                        opacity: 0;
+                        position: absolute;
+                        z-index: -1;
+                        top: -10%;
+                    }
+
+                    #backgrand {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        transform: scaleX(-1);
+                    }
+
+                    #divlatup {
+                        box-shadow: 0vw 0vw 2vw black;
+                        z-index: 3;
+                        height: 60%;
+                        left: -10%;
+                        top: -40%;
+                        position: absolute;
+                        transform: rotate(8deg);
+                        backdrop-filter: blur(10px);
+                        width: 120%;
+                        background: rgba(0,0,0,.7);
+                        /*background: white;*/
+                        border-bottom: .2vw solid #6580ea;
+                    }
+                </style>
+            </div>
+            <div id="divlatdw">
+                <style>
+                    #divlatdw {
+                        background: rgba(0,0,0,.7);
+                        backdrop-filter: blur(10px);
+                        box-shadow: 0vw 0vw 2vw black;
+                        z-index: 3;
+                        height: 60%;
+                        left: -10%;
+                        bottom: -51%;
+                        position: absolute;
+                        transform: rotate(-8deg);
+                        width: 120%;
+                        border-top: .2vw solid #6580ea;
+                    }
+                </style>
+            </div>
+
+            <div id="mainline">
+                <style>
+                   #mainline { position:absolute; width:5%; height:50%; background:blue;  top:30%;  
+                               animation:line1 1s linear; animation-fill-mode:forwards; z-index:2;
+                    }
+                    @keyframes line1 {
+                        0% {
+                            right:0;
+                            width:5%;
+                        }
+
+                        50% {
+                           right:0;
+                            width:100%;
+                        }
+                        50.5% {
+                            right: 0;
+                            width: 100%;
+                        }
+                        100% { width:5%; left:0;
+                        }
+                       
+                    }
+                </style>
+            </div>
+           
+            <div id="maintext">
+                <p id="minp">
+                    PERSONA3 RELOAD
+                </p>
+                <p id="bigp">
+
+                    NEIGE<br />FRIGID  <br />
+                    SOULNESS
+                </p>
+                <style>
+                    #maintext { z-index:1; animation: en1 .1s 1; animation-fill-mode:forwards; animation-delay:.7s; opacity:0;
+                    }
+                    #minp {
+                        position: absolute;
+                        font-family: Roboto;
+                        color: white;
+                        font-weight: bold; font-size:2vw; top:22%; left:6%;
+                    }
+                    #bigp {
+                        font-size: 11vw; line-height:8.4vw; position:absolute; top:8%; left:5%; opacity:.8;
+                        position: absolute;
+                        font-family: Roboto;
+                        color: white;
+                        font-weight: bold; 
+                    }
+                    @keyframes en1 {
+                        0% {
+                            opacity: 0;
+                            
+                        }
+
+                       
+
+                        100% { 
+                            opacity: 1;
+                        }
+                    }
+                </style>
+            </div>
+            
+            <div id="secondline">
+                <style>
+                    #secondline { z-index:12;
+                        position: absolute;
+                        
+                        height: 8%;
+                        background: blue; 
+                        top: 88%;
+                        animation: line2 1s linear;
+                        animation-fill-mode: forwards;
+                    }
+                    @keyframes line2 {
+                        0% {
+                            left: 0;
+                            width: 0%;
+                        }
+
+                        50% {
+                            left: 0;
+                            width: 100%;
+                        }
+
+                        50.5% {
+                            left: 0;
+                            width: 100%;
+                        }
+
+                        100% {
+                            width: 26%;
+                            left:74%;
+                        }
+                    }
+                </style>
+            </div>
+            <div id="butonmenu" onclick="entermenux();"><p id="pmenumain">MAIN MENU</p>
+                <style>
+                    #butonmenu {
+                        position: absolute; 
+                        right:1%; top:79%; 
+                        animation:uptext1 1s linear; animation-fill-mode:forwards;
+                        z-index:13; width:24%;
+                    }
+                        #butonmenu:hover #pmenumain {
+                            color: transparent;
+                            -webkit-text-stroke-width: .02vw;
+                            -webkit-text-stroke-color: white;
+                        }
+                    #pmenumain {
+                        font-size: 3.5vw;
+                        position: absolute;
+                        font-family: Roboto;
+                        color: white;
+                        font-weight: bold;
+                        letter-spacing: .2vw;
+                    }
+                    @keyframes uptext1 {
+                        0% {
+                           opacity:0;
+                           top:85%;
+                        }
+
+                        20% {
+                            opacity: 0;
+                            top: 85%;
+                        }
+
+                        100% {
+                            top:79%;
+                            opacity:1;
+                        }
+                    }
+                </style>
+            </div>
+
+            <div id="iconsequip">
+                <style>
+                    #iconsequip {
+                        width: 40%;
+                        height: 15%;
+                        position: absolute;
+                        right: 2%;
+                        top: 5%; 
+                        z-index: 12;
+                    }
+                    #icons { position:relative; float:right; width:8vw; height:8vw;   margin-left:1vw;
+                    }
+                        #icons img { position:absolute; width:100%;
+                        }
+                </style>
+                <div id="icons">
+                    <img src="s4.png"/>
+                </div>
+                <div id="icons">
+                    <img src="s2.png" />
+                </div>
+                <div id="icons">
+                    <img src="s3.png" />
+                </div>
+                <div id="icons">
+                    <img src="s1.png" />
+                </div>
+            </div>
+
+
+            <div id="socials" class="nomenu">
+                <style>
+                    #socials {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video2" src="p1.mp4" type="video/mp4">
+                    <script>$("#video2").coverVid(1920, 1080);</script>
+                </video>
+            </div>
+            <div id="firmas" class="nomenu">
+                <style>
+                    #firmas {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video3" src="p5.mp4" type="video/mp4">
+                    <script>$("#video3").coverVid(1920, 1080);</script>
+                </video>
+            </div>
+            <div id="abme" class="nomenu">
+                <style>
+                    #abme {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video15" src="p2.mp4" type="video/mp4">
+                    <script>$("#video15").coverVid(1920, 1080);</script>
+                </video>
+            </div>
+
+            <div id="sistema" class="nomenu">
+                <style>
+                    #sistema {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video4" src="p3.mp4" type="video/mp4">
+                    <script>$("#video4").coverVid(1920, 1080);</script>
+                </video>
+            </div>
+            <div id="about" class="nomenu">
+                <style>
+                    #about {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video5" src="p4.mp4" type="video/mp4">
+                    <script>$("#video5").coverVid(1920, 1080);</script>
+                </video>
+            </div>
+            <div id="optionsmenu" class="nomenu">
+                <style>
+                    @font-face {
+                        font-family: p3font;
+                        src: url(Faktos.ttf);
+                    }
+
+                    #optionsmenu {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: transparent;
+                        opacity: .95;
+                    }
+
+                    .simenu {
+                        top: 0;
+                        left: 0;
+                        z-index: 999;
+                        opacity: 1;
+                    }
+
+                    .nomenu {
+                        z-index: -1;
+                        opacity: 0;
+                    }
+
+                    #rango {
+                        position: absolute;
+                        left: 30%;
+                        top: 0;
+                        font-size: 10vw;
+                        z-index: -1;
+                        opacity: 0;
+                    }
+
+                    #menup1 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 37%;
+                        width: auto;
+                        height: auto;
+                        top: 39%;
+                        transform: rotate(-17deg);
+                    }
+
+                        #menup1:hover, #menup2:hover, #menup3:hover, #menup4:hover, #menup5:hover {
+                            z-index: 99;
+                        }
+
+                    #menup2 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 45%;
+                        width: auto;
+                        height: auto;
+                        top: 45%;
+                        transform: rotate(-10deg);
+                    }
+
+                    #menup3 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 43%;
+                        width: auto;
+                        height: auto;
+                        top: 50%;
+                        transform: rotate(-14deg);
+                    }
+
+                    #menup4 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 41.5%;
+                        width: auto;
+                        height: auto;
+                        top: 56%;
+                        transform: rotate(-8deg);
+                    }
+
+                    #menup6 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 43%;
+                        width: auto;
+                        height: auto;
+                        top: 61%;
+                        transform: rotate(-3deg);
+                    }
+
+                    #menup5 {
+                        font-family: p3font;
+                        position: absolute;
+                        left: 43%;
+                        width: auto;
+                        height: auto;
+                        top: 68%;
+                        transform: rotate(3deg);
+                    }
+
+                    @keyframes brig {
+                        0% {
+                            opacity: 1;
+                        }
+
+                        50% {
+                            opacity: .7;
+                        }
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    #mp1 {
+                        animation: brig 1.5s infinite;
+                        font-size: 3.5vw;
+                        color: rgb(105,252,254);
+                        position: relative;
+                    }
+
+                    #mp2 {
+                        animation: brig 1.5s infinite;
+                        animation-delay: .2s;
+                        font-size: 2.8vw;
+                        color: rgb(8,210,255);
+                        position: relative;
+                    }
+
+                    #mp3 {
+                        animation: brig 1.5s infinite;
+                        animation-delay: .4s;
+                        font-size: 3vw;
+                        color: rgb(105,252,254);
+                        position: relative;
+                    }
+
+                    #mp4 {
+                        animation: brig 1.5s infinite;
+                        animation-delay: .6s;
+                        font-size: 2.5vw;
+                        color: rgb(8,210,255);
+                        position: relative;
+                    }
+
+                    #mp6 {
+                        animation: brig 1.5s infinite;
+                        animation-delay: .8s;
+                        font-size: 3.2vw;
+                        color: rgb(105,252,254);
+                        position: relative;
+                    }
+
+                    #mp5 {
+                        animation: brig 1.5s infinite;
+                        animation-delay: .8s;
+                        font-size: 2.2vw;
+                        color: rgb(8,210,255);
+                        position: relative;
+                    }
+
+                    #menup1:hover #mp1 {
+                        animation: none;
+                        font-size: 4vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup2:hover #mp2 {
+                        animation: none;
+                        font-size: 3.3vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup3:hover #mp3 {
+                        animation: none;
+                        font-size: 3.5vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup4:hover #mp4 {
+                        animation: none;
+                        font-size: 3vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup5:hover #mp5 {
+                        animation: none;
+                        font-size: 2.7vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup6:hover #mp6 {
+                        animation: none;
+                        font-size: 3.7vw;
+                        top: -.25vw;
+                        left: -.25vw;
+                        color: white;
+                        mix-blend-mode: difference;
+                    }
+
+                    #menup1:hover #path1 {
+                        opacity: 1;
+                    }
+
+                    #menup1:hover #path2 {
+                        opacity: .6;
+                    }
+
+                    #menup2:hover #path3 {
+                        opacity: 1;
+                    }
+
+                    #menup2:hover #path4 {
+                        opacity: .6;
+                    }
+
+                    #menup3:hover #path5, #menup6:hover #path5 {
+                        opacity: 1;
+                    }
+
+                    #menup3:hover #path6, #menup6:hover #path6 {
+                        opacity: .6;
+                    }
+
+                    #menup4:hover #path7 {
+                        opacity: 1;
+                    }
+
+                    #menup4:hover #path8 {
+                        opacity: .6;
+                    }
+
+                    #menup5:hover #path9 {
+                        opacity: 1;
+                    }
+
+                    #menup5:hover #path10 {
+                        opacity: .6;
+                    }
+
+                    #path1 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 115%;
+                        height: 180%;
+                        background: white;
+                        clip-path: polygon(0 73%, 90% 64%, 100% 17%);
+                        top: -40%;
+                        transform: rotate(6deg);
+                    }
+
+                    #path2 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 115%;
+                        height: 190%;
+                        background: red;
+                        clip-path: polygon(0 73%, 90% 64%, 100% 17%);
+                        top: -40%;
+                        transform: rotate(10deg);
+                        animation: rotation1 1s infinite;
+                    }
+
+                    #path3 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 115%;
+                        height: 130%;
+                        background: white;
+                        clip-path: polygon(100% 0, 0 84%, 86% 100%);
+                        top: -40%;
+                        transform: rotate(6deg);
+                    }
+
+                    #path4 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 115%;
+                        height: 140%;
+                        background: red;
+                        clip-path: polygon(100% 0, 0 84%, 86% 100%);
+                        top: -40%;
+                        transform: rotate(10deg);
+                        animation: rotation2 1s infinite;
+                    }
+
+                    #path5 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 130%;
+                        background: white;
+                        clip-path: polygon(100% 0, 0 100%, 86% 100%);
+                        top: -40%;
+                        left: -15%;
+                        transform: rotate(6deg);
+                    }
+
+                    #path6 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 140%;
+                        background: red;
+                        clip-path: polygon(100% 0, 0 100%, 86% 100%);
+                        top: -40%;
+                        left: -15%;
+                        transform: rotate(10deg);
+                        animation: rotation2 1s infinite;
+                    }
+
+                    #path7 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 130%;
+                        background: white;
+                        clip-path: polygon(100% 0, 0 0, 75% 100%);
+                        top: 5%;
+                        left: -15%;
+                        transform: rotate(6deg);
+                    }
+
+                    #path8 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 140%;
+                        background: red;
+                        clip-path: polygon(100% 0, 0 0, 75% 100%);
+                        top: 5%;
+                        left: -15%;
+                        transform: rotate(10deg);
+                        animation: rotation3 1s infinite;
+                    }
+
+                    #path9 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 130%;
+                        background: white;
+                        clip-path: polygon(79% 0, 0 70%, 100% 100%);
+                        top: -40%;
+                        left: -15%;
+                        transform: rotate(6deg);
+                    }
+
+                    #path10 {
+                        opacity: 0;
+                        position: absolute;
+                        width: 125%;
+                        height: 140%;
+                        background: red;
+                        clip-path: polygon(79% 0, 0 70%, 100% 100%);
+                        top: -40%;
+                        left: -15%;
+                        transform: rotate(10deg);
+                        animation: rotation2 1s infinite;
+                    }
+
+                    @keyframes rotation1 {
+                        0% {
+                            width: 115%;
+                            height: 180%;
+                            top: -40%;
+                            left: 0%;
+                        }
+
+                        80% {
+                            width: 115%;
+                            height: 180%;
+                            top: -40%;
+                            left: 0%;
+                        }
+
+                        90% {
+                            width: 120%;
+                            height: 190%;
+                            top: -42%;
+                            left: -2%;
+                        }
+
+                        100% {
+                            width: 115%;
+                            height: 180%;
+                            top: -40%;
+                            left: 0%;
+                        }
+                    }
+
+                    @keyframes rotation2 {
+                        0% {
+                            width: 115%;
+                            height: 140%;
+                            top: -40%;
+                            left: 0%;
+                        }
+
+                        80% {
+                            width: 115%;
+                            height: 140%;
+                            top: -40%;
+                            left: 0%;
+                        }
+
+                        90% {
+                            width: 120%;
+                            height: 150%;
+                            top: -42%;
+                            left: -2%;
+                        }
+
+                        100% {
+                            width: 115%;
+                            height: 140%;
+                            top: -40%;
+                            left: 0%;
+                        }
+                    }
+
+                    @keyframes rotation3 {
+                        0% {
+                            width: 115%;
+                            height: 140%;
+                            top: 4%;
+                            left: 0%;
+                        }
+
+                        80% {
+                            width: 115%;
+                            height: 140%;
+                            top: 4%;
+                            left: 0%;
+                        }
+
+                        90% {
+                            width: 120%;
+                            height: 150%;
+                            top: -7%;
+                            left: -2%;
+                        }
+
+                        100% {
+                            width: 115%;
+                            height: 140%;
+                            top: 5%;
+                            left: 0%;
+                        }
+                    }
+                </style>
+                <div id="divvid">
+                    <video autoplay="" loop="" muted="" id="video1" src="menu1.mp4" type="video/mp4">
+                        <script>$("#video1").coverVid(1920, 1080);</script>
+                    </video>
+                </div>
+                <div id="menup1" onclick="enterp1()">
+                    <div id="path2"></div><div id="path1"></div>
+                    <i id="mp1">SOCIAL LINKS</i>
+                </div>
+                <div id="menup2" onclick="enterp2()">
+                    <div id="path4"></div><div id="path3"></div>
+                    <i id="mp2">FIRMS</i>
+                </div>
+                <div id="menup3" onclick="enterp3()">
+                    <div id="path6"></div><div id="path5"></div>
+                    <i id="mp3">SYSTEM</i>
+                </div>
+                <div id="menup4" onclick="enterp4()">
+                    <div id="path8"></div><div id="path7"></div>
+                    <i id="mp4">ABOUT THIS</i>
+                </div>
+                <div id="menup6" onclick="enterp5()">
+                    <div id="path6"></div><div id="path5"></div>
+                    <i id="mp6">ABOUT ME</i>
+                </div>
+                <div id="menup5" onclick="entermenux2();">
+                    <div id="path10"></div><div id="path9"></div>
+                    <i id="mp5">RETURN</i>
+                </div>
+                <p id="rango">0</p>
+                <!--<video autoplay="" loop="" muted="" id="video1" src="menu1.mp4" type="video/mp4">-->
+
+                <script>
+                    //entrar menu principal
+                    function entermenux() {
+
+                        $("#optionsmenu").addClass("simenu"); $("#optionsmenu").removeClass("nomenu"); clicksecondvid();
+
+                    }
+                    //salir a la pantalla principal
+                    function entermenux2() {
+                        clicksecondvid2();
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    }
+                    //entrar a socials
+                    function enterp1() {
+
+                        $("#socials").addClass("simenu"); $("#socials").removeClass("nomenu");
+
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    }
+                    //entrar a firmas
+                    function enterp2() {
+
+                        $("#firmas").addClass("simenu"); $("#firmas").removeClass("nomenu");
+
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    }
+                    //entrar a sistema
+
+                    function enterp3() {
+
+                        $("#sistema").addClass("simenu"); $("#sistema").removeClass("nomenu");
+
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    }
+                    //entrar a about
+                    function enterp4() {
+
+                        $("#about").addClass("simenu"); $("#about").removeClass("nomenu");
+
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    }
+                    function enterp5() {
+
+                        $("#abme").addClass("simenu"); $("#abme").removeClass("nomenu");
+
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                    }
+
+                    function cambiarsrc() {
+                        $("#video1").attr("src", "menu1.mp4");
+                    }
+                    function cambiarsrc2() {
+                        $("#video1").attr("src", "menu2.mp4");
+                    } function cambiarsrc3() {
+                        $("#video1").attr("src", "");
+                    }
+
+                    var cont = 0;
+                    function cont0() { cont = 0; }
+                    function timerr() {
+                        var id = setInterval(function () {
+                            rango.innerHTML = cont;
+                            cont++;
+                            if (cont == 4) {
+                                clearInterval(id); $("#video1").attr("src", "menu2.mp4");
+
+                            }
+                        }, 1000);
+                    }
+                    //Definimos una función recursiva
+
+                    function clicksecondvid() {
+
+                        cambiarsrc(); timerr(); $("#optionsmenu").append(
+                            ''
+                        )
+                    }
+                    function clicksecondvid2() { /*$("#divvid").remove();*/ cont0(); }
+
+                </script>
+                <script>
+                    function entranceseconvid() { cambiarsrc2(); }
+                </script>
+            </div>
+            <style>
+                #main {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+
+                #main1 {
+                    background: #E6D4B3;
+                    height: 27.5%;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    position: absolute;
+                }
+
+                #main2 {
+                    background: #E6D4B3;
+                    height: 27.5%;
+                    left: 0;
+                    top: 72.5%;
+                    position: absolute;
+                    width: 100%;
+                }
+
+                #mainmed {
+                    box-shadow: 0vw 0vw 2vw black;
+                    z-index: 3;
+                    height: 45%;
+                    left: -10%;
+                    top: 27.5%;
+                    position: absolute;
+                    width: 120%;
+                }
+
+                #mainimg {
+                    position: absolute;
+                    width: 40%;
+                    left: 25%;
+                    top: 10%;
+                    height: 100%;
+                    z-index: 4;
+                }
+
+                #mainrender {
+                    position: absolute;
+                    width: 160%;
+                    left: -40%;
+                    top: -15%;
+                }
+
+                #mainblackrend {
+                    opacity: .9;
+                    /*transform: scale(1.1);*/
+                    position: absolute;
+                    width: 160%;
+                    left: -43%;
+                    top: -14%;
+                }
+
+                #imgarm {
+                    position: absolute;
+                    width: 50%;
+                    right: -4%;
+                    bottom: -3%;
+                    filter: blur(3px) grayscale(60%) brightness(30%);
+                    z-index: 5;
+                }
+
+                #jero1 {
+                    position: absolute;
+                    height: 90%;
+                    right: 0%;
+                    top: 5%;
+                    opacity: .2;
+                }
+
+                #jero2 {
+                    transform: scaleX(-1);
+                    position: absolute;
+                    height: 90%;
+                    left: 0%;
+                    top: 5%;
+                    opacity: .2;
+                }
+
+                #neigemain {
+                    height: 62%;
+                    position: absolute;
+                    left: 44%;
+                    top: 10%;
+                }
+
+                #backjero1 {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    opacity: .2;
+                }
+
+                #divp0 {
+                    position: absolute;
+                    width: 6%;
+                    height: 5%;
+                    background: rgba(0,0,0,.7);
+                    left: 20%;
+                    top: 15%;
+                }
+
+                #divp1 {
+                    position: absolute;
+                    width: 12%;
+                    height: 8%;
+                    background: rgba(0,0,0,.7);
+                    left: 20%;
+                    top: 20%;
+                }
+
+                    #divp1 p {
+                        color: white;
+                        letter-spacing: .2vw;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp2 {
+                    position: absolute;
+                    width: 19%;
+                    height: 11%;
+                    background: rgba(0,0,0,.7);
+                    left: 15%;
+                    top: 31%;
+                }
+
+                    #divp2 p {
+                        color: white;
+                        opacity: .8;
+                        font-size: 1.5vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .3vw;
+                    }
+
+                #divp3 {
+                    position: absolute;
+                    width: 16%;
+                    height: 8%;
+                    background: rgba(0,0,0,.7);
+                    left: 13%;
+                    top: 45%;
+                }
+
+                    #divp3 p {
+                        color: white;
+                        letter-spacing: .2vw;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp4 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 118%;
+                    background: rgba(0,0,0,.7);
+                    left: 56%;
+                    top: 5%;
+                }
+
+                    #divp4 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp5 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 60%;
+                    background: rgba(0,0,0,.7);
+                    left: 58.5%;
+                    top: 5%;
+                }
+
+                    #divp5 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #divp6 {
+                    position: absolute;
+                    width: 1.6%;
+                    height: 30%;
+                    background: rgba(0,0,0,.7);
+                    left: 61%;
+                    top: 5%;
+                }
+
+                    #divp6 p {
+                        color: white;
+                        font-size: 1.2vw;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin-top: .2vw;
+                        opacity: .8;
+                    }
+
+                #text1 {
+                    color: #D7AF68;
+                    position: absolute;
+                    font-size: 2.8vw;
+                    top: -2%;
+                    left: 60%;
+                    font-weight: lighter;
+                }
+
+                #text2 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.3vw;
+                    top: 32%;
+                    left: 63%;
+                    font-weight: lighter;
+                }
+
+                #meteoro {
+                    position: absolute;
+                    height: 10vw;
+                    width: 10vw;
+                    left: 60%;
+                    animation: meteor 4s infinite;
+                }
+
+                @keyframes meteor {
+                    0% {
+                        top: 0%;
+                    }
+
+                    50% {
+                        top: 4%;
+                    }
+
+                    100% {
+                        top: 0%;
+                    }
+                }
+
+                #meteoroblack {
+                    position: absolute;
+                    height: 10vw;
+                    width: 10vw;
+                    animation: meteorblack 4s infinite;
+                    left: 58%;
+                    opacity: .8;
+                }
+
+                @keyframes meteorblack {
+                    0% {
+                        top: 1%;
+                    }
+
+                    50% {
+                        top: 5%;
+                    }
+
+                    100% {
+                        top: 1%;
+                    }
+                }
+
+                #imghoja1 {
+                    width: 4vw;
+                    height: 4vw;
+                    right: 10%;
+                    top: 78%;
+                    z-index: 5;
+                    position: absolute;
+                }
+
+                #ptext1 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.7vw;
+                    letter-spacing: .1vw;
+                    top: 62%;
+                    left: 66%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #ptext2 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.6vw;
+                    letter-spacing: .2vw;
+                    top: 2%;
+                    left: 23%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #ptext3 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 3.2vw;
+                    letter-spacing: .2vw;
+                    top: 8%;
+                    left: 26.3%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #geologo {
+                    position: absolute;
+                    width: 15%;
+                    left: 5%;
+                }
+
+                #ptext4 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    top: -5%;
+                    left: 50%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #ptext5 {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    top: -5%;
+                    left: 65%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+
+                #neigereg {
+                    color: #6f5229;
+                    position: absolute;
+                    font-size: .8vw;
+                    top: 84%;
+                    text-shadow: .1vw .1vw .2vw #6f5229;
+                    left: 5%;
+                    opacity: .9;
+                    font-weight: lighter;
+                }
+            </style>
+            <!--<div id="main1">
+        <img src="https://i.postimg.cc/mL0HCw9W/123.png" id="backjero1" />
+        <img src="https://i.postimg.cc/pTNHKncW/94810652-dibujado-a-mano-negro-l-neas-de-doodle-l-neas-de-pincel.png" id="neigemain" />
+        <img src="https://i.postimg.cc/wTZdmjxT/w2.png" id="imghoja1" />
+        <p id="ptext1">雪·在這個秋天之下</p>
+        <p id="ptext2">訂單現在開始·在我的矛下</p>
+        <p id="ptext3">模糊的世界</p>
+        <div id="mapspace">
+            <style>
+                /*HOVEEEEEERs*/
+                #menu3:hover, #iconmenu6:hover, #iconmenu5:hover, #btnperfil:hover, #btnperfil4:hover, #mn1:hover, #menu5:hover, #mn13:hover, #bn5:hover,
+                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover {
+                    cursor: url(https://i.postimg.cc/x8pr3bHz/high.png), zoom-in;
+                }
+
+                #mapspace {
+                    position: absolute;
+                    width: 20%;
+                    left: 6%;
+                    height: 28%;
+                    top: 2%;
+                }
+
+                #map {
+                    z-index: 2;
+                    width: 12vw;
+                    height: 12vw;
+                    border-radius: 50%;
+                    border: .15vw solid gray;
+                    position: absolute;
+                    left: 7%;
+                    top: 2%;
+                    overflow: hidden;
+                    opacity: .8;
+                }
+
+                    #map img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                #btnpaimon {
+                    position: absolute;
+                    width: 4.2vw;
+                    height: 4.2vw;
+                    top: 0%;
+                    left: -2%;
+                    z-index: 3;
+                }
+
+                    #btnpaimon img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                #btneye {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 0;
+                    left: 60%;
+                }
+
+                    #btneye img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                #btneye2 {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 0;
+                    left: 86%;
+                }
+
+                    #btneye2 img {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                #btnmision {
+                    position: absolute;
+                    width: 3.5vw;
+                    height: 3.5vw;
+                    top: 70%;
+                    left: 2%;
+                    z-index: 3;
+                }
+
+                    #btnmision img {
+                        width: 100%;
+                        position: relative;
+                    }
+            </style>
+
+            <div id="map">
+                <img src="https://i.postimg.cc/FsPmDQsQ/minim.png" />
+            </div>
+
+            <div id="btnpaimon">
+                <img src="https://i.postimg.cc/KjYgqqYz/2e2e2e2e.png" />
+            </div>
+            <div id="btneye">
+                <img src="https://i.postimg.cc/MpBfFjzy/ee.png" />
+            </div>-->
+            <!--<div id="btneye2">
+            <img src="https://i.postimg.cc/7LMGx8Gh/wss.png" />
+        </div>-->
+            <!--<div id="btnmision" style="top:10vw;">
+                    <img src="https://i.postimg.cc/tgHnQCg8/rr.png" />
+                </div>
+            </div>
+
+            <p id="ptext4">在第 09 天</p><p id="ptext5"><p id="ptext5">2023 年 10 月</p></p>
+        </div>-->
+            <!--<div id="mainmed">
+            <div id="divp0"> </div>
+            <div id="divp1"><p>無論遇到什麼逆境.</p></div>
+            <div id="divp2"><p>我會用我生命中的每一秒來愛你.</p></div>
+            <div id="divp3"><p>就算死了，我也會去找你…</p></div>
+
+            <div id="divp4">
+                <p>
+                    享<br />
+                    受<br />
+                    你<br />
+                    的<br />
+                    不<br />
+                    安<br />
+                    全<br />
+                    感<br />
+                    如<br />
+                    何<br />
+                    逐<br />
+                    渐<br />
+                    摧<br />
+                    毁<br />
+                    你<br />
+                    的<br />
+                    理<br />
+                    智
+                </p>
+            </div> <div id="divp5">
+                <p>
+                    品<br />味<br />不<br />确<br />定<br />性<br />和<br />不<br />安
+                </p>
+            </div>
+            <div id="divp6">
+                <p>
+                    尝<br />试<br />恐<br />惧
+                </p>
+            </div>
+        </div>-->
+            <!--<div id="main2">
+            <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero2" />
+            <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero1" />
+            <p id="text1">你认为这...</p>
+            <p id="text2">这是一切的终结吗？</p>
+
+            <p id="neigereg">Neige [SongBird] 1511990900</p>
+        </div>-->
+            <!--<div id="mainimg">
+            <img src="https://i.postimg.cc/XJ808W8z/zhonblack.png" id="mainblackrend" />
+            <img src="https://i.postimg.cc/mkgWpnp2/zhongli.png" id="mainrender" />
+
+            <img src="https://i.postimg.cc/Qts31Cp7/meteorblack.png" id="meteoroblack" /> <img src="https://i.postimg.cc/Bv23jH1s/meteor.png" id="meteoro" />
+        </div>
+        <img id="imgarm" src="https://i.postimg.cc/XJmV9phV/fb1d7452e5dbc3b112a57a78140e3149.png" />-->
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>
