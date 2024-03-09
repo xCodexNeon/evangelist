@@ -171,7 +171,7 @@
             function aleatorio() {
               
             }
-            $("#butonx").click(function next() {
+            $("#mainpant").click(function next() {
                 var nx = Math.floor((Math.random() * 5) + 1);
                 document.getElementById("demo").innerHTML = nx;
                 var xn;
@@ -240,13 +240,50 @@
 
 
 <body>
-    
-    <div id="mainscreen">
+    <div id="mainpant" class="simenu" onclick="entermain()">
+        <style>
+            #mainpant {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: black;
+            }
+
+            #advert {
+                position: absolute;
+                width: 100%;
+                top: -20%;
+            }
+
+            #padvert {
+                color: white;
+                font-size: 2vw;
+                top: 70%;
+                position: relative;
+                text-align: center;
+                font-family: Roboto;
+                font-weight: bold;
+                animation: brig 1s infinite;
+            }
+
+            .quit {
+                z-index: -1;
+                opacity: 0;
+                transition: all .5s ease;
+            }
+        </style>
+        <video autoplay="" loop="" muted="" id="video7" src="win.mp4" type="video/mp4">
+            <script>$("#video7").coverVid(1920, 1080);</script>
+        </video>
+        <img src="https://i.postimg.cc/FvMjz2xL/Sin-t-tulo.png" id="advert" />
+        <p id="padvert">Click to continue</p>
+    </div>
+    <div id="mainscreen" class="nomenu">
 
 
 
         <audio controls id="inprofile" class="mks">
-            <source src="https://xevangelist.github.io/evangelist/10.mp3?raw=true"></source>
+            <source src="openmain.mp3"></source>
             <script>
                 function inizializar() {
                     $("#mainintro").addClass("outmain"); $("#mainintro").removeClass("intromain");
@@ -256,15 +293,25 @@
                     //take id of the audio and make a variable
                     var audio = $("#inprofile")[0];
 
-                    $("#btnperfil").click(function () {
+                    $("#butonmenu").click(function () {
                         audio.play();
                         console.log(audio);
                     });
-                    $("#iconmenu1").click(function () {
-                        audio.play();
-                        console.log(audio);
-                    });
-                    $("#click1").click(function () {
+
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="outprofile" class="mks">
+            <source src="outmain.mp3"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#outprofile")[0];
+
+                    $("#menup5").click(function () {
                         audio.play();
                         console.log(audio);
                     });
@@ -273,19 +320,56 @@
 
             </script>
         </audio>
-        <audio controls id="outprofile" class="mks">
-            <source src="https://xevangelist.github.io/evangelist/5.mp3?raw=true"></source>
+        <audio controls id="closetab" class="mks">
+            <source src="outtab.mp3"></source>
             <script>
 
                 $(function () {
                     //take id of the audio and make a variable
-                    var audio = $("#outprofile")[0];
+                    var audio = $("#closetab")[0];
 
-                    $("#iconmenu5").click(function () {
+                    $("#butonreturnmenu").click(function () {
                         audio.play();
                         console.log(audio);
                     });
-                    $("#btnback").click(function () {
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="opentab" class="mks">
+            <source src="opentab.mp3"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#opentab")[0];
+
+                    $("#mailbox").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup1").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup2").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup3").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup4").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup5").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+                    $("#menup6").click(function () {
                         audio.play();
                         console.log(audio);
                     });
@@ -294,7 +378,7 @@
             </script>
         </audio>
         <audio controls id="clickmp3" class="mks">
-            <source src="https://xevangelist.github.io/evangelist/4.mp3?raw=true"></source>
+            <source src="click.mp3"></source>
             <script>
 
                 $(function () {
@@ -311,193 +395,40 @@
             </script>
         </audio>
         <audio controls id="hovers" class="mks">
-            <source src="https://xevangelist.github.io/evangelist/1.mp3?raw=true"></source>
+            <source src="p3hover.mp3"></source>
             <script>
 
                 $(function () {
                     //take id of the audio and make a variable
                     var audio = $("#hovers")[0];
 
-                    $("#afr").mouseenter(function () {
+                    $("#mailbox").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd1").mouseenter(function () {
+                    $("#butonmenu").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd2").mouseenter(function () {
+                    $("#menup1").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd3").mouseenter(function () {
+                    $("#menup2").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd4").mouseenter(function () {
+                    $("#menup3").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd5").mouseenter(function () {
+                    $("#menup4").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd6").mouseenter(function () {
+                    $("#menup5").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd8").mouseenter(function () {
+                    $("#menup6").mouseenter(function () {
                         audio.play();
                     });
-                    $("#frd7").mouseenter(function () {
+                    $("#butonreturnmenu").mouseenter(function () {
                         audio.play();
                     });
-
-                    //eventhandler on hover with play() function
-                    $("#click1").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#click2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#click3").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btn_bak_in").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#text_bak_in").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnback").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btncloseconfig").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btncloseconfig2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#butonclosesections").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#imgbackfrds").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#antepost").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#antepost2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#userlucia").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#userneige").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#userhank").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu1").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu3").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu4").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu5").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#iconmenu6").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil3").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil4").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil5").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#btnperfil6").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu1").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu3").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu4").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu5").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu6").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu7").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu8").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu9").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu10").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu11").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu12").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu13").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu14").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu15").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu16").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu17").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu18").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu19").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menu20").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menuconfig1").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menuconfig2").mouseenter(function () {
-                        audio.play();
-                    });
-                    $("#menuconfig3").mouseenter(function () {
-                        audio.play();
-                    });
-
                     $("#btneye2").click(function () {//Cambiar body por main pageeeee
                         audio.play();
                         console.log(audio);
@@ -510,11 +441,13 @@
 
         <div id="Aaudio">
             <style>
-               
+
                 #Aaudio {
                     position: absolute;
                     width: 100%;
-                    height: 100%; opacity:0; z-index:-1;
+                    height: 100%;
+                    opacity: 0;
+                    z-index: -1;
                 }
 
                 #abtnaud {
@@ -687,12 +620,12 @@
 
                 </div>
                 <!--<div class="butplayer">
-                <div class="butpl">
-                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-                    <div id="stop"> </div>
-                </div>
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                        <div id="stop"> </div>
+                    </div>
 
-            </div>-->
+                </div>-->
             </div>
 
 
@@ -734,39 +667,25 @@
             }
         </script>
 
-        <div id="butonx" onclick="entermenux()">
+        <!--<div id="butonx" onclick="entermenux()">
             <style>
-                #pre {
-                    z-index: -1;
-                    opacity: 0; color:red;
-                    top: 30%;
-                    left: 40%;
-                    font-size: 10vw;
-                    position: absolute;
-                }
-                #demo {
-                    z-index: -1;
-                    opacity: 0;
-                    top: 20%;
-                    left: 40%;
-                    font-size: 10vw;
-                    position: absolute;
-                }
+               
 
                 #butonx {
                     position: absolute;
                     width: 10vw;
                     height: 10vw;
                     background: red;
+                    top: 30%;
                     z-index: 99999;
                 }
             </style>
-        </div>
+        </div>-->
 
 
         <div id="main">
-            <img id="backgrand" src="https://p3re.jp/en/resources/img/expansion/fv_movie_img_e6db132d3c246038e5b70c7a19c7bcb0.webp" />
-            <div id="mainau" class="sioto">
+            <img id="backgrand" src="yukiii.png" />
+            <!--<div id="mainau" class="sioto">
                 <div class="leaf"></div>
                 <div class="leaf"></div>
                 <div class="leaf"></div>
@@ -982,10 +901,336 @@
                     });
 
                 </script>
+            </div>-->
+            <div id="boxfires2" class="ag-fireflies_box sifires">
+                <style>
+                    #boxfires {
+                        /*filter: sepia(1);*/ mix-blend-mode: difference;
+                        filter: grayscale(100%);
+                        transition: all 2s ease;
+                        z-index: 99;
+                    }
+
+                    #boxfires2 {
+                        /*filter: sepia(1);*/
+                        filter: invert(100%);
+                        transition: all 2s ease;
+                        z-index: 1;
+                    }
+
+                    .sifires {
+                        opacity: 1;
+                    }
+
+                    .nofires {
+                        opacity: 0;
+                    }
+                </style>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
             </div>
 
             <div id="divlatup">
                 <style>
+
                     .mks {
                         opacity: 0;
                         position: absolute;
@@ -999,7 +1244,7 @@
                         height: 100%;
                         top: 0;
                         left: 0;
-                        transform: scaleX(-1);
+                        transform: scaleX(1);
                     }
 
                     #divlatup {
@@ -1036,32 +1281,89 @@
                 </style>
             </div>
 
+            <p id="strokeintrop">DESOLATION</p>
+            <div id="strokediv">
+                <p>Neige's palace</p>
+            </div>
+            <style>
+                #strokediv {
+                    background: blue;
+                    position: absolute;
+                    top: 3vw;
+                    height: 2.5vw;
+                    width: 20%;
+                    border-radius: 0 .3vw .3vw 0;
+                    z-index: 13;
+                }
+
+                    #strokediv p {
+                        position: relative;
+                        text-align: center;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        top: -2vw;
+                        color: white;
+                    }
+
+                #strokeintrop {
+                    color: transparent;
+                    -webkit-text-stroke-width: .02vw;
+                    -webkit-text-stroke-color: white;
+                    position: absolute;
+                    font-size: 5vw;
+                    top: -5vw;
+                    left: 0;
+                    z-index: 12;
+                    font-family: Roboto;
+                    font-weight: 900;
+                    letter-spacing: -.3vw;
+                }
+            </style>
+
             <div id="mainline">
                 <style>
-                   #mainline { position:absolute; width:5%; height:50%; background:blue;  top:30%;  
-                               animation:line1 1s linear; animation-fill-mode:forwards; z-index:2;
+                    #mainline {
+                        position: absolute;
+                        width: 5%;
+                        height: 50%;
+                        background: blue;
+                        top: 30%;
+                       
+                        z-index: 2;
+                    }
+                    .line1 {
+                        animation: line1 1s linear;
+                        animation-fill-mode: forwards; 
+                    }
+                    .line2 {
+                        animation: line2 1s linear;
+                        animation-fill-mode: forwards;
+                        animation-delay: 1s;
                     }
                     @keyframes line1 {
                         0% {
-                            right:0;
-                            width:5%;
+                            right: 0;
+                            width: 5%;
                         }
 
                         50% {
-                           right:0;
-                            width:100%;
+                            right: 0;
+                            width: 100%;
                         }
+
                         50.5% {
                             right: 0;
                             width: 100%;
                         }
-                        100% { width:5%; left:0;
+
+                        100% {
+                            width: 5%;
+                            left: 0;
                         }
-                       
                     }
                 </style>
             </div>
-           
+
             <div id="maintext">
                 <p id="minp">
                     PERSONA3 RELOAD
@@ -1072,47 +1374,64 @@
                     SOULNESS
                 </p>
                 <style>
-                    #maintext { z-index:1; animation: en1 .1s 1; animation-fill-mode:forwards; animation-delay:.7s; opacity:0;
+                    #maintext {
+                        z-index: 1;
+                        
+                        opacity: 0;
+                    }
+                    .textani {
+                        animation: en1 .1s 1;
+                        animation-fill-mode: forwards;
+                        animation-delay: .7s;
                     }
                     #minp {
                         position: absolute;
                         font-family: Roboto;
                         color: white;
-                        font-weight: bold; font-size:2vw; top:22%; left:6%;
+                        font-weight: bold;
+                        font-size: 2vw;
+                        top: 22%;
+                        left: 6%;
                     }
+
                     #bigp {
-                        font-size: 11vw; line-height:8.4vw; position:absolute; top:8%; left:5%; opacity:.8;
+                        font-size: 11vw;
+                        line-height: 8.4vw;
+                        position: absolute;
+                        top: 8%;
+                        left: 5%;
+                        opacity: .8;
                         position: absolute;
                         font-family: Roboto;
                         color: white;
-                        font-weight: bold; 
+                        font-weight: bold;
                     }
+
                     @keyframes en1 {
                         0% {
                             opacity: 0;
-                            
                         }
 
-                       
 
-                        100% { 
+
+                        100% {
                             opacity: 1;
                         }
                     }
                 </style>
             </div>
-            
+
             <div id="secondline">
                 <style>
-                    #secondline { z-index:12;
+                    #secondline {
+                        z-index: 12;
                         position: absolute;
-                        
                         height: 8%;
-                        background: blue; 
+                        background: blue;
                         top: 88%;
-                        animation: line2 1s linear;
-                        animation-fill-mode: forwards;
+                       
                     }
+                   
                     @keyframes line2 {
                         0% {
                             left: 0;
@@ -1131,24 +1450,30 @@
 
                         100% {
                             width: 26%;
-                            left:74%;
+                            left: 74%;
                         }
                     }
                 </style>
             </div>
-            <div id="butonmenu" onclick="entermenux();"><p id="pmenumain">MAIN MENU</p>
+            <div id="butonmenu" onclick="entermenux();">
+                <p id="pmenumain">MAIN MENU</p>
                 <style>
                     #butonmenu {
-                        position: absolute; 
-                        right:1%; top:79%; 
-                        animation:uptext1 1s linear; animation-fill-mode:forwards;
-                        z-index:13; width:24%;
+                        position: absolute;
+                        right: 1%;
+                        top: 79%;
+                        animation: uptext1 1s linear;
+                        animation-fill-mode: forwards;
+                        z-index: 13;
+                        width: 24%;
                     }
+
                         #butonmenu:hover #pmenumain {
                             color: transparent;
                             -webkit-text-stroke-width: .02vw;
                             -webkit-text-stroke-color: white;
                         }
+
                     #pmenumain {
                         font-size: 3.5vw;
                         position: absolute;
@@ -1157,10 +1482,11 @@
                         font-weight: bold;
                         letter-spacing: .2vw;
                     }
+
                     @keyframes uptext1 {
                         0% {
-                           opacity:0;
-                           top:85%;
+                            opacity: 0;
+                            top: 85%;
                         }
 
                         20% {
@@ -1169,8 +1495,8 @@
                         }
 
                         100% {
-                            top:79%;
-                            opacity:1;
+                            top: 79%;
+                            opacity: 1;
                         }
                     }
                 </style>
@@ -1183,16 +1509,25 @@
                         height: 15%;
                         position: absolute;
                         right: 2%;
-                        top: 5%; 
+                        top: 5%;
                         z-index: 12;
                     }
-                    #icons { position:relative; float:right; width:8vw; height:8vw;   margin-left:1vw;
+
+                    #icons {
+                        position: relative;
+                        float: right;
+                        width: 8vw;
+                        height: 8vw;
+                        margin-left: 1vw;
                     }
-                        #icons img { position:absolute; width:100%;
+
+                        #icons img {
+                            position: absolute;
+                            width: 100%;
                         }
                 </style>
                 <div id="icons">
-                    <img src="s4.PNG"/>
+                    <img src="s4.PNG" />
                 </div>
                 <div id="icons">
                     <img src="s2.PNG" />
@@ -1205,7 +1540,80 @@
                 </div>
             </div>
 
+            <div id="mailbox" onclick="openmail();">
 
+                <img src="https://i.postimg.cc/gJcmm33L/123.png" id="mailicon" />
+                <style>
+                    #mailbox {
+                        background: rgb(18,94,255);
+                        width: 7vw;
+                        height: 7vw;
+                        border-radius: 50%;
+                        top: 87%;
+                        left: -1%;
+                        z-index: 12;
+                        position: absolute;
+                        transition: all .1s ease;
+                    }
+
+                        #mailbox:hover {
+                            width: 8vw;
+                            height: 8vw;
+                            top: 86%;
+                        }
+
+                    .siimenu {
+                        opacity: 1;
+                        z-index: 999;
+                    }
+
+                    #mailbox:hover #mailicon {
+                        left: 2.1vw;
+                        top: 2.1vw;
+                    }
+
+                    #mailicon {
+                        position: absolute;
+                        width: 4vw;
+                        left: 1.6vw;
+                        top: 1.6vw;
+                    }
+                </style>
+                <script>
+                    function openmail() { $("#mail").addClass("siimenu"); $("#mail").removeClass("nomenu"); }
+                    function closemail() { $("#mail").addClass("nomenu"); $("#mail").removeClass("siimenu"); }
+                </script>
+            </div>
+            <div id="mail" class="nomenu">
+                <div id="butonreturnmenu" onclick="closemail();">
+                    <style>
+                        #butonreturnmenu {
+                            position: absolute;
+                            width: 10%;
+                            height: 10%;
+                            right: 22%;
+                            bottom: 8%;
+                            z-index: 99;
+                        }
+                    </style>
+                </div>
+                <img src="https://i.postimg.cc/PJn38w6f/2.png" id="mailimg" />
+
+                <style>
+                    #mail {
+                        position: absolute;
+                        width: 65%;
+                        height: 100%;
+                        transition: all .5s ease;
+                    }
+
+                    #mailimg {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                    }
+                </style>
+            </div>
             <div id="socials" class="nomenu">
                 <style>
                     #socials {
@@ -1278,13 +1686,38 @@
                         font-family: p3font;
                         src: url(Faktos.ttf);
                     }
+                    #pre {
+                        z-index: -1;
+                        opacity: 0;
+                        color: red;
+                        top: 30%;
+                        left: 40%;
+                        font-size: 10vw;
+                        position: absolute;
+                    }
 
+                    #demo {
+                        z-index: -1;
+                        opacity: 0;
+                        top: 20%;
+                        left: 40%;
+                        font-size: 10vw;
+                        position: absolute;
+                    }
                     #optionsmenu {
                         position: absolute;
                         width: 100%;
                         height: 100%;
-                        background: transparent;
+                        background: white;
                         opacity: .95;
+                    }
+
+                    .simenuu {
+                        transition-delay: 1s;
+                        top: 0;
+                        left: 0;
+                        z-index: 999;
+                        opacity: 1;
                     }
 
                     .simenu {
@@ -1771,16 +2204,26 @@
                 <!--<video autoplay="" loop="" muted="" id="video1" src="menu1.mp4" type="video/mp4">-->
 
                 <script>
+                    //entrar al space
+                    function entermain() {
+                        closemail();
+                        $("#mainpant").addClass("quit"); $("#mainpant").removeClass("simenu");  
+                        $("#mainscreen").addClass("simenu"); $("#mainscreen").removeClass("nomenu");  
+                        $("#mainline").addClass("line1");
+                        $("#secondline").addClass("line2");
+                        $("#maintext").addClass("textani");
+                    }
+
                     //entrar menu principal
                     function entermenux() {
-
-                        $("#optionsmenu").addClass("simenu"); $("#optionsmenu").removeClass("nomenu"); clicksecondvid();
+                        closemail();
+                        $("#optionsmenu").addClass("simenuu"); $("#optionsmenu").removeClass("nomenu"); clicksecondvid();
 
                     }
                     //salir a la pantalla principal
                     function entermenux2() {
                         clicksecondvid2();
-                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenu");
+                        $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simenuu");
                         $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
                         $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
                         $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
@@ -2242,176 +2685,6 @@
                     font-weight: lighter;
                 }
             </style>
-            <!--<div id="main1">
-        <img src="https://i.postimg.cc/mL0HCw9W/123.png" id="backjero1" />
-        <img src="https://i.postimg.cc/pTNHKncW/94810652-dibujado-a-mano-negro-l-neas-de-doodle-l-neas-de-pincel.png" id="neigemain" />
-        <img src="https://i.postimg.cc/wTZdmjxT/w2.png" id="imghoja1" />
-        <p id="ptext1">雪·在這個秋天之下</p>
-        <p id="ptext2">訂單現在開始·在我的矛下</p>
-        <p id="ptext3">模糊的世界</p>
-        <div id="mapspace">
-            <style>
-                /*HOVEEEEEERs*/
-                #menu3:hover, #iconmenu6:hover, #iconmenu5:hover, #btnperfil:hover, #btnperfil4:hover, #mn1:hover, #menu5:hover, #mn13:hover, #bn5:hover,
-                #menu7:hover, #menu9:hover, #mn10:hover, #menu12:hover, #mn15:hover, #iconmenu3:hover, #menu19:hover, #iconmenu2:hover, #btnperfil3:hover {
-                    cursor: url(https://i.postimg.cc/x8pr3bHz/high.png), zoom-in;
-                }
-
-                #mapspace {
-                    position: absolute;
-                    width: 20%;
-                    left: 6%;
-                    height: 28%;
-                    top: 2%;
-                }
-
-                #map {
-                    z-index: 2;
-                    width: 12vw;
-                    height: 12vw;
-                    border-radius: 50%;
-                    border: .15vw solid gray;
-                    position: absolute;
-                    left: 7%;
-                    top: 2%;
-                    overflow: hidden;
-                    opacity: .8;
-                }
-
-                    #map img {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                #btnpaimon {
-                    position: absolute;
-                    width: 4.2vw;
-                    height: 4.2vw;
-                    top: 0%;
-                    left: -2%;
-                    z-index: 3;
-                }
-
-                    #btnpaimon img {
-                        width: 100%;
-                        position: relative;
-                    }
-
-                #btneye {
-                    position: absolute;
-                    width: 3.5vw;
-                    height: 3.5vw;
-                    top: 0;
-                    left: 60%;
-                }
-
-                    #btneye img {
-                        width: 100%;
-                        position: relative;
-                    }
-
-                #btneye2 {
-                    position: absolute;
-                    width: 3.5vw;
-                    height: 3.5vw;
-                    top: 0;
-                    left: 86%;
-                }
-
-                    #btneye2 img {
-                        width: 100%;
-                        position: relative;
-                    }
-
-                #btnmision {
-                    position: absolute;
-                    width: 3.5vw;
-                    height: 3.5vw;
-                    top: 70%;
-                    left: 2%;
-                    z-index: 3;
-                }
-
-                    #btnmision img {
-                        width: 100%;
-                        position: relative;
-                    }
-            </style>
-
-            <div id="map">
-                <img src="https://i.postimg.cc/FsPmDQsQ/minim.png" />
-            </div>
-
-            <div id="btnpaimon">
-                <img src="https://i.postimg.cc/KjYgqqYz/2e2e2e2e.png" />
-            </div>
-            <div id="btneye">
-                <img src="https://i.postimg.cc/MpBfFjzy/ee.png" />
-            </div>-->
-            <!--<div id="btneye2">
-            <img src="https://i.postimg.cc/7LMGx8Gh/wss.png" />
-        </div>-->
-            <!--<div id="btnmision" style="top:10vw;">
-                    <img src="https://i.postimg.cc/tgHnQCg8/rr.png" />
-                </div>
-            </div>
-
-            <p id="ptext4">在第 09 天</p><p id="ptext5"><p id="ptext5">2023 年 10 月</p></p>
-        </div>-->
-            <!--<div id="mainmed">
-            <div id="divp0"> </div>
-            <div id="divp1"><p>無論遇到什麼逆境.</p></div>
-            <div id="divp2"><p>我會用我生命中的每一秒來愛你.</p></div>
-            <div id="divp3"><p>就算死了，我也會去找你…</p></div>
-
-            <div id="divp4">
-                <p>
-                    享<br />
-                    受<br />
-                    你<br />
-                    的<br />
-                    不<br />
-                    安<br />
-                    全<br />
-                    感<br />
-                    如<br />
-                    何<br />
-                    逐<br />
-                    渐<br />
-                    摧<br />
-                    毁<br />
-                    你<br />
-                    的<br />
-                    理<br />
-                    智
-                </p>
-            </div> <div id="divp5">
-                <p>
-                    品<br />味<br />不<br />确<br />定<br />性<br />和<br />不<br />安
-                </p>
-            </div>
-            <div id="divp6">
-                <p>
-                    尝<br />试<br />恐<br />惧
-                </p>
-            </div>
-        </div>-->
-            <!--<div id="main2">
-            <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero2" />
-            <img src="https://i.postimg.cc/fLRgvCXs/323.png" id="jero1" />
-            <p id="text1">你认为这...</p>
-            <p id="text2">这是一切的终结吗？</p>
-
-            <p id="neigereg">Neige [SongBird] 1511990900</p>
-        </div>-->
-            <!--<div id="mainimg">
-            <img src="https://i.postimg.cc/XJ808W8z/zhonblack.png" id="mainblackrend" />
-            <img src="https://i.postimg.cc/mkgWpnp2/zhongli.png" id="mainrender" />
-
-            <img src="https://i.postimg.cc/Qts31Cp7/meteorblack.png" id="meteoroblack" /> <img src="https://i.postimg.cc/Bv23jH1s/meteor.png" id="meteoro" />
-        </div>
-        <img id="imgarm" src="https://i.postimg.cc/XJmV9phV/fb1d7452e5dbc3b112a57a78140e3149.png" />-->
-
 
 
 
