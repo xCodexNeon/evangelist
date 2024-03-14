@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -411,6 +411,21 @@
                     //take id of the audio and make a variable
                     var audio = $("#hovers")[0];
 
+                    $("#movreturn").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#movreturn2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#movreturn3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#movreturn4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#movreturn5").mouseenter(function () {
+                        audio.play();
+                    });
                     $("#mailbox").mouseenter(function () {
                         audio.play();
                     });
@@ -453,9 +468,23 @@
                     $("#social5").mouseenter(function () {
                         audio.play();
                     });
-                    $("#btneye2").click(function () {//Cambiar body por main pageeeee
+                    $("#f1").mouseenter(function () {
                         audio.play();
-                        console.log(audio);
+                    });
+                    $("#f2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f4").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f6").mouseenter(function () {
+                        audio.play();
                     });
 
                 });
@@ -1447,972 +1476,6 @@
                     }
                 </style>
             </div>
-           
-
-            <div id="socials" class="nomenu">
-                <style>
-                    #socials {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
-                    }
-
-                    #social1 {
-                        position: absolute;
-                        width: 33%;
-                        height: 16%;
-                        top: 35%;
-                        left: 8%;
-                    }
-
-                    #social2 {
-                        position: absolute;
-                        width: 33%;
-                        height: 16%;
-                        top: 52%;
-                        left: 9.5%;
-                    }
-
-                    #social3 {
-                        position: absolute;
-                        width: 33%;
-                        height: 16%;
-                        top: 69%;
-                        left: 11%;
-                    }
-
-                    #imgnormal1 {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 1;
-                    }
-
-                    #imgselect1 {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 0;
-                    }
-
-                    #social1:hover #imgnormal1, #social2:hover #imgnormal1, #social3:hover #imgnormal1 {
-                        opacity: 0;
-                    }
-
-                    #social1:hover #imgselect1, #social2:hover #imgselect1, #social3:hover #imgselect1 {
-                        opacity: 1;
-                    }
-
-                    #listsocial {
-                        font-family: p3font;
-                        font-size: 6vw;
-                        color: blue;
-                        top: 23%;
-                        left: 8%;
-                        position: absolute;
-                    }
-                </style>
-                <video autoplay="" loop="" muted="" id="video2" src="p1.mp4" type="video/mp4">
-                    <script>$("#video2").coverVid(1920, 1080);</script>
-                </video>
-                <i id="titlescreen2">
-                    <style>
-                        #titlescreen2 {
-                            font-family: p3font;
-                            transform: rotate(90deg);
-                            opacity: .4;
-                            color: black;
-                            position: absolute;
-                            font-size: 13vw;
-                            right: -18vw;
-                            top: 14vw;
-                        }
-                    </style>
-                    SOCIALS
-                </i>
-                <i id="listsocial">
-                    LIST
-
-                </i>
-                <div id="social1">
-                    <img id="imgselect1" src="https://i.postimg.cc/J0c3M3hJ/emperatriz.png" />
-                    <img id="imgnormal1" src="https://i.postimg.cc/J7b5N8Qn/emperatriz-N.png" />
-                </div>
-                <div id="social2">
-                    <img id="imgselect1" src="https://i.postimg.cc/1zd1rwsp/muerte2.png" />
-                    <img id="imgnormal1" src="https://i.postimg.cc/KjSXdbKj/muerteN.png" />
-                </div>
-                <div id="social3">
-                    <img id="imgselect1" src="https://i.postimg.cc/8CcVvtQp/luna2.png" />
-                    <img id="imgnormal1" src="https://i.postimg.cc/ydS4Qx82/lunaN.png" />
-                </div>
-            </div>
-            <div id="butonprueba" onclick="outtomenu();">
-                <script>
-                    function outtomenu() { 
-                        $("#contcred").removeClass("addan");
-                        $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
-                        $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
-                        $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
-                        $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
-                        $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
-                        $("#optionsmenu").addClass("simenu"); $("#optionsmenu").removeClass("nomenu");  
-                    };
-
-
-                </script>
-                <style>
-                    #butonprueba {
-                        z-index: 999999999999999;
-                        background: red;
-                        width: 5vw;
-                        height: 5vw;
-                        top: 30%; right:0;
-                        position: absolute;
-                    }
-                </style>
-            </div>
-            <div id="firmas" class="nomenu">
-                <style>
-                    #firmas {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
-                    }
-
-                    #firmas2 {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: Red;
-                    }
-                </style>
-                <div id="firmas2">
-                    <video autoplay="" loop="" muted="" id="video3" src="p5.mp4" type="video/mp4">
-                        <script>$("#video3").coverVid(1920, 1080);</script>
-                    </video>
-                </div>
-                <i id="titlescreen">
-                    <style>
-                        #titlescreen { font-family:p3font; transform:rotate(90deg); opacity:.4; color:black; position:absolute; font-size:13vw;  right:-13vw; top:8vw;
-                        } 
-                    </style>
-                    FIRMS
-                </i>
-                <div id="butonsleftreg">
-                    <style>
-                        #butonsleftreg {
-                            position: absolute;
-                            width: 25%;
-                            height: 10%;
-                            top: 14%;
-                            left: 25%;
-                            z-index: 1000;
-                        }
-
-                        #lblr {
-                            position: absolute;
-                            width: 100%;
-                        }
-
-                        #abt1 {
-                            position: absolute; /*background:red;*/
-                            width: 2vw;
-                            height: 2vw;
-                            left: 0vw;
-                            top: 120%;
-                            transform: rotate(-10deg);
-                            animation: toleft 2s infinite;
-                        }
-
-                        #abt2 {
-                            position: absolute;
-                            /*background: red;*/
-                            width: 2vw;
-                            height: 2vw;
-                            right: 0;
-                            top: 5%;
-                            animation: torigth 2s infinite;
-                            transform: rotate(-10deg);
-                        }
-
-                            #abt1 img, #abt2 img {
-                                width: 100%;
-                                position: absolute;
-                            }
-
-                        @keyframes toleft {
-
-                            0% {
-                                left: 0%;
-                            }
-
-                            50% {
-                                left: -1%;
-                            }
-
-                            100% {
-                                left: 0;
-                            }
-                        }
-
-                        @keyframes torigth {
-
-                            0% {
-                                right: 0%;
-                            }
-
-                            50% {
-                                right: -1%;
-                            }
-
-                            100% {
-                                right: 0;
-                            }
-                        }
-
-                        #ptextfirm {
-                            color: #6580ea;
-                            font-family: p3font;
-                            top: 70%;
-                            left: 35%;
-                            transform: rotate(-12deg);
-                            position: absolute;
-                            font-size: 1.5vw;
-                        }
-                         
-                        #rr1 { position:absolute; width:100%; height:100%;  
-                        }
-                        #rr2 {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%; 
-                        }
-                        #ll1 {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%; 
-                        }
-
-                        #ll2 {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%; 
-                        }
-                    </style>
-                    <img id="lblr" src="https://i.postimg.cc/9fyHVP0m/Sin-t-tulo.png" />
-                    <i id="ptextfirm">Select firm</i>
-                    <div id="abt1">
-                        <img src="https://i.postimg.cc/1RBnsw-Vr/1.png" />
-                        <div id="ll1" class="simenu" onclick="right1()"></div>
-                        <div id="ll2" class="nomenu"onclick="right2()"></div>
-                    </div>
-                    <div id="abt2">
-                        <img src="https://i.postimg.cc/9Ff4M0G5/2.png" />
-                        <div id="rr1" class="simenu" onclick="left1()"></div>
-                        <div id="rr2" class="nomenu" onclick="left2()"></div>
-                    </div>
-
-                    <script>
-                        function left1() {
-                            firma2();
-                            $("#rr1").addClass("nomenu"); $("#rr1").removeClass("simenu");
-                            $("#rr2").addClass("simenu"); $("#rr2").removeClass("nomenu");
-                        }
-                        function left2() {
-                            firma1();
-                            $("#rr2").addClass("nomenu"); $("#rr2").removeClass("simenu");
-                            $("#rr1").addClass("simenu"); $("#rr1").removeClass("nomenu");
-                        }
-                        function right1() {
-                            firma2();
-                            $("#ll1").addClass("nomenu"); $("#ll1").removeClass("simenu");
-                            $("#ll2").addClass("simenu"); $("#ll2").removeClass("nomenu");
-                        }
-                        function right2() {
-                            firma1();
-                            $("#ll2").addClass("nomenu"); $("#ll2").removeClass("simenu");
-                            $("#ll1").addClass("simenu"); $("#ll1").removeClass("nomenu");
-                        }
-                        function firma1() {
-                            $("#areafirm1").addClass("simenu"); $("#areafirm1").removeClass("nomenu");
-                            $("#areafirm2").addClass("nomenu"); $("#areafirm2").removeClass("simenu");
-                        }
-                        function firma2() {
-                            $("#areafirm2").addClass("simenu"); $("#areafirm2").removeClass("nomenu");
-                            $("#areafirm1").addClass("nomenu"); $("#areafirm1").removeClass("simenu");
-                        }
-                    </script>
-                    
-                </div>
-
-                <style>
-                    #areafirm1, #areafirm2 {
-                        position: absolute;
-                        width: 53%;
-                        height: 46%;
-                        left: -3%;
-                        top: 27%;
-                        transform: rotate(4deg);
-                        background: rgb(44,161,255);
-                        overflow: hidden;
-                    }
-
-                    #imgprofil {
-                        position: absolute;
-                        opacity: .6;
-                        left: 0;
-                        height: 100%;
-                    }
-                    #imgprofil2 {
-                        position: absolute;
-                        opacity: .6;
-                        left: 0;
-                        height: 100%; left:5%;
-                    }
-                    #titfirm {
-                        position: absolute;
-                        font-family: p3font;
-                        color: white;
-                        font-size: 2vw;
-                        left: 40%;
-                        top: 5%;
-                    }
-
-                    #contfirm {
-                        position: absolute;
-                        left: 30%;
-                        font-size: 1.2vw;
-                        font-family: Roboto;
-                        color: white;
-                        top: 30%;
-                        width: 60%;
-                    }
-                    #contfirm2 {
-                        position: absolute;
-                        left: 30%;
-                        font-size: 1vw;
-                        font-family: Roboto;
-                        color: white;
-                        top: 28%;
-                        width: 60%;
-                    }
-                    #nickfirm {
-                        position: absolute;
-                        left: 30%;
-                        font-size: 1.2vw;
-                        font-family: Roboto;
-                        color: rgb(105,252,254);
-                        top: 90%;
-                        width: 60%;
-                    }
-
-                    #bluecube {
-                        background: blue;
-                        right: 10%;
-                        height: 250%;
-                        width: 30%;
-                        transform: rotate(50deg);
-                        position: absolute;
-                        top: -20%;
-                        opacity: .4;
-                    }
-                </style>
-                <div id="areafirm1" class="simenu">
-                    <img id="imgprofil" src="https://i.postimg.cc/j2yQ85SS/123.png" />
-                    <div id="bluecube"></div>
-                    <i id="titfirm">
-                        My autumn...
-                    </i>
-                    <i id="contfirm">
-                        I never thought that in the world there could be a person as precious ans special as the one I've my side now. Someone who shines and enchants everyone, I hope that shine never goes out, I hope autumn never leaves my side, because I love it like I have never loved anyone. Thank u for being by side both in the good and the bad, always continue to cost a spell on me. I love you today, tomorrow and forever.
-
-                    </i>
-                    <i id="nickfirm">
-                        丽奈特♥·西海| Lynette♥ - Saikai
-                    </i>
-                </div>
-                <div id="areafirm2" class="nomenu">
-                    <img id="imgprofil2" src="https://i.postimg.cc/76zJBGYJ/myt.png" />
-                    <div id="bluecube"></div>
-                    <i id="titfirm">
-                        Dear Neige...
-                    </i>
-                    <i id="contfirm2">
-                        Gracias por ser uno de los mejores colegas que he tenido. Eres un tipo sensato que casi siempre va al grano y se anda sin tonterías. En internet, a menudo uno se encuentra con mucho mamón con dobles intenciones que no sabes si están interesados en tu bienestar o si solo quieren pillar tu culo de manera desprevenida y sacar tus nudes. Pero Neige, señoras y señores, Neige jamás haría eso, él es auténtico y leal. Es una persona que siempre te toma en serio, con la que puedes conversar sobre la vida, sobre lo importante y lo trivial... y al final, es difícil perder el enfoque y la determinación cuando tienes a un amigo con las ideas tan claras apoyándote y dándote todo su amor. Fue una excelente decisión tomarme el tiempo en conocerte. Allá donde estés amigo, descansa en paz. Siempre te recordaremos.
-                    </i>
-                    <i id="nickfirm">
-                        丽奈特♥·西海|  Schroederz - Saikai
-                    </i>
-                </div>
-            </div>
-            <div id="abme" class="nomenu">
-                <style>
-                    #abme {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
-                    }
-                </style>
-                <video autoplay="" loop="" muted="" id="video15" src="p2.mp4" type="video/mp4">
-                    <script>$("#video15").coverVid(1920, 1080);</script>
-                </video>
-            </div>
-
-            <div id="sistema" class="nomenu">
-                <style>
-                    #sistema {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
-                    }
-                </style>
-                <video autoplay="" loop="" muted="" id="video4" src="p3.mp4" type="video/mp4">
-                    <script>$("#video4").coverVid(1920, 1080);</script>
-                </video>
-                <i id="titlescreen3">
-                    <style>
-                        #titlescreen3 {
-                            font-family: p3font;
-                            transform: rotate(90deg);
-                            opacity: .4;
-                            color: black;
-                            position: absolute;
-                            font-size: 11vw;
-                            left:-15%;
-                            top: 11vw;
-                        }
-                    </style>
-                    SYSTEM
-                </i>
-                <div id="sysopt">
-                    <style>
-                        #sysopt {
-                            position: absolute;
-                            width: 50%;
-                            height: 50%; 
-                            top: 20%;
-                        }
-
-                        #select1 {
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            color: aqua;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
-                            #select1:hover, #select2:hover, #select3:hover, #select4:hover {
-                                background: white;
-                                color: black;
-                                box-shadow: .2vw -.4vw 0 red;
-                            }
-                        #select2 {
-                            color: aqua;
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            top: 17%;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
-                        #select3 {
-                            color: aqua;
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            top: 34%;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
-                        #select4 {
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 20%;
-                            top:51%; 
-                            border-radius: 0 .3vw .3vw 0; 
-                        }
-                        #titselect1, #titselect2, #titselect3, #titselect4 {
-                            font-family: Roboto;
-                            right: 50%;
-                            position: relative;
-                            font-size: 1.5vw;
-                            top: -.5vw;
-                        }
-                        #areabuton {
-                            position: absolute;
-                            width: 37%;
-                            height: 70%;
-                            top: 15%;
-                            border-radius: 2vw;
-                            background: #0B0530; right:5%; font-family:Roboto; font-style:oblique; font-weight:bold;
-                        }
-                        #botonon, #botonon2, #botonon3 {
-                            height: 100%;
-                            border-radius: 2vw;
-                            position: absolute;
-                            text-align: center;
-                        }
-                        #botonoff, #botonoff2, #botonoff3 {
-                            height: 100%;
-                            position: absolute;
-                            border-radius: 2vw;
-                            text-align: center;
-                        }
-                        .botonnoL {
-                            width: 50%;
-                            color: rgb(105,252,254);
-                        }
-                        .botonsiL {
-                            width: 60%;
-                            background: white;
-                            box-shadow: .2vw .2vw 0 black; color:black;
-                        }
-                        .botonnoR {
-                            width: 50%;
-                            left: 50%;
-                            color: rgb(105,252,254);
-                        }
-                        .botonsiR {
-                            left: 40%;
-                            width: 60%;
-                            background: white;
-                            box-shadow: .2vw .2vw 0 black;
-                            color: black;
-                        }
-                        #areabuton div p { margin-top:.6vw;
-                        }
-                        .sifires {
-                            opacity: 1;
-                        }
-
-                        .nofires {
-                            opacity: 0;
-                        }
-                    </style>
-                    <script> 
-                        function siefect() {
-                            $("#botonon").addClass("botonsiR"); $("#botonon").removeClass("botonnoR");
-                            $("#botonoff").addClass("botonnoL"); $("#botonoff").removeClass("botonsiL");
-                            $("#boxfires2").removeClass("nofires"); $("#boxfires2").addClass("sifires");
-                        }
-                        function noefect() {
-                            $("#botonon").addClass("botonnoR"); $("#botonon").removeClass("botonsiR");
-                            $("#botonoff").addClass("botonsiL"); $("#botonoff").removeClass("botonnoL");
-                            $("#boxfires2").addClass("nofires"); $("#boxfires2").removeClass("sifires");
-                        }
-
-                        function sifrez() {
-                            $("#botonon2").addClass("botonsiR"); $("#botonon2").removeClass("botonnoR");
-                            $("#botonoff2").addClass("botonnoL"); $("#botonoff2").removeClass("botonsiL");
-                            document.getElementById("video4").pause();
-                            document.getElementById("video15").pause();
-                            document.getElementById("video2").pause();
-                            document.getElementById("video3").pause();
-                            document.getElementById("video5").pause();
-                        }
-                        function nofrez() {
-                            $("#botonon2").addClass("botonnoR"); $("#botonon2").removeClass("botonsiR");
-                            $("#botonoff2").addClass("botonsiL"); $("#botonoff2").removeClass("botonnoL");
-                            document.getElementById("video4").play();
-                            document.getElementById("video15").play();
-                            document.getElementById("video2").play();
-                            document.getElementById("video3").play();
-                            document.getElementById("video5").play();
-                        }
-
-                        function simus() {
-                            $("#botonon3").addClass("botonsiR"); $("#botonon3").removeClass("botonnoR");
-                            $("#botonoff3").addClass("botonnoL"); $("#botonoff3").removeClass("botonsiL");
-                        }
-                        function nomus() {
-                            $("#botonon3").addClass("botonnoR"); $("#botonon3").removeClass("botonsiR");
-                            $("#botonoff3").addClass("botonsiL"); $("#botonoff3").removeClass("botonnoL");
-                        }
-                    </script>
-                    <div id="select1">
-                        <p id="titselect1">Wallpaper Animation</p>
-                        <div id="areabuton">
-                            <div id="botonoff" class="botonnoL" onclick="noefect();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon" class="botonsiR" onclick="siefect()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select2">
-                        <p id="titselect2">Frezze menus</p>
-                        <div id="areabuton">
-                            <div id="botonoff2" class="botonsiL" onclick="nofrez();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon2" class="botonnoR" onclick="sifrez()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select3">
-                        <p id="titselect3">Music / Sound</p>
-                        <div id="areabuton">
-                            <div id="botonoff3" class="botonnoL" onclick="nomus();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon3" class="botonsiR" onclick="simus()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select4">
-                        <div id="Aaudio">
-                            <style>
-
-                                #Aaudio {
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 100%;
-                                }
-
-                                #abtnaud {
-                                    position: absolute;
-                                    width: 20%;
-                                    height: 70%;
-                                    right: 12%;
-                                    top: 60%;
-                                }
-
-                                .butplayer {
-                                    filter: blur(0px) hue-rotate(250deg);
-                                    float: left;
-                                    height: 1vw;
-                                    top: -.25vw;
-                                    width: 1vw;
-                                    margin-left: 1vw;
-                                    position: relative;
-                                }
-
-                                .butpl {
-                                    position: absolute;
-                                    width: 1.5vw;
-                                    height: 1.5vw;
-                                    left: 0;
-                                    top: .3vw;
-                                    border-radius: .2vw;
-                                }
-
-                                    .butpl:hover {
-                                        filter: blur(0px) hue-rotate(550deg) invert(100%);
-                                    }
-
-                                    .butpl img {
-                                        position: absolute;
-                                        width: 1.5vw;
-                                        height: 1.5vw;
-                                        /*filter: invert(100%);*/
-                                        left: .07vw;
-                                        top: .1vw;
-                                    }
-
-                                #pause, #play, #next, #prev, #stop {
-                                    width: 2vw;
-                                    height: 2vw;
-                                    position: absolute;
-                                    left: 0;
-                                }
-
-                                .progress-bar {
-                                    top: 45%;
-                                    right: 5%;
-                                    width: 36%;
-                                    border-radius: .3vw;
-                                    background: rgb(74,82,101);
-                                    height: .35vw;
-                                    position: absolute;
-                                }
-
-                                .fillBar {
-                                    background: rgb(116, 129, 160);
-                                    width: 0;
-                                    height: .35vw;
-                                }
-
-
-                                /* #namesong {
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 70%;
-                                    top: 10%;
-                                    font-weight: bold;
-                                    color: #b21160;
-                                    letter-spacing: .1vw;
-                                    font-size: .55vw;
-                                }*/
-
-                                .artist-name {
-                                    position: absolute;
-                                    width: 88%;
-                                    left: 10%;
-                                    height: 100%;
-                                    top: 70%;
-                                    letter-spacing: .1vw;
-                                    font-size: .5vw; 
-                                }
-
-                                #AT_time {
-                                    width: 70%;
-                                    height: 1vw;
-                                    top: 63%;
-                                    left: 80%;
-                                    position: absolute;
-                                }
-
-                                    #AT_time p {
-                                        position: absolute;
-                                        letter-spacing: .1vw;
-                                        font-size: .5vw; 
-                                    }
-
-                                .time {
-                                    position: absolute;
-                                    left: 8%;
-                                    top: -2vw;  color:rgb(8,210,255);
-                                    letter-spacing: .1vw;
-                                    font-size: .6vw;
-                                    overflow: hidden; 
-                                }
-
-                                #name_sng {
-                                    position: relative;
-                                    float: left;
-                                }
-                                .artist-name {
-                                    position: absolute;
-                                    left: .1vw;
-                                    top: 55%; left:17%;
-                                    color: rgb(8,210,255);
-                                    font-family: Roboto;
-                                    letter-spacing: .1vw;
-                                    font-size: .8vw;
-                                    opacity: .6;
-                                }
-
-                                #namesong {
-                                    position: relative;
-                                    color: rgb(8,210,255);
-                                    font-family: Roboto; font-size:1.2vw; font-style:oblique; font-weight:bold;
-                                    margin-top: .5vw;
-                                    left: 17%;
-                                }
-
-                                #fillimgbar {
-                                    width: 1vw;
-                                    height: 1vw;
-                                    position: absolute;
-                                    top: -.4vw;
-                                    left: -3%;
-                                }
-                            </style>
-                            <div class="progress-bar">
-                                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
-                            </div>
-
-
-                            <div id="AT_time"><div class="time"></div></div>
-                            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
-                            <div class="artist-name"></div> 
-
-                            <div id="abtnaud">
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
-                                        <div id="prev" class="fas fa-backward"><p></p></div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
-                                        <div id="play"> </div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
-
-                                        <div id="next" class="fas fa-forward"><p></p></div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
-                                        <div id="pause"> </div>
-                                    </div>
-
-                                </div>
-                                <!--<div class="butplayer">
-            <div class="butpl">
-                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-                <div id="stop"> </div>
-            </div>
-
-        </div>-->
-                            </div>
-
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div id="about" class="nomenu">
-                <style>
-                    #about {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
-                    }
-                </style>
-                <video autoplay="" loop="" muted="" id="video5" src="p4.mp4" type="video/mp4">
-                    <script>$("#video5").coverVid(1920, 1080);</script>
-                </video>
-                <i id="titlescreen5">
-                    <style>
-                        #titlescreen5 {
-                            font-family: p3font;
-                            transform: rotate(45deg);
-                            opacity: .4;
-                            color: black;
-                            position: absolute;
-                            font-size: 11vw;
-                            right: 6%;
-                            top: 11vw;
-                        }
-                    </style>
-                    ABOUT THIS
-                </i>
-                <div id="credits">
-                    <style>
-                        #credits { position:absolute; width:30%; height:100%;   left:10%; top:0; overflow:hidden;
-                        }
-                        #contcred { width:100%; height:200%; position:absolute;      
-                                    text-align:center;
-                        }
-                        .addan {
-                            animation: lineup1 8s linear;
-                            animation-fill-mode: forwards;
-                        }
-                        #p3r {
-                            position: absolute;
-                            width: 13vw;
-                            left: 30%;
-                            top: 5%;
-                        }
-                        #atlus { width:7vw; position:absolute; left:5%;   top:90%;
-                              
-                        }
-                        #pstudio {
-                            width: 4vw;
-                            position: absolute;
-                            
-                            top: 85%;
-                            left: 40%;
-                        }
-                        #xatlogo {
-                            width: 8vw;
-                            position: absolute; 
-                            top: 89.5%;
-                            left: 65%;
-                        }
-                        @keyframes lineup1 {
-                            0% {
-                               top:100%;
-                            }
-
-                            
-
-                            100% {
-                              top:-100%;
-                            }
-                        }
-                        #i1 {  color:rgb(105,252,254); font-size:1.2vw; text-align:center; font-family:p3font; position:relative;  top:20%; 
-                        }
-                        #pp1 {
-                            color: white;
-                            font-size: 1.2vw;
-                            text-align: center;
-                            font-family: Roboto;
-                            position: relative;
-                             top: 21%;
-                        }
-                        #pp2 {
-                            color: white;
-                            font-size: 1.2vw;
-                            text-align: center;
-                            font-family: Roboto;
-                            position: relative;
-                            top: 26%;
-                        }
-                        #pp3 {
-                            color: rgb(105,252,254);
-                            font-size: 1.2vw;
-                            text-align: center;
-                            font-family: p3font;
-                            position: relative;
-                            top: 30%;
-                        }
-                        #pp4 {
-                            color: rgb(105,252,254);
-                            font-size: 1.2vw;
-                            text-align: center;
-                            font-family: p3font;
-                            position: relative;
-                            top: 50%;
-                        }
-                            #pp2 span {
-                                color: rgb(105,252,254);
-                            }
-                    </style>
-                    <div id="contcred">
-                        <img src="https://i.postimg.cc/QNv3212V/472c8a7841544965e844f15b115ddde2.png" id="p3r" />
-                        <i id="i1">Created and powered by</i>
-                        <p id="pp1">Neige</p>
-
-                        <i id="pp2">
-                            xatspace inspired in <span>PERSONA3 RELOAD</span><br />
-                            Interface V1.0 Rev 1.02
-                        </i>
-
-                        <i id="pp3">
-                            MACC NAME: BLACKLARCH 4CL454<br />
-
-                            IMACC TYPE: TAIMAT IMAGE<br />
-
-                            ICCKS COMPRESSED (Q) 444445555<br />
-
-                            LOAD ADRESS 0000x112244-000000000000000<br />
-                        </i>
-                        <p id="pp4">All Rights Reserved Xat.me</p>
-                        <p id="pp4">2024</p>
-                        <img src="https://i.postimg.cc/KjGZR25j/p-studio-logo-309f72dd4c41c3616cc1eb2b576c2561.webp" id="pstudio" />
-                        <img src="https://i.postimg.cc/ZRFbbRpX/atlus-logo-853c96f1dd3f1de2b369be4f9dd38b47.webp" id="atlus" />
-                        <img src="https://i.postimg.cc/qBNtccc7/db3370c089d519e51e5ff1c9631cebd2.png" id="xatlogo" />
-                    </div>
-
-                </div>
-            </div>
             <div id="optionsmenu" class="nomenu">
                 <style>
                     @font-face {
@@ -2454,6 +1517,7 @@
                         z-index: 999;
                         opacity: 1;
                     }
+
                     .simen {
                         transition-delay: 1s;
                         top: 0;
@@ -2461,8 +1525,8 @@
                         z-index: 99;
                         opacity: 1;
                     }
+
                     .simenu {
-                         
                         top: 0;
                         left: 0;
                         z-index: 999;
@@ -2960,7 +2024,7 @@
                     function entermenux() {
                         closemail();
                         $("#optionsmenu").addClass("simen"); $("#optionsmenu").removeClass("nomenu"); clicksecondvid();
-                       
+
                     }
                     //salir a la pantalla principal
                     function entermenux2() {
@@ -2974,7 +2038,7 @@
                     }
                     //entrar a socials
                     function enterp1() {
-                       $("#socials").addClass("simenu"); $("#socials").removeClass("nomenu");
+                        $("#socials").addClass("simenu"); $("#socials").removeClass("nomenu");
 
                         $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simen");
                         $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
@@ -2984,10 +2048,10 @@
                     }
                     //entrar a firmas
                     function enterp2() {
-                        
+
                         $("#firmas").addClass("simenu"); $("#firmas").removeClass("nomenu");
-                        
-                       
+
+
 
                         $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simen");
                         $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
@@ -3011,7 +2075,7 @@
                     function enterp4() {
 
                         $("#about").addClass("simenu"); $("#about").removeClass("nomenu");
-                        $("#contcred").addClass("addan"); 
+                        $("#contcred").addClass("addan");
 
 
                         $("#optionsmenu").addClass("nomenu"); $("#optionsmenu").removeClass("simen");
@@ -3067,6 +2131,1319 @@
                     function entranceseconvid() { cambiarsrc2(); }
                 </script>
             </div>
+            <script>
+                function outtomenu() {
+                    $("#contcred").removeClass("addan");
+                    $("#firmas").addClass("nomenu"); $("#firmas").removeClass("simenu");
+                    $("#socials").addClass("nomenu"); $("#socials").removeClass("simenu");
+                    $("#abme").addClass("nomenu"); $("#abme").removeClass("simenu");
+                    $("#sistema").addClass("nomenu"); $("#sistema").removeClass("simenu");
+                    $("#about").addClass("nomenu"); $("#about").removeClass("simenu");
+                    $("#optionsmenu").addClass("simenu"); $("#optionsmenu").removeClass("nomenu");
+                };
+
+
+            </script>
+            <div id="socials" class="nomenu">
+                <style>
+                    #socials {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+
+                    #social1 {
+                        position: absolute;
+                        width: 33%;
+                        height: 16%;
+                        top: 35%;
+                        left: 8%;
+                    }
+
+                    #social2 {
+                        position: absolute;
+                        width: 33%;
+                        height: 16%;
+                        top: 52%;
+                        left: 9.5%;
+                    }
+
+                    #social3 {
+                        position: absolute;
+                        width: 33%;
+                        height: 16%;
+                        top: 69%;
+                        left: 11%;
+                    }
+
+                    #imgnormal1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 1;
+                    }
+
+                    #imgselect1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                    }
+
+                    #social1:hover #imgnormal1, #social2:hover #imgnormal1, #social3:hover #imgnormal1 {
+                        opacity: 0;
+                    }
+
+                    #social1:hover #imgselect1, #social2:hover #imgselect1, #social3:hover #imgselect1 {
+                        opacity: 1;
+                    }
+
+                    #listsocial {
+                        font-family: p3font;
+                        font-size: 6vw;
+                        color: blue;
+                        top: 23%;
+                        left: 8%;
+                        position: absolute;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video2" src="p1.mp4" type="video/mp4">
+                    <script>$("#video2").coverVid(1920, 1080);</script>
+                </video>
+                <div id="movreturn5" onclick="outtomenu();">
+                    <style>
+                        #movreturn5 {
+                            position: absolute;
+                            top: 85%;
+                            left: 40%;
+                            z-index: 9999;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+                <i id="titlescreen2">
+                    <style>
+                        #titlescreen2 {
+                            font-family: p3font;
+                            transform: rotate(90deg);
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 13vw;
+                            right: -18vw;
+                            top: 14vw;
+                        }
+                    </style>
+                    SOCIALS
+                </i>
+                <i id="listsocial">
+                    LIST
+
+                </i>
+                <div id="social1">
+                    <img id="imgselect1" src="https://i.postimg.cc/J0c3M3hJ/emperatriz.png" />
+                    <img id="imgnormal1" src="https://i.postimg.cc/J7b5N8Qn/emperatriz-N.png" />
+                </div>
+                <div id="social2">
+                    <img id="imgselect1" src="https://i.postimg.cc/1zd1rwsp/muerte2.png" />
+                    <img id="imgnormal1" src="https://i.postimg.cc/KjSXdbKj/muerteN.png" />
+                </div>
+                <div id="social3">
+                    <img id="imgselect1" src="https://i.postimg.cc/8CcVvtQp/luna2.png" />
+                    <img id="imgnormal1" src="https://i.postimg.cc/ydS4Qx82/lunaN.png" />
+                </div>
+            </div>
+            <!--<div id="butonprueba" onclick="outtomenu();">
+
+        <style>
+            #butonprueba {
+                z-index: 999999999999999;
+                background: red;
+                width: 5vw;
+                height: 5vw;
+                top: 30%;
+                right: 0;
+                position: absolute;
+            }
+        </style>
+    </div>-->
+            <div id="firmas" class="nomenu">
+                <style>
+                    #firmas {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+
+                    #firmas2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: Red;
+                    }
+                </style>
+                <div id="firmas2">
+                    <video autoplay="" loop="" muted="" id="video3" src="p5.mp4" type="video/mp4">
+                        <script>$("#video3").coverVid(1920, 1080);</script>
+                    </video>
+                </div>
+                <div id="movreturn2" onclick="outtomenu();">
+                    <style>
+                        #movreturn2 {
+                            position: absolute;
+                            top: 74%;
+                            left: 40%;
+                            z-index: 9999;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+                <i id="titlescreen">
+                    <style>
+                        #titlescreen {
+                            font-family: p3font;
+                            transform: rotate(90deg);
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 13vw;
+                            right: -13vw;
+                            top: 8vw;
+                        }
+                    </style>
+                    FIRMS
+                </i>
+                <div id="butonsleftreg">
+                    <style>
+                        #butonsleftreg {
+                            position: absolute;
+                            width: 25%;
+                            height: 10%;
+                            top: 14%;
+                            left: 25%;
+                            z-index: 1000;
+                        }
+
+                        #lblr {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                        #abt1 {
+                            position: absolute; /*background:red;*/
+                            width: 2vw;
+                            height: 2vw;
+                            left: 0vw;
+                            top: 120%;
+                            transform: rotate(-10deg);
+                            animation: toleft 2s infinite;
+                        }
+
+                        #abt2 {
+                            position: absolute;
+                            /*background: red;*/
+                            width: 2vw;
+                            height: 2vw;
+                            right: 0;
+                            top: 5%;
+                            animation: torigth 2s infinite;
+                            transform: rotate(-10deg);
+                        }
+
+                            #abt1 img, #abt2 img {
+                                width: 100%;
+                                position: absolute;
+                            }
+
+                        @keyframes toleft {
+
+                            0% {
+                                left: 0%;
+                            }
+
+                            50% {
+                                left: -1%;
+                            }
+
+                            100% {
+                                left: 0;
+                            }
+                        }
+
+                        @keyframes torigth {
+
+                            0% {
+                                right: 0%;
+                            }
+
+                            50% {
+                                right: -1%;
+                            }
+
+                            100% {
+                                right: 0;
+                            }
+                        }
+
+                        #ptextfirm {
+                            color: #6580ea;
+                            font-family: p3font;
+                            top: 70%;
+                            left: 35%;
+                            transform: rotate(-12deg);
+                            position: absolute;
+                            font-size: 1.5vw;
+                        }
+
+                        #rr1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #rr2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #ll1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #ll2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    <img id="lblr" src="https://i.postimg.cc/9fyHVP0m/Sin-t-tulo.png" />
+                    <i id="ptextfirm">Select firm</i>
+                    <div id="abt1">
+                        <img src="https://i.postimg.cc/1RBnsw-Vr/1.png" />
+                        <div id="ll1" class="simenu" onclick="right1()"></div>
+                        <div id="ll2" class="nomenu" onclick="right2()"></div>
+                    </div>
+                    <div id="abt2">
+                        <img src="https://i.postimg.cc/9Ff4M0G5/2.png" />
+                        <div id="rr1" class="simenu" onclick="left1()"></div>
+                        <div id="rr2" class="nomenu" onclick="left2()"></div>
+                    </div>
+
+                    <script>
+                        function left1() {
+                            firma2();
+                            $("#rr1").addClass("nomenu"); $("#rr1").removeClass("simenu");
+                            $("#rr2").addClass("simenu"); $("#rr2").removeClass("nomenu");
+                        }
+                        function left2() {
+                            firma1();
+                            $("#rr2").addClass("nomenu"); $("#rr2").removeClass("simenu");
+                            $("#rr1").addClass("simenu"); $("#rr1").removeClass("nomenu");
+                        }
+                        function right1() {
+                            firma2();
+                            $("#ll1").addClass("nomenu"); $("#ll1").removeClass("simenu");
+                            $("#ll2").addClass("simenu"); $("#ll2").removeClass("nomenu");
+                        }
+                        function right2() {
+                            firma1();
+                            $("#ll2").addClass("nomenu"); $("#ll2").removeClass("simenu");
+                            $("#ll1").addClass("simenu"); $("#ll1").removeClass("nomenu");
+                        }
+                        function firma1() {
+                            $("#areafirm1").addClass("simenu"); $("#areafirm1").removeClass("nomenu");
+                            $("#areafirm2").addClass("nomenu"); $("#areafirm2").removeClass("simenu");
+                        }
+                        function firma2() {
+                            $("#areafirm2").addClass("simenu"); $("#areafirm2").removeClass("nomenu");
+                            $("#areafirm1").addClass("nomenu"); $("#areafirm1").removeClass("simenu");
+                        }
+                    </script>
+
+                </div>
+
+                <style>
+                    #areafirm1, #areafirm2 {
+                        position: absolute;
+                        width: 53%;
+                        height: 46%;
+                        left: -3%;
+                        top: 27%;
+                        transform: rotate(4deg);
+                        background: rgb(44,161,255);
+                        overflow: hidden;
+                    }
+
+                    #imgprofil {
+                        position: absolute;
+                        opacity: .6;
+                        left: 0;
+                        height: 100%;
+                    }
+
+                    #imgprofil2 {
+                        position: absolute;
+                        opacity: .6;
+                        left: 0;
+                        height: 100%;
+                        left: 5%;
+                    }
+
+                    #titfirm {
+                        position: absolute;
+                        font-family: p3font;
+                        color: white;
+                        font-size: 2vw;
+                        left: 40%;
+                        top: 5%;
+                    }
+
+                    #contfirm {
+                        position: absolute;
+                        left: 30%;
+                        font-size: 1.2vw;
+                        font-family: Roboto;
+                        color: white;
+                        top: 30%;
+                        width: 60%;
+                    }
+
+                    #contfirm2 {
+                        position: absolute;
+                        left: 30%;
+                        font-size: 1vw;
+                        font-family: Roboto;
+                        color: white;
+                        top: 28%;
+                        width: 60%;
+                    }
+
+                    #nickfirm {
+                        position: absolute;
+                        left: 30%;
+                        font-size: 1.2vw;
+                        font-family: Roboto;
+                        color: rgb(105,252,254);
+                        top: 90%;
+                        width: 60%;
+                    }
+
+                    #bluecube {
+                        background: blue;
+                        right: 10%;
+                        height: 250%;
+                        width: 30%;
+                        transform: rotate(50deg);
+                        position: absolute;
+                        top: -20%;
+                        opacity: .4;
+                    }
+                </style>
+                <div id="areafirm1" class="simenu">
+                    <img id="imgprofil" src="https://i.postimg.cc/j2yQ85SS/123.png" />
+                    <div id="bluecube"></div>
+                    <i id="titfirm">
+                        My autumn...
+                    </i>
+                    <i id="contfirm">
+                        I never thought that in the world there could be a person as precious ans special as the one I've my side now. Someone who shines and enchants everyone, I hope that shine never goes out, I hope autumn never leaves my side, because I love it like I have never loved anyone. Thank u for being by side both in the good and the bad, always continue to cost a spell on me. I love you today, tomorrow and forever.
+
+                    </i>
+                    <i id="nickfirm">
+                        丽奈特♥·西海| Lynette♥ - Saikai
+                    </i>
+                </div>
+                <div id="areafirm2" class="nomenu">
+                    <img id="imgprofil2" src="https://i.postimg.cc/76zJBGYJ/myt.png" />
+                    <div id="bluecube"></div>
+                    <i id="titfirm">
+                        Dear Neige...
+                    </i>
+                    <i id="contfirm2">
+                        Gracias por ser uno de los mejores colegas que he tenido. Eres un tipo sensato que casi siempre va al grano y se anda sin tonterías. En internet, a menudo uno se encuentra con mucho mamón con dobles intenciones que no sabes si están interesados en tu bienestar o si solo quieren pillar tu culo de manera desprevenida y sacar tus nudes. Pero Neige, señoras y señores, Neige jamás haría eso, él es auténtico y leal. Es una persona que siempre te toma en serio, con la que puedes conversar sobre la vida, sobre lo importante y lo trivial... y al final, es difícil perder el enfoque y la determinación cuando tienes a un amigo con las ideas tan claras apoyándote y dándote todo su amor. Fue una excelente decisión tomarme el tiempo en conocerte. Allá donde estés amigo, descansa en paz. Siempre te recordaremos.
+                    </i>
+                    <i id="nickfirm">
+                        丽奈特♥·西海|  Schroederz - Saikai
+                    </i>
+                </div>
+            </div>
+            <div id="abme" class="nomenu">
+                <style>
+                    #abme {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video15" src="p2.mp4" type="video/mp4">
+                    <script>$("#video15").coverVid(1920, 1080);</script>
+                </video>
+                <i id="titlescreenx">
+                    <style>
+                        @font-face {
+                            font-family: textfirmFont;
+                            src: url(firm.otf);
+                        }
+
+                        @font-face {
+                            font-family: textf;
+                            src: url(Onbase.otf);
+                        }
+
+                        @font-face {
+                            font-family: neigefont;
+                            src: url(neige.otf);
+                        }
+
+                        @font-face {
+                            font-family: neigefont2;
+                            src: url(neig.ttf);
+                        }
+
+                        @font-face {
+                            font-family: neigefont3;
+                            src: url(PMINGLIU.ttf);
+                        }
+
+                        #titlescreenx {
+                            font-family: p3font;
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 11vw;
+                            top: 80%;
+                        }
+
+                        #makotopngback {
+                            position: absolute;
+                            right: 1%;
+                            bottom: -2%;
+                            width: 40%;
+                            filter: brightness(0%) invert(10%) sepia(1) hue-rotate(200deg);
+                            opacity: .8;
+                        }
+
+                        #makotopng {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            width: 40%;
+                        }
+
+                        #nameneige {
+                            position: absolute;
+                            right: 19%;
+                            font-family: p3font;
+                            font-size: 3vw;
+                            color: rgb(105,252,254);
+                            top: 30%;
+                            text-shadow: -.2vw .2vw 0 black;
+                        }
+
+                        #datesp {
+                            position: absolute;
+                            right: 19%;
+                            font-family: Roboto;
+                            font-size: .9vw;
+                            color: white;
+                            top: 35%;
+                            text-shadow: -.2vw .2vw 0 black;
+                        }
+
+                            #datesp span {
+                                font-size: .6vw;
+                                letter-spacing: .4vw;
+                            }
+                    </style>
+                    ABOUT ME
+                </i>
+                <div id="areafriends">
+                    <style>
+                        #areafriends {
+                            position: absolute;
+                            width: 45%;
+                            height: 60%;
+                            top: 30%;
+                        }
+
+                        #f1 {
+                            width: 97%;
+                            height: 15%;
+                            position: absolute;
+                        }
+
+                        #f2 {
+                            width: 97%;
+                            height: 15%;
+                            top: 15%;
+                            position: absolute;
+                        }
+
+                        #f3 {
+                            width: 97%;
+                            height: 15%;
+                            top: 30%;
+                            position: absolute;
+                        }
+
+                        #f4 {
+                            width: 97%;
+                            height: 15%;
+                            top: 45%;
+                            position: absolute;
+                        }
+
+                        #f5 {
+                            width: 97%;
+                            height: 15%;
+                            top: 60%;
+                            position: absolute;
+                        }
+
+                        #f6 {
+                            width: 97%;
+                            height: 15%;
+                            top: 75%;
+                            position: absolute;
+                        }
+
+                        #imgf1, #imgf2, #imgf3, #imgf4, #imgf5, #imgf6 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #imgf1-1, #imgf1-2, #imgf1-3, #imgf1-4, #imgf1-5, #imgf1-6 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 0;
+                            top: 0;
+                        }
+
+                        #f1:hover #imgf1, #f2:hover #imgf2, #f3:hover #imgf3, #f4:hover #imgf4, #f5:hover #imgf5, #f6:hover #imgf6 {
+                            opacity: 0;
+                        }
+
+                        #f1:hover #imgf1-1, #f2:hover #imgf1-2, #f3:hover #imgf1-3, #f4:hover #imgf1-4, #f5:hover #imgf1-5, #f6:hover #imgf1-6 {
+                            opacity: 1;
+                        }
+                    </style>
+                    <i id="titlescreens">
+                        <style>
+                            #titlescreens {
+                                font-family: p3font;
+                                transform: rotate(37deg);
+                                opacity: .4;
+                                color: black;
+                                position: absolute;
+                                font-size: 11vw;
+                                left: -15%;
+                                top: -30%;
+                            }
+                        </style>
+                        FRIENDS
+                    </i>
+                    <div id="f1">
+                        <img id="imgf1" src="https://i.postimg.cc/qMMpkLgK/neigeN.png" />
+                        <img id="imgf1-1" src="https://i.postimg.cc/W1djZ1Gb/neigeS.png" />
+                    </div>
+                    <div id="f2">
+                        <img id="imgf2" src="https://i.postimg.cc/g21pHbsy/yukiN.png" />
+                        <img id="imgf1-2" src="https://i.postimg.cc/nL7JdSSy/yukiS.png" />
+                    </div>
+                    <div id="f3">
+                        <img id="imgf3" src="https://i.postimg.cc/V6qzNZjq/mytN.png" />
+                        <img id="imgf1-3" src="https://i.postimg.cc/sfJVd8fy/mytS.png" />
+                    </div>
+                    <div id="f4">
+                        <img id="imgf4" src="https://i.postimg.cc/8PKNs6r0/luN.png" />
+                        <img id="imgf1-4" src="https://i.postimg.cc/d3JwZRBz/LuS.png" />
+                    </div>
+                    <div id="f5">
+                        <img id="imgf5" src="https://i.postimg.cc/4ywZ6K2n/lalaN.png" />
+                        <img id="imgf1-5" src="https://i.postimg.cc/3R5KYQDr/LalaS.png" />
+                    </div>
+                    <div id="f6">
+                        <img id="imgf6" src="https://i.postimg.cc/wx5BxMVC/chrisN.png" />
+                        <img id="imgf1-6" src="https://i.postimg.cc/T3sdNDdD/chrisS.png" />
+                    </div>
+                </div>
+                <div id="movreturn" onclick="outtomenu();">
+                    <style>
+                        #movreturn {
+                            position: absolute;
+                            top: 19%;
+                            right: 12%;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+
+                <img src="https://i.postimg.cc/15PQzkfm/Protagonist-AOA-2.png" id="makotopngback" />
+
+                <img src="https://i.postimg.cc/15PQzkfm/Protagonist-AOA-2.png" id="makotopng" />
+
+                <i id="nameneige">Neige</i>
+                <p id="datesp">
+                    XIII <br />
+                    ARCANA FOOL<br />
+                    FROM THE ABYS<br />
+                    <span>1533252890</span>
+                </p>
+            </div>
+
+            <div id="sistema" class="nomenu">
+                <style>
+                    #sistema {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video4" src="p3.mp4" type="video/mp4">
+                    <script>$("#video4").coverVid(1920, 1080);</script>
+                </video>
+                <div id="movreturn3" onclick="outtomenu();">
+                    <style>
+                        #movreturn3 {
+                            position: absolute;
+                            top: 60%;
+                            left: 40%;
+                            z-index: 9999;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+                <i id="titlescreen3">
+                    <style>
+                        #titlescreen3 {
+                            font-family: p3font;
+                            transform: rotate(90deg);
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 11vw;
+                            left: -15%;
+                            top: 11vw;
+                        }
+                    </style>
+                    SYSTEM
+                </i>
+                <div id="sysopt">
+                    <style>
+                        #sysopt {
+                            position: absolute;
+                            width: 50%;
+                            height: 50%;
+                            top: 20%;
+                        }
+
+                        #select1 {
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            color: aqua;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                            #select1:hover, #select2:hover, #select3:hover, #select4:hover {
+                                background: white;
+                                color: black;
+                                box-shadow: .2vw -.4vw 0 red;
+                            }
+
+                        #select2 {
+                            color: aqua;
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            top: 17%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #select3 {
+                            color: aqua;
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            top: 34%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #select4 {
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 20%;
+                            top: 51%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #titselect1, #titselect2, #titselect3, #titselect4 {
+                            font-family: Roboto;
+                            right: 50%;
+                            position: relative;
+                            font-size: 1.5vw;
+                            top: -.5vw;
+                        }
+
+                        #areabuton {
+                            position: absolute;
+                            width: 37%;
+                            height: 70%;
+                            top: 15%;
+                            border-radius: 2vw;
+                            background: #0B0530;
+                            right: 5%;
+                            font-family: Roboto;
+                            font-style: oblique;
+                            font-weight: bold;
+                        }
+
+                        #botonon, #botonon2, #botonon3 {
+                            height: 100%;
+                            border-radius: 2vw;
+                            position: absolute;
+                            text-align: center;
+                        }
+
+                        #botonoff, #botonoff2, #botonoff3 {
+                            height: 100%;
+                            position: absolute;
+                            border-radius: 2vw;
+                            text-align: center;
+                        }
+
+                        .botonnoL {
+                            width: 50%;
+                            color: rgb(105,252,254);
+                        }
+
+                        .botonsiL {
+                            width: 60%;
+                            background: white;
+                            box-shadow: .2vw .2vw 0 black;
+                            color: black;
+                        }
+
+                        .botonnoR {
+                            width: 50%;
+                            left: 50%;
+                            color: rgb(105,252,254);
+                        }
+
+                        .botonsiR {
+                            left: 40%;
+                            width: 60%;
+                            background: white;
+                            box-shadow: .2vw .2vw 0 black;
+                            color: black;
+                        }
+
+                        #areabuton div p {
+                            margin-top: .6vw;
+                        }
+
+                        .sifires {
+                            opacity: 1;
+                        }
+
+                        .nofires {
+                            opacity: 0;
+                        }
+                    </style>
+                    <script>
+                        function siefect() {
+                            $("#botonon").addClass("botonsiR"); $("#botonon").removeClass("botonnoR");
+                            $("#botonoff").addClass("botonnoL"); $("#botonoff").removeClass("botonsiL");
+                            $("#boxfires2").removeClass("nofires"); $("#boxfires2").addClass("sifires");
+                        }
+                        function noefect() {
+                            $("#botonon").addClass("botonnoR"); $("#botonon").removeClass("botonsiR");
+                            $("#botonoff").addClass("botonsiL"); $("#botonoff").removeClass("botonnoL");
+                            $("#boxfires2").addClass("nofires"); $("#boxfires2").removeClass("sifires");
+                        }
+
+                        function sifrez() {
+                            $("#botonon2").addClass("botonsiR"); $("#botonon2").removeClass("botonnoR");
+                            $("#botonoff2").addClass("botonnoL"); $("#botonoff2").removeClass("botonsiL");
+                            document.getElementById("video4").pause();
+                            document.getElementById("video15").pause();
+                            document.getElementById("video2").pause();
+                            document.getElementById("video3").pause();
+                            document.getElementById("video5").pause();
+                        }
+                        function nofrez() {
+                            $("#botonon2").addClass("botonnoR"); $("#botonon2").removeClass("botonsiR");
+                            $("#botonoff2").addClass("botonsiL"); $("#botonoff2").removeClass("botonnoL");
+                            document.getElementById("video4").play();
+                            document.getElementById("video15").play();
+                            document.getElementById("video2").play();
+                            document.getElementById("video3").play();
+                            document.getElementById("video5").play();
+                        }
+
+                        function simus() {
+                            $("#botonon3").addClass("botonsiR"); $("#botonon3").removeClass("botonnoR");
+                            $("#botonoff3").addClass("botonnoL"); $("#botonoff3").removeClass("botonsiL");
+                        }
+                        function nomus() {
+                            $("#botonon3").addClass("botonnoR"); $("#botonon3").removeClass("botonsiR");
+                            $("#botonoff3").addClass("botonsiL"); $("#botonoff3").removeClass("botonnoL");
+                        }
+                    </script>
+                    <div id="select1">
+                        <p id="titselect1">Wallpaper Animation</p>
+                        <div id="areabuton">
+                            <div id="botonoff" class="botonnoL" onclick="noefect();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon" class="botonsiR" onclick="siefect()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select2">
+                        <p id="titselect2">Frezze menus</p>
+                        <div id="areabuton">
+                            <div id="botonoff2" class="botonsiL" onclick="nofrez();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon2" class="botonnoR" onclick="sifrez()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select3">
+                        <p id="titselect3">Music / Sound</p>
+                        <div id="areabuton">
+                            <div id="botonoff3" class="botonnoL" onclick="nomus();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon3" class="botonsiR" onclick="simus()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select4">
+                        <div id="Aaudio">
+                            <style>
+
+                                #Aaudio {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                #abtnaud {
+                                    position: absolute;
+                                    width: 20%;
+                                    height: 70%;
+                                    right: 12%;
+                                    top: 60%;
+                                }
+
+                                .butplayer {
+                                    filter: blur(0px) hue-rotate(250deg);
+                                    float: left;
+                                    height: 1vw;
+                                    top: -.25vw;
+                                    width: 1vw;
+                                    margin-left: 1vw;
+                                    position: relative;
+                                }
+
+                                .butpl {
+                                    position: absolute;
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    left: 0;
+                                    top: .3vw;
+                                    border-radius: .2vw;
+                                }
+
+                                    .butpl:hover {
+                                        filter: blur(0px) hue-rotate(550deg) invert(100%);
+                                    }
+
+                                    .butpl img {
+                                        position: absolute;
+                                        width: 1.5vw;
+                                        height: 1.5vw;
+                                        /*filter: invert(100%);*/
+                                        left: .07vw;
+                                        top: .1vw;
+                                    }
+
+                                #pause, #play, #next, #prev, #stop {
+                                    width: 2vw;
+                                    height: 2vw;
+                                    position: absolute;
+                                    left: 0;
+                                }
+
+                                .progress-bar {
+                                    top: 45%;
+                                    right: 5%;
+                                    width: 36%;
+                                    border-radius: .3vw;
+                                    background: rgb(74,82,101);
+                                    height: .35vw;
+                                    position: absolute;
+                                }
+
+                                .fillBar {
+                                    background: rgb(116, 129, 160);
+                                    width: 0;
+                                    height: .35vw;
+                                }
+
+
+                                /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                                .artist-name {
+                                    position: absolute;
+                                    width: 88%;
+                                    left: 10%;
+                                    height: 100%;
+                                    top: 70%;
+                                    letter-spacing: .1vw;
+                                    font-size: .5vw;
+                                }
+
+                                #AT_time {
+                                    width: 70%;
+                                    height: 1vw;
+                                    top: 63%;
+                                    left: 80%;
+                                    position: absolute;
+                                }
+
+                                    #AT_time p {
+                                        position: absolute;
+                                        letter-spacing: .1vw;
+                                        font-size: .5vw;
+                                    }
+
+                                .time {
+                                    position: absolute;
+                                    left: 8%;
+                                    top: -2vw;
+                                    color: rgb(8,210,255);
+                                    letter-spacing: .1vw;
+                                    font-size: .6vw;
+                                    overflow: hidden;
+                                }
+
+                                #name_sng {
+                                    position: relative;
+                                    float: left;
+                                }
+
+                                .artist-name {
+                                    position: absolute;
+                                    left: .1vw;
+                                    top: 55%;
+                                    left: 17%;
+                                    color: rgb(8,210,255);
+                                    font-family: Roboto;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                    opacity: .6;
+                                }
+
+                                #namesong {
+                                    position: relative;
+                                    color: rgb(8,210,255);
+                                    font-family: Roboto;
+                                    font-size: 1.2vw;
+                                    font-style: oblique;
+                                    font-weight: bold;
+                                    margin-top: .5vw;
+                                    left: 17%;
+                                }
+
+                                #fillimgbar {
+                                    width: 1vw;
+                                    height: 1vw;
+                                    position: absolute;
+                                    top: -.4vw;
+                                    left: -3%;
+                                }
+                            </style>
+                            <div class="progress-bar">
+                                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+                            </div>
+
+
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                            <div class="artist-name"></div>
+
+                            <div id="abtnaud">
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                        <div id="prev" class="fas fa-backward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                                        <div id="play"> </div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                        <div id="next" class="fas fa-forward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                        <div id="pause"> </div>
+                                    </div>
+
+                                </div>
+                                <!--<div class="butplayer">
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
+
+                        </div>-->
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="about" class="nomenu">
+                <style>
+                    #about {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video5" src="p4.mp4" type="video/mp4">
+                    <script>$("#video5").coverVid(1920, 1080);</script>
+                </video>
+                <div id="movreturn4" onclick="outtomenu();">
+                    <style>
+                        #movreturn4 {
+                            position: absolute;
+                            top: 50%;
+                            left: 40%;
+                            z-index: 9999;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+                <i id="titlescreen5">
+                    <style>
+                        #titlescreen5 {
+                            font-family: p3font;
+                            transform: rotate(45deg);
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 11vw;
+                            right: 6%;
+                            top: 11vw;
+                        }
+                    </style>
+                    ABOUT THIS
+                </i>
+                <div id="credits">
+                    <style>
+                        #credits {
+                            position: absolute;
+                            width: 30%;
+                            height: 100%;
+                            left: 10%;
+                            top: 0;
+                            overflow: hidden;
+                        }
+
+                        #contcred {
+                            width: 100%;
+                            height: 200%;
+                            position: absolute;
+                            text-align: center;
+                        }
+
+                        .addan {
+                            animation: lineup1 8s linear;
+                            animation-fill-mode: forwards;
+                        }
+
+                        #p3r {
+                            position: absolute;
+                            width: 13vw;
+                            left: 30%;
+                            top: 5%;
+                        }
+
+                        #atlus {
+                            width: 7vw;
+                            position: absolute;
+                            left: 5%;
+                            top: 90%;
+                        }
+
+                        #pstudio {
+                            width: 4vw;
+                            position: absolute;
+                            top: 85%;
+                            left: 40%;
+                        }
+
+                        #xatlogo {
+                            width: 8vw;
+                            position: absolute;
+                            top: 89.5%;
+                            left: 65%;
+                        }
+
+                        @keyframes lineup1 {
+                            0% {
+                                top: 100%;
+                            }
+
+
+
+                            100% {
+                                top: -100%;
+                            }
+                        }
+
+                        #i1 {
+                            color: rgb(105,252,254);
+                            font-size: 1.2vw;
+                            text-align: center;
+                            font-family: p3font;
+                            position: relative;
+                            top: 20%;
+                        }
+
+                        #pp1 {
+                            color: white;
+                            font-size: 1.2vw;
+                            text-align: center;
+                            font-family: Roboto;
+                            position: relative;
+                            top: 21%;
+                        }
+
+                        #pp2 {
+                            color: white;
+                            font-size: 1.2vw;
+                            text-align: center;
+                            font-family: Roboto;
+                            position: relative;
+                            top: 26%;
+                        }
+
+                        #pp3 {
+                            color: rgb(105,252,254);
+                            font-size: 1.2vw;
+                            text-align: center;
+                            font-family: p3font;
+                            position: relative;
+                            top: 30%;
+                        }
+
+                        #pp4 {
+                            color: rgb(105,252,254);
+                            font-size: 1.2vw;
+                            text-align: center;
+                            font-family: p3font;
+                            position: relative;
+                            top: 50%;
+                        }
+
+                        #pp2 span {
+                            color: rgb(105,252,254);
+                        }
+                    </style>
+                    <div id="contcred">
+                        <img src="https://i.postimg.cc/QNv3212V/472c8a7841544965e844f15b115ddde2.png" id="p3r" />
+                        <i id="i1">Created and powered by</i>
+                        <p id="pp1">Neige</p>
+
+                        <i id="pp2">
+                            xatspace inspired in <span>PERSONA3 RELOAD</span><br />
+                            Interface V1.0 Rev 1.02
+                        </i>
+
+                        <i id="pp3">
+                            MACC NAME: BLACKLARCH 4CL454<br />
+
+                            IMACC TYPE: TAIMAT IMAGE<br />
+
+                            ICCKS COMPRESSED (Q) 444445555<br />
+
+                            LOAD ADRESS 0000x112244-000000000000000<br />
+                        </i>
+                        <p id="pp4">All Rights Reserved Xat.me</p>
+                        <p id="pp4">2024</p>
+                        <img src="https://i.postimg.cc/KjGZR25j/p-studio-logo-309f72dd4c41c3616cc1eb2b576c2561.webp" id="pstudio" />
+                        <img src="https://i.postimg.cc/ZRFbbRpX/atlus-logo-853c96f1dd3f1de2b369be4f9dd38b47.webp" id="atlus" />
+                        <img src="https://i.postimg.cc/qBNtccc7/db3370c089d519e51e5ff1c9631cebd2.png" id="xatlogo" />
+                    </div>
+
+                </div>
+            </div>
+
             <style>
                 #main {
                     position: absolute;
