@@ -1,0 +1,1904 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            ima1 = $("#ima-00");
+            ima2 = $("#ima-10");
+            let audioData = [];
+
+            var song = new Audio();
+
+            //image.className = "image";
+
+            //var img2 = $(".static-card2");
+            //var flip = $(".flip-card2");
+
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "MUSIC OFF",
+                        artist: "MUTED",
+                        src:
+                            "",
+                        imagen1: "im-11",
+
+                    },
+                    {
+                        name: "La vaguelette",
+                        artist: "HOYO-MiX",
+                        src:
+                            "darkambience.wav", 
+                        imagen1: "im-22",
+
+                    } 
+                ];
+
+                artistname.html(audioData[CurrentSong].artist + " /");
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+                ima1.addClass(audioData[CurrentSong].imagen1)
+                ima2.addClass(audioData[CurrentSong].imagen1)
+                //img2.src = audioData[CurrentSong].img2;
+                //flip.src = audioData[CurrentSong].flip;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist + " /");
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                ima1.addClass(curSong.imagen1);
+                ima2.addClass(curSong.imagen1);
+                /* document.getElementById("img-1").src = curSong.img2;*/
+                //img2.src = curSong.src;
+                //flip.src = curSong.src;
+                song.play();
+                $("#btn-play").addClass("fa-pause");
+                $("#btn-play").removeClass("fa-play");
+
+                $("img").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+                var indicatorLabel = currentLabel + " / " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+
+            $("#loadtext").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#loadtext").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play");
+                    $("img").addClass("active");
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play");
+                    $("img").removeClass("active");
+                }
+            });
+
+            $("#divx3").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#divx2").click(function () {
+
+                song.play();
+                playing = true;
+            });
+
+            $("#mainpagex").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 1) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+                }
+                playSong();
+            });
+        });
+
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background: black;
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+        }
+    </style>
+
+
+
+
+</head>
+<body id="this" onclick="cl();">
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+           
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media screen and (max-width: 700px) {
+            body {
+                background-image: url() !important;
+            }
+        }
+
+    </style>
+    <script>
+        function cargarFondo() {
+           
+            // Imagenes a usar
+            var imagen = [
+                "https://i.postimg.cc/WbdgXdDG/1.png",
+                "https://i.postimg.cc/0ymm1h0r/2.png",
+                "https://i.postimg.cc/zv853b99/3.png"
+            ];
+
+            /*Segundos new Date().getSeconds()
+                Minutos  new Date().getMinutes()
+                Horas    new Date().getHours()  */
+
+            // Momento real
+            var ahora = new Date().getHours();
+            switch (true) {
+                case 9 < ahora && ahora < 18: var hora = 0; //Dia de 9-18
+                    break;
+                case 6 < ahora && ahora < 21: //Atardecer de 6-9 y de 18-21
+                    var hora = 1;
+                    break;
+                default: var hora = 2; //Noche de 21-6
+            }
+            // Poner Imagen en el fondo
+            document.body.style.backgroundImage = "url(" + imagen[hora] + ")";
+        }
+
+        //Comprobar cada minuto -> 60000
+        setTimeout(cargarFondo(), 60000);
+
+    </script>
+
+    <div id="mainx">
+        <style>
+            #mainx {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backdrop-filter: blur(2px); 
+                background:rgba(255,255,255,.2);
+            }
+            #degrad { position:absolute; height:100%; transform:rotate(90deg); left:-27%; opacity:.9;
+            }
+        </style>
+        <img src="https://i.postimg.cc/qBF6P00K/klipartz-com-3.png" id="degrad" />
+        <div id="frds">
+            <script>
+                function openfrd1() {
+                    icon1();
+                    //minicuadro
+                    $("#f1").addClass("select");
+
+                    $("#f2").removeClass("select");
+                    $("#f3").removeClass("select");
+                    $("#f4").removeClass("select");
+                    $("#f5").removeClass("select");
+                    $("#f6").removeClass("select");
+
+
+                    //letras
+                    $("#selectp1").removeClass("noview")
+
+                    $("#selectp2").addClass("noview");
+                    $("#selectp3").addClass("noview");
+                    $("#selectp4").addClass("noview");
+                    $("#selectp5").addClass("noview");
+                    $("#selectp6").addClass("noview");
+
+
+                    //RENDERS
+                    $("#render2").removeClass("noview")
+
+                    $("#render1").addClass("noview");
+                    $("#render3").addClass("noview");
+                    $("#render4").addClass("noview");
+                    $("#render5").addClass("noview");
+                    $("#render6").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s1");
+
+                    $("#arr").removeClass("s2")
+                    $("#arr").removeClass("s3")
+                    $("#arr").removeClass("s4")
+                    $("#arr").removeClass("s5")
+                    $("#arr").removeClass("s6")
+
+                    //cube
+                    $("#cube").addClass("s1");
+
+                    $("#cube").removeClass("s2")
+                    $("#cube").removeClass("s3")
+                    $("#cube").removeClass("s4")
+                    $("#cube").removeClass("s5")
+                    $("#cube").removeClass("s6")
+
+                }
+                function openfrd2() {
+                    icon2();
+                    $("#f2").addClass("select");
+
+                    $("#f1").removeClass("select");
+                    $("#f3").removeClass("select");
+                    $("#f4").removeClass("select");
+                    $("#f5").removeClass("select");
+                    $("#f6").removeClass("select");
+
+                    $("#selectp2").removeClass("noview")
+
+                    $("#selectp1").addClass("noview");
+                    $("#selectp3").addClass("noview");
+                    $("#selectp4").addClass("noview");
+                    $("#selectp5").addClass("noview");
+                    $("#selectp6").addClass("noview");
+
+                    //RENDERS
+                    $("#render1").removeClass("noview")
+
+                    $("#render2").addClass("noview");
+                    $("#render3").addClass("noview");
+                    $("#render4").addClass("noview");
+                    $("#render5").addClass("noview");
+                    $("#render6").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s2");
+
+                    $("#arr").removeClass("s1")
+                    $("#arr").removeClass("s3")
+                    $("#arr").removeClass("s4")
+                    $("#arr").removeClass("s5")
+                    $("#arr").removeClass("s6")
+
+                    //cube
+                    $("#cube").addClass("s2");
+
+                    $("#cube").removeClass("s1")
+                    $("#cube").removeClass("s3")
+                    $("#cube").removeClass("s4")
+                    $("#cube").removeClass("s5")
+                    $("#cube").removeClass("s6")
+
+                }
+                function openfrd3() {
+                    icon3();
+                    $("#f3").addClass("select");
+
+                    $("#f2").removeClass("select");
+                    $("#f1").removeClass("select");
+                    $("#f4").removeClass("select");
+                    $("#f5").removeClass("select");
+                    $("#f6").removeClass("select");
+
+                    $("#selectp3").removeClass("noview")
+
+                    $("#selectp2").addClass("noview");
+                    $("#selectp1").addClass("noview");
+                    $("#selectp4").addClass("noview");
+                    $("#selectp5").addClass("noview");
+                    $("#selectp6").addClass("noview");
+
+                    //RENDERS
+                    $("#render3").removeClass("noview")
+
+                    $("#render1").addClass("noview");
+                    $("#render2").addClass("noview");
+                    $("#render4").addClass("noview");
+                    $("#render5").addClass("noview");
+                    $("#render6").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s3");
+
+                    $("#arr").removeClass("s2")
+                    $("#arr").removeClass("s1")
+                    $("#arr").removeClass("s4")
+                    $("#arr").removeClass("s5")
+                    $("#arr").removeClass("s6")
+                    //cube
+                    $("#cube").addClass("s3");
+
+                    $("#cube").removeClass("s2")
+                    $("#cube").removeClass("s1")
+                    $("#cube").removeClass("s4")
+                    $("#cube").removeClass("s5")
+                    $("#cube").removeClass("s6")
+                }
+                function openfrd4() {
+                    icon4();
+                    $("#f4").addClass("select");
+
+                    $("#f2").removeClass("select");
+                    $("#f3").removeClass("select");
+                    $("#f1").removeClass("select");
+                    $("#f5").removeClass("select");
+                    $("#f6").removeClass("select");
+
+                    $("#selectp4").removeClass("noview")
+
+                    $("#selectp2").addClass("noview");
+                    $("#selectp3").addClass("noview");
+                    $("#selectp1").addClass("noview");
+                    $("#selectp5").addClass("noview");
+                    $("#selectp6").addClass("noview");
+
+                    //RENDERS
+                    $("#render4").removeClass("noview")
+
+                    $("#render1").addClass("noview");
+                    $("#render3").addClass("noview");
+                    $("#render2").addClass("noview");
+                    $("#render5").addClass("noview");
+                    $("#render6").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s4");
+
+                    $("#arr").removeClass("s2")
+                    $("#arr").removeClass("s3")
+                    $("#arr").removeClass("s1")
+                    $("#arr").removeClass("s5")
+                    $("#arr").removeClass("s6")
+                    //cube
+                    $("#cube").addClass("s4");
+
+                    $("#cube").removeClass("s2")
+                    $("#cube").removeClass("s3")
+                    $("#cube").removeClass("s1")
+                    $("#cube").removeClass("s5")
+                    $("#cube").removeClass("s6")
+                }
+                function openfrd5() {
+                    icon5();
+                    $("#f5").addClass("select");
+
+                    $("#f2").removeClass("select");
+                    $("#f3").removeClass("select");
+                    $("#f4").removeClass("select");
+                    $("#f1").removeClass("select");
+                    $("#f6").removeClass("select");
+
+                    $("#selectp5").removeClass("noview")
+
+                    $("#selectp2").addClass("noview");
+                    $("#selectp3").addClass("noview");
+                    $("#selectp4").addClass("noview");
+                    $("#selectp1").addClass("noview");
+                    $("#selectp6").addClass("noview");
+
+
+                    //RENDERS
+                    $("#render5").removeClass("noview")
+
+                    $("#render1").addClass("noview");
+                    $("#render3").addClass("noview");
+                    $("#render4").addClass("noview");
+                    $("#render2").addClass("noview");
+                    $("#render6").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s5");
+
+                    $("#arr").removeClass("s2")
+                    $("#arr").removeClass("s3")
+                    $("#arr").removeClass("s4")
+                    $("#arr").removeClass("s1")
+                    $("#arr").removeClass("s6")
+                    //cube
+                    $("#cube").addClass("s5");
+
+                    $("#cube").removeClass("s2")
+                    $("#cube").removeClass("s3")
+                    $("#cube").removeClass("s4")
+                    $("#cube").removeClass("s1")
+                    $("#cube").removeClass("s6")
+                }
+                function openfrd6() {
+                    icon6();
+                    $("#f6").addClass("select");
+
+                    $("#f2").removeClass("select");
+                    $("#f3").removeClass("select");
+                    $("#f4").removeClass("select");
+                    $("#f5").removeClass("select");
+                    $("#f1").removeClass("select");
+
+                    $("#selectp6").removeClass("noview")
+
+                    $("#selectp2").addClass("noview");
+                    $("#selectp3").addClass("noview");
+                    $("#selectp4").addClass("noview");
+                    $("#selectp5").addClass("noview");
+                    $("#selectp1").addClass("noview");
+
+                    //RENDERS
+                    $("#render6").removeClass("noview")
+
+                    $("#render1").addClass("noview");
+                    $("#render3").addClass("noview");
+                    $("#render4").addClass("noview");
+                    $("#render5").addClass("noview");
+                    $("#render2").addClass("noview");
+
+                    //arrow
+                    $("#arr").addClass("s6");
+
+                    $("#arr").removeClass("s2")
+                    $("#arr").removeClass("s3")
+                    $("#arr").removeClass("s4")
+                    $("#arr").removeClass("s5")
+                    $("#arr").removeClass("s1")
+                    //cube
+                    $("#cube").addClass("s6");
+
+                    $("#cube").removeClass("s2")
+                    $("#cube").removeClass("s3")
+                    $("#cube").removeClass("s4")
+                    $("#cube").removeClass("s5")
+                    $("#cube").removeClass("s1")
+                }
+            </script>
+            <style>
+                #frds {
+                    position: absolute;
+                    width: 18%;
+                    height: 100%;
+                }
+
+                #barright {
+                    width: .2vw;
+                    height: 80%;
+                    top: 10%;
+                    right: 0;
+                    background: gray;
+                    border-radius: 30%;
+                    position: absolute;
+                }
+                #cube {
+                    background: #F3EED1;
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    left: 15%;
+                    transition:all .5s ease;
+                }
+
+                #f1 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    
+                    top: 10%;
+                    left: 15%;
+                }
+                #f2 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                     
+                    top: 23%;
+                    left: 15%;
+                }
+                .select {
+                    background: #F3EED1;
+                }
+                #f3 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%; 
+                    top: 37%;
+                    left: 15%;
+                }
+                #f4 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%; 
+                    top: 51%;
+                    left: 15%;
+                }
+                #f5 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%; 
+                    top: 66%;
+                    left: 15%;
+                }
+                #f6 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%; 
+                    top: 80%;
+                    left: 15%;
+                }
+                #i1 { transform:scaleX(-1);
+                }
+            </style>
+            <div id="barright">
+
+            </div>
+            <div id="titlefrd">
+                <style>
+                    #titlefrd { position:absolute; width:60%; height:4%;   top:2%; left:40%; border-top:.1vw solid dimgray; border-bottom:.1vw solid dimgray;
+                    }
+                    #titlex { position:absolute; left:0%; font-size:.45vw; top:5%;
+                    }
+                    #titlejap { position:absolute; font-weight:bold; letter-spacing:.7vw; font-size:1.2vw; top:20%;
+                    }
+                    #flx { height:100%; position:absolute; left:-20%;  
+                    }
+                </style>
+                <img src="https://i.postimg.cc/HLKgtTfY/flecha-hacia-abajo-para-navegar.png" id="flx" />
+                <p id="titlex">ANGEL'S SPACE</p>
+                <p id="titlejap">天使空间</p>
+            </div>
+            <!--<div id="cube" class="s2">
+
+            </div>-->
+            <div id="f1" onclick="openfrd1();">
+                <style>
+                    #selectp1 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                         
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold;
+                    }
+                    .noview { opacity:0; z-index:-1; 
+                    }
+                </style>
+                <div id="selectp1" class="noview">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    Aguwu
+                </p>
+                <div id="areaimgperf">
+                    <img id="i1" src="https://i.postimg.cc/qBtVXVst/1122635.png" />
+                </div>
+                <p id="numberp">49</p>
+                <p id="numberpl">
+                    四点九
+                </p>
+                <p id="ppreg">Aguwu</p>
+            </div>
+            <div id="f2" class="select" onclick="openfrd2();"> 
+                <style>
+                    #selectp2 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold; 
+                    }
+                </style>
+                <div id="selectp2">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    KOUD
+                </p>
+                <div id="areaimgperf">
+                    <img src="https://i.postimg.cc/Pr9PcZYS/Gojo-Satoru-PNG.png" />
+                </div>
+                <p id="numberp">22</p>
+                <p id="numberpl">两两</p>
+                <p id="ppreg">AngeeL</p>
+            </div>
+            <div id="f3" onclick="openfrd3();">
+                <style>
+                    #selectp3 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold;
+                    }
+
+                    .noview {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                </style>
+                <div id="selectp3" class="noview">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    Nymphia
+                </p>
+                <div id="areaimgperf">
+                    <img src="https://i.postimg.cc/jdSDxjPW/imawge.png" />
+                </div>
+                <p id="numberp">31</p>
+                <p id="numberpl">三一</p>
+                <p id="ppreg">Nymphia</p>
+            </div>
+            <div id="f4" onclick="openfrd4();">
+                <style>
+                    #selectp4 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold;
+                    }
+
+                    .noview {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                </style>
+                <div id="selectp4" class="noview">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    FONS
+                </p>
+                <div id="areaimgperf">
+                    <img src="https://i.postimg.cc/yYNN4YSL/toge-inumaki-jjk-render-by-d4rkawaii-dei8pfv-pre.png" />
+                </div>
+                <p id="numberp">10</p>
+                <p id="numberpl">一零</p>
+                <p id="ppreg">Fonsho</p>
+            </div>
+            <div id="f5" onclick="openfrd5();">
+                <style>
+                    #selectp5 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold;
+                    }
+
+                    .noview {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                </style>
+                <div id="selectp5" class="noview">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    SAKURA
+                </p>
+                <div id="areaimgperf">
+                    <img src="https://i.postimg.cc/8Pjg1Fkn/deosc33-7d5523e9-00ff-4d8d-838b-acd516e51fdf.png" />
+                </div>
+                <p id="numberp">23</p>
+                <p id="numberpl">二三</p>
+                <p id="ppreg">Kyma</p>
+            </div>
+            <div id="f6" onclick="openfrd6();">
+                <style>
+                    #selectp6 {
+                        position: absolute;
+                        width: 12%;
+                        background: black;
+                        height: 100%;
+                    }
+
+                    #psel {
+                        color: #F3EED1;
+                        font-size: 1.2vw;
+                        transform: rotate(90deg);
+                        position: absolute;
+                        top: 35%;
+                        left: -130%;
+                        font-weight: bold;
+                    }
+
+                    #areaimgperf {
+                        position: absolute;
+                        width: 45%;
+                        height: 100%;
+                        left: 13%;
+                        overflow: hidden;
+                    }
+
+                        #areaimgperf img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #pregname {
+                        color: black;
+                        right: 5%;
+                        position: absolute;
+                        bottom: 3%;
+                        font-size: 1.6vw;
+                        font-weight: bold;
+                    }
+
+                    #numberp {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: 2vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 0%;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #numberpl {
+                        color: white;
+                        font-family: Roboto;
+                        font-size: .7vw;
+                        position: absolute;
+                        right: 5%;
+                        top: 2vw;
+                        font-weight: bold;
+                        text-shadow: .1vw .1vw 0 gray;
+                    }
+
+                    #ppreg {
+                        font-family: Roboto;
+                        font-size: .4vw;
+                        position: absolute;
+                        right: 4%;
+                        top: 2.8vw;
+                        font-weight: bold;
+                    }
+
+                    .noview {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                </style>
+                <div id="selectp6" class="noview">
+                    <p id="psel">SELECT</p>
+                </div>
+                <p id="pregname">
+                    Shampu
+                </p>
+                <div id="areaimgperf">
+                    <img src="https://i.postimg.cc/7ZCkH59Z/klipartz-com-3.png" />
+                </div>
+                <p id="numberp">09</p>
+                <p id="numberpl">
+                    零九
+                </p>
+                <p id="ppreg">TuCoLaBaboso</p>
+            </div>
+        </div>
+        <div id="secondfrds">
+            <style>
+                #secondfrds {
+                    position: absolute;
+                    width: 15%;
+                    height: 100%;
+                    left: 18%;
+                }
+
+                #arr {
+                    position: absolute;
+                    width: 125%;
+                    height: 10%;
+                    left: -25%;  z-index:-1;
+                    transition: all .5s ease;
+                }
+
+                .s1 {
+                    top: 10%;
+                }
+
+                .s2 {
+                    top: 23%;
+                }
+
+                .s3 {
+                    top: 37%;
+                }
+
+                .s4 {
+                    top: 51%;
+                }
+
+                .s5 {
+                    top: 66%;
+                }
+
+                .s6 {
+                    top: 80%;
+                }
+
+                #ff1 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 10%;
+                    left: 15%;
+                }
+
+                #ff2 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 23%;
+                    left: 15%;
+                }
+
+
+
+                #ff3 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 37%;
+                    left: 15%;
+                }
+
+                #ff4 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 51%;
+                    left: 15%;
+                }
+
+                #ff5 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 66%;
+                    left: 15%;
+                }
+
+                #ff6 {
+                    position: absolute;
+                    width: 60%;
+                    height: 10%;
+                    top: 80%;
+                    left: 15%;
+                }
+
+                #arrowimg {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: -3%;
+                }
+
+                #contentcircle {
+                    position: absolute;
+                    width: 2vw;
+                    height: 5vw;
+                    left: 9%;
+                    overflow: hidden;
+                }
+
+                .circle {
+                    position: relative;
+                    width: 250%;
+                    height: 100%;
+                    border-radius: 100vmax;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .text {
+                    position: absolute;
+                    width: 80%;
+                    height: 80%;
+                    font-family: consolas;
+                    color: gray;
+                    animation: rotation 8s infinite linear;
+                }
+
+                @keyframes rotation {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(359deg);
+                    }
+                }
+
+                .text span {
+                    position: absolute;
+                    left: 50%;
+                    font-size: .7vw;
+                    transform-origin: 0 2vw;
+                }
+            </style>
+            <div id="arr" class="s2">
+                <div id="contentcircle">
+                    <div class="circle">
+
+                        <div class="text">
+                            <p>
+                                <script>
+                                    function cl() {
+                                        text.innerHTML = text.innerText
+                                            .split("")
+                                            .map(
+                                                (char, i) => `<span style="transform:rotate(${i * 10.3}deg)">${char}</span>`
+                                            )
+                                            .join("");
+                                    }
+                                    const text = document.querySelector(".text");
+
+                                </script>
+                                XIX XX IIIV IX VXI III XIX IIV IV
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://i.ibb.co/ZLM5wZB/Sin-t-tulo.png" id="arrowimg" />
+            </div>
+
+            <div id="ff1">
+                <style>
+                    #ff1 {
+                    }
+
+                    #iconf1 {
+                    }
+
+                    #let1 {
+                    }
+
+                    .silet1 {
+                        opacity: 1;
+                        letter-spacing: .2vw;
+                        font-size: .8vw;
+                        position: absolute;
+                        left:30%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        top: 20%;
+                        width:100%; text-align:right;
+                    }
+                    .silet2 {
+                        opacity: 1;
+                        letter-spacing: .2vw;
+                        font-size: 1.4vw;
+                        position: absolute;
+                        left: 30%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        top: 45%;
+                        width: 100%;
+                        text-align: right;
+                    }
+                    .nolet1 {
+                        position: absolute;
+                        left: 30%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        top: 20%;
+                        opacity: .5;
+                        letter-spacing: .1vw;
+                        font-size: .7vw;
+                        width: 100%;
+                        text-align: right;
+                    }
+                    .nolet2 {
+                        opacity: .5;
+                        letter-spacing: .2vw;
+                        font-size: 1vw;
+                        position: absolute;
+                        left: 30%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        top: 47%;
+                        width: 100%;
+                        text-align: right;
+                    }
+                    .imgno {
+                        width: 3.5vw;
+                        height: 3.5vw;
+                        top: 15%;
+                        opacity: .4;
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    .imgsi {
+                        position: absolute;
+                        left: -8%;
+                        width: 5vw;
+                        height: 5vw;
+                        top: 0%;
+                        opacity: 1;
+                    }
+                </style>
+                <script>
+                    function icon1() {
+                        $("#iconf1").addClass("imgsi"); $("#iconf1").removeClass("imgno");
+                        $("#let01").addClass("silet1"); $("#let01").removeClass("nolet1");
+                        $("#let02").addClass("silet2"); $("#let02").removeClass("nolet2");
+
+                        $("#iconf2").addClass("imgno"); $("#iconf2").removeClass("imgsi");
+                        $("#let1").addClass("nolet1"); $("#let1").removeClass("silet1");
+                        $("#let2").addClass("nolet2"); $("#let2").removeClass("silet2");
+
+                        $("#iconf3").addClass("imgno"); $("#iconf3").removeClass("imgsi");
+                        $("#let3").addClass("nolet1"); $("#let3").removeClass("silet1");
+                        $("#let4").addClass("nolet2"); $("#let4").removeClass("silet2");
+
+                        $("#iconf4").addClass("imgno"); $("#iconf4").removeClass("imgsi");
+                        $("#let5").addClass("nolet1"); $("#let5").removeClass("silet1");
+                        $("#let6").addClass("nolet2"); $("#let6").removeClass("silet2");
+
+                        $("#iconf5").addClass("imgno"); $("#iconf5").removeClass("imgsi");
+                        $("#let7").addClass("nolet1"); $("#let7").removeClass("silet1");
+                        $("#let8").addClass("nolet2"); $("#let8").removeClass("silet2");
+
+                        $("#iconf6").addClass("imgno"); $("#iconf6").removeClass("imgsi");
+                        $("#let9").addClass("nolet1"); $("#let9").removeClass("silet1");
+                        $("#let10").addClass("nolet2"); $("#let10").removeClass("silet2");
+                    }
+
+                    function icon2() {
+                        $("#iconf2").addClass("imgsi"); $("#iconf2").removeClass("imgno");
+                        $("#let1").addClass("silet1"); $("#let1").removeClass("nolet1");
+                        $("#let2").addClass("silet2"); $("#let2").removeClass("nolet2");
+
+                        $("#iconf1").addClass("imgno"); $("#iconf1").removeClass("imgsi");
+                        $("#let01").addClass("nolet1"); $("#let01").removeClass("silet1");
+                        $("#let02").addClass("nolet2"); $("#let02").removeClass("silet2");
+
+                        $("#iconf3").addClass("imgno"); $("#iconf3").removeClass("imgsi");
+                        $("#let3").addClass("nolet1"); $("#let3").removeClass("silet1");
+                        $("#let4").addClass("nolet2"); $("#let4").removeClass("silet2");
+
+                        $("#iconf4").addClass("imgno"); $("#iconf4").removeClass("imgsi");
+                        $("#let5").addClass("nolet1"); $("#let5").removeClass("silet1");
+                        $("#let6").addClass("nolet2"); $("#let6").removeClass("silet2");
+
+                        $("#iconf5").addClass("imgno"); $("#iconf5").removeClass("imgsi");
+                        $("#let7").addClass("nolet1"); $("#let7").removeClass("silet1");
+                        $("#let8").addClass("nolet2"); $("#let8").removeClass("silet2");
+
+                        $("#iconf6").addClass("imgno"); $("#iconf6").removeClass("imgsi");
+                        $("#let9").addClass("nolet1"); $("#let9").removeClass("silet1");
+                        $("#let10").addClass("nolet2"); $("#let10").removeClass("silet2");
+                    }
+                    function icon3() {
+                        $("#iconf3").addClass("imgsi"); $("#iconf3").removeClass("imgno");
+                        $("#let3").addClass("silet1"); $("#let3").removeClass("nolet1");
+                        $("#let4").addClass("silet2"); $("#let4").removeClass("nolet2");
+
+                        $("#iconf1").addClass("imgno"); $("#iconf1").removeClass("imgsi");
+                        $("#let01").addClass("nolet1"); $("#let01").removeClass("silet1");
+                        $("#let02").addClass("nolet2"); $("#let02").removeClass("silet2");
+
+                        $("#iconf2").addClass("imgno"); $("#iconf2").removeClass("imgsi");
+                        $("#let1").addClass("nolet1"); $("#let1").removeClass("silet1");
+                        $("#let2").addClass("nolet2"); $("#let2").removeClass("silet2");
+
+                        $("#iconf4").addClass("imgno"); $("#iconf4").removeClass("imgsi");
+                        $("#let5").addClass("nolet1"); $("#let5").removeClass("silet1");
+                        $("#let6").addClass("nolet2"); $("#let6").removeClass("silet2");
+
+                        $("#iconf5").addClass("imgno"); $("#iconf5").removeClass("imgsi");
+                        $("#let7").addClass("nolet1"); $("#let7").removeClass("silet1");
+                        $("#let8").addClass("nolet2"); $("#let8").removeClass("silet2");
+
+                        $("#iconf6").addClass("imgno"); $("#iconf6").removeClass("imgsi");
+                        $("#let9").addClass("nolet1"); $("#let9").removeClass("silet1");
+                        $("#let10").addClass("nolet2"); $("#let10").removeClass("silet2");
+                    }
+                    function icon4() {
+                        $("#iconf4").addClass("imgsi"); $("#iconf4").removeClass("imgno");
+                        $("#let5").addClass("silet1"); $("#let5").removeClass("nolet1");
+                        $("#let6").addClass("silet2"); $("#let6").removeClass("nolet2");
+
+                        $("#iconf1").addClass("imgno"); $("#iconf1").removeClass("imgsi");
+                        $("#let01").addClass("nolet1"); $("#let01").removeClass("silet1");
+                        $("#let02").addClass("nolet2"); $("#let02").removeClass("silet2");
+
+                        $("#iconf2").addClass("imgno"); $("#iconf2").removeClass("imgsi");
+                        $("#let1").addClass("nolet1"); $("#let1").removeClass("silet1");
+                        $("#let2").addClass("nolet2"); $("#let2").removeClass("silet2");
+
+                        $("#iconf3").addClass("imgno"); $("#iconf3").removeClass("imgsi");
+                        $("#let3").addClass("nolet1"); $("#let3").removeClass("silet1");
+                        $("#let4").addClass("nolet2"); $("#let4").removeClass("silet2");
+
+                        $("#iconf5").addClass("imgno"); $("#iconf5").removeClass("imgsi");
+                        $("#let7").addClass("nolet1"); $("#let7").removeClass("silet1");
+                        $("#let8").addClass("nolet2"); $("#let8").removeClass("silet2");
+
+                        $("#iconf6").addClass("imgno"); $("#iconf6").removeClass("imgsi");
+                        $("#let9").addClass("nolet1"); $("#let9").removeClass("silet1");
+                        $("#let10").addClass("nolet2"); $("#let10").removeClass("silet2");
+                    }
+                    function icon5() {
+                        $("#iconf5").addClass("imgsi"); $("#iconf5").removeClass("imgno");
+                        $("#let7").addClass("silet1"); $("#let7").removeClass("nolet1");
+                        $("#let8").addClass("silet2"); $("#let8").removeClass("nolet2");
+
+                        $("#iconf1").addClass("imgno"); $("#iconf1").removeClass("imgsi");
+                        $("#let01").addClass("nolet1"); $("#let01").removeClass("silet1");
+                        $("#let02").addClass("nolet2"); $("#let02").removeClass("silet2");
+
+                        $("#iconf2").addClass("imgno"); $("#iconf2").removeClass("imgsi");
+                        $("#let1").addClass("nolet1"); $("#let1").removeClass("silet1");
+                        $("#let2").addClass("nolet2"); $("#let2").removeClass("silet2");
+
+                        $("#iconf3").addClass("imgno"); $("#iconf3").removeClass("imgsi");
+                        $("#let3").addClass("nolet1"); $("#let3").removeClass("silet1");
+                        $("#let4").addClass("nolet2"); $("#let4").removeClass("silet2");
+
+                        $("#iconf4").addClass("imgno"); $("#iconf4").removeClass("imgsi");
+                        $("#let5").addClass("nolet1"); $("#let5").removeClass("silet1");
+                        $("#let6").addClass("nolet2"); $("#let6").removeClass("silet2");
+
+                        $("#iconf6").addClass("imgno"); $("#iconf6").removeClass("imgsi");
+                        $("#let9").addClass("nolet1"); $("#let9").removeClass("silet1");
+                        $("#let10").addClass("nolet2"); $("#let10").removeClass("silet2");
+                    }
+
+                    function icon6() {
+                        $("#iconf6").addClass("imgsi"); $("#iconf6").removeClass("imgno");
+                        $("#let9").addClass("silet1"); $("#let9").removeClass("nolet1");
+                        $("#let10").addClass("silet2"); $("#let10").removeClass("nolet2");
+
+                        $("#iconf1").addClass("imgno"); $("#iconf1").removeClass("imgsi");
+                        $("#let01").addClass("nolet1"); $("#let01").removeClass("silet1");
+                        $("#let02").addClass("nolet2"); $("#let02").removeClass("silet2");
+
+                        $("#iconf2").addClass("imgno"); $("#iconf2").removeClass("imgsi");
+                        $("#let1").addClass("nolet1"); $("#let1").removeClass("silet1");
+                        $("#let2").addClass("nolet2"); $("#let2").removeClass("silet2");
+
+                        $("#iconf3").addClass("imgno"); $("#iconf3").removeClass("imgsi");
+                        $("#let3").addClass("nolet1"); $("#let3").removeClass("silet1");
+                        $("#let4").addClass("nolet2"); $("#let4").removeClass("silet2");
+
+                        $("#iconf4").addClass("imgno"); $("#iconf4").removeClass("imgsi");
+                        $("#let5").addClass("nolet1"); $("#let5").removeClass("silet1");
+                        $("#let6").addClass("nolet2"); $("#let6").removeClass("silet2");
+
+                        $("#iconf5").addClass("imgno"); $("#iconf5").removeClass("imgsi");
+                        $("#let7").addClass("nolet1"); $("#let7").removeClass("silet1");
+                        $("#let8").addClass("nolet2"); $("#let8").removeClass("silet2");
+                    }
+                </script>
+                <img id="iconf1" src="https://i.postimg.cc/HsVfjYVZ/n.png" class="imgno" />
+                <p id="let01" class="nolet1">TOXIC049</p>
+                <p id="let02" class="nolet2">有毒的</p>
+            </div>
+            <div id="ff2">
+                <img id="iconf2" src="https://i.postimg.cc/6pZgLMVC/n2.png" class="imgsi" />
+                <p id="let1" class="silet1">LEADER022</p>
+                <p id="let2" class="silet2">领导人</p>
+            </div>
+            <div id="ff3">
+                <img id="iconf3" src="https://i.postimg.cc/mDm52JRW/pngegg-6.png" class="imgno" />
+                <p id="let3" class="nolet1">PICASSA031</p>
+                <p id="let4" class="nolet2">毕加索</p>
+            </div>
+            <div id="ff4">
+                <img id="iconf4" src="https://i.postimg.cc/sx10BmDQ/pngwing-com-3.png" class="imgno" />
+                <p id="let5" class="nolet1">FUCKBOY010</p>
+                <p id="let6" class="nolet2">妈的男孩</p>
+            </div>
+            <div id="ff5">
+                <img id="iconf5" src="https://i.postimg.cc/W46yxtH3/n4.png" class="imgno" />
+                <p id="let7" class="nolet1">RELIABLE</p>
+                <p id="let8" class="nolet2">可靠的</p>
+            </div>
+            <div id="ff6">
+                <img id="iconf6" src="https://i.postimg.cc/0Nq3t7ZF/n3.png" class="imgno" />
+                <p id="let9" class="nolet1">COQUETTE009</p>
+                <p id="let10" class="nolet2">风骚</p>
+            </div>
+        </div>
+        <div id="mainrender">
+            <style>
+                #mainrender {
+                    position: absolute;
+                    height: 100%;
+                    width: 40%;
+                    left: 36%;
+                }
+            </style>
+            <div id="render1">
+                <style>
+                    @font-face {
+                        font-family: textfirmFont;
+                        src: url(firm.otf);
+                    }
+
+                    @font-face {
+                        font-family: textf;
+                        src: url(Onbase.otf);
+                    }
+
+                    @font-face {
+                        font-family: neigefont;
+                        src: url(neige.otf);
+                    }
+
+                    @font-face {
+                        font-family: neigefont2;
+                        src: url(neig.ttf);
+                    }
+
+                    @font-face {
+                        font-family: neigefont3;
+                        src: url(PMINGLIU.ttf);
+                    }
+
+                    #render1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #backrender {
+                    }
+
+                    #renderimg {
+                        position: absolute;
+                        height: 90%;
+                        left: 15%;
+                        bottom: 0;
+                    }
+
+                    #backrender {
+                        position: absolute;
+                        height: 90%;
+                        left: 11%;
+                        bottom: -4%;
+                        filter: brightness(0);
+                    }
+
+                    #pres {
+                        position: absolute;
+                        width: 40%;
+                        height: 13%;
+                        left: 0;
+                        top: 84%;
+                    }
+
+                    #sep {
+                        background: transparent;
+                        width: 1%;
+                        height: 60%;
+                        border-left: .1vw solid #F9ED9A;
+                        border-right: 1.2vw solid #F9ED9A;
+                    }
+
+                    #code {
+                        color: #F9ED9A;
+                        font-family: 'Times New Roman';
+                        position: absolute;
+                        left: 11%;
+                        font-size: 3.5vw;
+                        top: -12%;
+                        letter-spacing: .1vw;
+                    }
+
+                    #namech {
+                        color: white;
+                        position: absolute;
+                        left: 62%;
+                        font-size: 1.1vw;
+                        top: 2%;
+                        font-weight: bold;
+                        font-family: neigefont3;
+                    }
+
+                    #stars {
+                        position: absolute;
+                        left: 62%;
+                        top: 22%;
+                        height: 10%;
+                        width: 20%;
+                    }
+
+                        #stars img {
+                            position: absolute;
+                            width: 100%;
+                        }
+
+                    #regname1 {
+                        color: white;
+                        position: absolute;
+                        font-size: .8vw;
+                        top: 45%;
+                        font-family: Roboto;
+                        letter-spacing: .1vw;
+                        left: 11%;
+                    }
+
+                    #bar {
+                        position: absolute;
+                        width: 45%;
+                        left: 45%;
+                        top: 51%;
+                        background: rgba(0,0,0,.6);
+                        height: 3%;
+                    }
+
+                    #bar2 {
+                        position: absolute;
+                        width: 80%;
+                        height: 100%;
+                        background: white;
+                    }
+
+                    #letch {
+                        position: absolute;
+                        font-family: neigefont3;
+                        color: white;
+                        top: 65%;
+                        font-size: .7vw;
+                        letter-spacing: .2vw;
+                        left: 2%;
+                        opacity: .8;
+                    }
+                </style>
+
+                <img id="backrender" src="https://i.postimg.cc/kXmD3yDQ/gojo.png" />
+                <img id="renderimg" src="https://i.postimg.cc/kXmD3yDQ/gojo.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">XZA</p>
+                    <p id="namech">天使-天使</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/FrJY3Xsk/five-stars-rating-icon-png.png" />
+                    </div>
+                    <p id="regname1">AngeeL - 22</p><div id="bar"><div id="bar2"></div></div>
+                    <p id="letch"> *有时我喜欢像 －10761076</p>
+                </div>
+            </div>
+            <div id="render2" class="noview">
+                <style>
+
+
+                    #render2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+
+                <img id="backrender" src="https://i.postimg.cc/505pWWRm/art-lady-reze-chainsaw-man-v0-jwy35ym4adha1.png" />
+                <img id="renderimg" src="https://i.postimg.cc/505pWWRm/art-lady-reze-chainsaw-man-v0-jwy35ym4adha1.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">TWK</p>
+                    <p id="namech">阿古屋</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/q4vW9Z7b/five-stars-rating-icon-png.png" />
+                    </div>
+                    <p id="regname1">Aguwu - 49</p><div id="bar"><div id="bar2"></div></div>
+                    <p id="letch"> *有时我喜欢像 －301917719</p>
+                </div>
+            </div>
+
+            <div id="render3" class="noview">
+                <style>
+
+
+                    #render3 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+
+                <img id="backrender" src="https://i.postimg.cc/Prd57Frz/kokomi-genshin-impact-character-render-by-deg5270-derxa2v-414w-2x.png" />
+                <img id="renderimg" src="https://i.postimg.cc/Prd57Frz/kokomi-genshin-impact-character-render-by-deg5270-derxa2v-414w-2x.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">NYM</p>
+                    <p id="namech">若虫</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/FrJY3Xsk/five-stars-rating-icon-png.png" />
+                    </div>
+                    <p id="regname1">Nymphia 31</p><div id="bar"><div id="bar2"></div></div>
+                    <p id="letch"> *有时我喜欢像 －199768412</p>
+                </div>
+            </div>
+
+            <div id="render4" class="noview">
+                <style>
+
+
+                    #render4 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    #renderimg2 {
+                        position: absolute;
+                        height: 80%;
+                        left: -10%;
+                        bottom: 0;
+                    }
+
+                    #backrender2 {
+                        position: absolute;
+                        height: 80%;
+                        left: -14%;
+                        bottom: -4%;
+                        filter: brightness(0);
+                    }
+                </style>
+
+                <img id="backrender2" src="https://i.postimg.cc/rmMM0KbX/descarga.png" />
+                <img id="renderimg2" src="https://i.postimg.cc/rmMM0KbX/descarga.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">FNS</p>
+                    <p id="namech">雪雪</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/FrJY3Xsk/five-stars-rating-icon-png.png" />
+                    </div>
+                    <p id="regname1">Fons - 10</p><div id="bar"><div id="bar2"></div></div>
+                    <p id="letch"> *有时我喜欢像 －690069</p>
+                </div>
+            </div>
+
+
+            <div id="render5" class="noview">
+                <style>
+
+
+                    #render5 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+
+                <img id="backrender" src="https://i.postimg.cc/sf6F4n8N/b216784bc5c6fcf0374abaf3cf1fe663.png" />
+                <img id="renderimg" src="https://i.postimg.cc/sf6F4n8N/b216784bc5c6fcf0374abaf3cf1fe663.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">BSR</p>
+                    <p id="namech">樱花</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/bN59gbqP/w2.png" />
+                    </div>
+                    <p id="regname1">Kyma - 22</p><div id="bar"><div id="bar2"></div></div>
+                    <p id="letch"> *有时我喜欢像 －232323</p>
+                </div>
+            </div>
+
+
+            <div id="render6" class="noview">
+                <style>
+
+
+                    #render6 {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                </style>
+
+                <img id="backrender2" src="https://i.postimg.cc/kXy2sRK4/klipartz-com-2.png" />
+                <img id="renderimg2" src="https://i.postimg.cc/kXy2sRK4/klipartz-com-2.png" />
+                <div id="pres">
+                    <div id="sep"></div>
+                    <p id="code">LOV</p>
+                    <p id="namech">洗发水</p>
+                    <div id="stars">
+                        <img src="https://i.postimg.cc/bN59gbqP/w2.png" />
+                    </div>
+                    <p id="regname1">Shampu - 09</p><div id="bar"><div id="bar2"></div></div>
+                                                    <p id="letch"> *有时我喜欢像 －1531432932</p>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+        <div id="divinfo">
+            <style>
+                #divinfo { position:absolute;  height:100%; width:24%; right:0;
+                }
+            </style>
+        </div>
+    </div>
+
+
+</body>
+</html>
