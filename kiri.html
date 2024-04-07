@@ -1,0 +1,3017 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            imgbar = $("#fillimgbar");
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Lady Maria (The Old Hunters)",
+                        artist: "Bloodborne ",
+                        src:
+                            "maria.mp3",
+                        imagen1: "im-33",
+
+                    },
+
+                    {
+                        name: "La vaguelette",
+                        artist: "HOYO-MiX",
+                        src:
+                            "Lavaguelette.mp3",
+                        imagen1: "im-22",
+
+                    }
+                    ,
+                    {
+                        name: "Winding River",
+                        artist: "Genshin Impact Ost",
+                        src:
+                            "https://xevangelist.github.io/evangelist/winding.mp3?raw=true"
+
+                    },
+                    {
+                        name: "Life in ruins",
+                        artist: "The legend of Zelda ",
+                        src:
+                            "ruins.mp3"
+
+                    }
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                //artistname.html();
+                musicName.html(curSong.name + " / " + curSong.artist);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 3) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+                imgbar.css("left", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 3;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#asongplay").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+        });
+
+    </script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background: lightgray;
+        }
+
+        #main2 {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            opacity: .1;
+            transform: rotate(180deg);
+            background-image: url(https://i.postimg.cc/KvBkxtXK/grey-abstract-geometric-background-1159-5850.jpg);
+        }
+
+        #bot1 {
+            position: absolute;
+            width: 40%;
+            height: 20%;
+            top: 80%;
+            z-index: 3;
+        }
+
+        #bot2 {
+            z-index: 1;
+            position: absolute;
+            width: 61%;
+            left: 39%;
+            height: 20%;
+            top: 80%;
+        }
+    </style>
+
+
+
+
+</head>
+<body id="this">
+    <!--onclick="cl();"-->
+    <div id="main">
+        <div id="main2"></div>
+        <div id="vid">
+            <style>
+                #vid {
+                    width: 15%;
+                    height: 100%;
+                    left: 25%;
+                    position: absolute;
+                    box-shadow: 0 0 1vw black;
+                    overflow: hidden; /*filter:hue-rotate(100deg);*/
+                }
+
+                #video1 {
+                    position: absolute;
+                    height: 100%;
+                    left: -250%;
+                    transform: scale(1.3);
+                }
+
+                #mainren1 {
+                    position: absolute;
+                    height: 85%;
+                    top: 15%;
+                    left: 17%;
+                    z-index: 2;
+                }
+
+                #mainrenb {
+                    filter: brightness(-100%);
+                    opacity: .5;
+                    z-index: 2;
+                    position: absolute;
+                    height: 85%;
+                    top: 17%;
+                    left: 16%;
+                }
+
+                #crosimg {
+                    position: absolute;
+                    height: 40%;
+                    top: 68%;
+                    left: 15%;
+                }
+            </style>
+            <video autoplay="" loop="" muted="" id="video1" src="arle.mp4" type="video/mp4">
+                <script>$("#video1").coverVid(1920, 1080);</script>
+            </video>
+        </div>
+        <!--<img src="https://i.postimg.cc/QxddJ03Z/bae2fadec0a2d963a421d988a6262fd7.png" id="crosimg" />-->
+        <img src="https://i.postimg.cc/CxS08dDn/1234.png" id="mainrenb" />
+        <img src="https://i.postimg.cc/CxS08dDn/1234.png" id="mainren1" />
+        <img id="bot1" src="https://i.postimg.cc/kXZBsGdy/1.png" />
+        <img id="bot2" src="https://i.postimg.cc/x9cmmDSR/2.png" />
+        <div id="butonpru" onclick="cl()"></div>
+        <div class="rain" id="rrain">
+            <style>
+                #rrain {
+                    opacity: .2;
+                    z-index: 10;
+                }
+
+                .rain span {
+                    position: absolute;
+                    width: 0.8px;
+                    height: 100px;
+                    bottom: 100%;
+                    background: linear-gradient(#8C0000, #999999, #890000, #333333, #890000);
+                    opacity: 0.5;
+                    animation: drops 5s linear infinite;
+                    z-index: 3;
+                }
+
+                @keyframes drops {
+                    0% {
+                        transform: translateY(0vh);
+                        opacity: 1;
+                    }
+
+                    25% {
+                        transform: translateY(30vh);
+                        opacity: 0.75;
+                    }
+
+                    50% {
+                        transform: translateY(55vh);
+                        opacity: 0.5;
+                    }
+
+                    75% {
+                        transform: translateY(70vh);
+                        opacity: 0.25;
+                    }
+
+                    100% {
+                        transform: translateY(90vh);
+                        opacity: 0;
+                    }
+                }
+            </style>
+            <script>
+                function cl() {
+                    const raining = () => {
+                        const rain = document.querySelector(".rain");
+                        for (let i = 0; i < 250; i++) {
+                            const rainDrop = document.createElement("span");
+                            const aNumber = randomNumber(100);
+                            const timeDelay = randomNumber(10);
+                            const animDuration = randomNumber(5) + Math.random() + 0.2;
+                            rainDrop.style.left = `${aNumber}%`;
+                            rainDrop.style.animationDelay = `${timeDelay}s`;
+                            rainDrop.style.animationDuration = `${animDuration}s`;
+                            rain.appendChild(rainDrop);
+                        }
+                    };
+
+                    const randomNumber = (limit) => {
+                        return Math.floor(Math.random() * limit);
+                    };
+
+                    raining();
+                }
+
+
+            </script>
+        </div>
+
+        <div id="friends">
+            <style>
+                #friends {
+                    position: absolute;
+                    width: 30%;
+                    height: 30%;
+                    top: 50%;
+                    left: 48%;
+                }
+
+                #f1 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 50%;
+                }
+
+                #f2 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 15%;
+                    left: 18%;
+                }
+
+                #f3 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 50%;
+                    left: 36%;
+                }
+
+                #f4 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 15%;
+                    left: 54%;
+                }
+
+                #f5 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 50%;
+                    left: 72%;
+                }
+
+                #f6 {
+                    width: 7vw;
+                    height: 7vw;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 15%;
+                    left: 90%;
+                }
+
+                #imgiconfrd {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    transition: all .5s ease;
+                    top: 0%;
+                    left: 0%;
+                    filter: grayscale(80%);
+                }
+
+                #f2:hover #imgiconfrd, #f3:hover #imgiconfrd, #f4:hover #imgiconfrd, #f5:hover #imgiconfrd, #f6:hover #imgiconfrd {
+                    width: 90%;
+                    height: 90%;
+                    position: absolute;
+                    top: 5%;
+                    left: 5%;
+                    filter: grayscale(0%);
+                }
+
+                #line {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                }
+
+                #line2 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: .5s;
+                }
+
+                #line3 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 1s;
+                }
+
+                #line4 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 1.5s;
+                }
+
+                #line5 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 2s;
+                }
+
+                #line6 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 2.5s;
+                }
+
+                #line7 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 3s;
+                }
+
+                #line8 {
+                    position: absolute;
+                    background: dimgray;
+                    animation: line1 5s infinite;
+                    animation-delay: 3.5s;
+                }
+
+                #imgiconfrd img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @keyframes line1 {
+
+                    7.7% {
+                        width: .1vw;
+                        height: 14%;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    15.4% {
+                        width: .1vw;
+                        height: .1vw;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    23.1% {
+                        height: .1vw;
+                        width: 14%;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    30.8% {
+                        height: .1vw;
+                        width: 14%;
+                        left: 84%;
+                        top: 0;
+                    }
+
+                    38.5% {
+                        height: .1vw;
+                        width: .1vw;
+                        left: 98%;
+                        top: 0%;
+                    }
+
+                    46.2% {
+                        height: 14%;
+                        width: .1vw;
+                        left: 98%;
+                        top: 0;
+                    }
+
+                    53.9% {
+                        height: 14%;
+                        width: .1vw;
+                        left: 98%;
+                        top: 84%;
+                    }
+
+                    61.6% {
+                        height: .1vw;
+                        width: .1vw;
+                        left: 98%;
+                        top: 98%;
+                    }
+
+                    69.3% {
+                        height: .1vw;
+                        width: 14%;
+                        left: 84%;
+                        top: 98%;
+                    }
+
+                    77% {
+                        height: .1vw;
+                        width: 14%;
+                        left: 0%;
+                        top: 98%;
+                    }
+
+                    84.7% {
+                        height: .1vw;
+                        width: .1vw;
+                        left: 0%;
+                        top: 98%;
+                    }
+
+                    92.5% {
+                        height: 14%;
+                        width: .1vw;
+                        left: 0%;
+                        top: 84%;
+                    }
+
+                    100% {
+                        height: 14%;
+                        width: .1vw;
+                        left: 0%;
+                        top: 0%;
+                    }
+                }
+
+                #selectimg {
+                    transform: rotate(270deg);
+                }
+
+                #ptext2 {
+                    font-family: 'Times New Roman';
+                    font-weight: lighter;
+                    position: absolute;
+                    top: 34%;
+                    left: 40%;
+                    transform: rotate(270deg);
+                    color: darkgray;
+                    font-size: 1.4vw;
+                    transition: all .5s ease;
+                }
+
+                #ptext3 {
+                    font-family: 'Times New Roman';
+                    font-weight: lighter;
+                    position: absolute;
+                    top: 34%;
+                    opacity: 0;
+                    left: 20%;
+                    transform: rotate(270deg);
+                    color: darkgray;
+                    font-size: 1.4vw;
+                    transition: all .5s ease;
+                }
+
+                    #ptext2::first-letter, #ptext3::first-letter {
+                        color: #6c1a1a;
+                        font-size: 1.6vw;
+                    }
+
+                #f2:hover #ptext2, #f4:hover #ptext2, #f6:hover #ptext2 {
+                    left: -40%;
+                }
+
+                #f3:hover #ptext3, #f5:hover #ptext3 {
+                    left: 50%;
+                    opacity: 1;
+                }
+            </style>
+            <div id="f1">
+                <div id="imgiconfrd">
+                    <img id="selectimg" src="https://i.postimg.cc/nLdmQY6Y/d.png" />
+                </div>
+            </div>
+            <div id="f2">
+                <div id="line"></div><div id="line2"></div><div id="line3"></div><div id="line4"></div><div id="line5"></div><div id="line6"></div><div id="line7"></div><div id="line8"></div>
+
+                <p id="ptext2">NeiGE </p>
+                <div id="imgiconfrd">
+                    <img src="https://i.postimg.cc/VNMyG9dR/2222.png" />
+                </div>
+            </div>
+            <div id="f3">
+                <p id="ptext3">xSwordPerfect </p>
+                <div id="line"></div><div id="line2"></div><div id="line3"></div><div id="line4"></div><div id="line5"></div><div id="line6"></div><div id="line7"></div><div id="line8"></div>
+                <div id="imgiconfrd">
+                    <img src="https://i.postimg.cc/t43j49sF/14bec8e3189bd4429a30e3867a8db9e9.jpg" />
+                </div>
+            </div>
+            <div id="f4">
+                <p id="ptext2">JanNe </p>
+                <div id="line"></div><div id="line2"></div><div id="line3"></div><div id="line4"></div><div id="line5"></div><div id="line6"></div><div id="line7"></div><div id="line8"></div>
+                <div id="imgiconfrd">
+                    <img src="https://i.postimg.cc/mDDfjM8S/3035db2e842e8c74fa134e76f5dc1e52.jpg" />
+                </div>
+            </div>
+            <div id="f5">
+                <p id="ptext3">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basch </p>
+                <div id="line"></div><div id="line2"></div><div id="line3"></div><div id="line4"></div><div id="line5"></div><div id="line6"></div><div id="line7"></div><div id="line8"></div>
+                <div id="imgiconfrd">
+                    <img src="https://i.postimg.cc/L8KSSJ8H/4.jpg" />
+                </div>
+            </div>
+            <div id="f6">
+                <p id="ptext2">iToxIc</p>
+                <div id="line"></div><div id="line2"></div><div id="line3"></div><div id="line4"></div><div id="line5"></div><div id="line6"></div><div id="line7"></div><div id="line8"></div>
+                <div id="imgiconfrd">
+                    <img src="https://i.postimg.cc/jjvYyvQ5/9752ff6fbd858f70db928711fa76d32a.jpg" />
+                </div>
+            </div>
+        </div>
+
+        <img src="https://i.postimg.cc/cCm1NqbZ/99e9f9d4747e8a40f7308d2c8458b049-779767303250128678.png" id="fatuiicon" />
+        <div id="pr1">
+            <style>
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                @font-face {
+                    font-family: textf;
+                    src: url(Onbase.otf);
+                }
+
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
+
+                @font-face {
+                    font-family: neigefont2;
+                    src: url(neig.ttf);
+                }
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: kiri;
+                    src: url(an.otf);
+                }
+
+                #pr1 {
+                    position: absolute;
+                    width: 30%;
+                    height: 13%;
+                    right: 4%;
+                    top: 33%;
+                }
+
+                #titlepr1 {
+                    font-size: 2vw;
+                    font-family: kiri;
+                    letter-spacing: -.1vw;
+                    right: 0;
+                    top: -20%;
+                    position: absolute;
+                    background: linear-gradient(to right, #830101, #5E1111, #340404);
+                    background-size: cover;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+                #idfirsttext {
+                    font-size: 1.2vw;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    opacity: .7;
+                    left: 3%;
+                    position: absolute;
+                    background: linear-gradient(to right, #830101, #5E1111, #340404);
+                    background-size: cover;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+                #fatuiicon {
+                    position: absolute;
+                    width: 15vw;
+                    height: 15vw;
+                    opacity: .3;
+                    right: 1%;
+                    top: 10%;
+                }
+
+                #sp1 {
+                    font-family: neigefont3;
+                    font-weight: bold;
+                    color: black;
+                    font-size: 1.5vw;
+                    position: relative;
+                    left: 8%;
+                    top: 55%;
+                }
+
+                #sp2 {
+                    font-family: neigefont3;
+                    color: black;
+                    font-size: 1.5vw;
+                    position: relative;
+                    left: 10%;
+                    top: 55%;
+                }
+
+                #sp3 {
+                    font-family: neigefont;
+                    font-weight: bold;
+                    color: darkgray;
+                    font-size: 1.5vw;
+                    position: relative;
+                    left: 18%;
+                    text-decoration: underline;
+                    top: 50%;
+                    background: linear-gradient(to right, #9A9A9A, #B5B5B5, #C8C8C8);
+                    background-size: cover;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+                #sp4 {
+                    color: darkgray;
+                    font-size: 1.2vw;
+                    position: relative;
+                    left: 25%;
+                    letter-spacing: .1vw;
+                    top: 52%;
+                }
+
+                #pkiri {
+                    font-family: neigefont3;
+                    font-weight: bold;
+                    color: gray;
+                    font-size: 1.5vw;
+                    position: absolute;
+                    right: 5.5%;
+                    top: -1%;
+                }
+
+                #pnumber {
+                    color: white;
+                    background: #6c1a1a;
+                    font-size: .4vw;
+                    letter-spacing: .15vw;
+                    position: absolute;
+                    right: 7%;
+                    top: 6%;
+                    padding-left: .5vw;
+                    padding-right: .5vw;
+                }
+            </style>
+            <p id="titlepr1">CRIMSON  HARBINGER</p>
+
+            <span id="sp1">赤预兆 ·</span><span id="sp2">赤红</span><span id="sp3">Revendreth</span><span id="sp4">VOID.MODEL</span>
+        </div>
+        <p id="pkiri">雷文德雷斯</p>
+        <p id="pnumber">501545644</p>
+        <p id="idfirsttext">The wicked wil reap / <br />what they sow</p>
+        <p id="clickmenu" onclick="openmenu();">
+            MENU
+        </p>
+        <div id="sectionprof">
+            <style>
+                #clickmenu {
+                    z-index: 10;
+                    position: absolute;
+                    font-size: 1.2vw;
+                    color: white;
+                    background: #340404;
+                    padding: .5vw;
+                    top: 8%;
+                    left: 3%;
+                    font-weight: bold;
+                    font-size: .8vw;
+                    letter-spacing: .1vw;
+                    padding-left: 5vw;
+                }
+
+                #sectionprof {
+                    position: absolute;
+                    width: 11%;
+                    height: 35%;
+                    top: 45%;
+                    right: 4%;
+                }
+
+                #nameprofil {
+                    position: absolute;
+                    font-size: .5vw;
+                    font-family: Roboto;
+                    color: white;
+                    background: linear-gradient(to left, #830101, #5E1111, #340404);
+                    width: 100%;
+                    padding: .2vw;
+                    top: 0%;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                }
+
+                #nameprofil2 {
+                    position: absolute;
+                    font-size: .5vw;
+                    font-family: Roboto;
+                    color: white;
+                    background: linear-gradient(to left, #830101, #5E1111, #340404);
+                    width: 100%;
+                    padding: .2vw;
+                    top: 20%;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                }
+
+                #namereg {
+                    position: absolute;
+                    font-size: .5vw;
+                    font-family: Roboto;
+                    color: #340404;
+                    top: 7%;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                }
+
+                #namereg2 {
+                    position: absolute;
+                    font-size: .5vw;
+                    font-family: Roboto;
+                    color: #340404;
+                    top: 27%;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                }
+
+                #namereg3 {
+                    position: absolute;
+                    font-size: .5vw;
+                    font-family: Roboto;
+                    color: #340404;
+                    top: 45%;
+                    left: 0%;
+                    letter-spacing: .1vw;
+                }
+
+                #barpr {
+                    background: linear-gradient(to left, #830101, #5E1111, #340404);
+                    width: 105%;
+                    top: 40%;
+                    height: .2vw;
+                    position: absolute;
+                }
+
+                #imgcodes {
+                    position: absolute;
+                    width: 105%;
+                    top: 60%;
+                }
+            </style>
+            <p id="nameprofil">NAME/REG</p>
+            <p id="namereg">·KIRI/Revendreth</p>
+            <p id="nameprofil2">INFORMATION</p>
+            <p id="namereg2">·XXVIII / Piscies</p>
+            <div id="barpr">
+                <p id="namereg3">·Kiri / <br />·<br />·501545644 /</p>
+            </div>
+            <img src="https://i.postimg.cc/1tCrSz2m/cd.png" id="imgcodes" />
+        </div>
+
+
+
+    </div>
+
+
+    <div id="secondpage" class="no">
+        <style>
+            #secondpage {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backdrop-filter: blur(6px);
+                background: rgba(255,255,255,.3);
+            }
+
+            #dred {
+                position: absolute;
+                width: .4vw;
+                height: 50%;
+                left: -2%;
+                top: 34%;
+                background: #671c1c;
+            }
+
+            #ppr {
+                position: absolute;
+                color: white;
+                font-size: .8vw;
+                letter-spacing: .2vw;
+                top: 80%;
+                left: 20%;
+            }
+        </style>
+        <div id="main2"></div>
+        <div id="firstdiv">
+            <style>
+                #firstdiv {
+                    width: 10%;
+                    background: rgb(32,31,36);
+                    position: absolute;
+                    left: 10%;
+                    top: 7%;
+                    height: 86%;
+                    z-index: 2;
+                }
+
+                #motiv {
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0;
+                }
+
+                #imgmail {
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 100%;
+                    height: 23%;
+                    border: .2vw solid white;
+                    border-radius: 50%;
+                    top: -7%;
+                    left: 10%;
+                }
+
+                    #imgmail img {
+                        position: absolute;
+                        width: 60%;
+                        transform: rotate(-15deg);
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                        left: 20%;
+                        top: 15%;
+                    }
+
+                #menu1 {
+                    position: absolute;
+                    width: 80%;
+                    height: 10%;
+                    top: 18%;
+                    border-bottom: .1vw solid black;
+                    left: 10%;
+                }
+
+                #menu2 {
+                    position: absolute;
+                    width: 80%;
+                    height: 10%;
+                    top: 30%;
+                    border-bottom: .1vw solid black;
+                    left: 10%;
+                }
+
+                #selectmenu1 {
+                    position: absolute;
+                    width: 100%;
+                    height: 70%;
+                    text-align: center;
+                    transition: all .5s ease;
+                }
+
+                    #selectmenu1 p {
+                        font-size: 1.2vw;
+                        top: -10%;
+                        position: relative;
+                    }
+
+                    #selectmenu1 span {
+                        font-size: .6vw;
+                        position: relative;
+                        top: -110%;
+                        letter-spacing: .2vw;
+                        font-family: Roboto;
+                    }
+
+                #selectmenu2 p {
+                    font-size: 1.2vw;
+                    top: -10%;
+                    position: relative;
+                }
+
+                #spbn {
+                    font-size: .6vw;
+                    position: relative;
+                    top: -60%;
+                    letter-spacing: .2vw;
+                    font-family: Roboto;
+                }
+
+                #selectmenu2 {
+                    transition: all .5s ease;
+                    position: absolute;
+                    text-align: center;
+                    width: 100%;
+                    height: 70%;
+                }
+
+                #selector {
+                    transition: all .5s ease;
+                    position: absolute;
+                    width: 145%;
+                    left: -25%;
+                    height: 8%;
+                    background-image: url("https://i.postimg.cc/QCcMJbmr/tumblr-lrolid32qe1qio518o1-500.gif");
+                    display: inline-block;
+                    mask-image: linear-gradient(to left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 30%);
+                    filter: sepia(1) brightness(650%) hue-rotate(300deg) contrast(250%) blur(2px);
+                    /*-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);*/
+                }
+
+                .selNo {
+                    color: white;
+                    font-family: neigefont3;
+                    font-weight: bold;
+                }
+
+                .selSi {
+                    color: black;
+                    font-family: neigefont3;
+                    font-weight: bold;
+                }
+
+                .selectorup {
+                    top: 18%;
+                }
+
+                .selectordown {
+                    top: 30%;
+                }
+
+                #butonpru {
+                    position: absolute;
+                    width: 10vw;
+                    height: 10vw;
+                    background: Red;
+                    z-index: 2;
+                    top: 50%;
+                    left: 5%;
+                }
+            </style>
+
+            <script>
+                function openmenu() {
+                    $("#secondpage").addClass("si");
+                    $("#secondpage").removeClass("no");
+
+                }
+                function closemenu() {
+                    $("#secondpage").addClass("no");
+                    $("#secondpage").removeClass("si");
+                }
+                function sele1() {
+                    openpost1();
+                    $("#selector").addClass("selectorup");
+                    $("#selector").removeClass("selectordown");
+
+                    $("#selectmenu1").addClass("selSi");
+                    $("#selectmenu1").removeClass("selNo");
+
+                    $("#selectmenu2").addClass("selNo");
+                    $("#selectmenu2").removeClass("selSi");
+
+
+                    //section2
+                    $("#menudposts").addClass("si");
+                    $("#menudposts").removeClass("no");
+
+                    $("#menucongif").addClass("no");
+                    $("#menucongif").removeClass("si");
+                }
+                function sele2() {
+                    configmenu1();
+
+                    $("#selector").addClass("selectordown");
+                    $("#selector").removeClass("selectorsi");
+
+                    $("#selectmenu1").addClass("selNo");
+                    $("#selectmenu1").removeClass("selSi");
+
+                    $("#selectmenu2").addClass("selSi");
+                    $("#selectmenu2").removeClass("selNo");
+
+                    //section2
+                    $("#menudposts").addClass("no");
+                    $("#menudposts").removeClass("si");
+
+                    $("#menucongif").addClass("si");
+                    $("#menucongif").removeClass("no");
+                }
+            </script>
+            <img id="motiv" src="https://i.postimg.cc/rsjwMXbb/123-waifu2x-art-noise3-scale.png" />
+            <div id="imgmail">
+                <img src="https://i.postimg.cc/cCm1NqbZ/99e9f9d4747e8a40f7308d2c8458b049-779767303250128678.png" />
+                <div id="dred"></div>
+                <p id="ppr">PROFILE</p>
+            </div>
+            <div id="selector" class="selectorup">
+
+            </div>
+            <div id="menu1" onclick="sele1();">
+                <div id="selectmenu1" class="selSi">
+                    <p>帖子和文字</p> <br />
+                    <span>POSTS</span>
+                </div>
+            </div>
+            <div id="menu2" onclick="sele2();">
+                <div id="selectmenu2" class="selNo">
+                    <p>配置和调整</p>
+                    <span id="spbn">CONFIG</span>
+                </div>
+            </div>
+
+        </div>
+        <div id="seconddiv">
+            <style>
+                #seconddiv {
+                    width: 20%;
+                    height: 80%;
+                    left: 20%;
+                    top: 10%;
+                    /*background: rgba(255,255,255,.3);*/
+                    position: absolute;
+                    backdrop-filter: blur(10px);
+                    background: rgb(255,255,255);
+                    background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 50%);
+                }
+
+                #menudposts {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #menucongif {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #menuconf1 {
+                    position: absolute;
+                    width: 90%;
+                    height: 15%;
+                    top: 10%;
+                    left: 5%;
+                    border-left: .2vw solid #622020;
+                    box-shadow: 0 0 1vw black;
+                }
+
+                #menuconf2 {
+                    box-shadow: 0 0 1vw black;
+                    position: absolute;
+                    width: 90%;
+                    height: 15%;
+                    top: 30%;
+                    left: 5%;
+                    border-left: .2vw solid #622020;
+                }
+
+                #menupost1 {
+                    box-shadow: 0 0 1vw black;
+                    position: absolute;
+                    width: 90%;
+                    height: 15%;
+                    top: 10%;
+                    left: 5%;
+                    border-left: .2vw solid #622020;
+                }
+
+                #menupost2 {
+                    box-shadow: 0 0 1vw black;
+                    position: absolute;
+                    width: 90%;
+                    height: 15%;
+                    top: 30%;
+                    left: 5%;
+                    border-left: .2vw solid #622020;
+                }
+
+                #menupost3 {
+                    box-shadow: 0 0 1vw black;
+                    position: absolute;
+                    width: 90%;
+                    height: 15%;
+                    top: 50%;
+                    left: 5%;
+                    border-left: .2vw solid #622020;
+                }
+
+                #mnc1, #mnc2, #mnc3, #mnc4, #mnc5 {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .nmc {
+                    filter: grayscale(100%) invert(100%);
+                }
+
+                .mnc {
+                    filter: grayscale(100%) invert(20%);
+                }
+
+                #pmnc {
+                    font-family: neigefont3;
+                    font-size: 1.3vw;
+                    left: 10%;
+                    position: absolute;
+                    mix-blend-mode: difference;
+                    color: black;
+                    filter: invert(100%);
+                    font-weight: bold;
+                    top: 10%;
+                }
+
+                    #pmnc span {
+                        position: absolute;
+                        top: 60%;
+                        font-size: .6vw;
+                        letter-spacing: .2vw;
+                        font-family: Roboto;
+                    }
+            </style>
+            <script>
+                function configmenu1() {
+                    $("#mnc1").addClass("mnc");
+                    $("#mnc1").removeClass("nmc");
+
+                    $("#mnc2").addClass("nmc");
+                    $("#mnc2").removeClass("mnc");
+                    //OPENCONFIG CLOSE CRED
+
+                    $("#PostNeige").addClass("no");
+                    $("#PostNeige").removeClass("si");
+
+                    $("#postConfig").addClass("si");
+                    $("#postConfig").removeClass("no");
+                    $("#Post1").addClass("no");
+                    $("#Post1").removeClass("si");
+                    $("#Post2").addClass("no");
+                    $("#Post2").removeClass("si");
+                    $("#Post3").addClass("no");
+                    $("#Post3").removeClass("si");
+
+                }
+                function configmenu2() {
+                    comprobar();
+                    $("#mnc2").addClass("mnc");
+                    $("#mnc2").removeClass("nmc");
+
+                    $("#mnc1").addClass("nmc");
+                    $("#mnc1").removeClass("mnc");
+                    //OPEN CRED CLOSE CONFIG
+
+                    $("#PostNeige").addClass("si");
+                    $("#PostNeige").removeClass("no");
+
+                    $("#postConfig").addClass("no");
+                    $("#postConfig").removeClass("si");
+                    $("#Post1").addClass("no");
+                    $("#Post1").removeClass("si");
+                    $("#Post2").addClass("no");
+                    $("#Post2").removeClass("si");
+                    $("#Post3").addClass("no");
+                    $("#Post3").removeClass("si");
+
+                }
+                function openpost1() {
+                    $("#mnc3").addClass("mnc");
+                    $("#mnc4").removeClass("mnc");
+                    $("#mnc5").removeClass("mnc");
+
+                    $("#mnc3").removeClass("nmc");
+                    $("#mnc4").addClass("nmc");
+                    $("#mnc5").addClass("nmc");
+
+
+                    $("#Post1").addClass("si");
+                    $("#Post1").removeClass("no");
+
+                    $("#Post2").addClass("no");
+                    $("#Post2").removeClass("si");
+                    $("#Post3").addClass("no");
+                    $("#Post3").removeClass("si");
+                    $("#PostNeige").addClass("no");
+                    $("#PostNeige").removeClass("si");
+                    $("#postConfig").addClass("no");
+                    $("#postConfig").removeClass("si");
+                }
+                function openpost2() {
+                    $("#mnc4").addClass("mnc");
+                    $("#mnc3").removeClass("mnc");
+                    $("#mnc5").removeClass("mnc");
+
+                    $("#mnc4").removeClass("nmc");
+                    $("#mnc3").addClass("nmc");
+                    $("#mnc5").addClass("nmc");
+
+
+
+                    $("#Post2").addClass("si");
+                    $("#Post2").removeClass("no");
+
+                    $("#Post1").addClass("no");
+                    $("#Post1").removeClass("si");
+                    $("#Post3").addClass("no");
+                    $("#Post3").removeClass("si");
+                    $("#PostNeige").addClass("no");
+                    $("#PostNeige").removeClass("si");
+                    $("#postConfig").addClass("no");
+                    $("#postConfig").removeClass("si");
+                }
+                function openpost3() {
+                    $("#mnc5").addClass("mnc");
+                    $("#mnc4").removeClass("mnc");
+                    $("#mnc3").removeClass("mnc");
+
+                    $("#mnc5").removeClass("nmc");
+                    $("#mnc4").addClass("nmc");
+                    $("#mnc3").addClass("nmc");
+
+
+
+                    $("#Post3").addClass("si");
+                    $("#Post3").removeClass("no");
+
+                    $("#Post2").addClass("no");
+                    $("#Post2").removeClass("si");
+                    $("#Post1").addClass("no");
+                    $("#Post1").removeClass("si");
+                    $("#PostNeige").addClass("no");
+                    $("#PostNeige").removeClass("si");
+                    $("#postConfig").addClass("no");
+                    $("#postConfig").removeClass("si");
+                }
+                function onaudio() {
+                    $("#x3").addClass("backblack");
+                    $("#x3").removeClass("backwhite");
+                    $("#x4").addClass("backwhite");
+                    $("#x4").removeClass("backblack");
+                }
+                function offaudio() {
+                    $("#x4").addClass("backblack");
+                    $("#x4").removeClass("backwhite");
+                    $("#x3").addClass("backwhite");
+                    $("#x3").removeClass("backblack");
+                }
+            </script>
+
+            <img id="fup" src="https://i.postimg.cc/DwStz7Wp/flecha-hacia-abajo.png" />
+            <img id="fdw" src="https://i.postimg.cc/DwStz7Wp/flecha-hacia-abajo.png" />
+            <style>
+                #fdw {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    filter: invert(40%);
+                    top: 80%;
+                    left: 38%;
+                }
+
+                #fup {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    transform: rotate(180deg);
+                    filter: invert(40%);
+                    top: -7%;
+                    left: 38%;
+                }
+            </style>
+
+
+            <div id="menudposts" class="si">
+                <div id="menupost1" onclick="openpost1();">
+                    <img src="https://community.adobe.com/legacyfs/online/1754692_lines.gif" id="mnc3" class="mnc" />
+                    <p id="pmnc">
+                        配置和调整<br />
+                        <span>CONFIG AND SETTINGS</span>
+                    </p>
+                </div>
+                <div id="menupost2" onclick="openpost2();">
+                    <img src="https://community.adobe.com/legacyfs/online/1754692_lines.gif" id="mnc4" class="nmc" />
+                    <p id="pmnc">
+                        关于这个地方和制作人员<br /><br />
+                        <span>DEV AND CREDITS</span>
+                    </p>
+                </div>
+                <div id="menupost3" onclick="openpost3();">
+                    <img src="https://community.adobe.com/legacyfs/online/1754692_lines.gif" id="mnc5" class="nmc" />
+                    <p id="pmnc">
+                        音乐播放器和播放器<br /><br />
+                        <span>MUSIC PLAYER</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="menucongif" class="no">
+                <div id="menuconf1" onclick="configmenu1();">
+                    <img src="https://community.adobe.com/legacyfs/online/1754692_lines.gif" id="mnc1" class="mnc" />
+                    <p id="pmnc">
+                        配置和调整<br />
+                        <span>CONFIG AND SETTINGS</span>
+                    </p>
+                </div>
+                <div id="menuconf2" onclick="configmenu2();">
+                    <img src="https://community.adobe.com/legacyfs/online/1754692_lines.gif" id="mnc2" />
+                    <p id="pmnc">
+                        关于这个地方和制作人员<br /><br />
+                        <span>DEV AND CREDITS</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="thirddiv">
+            <style>
+                @font-face {
+                    font-family: lc;
+                    src: url(lc.otf);
+                }
+
+                #thirddiv {
+                    width: 48%;
+                    left: 41%;
+                    position: absolute;
+                    height: 66%;
+                    background: white;
+                    top: 12%;
+                    border-radius: .4vw;
+                }
+
+                #areadeconfig {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #areadeposts {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .no {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                .si {
+                    opacity: 1;
+                    z-index: 3;
+                }
+            </style>
+            <!--<img id="backimg" src="https://i.postimg.cc/fRKNz7CC/Ftm-Yf-LXa-MAgk-XW1.png" />-->
+
+            <div id="areadeposts" class="si">
+
+                <div id="Post1" class="si">
+                    <style>
+                        #Post1 {
+                            position: absolute;
+                            width: 92%;
+                            height: 90%;
+                            left: 4%;
+                            top: 5%;
+                            overflow: auto;
+                        }
+
+                        #profim2 {
+                            position: absolute;
+                            width: 100%;
+                            left: -5%;
+                        }
+                    </style>
+                    <div id="imgprofarea">
+
+                        <div id="secondimg">
+                            <img id="profim2" src="https://i.postimg.cc/VNMyG9dR/2222.png" />
+                        </div>
+                        <div id="clipimg">
+
+                            <img src="https://i.postimg.cc/g2QNtdBR/clip-de-papel-de-metal.png" />
+                        </div>
+                    </div>
+                    <p id="titlepost">
+                        由 雪 开发、设计和创造
+                    </p>
+                    <div id="barup">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <p id="datepost">
+                        2024 年 3 月 27 日 星期三
+                    </p>
+
+                    <p id="creditsp">
+                        人工智能。 TERMINAL V tech 5.38 - 主机已启动（0.025 秒延迟）<br /> PARADOX UI 界面 V0.94 REV 1.00<br />
+                        IMACC 名称：BLACKLARCH 4CL454 IMACC 类型：<br />TAIMAT IMAGE ICCKS COMPRESSED (Q)<br />
+                        444445555 加载地址 0000x112244-000000000000000<br />
+                        Net Wire_Seed：d869db7fe62fb07c25a0403ecaea55031744b5fb#PANDORAPROTOCOL <br />
+                        <br />
+                        <br />
+                        USERNAME: Guest<br />
+                        PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br />
+                        正在验证凭据... 100%<br />
+                        访问文件 '/srd/slab/ara/:dt_000000319/falc_min'... 完成<br />
+                        这个地方是内吉创造的。由 Neige©<br />
+                        提供支持的 xatspace。<br />
+                        Xatspace.me 版权所有 xat.com<br />
+
+                    </p>
+
+                    <div id="barup2">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="iconsbar">
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
+                        </div>
+                        <p id="firmreven">Revendreth </p>
+                    </div>
+                </div>
+                <div id="Post2" class="no">
+                    <style>
+                        #Post2 {
+                            position: absolute;
+                            width: 92%;
+                            height: 90%;
+                            left: 4%;
+                            top: 5%;
+                            overflow: auto;
+                        }
+
+                        #profim2 {
+                            position: absolute;
+                            width: 100%;
+                            left: -5%;
+                        }
+                    </style>
+                    <div id="imgprofarea">
+
+                        <div id="secondimg">
+                            <img id="profim2" src="https://i.postimg.cc/VNMyG9dR/2222.png" />
+                        </div>
+                        <div id="clipimg">
+
+                            <img src="https://i.postimg.cc/g2QNtdBR/clip-de-papel-de-metal.png" />
+                        </div>
+                    </div>
+                    <p id="titlepost">
+                        由 雪 开发、设计和创造
+                    </p>
+                    <div id="barup">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <p id="datepost">
+                        2024 年 3 月 27 日 星期三
+                    </p>
+
+                    <p id="creditsp">
+                        人工智能。 TERMINAL V tech 5.38 - 主机已启动（0.025 秒延迟）<br /> PARADOX UI 界面 V0.94 REV 1.00<br />
+                        IMACC 名称：BLACKLARCH 4CL454 IMACC 类型：<br />TAIMAT IMAGE ICCKS COMPRESSED (Q)<br />
+                        444445555 加载地址 0000x112244-000000000000000<br />
+                        Net Wire_Seed：d869db7fe62fb07c25a0403ecaea55031744b5fb#PANDORAPROTOCOL <br />
+                        <br />
+                        <br />
+                        USERNAME: Guest<br />
+                        PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br />
+                        正在验证凭据... 100%<br />
+                        访问文件 '/srd/slab/ara/:dt_000000319/falc_min'... 完成<br />
+                        这个地方是内吉创造的。由 Neige©<br />
+                        提供支持的 xatspace。<br />
+                        Xatspace.me 版权所有 xat.com<br />
+
+                    </p>
+
+                    <div id="barup2">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="iconsbar">
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
+                        </div>
+                        <style>
+                            #firmreven {
+                                font-family: textfirmFont;
+                                position: absolute;
+                                font-size: 3vw;
+                                right: 5%;
+                                top: -50%;
+                            }
+                        </style>
+                        <p id="firmreven">Revendreth </p>
+                    </div>
+                </div>
+                <div id="Post3" class="no">
+                    <style>
+                        #Post3 {
+                            position: absolute;
+                            width: 92%;
+                            height: 90%;
+                            left: 4%;
+                            top: 5%;
+                            overflow: auto;
+                        }
+
+                        #profim2 {
+                            position: absolute;
+                            width: 100%;
+                            left: -0%;
+                        }
+                    </style>
+                    <div id="imgprofarea">
+
+                        <div id="secondimg">
+                            <img id="profim2" src="https://i.pinimg.com/736x/5b/2c/59/5b2c59456a582c1242aea89405a7ee5b.jpg" />
+                        </div>
+                        <div id="clipimg">
+
+                            <img src="https://i.postimg.cc/g2QNtdBR/clip-de-papel-de-metal.png" />
+                        </div>
+                    </div>
+                    <p id="titlepost">
+                        音乐播放器和播放器
+                    </p>
+                    <div id="barup">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <p id="datepost">
+                        2024 年 3 月 27 日 星期三
+                    </p>
+
+                    <div id="Aaudio">
+                        <style>
+                            #profile {
+                                z-index: 9;
+                            }
+
+                            #Aaudio {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            #abtnaud {
+                                position: absolute;
+                                width: 20%; top:68%;
+                                height: 70%;
+                              left:0;
+                            }
+
+                            .butplayer {
+                                filter: blur(0px) hue-rotate(450deg);
+                                float: left;
+                                height: 1vw;
+                                top: -.25vw;
+                                width: 1vw;
+                                margin-left: 1vw;
+                                position: relative;
+                            }
+
+                            .butpl {
+                                position: absolute;
+                                width: 1.5vw;
+                                height: 1.5vw;
+                                left: 0;
+                                top: .3vw;
+                                border-radius: .2vw;
+                            }
+
+                                .butpl:hover {
+                                    filter: blur(0px) hue-rotate(550deg) invert(100%);
+                                }
+
+                                .butpl img {
+                                    position: absolute;
+                                    filter: blur(0px) hue-rotate(480deg) invert(100%);
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    /*filter: invert(100%);*/
+                                    left: .07vw;
+                                    top: .1vw;
+                                }
+
+                            #pause, #play, #next, #prev, #stop {
+                                width: 2vw;
+                                height: 2vw;
+                                position: absolute; 
+                                left: 0;
+                            }
+
+                            .progress-bar {
+                                top: 64%;
+                                left:3%;
+                                width: 70%;
+                                border-radius: .3vw;
+                                background: #5E1111;
+                                height: .35vw;
+                                position: absolute;
+                            }
+
+                            .fillBar {
+                                background: gray;
+                                width: 0;
+                                height: .35vw;
+                            }
+
+
+                            /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                            .artist-name {
+                                position: absolute;
+                                width: 88%;
+                                left: 3%;
+                                height: 100%;
+                                top: 20%;
+                                letter-spacing: .1vw;
+                                font-size: .5vw;
+                                color: #b21160;
+                            }
+
+                            #AT_time {
+                                width: 70%;
+                                height: 1vw;
+                                top: 66%;
+                                left: 67%;
+                                position: absolute;
+                            }
+
+                                #AT_time p {
+                                    position: absolute;
+                                    letter-spacing: .1vw;
+                                     
+                                   
+                                }
+
+                            .time {
+                                position: absolute;
+                                color: #6c1a1a;
+                                left: -1.5vw;
+                                top: 0vw;
+                                letter-spacing: .1vw;
+                                font-size: .7vw;
+                                overflow: hidden;
+                            }
+
+                            #name_sng {
+                                position: relative;
+                                float: left;
+                            }
+
+                            #namesong {
+                                position: relative;
+                                left: 3%;
+                                color: #622020;
+                                top:56%;
+                            }
+
+                            #fillimgbar {
+                                width: 1vw;
+                                height: 1vw;
+                                position: absolute;
+                                top: -.4vw;
+                                left: -3%;
+                            }
+                        </style>
+                        <div class="progress-bar">
+                            <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+                        </div>
+
+
+                        <div id="AT_time"><div class="time"></div></div>
+                        <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                        <div> </div>
+
+                        <div id="abtnaud">
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                    <div id="prev" class="fas fa-backward"><p></p></div>
+                                </div>
+
+                            </div>
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                                    <div id="play"> </div>
+                                </div>
+
+                            </div>
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                    <div id="next" class="fas fa-forward"><p></p></div>
+                                </div>
+
+                            </div>
+                            <div class="butplayer">
+                                <div class="butpl">
+                                    <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                    <div id="pause"> </div>
+                                </div>
+
+                            </div>
+                            <!--<div class="butplayer">
+                <div class="butpl">
+                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                    <div id="stop"> </div>
+                </div>
+
+            </div>-->
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div id="barup2">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="iconsbar">
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
+                        </div>
+                        <style>
+                            #firmreven {
+                                font-family: textfirmFont;
+                                position: absolute;
+                                font-size: 3vw;
+                                right: 5%;
+                                top: -50%;
+                            }
+                        </style>
+                        <p id="firmreven">Revendreth </p>
+
+                    </div>
+                </div>
+
+
+                <div id="postConfig" class="no">
+                    <style>
+                        #postConfig {
+                            position: absolute;
+                            width: 92%;
+                            height: 90%;
+                            left: 4%;
+                            top: 5%;
+                            overflow: auto;
+                        }
+
+                        #barlatconf {
+                            position: absolute;
+                            width: .25vw;
+                            height: 45%;
+                            top: 28%;
+                            border-radius: 100%;
+                            background: #212121;
+                            left: 8.5%;
+                        }
+
+                        #ro1 {
+                            position: absolute;
+                            width: 1vw;
+                            height: 1vw;
+                            border: .1vw solid transparent;
+                            transform: rotate(45deg);
+                            left: 7.4%;
+                            top: 33%
+                        }
+
+                        #roblanck {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background: white;
+                            opacity: 0;
+                        }
+
+                        #selectedro {
+                            position: absolute;
+                            width: 50%;
+                            height: 50%;
+                            left: 25%;
+                            top: 25%;
+                            background: #212121;
+                        }
+
+                        #option1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            top: 30%;
+                        }
+
+                        #option2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            top: 43%;
+                        }
+
+                        #option3 {
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            top: 56%;
+                        }
+
+                            #option1:hover #ro1, #option2:hover #ro1, #option3:hover #ro1 {
+                                border: .1vw solid #212121;
+                            }
+
+                            #option1:hover #roblanck, #option2:hover #roblanck, #option3:hover #roblanck {
+                                opacity: 1;
+                            }
+
+                            #option1:hover #creditspx, #option2:hover #creditspx, #option3:hover #creditspx {
+                                font-size: 1vw;
+                                color: black;
+                            }
+
+                        #creditspx {
+                            position: absolute;
+                            font-size: .7vw;
+                            letter-spacing: .05vw;
+                            font-family: neigefont3;
+                            font-weight: bold;
+                            left: 12%;
+                            color: gray;
+                            top: 7%;
+                        }
+                    </style>
+
+                    <div id="imgprofarea">
+
+                        <div id="secondimg">
+                            <img id="profim" src="https://i.postimg.cc/fWPN4GHL/e467e9a3640a68dd26fcd3152adbdbda-w200.gif" style="top:-5%; filter:grayscale(100%);" />
+                        </div>
+
+                    </div>
+                    <p id="titlepost">
+                        配置和调整
+                    </p>
+                    <div id="barup">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <p id="datepost">
+                        2024 年 3 月 27 日 星期三
+                    </p>
+
+                    <div id="barlatconf">
+
+                    </div>
+                    <div id="option1">
+                        <div id="ro1">
+                            <div id="roblanck">
+
+                            </div>
+                            <div id="selectedro">
+
+                            </div>
+                        </div>
+                        <p id="creditspx">
+                            禁用或启用。 RAIN EFFECT
+
+                        </p>
+                        <div id="butons">
+                            <style>
+                                #butons {
+                                    position: absolute;
+                                    width: 20%;
+                                    height: 60%;
+                                    left: 52%;
+                                    top: 20%;
+                                    border: .1vw solid transparent;
+                                }
+
+                                #option1:hover #butons, #option2:hover #butons, #option3:hover #butons {
+                                    border: .1vw solid black;
+                                }
+
+                                #areabutons {
+                                    width: 94%;
+                                    height: 80%;
+                                    position: absolute;
+                                    left: 3%;
+                                    top: 10%;
+                                }
+
+                                #x1, #x3, #x5 {
+                                    position: absolute;
+                                    width: 50%;
+                                    height: 100%;
+                                }
+
+                                #x2, #x4, #x6 {
+                                    position: absolute;
+                                    width: 50%;
+                                    height: 100%;
+                                    left: 50%;
+                                }
+
+                                #textbuton {
+                                    position: relative;
+                                    text-align: center;
+                                    top: -25%;
+                                    font-size: .7vw;
+                                    letter-spacing: .05vw;
+                                    font-family: neigefont3;
+                                    font-weight: bold;
+                                    mix-blend-mode: difference;
+                                    filter: invert(100%);
+                                }
+
+                                .backblack {
+                                    background: #121212;
+                                }
+
+                                .backwhite {
+                                    background: white;
+                                }
+                            </style>
+                            <div id="areabutons">
+                                <div id="x1" class="backblack">
+                                    <p id="textbuton">
+                                        ON
+                                    </p>
+                                </div>
+                                <div id="x2" class="backwhite">
+                                    <p id="textbuton">
+                                        OFF
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="option2">
+                        <div id="ro1">
+                            <div id="roblanck">
+
+                            </div>
+                            <div id="selectedro">
+
+                            </div>
+                        </div>
+                        <p id="creditspx">
+                            禁用或启用。 MUSIC
+
+                        </p>
+                        <div id="butons">
+                            <div id="areabutons">
+                                <div id="x3" class="backblack" onclick="onaudio(); play();">
+                                    <p id="textbuton">
+                                        ON
+                                    </p>
+                                </div>
+                                <div id="x4" class="backwhite" onclick="offaudio(); pause();">
+                                    <p id="textbuton">
+                                        OFF
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="option3">
+                        <div id="ro1">
+                            <div id="roblanck">
+
+                            </div>
+                            <div id="selectedro">
+
+                            </div>
+                        </div>
+                        <p id="creditspx">
+                            选择形式和主题。 NORMAL/DARK
+
+                        </p>
+                        <div id="butons">
+                            <div id="areabutons">
+                                <div id="x5" class="backwhite">
+                                    <p id="textbuton">
+                                        DARK
+                                    </p>
+                                </div>
+                                <div id="x6" class="backblack">
+                                    <p id="textbuton">
+                                        NORMAL
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <p id="warning">
+                        FILESYSTEM STATUS: <span>CORRUPTED!</span>
+                    </p>
+                    <div id="barup2">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="iconsbar">
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
+                        </div>
+                        <p id="firmreven">Revendreth </p>
+                    </div>
+                </div>
+
+                <div id="PostNeige" class="no">
+                    <style>
+                        #PostNeige {
+                            position: absolute;
+                            width: 92%;
+                            height: 90%;
+                            left: 4%;
+                            top: 5%;
+                            overflow: auto;
+                        }
+
+                        #imgprofarea {
+                            position: absolute;
+                            width: 7vw;
+                            height: 7vw;
+                            border-radius: 50%;
+                            border: .3vw solid darkgray;
+                        }
+
+                        #secondimg {
+                            position: absolute;
+                            width: 90%;
+                            height: 90%;
+                            top: 5%;
+                            left: 5%;
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+
+                        #profim {
+                            position: absolute;
+                            width: 100%;
+                            transform: scale(1.8);
+                            top: 20%;
+                        }
+
+                        #backimg {
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0;
+                            height: 80%;
+                            opacity: .4;
+                        }
+
+                        #barup {
+                            position: absolute;
+                            width: 75%;
+                            left: 20%;
+                            height: 1%;
+                            top: 16%;
+                        }
+
+                        #b1 {
+                            position: absolute;
+                            width: 50%;
+                            height: 100%;
+                            background: black;
+                            border-radius: 100% 0 0 100%;
+                            opacity: .7;
+                        }
+
+                        #romb {
+                            position: absolute;
+                            width: .3vw;
+                            height: .3vw;
+                            background: black;
+                            left: 51%;
+                            transform: rotate(45deg);
+                            opacity: .7;
+                        }
+
+                        #b2 {
+                            opacity: .7;
+                            position: absolute;
+                            width: 50%;
+                            height: 100%;
+                            left: 53%;
+                            background: black;
+                            border-radius: 0 100% 100% 0;
+                        }
+
+                        #titlepost {
+                            position: absolute;
+                            font-size: 2vw;
+                            font-family: neigefont3;
+                            font-weight: bold;
+                            left: 20%;
+                            top: -3%;
+                        }
+
+                        #barup2 {
+                            position: absolute;
+                            width: 94%;
+                            left: 0%;
+                            height: 1%;
+                            top: 76%;
+                        }
+
+                        #datepost {
+                            position: absolute;
+                            font-size: 1vw;
+                            font-family: neigefont3;
+                            font-weight: bold;
+                            left: 20%;
+                            color: gray;
+                            top: 18%;
+                        }
+
+                        #creditsp {
+                            position: absolute;
+                            font-size: .7vw;
+                            letter-spacing: .05vw;
+                            font-family: neigefont3;
+                            font-weight: bold;
+                            left: 5%;
+                            color: gray;
+                            top: 28%;
+                        }
+
+                        #warning {
+                            position: absolute;
+                            font-size: .8vw;
+                            font-family: Consolas;
+                            font-weight: bold;
+                            left: 65%;
+                            color: gray;
+                            top: 69%;
+                        }
+
+                            #warning span {
+                                color: #962a2a;
+                                animation: rotationb 1s infinite;
+                            }
+
+                        @keyframes rotationb {
+                            0% {
+                                opacity: 0;
+                            }
+
+                            24.9% {
+                                opacity: 0;
+                            }
+
+                            25% {
+                                opacity: 1;
+                            }
+
+                            74.9% {
+                                opacity: 1;
+                            }
+
+                            75% {
+                                opacity: 0;
+                            }
+
+                            100% {
+                                opacity: 0;
+                            }
+                        }
+
+                        #iconsbar {
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0;
+                            height: 20%;
+                        }
+
+                        #firmneigeimg {
+                            position: absolute;
+                            width: 7vw;
+                            right: 5%;
+                        }
+
+                        #iconsx {
+                            width: 5vw;
+                            height: 5vw;
+                            margin-right: 2vw;
+                            background: #212121;
+                            position: relative;
+                            float: left;
+                        }
+
+                        #icx {
+                            position: absolute;
+                            filter: invert(100%);
+                            width: 3vw;
+                            height: 3vw;
+                            left: 1vw;
+                            top: 1vw;
+                        }
+                    </style>
+
+                    <div id="imgprofarea">
+
+                        <div id="secondimg">
+                            <img id="profim" src="https://i.postimg.cc/cC6W2qZn/persona3.gif" />
+                        </div>
+                        <div id="clipimg">
+                            <style>
+                                #clipimg {
+                                    position: absolute;
+                                    width: 2vw;
+                                    height: 2vw;
+                                    border: .2vw solid darkgray;
+                                    background: white;
+                                    right: -7%;
+                                    top: -3%;
+                                    border-radius: 50%;
+                                }
+
+                                    #clipimg img {
+                                        position: absolute;
+                                        width: 70%;
+                                        height: 70%;
+                                        opacity: .4;
+                                        top: 15%;
+                                        left: 15%;
+                                    }
+
+                                #backneigepostx {
+                                    position: absolute;
+                                    width: 100%;
+                                    top: 17%;
+                                    opacity: .3;
+                                }
+                            </style>
+                            <img src="https://i.postimg.cc/g2QNtdBR/clip-de-papel-de-metal.png" />
+                        </div>
+                    </div>
+                    <p id="titlepost">
+                        由 雪 开发、设计和创造
+                    </p>
+                    <div id="barup">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <!--<img src="https://i.postimg.cc/25vtf4G8/Ftm-Yf-LXa-MAgk-XW1.png" id="backneigepostx" />-->
+                    <p id="datepost">
+                        2024 年 3 月 27 日 星期三
+                    </p>
+                    <style>
+                        .card {
+                            position: relative;
+                            width: 20%;
+                            height: 45%;
+                            left: 70%;
+                            top: 21%;
+                            transform-style: preserve-3d;
+                            transform: rotate(15deg);
+                            transition: transform 1s ease;
+                            overflow: hidden;
+                        }
+
+                            .card:hover {
+                                transform: rotateY(180deg) rotate(-15deg);
+                            }
+
+                            .card .side {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                backface-visibility: hidden;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                overflow: hidden;
+                                font-size: 24px;
+                                color: white;
+                                border-radius: 10px;
+                            }
+
+                            .card .front {
+                                background-color: #3498db;
+                            }
+
+                        .front:hover #imgf {
+                            opacity: 0;
+                        }
+
+                        .card .back {
+                            background-color: #e74c3c;
+                            transform: rotateY(180deg);
+                        }
+
+                        /* Suppert me */
+                        .links {
+                            position: fixed;
+                            bottom: 10px;
+                            right: 10px;
+                            font-weight: 600;
+                            font-size: 1.2em;
+                            border-radius: 15px;
+                            background-color: white;
+                            padding: 5px;
+                            line-height: 1.3;
+                            border: 5px black;
+                            border-style: groove;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                            a:hover {
+                                text-decoration: underline;
+                            }
+
+                            a img.icon {
+                                display: inline-block;
+                                margin-left: 0.4rem;
+                                height: 40px;
+                            }
+
+                        #imgf, #imgf2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            transition: all 1s ease;
+                        }
+                    </style>
+                    <div class="card">
+                        <div class="side front"><img id="imgf2" src="https://i.postimg.cc/D0PYF43Y/persona-tarot-card-hd-back-by-the-stein-d4on9zw-414w-2x.png" /><img id="imgf" src="https://i.postimg.cc/jdnJG4x2/persona-3-4-tarot-card-deck-hr-death-arcana-by-enetirnel-d6xr6ri-fullview.jpg" /></div>
+                        <div class="side back"></div>
+                    </div>
+
+                    <div id="terminal">
+
+                        <style>
+                            @font-face {
+                                font-family: space;
+                                src: url(space.TTF);
+                            }
+
+                            #terminal {
+                                position: absolute;
+                                width: 100%;
+                                height: 60%;
+                                top: 17%;
+                                animation: text-blink 0.01s steps(2) infinite;
+                                /*font: .875em/1.6 'Inconsolata', monospace;*/
+
+                                font-weight: 400;
+                                padding: 1em;
+                                margin: 5% 0;
+                                text-shadow: 0 0 5px rgba(79,195,255, .8);
+                            }
+
+                                #terminal section p, a {
+                                    font-size: .8vw;
+                                    font-family: Consolas;
+                                }
+
+                            @keyframes text-blink {
+                                from, to {
+                                    opacity: 1;
+                                }
+
+                                50% {
+                                    opacity: 0.5;
+                                }
+                            }
+
+                            ::selection {
+                                background: transparent;
+                            }
+
+                            ::-webkit-selection {
+                                background: transparent;
+                            }
+
+                            abbr {
+                                cursor: help;
+                            }
+
+                            ul {
+                                list-style: none;
+                                font-size: .8vw;
+                                font-family: Consolas;
+                            }
+
+                            li {
+                                margin: .5vw 0 0;
+                                margin-left: -7%;
+                                list-style: none;
+                            }
+
+                            @keyframes flashText {
+                                0% {
+                                    opacity: .3
+                                }
+
+                                100% {
+                                    opacity: 1
+                                }
+                            }
+
+                            kbd {
+                                font-family: 'Share Tech Mono', monospace;
+                                border: 1px solid dimgray;
+                                text-transform: uppercase;
+                                padding: 0 .2em;
+                            }
+
+                            #cod {
+                                border: 10px solid dimgray;
+                                box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+                            }
+
+                            input[type="text"] {
+                                max-width: 25em;
+                                border: none;
+                                font-family: inherit;
+                                background: transparent;
+                                padding: 0 .5em;
+                            }
+
+                                input[type="text"]:focus {
+                                    background: transparent;
+                                    outline: none;
+                                }
+
+                            #cmd2 {
+                                animation-delay: .4s;
+                                animation-duration: .5s;
+                            }
+
+                            .command {
+                                display: block;
+                                font-size: .8vw;
+                                margin: 2em 0;
+                            }
+
+
+                            section {
+                                display: none;
+                            }
+
+                            .open {
+                                display: block;
+                            }
+
+                            #cod {
+                                padding: .2vw;
+                            }
+
+                            #terminal span {
+                                display: block;
+                                font-family: Consolas;
+                                font-size: .8vw;
+                                line-height: 1;
+                                animation: flashText 1s ease-out alternate infinite;
+                            }
+                        </style>
+                        <section id="error">
+                            <p>Command not found!<p>
+                            <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                        </section>
+                        <section id="home">
+                            <p>人工智能。 TERMINAL V tech 5.38 PARADOX UI 界面 V0.94 REV 1.00</p>
+                            <p>这个地方是内吉创造的。由 Neige© 提供支持的</p>
+                            <p><br /><span>Type [command] + <kbd>Enter</kbd></span></p>
+                            <ul>
+                                <li>'play' 'pause' -- On or off the music</li>
+                                <li>'about' -- About this xatspace</li>
+                                <li>'exit' -- Logout</li>
+                            </ul>
+                        </section>
+                        <section id="play">
+                            <p>Playing.song...</p>
+
+                        </section>
+                        <section id="pause">
+                            <p>Stop.song...</p>
+
+                        </section>
+                        <section id="about">
+                            <p>人工智能。 TERMINAL V tech 5.38 PARADOX UI 界面 V0.94 REV 1.00</p>
+                            <p>
+                                这个地方是内吉创造的。由 Neige© 提供支持的 <br />
+                                USERNAME: Guest<br />
+                                PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br />
+                            </p>
+                            <p>LOGIN...&nbsp; &nbsp;&nbsp;&nbsp; DONE!!</p>
+                            <p>
+                                "What a beatifull day to die!"<br />
+                                Welcome to my terminal, .<br />
+                                jQuery Terminal: version 2.38.1 Copyright (c) 2019-2024 <br />
+                                Dev by Neige - work in progress <br />
+                                 
+                            </p>
+                        </section>
+
+                        <section id="exit">
+
+
+
+                            <p> Breach time Remaing: 7 seconds</p> <br />
+                            <p>
+                                exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                                Plase wait... &nbsp; &nbsp;&nbsp; &nbsp;<br />
+                                Deleting temporal archives... &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                                Logout sucess! &nbsp; &nbsp;&nbsp;&nbsp;
+
+                            </p>
+                        </section>
+
+
+
+                        <p id="cmd2" class="command">PARADOX:SYS:/$<input id="txxt" type="text"></p>
+
+                        <script>
+                            var cm = 1;
+                            function comprobar() {
+
+                                if (cm == 1) { entertomyspace(); cm++; }
+                                else if (cm > 1) { cm = 0; } {
+
+                                }
+                            }
+                            //]]>
+                            function entertomyspace() {
+                                (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+                                // Let's do it!!
+                                $(document).ready(function () {
+
+                                    var playing = false,
+                                        artistname = $(".artist-name"),
+                                        musicName = $(".music-name"),
+                                        time = $(".time"),
+                                        fillBar = $(".fillBar");
+
+                                    let audioData = [];
+
+                                    var song = new Audio();
+                                    var CurrentSong = 0;
+                                    window.onload = load();
+
+                                    function load() {
+                                        audioData = [
+
+                                            {
+                                                name: "RADIO OFF",
+                                                artist: "RADIO OFF",
+                                                src:
+                                                    ""
+                                            },
+
+
+
+                                        ];
+                                        var namesongxx = audioData[CurrentSong].name;
+
+                                        artistname.html(audioData[CurrentSong].artist);
+                                        musicName.html(audioData[CurrentSong].name);
+                                        song.src = audioData[CurrentSong].src;
+                                    }
+
+
+
+                                    song.addEventListener("timeupdate", function () {
+                                        var position = (100 / song.duration) * song.currentTime;
+                                        var current = song.currentTime;
+                                        var duration = song.duration;
+                                        var durationMinute = Math.floor(duration / 60);
+                                        var durationSecond = Math.floor(duration - durationMinute * 60);
+                                        var durationLabel = durationMinute + ":" + durationSecond;
+                                        currentSecond = Math.floor(current);
+                                        currentMinute = Math.floor(currentSecond / 60);
+                                        currentSecond = currentSecond - currentMinute * 60;
+                                        // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                                        if (currentSecond < 10) {
+                                            currentSecond = "0" + currentSecond;
+                                        }
+                                        var currentLabel = currentMinute + ":" + currentSecond;
+
+                                        var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                                        fillBar.css("width", position + "%");
+
+                                        $(".time").html(indicatorLabel);
+                                    });
+
+
+
+                                    $('.command').hide();
+                                    $('#home').focus();
+                                    $('input[type="text"]').focus();
+                                    $('#home').addClass('open');
+                                    $('#home').textTyper({
+                                        speed: 20,
+                                        afterAnimation: function () {
+                                            $('.command').fadeIn();
+                                            $('input[type="text"]').focus();
+                                            $('input[type="text"]').val('');
+                                        }
+                                        //beforeAnimation: function () { $("nofocus").focus(); }
+                                    });
+
+                                    // get array of section ids, that exist in DOM
+                                    var sectionArray = [];
+                                    // We are using <section> here, you can use <div> or <article> if you want
+                                    $('section').each(function (i, e) {
+                                        //you can use e.id instead of $(e).attr('id')
+                                        sectionArray.push($(e).attr('id'));
+                                    });
+
+                                    // Debug
+                                    //console.log(sectionArray);
+
+
+
+                                    // Command Input------------------------------
+
+                                    $('input[type="text"]').keyup(function (e) {
+
+                                        if (e.which == 13) {// ENTER key pressed
+
+                                            clave1 = $('input[type="text"]').val();
+                                            nextsong = $('input[type="text"]').val();
+                                            prevsong = $('input[type="text"]').val();
+                                            $(document).ready(function () {
+
+
+                                            });
+
+
+                                            if (clave1 == "exit") {
+                                                $("#cmd2").addClass("novis"); $("#cmd2").removeClass("visi");
+                                            }
+                                            else if ((clave1 == "media") || (clave1 == "next") || (clave1 == "prev") || (clave1 == "resume")) {
+                                                $("#auid").removeClass("novis"); $("#auid").addClass("visi");
+                                            }
+                                            else { $("#auid").removeClass("visi"); $("#auid").addClass("novis"); }
+                                            $('.command').hide();
+
+                                            var nombresincortar = $('input[type="text"]').val();
+                                            var nombrecortado = nombresincortar.split(" ");
+                                            var destination = nombrecortado[0];
+                                            if (nombrecortado[1] == null) {
+                                                nombrecortado[1] = "Unknow";
+                                            }
+                                            var nameuser = nombrecortado[1];
+                                            $('#nameux').text(nameuser);
+
+                                            $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+                                            if ($.inArray(destination, sectionArray) == -1) {
+                                                $('#error').addClass('open');
+                                                $('#error').siblings().removeClass('open');
+
+                                            }
+
+
+                                            $('.open').textTyper({
+                                                speed: 20,
+                                                afterAnimation: function () {
+                                                    $('.command').fadeIn();
+
+                                                    $('input[type="text"]').val('');
+
+
+                                                    function teclado(objeto) {
+                                                        var tecla = objeto.which;
+                                                        var num;
+
+                                                        switch (tecla) {
+                                                            //case 82: //m
+                                                            //    resumeAudio();
+                                                            //    break;
+                                                            case 13: //n
+                                                                if (!reproducir) {
+                                                                    reproducir = true;
+                                                                    musica.pause();
+                                                                }
+                                                                break;
+
+                                                        }
+
+                                                    }
+
+                                                    document.addEventListener('keydown', teclado, false);
+                                                    $('input[type="text"]').focus();
+                                                }
+                                            });
+
+
+                                            if (nextsong == "pause") {
+                                                pause(); offaudio();
+                                            }
+                                            if (nextsong == "exit") {
+
+                                                function entrancesurl() {
+                                                    var url = "Lynette2.html";
+                                                    $(location).attr('href', url);
+                                                }
+                                                setInterval(entrancesurl, 10000);
+                                            }
+                                            if (nextsong == "play") {
+                                                play(); onaudio();
+
+                                            }
+                                        }// end if ENTER key pressed
+                                        //$("#cmd2").focus();
+
+                                        $('input[type="text"]').focus();
+                                    });// end keyup function
+
+                                    // End Command Input-----------------------------
+
+                                });
+                            }
+
+
+                        </script>
+
+                    </div>
+                    <p id="warning">
+                        FILESYSTEM STATUS: <span>CORRUPTED!</span>
+                    </p>
+                    <div id="barup2">
+                        <div id="b1"></div>
+                        <div id="romb"></div>
+                        <div id="b2"></div>
+                    </div>
+                    <div id="iconsbar">
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
+                        </div>
+                        <div id="iconsx">
+                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
+                        </div>
+                        <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="firmneigeimg" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="areadeconfig" class="no">
+
+            </div>
+
+            <div id="butonback" onclick="closemenu();" style="z-index:190;">
+                <style>
+                    #butonback {
+                        background: #212121;
+                        position: absolute;
+                        width: 25%;
+                        height: 9%;
+                        top: 102%;
+                        right: 0;
+                    }
+
+                    #backbuton {
+                        position: relative;
+                        text-align: center;
+                        font-family: neigefont3;
+                        color: white;
+                        font-size: 1.3vw;
+                        top: -30%;
+                    }
+
+                    #bks {
+                        font-size: .6vw;
+                        text-align: center;
+                        color: white;
+                        letter-spacing: .5vw;
+                        font-family: Roboto;
+                        position: relative;
+                        top: -75%;
+                    }
+                </style>
+                <p id="backbuton">
+                    返回菜单<br />
+
+                </p> <p id="bks">
+                    RETURN
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
