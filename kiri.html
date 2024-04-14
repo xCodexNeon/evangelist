@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +43,7 @@
             height: 200%;
             opacity: .1;
             transform: rotate(180deg);
-            background-image: url(https://i.postimg.cc/KvBkxtXK/grey-abstract-geometric-background-1159-5850.jpg);
+            background-image: url(https://i.postimg.cc/SNPLtDZq/gray.jpg);
         }
 
         #bot1 {
@@ -71,24 +71,141 @@
 <body id="this">
     <!--onclick="cl();"-->
     <div id="login" class="addlogin">
+        <audio controls id="clickmp3" class="mks">
+            <source src="cl.mp3"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#clickmp3")[0];
+
+                    $("body").click(function () {
+                        audio.play();
+                        console.log(audio);
+                    });
+
+                });
+
+            </script>
+        </audio>
+        <audio controls id="hovers" class="mks">
+            <source src="hvr.mp3"></source>
+            <script>
+
+                $(function () {
+                    //take id of the audio and make a variable
+                    var audio = $("#hovers")[0];
+
+                    //eventhandler on hover with play() function
+                    $("#clickmenu").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f3").mouseenter(function () {
+                        audio.play();
+                    }); $("#f41").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f5").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#f6").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menu2").mouseenter(function () {
+                        audio.play();
+                    });
+
+                    $("#menupost1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menupost2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menupost3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconf1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#menuconf2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#butonback").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#option1").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#option2").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#option3").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#butonentrance").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#password").mouseenter(function () {
+                        audio.play();
+                    });
+                    $("#text1").mouseenter(function () {
+                        audio.play();
+                    }); $("#lo2").mouseenter(function () {
+                        audio.play();
+                    });
+                });
+
+            </script>
+        </audio>
+
         <style>
+            .mks { opacity:0; z-index:-2222222222;
+            }
             .addlogin {
                 z-index: 999999999;
             }
-            .removelogin {z-index:-222; opacity:0;
+
+            .removelogin {
+                z-index: -222;
+                opacity: 0;
             }
-            #login { position:absolute;  backdrop-filter:blur(10px); background:rgba(20,20,20,.6); width:100%; height:100%;
+
+            #login {
+                position: absolute;
+                backdrop-filter: blur(10px);
+                background: rgba(20,20,20,.6);
+                width: 100%;
+                height: 100%;
             }
-            #logindiv { position:absolute; width:46%; height:60%; left:27%; top:20%; background:white; border-radius:.4vw; box-shadow:.3vw .3vw .5vw #5E1111; overflow:hidden;
+
+            #logindiv {
+                position: absolute;
+                width: 46%;
+                height: 60%;
+                left: 27%;
+                top: 20%;
+                background: white;
+                border-radius: .4vw;
+                box-shadow: .3vw .3vw .5vw #5E1111;
+                overflow: hidden;
             }
-            #imglogin { position:absolute; width:46%;   height:100%;
+
+            #imglogin {
+                position: absolute;
+                width: 46%;
+                height: 100%;
             }
-            
+
             input {
-               
                 outline: none;
-               
             }
+
             #text1 {
                 border: .1vw solid gray;
                 width: 30%;
@@ -105,6 +222,7 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
+
             #password {
                 border: .1vw solid gray;
                 width: 31.5%;
@@ -121,8 +239,18 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
-            #us { position:absolute; right:7%; font-size:.8vw; letter-spacing:.1vw; font-family:Roboto; color:#5E1111; font-weight:bold; top:38%;
+
+            #us {
+                position: absolute;
+                right: 7%;
+                font-size: .8vw;
+                letter-spacing: .1vw;
+                font-family: Roboto;
+                color: #5E1111;
+                font-weight: bold;
+                top: 38%;
             }
+
             #pa {
                 position: absolute;
                 right: 7%;
@@ -133,8 +261,20 @@
                 font-weight: bold;
                 top: 58%;
             }
-            #butonentrance { position:absolute; width:15%; height:8%; right:7%; top:80%; background:#5E1111; border-radius:.2vw; border:none; color:white; cursor:pointer;
+
+            #butonentrance {
+                position: absolute;
+                width: 15%;
+                height: 8%;
+                right: 7%;
+                top: 80%;
+                background: #5E1111;
+                border-radius: .2vw;
+                border: none;
+                color: white;
+                cursor: pointer;
             }
+
             #attempts {
                 position: absolute;
                 right: 7%;
@@ -145,7 +285,8 @@
                 font-weight: bold;
                 top: 72%;
             }
-            #lo  {
+
+            #lo {
                 position: absolute;
                 right: 22%;
                 font-size: 1vw;
@@ -155,7 +296,9 @@
                 font-weight: bold;
                 top: 15%;
             }
-            #lo2 { cursor:pointer;
+
+            #lo2 {
+                cursor: pointer;
                 position: absolute;
                 right: 7%;
                 font-size: .6vw;
@@ -163,7 +306,7 @@
                 font-family: Roboto;
                 color: black;
                 font-weight: bold;
-                top:  5%;
+                top: 5%;
             }
         </style>
         <div id="logindiv">
@@ -177,7 +320,8 @@
             <p id="pa">PASSWORD:</p>
             <input type="password" id="password" type="text" placeholder="PASSWORD" value="KIRI123" />
             <p id="attempts"> </p>
-            <button id="butonentrance" onclick="comprobarClave();   "> LOGIN
+            <button id="butonentrance" onclick="comprobarClave();   ">
+                LOGIN
             </button>
         </div>
     </div>
@@ -771,13 +915,15 @@
                 }
                 #lattext { font-family:Roboto; color:gray; font-size:.6vw; letter-spacing:.07vw; transform:rotate(-90deg); position:absolute; left:-30%; top:54%;
                 }
+                #iconrose { position:absolute; width:6vw; top:0%; right:16%; z-index:-1; filter:contrast(160%) brightness(80%);
+                }
             </style>
             <div id="points">
 
             </div>
 
             <p id="maint"><span>红·</span>皮肤</p>
-
+            <img src="https://i.postimg.cc/CLP25kw5/f781b2cdc78bb3b8e98d0638cd4a109c.png" id="iconrose" />
             <p id="prv">Reven</p>
             <p id="pvc">雷文德雷斯</p>
             <span id="k1">LV</span><span id="k2">7</span><span id="k3">/40</span>
@@ -940,6 +1086,7 @@
         <div id="sectionprof">
             <style>
                 #clickmenu {
+                    cursor: pointer;
                     z-index: 10;
                     position: absolute;
                     font-size: 1.2vw;
@@ -3253,7 +3400,7 @@
                                                     $('#txxt').val('');
 
                                                     let reproducir = false;
-                                                    let musica = new Audio("https://xevangelist.github.io/evangelist/click.mp3?raw=true");
+                                                    let musica = new Audio("be3p.mp3");
                                                     musica.loop = true;
 
                                                     //arranca la música en bucle
@@ -3378,10 +3525,10 @@
                         FILESYSTEM STATUS: <span>CORRUPTED!</span>
                     </p>
                     
-                    <div id="iconsbar">
+                    
                         
                         <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="firmneigeimg" />
-                    </div>
+                    
                 </div>
 
             </div>
