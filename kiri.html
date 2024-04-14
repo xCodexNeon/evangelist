@@ -13,163 +13,7 @@
     <link rel="stylesheet" href="anticlockwise_styles.css">
     <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
     <script src="mgGlitch.min.js"></script>
-    <!--<script>
-        $(document).ready(function () {
-            var playing = false,
-                artistname = $(".artist-name"),
-                musicName = $(".music-name"),
-                time = $(".time"),
-                fillBar = $(".fillBar");
-            imgbar = $("#fillimgbar");
-            let audioData = [];
-
-            var song = new Audio();
-            var CurrentSong = 0;
-            window.onload = load();
-
-            function load() {
-                audioData = [
-
-                    {
-                        name: "Lady Maria (The Old Hunters)",
-                        artist: "Bloodborne ",
-                        src:
-                            "maria.mp3",
-                        imagen1: "im-33",
-
-                    },
-
-                    {
-                        name: "La vaguelette",
-                        artist: "HOYO-MiX",
-                        src:
-                            "Lavaguelette.mp3",
-                        imagen1: "im-22",
-
-                    }
-                    ,
-                    {
-                        name: "Winding River",
-                        artist: "Genshin Impact Ost",
-                        src:
-                            "https://xevangelist.github.io/evangelist/winding.mp3?raw=true"
-
-                    },
-                    {
-                        name: "Life in ruins",
-                        artist: "The legend of Zelda ",
-                        src:
-                            "ruins.mp3"
-
-                    }
-
-
-
-                ];
-
-                artistname.html(audioData[CurrentSong].artist);
-                musicName.html(audioData[CurrentSong].name);
-                song.src = audioData[CurrentSong].src;
-            }
-
-            function playSong() {
-                var curSong = audioData[CurrentSong];
-                //artistname.html();
-                musicName.html(curSong.name + " / " + curSong.artist);
-                song.src = curSong.src;
-                song.play();
-                $("#play").addClass("fa-pause");
-                $("#play").removeClass("fa-play");
-                $("p").addClass("active");
-                $(".player-track").addClass("active");
-            }
-
-            song.addEventListener("timeupdate", function () {
-                var position = (100 / song.duration) * song.currentTime;
-                var current = song.currentTime;
-                var duration = song.duration;
-                var durationMinute = Math.floor(duration / 60);
-                var durationSecond = Math.floor(duration - durationMinute * 60);
-                var durationLabel = durationMinute + ":" + durationSecond;
-                currentSecond = Math.floor(current);
-                currentMinute = Math.floor(currentSecond / 60);
-                currentSecond = currentSecond - currentMinute * 60;
-                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
-                if (currentSecond < 3) {
-                    currentSecond = "0" + currentSecond;
-                }
-                var currentLabel = currentMinute + ":" + currentSecond;
-
-                var indicatorLabel = currentLabel + "  " + durationLabel;
-
-                fillBar.css("width", position + "%");
-                imgbar.css("left", position + "%");
-
-                $(".time").html(indicatorLabel);
-            });
-            //////
-            $("#a_in").click(function playOrPause() {
-                if (song.paused) {
-                    song.play();
-                    playing = true;
-                    $("#play").addClass("fa-pause");
-                    $("#play").removeClass("fa-play");
-                    $("p").addClass("active");
-                    /* $("#bar1").addClass("br1");*/
-
-                } else {
-                    song.pause();
-                    playing = false;
-                    $("#play").removeClass("fa-pause");
-                    $("#play").addClass("fa-play");
-                    $("p").removeClass("active");
-
-
-                }
-            });
-            $("#play").click(function () {
-
-                song.play();
-                playing = true;
-            });
-            $("#pause").click(function () {
-                song.pause();
-                playing = false;
-            });
-            $("#stop").click(function next() {
-                CurrentSong++;
-                if (CurrentSong > 3) {
-                    CurrentSong = 0;
-                }
-                song.pause();
-                playing = false;
-            });
-            $("#prev").click(function prev() {
-                CurrentSong--;
-                if (CurrentSong < 0) {
-                    CurrentSong = 3;
-                }
-                playSong();
-            });
-
-            $("#next").click(function next() {
-                CurrentSong++;
-                if (CurrentSong > 3) {
-                    CurrentSong = 0;
-                }
-                playSong();
-            });
-            $("#asongplay").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
-                CurrentSong++;
-                if (CurrentSong > 3) {
-                    CurrentSong = 0;
-                }
-                playSong();
-            });
-        });
-
-    </script>-->
-
+    
     <style>
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
@@ -226,6 +70,118 @@
 </head>
 <body id="this">
     <!--onclick="cl();"-->
+    <div id="login" class="addlogin">
+        <style>
+            .addlogin {
+                z-index: 999999999;
+            }
+            .removelogin {z-index:-222; opacity:0;
+            }
+            #login { position:absolute;  backdrop-filter:blur(10px); background:rgba(20,20,20,.6); width:100%; height:100%;
+            }
+            #logindiv { position:absolute; width:46%; height:60%; left:27%; top:20%; background:white; border-radius:.4vw; box-shadow:.3vw .3vw .5vw #5E1111; overflow:hidden;
+            }
+            #imglogin { position:absolute; width:46%;   height:100%;
+            }
+            
+            input {
+               
+                outline: none;
+               
+            }
+            #text1 {
+                border: .1vw solid gray;
+                width: 30%;
+                height: 6%;
+                left: 60%;
+                position: absolute;
+                border-radius: .3vw;
+                top: 45%;
+                text-align: right;
+                font-family: Roboto;
+                letter-spacing: .1vw;
+                background: linear-gradient(to right, #830101, #5E1111, #340404);
+                background-size: cover;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            #password {
+                border: .1vw solid gray;
+                width: 31.5%;
+                height: 6%;
+                left: 60%;
+                position: absolute;
+                border-radius: .3vw;
+                top: 65%;
+                text-align: right;
+                font-family: Roboto;
+                letter-spacing: .1vw;
+                background: linear-gradient(to right, #830101, #5E1111, #340404);
+                background-size: cover;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            #us { position:absolute; right:7%; font-size:.8vw; letter-spacing:.1vw; font-family:Roboto; color:#5E1111; font-weight:bold; top:38%;
+            }
+            #pa {
+                position: absolute;
+                right: 7%;
+                font-size: .8vw;
+                letter-spacing: .1vw;
+                font-family: Roboto;
+                color: #5E1111;
+                font-weight: bold;
+                top: 58%;
+            }
+            #butonentrance { position:absolute; width:15%; height:8%; right:7%; top:80%; background:#5E1111; border-radius:.2vw; border:none; color:white; cursor:pointer;
+            }
+            #attempts {
+                position: absolute;
+                right: 7%;
+                font-size: .7vw;
+                letter-spacing: .1vw;
+                font-family: Roboto;
+                color: #5E1111;
+                font-weight: bold;
+                top: 72%;
+            }
+            #lo  {
+                position: absolute;
+                right: 22%;
+                font-size: 1vw;
+                letter-spacing: .1vw;
+                font-family: Roboto;
+                color: black;
+                font-weight: bold;
+                top: 15%;
+            }
+            #lo2 { cursor:pointer;
+                position: absolute;
+                right: 7%;
+                font-size: .6vw;
+                letter-spacing: .1vw;
+                font-family: Roboto;
+                color: black;
+                font-weight: bold;
+                top:  5%;
+            }
+        </style>
+        <div id="logindiv">
+            <img src="https://s1.zerochan.net/Genshin.Impact.600.4140272.jpg" id="imglogin" />
+            <p id="lo">LOGIN</p>
+            <p id="lo2" onclick="resett()">RESET FIELDS</p>
+
+            <p id="us">USERNAME GUEST:</p>
+            <input type="text" placeholder="USERNAME" maxlength="14" id="text1" />
+
+            <p id="pa">PASSWORD:</p>
+            <input type="password" id="password" type="text" placeholder="PASSWORD" value="KIRI123" />
+            <p id="attempts"> </p>
+            <button id="butonentrance" onclick="comprobarClave();   "> LOGIN
+            </button>
+        </div>
+    </div>
+
     <div id="main" class="normalmode">
         <div id="main2"></div>
         <div id="vid">
@@ -280,7 +236,7 @@
         <img src="https://i.postimg.cc/CxS08dDn/1234.png" id="mainren1" />
         <img id="bot1" src="https://i.postimg.cc/kXZBsGdy/1.png" />
         <img id="bot2" src="https://i.postimg.cc/x9cmmDSR/2.png" />
-        <div id="butonpru" onclick="cl()"></div>
+        <!--<div id="butonpru" onclick="cl()"></div>-->
         <div class="rain" id="rrain">
             <style>
                 #rrain {
@@ -732,6 +688,104 @@
             </div>
         </div>
 
+        <div id="infoprof">
+            <style>
+                #infoprof {
+                    position: absolute;
+                    width: 20%;
+                    height: 40%;
+                    left: 3%;
+                    top: 30%;
+                }
+
+                #maint {
+                    position: absolute;
+                    color: #6c1a1a;
+                    top: -3vw;
+                    left: 0;
+                    font-family: neigefont3;
+                    font-size: 3vw;
+                    text-shadow: .2vw .2vw .3vw black;
+                    letter-spacing: .3vw;
+                }
+
+                    #maint span {
+                        font-size: 4vw;
+                        top: .25vw;
+                        position: relative;
+                    }
+
+                #points {
+                    position: absolute;
+                    width: 50%;
+                    height: 16%;
+                    background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                    left: 15%;
+                    top: 12%;
+                }
+                #prv { position:absolute; font-size:1.7vw; color:#6c1a1a; top:15%; left:10%;
+                }
+                #pvc {
+                    border-radius: 0 0 .4vw .4vw;
+                    box-shadow: .2vw .2vw .1vw #5E1111;
+                    border-right: 1px solid white;
+                    border-bottom: 1px solid white;
+                    position: absolute;
+                    color: white;
+                    background: #5E1111;
+                    padding-left: .4vw;
+                    padding-right: .4vw;
+                    top: 28%;
+                    left: 10%;
+                    font-size: 1vw;
+                    letter-spacing: .1vw;
+                    font-family: neigefont3;
+                }
+                #k1 {
+                    position: absolute;
+                    font-size: 1.2vw;
+                    color: gray; font-weight:bold;
+                    top: 74%;
+                    left: 10%;
+                }
+                #k2 {
+                    position: absolute;
+                    font-size: 5vw;
+                    color: gray; 
+                    top: 57%;
+                    left: 20%;
+                }
+                #k3 {
+                    position: absolute;
+                    font-size: 2.2vw;
+                    color: gray;
+                    top: 69%;
+                    left: 33%;
+                }
+                #l0 {
+                    position: absolute;
+                    font-size: .75vw;
+                    color: gray;
+                    top: 79%;
+                    left: 10%;
+                }
+                #lattext { font-family:Roboto; color:gray; font-size:.6vw; letter-spacing:.07vw; transform:rotate(-90deg); position:absolute; left:-30%; top:54%;
+                }
+            </style>
+            <div id="points">
+
+            </div>
+
+            <p id="maint"><span>红·</span>皮肤</p>
+
+            <p id="prv">Reven</p>
+            <p id="pvc">雷文德雷斯</p>
+            <span id="k1">LV</span><span id="k2">7</span><span id="k3">/40</span>
+                                                         <p id="l0">本当は私 気づいていたんです<br />あなたが私を見ていてくれたこと じゃあ リセさんも</p>
+
+                                                         <p id="lattext">XXVIII&nbsp; &nbsp;&nbsp; 雷文德雷斯   &nbsp;&nbsp;&nbsp;501545644 &nbsp;&nbsp;&nbsp;赤红</p>
+        </div>
+
         <img src="https://i.postimg.cc/cCm1NqbZ/99e9f9d4747e8a40f7308d2c8458b049-779767303250128678.png" id="fatuiicon" />
         <div id="pr1">
             <style>
@@ -988,7 +1042,86 @@
             <img src="https://i.postimg.cc/1tCrSz2m/cd.png" id="imgcodes" />
         </div>
 
+        <div id="divbot1">
+            <style>
+                #divbot1 {
+                    position: absolute;
+                    width: 25%;
+                    height: 6%;
+                    top: 92%;
+                    left: 2%;
+                    z-index: 3;
+                }
 
+                #imgicon1 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 3vw;
+                }
+
+                #imgicon2 {
+                    position: absolute;
+                    width: 2.7vw;
+                    top: .3vw;
+                    height: 2.7vw;
+                    left: 37%;
+                }
+
+                #c1 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    color: #b54141;
+                    font-size: 1.2vw;
+                    font-weight: bold;
+                    top: -29%;
+                    left: 3vw;
+                }
+
+                #c2 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    color: #b54141;
+                    text-transform: uppercase;
+                    letter-spacing: .1vw;
+                    font-family: Roboto;
+                    font-size: .8vw;
+                    font-weight: bold;
+                    top: 28%;
+                    left: 3vw;
+                }
+
+                #c3 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    color: #b54141;
+                    text-transform: uppercase;
+                    letter-spacing: .3vw;
+                    font-family: Roboto;
+                    font-size: .5vw;
+                    font-weight: bold;
+                    top: 65%;
+                    left: 3vw;
+                }
+                #c4 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    color: #b54141;
+                    text-transform: uppercase;
+                    letter-spacing: .1vw;
+                    font-family: Roboto;
+                    font-size: .5vw;
+                    font-weight: bold;
+                    top: 65%; width:150%;
+                    left: 50%;
+                }
+            </style>
+            <img id="imgicon1" src="https://i.postimg.cc/B6gsM2Jg/pngwing-com-8.png" />
+            <p id="c1">雷文德雷斯</p>
+            <p id="c2">Revendreth</p>
+            <p id="c3">(501545644)</p>
+            <img src="https://i.postimg.cc/B6s4Tmfb/patron-lineas-diagonales-vectoriales-fondo-rayado-costuras-textura-blanco-negro-fin-simple-547648-36.png" id="imgicon2" />
+            <p id="c4">Xat.com all Rights reserved 2024 xat.me/Revendreth</p>
+        </div>
 
     </div>
 
@@ -1164,7 +1297,7 @@
                     background: Red;
                     z-index: 2;
                     top: 50%;
-                    left: 5%;
+                    left: 95%;
                 }
             </style>
 
@@ -1872,13 +2005,13 @@
                                 left:3%;
                                 width: 70%;
                                 border-radius: .3vw;
-                                background: #5E1111;
+                                background: gray;
                                 height: .35vw;
                                 position: absolute;
                             }
 
                             .fillBar {
-                                background: gray;
+                                background: #5E1111;
                                 width: 0;
                                 height: .35vw;
                             }
@@ -1950,6 +2083,15 @@
                                 top: -.4vw;
                                 left: -3%;
                             }
+                            .artist-name {
+                                position: absolute;
+                                width: 88%;
+                                left: 3%;
+                                height: 100%;
+                                top: 61%;
+                                letter-spacing: .1vw;
+                                font-size: .5vw;
+                            }
                         </style>
                         <div class="progress-bar">
                             <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
@@ -1958,7 +2100,7 @@
 
                         <div id="AT_time"><div class="time"></div></div>
                         <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
-                        <div> </div>
+                        <div class="artist-name"></div>
 
                         <div id="abtnaud">
                             <div class="butplayer" >
@@ -2348,6 +2490,11 @@
                             transform: scale(1.8);
                             top: 20%;
                         }
+                        #profim3 {
+                            transform: scale(1.2);
+                            position: absolute;
+                            width: 100%;
+                        }
 
                         #backimg {
                             position: absolute;
@@ -2446,7 +2593,20 @@
                                 color: #962a2a;
                                 animation: rotationb 1s infinite;
                             }
+                        #warning2 {
+                            position: absolute;
+                            font-size: .8vw;
+                            font-family: Consolas;
+                            font-weight: bold;
+                            left: 65%;
+                            color: gray;
+                            top: 9%;
+                        }
 
+                            #warning2 span {
+                                color: #962a2a;
+                                animation: rotationb 1s infinite;
+                            }
                         @keyframes rotationb {
                             0% {
                                 opacity: 0;
@@ -2508,7 +2668,7 @@
                     <div id="imgprofarea">
 
                         <div id="secondimg">
-                            <img id="profim" src="https://i.postimg.cc/cC6W2qZn/persona3.gif" />
+                            <img id="profim3" src="https://i.postimg.cc/dtKz8Vk4/artworks-Vy9-ITg0baq-UMAYvd-Lo-NGmg-t500x500.jpg" />
                         </div>
                         <div id="clipimg">
                             <style>
@@ -2675,12 +2835,25 @@
                                 padding: .2vw;
                             }
 
+                            #nameux {
+                                color: dimgray;
+                                text-transform: uppercase;
+                                padding: .2vw;
+                            }
+
+                            #nameux2 {
+                                color: dimgray;
+                                text-transform: uppercase;
+                                padding: .2vw;
+                            }
+
                             #terminal span {
                                 display: block;
                                 font-family: Consolas;
                                 font-size: .8vw;
                                 line-height: 1;
-                                animation: flashText 1s ease-out alternate infinite;
+                                color: dimgray;
+                                /*  animation: flashText 1s ease-out alternate infinite;*/
                             }
                         </style>
                         <section id="error">
@@ -2692,14 +2865,34 @@
                             <p>这个地方是内吉创造的。由 Neige© 提供支持的</p>
                             <p><br /><span>Type [command] + <kbd>Enter</kbd></span></p>
                             <ul>
+                                <li>'home' -- This page, main menú</li>
                                 <li>'play' 'pause' 'next' 'prev' -- Controls the player</li>
-                                <li>'about' -- About this xatspace</li>
+                                <li>'about' -- About this xatspace and interface</li>
+                                <li>'dark' 'normal' -- Change theme</li>
+                                <li>'neige' -- Contact to my creator</li>
                                 <li>'exit' -- Logout</li>
                             </ul>
                         </section>
                         <section id="play">
                             <p>Playing.song...</p>
 
+                        </section> <section id="normal">
+                            <p>Normal.theme...</p>
+
+                        </section>
+                        <section id="dark">
+                            <p>Dark.theme...</p>
+
+                        </section>
+                        <section id="neige">
+                            <p> Breach time Remaing: 7 seconds</p> <br />
+                            <p>
+                                exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                                Plase wait... &nbsp; &nbsp;&nbsp; &nbsp;<br />
+                                Deleting temporal archives... &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                                Go to Neige xatspace! &nbsp; &nbsp;&nbsp;&nbsp;
+
+                            </p>
                         </section>
                         <section id="next">
                             <p>Next.song...</p>
@@ -2720,14 +2913,16 @@
                             <p>人工智能。 TERMINAL V tech 5.38 PARADOX UI 界面 V0.94 REV 1.00</p>
                             <p>
                                 这个地方是内吉创造的。由 Neige© 提供支持的 <br />
-                                USERNAME: Guest<br />
-                                PASSWORD: GENERIC_128A%%&H45@%KLLOP??&$45233<br />
+                                USERNAME: <span id="nameux"></span>
+                                PASSWORD: <span id="nameux2">Kiri123</span>
                             </p>
                             <p>LOGIN...&nbsp; &nbsp;&nbsp;&nbsp; DONE!!</p>
                             <p>
-                                "What a beatifull day to die!"  Welcome to my terminal!<br />
+                                "What a beatifull day to die!"  Welcome to the console of this xatspace <br />
+                                Enjoy you stay and control this place with commands!<br />
                                 jQuery Terminal: version 2.38.1 Copyright (c) 2019-2024 <br />
-                                Dev by Neige - work in progress <br />
+                                Console AI 0.2 VER 2.0<br />
+                                Dev by Neige <br />
 
                             </p>
                         </section>
@@ -2752,6 +2947,7 @@
 
                         <script>
                             var cm = 1;
+                            var at = 0;
                             function comprobar() {
 
                                 if (cm == 1) { entertomyspace(); cm++; }
@@ -2759,14 +2955,32 @@
 
                                 }
                             }
+                            clave1 = document.getElementById("password").value;
                             //]]>
+                            function resett() { $("#text1").val(""); $("#password").val("KIRI123"); }
+                            function comprobarClave() {
+                                clave1 = document.getElementById("password").value;
+                                user1 = document.getElementById("text1").value;
 
+                                if ((clave1 != "") && (user1 != "")) {
+                                    $("#login").addClass("removelogin"); $("#login").addClass("addlogin");
+                                    cl();
+                                    
+
+                                }
+                                else {
+                                    at++;
+                                    document.getElementById("attempts").textContent = "Null user or bad password. " + at + " Attempts";
+
+                                }
+
+                            }
                             var playing = false,
                                 artistname = $(".artist-name"),
                                 musicName = $(".music-name"),
                                 time = $(".time"),
                                 fillBar = $(".fillBar");
-
+                            imgbar = $("#fillimgbar");
                             let audioData = [];
 
                             var song = new Audio();
@@ -2873,6 +3087,7 @@
                                 var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
 
                                 fillBar.css("width", position + "%");
+                                imgbar.css("left", position + "%");
 
                                 $(".time").html(indicatorLabel);
 
@@ -2920,7 +3135,7 @@
                                 }
                                 playSong();
                             });
-                            $("#asongplay").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
+                            $("#butonentrance").click(function next() {//CAMBIAR POR EL MENU DE INICIOOOO
                                 CurrentSong++;
                                 if (CurrentSong > 10) {
                                     CurrentSong = 0;
@@ -2959,14 +3174,14 @@
 
                                     $('.command').hide();
                                     $('#home').focus();
-                                    $('input[type="text"]').focus();
+                                    $('#txxt').focus();
                                     $('#home').addClass('open');
                                     $('#home').textTyper({
                                         speed: 20,
                                         afterAnimation: function () {
                                             $('.command').fadeIn();
-                                            $('input[type="text"]').focus();
-                                            $('input[type="text"]').val('');
+                                            $('#txxt').focus();
+                                            $('#txxt').val('');
                                         }
                                         //beforeAnimation: function () { $("nofocus").focus(); }
                                     });
@@ -2986,13 +3201,13 @@
 
                                     // Command Input------------------------------
 
-                                    $('input[type="text"]').keyup(function (e) {
+                                    $('#txxt').keyup(function (e) {
 
                                         if (e.which == 13) {// ENTER key pressed
 
-                                            clave1 = $('input[type="text"]').val();
-                                            nextsong = $('input[type="text"]').val();
-                                            prevsong = $('input[type="text"]').val();
+                                            clave1 = $('#txxt').val();
+                                            nextsong = $('#txxt').val();
+                                            prevsong = $('#txxt').val();
                                             $(document).ready(function () {
 
 
@@ -3008,18 +3223,19 @@
                                             else { $("#auid").removeClass("visi"); $("#auid").addClass("novis"); }
                                             $('.command').hide();
 
-                                            var nombresincortar = $('input[type="text"]').val();
+                                            var nombresincortar = $('#txxt').val();
                                             var nombrecortado = nombresincortar.split(" ");
                                             var destination = nombrecortado[0];
                                             if (nombrecortado[1] == null) {
                                                 nombrecortado[1] = "Unknow";
                                             }
-                                            var nameuser = nombrecortado[1];
-                                            $('#nameux').text(nameuser);
+                                            /*  var nameuser = nombrecortado[1];*/
+
 
                                             $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
 
-                                             
+                                            $('#nameux').text(document.getElementById("text1").value);
+
                                             if ($.inArray(destination, sectionArray) == -1) {
                                                 $('#error').addClass('open');
                                                 $('#error').siblings().removeClass('open');
@@ -3034,10 +3250,10 @@
                                                 afterAnimation: function () {
                                                     $('.command').fadeIn();
 
-                                                    $('input[type="text"]').val('');
+                                                    $('#txxt').val('');
 
                                                     let reproducir = false;
-                                                    let musica = new Audio("https://xevangelist.github.io/evangelist/click.mep3?raw=true");
+                                                    let musica = new Audio("https://xevangelist.github.io/evangelist/click.mp3?raw=true");
                                                     musica.loop = true;
 
                                                     //arranca la música en bucle
@@ -3087,10 +3303,23 @@
                                                     }
 
                                                     document.addEventListener('keydown', teclado, false);
-                                                    $('input[type="text"]').focus();
+                                                    $('#txxt').focus();
                                                 }
                                             });
+                                            if (nextsong == "normal") {
+                                                normalmode();
+                                            } 
+                                            if (nextsong == "dark") {
+                                                darkmode();
+                                            }
+                                            function ns() {
+                                                CurrentSong++;
+                                                if (CurrentSong > 10) {
+                                                    CurrentSong = 0;
+                                                }
 
+                                                playSong();
+                                            }
                                             if (nextsong == "next") {
                                                 CurrentSong++;
                                                 if (CurrentSong > 10) {
@@ -3112,10 +3341,19 @@
                                             } if (nextsong == "exit") {
 
                                                 function entrancesurl() {
-                                                    var url = "Lynette2.html";
+                                                    var url = "kiri.html";
                                                     $(location).attr('href', url);
                                                 }
                                                 setInterval(entrancesurl, 10000);
+                                            }
+
+                                            if (nextsong == "neige") {
+
+                                                function entrancesurl2() {
+                                                    var url = "P3Neige.html";
+                                                    $(location).attr('href', url);
+                                                }
+                                                setInterval(entrancesurl2, 10000);
                                             }
                                             if (nextsong == "resume") {
                                                 song.play();
@@ -3124,7 +3362,7 @@
                                         }// end if ENTER key pressed
                                         //$("#cmd2").focus();
 
-                                        $('input[type="text"]').focus();
+                                        $().focus();
                                     });// end keyup function
 
                                     // End Command Input-----------------------------
@@ -3136,24 +3374,12 @@
                         </script>
 
                     </div>
-                    <p id="warning">
+                    <p id="warning2">
                         FILESYSTEM STATUS: <span>CORRUPTED!</span>
                     </p>
-                    <div id="barup2">
-                        <div id="b1"></div>
-                        <div id="romb"></div>
-                        <div id="b2"></div>
-                    </div>
+                    
                     <div id="iconsbar">
-                        <div id="iconsx">
-                            <img src="https://i.postimg.cc/XYnzWPt6/creador-de-formas.png" id="icx" />
-                        </div>
-                        <div id="iconsx">
-                            <img src="https://i.postimg.cc/Y2gnWkHw/creador-del-sitio-web-1.png" id="icx" />
-                        </div>
-                        <div id="iconsx">
-                            <img src="https://i.postimg.cc/BQ9zYbg6/creador-de-sitios-web.png" id="icx" />
-                        </div>
+                        
                         <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="firmneigeimg" />
                     </div>
                 </div>
