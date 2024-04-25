@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@
 
     <script type="text/javascript" src="jquery.countdown.min.js"></script> 
     <style>
-    </style>
+    </style> 
     <!--<script>
 
         $(document).ready(function () {
@@ -255,7 +255,19 @@
 <body onclick=" cargarFondo(); ">
     <script>
         function cargarFondo() {
-
+            document.oncontextmenu = function () { return false }
+            document.onkeydown = function (e) {
+                if (e.ctrlKey &&
+                    (e.keyCode === 67 ||
+                        e.keyCode === 86 ||
+                        e.keyCode === 85 ||
+                        e.keyCode === 117)) {
+                    alert('SYNTAX_ERROR');
+                    return false;
+                } else {
+                    return true;
+                }
+            };
             // Imagenes a usar
             var imagen = [
                 "https://i.postimg.cc/yYcWKz3F/1.png",
@@ -4949,5 +4961,4 @@
 
 
 </body>
-</html>
 </html>
