@@ -252,7 +252,7 @@
 
 
 
-<body onclick=" cargarFondo(); ">
+<body onclick=" cargarFondo();   ">
     <script>
         function cargarFondo() {
             document.oncontextmenu = function () { return false }
@@ -1615,7 +1615,7 @@
                         var cnt;
                         var conta = 0;
                         var fecha;
-                        var fecha1 = "2024/05/17 06:06:06";
+                        var fecha1 = "2024/05/23 00:00:01";
                         var phase0 = "https://img.game8.co/3825863/17f6586973b117c9d723a37ec2bcf192.png/show";
                         var phase1 = "https://img.game8.co/3825859/35fe77362c8e8734f3003865181fb1c6.png/show";
                         var phase2 = "https://img.game8.co/3825877/0c6ba187fc1f7382fe546fc58606dccc.png/show";
@@ -1633,12 +1633,12 @@
                             if (cnt == 0) { conta++; }
                             if (conta == 0) { fecha = fecha1 }
                             if (cnt > 24 && cnt < 29) { $("#moonimg").attr("src", phase0); }
-                            if (cnt > 20 && cnt < 24) { $("#moonimg").attr("src", phase1); }
-                            if (cnt > 16 && cnt < 20) { $("#moonimg").attr("src", phase2); }
-                            if (cnt > 15 && cnt < 16) { $("#moonimg").attr("src", phase3); }
-                            if (cnt > 11 && cnt < 15) { $("#moonimg").attr("src", phase4); }
-                            if (cnt > 6 && cnt < 11) { $("#moonimg").attr("src", phase5); }
-                            if (cnt > 2 && cnt < 6) { $("#moonimg").attr("src", phase6); }
+                            if (cnt > 20 && cnt < 25) { $("#moonimg").attr("src", phase1); }
+                            if (cnt > 16 && cnt < 21) { $("#moonimg").attr("src", phase2); }
+                            if (cnt > 15 && cnt < 17) { $("#moonimg").attr("src", phase3); }
+                            if (cnt > 11 && cnt < 16) { $("#moonimg").attr("src", phase4); }
+                            if (cnt > 6 && cnt < 12) { $("#moonimg").attr("src", phase5); }
+                            if (cnt > 1 && cnt < 7) { $("#moonimg").attr("src", phase6); }
                             if (cnt > 0 && cnt < 2) { $("#moonimg").attr("src", phase7); }
 
 
@@ -2879,7 +2879,7 @@
                         Gracias por ser uno de los mejores colegas que he tenido. Eres un tipo sensato que casi siempre va al grano y se anda sin tonterías. En internet, a menudo uno se encuentra con mucho mamón con dobles intenciones que no sabes si están interesados en tu bienestar o si solo quieren pillar tu culo de manera desprevenida y sacar tus nudes. Pero Neige, señoras y señores, Neige jamás haría eso, él es auténtico y leal. Es una persona que siempre te toma en serio, con la que puedes conversar sobre la vida, sobre lo importante y lo trivial... y al final, es difícil perder el enfoque y la determinación cuando tienes a un amigo con las ideas tan claras apoyándote y dándote todo su amor. Fue una excelente decisión tomarme el tiempo en conocerte. Allá donde estés amigo, descansa en paz. Siempre te recordaremos.
                     </i>
                     <i id="nickfirm">
-                        丽奈特♥·西海|  Schroederz - Saikai
+                        施罗德兹|  Schroederz - Mythes
                     </i>
                 </div>
             </div>
@@ -3107,13 +3107,466 @@
                 <i id="nameneige">Neige</i>
                 <p id="datesp">
                     XIII <br />
-                    ARCANA FOOL<br />
+                    ARCANA DEATH<br />
                     FROM THE ABYS<br />
                     <span>1533252890</span>
                 </p>
             </div>
 
+            <div id="sistema" class="nomenu">
+                <style>
+                    #sistema {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: white;
+                    }
+                </style>
+                <video autoplay="" loop="" muted="" id="video4" src="p3.mp4" type="video/mp4">
+                    <script>$("#video4").coverVid(1920, 1080);</script>
+                </video>
+                <div id="movreturn3" onclick="outtomenu();">
+                    <style>
+                        #movreturn3 {
+                            position: absolute;
+                            top: 60%;
+                            left: 40%;
+                            z-index: 9999;
+                        }
+                    </style>
+                    <div id="menup5">
+                        <div id="path10"></div><div id="path9"></div>
+                        <i id="mp5">RETURN</i>
+                    </div>
+                </div>
+                <i id="titlescreen3">
+                    <style>
+                        #titlescreen3 {
+                            font-family: p3font;
+                            transform: rotate(90deg);
+                            opacity: .4;
+                            color: black;
+                            position: absolute;
+                            font-size: 11vw;
+                            left: -15%;
+                            top: 11vw;
+                        }
+                    </style>
+                    SYSTEM
+                </i>
+                <div id="sysopt">
+                    <style>
+                        #sysopt {
+                            position: absolute;
+                            width: 50%;
+                            height: 50%;
+                            top: 20%;
+                        }
 
+                        #select1 {
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            color: aqua;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                            #select1:hover, #select2:hover, #select3:hover, #select4:hover {
+                                background: white;
+                                color: black;
+                                box-shadow: .2vw -.4vw 0 red;
+                            }
+
+                        #select2 {
+                            color: aqua;
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            top: 17%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #select3 {
+                            color: aqua;
+                            text-align: right;
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 15%;
+                            top: 34%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #select4 {
+                            position: absolute;
+                            width: 100%;
+                            left: -.3vw;
+                            height: 20%;
+                            top: 51%;
+                            border-radius: 0 .3vw .3vw 0;
+                        }
+
+                        #titselect1, #titselect2, #titselect3, #titselect4 {
+                            font-family: Roboto;
+                            right: 50%;
+                            position: relative;
+                            font-size: 1.5vw;
+                            top: -.5vw;
+                        }
+
+                        #areabuton {
+                            position: absolute;
+                            width: 37%;
+                            height: 70%;
+                            top: 15%;
+                            border-radius: 2vw;
+                            background: #0B0530;
+                            right: 5%;
+                            font-family: Roboto;
+                            font-style: oblique;
+                            font-weight: bold;
+                        }
+
+                        #botonon, #botonon2, #botonon3 {
+                            height: 100%;
+                            border-radius: 2vw;
+                            position: absolute;
+                            text-align: center;
+                        }
+
+                        #botonoff, #botonoff2, #botonoff3 {
+                            height: 100%;
+                            position: absolute;
+                            border-radius: 2vw;
+                            text-align: center;
+                        }
+
+                        .botonnoL {
+                            width: 50%;
+                            color: rgb(105,252,254);
+                        }
+
+                        .botonsiL {
+                            width: 60%;
+                            background: white;
+                            box-shadow: .2vw .2vw 0 black;
+                            color: black;
+                        }
+
+                        .botonnoR {
+                            width: 50%;
+                            left: 50%;
+                            color: rgb(105,252,254);
+                        }
+
+                        .botonsiR {
+                            left: 40%;
+                            width: 60%;
+                            background: white;
+                            box-shadow: .2vw .2vw 0 black;
+                            color: black;
+                        }
+
+                        #areabuton div p {
+                            margin-top: .6vw;
+                        }
+
+                        .sifires {
+                            opacity: 1;
+                        }
+
+                        .nofires {
+                            opacity: 0;
+                        }
+                    </style>
+                    <script>
+                        function siefect() {
+                            $("#botonon").addClass("botonsiR"); $("#botonon").removeClass("botonnoR");
+                            $("#botonoff").addClass("botonnoL"); $("#botonoff").removeClass("botonsiL");
+                            $("#boxfires2").removeClass("nofires"); $("#boxfires2").addClass("sifires");
+                        }
+                        function noefect() {
+                            $("#botonon").addClass("botonnoR"); $("#botonon").removeClass("botonsiR");
+                            $("#botonoff").addClass("botonsiL"); $("#botonoff").removeClass("botonnoL");
+                            $("#boxfires2").addClass("nofires"); $("#boxfires2").removeClass("sifires");
+                        }
+
+                        function sifrez() {
+                            $("#botonon2").addClass("botonsiR"); $("#botonon2").removeClass("botonnoR");
+                            $("#botonoff2").addClass("botonnoL"); $("#botonoff2").removeClass("botonsiL");
+                            document.getElementById("video4").pause();
+                            document.getElementById("video15").pause();
+                            document.getElementById("video2").pause();
+                            document.getElementById("video3").pause();
+                            document.getElementById("video5").pause();
+                        }
+                        function nofrez() {
+                            $("#botonon2").addClass("botonnoR"); $("#botonon2").removeClass("botonsiR");
+                            $("#botonoff2").addClass("botonsiL"); $("#botonoff2").removeClass("botonnoL");
+                            document.getElementById("video4").play();
+                            document.getElementById("video15").play();
+                            document.getElementById("video2").play();
+                            document.getElementById("video3").play();
+                            document.getElementById("video5").play();
+                        }
+
+                        function simus() {
+                            $("#botonon3").addClass("botonsiR"); $("#botonon3").removeClass("botonnoR");
+                            $("#botonoff3").addClass("botonnoL"); $("#botonoff3").removeClass("botonsiL");
+                        }
+                        function nomus() {
+                            $("#botonon3").addClass("botonnoR"); $("#botonon3").removeClass("botonsiR");
+                            $("#botonoff3").addClass("botonsiL"); $("#botonoff3").removeClass("botonnoL");
+                        }
+                    </script>
+                    <div id="select1">
+                        <p id="titselect1">Wallpaper Animation</p>
+                        <div id="areabuton">
+                            <div id="botonoff" class="botonnoL" onclick="noefect();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon" class="botonsiR" onclick="siefect()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select2">
+                        <p id="titselect2">Frezze menus</p>
+                        <div id="areabuton">
+                            <div id="botonoff2" class="botonsiL" onclick="nofrez();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon2" class="botonnoR" onclick="sifrez()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select3">
+                        <p id="titselect3">Music / Sound</p>
+                        <div id="areabuton">
+                            <div id="botonoff3" class="botonnoL" onclick="nomus();">
+                                <p>OFF</p>
+                            </div>
+                            <div id="botonon3" class="botonsiR" onclick="simus()">
+                                <p>ON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="select4">
+                        <div id="Aaudio">
+                            <style>
+
+                                #Aaudio {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                #abtnaud {
+                                    position: absolute;
+                                    width: 20%;
+                                    height: 70%;
+                                    right: 12%;
+                                    top: 60%;
+                                }
+
+                                .butplayer {
+                                    filter: blur(0px) hue-rotate(250deg);
+                                    float: left;
+                                    height: 1vw;
+                                    top: -.25vw;
+                                    width: 1vw;
+                                    margin-left: 1vw;
+                                    position: relative;
+                                }
+
+                                .butpl {
+                                    position: absolute;
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    left: 0;
+                                    top: .3vw;
+                                    border-radius: .2vw;
+                                }
+
+                                    .butpl:hover {
+                                        filter: blur(0px) hue-rotate(550deg) invert(100%);
+                                    }
+
+                                    .butpl img {
+                                        position: absolute;
+                                        width: 1.5vw;
+                                        height: 1.5vw;
+                                        /*filter: invert(100%);*/
+                                        left: .07vw;
+                                        top: .1vw;
+                                    }
+
+                                #pause, #play, #next, #prev, #stop {
+                                    width: 2vw;
+                                    height: 2vw;
+                                    position: absolute;
+                                    left: 0;
+                                }
+
+                                .progress-bar {
+                                    top: 45%;
+                                    right: 5%;
+                                    width: 36%;
+                                    border-radius: .3vw;
+                                    background: rgb(74,82,101);
+                                    height: .35vw;
+                                    position: absolute;
+                                }
+
+                                .fillBar {
+                                    background: rgb(116, 129, 160);
+                                    width: 0;
+                                    height: .35vw;
+                                }
+
+
+                                /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                                .artist-name {
+                                    position: absolute;
+                                    width: 88%;
+                                    left: 10%;
+                                    height: 100%;
+                                    top: 70%;
+                                    letter-spacing: .1vw;
+                                    font-size: .5vw;
+                                }
+
+                                #AT_time {
+                                    width: 70%;
+                                    height: 1vw;
+                                    top: 63%;
+                                    left: 80%;
+                                    position: absolute;
+                                }
+
+                                    #AT_time p {
+                                        position: absolute;
+                                        letter-spacing: .1vw;
+                                        font-size: .5vw;
+                                    }
+
+                                .time {
+                                    position: absolute;
+                                    left: 8%;
+                                    top: -2vw;
+                                    color: rgb(8,210,255);
+                                    letter-spacing: .1vw;
+                                    font-size: .6vw;
+                                    overflow: hidden;
+                                }
+
+                                #name_sng {
+                                    position: relative;
+                                    float: left;
+                                }
+
+                                .artist-name {
+                                    position: absolute;
+                                    left: .1vw;
+                                    top: 55%;
+                                    left: 17%;
+                                    color: rgb(8,210,255);
+                                    font-family: Roboto;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                    opacity: .6;
+                                }
+
+                                #namesong {
+                                    position: relative;
+                                    color: rgb(8,210,255);
+                                    font-family: Roboto;
+                                    font-size: 1.2vw;
+                                    font-style: oblique;
+                                    font-weight: bold;
+                                    margin-top: .5vw;
+                                    left: 17%;
+                                }
+
+                                #fillimgbar {
+                                    width: 1vw;
+                                    height: 1vw;
+                                    position: absolute;
+                                    top: -.4vw;
+                                    left: -3%;
+                                }
+                            </style>
+                            <div class="progress-bar">
+                                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+                            </div>
+
+
+                            <div id="AT_time"><div class="time"></div></div>
+                            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                            <div class="artist-name"></div>
+
+                            <div id="abtnaud">
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                                        <div id="prev" class="fas fa-backward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                                        <div id="play"> </div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                                        <div id="next" class="fas fa-forward"><p></p></div>
+                                    </div>
+
+                                </div>
+                                <div class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                                        <div id="pause"> </div>
+                                    </div>
+
+                                </div>
+                                <!--<div class="butplayer">
+                            <div class="butpl">
+                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                <div id="stop"> </div>
+                            </div>
+
+                        </div>-->
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
             <div id="about" class="nomenu">
                 <style>
                     #about {
@@ -3169,13 +3622,13 @@
                             width: 5vw;
                             position: absolute;
                             left: 20%;
-                            top:  92%;
+                            top: 92%;
                         }
 
                         #pstudio {
                             width: 2vw;
                             position: absolute;
-                            top:90%;
+                            top: 90%;
                             left: 26%;
                         }
 
@@ -3185,6 +3638,7 @@
                             top: 91.5%;
                             left: 29%;
                         }
+
                         #PostNeige {
                             position: absolute;
                             width: 92%;
@@ -3238,7 +3692,7 @@
                             font-weight: bold;
                             left: 15%;
                             color: white;
-                            top:  15%;
+                            top: 15%;
                         }
 
                             #warning2 span {
@@ -4015,578 +4469,125 @@
                 <img src="https://i.postimg.cc/qBNtccc7/db3370c089d519e51e5ff1c9631cebd2.png" id="xatlogo" />
 
                 <!--<div id="credits">
-        <style>
-            #credits {
-                position: absolute;
-                width: 30%;
-                height: 100%;
-                left: 10%;
-                top: 0;
-                overflow: hidden;
-            }
+            <style>
+                #credits {
+                    position: absolute;
+                    width: 30%;
+                    height: 100%;
+                    left: 10%;
+                    top: 0;
+                    overflow: hidden;
+                }
 
-            #contcred {
-                width: 100%;
-                height: 200%;
-                position: absolute;
-                text-align: center;
-            }
+                #contcred {
+                    width: 100%;
+                    height: 200%;
+                    position: absolute;
+                    text-align: center;
+                }
 
-            .addan {
-                animation: lineup1 8s linear;
-                animation-fill-mode: forwards;
-            }
+                .addan {
+                    animation: lineup1 8s linear;
+                    animation-fill-mode: forwards;
+                }
 
-            #p3r {
-                position: absolute;
-                width: 13vw;
-                left: 30%;
-                top: 5%;
-            }
-
-            
-
-            @keyframes lineup1 {
-                0% {
-                    top: 100%;
+                #p3r {
+                    position: absolute;
+                    width: 13vw;
+                    left: 30%;
+                    top: 5%;
                 }
 
 
 
-                100% {
-                    top: -100%;
-                }
-            }
-
-            #i1 {
-                color: rgb(105,252,254);
-                font-size: 1.2vw;
-                text-align: center;
-                font-family: p3font;
-                position: relative;
-                top: 20%;
-            }
-
-            #pp1 {
-                color: white;
-                font-size: 1.2vw;
-                text-align: center;
-                font-family: Roboto;
-                position: relative;
-                top: 21%;
-            }
-
-            #pp2 {
-                color: white;
-                font-size: 1.2vw;
-                text-align: center;
-                font-family: Roboto;
-                position: relative;
-                top: 26%;
-            }
-
-            #pp3 {
-                color: rgb(105,252,254);
-                font-size: 1.2vw;
-                text-align: center;
-                font-family: p3font;
-                position: relative;
-                top: 30%;
-            }
-
-            #pp4 {
-                color: rgb(105,252,254);
-                font-size: 1.2vw;
-                text-align: center;
-                font-family: p3font;
-                position: relative;
-                top: 50%;
-            }
-
-            #pp2 span {
-                color: rgb(105,252,254);
-            }
-        </style>
-        <div id="contcred">
-            <img src="https://i.postimg.cc/QNv3212V/472c8a7841544965e844f15b115ddde2.png" id="p3r" />
-            <i id="i1">Created and powered by</i>
-            <p id="pp1">Neige</p>
-
-            <i id="pp2">
-                xatspace inspired in <span>PERSONA3 RELOAD</span><br />
-                Interface V1.0 Rev 1.02
-            </i>
-
-            <i id="pp3">
-                MACC NAME: BLACKLARCH 4CL454<br />
-
-                IMACC TYPE: TAIMAT IMAGE<br />
-
-                ICCKS COMPRESSED (Q) 444445555<br />
-
-                LOAD ADRESS 0000x112244-000000000000000<br />
-            </i>
-            <p id="pp4">All Rights Reserved Xat.me</p>
-            <p id="pp4">2024</p>
-
-        </div>
-
-    </div>-->
-            </div>
-            <div id="sistema" class="nomenu">
-                <style>
-                    #sistema {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background: white;
+                @keyframes lineup1 {
+                    0% {
+                        top: 100%;
                     }
-                </style>
-                <video autoplay="" loop="" muted="" id="video4" src="p3.mp4" type="video/mp4">
-                    <script>$("#video4").coverVid(1920, 1080);</script>
-                </video>
-                <div id="movreturn3" onclick="outtomenu();">
-                    <style>
-                        #movreturn3 {
-                            position: absolute;
-                            top: 60%;
-                            left: 40%;
-                            z-index: 9999;
-                        }
-                    </style>
-                    <div id="menup5">
-                        <div id="path10"></div><div id="path9"></div>
-                        <i id="mp5">RETURN</i>
-                    </div>
-                </div>
-                <i id="titlescreen3">
-                    <style>
-                        #titlescreen3 {
-                            font-family: p3font;
-                            transform: rotate(90deg);
-                            opacity: .4;
-                            color: black;
-                            position: absolute;
-                            font-size: 11vw;
-                            left: -15%;
-                            top: 11vw;
-                        }
-                    </style>
-                    SYSTEM
+
+
+
+                    100% {
+                        top: -100%;
+                    }
+                }
+
+                #i1 {
+                    color: rgb(105,252,254);
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-family: p3font;
+                    position: relative;
+                    top: 20%;
+                }
+
+                #pp1 {
+                    color: white;
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-family: Roboto;
+                    position: relative;
+                    top: 21%;
+                }
+
+                #pp2 {
+                    color: white;
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-family: Roboto;
+                    position: relative;
+                    top: 26%;
+                }
+
+                #pp3 {
+                    color: rgb(105,252,254);
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-family: p3font;
+                    position: relative;
+                    top: 30%;
+                }
+
+                #pp4 {
+                    color: rgb(105,252,254);
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-family: p3font;
+                    position: relative;
+                    top: 50%;
+                }
+
+                #pp2 span {
+                    color: rgb(105,252,254);
+                }
+            </style>
+            <div id="contcred">
+                <img src="https://i.postimg.cc/QNv3212V/472c8a7841544965e844f15b115ddde2.png" id="p3r" />
+                <i id="i1">Created and powered by</i>
+                <p id="pp1">Neige</p>
+
+                <i id="pp2">
+                    xatspace inspired in <span>PERSONA3 RELOAD</span><br />
+                    Interface V1.0 Rev 1.02
                 </i>
-                <div id="sysopt">
-                    <style>
-                        #sysopt {
-                            position: absolute;
-                            width: 50%;
-                            height: 50%;
-                            top: 20%;
-                        }
 
-                        #select1 {
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            color: aqua;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
+                <i id="pp3">
+                    MACC NAME: BLACKLARCH 4CL454<br />
 
-                            #select1:hover, #select2:hover, #select3:hover, #select4:hover {
-                                background: white;
-                                color: black;
-                                box-shadow: .2vw -.4vw 0 red;
-                            }
+                    IMACC TYPE: TAIMAT IMAGE<br />
 
-                        #select2 {
-                            color: aqua;
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            top: 17%;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
+                    ICCKS COMPRESSED (Q) 444445555<br />
 
-                        #select3 {
-                            color: aqua;
-                            text-align: right;
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 15%;
-                            top: 34%;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
+                    LOAD ADRESS 0000x112244-000000000000000<br />
+                </i>
+                <p id="pp4">All Rights Reserved Xat.me</p>
+                <p id="pp4">2024</p>
 
-                        #select4 {
-                            position: absolute;
-                            width: 100%;
-                            left: -.3vw;
-                            height: 20%;
-                            top: 51%;
-                            border-radius: 0 .3vw .3vw 0;
-                        }
-
-                        #titselect1, #titselect2, #titselect3, #titselect4 {
-                            font-family: Roboto;
-                            right: 50%;
-                            position: relative;
-                            font-size: 1.5vw;
-                            top: -.5vw;
-                        }
-
-                        #areabuton {
-                            position: absolute;
-                            width: 37%;
-                            height: 70%;
-                            top: 15%;
-                            border-radius: 2vw;
-                            background: #0B0530;
-                            right: 5%;
-                            font-family: Roboto;
-                            font-style: oblique;
-                            font-weight: bold;
-                        }
-
-                        #botonon, #botonon2, #botonon3 {
-                            height: 100%;
-                            border-radius: 2vw;
-                            position: absolute;
-                            text-align: center;
-                        }
-
-                        #botonoff, #botonoff2, #botonoff3 {
-                            height: 100%;
-                            position: absolute;
-                            border-radius: 2vw;
-                            text-align: center;
-                        }
-
-                        .botonnoL {
-                            width: 50%;
-                            color: rgb(105,252,254);
-                        }
-
-                        .botonsiL {
-                            width: 60%;
-                            background: white;
-                            box-shadow: .2vw .2vw 0 black;
-                            color: black;
-                        }
-
-                        .botonnoR {
-                            width: 50%;
-                            left: 50%;
-                            color: rgb(105,252,254);
-                        }
-
-                        .botonsiR {
-                            left: 40%;
-                            width: 60%;
-                            background: white;
-                            box-shadow: .2vw .2vw 0 black;
-                            color: black;
-                        }
-
-                        #areabuton div p {
-                            margin-top: .6vw;
-                        }
-
-                        .sifires {
-                            opacity: 1;
-                        }
-
-                        .nofires {
-                            opacity: 0;
-                        }
-                    </style>
-                    <script>
-                        function siefect() {
-                            $("#botonon").addClass("botonsiR"); $("#botonon").removeClass("botonnoR");
-                            $("#botonoff").addClass("botonnoL"); $("#botonoff").removeClass("botonsiL");
-                            $("#boxfires2").removeClass("nofires"); $("#boxfires2").addClass("sifires");
-                        }
-                        function noefect() {
-                            $("#botonon").addClass("botonnoR"); $("#botonon").removeClass("botonsiR");
-                            $("#botonoff").addClass("botonsiL"); $("#botonoff").removeClass("botonnoL");
-                            $("#boxfires2").addClass("nofires"); $("#boxfires2").removeClass("sifires");
-                        }
-
-                        function sifrez() {
-                            $("#botonon2").addClass("botonsiR"); $("#botonon2").removeClass("botonnoR");
-                            $("#botonoff2").addClass("botonnoL"); $("#botonoff2").removeClass("botonsiL");
-                            document.getElementById("video4").pause();
-                            document.getElementById("video15").pause();
-                            document.getElementById("video2").pause();
-                            document.getElementById("video3").pause();
-                            document.getElementById("video5").pause();
-                        }
-                        function nofrez() {
-                            $("#botonon2").addClass("botonnoR"); $("#botonon2").removeClass("botonsiR");
-                            $("#botonoff2").addClass("botonsiL"); $("#botonoff2").removeClass("botonnoL");
-                            document.getElementById("video4").play();
-                            document.getElementById("video15").play();
-                            document.getElementById("video2").play();
-                            document.getElementById("video3").play();
-                            document.getElementById("video5").play();
-                        }
-
-                        function simus() {
-                            $("#botonon3").addClass("botonsiR"); $("#botonon3").removeClass("botonnoR");
-                            $("#botonoff3").addClass("botonnoL"); $("#botonoff3").removeClass("botonsiL");
-                        }
-                        function nomus() {
-                            $("#botonon3").addClass("botonnoR"); $("#botonon3").removeClass("botonsiR");
-                            $("#botonoff3").addClass("botonsiL"); $("#botonoff3").removeClass("botonnoL");
-                        }
-                    </script>
-                    <div id="select1">
-                        <p id="titselect1">Wallpaper Animation</p>
-                        <div id="areabuton">
-                            <div id="botonoff" class="botonnoL" onclick="noefect();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon" class="botonsiR" onclick="siefect()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select2">
-                        <p id="titselect2">Frezze menus</p>
-                        <div id="areabuton">
-                            <div id="botonoff2" class="botonsiL" onclick="nofrez();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon2" class="botonnoR" onclick="sifrez()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select3">
-                        <p id="titselect3">Music / Sound</p>
-                        <div id="areabuton">
-                            <div id="botonoff3" class="botonnoL" onclick="nomus();">
-                                <p>OFF</p>
-                            </div>
-                            <div id="botonon3" class="botonsiR" onclick="simus()">
-                                <p>ON</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="select4">
-                        <div id="Aaudio">
-                            <style>
-
-                                #Aaudio {
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 100%;
-                                }
-
-                                #abtnaud {
-                                    position: absolute;
-                                    width: 20%;
-                                    height: 70%;
-                                    right: 12%;
-                                    top: 60%;
-                                }
-
-                                .butplayer {
-                                    filter: blur(0px) hue-rotate(250deg);
-                                    float: left;
-                                    height: 1vw;
-                                    top: -.25vw;
-                                    width: 1vw;
-                                    margin-left: 1vw;
-                                    position: relative;
-                                }
-
-                                .butpl {
-                                    position: absolute;
-                                    width: 1.5vw;
-                                    height: 1.5vw;
-                                    left: 0;
-                                    top: .3vw;
-                                    border-radius: .2vw;
-                                }
-
-                                    .butpl:hover {
-                                        filter: blur(0px) hue-rotate(550deg) invert(100%);
-                                    }
-
-                                    .butpl img {
-                                        position: absolute;
-                                        width: 1.5vw;
-                                        height: 1.5vw;
-                                        /*filter: invert(100%);*/
-                                        left: .07vw;
-                                        top: .1vw;
-                                    }
-
-                                #pause, #play, #next, #prev, #stop {
-                                    width: 2vw;
-                                    height: 2vw;
-                                    position: absolute;
-                                    left: 0;
-                                }
-
-                                .progress-bar {
-                                    top: 45%;
-                                    right: 5%;
-                                    width: 36%;
-                                    border-radius: .3vw;
-                                    background: rgb(74,82,101);
-                                    height: .35vw;
-                                    position: absolute;
-                                }
-
-                                .fillBar {
-                                    background: rgb(116, 129, 160);
-                                    width: 0;
-                                    height: .35vw;
-                                }
-
-
-                                /* #namesong {
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 70%;
-                                    top: 10%;
-                                    font-weight: bold;
-                                    color: #b21160;
-                                    letter-spacing: .1vw;
-                                    font-size: .55vw;
-                                }*/
-
-                                .artist-name {
-                                    position: absolute;
-                                    width: 88%;
-                                    left: 10%;
-                                    height: 100%;
-                                    top: 70%;
-                                    letter-spacing: .1vw;
-                                    font-size: .5vw;
-                                }
-
-                                #AT_time {
-                                    width: 70%;
-                                    height: 1vw;
-                                    top: 63%;
-                                    left: 80%;
-                                    position: absolute;
-                                }
-
-                                    #AT_time p {
-                                        position: absolute;
-                                        letter-spacing: .1vw;
-                                        font-size: .5vw;
-                                    }
-
-                                .time {
-                                    position: absolute;
-                                    left: 8%;
-                                    top: -2vw;
-                                    color: rgb(8,210,255);
-                                    letter-spacing: .1vw;
-                                    font-size: .6vw;
-                                    overflow: hidden;
-                                }
-
-                                #name_sng {
-                                    position: relative;
-                                    float: left;
-                                }
-
-                                .artist-name {
-                                    position: absolute;
-                                    left: .1vw;
-                                    top: 55%;
-                                    left: 17%;
-                                    color: rgb(8,210,255);
-                                    font-family: Roboto;
-                                    letter-spacing: .1vw;
-                                    font-size: .8vw;
-                                    opacity: .6;
-                                }
-
-                                #namesong {
-                                    position: relative;
-                                    color: rgb(8,210,255);
-                                    font-family: Roboto;
-                                    font-size: 1.2vw;
-                                    font-style: oblique;
-                                    font-weight: bold;
-                                    margin-top: .5vw;
-                                    left: 17%;
-                                }
-
-                                #fillimgbar {
-                                    width: 1vw;
-                                    height: 1vw;
-                                    position: absolute;
-                                    top: -.4vw;
-                                    left: -3%;
-                                }
-                            </style>
-                            <div class="progress-bar">
-                                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
-                            </div>
-
-
-                            <div id="AT_time"><div class="time"></div></div>
-                            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
-                            <div class="artist-name"></div>
-
-                            <div id="abtnaud">
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
-                                        <div id="prev" class="fas fa-backward"><p></p></div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
-                                        <div id="play"> </div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
-
-                                        <div id="next" class="fas fa-forward"><p></p></div>
-                                    </div>
-
-                                </div>
-                                <div class="butplayer">
-                                    <div class="butpl">
-                                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
-                                        <div id="pause"> </div>
-                                    </div>
-
-                                </div>
-                                <!--<div class="butplayer">
-                            <div class="butpl">
-                                <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
-                                <div id="stop"> </div>
-                            </div>
-
-                        </div>-->
-                            </div>
-
-
-
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
+
+        </div>-->
+            </div>
+
             <style>
                 #main {
                     position: absolute;
