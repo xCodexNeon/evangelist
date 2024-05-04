@@ -1,0 +1,728 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="covervid.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background: white;
+        }
+       
+    </style>
+
+
+
+
+</head>
+<body id="this"  >
+    <div id="main">
+        <div id="btnprueba" onclick="openstar(); ">
+            <style>
+                #btnprueba {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: red;
+                    position: absolute;
+                    z-index: 999;
+                }
+            </style>
+
+        </div>
+        <div id="btnprueba2" onclick="closstar()">
+            <style>
+                #btnprueba2 {
+                    position: absolute;
+                    width: 5vw;
+                    left: 6vw;
+                    height: 5vw;
+                    background: red;
+                    position: absolute;
+                    z-index: 999;
+                }
+            </style>
+
+        </div>  
+        <div id="divvid" class="closestars">
+            <div id="backstars">
+                <canvas id="canvasx">
+                    <script>
+
+                        const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                            STAR_SIZE = 1.5,
+                            STAR_MIN_SCALE = 0.2,
+                            OVERFLOW_THRESHOLD = 50;
+
+                        const canvas4 = document.getElementById("canvasx"),
+                            context = canvas4.getContext("2d");
+
+                        let scale = 1, // device pixel ratio
+                            width,
+                            height;
+
+                        let stars = [];
+
+                        let pointerX, pointerY;
+
+                        let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                        let touchInput = false;
+
+                        generate();
+                        resize();
+                        step();
+
+                        window.onresize = resize;
+                        window.onmousemove = onMouseMove;
+                        window.ontouchmove = onTouchMove;
+                        window.ontouchend = onMouseLeave;
+                        document.onmouseleave = onMouseLeave;
+
+                        function generate() {
+                            for (let i = 0; i < STAR_COUNT; i++) {
+                                stars.push({
+                                    x: 0,
+                                    y: 0,
+                                    z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                                });
+
+                            }
+                        }
+
+                        function placeStar(star) {
+                            star.x = Math.random() * width;
+                            star.y = Math.random() * height;
+                        }
+
+                        function recycleStar(star) {
+                            let direction = "z";
+
+                            let vx = Math.abs(velocity.x),
+                                vy = Math.abs(velocity.y);
+
+                            if (vx > 1 || vy > 1) {
+                                let axis;
+
+                                if (vx > vy) {
+                                    axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                                } else {
+                                    axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                                }
+
+                                if (axis === "h") {
+                                    direction = velocity.x > 0 ? "l" : "r";
+                                } else {
+                                    direction = velocity.y > 0 ? "t" : "b";
+                                }
+                            }
+
+                            star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                            if (direction === "z") {
+                                star.z = 0.1;
+                                star.x = Math.random() * width;
+                                star.y = Math.random() * height;
+                            } else if (direction === "l") {
+                                star.x = -OVERFLOW_THRESHOLD;
+                                star.y = height * Math.random();
+                            } else if (direction === "r") {
+                                star.x = width + OVERFLOW_THRESHOLD;
+                                star.y = height * Math.random();
+                            } else if (direction === "t") {
+                                star.x = width * Math.random();
+                                star.y = -OVERFLOW_THRESHOLD;
+                            } else if (direction === "b") {
+                                star.x = width * Math.random();
+                                star.y = height + OVERFLOW_THRESHOLD;
+                            }
+                        }
+
+                        function resize() {
+                            scale = window.devicePixelRatio || 1;
+
+                            width = window.innerWidth * scale;
+                            height = window.innerHeight * scale;
+
+                            canvas4.width = width;
+                            canvas4.height = height;
+
+                            stars.forEach(placeStar);
+                        }
+
+                        function step() {
+                            context.clearRect(0, 0, width, height);
+
+                            update();
+                            render();
+
+                            requestAnimationFrame(step);
+                        }
+
+                        function update() {
+                            velocity.tx *= 0.36;
+                            velocity.ty *= 0.36;
+
+                            velocity.x += (velocity.tx - velocity.x) * 0.7;
+                            velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                            stars.forEach(star => {
+                                star.x += velocity.x * star.z;
+                                star.y += velocity.y * star.z;
+
+                                star.x += (star.x - width / 2) * velocity.z * star.z;
+                                star.y += (star.y - height / 2) * velocity.z * star.z;
+                                star.z += velocity.z;
+
+                                // recycle when out of bounds
+                                if (
+                                    star.x < -OVERFLOW_THRESHOLD ||
+                                    star.x > width + OVERFLOW_THRESHOLD ||
+                                    star.y < -OVERFLOW_THRESHOLD ||
+                                    star.y > height + OVERFLOW_THRESHOLD) {
+                                    recycleStar(star);
+                                }
+                            });
+                        }
+
+                        function render() {
+                            stars.forEach(star => {
+                                context.beginPath();
+                                context.lineCap = "round";
+                                context.lineWidth = STAR_SIZE * star.z * scale;
+                                context.strokeStyle =
+                                    "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                                context.beginPath();
+                                context.moveTo(star.x, star.y);
+
+                                var tailX = velocity.x * 2,
+                                    tailY = velocity.y * 2;
+
+                                // stroke() wont work on an invisible line
+                                if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                                if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                                context.lineTo(star.x + tailX, star.y + tailY);
+
+                                context.stroke();
+                            });
+                        }
+
+                        function movePointer(x, y) {
+                            if (typeof pointerX === "number" && typeof pointerY === "number") {
+                                let ox = x - pointerX,
+                                    oy = y - pointerY;
+
+                                velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                                velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                            }
+
+                            pointerX = x;
+                            pointerY = y;
+                        }
+
+                        function onMouseMove(event) {
+                            touchInput = false;
+
+                            movePointer(event.clientX, event.clientY);
+                        }
+
+                        function onTouchMove(event) {
+                            touchInput = true;
+
+                            movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                            event.preventDefault();
+                        }
+
+                        function onMouseLeave() {
+                            pointerX = null;
+                            pointerY = null;
+                        }
+                    </script>
+                </canvas>
+
+            </div>
+        </div>
+
+        <!--<script>
+            function cambiarsrc() {
+                $("#video1").attr("src", "ciel2.mp4");
+            }
+            function cambiarsrc2() {
+                $("#video1").attr("src", "ciel2.mp4");
+            }  
+            var cont = 0;
+            function cont0() { cont = 0; }
+            function timerr() {
+                $("#video1").coverVid(1920, 1080);
+                $("#video1").attr("src", "ciel11.mp4");
+                var id = setInterval(function () {
+
+                    cont = 1;
+                    if (cont == 1) {
+                        clearInterval(id); $("#video1").attr("src", "ciel2.mp4");
+
+                    } if (cont == 2) {
+                        cont = 1;
+
+                    }
+                }, 10500);
+            }
+            function timerr2() {
+                $("#video1").attr("src", "ciel3.mp4");
+                var id = setInterval(function () {
+
+                    cont = 3;
+                    if (cont == 3) {
+                        clearInterval(id); $("#video1").attr("src", "ciel44.mp4");
+
+                    } if (cont == 4) {
+                        cont = 3;
+
+                    }
+                }, 2550);
+            }
+            //Definimos una función recursiva
+
+            function clicksecondvid() {
+
+                timerr();
+
+            }
+            function clicksecondvid2() {
+                timerr2();
+               
+
+            }  
+        </script>-->
+    
+        <div id="mainscreen">
+            <script>
+                function openstar() {
+                    $("#divvid").addClass("openstars"); $("#divvid").removeClass("closestars");
+                } function closstar() {
+                    $("#divvid").addClass("closestars"); $("#divvid").removeClass("openstars");
+                }
+            </script>
+            <style>
+                #backstars {
+                    position: absolute;
+                    width: 150%;
+                    height: 150%;
+                    top: 10%;
+                    left: 15%;
+                }
+
+                #divvid {
+                    position: absolute;
+                    overflow: hidden;
+                    /*overflow: hidden;*/
+                    z-index: 2;
+                    background: rgb(222,202,186);
+                    background: linear-gradient(0deg, rgba(222,202,186,1) 0%, rgba(129,125,140,1) 33%, rgba(37,40,48,1) 78%, rgba(24,26,31,1) 100%);
+                    box-shadow: .5vw .5vw 1vw rgba(0,0,0,.7);
+                }
+
+                .closestars {
+                    transition: all 1s ease;
+                    width: 40%;
+                    height: 80%;
+                    top: -10%;
+                    left: 20%;
+                    border-radius: 50%;
+                }
+
+                .openstars {
+                    transition: all 1s ease;
+                    width: 150%;
+                    border-radius: 50%;
+                    height: 150%;
+                    top: -25%;
+                    left: -25%;
+                }
+
+                #mainscreen {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: rgb(81,65,75);
+                    background: linear-gradient(0deg, rgba(81,65,75,1) 0%, rgba(55,39,49,1) 20%, rgba(32,24,35,1) 40%, rgba(24,26,31,1) 100%);
+                }
+
+                #mainren {
+                    position: absolute;
+                    z-index: 3;
+                    height: 85%;
+                    top: 15%;
+                    left: 10%;
+                }
+
+                #backmainren {
+                    position: absolute;
+                    z-index: 3;
+                    height: 85%;
+                    top: 17%;
+                    left: 9%;
+                    filter: brightness(-100%) blur(5px);
+                }
+            </style>
+
+
+            <img id="backmainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
+            <img id="mainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
+            <div id="boxfires2" class="ag-fireflies_box sifires">
+                <style>
+                    #boxfires {
+                        /*filter: sepia(1);*/ mix-blend-mode: difference;
+                        filter: grayscale(100%);
+                        transition: all 2s ease;
+                        z-index: 99;
+                    }
+
+                    #boxfires2 {
+                        /*filter: sepia(1);*/
+                        filter: invert(70%) grayscale(50%);
+                        transition: all 2s ease;
+                        z-index: 4;
+                    }
+
+                    .sifires {
+                        opacity: 1;
+                    }
+
+                    .nofires {
+                        opacity: 0;
+                    }
+                </style>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+                <div class="ag-fireflies_item">
+                    <div class="ag-fireflies_inner"></div>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+</body>
+</html>
