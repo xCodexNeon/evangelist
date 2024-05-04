@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -48,7 +48,7 @@
                     height: 5vw;
                     background: red;
                     position: absolute;
-                    z-index: 999;
+                    z-index: 999; right:6vw;
                 }
             </style>
 
@@ -57,16 +57,16 @@
             <style>
                 #btnprueba2 {
                     position: absolute;
-                    width: 5vw;
-                    left: 6vw;
+                    width: 5vw; 
                     height: 5vw;
-                    background: red;
+                    background: red; right:.1vw;
                     position: absolute;
                     z-index: 999;
                 }
             </style>
 
         </div>  
+
         <div id="divvid" class="closestars">
             <div id="backstars">
                 <canvas id="canvasx">
@@ -322,14 +322,26 @@
         </script>-->
     
         <div id="mainscreen">
+            <div id="fs">
+
+            </div>
             <script>
                 function openstar() {
                     $("#divvid").addClass("openstars"); $("#divvid").removeClass("closestars");
                 } function closstar() {
                     $("#divvid").addClass("closestars"); $("#divvid").removeClass("openstars");
                 }
+
             </script>
             <style>
+                #fs {
+                    position: absolute;
+                    width: 100%;
+                    opacity: .03;
+                    height: 100%;
+                    background: url(https://64.media.tumblr.com/8fa6c3c3666978087f91228153067a90/tumblr_p6pjimf5HP1xp1j77o1_500.gifv)
+                }
+
                 #backstars {
                     position: absolute;
                     width: 150%;
@@ -342,7 +354,7 @@
                     position: absolute;
                     overflow: hidden;
                     /*overflow: hidden;*/
-                    z-index: 2;
+
                     background: rgb(222,202,186);
                     background: linear-gradient(0deg, rgba(222,202,186,1) 0%, rgba(129,125,140,1) 33%, rgba(37,40,48,1) 78%, rgba(24,26,31,1) 100%);
                     box-shadow: .5vw .5vw 1vw rgba(0,0,0,.7);
@@ -353,11 +365,13 @@
                     width: 40%;
                     height: 80%;
                     top: -10%;
+                    z-index: 2;
                     left: 20%;
                     border-radius: 50%;
                 }
 
                 .openstars {
+                    z-index: 12;
                     transition: all 1s ease;
                     width: 150%;
                     border-radius: 50%;
@@ -379,22 +393,127 @@
                     z-index: 3;
                     height: 85%;
                     top: 15%;
-                    left: 10%;
+                    left: 2%;
                 }
 
                 #backmainren {
                     position: absolute;
-                    z-index: 3;
                     height: 85%;
                     top: 17%;
-                    left: 9%;
+                    left: 1%;
                     filter: brightness(-100%) blur(5px);
+                }
+
+                #arearender {
+                    position: absolute;
+                    width: 30%;
+                    height: 100%;
+                    left: 15%;
+                    z-index: 3;
                 }
             </style>
 
+            <div id="arearender">
+                <img id="backmainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
+                <img id="mainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
+            </div>
 
-            <img id="backmainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
-            <img id="mainren" src="https://i.postimg.cc/PJ2rP7tL/dbe8s0c-263e7f00-e3f1-4f23-91bd-105762988ea9.png" />
+            <div id="profildats">
+                <style>
+                    #profildats {
+                        position: absolute;
+                        width: 28%;
+                        height: 100%;
+                        right: 0;
+                        /*  background: rgb(81,65,75);
+                        background: linear-gradient(90deg, rgba(81,65,75,0) 0%, rgba(39,29,50,0.5) 26%, rgba(40,29,50,1) 63%);*/
+                    }
+                </style>
+            </div>
+            <div id="botonmenu">
+                <style>
+                    @font-face {
+                        font-family: fontciel;
+                        src: url(Voguella.ttf);
+                    }
+
+                    #botonmenu {
+                        width: 15%;
+                        height: 9%;
+                        top: 2%;
+                        left: 2%;
+                        position: absolute;
+                    }
+
+                    #botonmen {
+                        width: 2vw;
+                        height: 2vw;
+                        position: absolute;
+                        background: black;
+                        top: 1vw;
+                        left: 1vw;
+                    }
+
+                    #markbot {
+                        width: 4vw;
+                        height: 4vw;
+                        position: absolute;
+                    }
+
+                    #marklet {
+                        position: absolute;
+                        width: 50%;
+                        left: 30%;
+                    }
+
+                    #marklet2 {
+                        position: absolute;
+                        transform: scaleY(-1);
+                        width: 50%;
+                        left: 30%;
+                        bottom: 0;
+                    }
+                </style>
+                <script>
+                    function opensmenu() {
+                        $("#divmenu").addClass("openmenu"); $("#divmenu").removeClass("closemenu");
+                    } function closesmenu() {
+                        $("#divmenu").addClass("closemenu"); $("#divmenu").removeClass("openmenu");
+                    }
+
+                </script>
+                <div id="botonmen">
+
+                </div>
+                <img src="https://i.postimg.cc/g0vKf3ns/cubo.png" id="markbot" />
+                <img src="https://i.postimg.cc/SxYdfB4w/bar1.png" id="marklet" />
+                <p id="pmenu" onclick="opensmenu()">MAIN MENU</p>
+                <img src="https://i.postimg.cc/SxYdfB4w/bar1.png" id="marklet2" />
+            </div>
+            <div id="divmenu" class="closemenu">
+                <style>
+                    #pmenu { position:absolute; font-family:fontciel; color:#a38b1a; left:37%; font-size:.8vw; letter-spacing:.1vw; top:20%; transition:all 1s ease; z-index:10;
+                    }
+                        #pmenu:hover { left:31%; letter-spacing:.3vw; color:rgba(129,125,140,1);
+                        }
+                    .openmenu {
+                        left: 0%;
+                        z-index: 11;
+                    }
+                    .closemenu {
+                        left: -15%;
+                        z-index: 10;
+                    }
+                    #divmenu {
+                        position: absolute;
+                        transition: all 1s ease;
+                        width: 15%;
+                        height: 100%;
+                        background: rgba(0,0,0,.1);
+                    }
+                </style>
+            </div>
+
             <div id="boxfires2" class="ag-fireflies_box sifires">
                 <style>
                     #boxfires {
