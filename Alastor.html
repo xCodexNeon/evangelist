@@ -1,0 +1,1077 @@
+﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="covervid.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script>
+
+    <script type="text/javascript" src="particles.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background:#242424;
+        }
+        #motiv {
+            position: absolute;
+            width: 100%;
+            height: 100%; filter:blur(1px);
+            background: url(https://i.postimg.cc/J0PmQKVJ/OBSK510.png);
+            opacity: .1;
+        }
+    </style>
+
+
+
+
+</head>
+<body id="this"  >
+    <div id="main">
+        <div id="motiv">
+
+        </div>
+        <style>
+            #profillat {
+                position: absolute;
+                width: 21.6%;
+                height: 100%;
+                background: rgb(111,0,13);
+                z-index: 120;
+                left: -18%;
+                transition: all .5s ease;
+            }
+
+                /*#profillat:hover {
+                    left: 0;
+                }*/
+
+            #backalas {
+                position: absolute;
+                width: 120%;
+                bottom: 0;
+                left: -10%;
+                z-index: 2;
+            }
+
+            #imgmarc {
+                position: absolute;
+                position: absolute;
+                right: -10%;
+                height: 100%;
+            }
+
+            #i1 {
+                position: absolute;
+                width: 11%;
+                left: 4%;
+                top: 2%;
+                height: 36%;
+            }
+
+            #d1 {
+                position: absolute;
+                width: 11%;
+                right: 1%;
+                bottom: 2%;
+                height: 38%;
+            }
+
+            #d2 {
+                position: absolute;
+                width: 11%;
+                right: 1%;
+                top: 2%;
+            }
+
+            #i2 {
+                transform: scaleX(-1) scaleY(-1);
+                position: absolute;
+                width: 11%;
+                left: 4%;
+                bottom: 2%;
+            }
+        </style>
+
+
+
+        <div id="profillat">
+
+            <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="backalas" />
+            <img src="https://i.postimg.cc/zXZj1xFj/sqwsq2s.png" id="imgmarc" />
+        </div>
+
+        <div id="mainprofile">
+            <script>
+                var density = 70,
+                    speed = 2,
+                    winHeight = window.innerHeight,
+                    winWidth = window.innerWidth,
+                    start = {
+                        yMin: winHeight - 50,
+                        yMax: winHeight,
+                        xMin: winWidth / 2 + 10,
+                        xMax: winWidth / 2 + 40,
+                        scaleMin: 0.1,
+                        scaleMax: 0.25,
+                        scaleXMin: 0.1,
+                        scaleXMax: 1,
+                        scaleYMin: 1,
+                        scaleYMax: 2,
+                        opacityMin: 0.1,
+                        opacityMax: 0.4
+                    },
+                    mid = {
+                        yMin: winHeight * 0.4,
+                        yMax: winHeight * 0.9,
+                        xMin: winWidth * 0.1,
+                        xMax: winWidth * 0.9,
+                        scaleMin: 0.2,
+                        scaleMax: 0.8,
+                        opacityMin: 0.5,
+                        opacityMax: 1
+                    },
+                    end = {
+                        yMin: -180,
+                        yMax: -180,
+                        xMin: -100,
+                        xMax: winWidth + 180,
+                        scaleMin: 0.1,
+                        scaleMax: 1,
+                        opacityMin: 0.4,
+                        opacityMax: 0.7
+                    };
+
+                function range(map, prop) {
+                    var min = map[prop + "Min"],
+                        max = map[prop + "Max"];
+                    return min + (max - min) * Math.random();
+                }
+
+                function sign() {
+                    return Math.random() < 0.5 ? -1 : 1;
+                }
+
+                function randomEase(easeThis, easeThat) {
+                    if (Math.random() < 0.5) {
+                        return easeThat;
+                    }
+                    return easeThis;
+                }
+
+                function spawn(particle) {
+                    var wholeDuration = (10 / speed) * (0.7 + Math.random() * 0.4),
+                        delay = wholeDuration * Math.random(),
+                        partialDuration = (wholeDuration + 1) * (0.2 + Math.random() * 0.3);
+                    TweenLite.set(particle, {
+                        y: range(start, "y"),
+                        x: range(start, "x"),
+                        scaleX: range(start, "scaleX"),
+                        scaleY: range(start, "scaleY"),
+                        scale: range(start, "scale"),
+                        opacity: range(start, "opacity"),
+                        visibility: "hidden"
+                    });
+                    // Moving upward
+                    TweenLite.to(particle, partialDuration, {
+                        delay: delay,
+                        y: range(mid, "y"),
+                        ease: randomEase(Linear.easeOut, Back.easeInOut)
+                    });
+                    TweenLite.to(particle, wholeDuration - partialDuration, {
+                        delay: partialDuration + delay,
+                        y: range(end, "y"),
+                        ease: Back.easeIn
+                    });
+                    //Moving on axis X
+                    TweenLite.to(particle, partialDuration, {
+                        delay: delay,
+                        x: range(mid, "x"),
+                        ease: Power1.easeOut
+                    });
+                    TweenLite.to(particle, wholeDuration - partialDuration, {
+                        delay: partialDuration + delay,
+                        x: range(end, "x"),
+                        ease: Power1.easeIn
+                    });
+                    //opacity and scale
+                    partialDuration = wholeDuration * (0.5 + Math.random() * 0.3);
+                    TweenLite.to(particle, partialDuration, {
+                        delay: delay,
+                        scale: range(mid, "scale"),
+                        autoAlpha: range(mid, "opacity"),
+                        ease: Linear.easeNone
+                    });
+                    TweenLite.to(particle, wholeDuration - partialDuration, {
+                        delay: partialDuration + delay,
+                        scale: range(end, "scale"),
+                        autoAlpha: range(end, "opacity"),
+                        ease: Linear.easeNone,
+                        onComplete: spawn,
+                        onCompleteParams: [particle]
+                    });
+                }
+                window.onload = createParticle;
+
+                function createParticle() {
+                    var i, particleSpark;
+                    for (i = 0; i < density; i += 1) {
+                        particleSpark = document.createElement("div");
+                        particleSpark.classList.add("spark");
+                        document.body.appendChild(particleSpark);
+                        spawn(particleSpark);
+                    }
+                }
+
+            </script>
+            <style>
+                .spark {
+                    background-color: #DE4A00;
+                    font-family: 'Helvetica', sans-serif;
+                    visibility: hidden;
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 30%;
+                    box-shadow: 0 0 5px #AB000B;
+                }
+
+                #mainprofile {
+                    position: absolute;
+                    width: 30%;
+                    left: 8%;
+                    height: 100%;
+                }
+
+                #profil {
+                    position: absolute;
+                    width: 100%;
+                    height: 48%;
+                    top: 10%;
+                    /*backdrop-filter: blur(9px);*/
+                    z-index: 11;
+                }
+
+                #areaprof {
+                    position: absolute;
+                    width: 90%;
+                    height: 90%;
+                    left: 4%;
+                    top: 4%;
+                }
+
+                #imgprofil {
+                    position: absolute;
+                    height: 70%;
+                    left: 0;
+                    border-radius: .2vw;
+                    top: 0;
+                    border: .2vw solid #6c1a1a;
+                    overflow: hidden;
+                    box-shadow: 0 0 .4vw #6c1a1a;
+                    width: 45%;
+                }
+
+                #barimg {
+                    position: absolute;
+                    width: .2vw;
+                    background: #6c1a1a;
+                    height: 92%;
+                    right: 53.5%;
+                }
+
+                #textlat {
+                    font-size: .6vw;
+                    letter-spacing: .15vw;
+                    opacity: .5;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    transform: rotate(270deg);
+                    position: absolute;
+                    top: 41%;
+                    right: 22%;
+                }
+
+                #lynmrr {
+                    position: absolute;
+                    font-size: .6vw;
+                    letter-spacing: .15vw;
+                    opacity: .5;
+                    color: gray;
+                    text-decoration: none;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    right: 60%;
+                    top: 82%;
+                }
+
+                    #lynmrr span {
+                        color: rgb(62, 104, 247);
+                    }
+
+                #imgcode {
+                    transform: scaleX(-1);
+                    position: absolute;
+                    right: -5%;
+                }
+
+                #foc {
+                    font-family: 'Times New Roman', Times, serif;
+                    position: absolute;
+                    color: gray;
+                    opacity: .7;
+                    font-size: .9vw;
+                    right: 60%;
+                    top: 75%;
+                }
+
+                #foc2 {
+                    font-family: 'Times New Roman', Times, serif;
+                    position: absolute;
+                    color: gray;
+                    font-size: 1.5vw;
+                    opacity: .7;
+                    right: 90%;
+                    font-weight: bold;
+                    top: 67%;
+                }
+
+                #textsub {
+                    font-size: .6vw;
+                    letter-spacing: .05vw;
+                    opacity: .5;
+                    width: 35%;
+                    text-align: center;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    position: absolute;
+                    top: 32%;
+                    right: 9%;
+                }
+            </style>
+            <style>
+                .glitch {
+                    background: #000 no-repeat center;
+                    background-size: 0;
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                    .glitch::before, .glitch::after,
+                    .glitch .channel {
+                        background: inherit;
+                        background-size: cover;
+                        bottom: 0;
+                        left: 0;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+
+                    .glitch::before {
+                        animation: glitch-before 3s linear infinite alternate both;
+                        content: "";
+                    }
+
+                @keyframes glitch-before {
+                    0% {
+                        clip-path: polygon(0% 56.2345116854%, 100% 56.2345116854%, 100% 61.2356701394%, 0% 61.2356701394%);
+                        transform: translate(-4.1059478487%, 0.4624343784%);
+                    }
+
+                    2% {
+                        clip-path: polygon(0% 50.0835400501%, 100% 50.0835400501%, 100% 57.3160065186%, 0% 57.3160065186%);
+                        transform: translate(6.9786239907%, 0.1250598426%);
+                    }
+
+                    4% {
+                        clip-path: polygon(0% 68.4287476054%, 100% 68.4287476054%, 100% 74.8139484448%, 0% 74.8139484448%);
+                        transform: translate(-6.731940629%, 0.4253147103%);
+                    }
+
+                    6% {
+                        clip-path: polygon(0% 7.0093086647%, 100% 7.0093086647%, 100% 14.0529020699%, 0% 14.0529020699%);
+                        transform: translate(-1.5071489812%, -0.4578490524%);
+                    }
+
+                    8% {
+                        clip-path: polygon(0% 79.3626331599%, 100% 79.3626331599%, 100% 85.5725382448%, 0% 85.5725382448%);
+                        transform: translate(1.0369871042%, 0.2331015761%);
+                    }
+
+                    10% {
+                        clip-path: polygon(0% 45.6212067743%, 100% 45.6212067743%, 100% 55.3731021831%, 0% 55.3731021831%);
+                        transform: translate(-7.8319959974%, 0.2594201826%);
+                    }
+
+                    12% {
+                        clip-path: polygon(0% 29.351011742%, 100% 29.351011742%, 100% 36.4347898984%, 0% 36.4347898984%);
+                        transform: translate(7.894094469%, 0.4353946132%);
+                    }
+
+                    14% {
+                        clip-path: polygon(0% 20.6269938136%, 100% 20.6269938136%, 100% 28.6430035786%, 0% 28.6430035786%);
+                        transform: translate(-2.2233550451%, -0.310774008%);
+                    }
+
+                    16% {
+                        clip-path: polygon(0% 55.1414013601%, 100% 55.1414013601%, 100% 64.7768539293%, 0% 64.7768539293%);
+                        transform: translate(-0.2083814902%, -0.4859130929%);
+                    }
+
+                    18% {
+                        clip-path: polygon(0% 33.5392333711%, 100% 33.5392333711%, 100% 41.2262742929%, 0% 41.2262742929%);
+                        transform: translate(3.1697832636%, -0.2526770589%);
+                    }
+
+                    20%, 100% {
+                        clip-path: none;
+                        transform: none;
+                    }
+                }
+
+                .glitch::after {
+                    animation: glitch-after 3s linear infinite alternate both;
+                    content: "";
+                }
+
+                @keyframes glitch-after {
+                    0% {
+                        clip-path: polygon(0% 46.4252812278%, 100% 46.4252812278%, 100% 49.4682977836%, 0% 49.4682977836%);
+                        transform: translate(-6.0289866806%, 0.3747279618%);
+                    }
+
+                    2% {
+                        clip-path: polygon(0% 53.6872388395%, 100% 53.6872388395%, 100% 55.5261440346%, 0% 55.5261440346%);
+                        transform: translate(5.6596419058%, 0.3767399998%);
+                    }
+
+                    4% {
+                        clip-path: polygon(0% 26.4628827551%, 100% 26.4628827551%, 100% 28.1518153519%, 0% 28.1518153519%);
+                        transform: translate(-2.8706015735%, 0.1744019898%);
+                    }
+
+                    6% {
+                        clip-path: polygon(0% 22.1405705937%, 100% 22.1405705937%, 100% 27.9712913708%, 0% 27.9712913708%);
+                        transform: translate(5.2740447815%, -0.0666730162%);
+                    }
+
+                    8% {
+                        clip-path: polygon(0% 80.1754693061%, 100% 80.1754693061%, 100% 84.0483714265%, 0% 84.0483714265%);
+                        transform: translate(6.1560770852%, -0.1055822562%);
+                    }
+
+                    10% {
+                        clip-path: polygon(0% 17.0328610327%, 100% 17.0328610327%, 100% 21.3413025967%, 0% 21.3413025967%);
+                        transform: translate(0.4167745766%, 0.071432387%);
+                    }
+
+                    12% {
+                        clip-path: polygon(0% 67.4300551632%, 100% 67.4300551632%, 100% 75.94304489%, 0% 75.94304489%);
+                        transform: translate(4.5615132043%, -0.3384883161%);
+                    }
+
+                    14% {
+                        clip-path: polygon(0% 75.8671640322%, 100% 75.8671640322%, 100% 79.5035015917%, 0% 79.5035015917%);
+                        transform: translate(4.3656546541%, 0.4293052418%);
+                    }
+
+                    16% {
+                        clip-path: polygon(0% 88.7467413713%, 100% 88.7467413713%, 100% 97.5342077988%, 0% 97.5342077988%);
+                        transform: translate(-6.0209384093%, 0.3668084293%);
+                    }
+
+                    18% {
+                        clip-path: polygon(0% 50.6891726214%, 100% 50.6891726214%, 100% 52.9620196451%, 0% 52.9620196451%);
+                        transform: translate(-4.0675458093%, -0.3462135505%);
+                    }
+
+                    20%, 100% {
+                        clip-path: none;
+                        transform: none;
+                    }
+                }
+
+                .glitch .channel {
+                    mix-blend-mode: screen;
+                }
+
+                    .glitch .channel::before {
+                        bottom: 0;
+                        content: "";
+                        display: block;
+                        mix-blend-mode: multiply;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                    }
+
+                .glitch .r {
+                    animation: rgb-shift-r 3s steps(1, jump-end) infinite alternate both;
+                }
+
+                @keyframes rgb-shift-r {
+                    0% {
+                        transform: translate(0.2444032504%, 0.142993874%);
+                    }
+
+                    2% {
+                        transform: translate(0.5217230513%, 0.4683479006%);
+                    }
+
+                    4% {
+                        transform: translate(0.1003150063%, -0.2507236831%);
+                    }
+
+                    6% {
+                        transform: translate(0.1488800947%, -0.2552511054%);
+                    }
+
+                    8% {
+                        transform: translate(-1.7916627807%, -0.3849984215%);
+                    }
+
+                    10% {
+                        transform: translate(1.8265346973%, -0.021585038%);
+                    }
+
+                    12% {
+                        transform: translate(1.0697890724%, -0.4911846238%);
+                    }
+
+                    14% {
+                        transform: translate(0.2719375329%, 0.118806726%);
+                    }
+
+                    16% {
+                        transform: translate(1.3549451115%, -0.2755834527%);
+                    }
+
+                    18% {
+                        transform: translate(-1.2712804053%, -0.0072812541%);
+                    }
+
+                    20%, 100% {
+                        transform: none;
+                    }
+                }
+
+                .glitch .r::before {
+                    background: #f00;
+                }
+
+                .glitch .g {
+                    animation: rgb-shift-g 3s steps(1, jump-end) infinite alternate both;
+                }
+
+                @keyframes rgb-shift-g {
+                    0% {
+                        transform: translate(-0.3819945512%, 0.1834435656%);
+                    }
+
+                    2% {
+                        transform: translate(-0.6726719783%, 0.4741807%);
+                    }
+
+                    4% {
+                        transform: translate(-1.2024480727%, 0.0683772992%);
+                    }
+
+                    6% {
+                        transform: translate(-0.8255396306%, 0.292211421%);
+                    }
+
+                    8% {
+                        transform: translate(-1.9228536989%, 0.36780978%);
+                    }
+
+                    10% {
+                        transform: translate(0.7826005981%, -0.433561386%);
+                    }
+
+                    12% {
+                        transform: translate(-0.4970418156%, -0.1539616391%);
+                    }
+
+                    14% {
+                        transform: translate(0.2305434763%, -0.2558667771%);
+                    }
+
+                    16% {
+                        transform: translate(1.8785807053%, -0.3022207073%);
+                    }
+
+                    18% {
+                        transform: translate(0.3601204708%, 0.2414102668%);
+                    }
+
+                    20%, 100% {
+                        transform: none;
+                    }
+                }
+
+                .glitch .g::before {
+                    background: #0f0;
+                }
+
+                .glitch .b {
+                    animation: rgb-shift-b 3s steps(1, jump-end) infinite alternate both;
+                }
+
+                @keyframes rgb-shift-b {
+                    0% {
+                        transform: translate(-1.0129528826%, -0.1111310283%);
+                    }
+
+                    2% {
+                        transform: translate(1.0610111342%, 0.2126796348%);
+                    }
+
+                    4% {
+                        transform: translate(-1.632728394%, -0.0942751438%);
+                    }
+
+                    6% {
+                        transform: translate(-1.0118549776%, -0.2855816567%);
+                    }
+
+                    8% {
+                        transform: translate(1.7250899817%, 0.3490322837%);
+                    }
+
+                    10% {
+                        transform: translate(-0.3191402616%, -0.1654199476%);
+                    }
+
+                    12% {
+                        transform: translate(1.659960188%, -0.3080328038%);
+                    }
+
+                    14% {
+                        transform: translate(-0.0478350373%, 0.287177982%);
+                    }
+
+                    16% {
+                        transform: translate(-1.301933002%, -0.4043960584%);
+                    }
+
+                    18% {
+                        transform: translate(-0.2908895729%, 0.3216576163%);
+                    }
+
+                    20%, 100% {
+                        transform: none;
+                    }
+                }
+
+                .glitch .b::before {
+                    background: #00f;
+                }
+            </style>
+
+
+            <div id="profil">
+                <div id="areaprof">
+                    <div id="barimg"></div>
+                    <div id="imgprofil">
+                        <div class="glitch" style="background-image: url(https://i.pinimg.com/originals/7e/b3/92/7eb392819b03ee8ed1cc92099d31d0a1.gif); ">
+                            <div class="channel r"></div>
+                            <div class="channel g"></div>
+                            <div class="channel b"></div>
+                        </div>
+
+                        <div class="glitch" style="background-image: url(https://i.postimg.cc/J7B3vHgj/c9708b7c138ab3d718c4f345c21933eb.jpg);">
+                            <div class="channel r"></div>
+                            <div class="channel g"></div>
+                            <div class="channel b"></div>
+                        </div>
+
+                    </div>
+                    <!--<img  src="https://i.postimg.cc/rpPVchJV/627ec456b7f3686aaed395ffb94195d0.jpg" />-->
+                    <!--<p id="foc">ALASTOR</p>
+                    <a id="lynmrr" href="https://xat.me/Lynette"><p>NEIGE <span>x</span></p></a>
+                    <p id="foc2">02<br />13</p>
+                    <p id="textlat">NEIGE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀GRISATRE/GRIS</p>
+                    <img src="https://i.postimg.cc/nzmGGPSM/3.png" id="imgcode" />
+                    <p id="textsub">
+                        Lights out, is this who you really are?
+                        Can't look into your eyes,
+                        Your twisted mind,
+                        It's dark, so dark,
+                        We end it now,
+                        It ends right here, right now,
+                        Please tell me you brought the rope,
+                        Let's light up the sky,
+                        And fade into the night
+                        <br /><br />
+                        ◯⠀⠀◯⠀⠀◯⠀⠀◯
+                    </p>-->
+                </div>
+            </div>
+
+
+
+        </div>
+        <div id="infoprof">
+            <style>
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+                #infoprof {
+                    position: absolute;
+                    width: 20%;
+                    height: 40%;
+                    left: 22%;
+                    top: 10%;
+                }
+
+                #maint {
+                    position: absolute;
+                    color: #6c1a1a;
+                    top: -3vw;
+                    left: 0;
+                    font-family: neigefont3;
+                    font-size: 3vw;
+                    text-shadow: .2vw .2vw .3vw black;
+                    letter-spacing: .3vw;
+                }
+
+                    #maint span {
+                        font-size: 4vw;
+                        top: .25vw;
+                        position: relative;
+                    }
+
+                #points {
+                    position: absolute;
+                    width: 50%;
+                    height: 16%;
+                    background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                    left: 15%;
+                    top: 12%;
+                }
+
+                #prv {
+                    position: absolute;
+                    font-size: 1.7vw;
+                    color: #6c1a1a;
+                    top: 15%;
+                    left: 10%;
+                }
+
+                #pvc {
+                    border-radius: 0 0 .4vw .4vw;
+                    box-shadow: .2vw .2vw .1vw #5E1111;
+                    border-right: 1px solid white;
+                    border-bottom: 1px solid white;
+                    position: absolute;
+                    color: white;
+                    background: #5E1111;
+                    padding-left: .4vw;
+                    padding-right: .4vw;
+                    top: 28%;
+                    left: 10%;
+                    font-size: 1vw;
+                    letter-spacing: .1vw;
+                    font-family: neigefont3;
+                }
+
+                #k1 {
+                    position: absolute;
+                    font-size: 1.2vw;
+                    color: gray;
+                    font-weight: bold;
+                    top: 74%;
+                    left: 10%;
+                }
+
+                #k2 {
+                    position: absolute;
+                    font-size: 5vw;
+                    color: gray;
+                    top: 57%;
+                    left: 20%;
+                }
+
+                #k3 {
+                    position: absolute;
+                    font-size: 2.2vw;
+                    color: gray;
+                    top: 69%;
+                    left: 33%;
+                }
+
+                #l0 {
+                    position: absolute;
+                    font-size: .75vw;
+                    color: gray;
+                    top: 83%;
+                    left: 10%;
+                }
+
+                #lattext {
+                    font-family: Roboto;
+                    color: gray;
+                    font-size: .6vw;
+                    letter-spacing: .07vw;
+                    transform: rotate(-90deg);
+                    position: absolute;
+                    left: -35%;
+                    top: 61%;
+                }
+
+                #iconrose {
+                    position: absolute;
+                    width: 6vw;
+                    top: 0%;
+                    right: 16%;
+                    z-index: -1;
+                    filter: contrast(160%) brightness(80%);
+                }
+            </style>
+            <div id="points">
+
+            </div>
+
+            <p id="maint"><span>阿·</span>拉斯托</p>
+            <!--<img src="https://i.postimg.cc/CLP25kw5/f781b2cdc78bb3b8e98d0638cd4a109c.png" id="iconrose" />-->
+            <p id="prv">Neige</p>
+            <p id="pvc">雷文德雷斯</p>
+            <span id="k1">LV</span><span id="k2">6</span><span id="k3">/66</span>
+                                                         <p id="l0">親愛なるあなた、もし私がここで誰かを傷つけたいと思っていたら...<br />私はすでにそうしていたでしょう。</p>
+
+            <p id="lattext">XXVIII&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 阿拉斯托 &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;1533252890 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雪红</p>
+        </div>
+
+        <div id="frds">
+
+            <style>
+
+                #frds {
+                    position: absolute;
+                    width: 13%;
+                    right: 4%;
+                    height: 54%;
+                    top: 9%;
+                }
+
+                #iconfrd {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 10%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
+                }
+
+                #iconfrd1 {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 30%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
+                }
+
+                #iconfrd2 {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 50%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
+                }
+
+                #iconfrd3 {
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 70%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
+                }
+
+                #icon1:hover {
+                    filter: grayscale(0%);
+                }
+
+                #icon1 {
+                    filter: grayscale(80%);
+                    transition: all .5s ease;
+                    position: absolute;
+                    height: 100%;
+                    left: -25%;
+                }
+
+                #mainp {
+                    color: darkgray;
+                    left: 15%;
+                    text-align: right;
+                    line-height: .3vw;
+                    position: absolute;
+                    top: -1vw;
+                    width: 70%;
+                    top: -.5%;
+                    color: darkgray;
+                    font-size: .4vw;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                }
+
+                #cub {
+                    position: absolute;
+                    background:#6c1a1a;
+                    right: 0%;
+                    width: 1.6vw;
+                    opacity: .8;
+                    height: 1.6vw;
+                    top: .2vw;
+                    color: darkgray;
+                    border-radius: .2vw;
+                }
+
+                #aiconsp {
+                    color: darkgray;
+                    line-height: .3vw;
+                    position: absolute;
+                    right: 1%;
+                    top: 90%;
+                    text-align: right;
+                    font-size: .4vw;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                }
+            </style>
+            <p id="mainp">
+
+                Allez, petite fille. Viens finir de tuer <br />mon coeur noir  Ma cheiré...
+
+                Arrache-le de ce corps sans âme, tout comme j'ai arraché ce bonheur dans ta vie. Détruisez-le en petits fragments  ...
+            </p><div id="cub">
+
+            </div>
+            <div id="iconfrd">
+                <img id="icon1" src="https://i.pinimg.com/originals/e8/b6/0e/e8b60eda26ff6b2a2a8e7de84bf2d32f.gif" />
+            </div>
+            <div id="iconfrd1">
+                <img id="icon1" src="https://i.pinimg.com/originals/76/c5/2f/76c52f8850537417a1e44680067f7c09.gif" />
+            </div>
+            <div id="iconfrd2">
+                <img id="icon1" src="https://i.pinimg.com/originals/dd/ec/f1/ddecf1dd5f0a7589f4bb512300695ee9.gif" />
+            </div>
+            <div id="iconfrd3">
+                <img id="icon1" src="https://i.pinimg.com/originals/91/29/ec/9129ec195c503866d4e2ce328be57978.gif" />
+            </div>
+            <p id="aiconsp">
+                NEIGE<br />
+                You never know what can<br />
+                happen in the blink of an eye
+            </p>
+        </div>
+
+        <div id="barlight">
+            <style>
+                #barlight {
+                    position: absolute;
+                    width: 100%;
+                    height: 5%;
+                    top: 100%;
+                    animation: brig3 2s infinite; z-index:1000;
+                }
+                @keyframes brig3 {
+                    0% {
+                        box-shadow: 0 0 .5vw #8e3333;
+                    }
+
+                    50% {
+                        box-shadow: 0 0 1.5vw #8e3333;
+                    }
+
+                    100% {
+                        box-shadow: 0 0 .5vw #8e3333;
+                    }
+                }
+            </style>
+        </div>
+        <div id="posts">
+            <style>
+                #posts {
+                    position: absolute;
+                    width: 35%;
+                    height: 100%;
+                    left: 45%;
+                    background: transparent;
+                    backdrop-filter: blur(7px);
+                    box-shadow: 0 0 1.5vw #8e3333;
+                    overflow: auto;
+                    overflow-x: hidden;
+                    scroll-behavior: smooth;
+                }
+                    #posts::-webkit-scrollbar {
+                        width: .5vw;
+                        background: #6c1a1a;
+                    }
+
+                    #posts::-webkit-scrollbar-thumb {
+                        width: .1vw;
+                        background: #242424;
+                    }
+                #finpost {
+                    position: absolute;
+                    width: 120%;
+                    left: -10%;
+                    top: 100%;
+                }
+
+                #finpost2 {
+                    position: absolute;
+                    width: 120%;
+                    left: -10%;
+                    top: 100%; filter:blur(15px);
+                }
+                #finpost3 {
+                    position: absolute;
+                    width: 120%;
+                    left: -10%;
+                    top: 100%;
+                }
+            </style>
+
+            <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="finpost" />
+            <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost2" />
+
+            <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost3" />
+        </div>
+    </div>
+</body>
+</html>
