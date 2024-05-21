@@ -1,4 +1,4 @@
-﻿
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -283,10 +283,10 @@
                 #imgprofil {
                     position: absolute;
                     height: 70%;
-                    left: 0;
-                    border-radius: .2vw;
+                    left: -10%;
+                    border-radius: 0 .2vw .2vw 0;
                     top: 0;
-                    border: .2vw solid #6c1a1a;
+                    border: .2vw solid #6c1a1a;border-left:3vw solid #6c1a1a;
                     overflow: hidden;
                     box-shadow: 0 0 .4vw #6c1a1a;
                     width: 45%;
@@ -355,15 +355,13 @@
                 }
 
                 #textsub {
-                    font-size: .6vw;
-                    letter-spacing: .05vw;
-                    opacity: .5;
-                    width: 35%;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;  left:-10%;
                     text-align: center;
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                     position: absolute;
-                    top: 32%;
-                    right: 9%;
+                    top: 92%;
+                      color:gray;
                 }
             </style>
             <style>
@@ -706,25 +704,76 @@
                         </div>
 
                     </div>
-                    <!--<img  src="https://i.postimg.cc/rpPVchJV/627ec456b7f3686aaed395ffb94195d0.jpg" />-->
-                    <!--<p id="foc">ALASTOR</p>
-                    <a id="lynmrr" href="https://xat.me/Lynette"><p>NEIGE <span>x</span></p></a>
-                    <p id="foc2">02<br />13</p>
-                    <p id="textlat">NEIGE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀GRISATRE/GRIS</p>
-                    <img src="https://i.postimg.cc/nzmGGPSM/3.png" id="imgcode" />
+                    <img src="https://i.postimg.cc/B6nVSyBk/Untitled-2.png" id="qrimg" />
+                    <div id="bars">
+                        <style>
+                            #bars {
+                                position: absolute;
+                                top: 75%;
+                                width: 35%;
+                                height: 15%;
+                                left: -10%;
+                            }
+
+                            #bar1 {
+                                position: relative;
+                                width: 100%;
+                                margin-bottom: 3.3%; 
+                                height: 30%;
+                            }
+                            #titbar { position:absolute; top:-80%; font-family:neigefont3; font-size:.7vw; color: gray; letter-spacing:.4vw;
+                            }
+                            #titbar2 {
+                                position: absolute;
+                                top: -50%; left:5%;
+                                font-family: neigefont3;
+                                font-size: .6vw;
+                                color: dimgray  ;
+                                letter-spacing: .2vw;
+                            }
+                            #progresb1 {
+                                background: #B9ACAD;
+                                width: 70%;
+                                right: 0;
+                                height: 100%;
+                                position: absolute;
+                            }
+                        </style>
+                        <div id="bar1">
+                            <p id="titbar">
+                                韧性:
+                            </p>
+                            <div id="progresb1">
+                                <p id="titbar2">
+                                    不明确的: ??/99
+                                </p>
+                            </div>
+                        </div>
+                        <div id="bar1">
+                            <p id="titbar">
+                                自豪:
+                            </p>
+                            <div id="progresb1">
+                                <p id="titbar2">
+                                     个陌生人: ??/99
+                                </p>
+                            </div>
+                        </div>
+                        <div id="bar1">
+                            <p id="titbar">
+                                力量:
+                            </p>
+                            <div id="progresb1">
+                                <p id="titbar2">
+                                    无法解释: ??/99
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <p id="textsub">
-                        Lights out, is this who you really are?
-                        Can't look into your eyes,
-                        Your twisted mind,
-                        It's dark, so dark,
-                        We end it now,
-                        It ends right here, right now,
-                        Please tell me you brought the rope,
-                        Let's light up the sky,
-                        And fade into the night
-                        <br /><br />
+                       
                         ◯⠀⠀◯⠀⠀◯⠀⠀◯
-                    </p>-->
+                    </p> 
                 </div>
             </div>
 
@@ -885,6 +934,7 @@
                     top: 10%;
                     overflow: hidden;
                     box-shadow: 0 0 .5vw black;
+                    transition: all .5s ease;
                 }
 
                 #iconfrd1 {
@@ -896,10 +946,30 @@
                     position: absolute;
                     top: 30%;
                     overflow: hidden;
-                    box-shadow: 0 0 .5vw black;
+                    box-shadow: 0 0 .5vw black; transition:all .5s ease;
                 }
-
+                    #iconfrd1:hover, #iconfrd2:hover, #iconfrd3:hover, #iconfrd4:hover, #iconfrd:hover {
+                        box-shadow: 0 0 1vw #6c1a1a;
+                    }
+                    #iconfrd1:hover p, #iconfrd2:hover p, #iconfrd3:hover p, #iconfrd4:hover p, #iconfrd:hover p {
+                        opacity:1;
+                    }
+                #iconfrd p, #iconfrd1 p, #iconfrd2 p, #iconfrd3 p, #iconfrd4 p {
+                    position: relative;
+                    top: 20%;
+                    text-align: center;
+                    color: white;
+                    background: rgba(0,0,0,.5);
+                    font-family: neigefont3;
+                    font-weight: lighter;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                    padding: .5vw;
+                    opacity: 0;
+                    transition: all .5s ease;
+                }
                 #iconfrd2 {
+                    transition: all .5s ease;
                     position: absolute;
                     width: 5vw;
                     height: 5vw;
@@ -912,6 +982,7 @@
                 }
 
                 #iconfrd3 {
+                    transition: all .5s ease;
                     position: absolute;
                     width: 5vw;
                     height: 5vw;
@@ -922,19 +993,40 @@
                     overflow: hidden;
                     box-shadow: 0 0 .5vw black;
                 }
-
-                #icon1:hover {
+                #iconfrd4 {
+                    transition: all .5s ease;
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 90%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
+                }
+                #icon1:hover { 
                     filter: grayscale(0%);
                 }
 
-                #icon1 {
+                #icon1z {
+                    filter: grayscale(80%);
+                    transition: all .5s ease;
+                    position: absolute;
+                    height: 100%;
+                     
+                }
+                    #icon1z:hover {
+                        filter: grayscale(0%);
+                    }
+
+                #icon1 { 
                     filter: grayscale(80%);
                     transition: all .5s ease;
                     position: absolute;
                     height: 100%;
                     left: -25%;
                 }
-
                 #mainp {
                     color: darkgray;
                     left: 15%;
@@ -951,7 +1043,7 @@
 
                 #cub {
                     position: absolute;
-                    background:#6c1a1a;
+                    background: #6c1a1a;
                     right: 0%;
                     width: 1.6vw;
                     opacity: .8;
@@ -966,7 +1058,7 @@
                     line-height: .3vw;
                     position: absolute;
                     right: 1%;
-                    top: 90%;
+                    top: 110%;
                     text-align: right;
                     font-size: .4vw;
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -982,15 +1074,23 @@
             </div>
             <div id="iconfrd">
                 <img id="icon1" src="https://i.pinimg.com/originals/e8/b6/0e/e8b60eda26ff6b2a2a8e7de84bf2d32f.gif" />
+                <p>YUKI</p>
             </div>
             <div id="iconfrd1">
                 <img id="icon1" src="https://i.pinimg.com/originals/76/c5/2f/76c52f8850537417a1e44680067f7c09.gif" />
+                <p>MYTZ</p>
             </div>
             <div id="iconfrd2">
-                <img id="icon1" src="https://i.pinimg.com/originals/dd/ec/f1/ddecf1dd5f0a7589f4bb512300695ee9.gif" />
+                <img id="icon1" src="https://i.makeagif.com/media/7-11-2023/JPr_j4.gif" />
+                <p>KIRI</p>
             </div>
             <div id="iconfrd3">
                 <img id="icon1" src="https://i.pinimg.com/originals/91/29/ec/9129ec195c503866d4e2ce328be57978.gif" />
+                <p>NECE</p>
+            </div>
+            <div id="iconfrd4">
+                <img id="icon1z" src="https://media.tenor.com/SzqKW0S0PTYAAAAM/nifty-hazbin-hotel.gif" />
+                <p>LALA</p>
             </div>
             <p id="aiconsp">
                 NEIGE<br />
@@ -1001,6 +1101,8 @@
 
         <div id="barlight">
             <style>
+                #qrimg { position:absolute; height:16%; top:75%; left:30%;
+                }
                 #barlight {
                     position: absolute;
                     width: 100%;
@@ -1037,6 +1139,7 @@
                     overflow-x: hidden;
                     scroll-behavior: smooth;
                 }
+
                     #posts::-webkit-scrollbar {
                         width: .5vw;
                         background: #6c1a1a;
@@ -1046,7 +1149,15 @@
                         width: .1vw;
                         background: #242424;
                     }
+
                 #finpost {
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                    top: 40%;
+                }
+
+                #finpostimg {
                     position: absolute;
                     width: 120%;
                     left: -10%;
@@ -1057,20 +1168,400 @@
                     position: absolute;
                     width: 120%;
                     left: -10%;
-                    top: 100%; filter:blur(15px);
+                    top: 100%;
+                    filter: blur(15px);
                 }
+
                 #finpost3 {
                     position: absolute;
                     width: 120%;
                     left: -10%;
                     top: 100%;
                 }
+
+                #iconsimgs img {
+                    width: 100%;
+                }
             </style>
 
-            <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="finpost" />
-            <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost2" />
+            <style>
+                @keyframes bg {
+                    0% {
+                        box-shadow: -.5vw .5vw .5vw #6c1a1a;
+                    }
 
-            <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost3" />
+                    50% {
+                        box-shadow: -.5vw .5vw 1vw #6c1a1a;
+                    }
+
+                    100% {
+                        box-shadow: -.5vw .5vw .5vw #6c1a1a;
+                    }
+                }
+
+                #xpost {
+                    animation: bg 2s infinite;
+                    border-left: .15vw solid #6c1a1a;
+                    position: relative;
+                    left: 5%;
+                    margin-top: 10%;
+                    background: black;
+                    width: 87%;
+                    height: auto;
+                }
+
+                #butonslat {
+                    width: 1.5vw;
+                    height: 7vw;
+                    left: 101%;
+                    top: 0;
+                    position: absolute;
+                }
+
+                #imgpostinx {
+                    position: relative;
+                    width: 90%;
+                    height: auto;
+                    top: 1.5vw;
+                    left: 5%;
+                    /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
+                }
+
+                #areapost {
+                    position: relative;
+                    width: 90%;
+                    height: auto;
+                    left: 5%;
+                    margin-top: 3vw;
+                }
+
+                #areaetiq {
+                    direction: ltr;
+                    position: relative;
+                    width: 98%;
+                    left: 2%;
+                    height: 2vw;
+                    bottom: -2.5vw;
+                }
+
+                #areaauth {
+                    width: 100%;
+                    height: 1.5vw;
+                    left: 2%;
+                }
+
+                #areaauth2 {
+                    position: relative;
+                    width: 100%;
+                    height: 1.5vw;
+                    left: 2%;
+                }
+
+                #areatextx {
+                    width: 90%;
+                    position: relative;
+                    left: 3%;
+                    margin-top: 1vw;
+                    border-left: .2vw solid #6c1a1a;
+                }
+
+                #iconprfil {
+                    position: relative;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    border-radius: .1vw;
+                    border: .2vw solid #6c1a1a;
+                }
+
+                #authtp {
+                    position: relative;
+                    margin-left: 2vw;
+                    top: 0;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    top: -2.3vw;
+                    color: #8e3333;
+                }
+
+                #titletext {
+                    position: relative;
+                    margin-left: .5vw;
+                    font-weight: bolder;
+                    font-size: .6vw;
+                    letter-spacing: .1vw;
+                    text-transform: uppercase;
+                    color: dimgray;
+                    text-decoration: underline;
+                    margin-bottom: .7vw;
+                }
+
+                #contenttext {
+                    line-height: .7vw;
+                    position: relative;
+                    margin-left: .5vw;
+                    font-size: .55vw;
+                    letter-spacing: .1vw;
+                    color: white;
+                }
+
+                .spaneti {
+                    position: relative;
+                    padding: .2vw;
+                    transition: all .5s ease;
+                    background: black;
+                    border-bottom: .1vw solid #b21160;
+                    font-size: .55vw;
+                    letter-spacing: .1vw;
+                    color: dimgray;
+                    margin-right: 1vw;
+                }
+
+                    .spaneti:hover {
+                        background: #b21160;
+                        color: black;
+                    }
+
+                #specialtext {
+                    text-transform: uppercase;
+                    position: relative;
+                    margin-top: .8vw;
+                    font-size: .55vw;
+                    letter-spacing: .1vw;
+                    color: rgba(200,200,200,.2);
+                    margin-left: 2%;
+                }
+
+                .butttt {
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    margin-bottom: .25vw;
+                    transition: all .5s ease;
+                    background: #171717;
+                }
+
+                #butimg {
+                    width: 1.1vw;
+                    height: 1.1vw;
+                    border-radius: .2vw;
+                    position: relative;
+                    left: -.2vw;
+                    opacity: .7;
+                }
+
+                .butttt:hover {
+                    background: #6c1a1a;
+                }
+
+                #butimg img {
+                    position: relative;
+                    width: 70%;
+                    left: 50%;
+                    top: 15%;
+                    filter: invert(100%);
+                }
+
+                #xpost:last-child {
+                    margin-bottom: 15%;
+                }
+
+                #iconsimgs {
+                    position: relative;
+                    width: 90%;
+                    height: auto;
+                    top: 1.5vw;
+                    left: 5%;
+                    /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
+                }
+
+                #iconsimgs2 {
+                    position: relative;
+                    width: 90%;
+                    height: auto;
+                    top: 1.5vw;
+                    left: 5%;
+                    /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
+                }
+
+                    #iconsimgs2 img {
+                        width: 47%;
+                        margin-left: 1%;
+                    }
+            </style>
+
+            <div id="xpost">
+                <div id="butonslat">
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                </div>
+
+                <div id="iconsimgs2">
+                    <img src="https://i.postimg.cc/xjMd0xJR/tumblr-727592428a2551be2082d95b278eddd8-c88c14a0-640.webp" />
+                    <img src="https://i.pinimg.com/736x/89/95/3a/89953aea38ce3e90489e04060006bf4f.jpg" />
+                    <br />
+                    <img src="https://i.postimg.cc/R0hF4vK6/d5c86b89fbcdb8918eb788fd49932098.jpg" />
+                    <img src="https://i.postimg.cc/HkBxqrc1/271b5a5d166bc227635ac22cac6d865b.jpg" />
+                </div>
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://i.postimg.cc/3NXrnN56/alastor-eye-twitch-1.gif" />
+                        <p id="authtp">Neige</p>
+
+                    </div>
+                    <div id="areatextx">
+                        <p id="titletext"> For the entertainment! </p>
+                        <p id="contenttext">
+                            I came here because I love seeing wasteful souls struggle to accomplish something meaningful, and fail spectacularly. Like you are doing now! Good job!
+                            <br />
+                        </p>
+                        <p id="specialtext">
+                            Dimanche | Juin 18TH 2023 21:12 PM
+                        </p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+            </div>
+
+
+            <div id="xpost">
+                <div id="butonslat">
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                </div>
+
+                <div id="iconsimgs">
+                    <img src="https://i.postimg.cc/CKtnBR4p/tumblr-8a23047c7010a9ba9638d441d6047c32-07df63da-400.webp" /><br />
+                    <img src="https://i.postimg.cc/J0CyxSgT/tumblr-56e7f33a33b5458ff5ff4e1e33d64362-c52304d1-400.webp" />
+                </div>
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://i.pinimg.com/564x/bc/74/a3/bc74a37e8c72d7abdef484cf16789284.jpg" />
+                        <p id="authtp">Lynette</p>
+
+                    </div>
+                    <div id="areatextx">
+                        <p id="titletext">Ugh, I can't...</p>
+                        <p id="contenttext">
+                            How can I face them after failing them all so hard? They came here to be saved and all I gave them was more pain. I'm just as bad as the cruelest Overlord in Hell. Maybe worse! At least they don't go around giving false hope
+                        </p>
+                        <div id="areaauth2">
+                            <img id="iconprfil" src="https://i.postimg.cc/3NXrnN56/alastor-eye-twitch-1.gif" />
+                            <p id="authtp">Neige</p>
+
+                        </div>
+                        <p id="contenttext">
+                            Smile, my dear!<br />
+                            You know, you're never fully dressed without one!
+                        </p>
+
+                        <p id="specialtext">
+                            Dimanche | Juin 18TH 2023 21:12 PM
+                        </p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+            </div>
+
+            <div id="xpost">
+                <div id="butonslat">
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                </div>
+
+                <img src="https://media.tenor.com/2120lTnYAL8AAAAM/nifty-nifty-hazbin.gif" id="imgpostinx" />
+
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://media.tenor.com/SzqKW0S0PTYAAAAM/nifty-hazbin-hotel.gif" />
+                        <p id="authtp">LALA:</p>
+
+                    </div>
+                    <div id="areatextx">
+                        <p id="titletext">Para Neige:</p>
+                        <p id="contenttext">
+                            Tu valentía y autenticidad son una inspiración para todos los que te rodean. Has demostrado que ser fiel a uno mismo es la forma más poderosa de vivir, tu homosexualidad y fortaleza iluminan el camino para quienes aún buscan su verdad.
+
+                            En este viaje de vida, has enfrentado desafíos con gracia y dignidad, y tu presencia es un testimonio de la belleza de ser uno mismo sin reservas. Que este escrito sea un reflejo del respeto y la admiración que siento por ti.
+                            <br />
+                            Gracias por ser un faro de luz y esperanza.
+                            <br />
+
+                            Con todo mi cariño y admiración.<br /><br />
+                            Lala
+                        </p>
+                        <div id="areaauth2">
+                            <img id="iconprfil" src="https://i.postimg.cc/3NXrnN56/alastor-eye-twitch-1.gif" />
+                            <p id="authtp">Neige</p>
+
+                        </div>
+                        <p id="contenttext">
+                           Siempre tan... agradable... 
+                        </p>
+                        <p id="specialtext">
+                            Dimanche | Juin 18TH 2023 21:12 PM
+                        </p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+            </div>
+
+
+            <div id="xpost">
+                <div id="butonslat">
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                </div>
+
+                <img src="https://i.postimg.cc/Yq7Cj6Qw/361f638b3a481db71b45455178bb76cd.gif" id="imgpostinx" />
+
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://i.ibb.co/p2xfY6h/222.jpg" />
+                        <p id="authtp">Butterfly</p>
+
+                    </div>
+                    <div id="areatextx">
+                        <p id="titletext">wwdewde~</p>
+                        <p id="contenttext">
+                            J'avance froidement <br />
+                            Les yeux derrière la tête haute <br />
+                            Laissant le temps <br />
+                            Anesthésier mes peines <br />
+                            Paysages sans saveur <br />
+                            Soleil blanc et froid <br />
+                            Il suffit d'un rien <br />
+                            Pour écraser mes joies <br />
+                            J'avance péniblement vers des horizons lointains <br />
+                            Le cœur indifférent, lourd, rongé par le chagrin
+                            <br />
+                        </p>
+                        <p id="specialtext">
+                            Dimanche | Juin 18TH 2023 21:12 PM
+                        </p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+            </div>
+
+            <div id="finpost">
+                <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="finpostimg" />
+                <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost2" />
+
+                <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost3" />
+            </div>
+
+
         </div>
     </div>
 </body>
