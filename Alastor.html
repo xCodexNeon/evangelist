@@ -31,8 +31,9 @@
             height: 100%;
             width: 100%;
             position: fixed;
-            background:#242424;
+            background: #242424;
         }
+
         #motiv {
             position: absolute;
             width: 100%;
@@ -44,10 +45,195 @@
     </style>
 
 
+    <script>
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            ima1 = $("#ima-00");
+            ima2 = $("#ima-10");
+            let audioData = [];
 
+            var song = new Audio();
+
+            //image.className = "image";
+
+            //var img2 = $(".static-card2");
+            //var flip = $(".flip-card2");
+
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Full Moon Full Life",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song2.mp3"
+                    },
+                    {
+                        name: "It's Going Down Now ",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song3.mp3"
+                    },
+                    {
+                        name: "Living with determination",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song4.mp3"
+                    },
+                    {
+                        name: "Memories of the city",
+                        artist: "Persona 3 Reload",
+                        src:
+                            "song5.mp3"
+                    }
+                ];
+
+                artistname.html(audioData[CurrentSong].artist + " /");
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+                ima1.addClass(audioData[CurrentSong].imagen1)
+                ima2.addClass(audioData[CurrentSong].imagen1)
+                //img2.src = audioData[CurrentSong].img2;
+                //flip.src = audioData[CurrentSong].flip;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist + " /");
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                ima1.addClass(curSong.imagen1);
+                ima2.addClass(curSong.imagen1);
+                /* document.getElementById("img-1").src = curSong.img2;*/
+                //img2.src = curSong.src;
+                //flip.src = curSong.src;
+                song.play();
+                $("#btn-play").addClass("fa-pause");
+                $("#btn-play").removeClass("fa-play");
+
+                $("img").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+                var indicatorLabel = currentLabel + " / " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play"); 
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play"); 
+                }
+            });
+
+            $("#btn-play").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#btn-play").addClass("fa-pause");
+                    $("#btn-play").removeClass("fa-play"); 
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#btn-play").removeClass("fa-pause");
+                    $("#btn-play").addClass("fa-play"); 
+                }
+            });
+
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+                animationspinpause();
+                endeq();
+            });
+            $("#play").click(function () {
+                animationspinplay();
+                song.play(); starteq()
+                playing = true;
+            });
+
+            $("#btn-pause").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+
+                }
+                if (CurrentSong == 0) {
+                    selectdsong1(); animationspinplay(); starteq()
+                }
+                if (CurrentSong == 1) {
+                    selectdsong2(); animationspinplay(); starteq()
+                } if (CurrentSong == 2) {
+                    selectdsong3(); animationspinplay(); starteq()
+                } if (CurrentSong == 3) {
+                    selectdsong4(); animationspinplay(); starteq()
+                }
+                playSong();
+            });
+            $("#textlyn3").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 3) {
+                    CurrentSong = 0;
+                    $("#ima-00").removeAttr("class");
+                    $("#ima-10").removeAttr("class");
+
+                }
+                if (CurrentSong == 0) {
+                    selectdsong1(); animationspinplay(); starteq()
+                }
+                if (CurrentSong == 1) {
+                    selectdsong2(); animationspinplay(); starteq()
+                } if (CurrentSong == 2) {
+                    selectdsong3(); animationspinplay(); starteq()
+                } if (CurrentSong == 3) {
+                    selectdsong4(); animationspinplay(); starteq()
+                }
+                playSong();
+            });
+        });
+        function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
+        function animationspinplay() {
+            $("#cdspin").css("-webkit-animation-play-state", "running");
+        }
+
+    </script>
 
 </head>
-<body id="this"  >
+<body id="this"   >
     <div id="main">
         <div id="motiv">
 
@@ -63,7 +249,7 @@
                 transition: all .5s ease;
             }
 
-                /*#profillat:hover {
+            /*#profillat:hover {
                     left: 0;
                 }*/
 
@@ -114,12 +300,99 @@
             }
         </style>
 
+        <div id="firex">
+            <style>
+                #firex {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%; left:12%;
+                    top:40%;  
+                }
 
+                #firex {
+                    /* the only thing needed is a grainy/noisy background image */
+                    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+                }
+
+                .firex::before,
+                .firex::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                }
+
+                .firex::before {
+                    content: "";
+                    background-image: var(--glitter), var(--glitter), linear-gradient( 0deg, white 0px, #ff8951 5px, #dcbc169c 30%, transparent 70% ), radial-gradient(ellipse at bottom, transparent 30%, black 60%);
+                    background-size: 350px 500px, 400px 650px, 100% 100%, 100% 100%;
+                    background-blend-mode: hard-light, color-dodge, multiply;
+                    background-position: 0px 0px, 0px 0px, var(--gradientPos);
+                    background-repeat: repeat, repeat, repeat, no-repeat;
+                    mix-blend-mode: color-dodge;
+                    filter: brightness(3.7) blur(7px) contrast(6) hue-rotate(300deg);
+                    animation: firex 1.75s linear infinite;
+                    box-shadow: inset 0 -40px 50px -60px #63bbc5;
+                }
+
+                @keyframes firex {
+                    0% {
+                        background-position: center 0px, center 0px, 50% 100%, center center;
+                    }
+
+                    100% {
+                        background-position: center -500px, center -650px, 50% 100%, center center;
+                    }
+                }
+
+
+ 
+            </style>
+            <main id="app" class="firex">
+                
+            </main>
+
+        </div>
 
         <div id="profillat">
 
             <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="backalas" />
             <img src="https://i.postimg.cc/zXZj1xFj/sqwsq2s.png" id="imgmarc" />
+        </div>
+
+
+        <div id="dwnprofile">
+            <style>
+                #dwnprofile { position:absolute; width:20%; height:30%;   top:56%; left:6.5%;
+                }
+                #cubes { position:absolute; width:40%; height:30%; border-left:.2vw solid #6c1a1a;
+                }
+                #letch {position:relative; font-family:neigefont3; color:gray; font-size:.7vw; letter-spacing:.1vw; top:-20%; left:5%;
+                }
+                #lin1cubes { position:relative; height:1vw; width:70%;  left:5%; top:-1.3vw; margin-bottom:.2vw;
+                }
+                    #lin1cubes div {
+                        float: left; margin-left:.2vw;
+                    }
+                .df1 {
+                    position: relative;
+                    width: .6vw;
+                    height: .6vw;
+                    border: .2vw solid gray;
+                    background: gray;
+                }
+                .df2 {
+                    position: relative;
+                    width: .6vw;
+                    height: .6vw;
+                    border: .2vw solid gray; 
+                }
+            </style>
+            <div id="cubes">
+                <p id="letch">电源和图形</p>
+                <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df1"></div><div class="df2"></div></div>
+                <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df2"></div><div class="df2"></div><div class="df2"></div></div>
+                <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df1"></div><div class="df1"></div></div>
+            </div>
         </div>
 
         <div id="mainprofile">
@@ -287,7 +560,8 @@
                     left: -10%;
                     border-radius: 0 .2vw .2vw 0;
                     top: 0;
-                    border: .2vw solid #6c1a1a;border-left:3vw solid #6c1a1a;
+                    border: .2vw solid #6c1a1a;
+                    border-left: 3vw solid #6c1a1a;
                     overflow: hidden;
                     box-shadow: 0 0 .4vw #6c1a1a;
                     width: 45%;
@@ -357,12 +631,13 @@
 
                 #textsub {
                     font-size: .5vw;
-                    letter-spacing: .05vw;  left:-10%;
+                    letter-spacing: .05vw;
+                    left: -10%;
                     text-align: center;
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                     position: absolute;
                     top: 92%;
-                      color:gray;
+                    color: gray;
                 }
             </style>
             <style>
@@ -719,19 +994,29 @@
                             #bar1 {
                                 position: relative;
                                 width: 100%;
-                                margin-bottom: 3.3%; 
+                                margin-bottom: 3.3%;
                                 height: 30%;
                             }
-                            #titbar { position:absolute; top:-80%; font-family:neigefont3; font-size:.7vw; color: gray; letter-spacing:.4vw;
+
+                            #titbar {
+                                position: absolute;
+                                top: -80%;
+                                font-family: neigefont3;
+                                font-size: .7vw;
+                                color: gray;
+                                letter-spacing: .4vw;
                             }
+
                             #titbar2 {
                                 position: absolute;
-                                top: -50%; left:5%;
+                                top: -50%;
+                                left: 5%;
                                 font-family: neigefont3;
                                 font-size: .6vw;
-                                color: dimgray  ;
+                                color: dimgray;
                                 letter-spacing: .2vw;
                             }
+
                             #progresb1 {
                                 background: #B9ACAD;
                                 width: 70%;
@@ -756,7 +1041,7 @@
                             </p>
                             <div id="progresb1">
                                 <p id="titbar2">
-                                     个陌生人: ??/99
+                                    个陌生人: ??/99
                                 </p>
                             </div>
                         </div>
@@ -772,9 +1057,9 @@
                         </div>
                     </div>
                     <p id="textsub">
-                       
+
                         ◯⠀⠀◯⠀⠀◯⠀⠀◯
-                    </p> 
+                    </p>
                 </div>
             </div>
 
@@ -787,6 +1072,7 @@
                     font-family: neigefont3;
                     src: url(PMINGLIU.ttf);
                 }
+
                 #infoprof {
                     position: absolute;
                     width: 20%;
@@ -908,7 +1194,7 @@
             <p id="prv">Neige</p>
             <p id="pvc">雷文德雷斯</p>
             <span id="k1">LV</span><span id="k2">6</span><span id="k3">/66</span>
-                                                         <p id="l0">親愛なるあなた、もし私がここで誰かを傷つけたいと思っていたら...<br />私はすでにそうしていたでしょう。</p>
+            <p id="l0">親愛なるあなた、もし私がここで誰かを傷つけたいと思っていたら...<br />私はすでにそうしていたでしょう。</p>
 
             <p id="lattext">XXVIII&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 阿拉斯托 &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;1533252890 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雪红</p>
         </div>
@@ -947,28 +1233,33 @@
                     position: absolute;
                     top: 30%;
                     overflow: hidden;
-                    box-shadow: 0 0 .5vw black; transition:all .5s ease;
+                    box-shadow: 0 0 .5vw black;
+                    transition: all .5s ease;
                 }
+
                     #iconfrd1:hover, #iconfrd2:hover, #iconfrd3:hover, #iconfrd4:hover, #iconfrd:hover {
                         box-shadow: 0 0 1vw #6c1a1a;
                     }
-                    #iconfrd1:hover p, #iconfrd2:hover p, #iconfrd3:hover p, #iconfrd4:hover p, #iconfrd:hover p {
-                        opacity:1;
+
+                        #iconfrd1:hover p, #iconfrd2:hover p, #iconfrd3:hover p, #iconfrd4:hover p, #iconfrd:hover p {
+                            opacity: 1;
+                        }
+
+                    #iconfrd p, #iconfrd1 p, #iconfrd2 p, #iconfrd3 p, #iconfrd4 p {
+                        position: relative;
+                        top: 20%;
+                        text-align: center;
+                        color: white;
+                        background: rgba(0,0,0,.5);
+                        font-family: neigefont3;
+                        font-weight: lighter;
+                        font-size: .7vw;
+                        letter-spacing: .2vw;
+                        padding: .5vw;
+                        opacity: 0;
+                        transition: all .5s ease;
                     }
-                #iconfrd p, #iconfrd1 p, #iconfrd2 p, #iconfrd3 p, #iconfrd4 p {
-                    position: relative;
-                    top: 20%;
-                    text-align: center;
-                    color: white;
-                    background: rgba(0,0,0,.5);
-                    font-family: neigefont3;
-                    font-weight: lighter;
-                    font-size: .7vw;
-                    letter-spacing: .2vw;
-                    padding: .5vw;
-                    opacity: 0;
-                    transition: all .5s ease;
-                }
+
                 #iconfrd2 {
                     transition: all .5s ease;
                     position: absolute;
@@ -994,6 +1285,7 @@
                     overflow: hidden;
                     box-shadow: 0 0 .5vw black;
                 }
+
                 #iconfrd4 {
                     transition: all .5s ease;
                     position: absolute;
@@ -1006,7 +1298,8 @@
                     overflow: hidden;
                     box-shadow: 0 0 .5vw black;
                 }
-                #icon1:hover { 
+
+                #icon1:hover {
                     filter: grayscale(0%);
                 }
 
@@ -1015,19 +1308,20 @@
                     transition: all .5s ease;
                     position: absolute;
                     height: 100%;
-                     
                 }
+
                     #icon1z:hover {
                         filter: grayscale(0%);
                     }
 
-                #icon1 { 
+                #icon1 {
                     filter: grayscale(80%);
                     transition: all .5s ease;
                     position: absolute;
                     height: 100%;
                     left: -25%;
                 }
+
                 #mainp {
                     color: darkgray;
                     left: 15%;
@@ -1102,15 +1396,22 @@
 
         <div id="barlight">
             <style>
-                #qrimg { position:absolute; height:16%; top:75%; left:30%;
+                #qrimg {
+                    position: absolute;
+                    height: 16%;
+                    top: 75%;
+                    left: 30%;
                 }
+
                 #barlight {
                     position: absolute;
                     width: 100%;
                     height: 5%;
                     top: 100%;
-                    animation: brig3 2s infinite; z-index:1000;
+                    animation: brig3 2s infinite;
+                    z-index: 1000;
                 }
+
                 @keyframes brig3 {
                     0% {
                         box-shadow: 0 0 .5vw #8e3333;
@@ -1400,7 +1701,7 @@
                 <div id="iconsimgs2">
                     <img src="https://i.postimg.cc/xjMd0xJR/tumblr-727592428a2551be2082d95b278eddd8-c88c14a0-640.webp" />
                     <img src="https://i.pinimg.com/736x/89/95/3a/89953aea38ce3e90489e04060006bf4f.jpg" />
-                    <br />
+                    <br />  
                     <img src="https://i.postimg.cc/R0hF4vK6/d5c86b89fbcdb8918eb788fd49932098.jpg" />
                     <img src="https://i.postimg.cc/HkBxqrc1/271b5a5d166bc227635ac22cac6d865b.jpg" />
                 </div>
@@ -1419,7 +1720,604 @@
                         <p id="specialtext">
                             Dimanche | Juin 18TH 2023 21:12 PM
                         </p>
+                    </div><br />
+                    <div id="auid">
+                        <style>
+                            #auid {
+                                text-transform: uppercase;
+                                font-family: "Roboto", Arial, sans-serif;
+                                position: relative;
+                                width: 90%;
+                                height: 8vw; 
+                                left: 4%;
+                                /*overflow: hidden;*/
+                            }
+
+                            .player {
+                                z-index: 9;
+                            }
+
+                            .player-control {
+                                position: absolute;
+                                z-index: 999999999999999;
+                                top: 120%;
+                                right: 12%;
+                            }
+
+
+
+                            #namesong {
+                                position: absolute;
+                                width: 88%;
+                                height: 70%;
+                                top: 0%;
+                                color: darkgray;
+                                left: 0%;
+                                letter-spacing: .1vw;
+                                font-size: 1vw;
+                            }
+
+
+                            #name_sng {
+                                position: relative;
+                                float: left;
+                            }
+
+                            .progress-bar {
+                                width: 95%;
+                                background: #C2B07A;
+                                opacity: .8;
+                                height: .1vw;
+                                position: absolute;
+                                top: 35%;
+                            }
+
+                            .fillBar {
+                                background: #8e3333;
+                                width: 0;
+                                height: .1vw;
+                            }
+
+                            #AT_time {
+                                width: 5vw;
+                                height: 1vw;
+                                top: 25%;
+                                right: 5%;
+                                position: absolute;
+                            }
+
+                                #AT_time p {
+                                    position: absolute;
+                                    font-family: 'Oswald', sans-serif;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                    color: lightgray;
+                                }
+
+                            .time {
+                                position: absolute;
+                                right: 0vw;
+                                color: #C2B07A;
+                                top: 1.2vw;
+                                font-family: 'Oswald', sans-serif;
+                                letter-spacing: .1vw;
+                                font-size: .5vw;
+                                overflow: hidden;
+                            }
+
+                            #cd_1 {
+                                width: 8vw;
+                                height: 1.3vw;
+                                border: .1vw solid rgba(199,48,48.3);
+                                position: absolute;
+                                left: 21vw;
+                                top: .3vw;
+                                overflow: hidden;
+                            }
+
+                            #cd_2 {
+                                width: 4.7vw;
+                                height: 1.3vw;
+                                border: .1vw solid rgba(199,48,48.3);
+                                position: absolute;
+                                left: 29vw;
+                                top: .3vw;
+                            }
+
+                            .artist-name {
+                                position: absolute;
+                                left: .1vw;
+                                top: 16%;
+                                font-family: 'Oswald', sans-serif;
+                                letter-spacing: .1vw;
+                                font-size: .6vw;
+                                color: #C2B07A;
+                                opacity: .6;
+                            }
+
+                            #cd_2 p {
+                                position: absolute;
+                                top: 10%;
+                                letter-spacing: .05vw;
+                                font-size: .4vw;
+                                left: .4vw;
+                                color: rgba(199,48,48.3);
+                                line-height: .5vw;
+                            }
+
+                            #sectcrt {
+                                position: absolute;
+                                width: 40%;
+                                height: 45%;
+                                right: -14%;
+                                top: 20%;
+                            }
+
+                            #crt {
+                                font-family: 'Montserrat', sans-serif;
+                                color: white;
+                                font-size: .45vw;
+                                letter-spacing: .1vw;
+                                text-transform: uppercase;
+                                opacity: .7;
+                            }
+
+                            #frim {
+                                position: absolute;
+                                width: 5vw;
+                                filter: invert(100%);
+                                right: 27%;
+                                top: 8%;
+                            }
+
+                            .butimg {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #btn-pause {
+                                opacity: .7;
+                                position: absolute;
+                                z-index: 99999999999999999999;
+                                top: 40%;
+                                width: 2vw;
+                                height: 2vw;
+                                filter: invert(50%) sepia(1);
+                            }
+
+                            #pause {
+                                opacity: .7;
+                                position: absolute;
+                                filter: invert(100%);
+                                top: 43%;
+                                left: 5vw;
+                                width: 1.7vw;
+                                height: 1.7vw;
+                                z-index: 999999999999;
+                                filter: invert(50%) sepia(1);
+                            }
+
+                            #play {
+                                opacity: .7;
+                                position: absolute;
+                                filter: invert(50%) sepia(1);
+                                top: 40%;
+                                left: 2.5vw;
+                                width: 2vw;
+                                height: 2vw;
+                                z-index: 999999999999;
+                            }
+
+                            #cdspin {
+                                position: absolute;
+                                width: 2.5vw;
+                                height: 2.5vw;
+                                right: -7%;
+                                top: -10%;
+                                animation: rotation 3s infinite linear;
+                            }
+
+                            @keyframes rotation {
+                                from {
+                                    transform: rotate(0deg);
+                                }
+
+                                to {
+                                    transform: rotate(359deg);
+                                }
+                            }
+                        </style>
+
+                        <img src="https://i.postimg.cc/mZMQCD4f/c2.png" id="cdspin" />
+                        <div id="areabars">
+                            <script>
+                                $("#xpost").click(function next() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 3) {
+                                        CurrentSong = 0;
+                                        $("#ima-00").removeAttr("class");
+                                        $("#ima-10").removeAttr("class");
+
+                                    }
+                                    if (CurrentSong == 0) {
+                                        selectdsong1(); animationspinplay(); starteq()
+                                    }
+                                    if (CurrentSong == 1) {
+                                        selectdsong2(); animationspinplay(); starteq()
+                                    } if (CurrentSong == 2) {
+                                        selectdsong3(); animationspinplay(); starteq()
+                                    } if (CurrentSong == 3) {
+                                        selectdsong4(); animationspinplay(); starteq()
+                                    }
+                                    playSong();
+                                });
+                                function starteq() {
+                                    let lines = document.querySelectorAll(".vertical");
+
+                                    function setEqualizer() {
+                                        for (let i = 0; i < lines.length; i += 1) {
+                                            let line = lines[i];
+                                            line.style.animation = `equalizer ${Math.random() * (3 - 0.3) + 0.3
+                                                }s ease infinite`;
+                                            line.style.animationDirection = "alternate-reverse";
+                                        }
+                                    }
+
+                                    setEqualizer();
+                                }
+                                function endeq() {
+                                    let lines = document.querySelectorAll(".vertical");
+
+                                    function setEqualizer() {
+                                        for (let i = 0; i < lines.length; i += 1) {
+                                            let line = lines[i];
+                                            line.style.animation = `equalizer ${Math.random() * (3 - 0.3) + 0.3
+                                                }s ease 1`;
+                                            line.style.animation = pause;
+                                        }
+                                    }
+
+                                    setEqualizer();
+                                }
+                            </script>
+                            <style>
+
+
+                                #areabars, #wrapper {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+                                #areabars {
+                                    width: 30%;
+                                    top: -22%;
+                                    opacity: .7;
+                                    height: 40%;
+                                    right: 14%;
+                                    position: absolute;
+                                }
+
+                                #wrapper {
+                                    flex-direction: column;
+                                }
+
+                                #container {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+
+
+
+
+                                #lines {
+                                    width: 50%;
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: flex-start;
+                                }
+
+                                .line {
+                                    width: 100%;
+                                    height: 1px;
+                                    margin: 1px;
+                                    background-color: rgb(255, 237, 202);
+                                }
+
+                                #equalizer {
+                                    position: relative;
+                                    width: 10vw;
+                                    height: 5vw; 
+                                    filter: grayscale(50%);
+                                    display: flex; top:.7vw;
+                                    justify-content: center;
+                                    align-items: center; left:6%;
+                                }
+
+                                #horizontal {
+                                    width: 32%;
+                                    left: 0%;
+                                    position: absolute;
+                                    border: .1vw solid rgb(223, 152, 0);
+                                }
+
+                                #vertical-lines {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 150px;
+                                    display: flex;
+                                    align-items: center;
+                                }
+
+                                .vertical {
+                                    width: .2vw;
+                                    height: .5vw;
+                                    border-radius: 50%;
+                                    background-color: rgb(223, 152, 0);
+                                    background-color: rgb(223, 152, 0);
+                                    animation-direction: alternate-reverse;
+                                    margin: 1px;
+                                }
+
+                                @keyframes equalizer {
+                                    from {
+                                        height: 30%;
+                                    }
+
+                                    to {
+                                        height: 5px;
+                                    }
+                                }
+                            </style>
+                            <div id="wrapper">
+
+                                <div id="equalizer">
+                                    <!--<div id="horizontal"></div>-->
+                                    <div id="vertical-lines">
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                        <div class="vertical"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div id="areasongs" onclick="starteq();">
+
+                            <style>
+                                #areasongs {
+                                    z-index: 999999999999999;
+                                    position: absolute;
+                                    width: 70%;
+                                    height: 60%;
+                                    overflow: hidden;
+                                    left: 30%;
+                                    top: 55%;
+                                }
+
+                                #song1, #song2, #song3, #song4 {
+                                    width: 10%;
+                                    height: 80%;
+                                    position: absolute;
+                                    top: 10%;
+                                    transition: all 1s ease;
+                                }
+
+
+
+                                .noselectedsong1 {
+                                    left: 70%;
+                                }
+
+                                .noselectedsong1 {
+                                    left: 63%;
+                                }
+
+                                .noselectedsong2 {
+                                    left: 75%;
+                                }
+
+                                .noselectedsong3 {
+                                    left: 87%;
+                                }
+
+
+                                .selectedsong1 {
+                                    animation: leftsong1 2s 1;
+                                    animation-fill-mode: forwards;
+                                }
+
+                                .outsong {
+                                    opacity: 0;
+                                    left: 100%;
+                                }
+
+                                @keyframes leftsong1 {
+                                    0% {
+                                        left: 63%;
+                                    }
+
+                                    100% {
+                                        left: 2%;
+                                    }
+                                }
+
+                                #numsong {
+                                    color: #C2B07A;
+                                    font-size: 1.6vw;
+                                    position: absolute;
+                                    opacity: .9;
+                                    left: 25%;
+                                    top: -12%;
+                                    font-family: 'Microsoft Himalaya';
+                                }
+
+                                #b1 {
+                                    width: .2vw;
+                                    height: 20%;
+                                    background: #C2B07A;
+                                    opacity: .4;
+                                    left: 45%;
+                                    top: 0;
+                                    position: absolute;
+                                    border-radius: .1vw;
+                                }
+
+                                #b2 {
+                                    width: .2vw;
+                                    height: 20%;
+                                    background: #C2B07A;
+                                    opacity: .4;
+                                    left: 45%;
+                                    bottom: 0;
+                                    position: absolute;
+                                    border-radius: .1vw;
+                                }
+                            </style>
+                            <script>
+                                function selectdsong2() {
+                                    $("#song1").removeClass("selectedsong1");
+                                    $("#song1").addClass("outsong");
+
+                                    $("#song2").removeClass("noselectedsong2");
+                                    $("#song2").addClass("selectedsong1");
+
+                                    $("#song3").removeClass("noselectedsong3");
+                                    $("#song3").addClass("noselectedsong2");
+
+                                    $("#song4").removeClass("outsong");
+                                    $("#song4").addClass("noselectedsong3");
+                                }
+                                function selectdsong3() {
+                                    $("#song2").removeClass("selectedsong1");
+                                    $("#song2").addClass("outsong");
+
+                                    $("#song3").removeClass("noselectedsong2");
+                                    $("#song3").addClass("selectedsong1");
+
+                                    $("#song4").removeClass("noselectedsong3");
+                                    $("#song4").addClass("noselectedsong2");
+
+                                    $("#song1").removeClass("outsong");
+                                    $("#song1").addClass("noselectedsong3");
+                                }
+                                function selectdsong4() {
+                                    $("#song3").removeClass("selectedsong1");
+                                    $("#song3").addClass("outsong");
+
+                                    $("#song4").removeClass("noselectedsong2");
+                                    $("#song4").addClass("selectedsong1");
+
+                                    $("#song1").removeClass("noselectedsong3");
+                                    $("#song1").addClass("noselectedsong2");
+
+                                    $("#song2").removeClass("outsong");
+                                    $("#song2").addClass("noselectedsong3");
+                                }
+                                function selectdsong1() {
+                                    $("#song4").removeClass("selectedsong1");
+                                    $("#song4").addClass("outsong");
+
+                                    $("#song1").removeClass("noselectedsong2");
+                                    $("#song1").addClass("selectedsong1");
+
+                                    $("#song2").removeClass("noselectedsong3");
+                                    $("#song2").addClass("noselectedsong2");
+
+                                    $("#song3").removeClass("outsong");
+                                    $("#song3").addClass("noselectedsong3");
+                                }
+                            </script>
+                            <div id="song1" class="selectedsong1" onclick="selectdsong1();">
+                                <div id="b1"></div>
+                                <p id="numsong">01</p>
+                                <div id="b2"></div>
+                            </div>
+                            <div id="song2" class="noselectedsong2" onclick="selectdsong2();">
+                                <div id="b1"></div>
+                                <p id="numsong">02</p>
+                                <div id="b2"></div>
+                            </div>
+                            <div id="song3" class="noselectedsong3" onclick="selectdsong3();">
+                                <div id="b1"></div>
+                                <p id="numsong">03</p>
+                                <div id="b2"></div>
+                            </div>
+                            <div id="song4" class="outsong" onclick="selectdsong4();">
+                                <div id="b1"></div>
+                                <p id="numsong">04</p>
+                                <div id="b2"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+
+
+                        <div class="progress-bar">
+                            <div class="fillBar"></div>
+                        </div>
+                        <div id="AT_time"><div class="time"></div></div>
+                        <div class="artist-name"></div>
+
+
+
+                        <div id="btn-pause"><img src="https://i.postimg.cc/3rpMwcQJ/ps.png" class="butimg" /></div>
+                        <div id="pause"><img src="https://i.postimg.cc/MGj5YgDn/pausa.png" class="butimg" /></div>
+                        <div id="play"><img src="https://i.postimg.cc/XJS81xHQ/boton-de-play.png" class="butimg" /></div>
+
+
+
+
+
+
+
+
                     </div>
+
                 </div>
                 <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
 
@@ -1503,7 +2401,7 @@
 
                         </div>
                         <p id="contenttext">
-                           Siempre tan... agradable... 
+                            Siempre tan... agradable...
                         </p>
                         <p id="specialtext">
                             Dimanche | Juin 18TH 2023 21:12 PM
@@ -1513,7 +2411,6 @@
                 <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
 
             </div>
-
 
             <div id="xpost">
                 <div id="butonslat">
@@ -1523,28 +2420,18 @@
                     <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
                 </div>
 
-                <img src="https://i.postimg.cc/Yq7Cj6Qw/361f638b3a481db71b45455178bb76cd.gif" id="imgpostinx" />
+                <img src="https://media.tenor.com/2120lTnYAL8AAAAM/nifty-nifty-hazbin.gif" id="imgpostinx" />
 
                 <div id="areapost">
                     <div id="areaauth">
-                        <img id="iconprfil" src="https://i.ibb.co/p2xfY6h/222.jpg" />
-                        <p id="authtp">Butterfly</p>
+                        <img id="iconprfil" src="https://media.tenor.com/SzqKW0S0PTYAAAAM/nifty-hazbin-hotel.gif" />
+                        <p id="authtp">LALA:</p>
 
                     </div>
                     <div id="areatextx">
-                        <p id="titletext">wwdewde~</p>
+                        <p id="titletext">Para Neige:</p>
                         <p id="contenttext">
-                            J'avance froidement <br />
-                            Les yeux derrière la tête haute <br />
-                            Laissant le temps <br />
-                            Anesthésier mes peines <br />
-                            Paysages sans saveur <br />
-                            Soleil blanc et froid <br />
-                            Il suffit d'un rien <br />
-                            Pour écraser mes joies <br />
-                            J'avance péniblement vers des horizons lointains <br />
-                            Le cœur indifférent, lourd, rongé par le chagrin
-                            <br />
+                         
                         </p>
                         <p id="specialtext">
                             Dimanche | Juin 18TH 2023 21:12 PM
@@ -1554,6 +2441,7 @@
                 <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
 
             </div>
+
 
             <div id="finpost">
                 <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="finpostimg" />
