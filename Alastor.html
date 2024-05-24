@@ -45,15 +45,138 @@
     </style>
 
 
-    <script>
+
+</head>
+<body id="this" onclick="">
+  
+    <script> 
+        var density = 70,
+            speed = 2,
+            winHeight = window.innerHeight,
+            winWidth = window.innerWidth,
+            start = {
+                yMin: winHeight - 50,
+                yMax: winHeight,
+                xMin: winWidth / 2 + 10,
+                xMax: winWidth / 2 + 40,
+                scaleMin: 0.1,
+                scaleMax: 0.25,
+                scaleXMin: 0.1,
+                scaleXMax: 1,
+                scaleYMin: 1,
+                scaleYMax: 2,
+                opacityMin: 0.1,
+                opacityMax: 0.4
+            },
+            mid = {
+                yMin: winHeight * 0.4,
+                yMax: winHeight * 0.9,
+                xMin: winWidth * 0.1,
+                xMax: winWidth * 0.9,
+                scaleMin: 0.2,
+                scaleMax: 0.8,
+                opacityMin: 0.5,
+                opacityMax: 1
+            },
+            end = {
+                yMin: -180,
+                yMax: -180,
+                xMin: -100,
+                xMax: winWidth + 180,
+                scaleMin: 0.1,
+                scaleMax: 1,
+                opacityMin: 0.4,
+                opacityMax: 0.7
+            };
+
+        function range(map, prop) {
+            var min = map[prop + "Min"],
+                max = map[prop + "Max"];
+            return min + (max - min) * Math.random();
+        }
+
+        function sign() {
+            return Math.random() < 0.5 ? -1 : 1;
+        }
+
+        function randomEase(easeThis, easeThat) {
+            if (Math.random() < 0.5) {
+                return easeThat;
+            }
+            return easeThis;
+        }
+
+        function spawn(particle) {
+            var wholeDuration = (10 / speed) * (0.7 + Math.random() * 0.4),
+                delay = wholeDuration * Math.random(),
+                partialDuration = (wholeDuration + 1) * (0.2 + Math.random() * 0.3);
+            TweenLite.set(particle, {
+                y: range(start, "y"),
+                x: range(start, "x"),
+                scaleX: range(start, "scaleX"),
+                scaleY: range(start, "scaleY"),
+                scale: range(start, "scale"),
+                opacity: range(start, "opacity"),
+                visibility: "hidden"
+            });
+            // Moving upward
+            TweenLite.to(particle, partialDuration, {
+                delay: delay,
+                y: range(mid, "y"),
+                ease: randomEase(Linear.easeOut, Back.easeInOut)
+            });
+            TweenLite.to(particle, wholeDuration - partialDuration, {
+                delay: partialDuration + delay,
+                y: range(end, "y"),
+                ease: Back.easeIn
+            });
+            //Moving on axis X
+            TweenLite.to(particle, partialDuration, {
+                delay: delay,
+                x: range(mid, "x"),
+                ease: Power1.easeOut
+            });
+            TweenLite.to(particle, wholeDuration - partialDuration, {
+                delay: partialDuration + delay,
+                x: range(end, "x"),
+                ease: Power1.easeIn
+            });
+            //opacity and scale
+            partialDuration = wholeDuration * (0.5 + Math.random() * 0.3);
+            TweenLite.to(particle, partialDuration, {
+                delay: delay,
+                scale: range(mid, "scale"),
+                autoAlpha: range(mid, "opacity"),
+                ease: Linear.easeNone
+            });
+            TweenLite.to(particle, wholeDuration - partialDuration, {
+                delay: partialDuration + delay,
+                scale: range(end, "scale"),
+                autoAlpha: range(end, "opacity"),
+                ease: Linear.easeNone,
+                onComplete: spawn,
+                onCompleteParams: [particle]
+            });
+        }
+        
+
+        function createParticle() {
+            var i, particleSpark;
+            for (i = 0; i < density; i += 1) {
+                particleSpark = document.createElement("div");
+                particleSpark.classList.add("spark");
+                document.body.appendChild(particleSpark);
+                spawn(particleSpark);
+            }
+        }
+
         $(document).ready(function () {
+            createParticle()
             var playing = false,
                 artistname = $(".artist-name"),
                 musicName = $(".music-name"),
                 time = $(".time"),
-                fillBar = $(".fillBar");
-            ima1 = $("#ima-00");
-            ima2 = $("#ima-10");
+                fillBar = $(".fillBar"); 
             let audioData = [];
 
             var song = new Audio();
@@ -76,16 +199,16 @@
                             "song2.mp3"
                     },
                     {
-                        name: "It's Going Down Now ",
-                        artist: "Persona 3 Reload",
+                        name: "Hell's Greatest Dad",
+                        artist: "Hazbin Hotel",
                         src:
-                            "song3.mp3"
+                            "k1.mp3"
                     },
                     {
-                        name: "Living with determination",
-                        artist: "Persona 3 Reload",
+                        name: "Stayed Gone",
+                        artist: "Hazbin Hotel",
                         src:
-                            "song4.mp3"
+                            "k2.mp3"
                     },
                     {
                         name: "Memories of the city",
@@ -97,9 +220,7 @@
 
                 artistname.html(audioData[CurrentSong].artist + " /");
                 musicName.html(audioData[CurrentSong].name);
-                song.src = audioData[CurrentSong].src;
-                ima1.addClass(audioData[CurrentSong].imagen1)
-                ima2.addClass(audioData[CurrentSong].imagen1)
+                song.src = audioData[CurrentSong].src; 
                 //img2.src = audioData[CurrentSong].img2;
                 //flip.src = audioData[CurrentSong].flip;
             }
@@ -108,9 +229,7 @@
                 var curSong = audioData[CurrentSong];
                 artistname.html(curSong.artist + " /");
                 musicName.html(curSong.name);
-                song.src = curSong.src;
-                ima1.addClass(curSong.imagen1);
-                ima2.addClass(curSong.imagen1);
+                song.src = curSong.src; 
                 /* document.getElementById("img-1").src = curSong.img2;*/
                 //img2.src = curSong.src;
                 //flip.src = curSong.src;
@@ -149,12 +268,12 @@
                     song.play();
                     playing = true;
                     $("#btn-play").addClass("fa-pause");
-                    $("#btn-play").removeClass("fa-play"); 
+                    $("#btn-play").removeClass("fa-play");
                 } else {
                     song.pause();
                     playing = false;
                     $("#btn-play").removeClass("fa-pause");
-                    $("#btn-play").addClass("fa-play"); 
+                    $("#btn-play").addClass("fa-play");
                 }
             });
 
@@ -163,12 +282,12 @@
                     song.play();
                     playing = true;
                     $("#btn-play").addClass("fa-pause");
-                    $("#btn-play").removeClass("fa-play"); 
+                    $("#btn-play").removeClass("fa-play");
                 } else {
                     song.pause();
                     playing = false;
                     $("#btn-play").removeClass("fa-pause");
-                    $("#btn-play").addClass("fa-play"); 
+                    $("#btn-play").addClass("fa-play");
                 }
             });
 
@@ -231,10 +350,9 @@
         }
 
     </script>
-
-</head>
-<body id="this"   >
+  
     <div id="main">
+
         <div id="motiv">
 
         </div>
@@ -305,8 +423,9 @@
                 #firex {
                     position: absolute;
                     width: 100%;
-                    height: 100%; left:12%;
-                    top:40%;  
+                    height: 100%;
+                    left: 12%;
+                    top: 40%;
                 }
 
                 #firex {
@@ -343,36 +462,94 @@
                         background-position: center -500px, center -650px, 50% 100%, center center;
                     }
                 }
-
-
- 
             </style>
             <main id="app" class="firex">
-                
+
             </main>
 
         </div>
 
         <div id="profillat">
+            <style>
+                #barcodes {
+                    position: absolute;
+                    filter: invert(60%);
+                    transform: rotate(90deg);
+                    top: 78%;
+                    width: 35%;
+                    height: 6%;
+                    left: 74%;
+                }
 
-            <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="backalas" />
+                #pnumr {
+                    position: absolute;
+                    font-family: Roboto;
+                    color: gray;
+                    letter-spacing: .2vw;
+                    font-size: .5vw;
+                    transform: rotate(270deg);
+                    right: -8%;
+                    top: 81.4%;
+                }
+
+                #iconmain {
+                    position: absolute;
+                    width: 3.5vw;
+                    right: -2%;
+                    top: 9%;
+                    filter: invert(70%);
+                }
+            </style>
+
             <img src="https://i.postimg.cc/zXZj1xFj/sqwsq2s.png" id="imgmarc" />
+            <img id="iconmain" src="https://i.postimg.cc/Lhdgrh5v/5.png" />
+            <img src="https://i.ibb.co/RvrKv8t/9185e570.png" id="barcodes" />
+            <p id="pnumr">1533252890</p>
+
         </div>
 
 
         <div id="dwnprofile">
             <style>
-                #dwnprofile { position:absolute; width:20%; height:30%;   top:56%; left:6.5%;
+                #dwnprofile {
+                    position: absolute;
+                    width: 20%;
+                    height: 30%;
+                    top: 56%;
+                    left: 6.5%;
                 }
-                #cubes { position:absolute; width:40%; height:30%; border-left:.2vw solid #6c1a1a;
+
+                #cubes {
+                    position: absolute;
+                    width: 40%;
+                    height: 30%;
+                    border-left: .2vw solid #6c1a1a;
                 }
-                #letch {position:relative; font-family:neigefont3; color:gray; font-size:.7vw; letter-spacing:.1vw; top:-20%; left:5%;
+
+                #letch {
+                    position: relative;
+                    font-family: neigefont3;
+                    color: gray;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    top: -20%;
+                    left: 5%;
                 }
-                #lin1cubes { position:relative; height:1vw; width:70%;  left:5%; top:-1.3vw; margin-bottom:.2vw;
+
+                #lin1cubes {
+                    position: relative;
+                    height: 1vw;
+                    width: 70%;
+                    left: 5%;
+                    top: -1.3vw;
+                    margin-bottom: .2vw;
                 }
+
                     #lin1cubes div {
-                        float: left; margin-left:.2vw;
+                        float: left;
+                        margin-left: .2vw;
                     }
+
                 .df1 {
                     position: relative;
                     width: .6vw;
@@ -380,11 +557,12 @@
                     border: .2vw solid gray;
                     background: gray;
                 }
+
                 .df2 {
                     position: relative;
                     width: .6vw;
                     height: .6vw;
-                    border: .2vw solid gray; 
+                    border: .2vw solid gray;
                 }
             </style>
             <div id="cubes">
@@ -396,128 +574,7 @@
         </div>
 
         <div id="mainprofile">
-            <script>
-                var density = 70,
-                    speed = 2,
-                    winHeight = window.innerHeight,
-                    winWidth = window.innerWidth,
-                    start = {
-                        yMin: winHeight - 50,
-                        yMax: winHeight,
-                        xMin: winWidth / 2 + 10,
-                        xMax: winWidth / 2 + 40,
-                        scaleMin: 0.1,
-                        scaleMax: 0.25,
-                        scaleXMin: 0.1,
-                        scaleXMax: 1,
-                        scaleYMin: 1,
-                        scaleYMax: 2,
-                        opacityMin: 0.1,
-                        opacityMax: 0.4
-                    },
-                    mid = {
-                        yMin: winHeight * 0.4,
-                        yMax: winHeight * 0.9,
-                        xMin: winWidth * 0.1,
-                        xMax: winWidth * 0.9,
-                        scaleMin: 0.2,
-                        scaleMax: 0.8,
-                        opacityMin: 0.5,
-                        opacityMax: 1
-                    },
-                    end = {
-                        yMin: -180,
-                        yMax: -180,
-                        xMin: -100,
-                        xMax: winWidth + 180,
-                        scaleMin: 0.1,
-                        scaleMax: 1,
-                        opacityMin: 0.4,
-                        opacityMax: 0.7
-                    };
 
-                function range(map, prop) {
-                    var min = map[prop + "Min"],
-                        max = map[prop + "Max"];
-                    return min + (max - min) * Math.random();
-                }
-
-                function sign() {
-                    return Math.random() < 0.5 ? -1 : 1;
-                }
-
-                function randomEase(easeThis, easeThat) {
-                    if (Math.random() < 0.5) {
-                        return easeThat;
-                    }
-                    return easeThis;
-                }
-
-                function spawn(particle) {
-                    var wholeDuration = (10 / speed) * (0.7 + Math.random() * 0.4),
-                        delay = wholeDuration * Math.random(),
-                        partialDuration = (wholeDuration + 1) * (0.2 + Math.random() * 0.3);
-                    TweenLite.set(particle, {
-                        y: range(start, "y"),
-                        x: range(start, "x"),
-                        scaleX: range(start, "scaleX"),
-                        scaleY: range(start, "scaleY"),
-                        scale: range(start, "scale"),
-                        opacity: range(start, "opacity"),
-                        visibility: "hidden"
-                    });
-                    // Moving upward
-                    TweenLite.to(particle, partialDuration, {
-                        delay: delay,
-                        y: range(mid, "y"),
-                        ease: randomEase(Linear.easeOut, Back.easeInOut)
-                    });
-                    TweenLite.to(particle, wholeDuration - partialDuration, {
-                        delay: partialDuration + delay,
-                        y: range(end, "y"),
-                        ease: Back.easeIn
-                    });
-                    //Moving on axis X
-                    TweenLite.to(particle, partialDuration, {
-                        delay: delay,
-                        x: range(mid, "x"),
-                        ease: Power1.easeOut
-                    });
-                    TweenLite.to(particle, wholeDuration - partialDuration, {
-                        delay: partialDuration + delay,
-                        x: range(end, "x"),
-                        ease: Power1.easeIn
-                    });
-                    //opacity and scale
-                    partialDuration = wholeDuration * (0.5 + Math.random() * 0.3);
-                    TweenLite.to(particle, partialDuration, {
-                        delay: delay,
-                        scale: range(mid, "scale"),
-                        autoAlpha: range(mid, "opacity"),
-                        ease: Linear.easeNone
-                    });
-                    TweenLite.to(particle, wholeDuration - partialDuration, {
-                        delay: partialDuration + delay,
-                        scale: range(end, "scale"),
-                        autoAlpha: range(end, "opacity"),
-                        ease: Linear.easeNone,
-                        onComplete: spawn,
-                        onCompleteParams: [particle]
-                    });
-                }
-                window.onload = createParticle;
-
-                function createParticle() {
-                    var i, particleSpark;
-                    for (i = 0; i < density; i += 1) {
-                        particleSpark = document.createElement("div");
-                        particleSpark.classList.add("spark");
-                        document.body.appendChild(particleSpark);
-                        spawn(particleSpark);
-                    }
-                }
-
-            </script>
             <style>
                 .spark {
                     background-color: #DE4A00;
@@ -964,6 +1021,16 @@
 
 
             <div id="profil">
+                <style>
+                    #miniicon1 {
+                        position: absolute;
+                        width: 2vw;
+                        top: 5%;
+                        filter: invert(100%);
+                        z-index: 100000;
+                    }
+                </style>
+                <img id="miniicon1" src="https://i.postimg.cc/6q4GjCWy/22.png" />
                 <div id="areaprof">
                     <div id="barimg"></div>
                     <div id="imgprofil">
@@ -1393,7 +1460,155 @@
                 happen in the blink of an eye
             </p>
         </div>
+        <!--<div id="particles-js">
+            <style>
+                canvas {
+                    display: block;
+                    vertical-align: bottom; z-index:1000000000; opacity:1;
+                }
 
+                /* ---- particles.js container ---- */
+                #particles-js {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            </style>
+            <script>
+                //autor/creator: https://vincentgarreau.com/particles.js/#nasa
+                
+                particlesJS("particles-js", {
+                    particles: {
+                        number: {
+                            value: 400,
+                            density: {
+                                enable: true,
+                                value_area: 3000
+                            }
+                        },
+                        color: {
+                            value: "#fc0000"
+                        },
+                        shape: {
+                            type: "circle",
+                            stroke: {
+                                width: 0,
+                                color: "#000000"
+                            },
+                            polygon: {
+                                nb_sides: 3
+                            },
+                            image: {
+                                src: "img/github.svg",
+                                width: 100,
+                                height: 100
+                            }
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true,
+                            anim: {
+                                enable: false,
+                                speed: 1,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 2,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 5,
+                                size_min: 0,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: false,
+                            distance: 500,
+                            color: "#ffffff",
+                            opacity: 0.4,
+                            width: 2
+                        },
+                        move: {
+                            enable: true,
+                            speed: 7.81,
+                            direction: "top",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false,
+                            attract: {
+                                enable: false,
+                                rotateX: 600,
+                                rotateY: 1200
+                            }
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: false,
+                                mode: "bubble"
+                            },
+                            onclick: {
+                                enable: false,
+                                mode: "repulse"
+                            },
+                            resize: true
+                        },
+                        modes: {
+                            grab: {
+                                distance: 400,
+                                line_linked: {
+                                    opacity: 0.5
+                                }
+                            },
+                            bubble: {
+                                distance: 400,
+                                size: 4,
+                                duration: 0.3,
+                                opacity: 1,
+                                speed: 3
+                            },
+                            repulse: {
+                                distance: 200,
+                                duration: 0.4
+                            },
+                            push: {
+                                particles_nb: 4
+                            },
+                            remove: {
+                                particles_nb: 2
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+                var count_particles, stats, update;
+                stats = new Stats();
+                stats.setMode(0);
+                stats.domElement.style.position = "absolute";
+                stats.domElement.style.left = "0px";
+                stats.domElement.style.top = "0px";
+                document.body.appendChild(stats.domElement);
+                count_particles = document.querySelector(".js-count-particles");
+                update = function () {
+                    stats.begin();
+                    stats.end();
+                    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+                        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+                    }
+                    requestAnimationFrame(update);
+                };
+                requestAnimationFrame(update);
+
+            </script>
+        </div>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>-->
         <div id="barlight">
             <style>
                 #qrimg {
@@ -1701,7 +1916,7 @@
                 <div id="iconsimgs2">
                     <img src="https://i.postimg.cc/xjMd0xJR/tumblr-727592428a2551be2082d95b278eddd8-c88c14a0-640.webp" />
                     <img src="https://i.pinimg.com/736x/89/95/3a/89953aea38ce3e90489e04060006bf4f.jpg" />
-                    <br />  
+                    <br />
                     <img src="https://i.postimg.cc/R0hF4vK6/d5c86b89fbcdb8918eb788fd49932098.jpg" />
                     <img src="https://i.postimg.cc/HkBxqrc1/271b5a5d166bc227635ac22cac6d865b.jpg" />
                 </div>
@@ -1728,7 +1943,7 @@
                                 font-family: "Roboto", Arial, sans-serif;
                                 position: relative;
                                 width: 90%;
-                                height: 8vw; 
+                                height: 8vw;
                                 left: 4%;
                                 /*overflow: hidden;*/
                             }
@@ -2034,11 +2249,13 @@
                                 #equalizer {
                                     position: relative;
                                     width: 10vw;
-                                    height: 5vw; 
+                                    height: 5vw;
                                     filter: grayscale(50%);
-                                    display: flex; top:.7vw;
+                                    display: flex;
+                                    top: .7vw;
                                     justify-content: center;
-                                    align-items: center; left:6%;
+                                    align-items: center;
+                                    left: 6%;
                                 }
 
                                 #horizontal {
@@ -2420,18 +2637,18 @@
                     <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
                 </div>
 
-                <img src="https://media.tenor.com/2120lTnYAL8AAAAM/nifty-nifty-hazbin.gif" id="imgpostinx" />
+                <img src="https://64.media.tumblr.com/f2c9ee3046105f64308c4f9b030f296a/cdff51825a42fe17-1c/s500x750/71142608a41670d8a2b9184b576c2ca0d8d5e027.gif" id="imgpostinx" />
 
                 <div id="areapost">
                     <div id="areaauth">
-                        <img id="iconprfil" src="https://media.tenor.com/SzqKW0S0PTYAAAAM/nifty-hazbin-hotel.gif" />
-                        <p id="authtp">LALA:</p>
+                        <img id="iconprfil" src="https://i.pinimg.com/originals/76/c5/2f/76c52f8850537417a1e44680067f7c09.gif" />
+                        <p id="authtp">MYTZ:</p>
 
                     </div>
                     <div id="areatextx">
-                        <p id="titletext">Para Neige:</p>
+                        <p id="titletext">Dear Neige:</p>
                         <p id="contenttext">
-                         
+                            Thank you for being one of the best colleagues I have ever had. You're a no-nonsense guy who almost always gets to the point and takes no nonsense. On the Internet, you often come across a lot of suckers with double intentions that you don't know if they are interested in your well-being or if they just want to catch your ass off guard and take out your nudes. But Neige, ladies and gentlemen, Neige would never do that, he is authentic and loyal. He is a person who always takes you seriously, with whom you can talk about life, about the important and the trivial... and in the end, it is difficult to lose focus and determination when you have a friend with such clear ideas. supporting you and giving you all his love. It was an excellent decision to take the time to get to know you. Wherever you are friend, rest in peace.
                         </p>
                         <p id="specialtext">
                             Dimanche | Juin 18TH 2023 21:12 PM
