@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -47,9 +47,27 @@
 
 
 </head>
-<body id="this" onclick="">
-  
-    <script> 
+<body id="this" onclick=" timerr();randomizesound();">
+    <audio controls id="static1" class="mks">
+        <source src="st3.mp3"></source>
+
+
+    </audio>
+     
+    <script>
+        function timerr() {
+            var audio1x = $("#static1")[0]; 
+            audio1x.play();
+            var id = setInterval(function () {
+               
+                cont = 1;
+                if (cont == 1) {
+                        /*clearInterval(id);*/ audio1x.play();   cont = 2;
+
+                } 
+                if (cont > 1) { cont = 1; }
+            }, 20000);
+        }
         var density = 70,
             speed = 2,
             winHeight = window.innerHeight,
@@ -158,7 +176,7 @@
                 onCompleteParams: [particle]
             });
         }
-        
+
 
         function createParticle() {
             var i, particleSpark;
@@ -176,20 +194,25 @@
                 artistname = $(".artist-name"),
                 musicName = $(".music-name"),
                 time = $(".time"),
-                fillBar = $(".fillBar"); 
+                fillBar = $(".fillBar");
             let audioData = [];
-
+            let audioData2 = [];
             var song = new Audio();
-
+            var song2 = new Audio();
+            var nx = 0;
             //image.className = "image";
 
             //var img2 = $(".static-card2");
             //var flip = $(".flip-card2");
 
             var CurrentSong = 0;
+            var CS = 0;
             window.onload = load();
 
             function load() {
+
+
+
                 audioData = [
 
                     {
@@ -217,30 +240,57 @@
                             "song5.mp3"
                     }
                 ];
+                audioData2 = [
+
+                    { 
+                        src:
+                            "r1.mp3"
+                    },
+                    { 
+                        src:
+                            "r2.mp3"
+                    },
+                    { 
+                        src:
+                            "r3.mp3"
+                    },
+                    {
+                        src:
+                            "r4.mp3"
+                    },
+                    {
+                        src:
+                            "r5.mp3"
+                    }
+                ];
 
                 artistname.html(audioData[CurrentSong].artist + " /");
                 musicName.html(audioData[CurrentSong].name);
-                song.src = audioData[CurrentSong].src; 
+                song.src = audioData[CurrentSong].src;
+                song2.src = audioData2[CS].src;
                 //img2.src = audioData[CurrentSong].img2;
                 //flip.src = audioData[CurrentSong].flip;
             }
 
             function playSong() {
                 var curSong = audioData[CurrentSong];
+               
                 artistname.html(curSong.artist + " /");
                 musicName.html(curSong.name);
-                song.src = curSong.src; 
+                song.src = curSong.src;
                 /* document.getElementById("img-1").src = curSong.img2;*/
                 //img2.src = curSong.src;
                 //flip.src = curSong.src;
-                song.play();
-                $("#btn-play").addClass("fa-pause");
-                $("#btn-play").removeClass("fa-play");
-
-                $("img").addClass("active");
-                $(".player-track").addClass("active");
+                song.play(); 
             }
+            function playsong2() {
 
+                var curs2 = audioData2[CS];
+
+                song2.src = curs2.src;
+
+                song2.play();
+            }
             song.addEventListener("timeupdate", function () {
                 var position = (100 / song.duration) * song.currentTime;
                 var current = song.currentTime;
@@ -262,7 +312,11 @@
 
                 $(".time").html(indicatorLabel);
             });
-
+           
+       
+            //$("#postx").mouseenter(function () {
+            //    randomizesound()
+            //}); 
             $("#btn-play").click(function playOrPause() {
                 if (song.paused) {
                     song.play();
@@ -343,16 +397,59 @@
                 }
                 playSong();
             });
+
+            function randomize1() {
+                nx = Math.floor((Math.random() * 5));
+                document.getElementById("demo").innerHTML = nx;
+                var xn;
+                CS = nx;
+                document.getElementById("pre").innerHTML = CS;
+                if (CS > 4) {
+                    CS = 0;
+                }
+                playsong2();
+            }
+
+            $("body").click(function rand() {
+                randomize1();
+            });
+            $("#iconfrd").mouseenter(function () {
+                randomize1();
+            });
+            $("#iconfrd2").mouseenter(function () {
+                randomize1();
+            });
+            $("#iconfrd3").mouseenter(function () {
+                randomize1();
+            });
+            $("#iconfrd4").mouseenter(function () {
+                randomize1();
+            });
+            $("#iconfrd1").mouseenter(function () {
+                randomize1();
+            });
+            $("#iconfrd5").mouseenter(function () {
+                randomize1();
+            });
+            $("#minic").mouseenter(function () {
+                randomize1();
+            });
+            $("#minic2").mouseenter(function () {
+                randomize1();
+            });
+            $("#minic3").mouseenter(function () {
+                randomize1();
+            });
         });
         function animationspinpause() { $("#cdspin").css("-webkit-animation-play-state", "paused"); }
         function animationspinplay() {
             $("#cdspin").css("-webkit-animation-play-state", "running");
         }
-
+       
     </script>
-  
-    <div id="main">
 
+    <div id="main">
+        <p id="demo"></p><span id="pre"></span>
         <div id="motiv">
 
         </div>
@@ -420,6 +517,14 @@
 
         <div id="firex">
             <style>
+                #demo, #pre {
+                    position: absolute;
+                    opacity: 1;
+                    z-index: 9999999999999999999;
+                    top: 10%;
+                    font-size: 10vw;
+                }
+
                 #firex {
                     position: absolute;
                     width: 100%;
@@ -471,6 +576,53 @@
 
         <div id="profillat">
             <style>
+                #br1 {
+                    position: absolute;
+                    background: gray;
+                    height: .1vw;
+                    right: 18%;
+                    top: 16%;
+                    width: 80%;
+                }
+
+                #num1 {
+                    position: absolute;
+                    color: gray;
+                    font-size: 4vw;
+                    top: 7%;
+                    left: -10%;
+                    font-family: 'Playfair Display', serif;
+                }
+
+                #br2 {
+                    position: absolute;
+                    background: gray;
+                    height: 32%;
+                    left: 40%;
+                    top: 24%;
+                    width: .2vw;
+                }
+
+                #num2 {
+                    position: absolute;
+                    color: gray;
+                    font-size: 4vw;
+                    top: 50%;
+                    left: -10%;
+                    letter-spacing: -.2vw;
+                    font-family: 'Playfair Display', serif;
+                    line-height: 2.9vw;
+                }
+
+                #br3 {
+                    position: absolute;
+                    background: gray;
+                    height: .1vw;
+                    right: 18%;
+                    top: 71%;
+                    width: 80%;
+                }
+
                 #barcodes {
                     position: absolute;
                     filter: invert(60%);
@@ -497,7 +649,14 @@
                     width: 3.5vw;
                     right: -2%;
                     top: 9%;
-                    filter: invert(70%);
+                    filter: invert(60%);
+                }
+
+                #barlate {
+                    position: absolute;
+                    width: 18%;
+                    right: -4%;
+                    height: 100%;
                 }
             </style>
 
@@ -505,6 +664,13 @@
             <img id="iconmain" src="https://i.postimg.cc/Lhdgrh5v/5.png" />
             <img src="https://i.ibb.co/RvrKv8t/9185e570.png" id="barcodes" />
             <p id="pnumr">1533252890</p>
+            <div id="barlate">
+                <div id="br1"></div>
+                <p id="num1">14</p>
+                <div id="br2"></div>
+                <p id="num2">26.<br />03</p>
+                <div id="br3"></div>
+            </div>
 
         </div>
 
@@ -571,6 +737,200 @@
                 <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df2"></div><div class="df2"></div><div class="df2"></div></div>
                 <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df1"></div><div class="df1"></div></div>
             </div>
+            <div id="cb1">
+                <style>
+                    #demo, #pre { z-index:-1; opacity:0;
+
+                    }
+                    #cb1 {
+                        position: absolute;
+                        top: 40%;
+                        height: 28%;
+                        width: 100%;
+                        border-left: .2vw solid #6c1a1a;
+                    }
+                    #datespcb1 { position:absolute; left:3%; color:gray; font-family:neigefont3; font-size:.65vw; letter-spacing:.1vw; line-height:1vw; top:-10%;
+                    }
+                   
+                </style>
+                <p id="datespcb1">
+                    阿拉斯托//
+                    <br />
+                    位置//无线电领主
+                    <br />
+                    墨西哥//北部
+                    <br />
+                    欢迎来到我的空间，下一个奴隶
+                </p>
+            </div>
+            <div id="cb2">
+                <style>
+                    #cb2 {
+                        position: absolute;
+                        top: 80%;
+                        height: 28%;
+                        width: 100%;
+                        border-left: .2vw solid #6c1a1a;
+                    }
+
+                    #iconalastor {
+                        position: absolute;
+                        width: 3.5vw;
+                        height: 3.5vw;
+                        left: 3%;
+                        border: .3vw solid #6c1a1a
+                    }
+
+                    #datespcb2 {
+                        position: absolute;
+                        left: 26%;
+                        color: gray;
+                        font-family: neigefont3;
+                        font-size: .65vw;
+                        letter-spacing: .1vw;
+                        line-height: 1vw;
+                        top: -10%;
+                    }
+                </style>
+                <img src="https://pbs.twimg.com/media/ENON-b7WwAIOKPG.png" id="iconalastor" />
+                <p id="datespcb2">
+                    燃烧的雪//
+                    <br />
+                    年龄：¿¿??
+                    <br />
+                    品味和偏好// 那么你想知道吗？
+                    <br />
+                    欢迎来到你的罪孽的代价......
+                </p>
+            </div>
+        
+        
+        <div id="divend">
+            <style>
+                #divend { position:absolute; width:100%; height:20%; top:118%; border:.3vw solid gray; overflow:hidden;
+                }
+                #linsep1 {
+                    position: absolute;
+                    width: 100%; top:60%;
+                    height: .3vw; background:gray;
+                }
+            </style>
+            <div id="linsep1"></div>
+        </div>
+        </div>
+        <div id="sectqr">
+            <style>
+                #sectqr {
+                    position: absolute;
+                    width: 8%;
+                    height: 35%;
+                    top: 37%;
+                    left: 13.5%; 
+                }
+
+                #dte {
+                    font-weight: bold;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    top: -2vw;
+                    right: 9%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: 2vw;
+                    letter-spacing: .2vw;
+                }
+
+                #dte2 {
+                    font-weight: bold;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    right: 10%;
+                    top: 10%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: .8vw;
+                    letter-spacing: .2vw;
+                }
+
+                #dv1 {
+                    position: absolute;
+                    width: .1vw;
+                    height: 15%;
+                    right: 13%;
+                    top: 22%;
+                    background: #171717;
+                }
+
+                #qrwhite {
+                    position: absolute;
+                    width: 3vw;
+                    left: 5%;
+                    top: 57%;
+                }
+
+                #qr1 { 
+                    right: 8%;
+                    top: 40%;
+                    position: absolute;
+                    font-family: neigefont3;
+                    color: dimgray;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #qr2 {
+                    font-family: neigefont3;
+                    right: 19%;
+                    top: 40%;
+                    position: absolute;
+                    
+                    color: dimgray;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #qr3 { 
+                    right: 32%;
+                    top: 40%;
+                    position: absolute;
+                    font-family: neigefont3;
+                    background: dimgray;
+                    font-size: .7vw;
+                    color: white; padding-left:.1vw;
+                    letter-spacing: .2vw;
+                }
+
+                #qr4 {
+                    font-weight: bold;
+                    right: 1%;
+                    transform: rotate(90deg);
+                    top: 60.5%;
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: dimgray;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+
+            
+           
+            
+            <p id="qr1">
+                愚<br />蠢<br />折<br />磨<br />着<br />我<br />们
+            </p>
+            <p id="qr2">
+                们<br />会<br />很<br />痛<br />苦<br />如<br />果<br />今<br />晚<br />永<br />不<br />结<br />束
+            </p>
+            <p id="qr3">
+                被<br />诅<br />咒<br />的<br />世<br />界
+            </p>
+            <p id="qr4">
+                https://xat.me/Neige
+            </p>
+            
         </div>
 
         <div id="mainprofile">
@@ -1022,15 +1382,56 @@
 
             <div id="profil">
                 <style>
-                    #miniicon1 {
+                    #minic {
                         position: absolute;
                         width: 2vw;
-                        top: 5%;
-                        filter: invert(100%);
+                        height: 2vw;
+                        top: 8%;
+                        left: -3%;
+                        /*filter: invert(100%);*/
                         z-index: 100000;
                     }
+
+                    #minic2 {
+                        position: absolute;
+                        width: 1.8vw;
+                        height: 1.8vw;
+                        top: 20%;
+                        left: -3%;
+                        /*filter: invert(100%);*/
+                        z-index: 100000;
+                    }
+                    #minic3 {
+                        position: absolute;
+                        width: 1.8vw;
+                        height: 1.8vw;
+                        top: 32%;
+                        left: -3%;
+                        /*filter: invert(100%);*/
+                        z-index: 100000;
+                    }
+
+                    .imgminiic {
+                        filter: invert(60%);
+                        position: absolute;
+                        width: 80%;
+                        left: 10%;
+                        transition: all .5s ease;
+                    }
+
+                    #minic:hover .imgminiic, #minic2:hover .imgminiic, #minic3:hover .imgminiic {
+                        filter: invert( 0%);
+                    }
                 </style>
-                <img id="miniicon1" src="https://i.postimg.cc/6q4GjCWy/22.png" />
+                <div id="minic">
+                    <img class="imgminiic" src="https://i.postimg.cc/xCT3PPP7/casas-1.png" />
+                </div>
+                <div id="minic2">
+                    <img class="imgminiic" src="https://i.postimg.cc/QMqq5zc1/correo.png" />
+                </div>
+                <div id="minic3">
+                    <img class="imgminiic" src="https://i.postimg.cc/5tJ3XJQf/time-and-calendar.png" />
+                </div>
                 <div id="areaprof">
                     <div id="barimg"></div>
                     <div id="imgprofil">
@@ -1255,7 +1656,7 @@
             <div id="points">
 
             </div>
-
+            
             <p id="maint"><span>阿·</span>拉斯托</p>
             <!--<img src="https://i.postimg.cc/CLP25kw5/f781b2cdc78bb3b8e98d0638cd4a109c.png" id="iconrose" />-->
             <p id="prv">Neige</p>
@@ -1304,15 +1705,15 @@
                     transition: all .5s ease;
                 }
 
-                    #iconfrd1:hover, #iconfrd2:hover, #iconfrd3:hover, #iconfrd4:hover, #iconfrd:hover {
+                    #iconfrd1:hover, #iconfrd2:hover, #iconfrd3:hover, #iconfrd4:hover, #iconfrd:hover, #iconfrd5:hover {
                         box-shadow: 0 0 1vw #6c1a1a;
                     }
 
-                        #iconfrd1:hover p, #iconfrd2:hover p, #iconfrd3:hover p, #iconfrd4:hover p, #iconfrd:hover p {
+                        #iconfrd1:hover p, #iconfrd2:hover p, #iconfrd3:hover p, #iconfrd4:hover p, #iconfrd:hover p, #iconfrd5:hover p {
                             opacity: 1;
                         }
 
-                    #iconfrd p, #iconfrd1 p, #iconfrd2 p, #iconfrd3 p, #iconfrd4 p {
+                    #iconfrd p, #iconfrd1 p, #iconfrd2 p, #iconfrd3 p, #iconfrd4 p, #iconfrd5 p {
                         position: relative;
                         top: 20%;
                         text-align: center;
@@ -1366,9 +1767,21 @@
                     box-shadow: 0 0 .5vw black;
                 }
 
-                #icon1:hover {
-                    filter: grayscale(0%);
+                #iconfrd5 {
+                    transition: all .5s ease;
+                    position: absolute;
+                    width: 5vw;
+                    height: 5vw;
+                    background: blue;
+                    right: 0;
+                    position: absolute;
+                    top: 110%;
+                    overflow: hidden;
+                    box-shadow: 0 0 .5vw black;
                 }
+                    #iconfrd1:hover #icon1, #iconfrd2:hover #icon1, #iconfrd3:hover #icon1, #iconfrd4:hover #icon1, #iconfrd:hover #icon1, #iconfrd5:hover #icon1x {
+                        filter: grayscale(0%);
+                    }
 
                 #icon1z {
                     filter: grayscale(80%);
@@ -1387,6 +1800,13 @@
                     position: absolute;
                     height: 100%;
                     left: -25%;
+                }
+                #icon1x {
+                    filter: grayscale(80%);
+                    transition: all .5s ease;
+                    position: absolute;
+                    height: 100%;
+                    left: -45%;  
                 }
 
                 #mainp {
@@ -1420,7 +1840,7 @@
                     line-height: .3vw;
                     position: absolute;
                     right: 1%;
-                    top: 110%;
+                    top: 130%;
                     text-align: right;
                     font-size: .4vw;
                     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1454,6 +1874,10 @@
                 <img id="icon1z" src="https://media.tenor.com/SzqKW0S0PTYAAAAM/nifty-hazbin-hotel.gif" />
                 <p>LALA</p>
             </div>
+            <div id="iconfrd5">
+                <img id="icon1x" src="https://i.postimg.cc/kMTrzv2n/ezgif-2-1563953591.gif" />
+                <p>TOXC</p>
+            </div>
             <p id="aiconsp">
                 NEIGE<br />
                 You never know what can<br />
@@ -1461,154 +1885,154 @@
             </p>
         </div>
         <!--<div id="particles-js">
-            <style>
-                canvas {
-                    display: block;
-                    vertical-align: bottom; z-index:1000000000; opacity:1;
-                }
+        <style>
+            canvas {
+                display: block;
+                vertical-align: bottom; z-index:1000000000; opacity:1;
+            }
 
-                /* ---- particles.js container ---- */
-                #particles-js {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                }
+            /* ---- particles.js container ---- */
+            #particles-js {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
 
-            </style>
-            <script>
-                //autor/creator: https://vincentgarreau.com/particles.js/#nasa
-                
-                particlesJS("particles-js", {
-                    particles: {
-                        number: {
-                            value: 400,
-                            density: {
-                                enable: true,
-                                value_area: 3000
-                            }
-                        },
-                        color: {
-                            value: "#fc0000"
-                        },
-                        shape: {
-                            type: "circle",
-                            stroke: {
-                                width: 0,
-                                color: "#000000"
-                            },
-                            polygon: {
-                                nb_sides: 3
-                            },
-                            image: {
-                                src: "img/github.svg",
-                                width: 100,
-                                height: 100
-                            }
-                        },
-                        opacity: {
-                            value: 0.5,
-                            random: true,
-                            anim: {
-                                enable: false,
-                                speed: 1,
-                                opacity_min: 0.1,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 2,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 5,
-                                size_min: 0,
-                                sync: false
-                            }
-                        },
-                        line_linked: {
-                            enable: false,
-                            distance: 500,
-                            color: "#ffffff",
-                            opacity: 0.4,
-                            width: 2
-                        },
-                        move: {
+        </style>
+        <script>
+            //autor/creator: https://vincentgarreau.com/particles.js/#nasa
+
+            particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 400,
+                        density: {
                             enable: true,
-                            speed: 7.81,
-                            direction: "top",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false,
-                            attract: {
-                                enable: false,
-                                rotateX: 600,
-                                rotateY: 1200
-                            }
+                            value_area: 3000
                         }
                     },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: {
-                                enable: false,
-                                mode: "bubble"
-                            },
-                            onclick: {
-                                enable: false,
-                                mode: "repulse"
-                            },
-                            resize: true
+                    color: {
+                        value: "#fc0000"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
                         },
-                        modes: {
-                            grab: {
-                                distance: 400,
-                                line_linked: {
-                                    opacity: 0.5
-                                }
-                            },
-                            bubble: {
-                                distance: 400,
-                                size: 4,
-                                duration: 0.3,
-                                opacity: 1,
-                                speed: 3
-                            },
-                            repulse: {
-                                distance: 200,
-                                duration: 0.4
-                            },
-                            push: {
-                                particles_nb: 4
-                            },
-                            remove: {
-                                particles_nb: 2
-                            }
+                        polygon: {
+                            nb_sides: 3
+                        },
+                        image: {
+                            src: "img/github.svg",
+                            width: 100,
+                            height: 100
                         }
                     },
-                    retina_detect: true
-                });
-                var count_particles, stats, update;
-                stats = new Stats();
-                stats.setMode(0);
-                stats.domElement.style.position = "absolute";
-                stats.domElement.style.left = "0px";
-                stats.domElement.style.top = "0px";
-                document.body.appendChild(stats.domElement);
-                count_particles = document.querySelector(".js-count-particles");
-                update = function () {
-                    stats.begin();
-                    stats.end();
-                    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-                        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 2,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 5,
+                            size_min: 0,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: false,
+                        distance: 500,
+                        color: "#ffffff",
+                        opacity: 0.4,
+                        width: 2
+                    },
+                    move: {
+                        enable: true,
+                        speed: 7.81,
+                        direction: "top",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
                     }
-                    requestAnimationFrame(update);
-                };
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: false,
+                            mode: "bubble"
+                        },
+                        onclick: {
+                            enable: false,
+                            mode: "repulse"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 400,
+                            line_linked: {
+                                opacity: 0.5
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 4,
+                            duration: 0.3,
+                            opacity: 1,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+            var count_particles, stats, update;
+            stats = new Stats();
+            stats.setMode(0);
+            stats.domElement.style.position = "absolute";
+            stats.domElement.style.left = "0px";
+            stats.domElement.style.top = "0px";
+            document.body.appendChild(stats.domElement);
+            count_particles = document.querySelector(".js-count-particles");
+            update = function () {
+                stats.begin();
+                stats.end();
+                if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+                    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+                }
                 requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
 
-            </script>
-        </div>
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>-->
+        </script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>-->
         <div id="barlight">
             <style>
                 #qrimg {
@@ -2661,6 +3085,7 @@
 
 
             <div id="finpost">
+
                 <img src="https://i.postimg.cc/J49ppDL2/2222.png" id="finpostimg" />
                 <img src="https://i.postimg.cc/8CZt2CMW/2222.png" id="finpost2" />
 
