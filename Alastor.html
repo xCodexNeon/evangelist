@@ -11,7 +11,7 @@
     <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
     <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="covervid.js"></script>
-    <script type="text/javascript" src="covervid.min.js"></script>
+    <script type="text/javascript" src="covervid.min.js"></script> 
 
     <script type="text/javascript" src="particles.min.js"></script>
     <link rel="stylesheet" href="anticlockwise_styles.css">
@@ -47,7 +47,7 @@
 
 
 </head>
-<body id="this" onclick=" timerr();randomizesound();">
+<body id="this" >
     <audio controls id="static1" class="mks">
         <source src="st3.mp3"></source>
 
@@ -66,7 +66,7 @@
 
                 } 
                 if (cont > 1) { cont = 1; }
-            }, 20000);
+            }, 30000);
         }
         var density = 70,
             speed = 2,
@@ -377,7 +377,7 @@
                 }
                 playSong();
             });
-            $("#textlyn3").click(function next() {
+            $("#btnopen").click(function next() {
                 CurrentSong++;
                 if (CurrentSong > 3) {
                     CurrentSong = 0;
@@ -445,10 +445,12 @@
         function animationspinplay() {
             $("#cdspin").css("-webkit-animation-play-state", "running");
         }
-       
+        function closelogin() {
+            $("#loginx").removeClass("open"); $("#loginx").addClass("close");
+        }
     </script>
 
-    <div id="main">
+    <div id="main" onclick="randomizesound();">
         <p id="demo"></p><span id="pre"></span>
         <div id="motiv">
 
@@ -519,8 +521,8 @@
             <style>
                 #demo, #pre {
                     position: absolute;
-                    opacity: 1;
-                    z-index: 9999999999999999999;
+                    opacity: 0;
+                    z-index: -1;
                     top: 10%;
                     font-size: 10vw;
                 }
@@ -3015,6 +3017,38 @@
                     <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
                 </div>
 
+                <img src="https://i.postimg.cc/hvwgF3k6/tumblr-0b7f1997b919a382ff83b83d9e36e28b-5deb8484-1280.gif" id="imgpostinx" />
+
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://i.pinimg.com/564x/bc/74/a3/bc74a37e8c72d7abdef484cf16789284.jpg" />
+                        <p id="authtp">YUKI:</p>
+
+                    </div>
+                    <div id="areatextx">
+                        <p id="titletext">I'm not very good with my signatures:</p>
+                        <p id="contenttext">
+                            but because I'm you I'll do it. A year ago we met again and believe me it was the best thing that could have happened to me. All this time since then you became the joy of my days, that everything just feels so listless and empty. You are what was missing in my world, and I hope you never leave. I love your laughs, I love your jokes... I love everything about you... And I never want to be separated from you... You are someone really talented and who works hard in everything you do, so much so that I really admire you a lot. I am always grateful for the day you came back into my life... I will never forget it and I can only tell you that I love you... thank you for always being with me both in the good times and the bad, and I hope you allow me to continue in your life supporting you. also. I love you Gris... thank you for existing and thank you for everything. Thank you for filling my life with light and happiness. I love you.
+                        </p>
+                        <p id="specialtext">
+                            Dimanche | Juin 18TH 2023 21:12 PM
+                        </p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Neige</span><span class="spaneti">#JeSuisUnMonstre</span><span class="spaneti">#JeSuisNul</span></div>
+
+            </div>
+
+
+
+            <div id="xpost">
+                <div id="butonslat">
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/bvwSLGZH/mas.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/MG3MLWRk/corazon.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/mDczf0NP/comentario.png" /></div></div>
+                    <div class="butttt"><div id="butimg"><img src="https://i.postimg.cc/cLm8Q7LL/enlace.png" /></div></div>
+                </div>
+
                 <img src="https://media.tenor.com/2120lTnYAL8AAAAM/nifty-nifty-hazbin.gif" id="imgpostinx" />
 
                 <div id="areapost">
@@ -3026,14 +3060,14 @@
                     <div id="areatextx">
                         <p id="titletext">Para Neige:</p>
                         <p id="contenttext">
-                            Tu valentía y autenticidad son una inspiración para todos los que te rodean. Has demostrado que ser fiel a uno mismo es la forma más poderosa de vivir, tu homosexualidad y fortaleza iluminan el camino para quienes aún buscan su verdad.
+                            Your bravery and authenticity are an inspiration to everyone around you. You have shown that being true to yourself is the most powerful way to live, your homosexuality and strength light the way for those still seeking their truth.
 
-                            En este viaje de vida, has enfrentado desafíos con gracia y dignidad, y tu presencia es un testimonio de la belleza de ser uno mismo sin reservas. Que este escrito sea un reflejo del respeto y la admiración que siento por ti.
+                            On this life journey, you have faced challenges with grace and dignity, and your presence is a testament to the beauty of being yourself without reservation. May this writing be a reflection of the respect and admiration I feel for you.
                             <br />
-                            Gracias por ser un faro de luz y esperanza.
+                            Thank you for being a beacon of light and hope.
                             <br />
 
-                            Con todo mi cariño y admiración.<br /><br />
+                            With all my love and admiration.<br /><br />
                             Lala
                         </p>
                         <div id="areaauth2">
@@ -3042,7 +3076,7 @@
 
                         </div>
                         <p id="contenttext">
-                            Siempre tan... agradable...
+                            thanks...
                         </p>
                         <p id="specialtext">
                             Dimanche | Juin 18TH 2023 21:12 PM
@@ -3095,5 +3129,264 @@
 
         </div>
     </div>
+
+    <div id="loginx" class="open">
+        <style>
+            .open {
+                z-index: 9999999999999999999;
+            }
+            .close { z-index:-1; opacity:0;
+            }
+            #loginx {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                background-color: #171717;
+                background-image: url(https://www.transparenttextures.com/patterns/dark-exa.png);
+               
+            }
+
+            ::selection {
+                background: #ffffff16;
+                color: snow;
+            }
+
+            ::placeholder {
+                color: #fffafa4f;
+                letter-spacing: 1px;
+            }
+
+
+            #loginx {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                background-color: #121416;
+            }
+
+                #loginx::after {
+                    user-select: none;
+                    font-weight: 100;
+                    box-sizing: border-box;
+                    -webkit-tap-highlight-color: transparent;
+                    transition: all 0.12s ease-in-out;
+                    content: "";
+                    display: block;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    filter: blur(16px) opacity(0.64) brightness(1.32);
+                    margin: 0;
+                    background: url(https://i.postimg.cc/Fzck1qy5/bitcoin-cryptocurrency-cube-abstract-4-4k.jpg) center/cover;
+                }
+
+            .form {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                flex-flow: column;
+                background: #ffffff16;
+                box-shadow: 0 8px 32px 0 #ffffff16;
+                backdrop-filter: blur(8px);
+                border-radius: 6px;
+                border: 1px solid #ffffff04;
+                padding: 0;
+                width: 80%; color:gray;
+                max-width: 240px; z-index:99999999;
+            }
+
+                .form * {
+                    transition: all 0.24s ease-in-out;
+                }
+
+                .form > .title {
+                    letter-spacing: 8px;
+                    font-size: 24px;
+                    padding: 32px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                .form > .actions {
+                    padding: 32px 0;
+                }
+
+                .form .buttons {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+
+                    .form .buttons > * {
+                        margin: 0 !important;
+                    }
+
+            input {
+                line-height: 56px;
+                padding: 0 24px;
+                background: #00000012;
+                letter-spacing: 1px;
+                border: none;
+                outline: none;
+                color: gray;
+            }
+
+                input:focus {
+                    border: none;
+                }
+
+                input:active {
+                    border: none;
+                }
+
+                input:hover {
+                    background: #00000016;
+                }
+
+                input:focus {
+                    background: #00000024;
+                }
+
+            button {
+                color: gray;
+                cursor: pointer;
+                background: #00000012;
+                line-height: 44px;
+                padding: 0 24px;
+                border-radius: 4px;
+                border: 1px solid #ffffff12;
+                margin: 32px auto;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                width: fit-content;
+            }
+
+                button:hover {
+                    border: 1px solid #ffffff16;
+                    background: #ededed0f;
+                }
+
+                button:active {
+                    transform: scale(0.96);
+                }
+
+                button.flat {
+                    background: #ededed0f;
+                    border: 0;
+                    line-height: 46px;
+                    padding: 0 25px;
+                }
+
+                    button.flat:hover {
+                        border: 0;
+                        background: #ededed24;
+                    }
+
+            .shine {
+                position: relative;
+                overflow: hidden;
+            }
+
+                .shine::after {
+                    content: "";
+                    background-color: #ededed0f;
+                    background: linear-gradient(100deg, #ffffff00 40%, #ededed0f 50%, #ffffff00 60%) #ededed0f;
+                    background-size: 200% 100%;
+                    background-position-x: 180%;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: -1;
+                    opacity: 0;
+                }
+
+                .shine:hover::after, .shine.active::after {
+                    animation: 1.2s Shine ease-in-out infinite;
+                    opacity: 1;
+                }
+
+            @keyframes Shine {
+                to {
+                    background-position-x: -20%;
+                }
+            }
+        </style>
+
+        <div class="form">
+            <span class="title">LOGIN</span>
+            <input type="email" value="Generic_Guest" />
+            <input type="password" value="Neige123" />
+            <div class="actions">
+                <div class="buttons">
+                    <button class="shine" id="btnopen"  onclick=" timerr(); closelogin();">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="shine flat">Go to ??</button>
+        <div id="firex2" class="fire2">
+            <style>
+                
+
+                #firex2 {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 2%;
+                    top: 30%;
+                }
+
+                #firex2 {
+                    /* the only thing needed is a grainy/noisy background image */
+                    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+                }
+
+                .firex2::before,
+                .firex2::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                }
+
+                .firex2::before {
+                    content: "";
+                    background-image: var(--glitter), var(--glitter), linear-gradient( 0deg, white 0px, #ff8951 5px, #dcbc169c 30%, transparent 70% ), radial-gradient(ellipse at bottom, transparent 30%, black 60%);
+                    background-size: 350px 500px, 400px 650px, 100% 100%, 100% 100%;
+                    background-blend-mode: hard-light, color-dodge, multiply;
+                    background-position: 0px 0px, 0px 0px, var(--gradientPos);
+                    background-repeat: repeat, repeat, repeat, no-repeat;
+                    mix-blend-mode: color-dodge;
+                    filter: brightness(3.7) blur(7px) contrast(6) hue-rotate(300deg);
+                    animation: firex 1.75s linear infinite;
+                    box-shadow: inset 0 -40px 50px -60px #63bbc5;
+                }
+
+                @keyframes firex2 {
+                    0% {
+                        background-position: center 0px, center 0px, 50% 100%, center center;
+                    }
+
+                    100% {
+                        background-position: center -500px, center -650px, 50% 100%, center center;
+                    }
+                }
+            </style>
+            <main id="app" class="firex2">
+
+            </main>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
