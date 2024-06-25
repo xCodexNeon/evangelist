@@ -1,0 +1,2400 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        *,
+        *:after,
+        *:before {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            background: black;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #161616;
+            margin: 0;
+        }
+
+        p,
+        a {
+            font-family: "Roboto", Arial, sans-serif;
+        }
+
+        .notice {
+            position: absolute;
+            top: 4vw;
+            right: 4vw;
+            color: white;
+            z-index: 1;
+        }
+
+            .notice a {
+                color: white;
+            }
+
+    
+        #main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        html, button, .center-center, a {
+            cursor: crosshair
+        }
+
+        .joystick__dummy {
+            mix-blend-mode: difference;
+            position: relative;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            width: 10px;
+            height: 10px;
+            background: transparent;
+            border: 1px solid #fefefe;
+            border-radius: 10px;
+            margin: 0 0 0 -6px;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .joystick__dummy--show {
+            mix-blend-mode: difference;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .joystick {
+            position: absolute;
+            mix-blend-mode: difference;
+            width: 0;
+            height: 0;
+        }
+
+            .joystick:after {
+                transition: all 0.5s ease-in-out;
+                position: absolute;
+                content: "";
+                width: 150px;
+                height: 150px;
+                border: 1px solid #fefefe;
+                border-radius: 150px;
+                top: -75px;
+                left: -75px;
+                opacity: 0;
+            }
+
+            .joystick:before {
+                transition: all 0.2s ease-in;
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: 1px solid #fefefe;
+                border-radius: 50px;
+                top: -26px;
+                left: -26px;
+            }
+
+        .joystick--down:before {
+            width: 10px;
+            height: 10px;
+            top: -6px;
+            left: -6px;
+            background: #fefefe;
+        }
+
+        .joystick--down:after {
+            transition: all 0.2s ease-in;
+            width: 10px;
+            height: 10px;
+            top: -6px;
+            left: -6px;
+            opacity: 1;
+        }
+
+        #auid {
+            text-transform: uppercase;
+            font-family: "Roboto", Arial, sans-serif;
+            position: absolute;
+            width: 25%;
+            height: 10%;
+            bottom: 3%;
+            left: 2%;
+        }
+
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            z-index: 999999999999999;
+            top: 120%;
+            right: 12%;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: white;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1vw;
+            }
+
+        #namesong {
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: lightgray;
+            left: 0%;
+            letter-spacing: .1vw;
+            font-size: 1vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: lightgray;
+            height: .2vw;
+            position: absolute;
+            top: 80%;
+        }
+
+        .fillBar {
+            background: #292929;
+            ;
+            width: 0;
+            height: .3vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 35%;
+            right: 2%;
+            position: absolute;
+        }
+
+            #AT_time p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .1vw;
+                font-size: .8vw;
+                color: lightgray;
+            }
+
+        .time {
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .7vw;
+            width: 2vw;
+            overflow: hidden;
+            color: white;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            position: absolute;
+            left: .1vw;
+            top: 90%;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: lightgray;
+        }
+
+        #cd_2 p {
+            position: absolute;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
+    </style>
+
+    <script>
+        fullscreen(); 
+        $(window).resize(fullscreen);
+        $(window).scroll(headerParallax);
+
+        function fullscreen() {
+            var masthead = $('.masthead');
+            var windowH = $(window).height();
+            var windowW = $(window).width();
+
+            masthead.width(windowW);
+            masthead.height(windowH);
+        }
+
+        function headerParallax() {
+            var st = $(window).scrollTop();
+            var headerScroll = $('.masthead h1');
+
+            if (st < 500) {
+                headerScroll.css('opacity', 1 - st / 1000);
+                $('.masthead-arrow ').css('opacity', 0.5 - st / 250);
+                headerScroll.css({
+                    '-webkit-transform': 'translateY(' + st / 7 + '%)',
+                    '-ms-transform': 'translateY(' + st / 7 + '%)',
+                    transform: 'translateY(' + st / 7 + '%)'
+                });
+            }
+        }
+    </script>
+
+</head>
+
+
+<body >
+    <div id="main">
+
+        <p id="demo"></p><span id="pre"></span>
+
+
+        <!-- slider -->
+        <style>
+            #back_neig {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: .02;
+                background-image: url(https://i.pinimg.com/originals/5a/93/4e/5a934e84f67d2a61a118ec95b1d6cb74.gif);
+            }
+
+            #lint {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                background-image: radial-gradient(transparent, transparent, black);
+                animation: inter .001s infinite;
+            }
+
+            .circle-cursor {
+                position: fixed;
+                left: 0;
+                top: 0;
+                pointer-events: none;
+                border-radius: 50%;
+            }
+
+
+
+            @keyframes inter {
+                0% {
+                    opacity: .5;
+                }
+
+                20% {
+                    opacity: .8;
+                }
+
+                50% {
+                    opacity: .6;
+                }
+
+                100% {
+                    opacity: .8;
+                }
+            }
+        </style>
+       
+        <div id="lint"></div>
+    
+        <script>
+            function toload() {
+
+                $("#main_2").addClass("main3");
+                $("#main_2").removeClass("main2");
+            }
+            function toquit() {
+
+                $("#main_2").addClass("main2");
+                $("#main_2").removeClass("main3");
+            }
+        </script>
+
+
+        <div id="back_neig"></div>
+
+        <a href="#">
+            <div id="firmN">
+                <style>
+                    @font-face {
+                        font-family: fill;
+                        src: url(Moderniz.otf);
+                    }
+
+                    @font-face {
+                        font-family: raw;
+                        src: url(raw.otf);
+                    }
+                    #firmN {
+                        background: rgba(255,255,255,.1);
+                        position: absolute;
+                        width: 6%;
+                        height: 4%;
+                        top: 90%;
+                        right: 1%;
+                    }
+
+                        #firmN p {
+                            color: rgb(165,157,154);
+                            font-size: .6vw;
+                            position: absolute;
+                            left: 35%;
+                            text-transform: uppercase;
+                            font-family: "Roboto", Arial, sans-serif;
+                            letter-spacing: .05vw;
+                        }
+                </style>
+                <p>Neige</p>
+            </div>
+        </a>
+        <div id="amenu">
+       <div id="motiv"></div>
+            
+            <style>
+                #amenu {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    right: 0%;
+                    top: 0%;
+                }
+                #motiv {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(https://i.postimg.cc/wTPd8RPD/5395121.jpg);opacity:.05;
+                }
+                a {
+                    cursor: pointer;
+                }
+
+                #cubes {
+                    position: absolute;
+                    width: 40%;
+                    height: 1vw;
+                    left: 30%;
+                    top: 10%;
+                }
+
+                    #cubes div {
+                        float: right;
+                        height: 100%;
+                        width: 12.5%;
+                    }
+
+                #d1 {
+                    background: #E4E4E4;
+                }
+
+                #d2 {
+                    background: #C4C4C4;
+                }
+
+                #d3 {
+                    background: #9E9E9E;
+                }
+
+                #d4 {
+                    background: #848484;
+                }
+
+                #d5 {
+                    background: #686868;
+                }
+
+                #d6 {
+                    background: #575757;
+                }
+
+                #d7 {
+                    background: #323232;
+                }
+
+                #d8 {
+                    background: #000000;
+                }
+
+                #p1 {
+                    position: absolute;
+                    top: 18%;
+                    left: 25%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: 1.1vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p2 {
+                    position: absolute;
+                    top: 22%;
+                    left: 41%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: 1.1vw;
+                    letter-spacing: .4vw;
+                }
+
+                #p3 {
+                    position: absolute;
+                    top: 31%;
+                    left: 33%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p4 {
+                    position: absolute;
+                    top: 35%;
+                    left: 42.3%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: .65vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p5 {
+                    position: absolute;
+                    top: 38%;
+                    left: 45%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #barx {
+                    position: absolute;
+                    width: 60%;
+                    height: .1vw;
+                    background: white;
+                    left: 20%;
+                    top: 53%;
+                    mix-blend-mode: difference;
+                }
+
+                #p6 {
+                    position: absolute;
+                    top: 60%;
+                    left: 31%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p7 {
+                    position: absolute;
+                    top: 66%;
+                    left: 21%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    text-transform: uppercase;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p8 {
+                    position: absolute;
+                    top: 72%;
+                    left: 37%;
+                    color: #16a82b;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p88 {
+                    color: white;
+                    mix-blend-mode: difference;
+                    opacity: 0;
+                    animation: blink 1s steps(1) infinite;
+                }
+
+                @keyframes blink {
+                    50% {
+                        opacity: 1;
+                    }
+                }
+
+                #p9 {
+                    position: absolute;
+                    top: 78%;
+                    left: 32%;
+                    text-transform: uppercase;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                }
+
+                #p10 {
+                    position: absolute;
+                    top: 82%;
+                    left: 42%;
+                    color: white;
+                    mix-blend-mode: difference;
+                    font-size: 1.5vw;
+                    letter-spacing: .2vw;
+                }
+
+                #baratr {
+                    position: absolute;
+                    width: 30%;
+                    height: .05vw;
+                    background: white;
+                    left: 37%;
+                    top: 89.5%;
+                    mix-blend-mode: difference;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+                #p6 {
+                    text-transform: uppercase;
+                }
+
+                #auid {
+                    mix-blend-mode: difference;
+                }
+            </style>
+
+            <!--<a id="p8" href="#" onclick="comprobar(); openconsle();">◇CONSOLE<span id="p88">|</span>◇</a>-->
+
+            <div id="part1">
+                <style>
+                    #part1 {
+                        position: absolute;
+                        width: 29%;
+                        height: 70%;
+                        top: 15%;
+                        right: 12%;
+                        background: black;
+                        opacity: 1;
+                        animation: inter2 infinite .01s;
+                    }
+
+                    #areaimgprin {
+                        position: absolute;
+                        width: 80%;
+                        height: 86%;
+                        top: 5%;
+                        left: 10%;
+                        overflow: hidden;
+                    }
+
+                    #marcprin {
+                        position: absolute;
+                        width: 90%;
+                        height: 100%;
+                        left: 5%;
+                    }
+
+                    #backprin {
+                        position: absolute;
+                        width: 80%;
+                        left: 10%;
+                        top: 9%;
+                        height: 82%;
+                    }
+
+                    @keyframes inter2 {
+                        0% {
+                            box-shadow: 0 0 1vw black;
+                        }
+
+                        20% {
+                            box-shadow: 0 0 .6vw black;
+                        }
+
+                        50% {
+                            box-shadow: 0 0 .4vw black;
+                        }
+
+                        100% {
+                            box-shadow: 0 0 1vw black;
+                        }
+                    }
+
+                    #text1q1 {
+                        position: relative;
+                        font-family: raw;
+                        font-size: 2.5vw;
+                        color: #9c97e2;
+                        top: 33%;
+                        left: 7%;
+                        opacity: .3;
+                        line-height: 3vw;
+                    }
+                    #text1q2  {
+                        position: relative;
+                        font-family: raw;
+                        font-size: 2.5vw;
+                        color: #9c97e2; top:25%;
+                        left: 7%;
+                        opacity: .35;
+                        line-height: 3vw;
+                    }
+                    #text1q3 {
+                        position: relative;
+                        font-family: raw;
+                        font-size: 2.5vw;
+                        color: #9c97e2;
+                        top: 20%;
+                        left: 7%;
+                        opacity: .4;
+                        line-height: 3vw;
+                    }
+                    #text1q4 {
+                        position: relative;
+                        font-family: raw;
+                        font-size: 2.5vw;
+                        color: #9c97e2;
+                        top: 15%;
+                        left: 7%;
+                        opacity: .5;
+                        line-height: 3vw;
+                    }
+                    #barup { position:absolute; width:50%; left:25%; top:-1%;
+                    }
+                    #barstars { position:absolute; width:8%; height:20%;   top:15%; right:5%;
+                    }
+                        #barstars img { width:100%; margin-bottom:.4vw;
+                        }
+                    #infinteimg { position:absolute; top:82%; left:84%; width:14%; transform:rotate(90deg);
+                    }
+                    #equisp { color:white; position:absolute; top:90%; right:6%; font-size:.6vw; font-weight:bold; letter-spacing:.2vw; opacity:.8;
+                    }
+                </style>
+               <img src="https://i.postimg.cc/htY5RLy1/222.png" id="barup" />
+               <div id="barstars">
+                   <img src="https://i.postimg.cc/kXw7PHd3/Captura-waifu2x-art-scan-noise3-scale.png" />
+                   <img src="https://i.postimg.cc/kXw7PHd3/Captura-waifu2x-art-scan-noise3-scale.png" />
+                   <img src="https://i.postimg.cc/kXw7PHd3/Captura-waifu2x-art-scan-noise3-scale.png" />
+               </div>
+               <div id="areaimgprin">
+
+                   <div id="rbgShiftSlider" class="rgbShiftSlider">
+                       <style>
+                           /*slider styles*/
+                           .rgbShiftSlider {
+                               display: block;
+                               position: absolute;
+                               left: 0;
+                               top: 0;
+                               /*mix-blend-mode: hard-light;*/
+                               opacity: 0.85; 
+                               width: 80%; top:5%;
+                               height: 90%;
+                               left: 10%;
+                               overflow: hidden;
+                               /*transform-origin : 50vw 300vh;*/
+                               transform-origin: 50% 50%;
+                           }
+
+                           canvas {
+                               position: absolute;
+                               left: 0;
+                               top: 0;
+                               z-index: 0;
+                           }
+
+                           nav {
+                               position: absolute;
+                               top: 4vw;
+                               left: 4vw;
+                               z-index: 1;
+                           }
+
+                               nav a {
+                                   color: white;
+                                   text-decoration: none;
+                                   margin-right: 14px;
+                               }
+                       </style>
+
+                       <script>
+                           // set images
+                           // demo works but images are blocked by codepen Cors issue
+                           var images = [
+                               "https://i.postimg.cc/h4y93Rsw-/12.jpg",
+                               //"https://i.postimg.cc/T1JGXBh4/wallpaperflare-com-wallpaper-1.jpg",
+
+                               //"https://i.postimg.cc/L81RVyMw/JZVt4-PF-black-and-white-city-wallpaper.jpg"
+                           ];
+                           // instanciate slider
+                           var rbgShiftSlider = new rbgShiftSlider({
+                               nav: true,
+                               navElement: ".scene-nav",
+                               slideImages: images,
+                               stageWidth: 520,
+                               stageHeight:780,
+                               displacementImage:
+                                   "https://i.postimg.cc/4x5pCKTJ/2.jpg",
+                               fullScreen: true,
+                               transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                               transitionGhostDuration: 0.25,
+                               transitionFilterIntensity: 150,
+                               transitionSpriteIntensity: 1,
+                               mouseDispIntensity: 3,
+                               interactive: true,
+                               autoPlay: true,
+                               autoPlaySpeed: 12000
+
+                           });
+
+                       </script>
+
+                   </div>
+                   <img id="marcprin" src="https://i.postimg.cc/pXSpK2CW/qqsqs.png" />
+               </div>
+                <img src="https://i.postimg.cc/2SZ2g2yd/Cwaptura-waifu2x-art-scan-noise3-scale.png" id="infinteimg" />
+                <p id="equisp">x x x x x</p>
+                <div id="circle1">
+                    <style>
+                        #circle1 {
+                            position: absolute;
+                            width: 5vw;
+                            height: 5vw;
+                            background: black;
+                            top: 60%;
+                            border-radius: 50%;
+                            right: 10%;
+                            color: white;
+                        }
+
+                        .go-down-btn {
+                            fill: #cbbd69;
+                            color: white;
+                            position: relative;
+                            z-index: 1;
+                            display: inline-block;
+                        }
+
+                            .go-down-btn svg {
+                                color: white;
+                                position: relative;
+                                z-index: -1;
+                                display: block;
+                            }
+
+                            .go-down-btn text {
+                                color: white;
+                                font-size: 11px;
+                                transform-origin: center;
+                            }
+
+                        @-webkit-keyframes rotate-btn {
+                            to {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        @keyframes rotate-btn {
+                            to {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        .go-down-btn text {
+                            color: white;
+                            -webkit-animation: rotate-btn 10s linear infinite;
+                            animation: rotate-btn 10s linear infinite;
+                        }
+
+                        #textrot {
+                            color: white;
+                        }
+
+                        svg {
+                            position: absolute;
+                            left: 10%;
+                            margin-top: 5%;
+                        }
+                    </style>
+                    <a href="#" class="go-down-btn" title="Scroll down">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90%" height="90%" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                        <polygon fill="#232426" points="55.334,46 49.333,58 43.333,46 " />
+                        <path id="textPath" fill="none" d="M89.322,50.197c0,22.09-17.91,40-40,40c-22.089,0-40-17.91-40-40 c0-22.089,17.911-40,40-40C71.412,10.197,89.322,28.108,89.322,50.197z" />
+                        <text id="textrot">
+                        <textPath xlink:href="#textPath"><tspan x="10">SCROLL</tspan><tspan x="47" dx="30">SCROLL</tspan><tspan x="77" dx="60">SCROLL</tspan><tspan x="107" dx="90">SCROLL</tspan></textPath>
+        </text>
+      </svg>
+                    </a>
+                </div>
+
+                <p id="text1q1">
+                    I AM <br />  
+                </p>
+                <p id="text1q2"> 
+                    a slow LEARNER,<br /> 
+                </p>
+                <p id="text1q3"> 
+                    IT’S TRUE. BUT I <br /> 
+                </p>
+                <p id="text1q4"> 
+                    LEARN.<br />
+                </p>
+
+            </div>
+
+            <div id="part2">
+                <style>
+                 
+                    #part2 {
+                        animation: inter2 infinite .01s;
+                        position: absolute;
+                        width: 42%;
+                        height: 70%;
+                        top: 15%;
+                        left: 13%; overflow:hidden;
+                        z-index:99;
+                        background: black;
+                        opacity: 1;
+                    }
+                    #areaposts { position:absolute; overflow:auto; height:75%; top:9%; width:60%; right:10%;   
+                    }
+                        #areaposts::-webkit-scrollbar {
+                            width: 0vw;
+                            background: transparent;
+                            mix-blend-mode: difference;
+                        }
+
+                       /* #areaposts::-webkit-scrollbar-thumb {
+                            width: .2vw;
+                            background: #b21160;
+                            border-radius: 1vw;
+                        }*/
+                        #areaposts img { position:relative; width:100%; margin-bottom:5%;
+                        }
+                    #codbarsimg { position:absolute; transform:rotate(90deg); width:6vw; filter:grayscale(60%); right:-2%; top:15%;
+                    }
+                    #stars { position:absolute; width:17%; height:5%;   top:2%; right:10%; 
+                    }
+                        #stars img {
+                            width: 1.5vw;
+                            height: 1.5vw;
+                            float: right;
+                            border-radius: 50%;
+                            border: .1vw solid #9c97e2;
+                            margin-left: .5vw;
+                        }
+                    #xarea { position:absolute; width:4%; height:22%;   left:29%; top:4%; z-index:2;
+                    }
+                        #xarea img {
+                            width: 80%;
+                            height: 25%;  
+                            filter: grayscale(40%);
+                            margin-bottom:.3vw;
+                        }
+                    #frase1 {
+                        font-size: 3vw;
+                        z-index: 2;
+                        position: absolute;
+                        opacity: .5;
+                        font-family: fill;
+                        left: 26%;
+                        color: transparent;
+                        top: 20%;
+                        -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #849DDE;
+                        filter: blur(1px);
+                    }
+                    #frase2 {
+                        color: #9c97e2;
+                        font-size: 1.3vw;
+                        position: absolute;
+                        top: 52%;
+                        left: 28%;
+                        font-family: Oswald;
+                        filter: blur(.8px)  ;
+                        z-index: 2;
+                        text-shadow: 0 0 .5vw #2A5AD5;
+                        letter-spacing: .1vw;
+                    }
+                </style>
+                <div id="stars">
+                    <img src="https://i.postimg.cc/htG6kpdQ/stock-vector-point-star-icon-design-vector-1944934309.png" />
+                    <img src="https://i.postimg.cc/htG6kpdQ/stock-vector-point-star-icon-design-vector-1944934309.png" />
+                    <img src="https://i.postimg.cc/htG6kpdQ/stock-vector-point-star-icon-design-vector-1944934309.png" />
+                </div>
+                <div id="xarea">
+                    <img src="https://i.postimg.cc/HWbPNj6M/x.png" /><br /> 
+                    <img src="https://i.postimg.cc/HWbPNj6M/x.png" /><br /> 
+                    <img src="https://i.postimg.cc/HWbPNj6M/x.png" /><br /> 
+                </div>
+                <p id="frase1">
+                    Resilient, shy determined sincere
+                    <!--I am a slow learner, it’s true. But I learn.-->
+                </p>
+                <p id="frase2">
+                    HE'S  A MONSTER.<br />
+                    Meriggiare
+                </p>
+                <div id="lattext">
+                    <style>
+                        #lattext { position:absolute; width:15%; height:45%; top:33%; right:0;   z-index:2;
+                        }
+                        #ftext1 {
+                            text-transform: uppercase;
+                            transform: rotate(90deg);
+                            color: #2A5AD5;
+                            font-size: .8vw;
+                            text-shadow: 0 0 .5vw #2A5AD5;
+                            position: absolute;
+                            font-weight: bold; top:28%; right:-60%;
+                            font-family: Calibri;
+                            width: 200%;
+                            /*filter: blur(.8px);*/
+                            z-index: 2;
+                        }
+                        #ftext2 {
+                            text-transform: uppercase;
+                            transform: rotate(90deg);
+                            color: #2A5AD5;
+                            font-size: 1.7vw;
+                            text-shadow: 0 0 .5vw #2A5AD5;
+                            position: absolute;
+                            
+                            top: 35%;
+                            right: -38%;
+                            font-family: Calibri;
+                            width: 200%;
+                            /*filter: blur(.8px);*/
+                            z-index: 1;
+                        }
+                        #ftext3 {
+                            background: #2A5AD5; height:45%; width:1.3vw; top:13%; right:80%; position:absolute;
+                        }
+                        #flore { position:absolute; height:45%; left:-10%; bottom:.5vw; border-bottom:.1vw solid white;
+                        }
+                    </style>
+                    <p id="ftext1">←&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;&nbsp;I play a little game</p>
+                    <p id="ftext2">I assume</p>
+                    <div id="ftext3"></div>
+                </div>
+                <img id="codbarsimg" src="https://i.postimg.cc/Gh4v6Dph/9185e570.png" />
+                <div id="areaposts">
+                    <img src="https://i.postimg.cc/0yqFQPFm/06ceb5ddf2d849b61205cf4e6b662e03.jpg" style="transform:scaleX(-1)" />
+                    <br /> <br />
+                    <img src="https://i.postimg.cc/8PvxNjKN/5eec90e8d2fb0d7376a1618b1200c946.jpg" />
+                    <br /> <br />
+                    <img src="https://i.postimg.cc/cLMjtPGz/80989f1a241c8a4d341aff6887ee8bb5.jpg" />  
+                </div>
+                <!--<img src="https://i.postimg.cc/pTsQQ8tL/11q1q.jpg" id="flore" />-->
+                <div id="profillat">
+                    <style>
+                        #profillat { position:absolute; width:25%; left:0; height:100%;  
+                        }
+                        #imgprofl { position:absolute; width:3vw; height:3vw; border-radius:50%; border:.2vw solid white; left:15%; top:5%;
+                        }
+                    </style>
+                    <img id="imgprofl" src="https://64.media.tumblr.com/862b58e8d7360bf4d0dbbb514ac41104/b783978f4f501dfd-fd/s1280x1920/3223d826a2a223e500eb985dde90804efe02d643.pnj"/>
+                    <div id="profildat">
+                        <style>
+                            #profildat { position:absolute; width:60%; height:7%;   top:5.5%; left:50%;
+                            }
+                            #pp1 { position:absolute; font-family:Calibri; font-weight:bold; color:white; top:-50%;
+                            }
+                            #pp2 {
+                                position: absolute;
+                                font-family: Calibri; font-size:.6vw; letter-spacing:.1vw; left:2%;
+                                color: white;
+                                top: 25%;
+                            }
+                            #pp3 {
+                                position: absolute;
+                                font-family: Calibri;
+                                font-size: .5vw;
+                                letter-spacing: .1vw;
+                                left: 2%;
+                                color: white;
+                                top: 60%; opacity:.7;
+                            }
+                        </style>
+                        <p id="pp1">Meriggiare</p>
+                        <p id="pp2">Velka@xat.me</p>
+                        <p id="pp3">1542991141</p>
+                    </div>
+                    <div id="lattext2">
+                        <style>
+                            @font-face {
+                                font-family: neigefont3;
+                                src: url(PMINGLIU.ttf);
+                            }
+                            #lattext2 { position:absolute; width:.1vw; height:50%; background:white; left:30%; top:15%;
+                            }
+                            #lattextx2 { font-family:neigefont3; font-size:1.8vw; color:white; position:absolute; text-align:center; left:-1.9vw; font-weight:bold;
+                            }
+                            #lattextx3 {
+                                font-family: neigefont3;
+                                font-size:  .8vw;
+                                color: white;
+                                position: absolute;
+                                text-align: center;
+                                left: .3vw; opacity:.8; color:lightgray; top:10%;
+                            }
+                                #lattextx3 span { opacity:.8; font-size:.6vw; font-family:Calibri; position:absolute; top:120%; left: .1vw;
+                                }
+
+                        </style>
+                        <p id="lattextx2">中<br />午<br />·<br />平<br />静<br />之<br />歌</p>
+                        <p id="lattextx3">相<br /><br />信<br /><br />我<span>M<br />e<br />r<br />i<br />g<br />g<br />i<br />a<br />r<br />e</span></p>
+                    </div>
+                    <p id="numb">01</p>
+                
+                </div>
+                <div id="backnei">
+                    <style>
+                        #numb { position:absolute; color:white; left:5%; top:70%; font-size:6vw; font-weight:bold;
+                        }
+                        #backnei {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            opacity: .2;
+                            background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
+                        }
+                    </style>
+                </div>
+            </div>
+
+
+        </div>
+        <script>
+            function saltadv1() {
+                $("#advert").removeClass("adv1");
+                $("#advert").addClass("advv1");
+            } function quitadv1() {
+                $("#advert").removeClass("advv1");
+                $("#advert").addClass("adv1");
+            } function saltadv2() {
+                $("#advert2").removeClass("adv1");
+                $("#advert2").addClass("advv1");
+            } function quitadv2() {
+                $("#advert2").removeClass("advv1");
+                $("#advert2").addClass("adv1");
+            }
+        </script>
+
+        
+        <div id="Aaudio">
+            <style>
+
+                #Aaudio {
+                    filter: grayscale(100%);
+                    background: inherit;
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 20%;
+                    left: 0;
+                    bottom: 0;
+                    height: 10%;
+                }
+
+                #abtnaud {
+                    position: absolute;
+                    width: 100%;
+                    height: 70%;
+                    top: 60%;
+                }
+
+                .butplayer {
+                    filter: blur(0px) grayscale(100%);
+                    float: left;
+                    height: 1vw;
+                    top: -.25vw;
+                    width: 1vw;
+                    margin-left: 1vw;
+                    position: relative;
+                }
+
+                .butpl {
+                    position: absolute;
+                    width: 1.5vw;
+                    height: 1.5vw;
+                    left: 0;
+                    top: .3vw;
+                    border-radius: .2vw;
+                }
+
+                    .butpl:hover {
+                        filter: blur(0px) hue-rotate(550deg) invert(100%);
+                    }
+
+                    .butpl img {
+                        position: absolute;
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        /*filter: invert(100%);*/
+                        left: .07vw;
+                        top: .1vw;
+                    }
+
+                #pause, #play, #next, #prev, #stop {
+                    width: 2vw;
+                    height: 2vw;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .progress-bar {
+                    top: 45%;
+                    right: 5%;
+                    width: 90%;
+                    background: rgb(74,82,101);
+                    height: .35vw;
+                    position: absolute;
+                }
+
+                .fillBar {
+                    background: rgb(116, 129, 160);
+                    width: 0;
+                    height: .35vw;
+                }
+
+
+                /* #namesong {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-weight: bold;
+                                    color: #b21160;
+                                    letter-spacing: .1vw;
+                                    font-size: .55vw;
+                                }*/
+
+                .artist-name {
+                    position: absolute;
+                    width: 88%;
+                    left: 10%;
+                    height: 100%;
+                    top: 10%;
+                    letter-spacing: .1vw;
+                    font-size: .5vw;
+                }
+
+
+
+
+
+                .time {
+                    position: absolute;
+                    left: 12%;
+                    top: 100%;
+                    width: 220%;
+                    color: rgb(8,210,255);
+                    letter-spacing: .1vw;
+                    font-size: .5vw;
+                    overflow: hidden;
+                }
+
+                #name_sng {
+                    position: relative;
+                    float: left;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    left: .1vw;
+                    top: 25%;
+                    left: 5%;
+                    color: rgb(8,210,255);
+                    font-family: Roboto;
+                    letter-spacing: .1vw;
+                    font-size: .7vw;
+                    opacity: .6;
+                }
+
+                #namesong {
+                    position: relative;
+                    color: rgb(8,210,255);
+                    font-family: Roboto;
+                    font-size: 1vw;
+                    font-weight: bold;
+                    margin-top: .5vw;
+                    left: 5%;
+                    top: -8%;
+                }
+
+                #fillimgbar {
+                    width: 1vw;
+                    height: 1vw;
+                    position: absolute;
+                    top: -.4vw;
+                    left: -3%;
+                }
+            </style>
+            <div class="progress-bar">
+                <div class="fillBar"><img src="https://i.postimg.cc/yN9t9fxG/Captuera.png" id="fillimgbar" /></div>
+            </div>
+
+
+            <div id="AT_time"><div class="time"></div></div>
+            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+            <div class="artist-name"></div>
+
+            <div id="abtnaud">
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                        <div id="prev" class="fas fa-backward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:1vw; height:1vw; left:.35vw; top:.3vw;" />
+                        <div id="play"> </div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl" id="butonnext">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                        <div id="next" class="fas fa-forward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                        <div id="pause"> </div>
+                    </div>
+
+                </div>
+                <!--<div class="butplayer">
+                <div class="butpl">
+                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                    <div id="stop"> </div>
+                </div>
+
+            </div>-->
+            </div>
+
+
+
+        </div>
+
+
+
+        <div id="tTerminal" class="noview">
+            <script>
+                function openconsle() {
+                    $("#tTerminal").removeClass("noview");
+
+                    $("#tTerminal").addClass("view");
+                }
+                function closconsle() {
+                    $("#tTerminal").removeClass("view");
+
+                    $("#tTerminal").addClass("noview");
+                }
+                function openfriendslist() {
+                    $("#main_2").addClass("main3");
+                    $("#afirms").addClass("gotofriends");
+                    $("#arfirms").addClass("gotofriends2");
+                    $("#afirms").removeClass("normalfriends");
+                    $("#arfirms").removeClass("normalfriends2");
+
+                }
+                function closefriendslist() {
+                    $("#afirms").removeClass("gotofriends");
+                    $("#arfirms").removeClass("gotofriends2");
+
+                    $("#afirms").addClass("normalfriends");
+                    $("#arfirms").addClass("normalfriends2");
+
+
+                }
+            </script>
+            <div id="barconsole">
+                <img src="https://i.postimg.cc/q7YYWS9p/st-small-507x507-pad-600x600-f8f8f8-u6.png" id="iconconsole" /><p id="titleconsole">CONSOLE V2.0899</p>
+                <div id="closeconsole" onclick="closconsle();"><p>x</p></div>
+            </div>
+            <div id="terminal">
+
+                <style>
+                    .view {
+                        opacity: 1;
+                        z-index: 99;
+                    }
+
+                    .noview {
+                        opacity: -1;
+                        z-index: -1;
+                    }
+
+                    #closeconsole p {
+                        position: absolute;
+                        top: -100%;
+                        font-size: .8vw;
+                        left: 30%;
+                    }
+
+                    #closeconsole {
+                        position: absolute;
+                        top: 18%;
+                        right: 1%;
+                        border: .1vw solid black;
+                        width: 1vw;
+                        height: 1vw;
+                        cursor: pointer;
+                    }
+
+                    #iconconsole {
+                        position: absolute;
+                        height: 1vw;
+                        left: 1%;
+                        top: 18%;
+                    }
+
+                    #barconsole {
+                        position: absolute;
+                        width: 100%;
+                        height: 5%;
+                        background: white;
+                    }
+
+                    #titleconsole {
+                        font-family: Consolas;
+                        position: absolute;
+                        top: -.5vw;
+                        z-index: 99;
+                        font-size: .9vw;
+                        left: 5%;
+                    }
+
+                    @font-face {
+                        font-family: space;
+                        src: url(space.TTF);
+                    }
+
+                    @font-face {
+                        font-family: spacetext;
+                        src: url(space.TTF);
+                    }
+
+                    #tTerminal {
+                        cursor: auto;
+                        position: absolute;
+                        width: 50%;
+                        height: 70%;
+                        left: 5%;
+                        top: 10%;
+                        border-radius: .4vw;
+                        font-family: Consolas;
+                        border: .2vw solid white;
+                        background: rgba(0,0,0,.5);
+                        overflow: hidden;
+                    }
+
+                    #terminal {
+                        background: black;
+                        top: -2%;
+                        color: white;
+                        font-family: Consolas;
+                        position: absolute;
+                        width: 100%;
+                        height: 105%;
+                        animation: text-blink 0.01s steps(2) infinite;
+                        /*font: .875em/1.6 'Inconsolata', monospace;*/
+
+                        font-weight: 400;
+                        padding: 1em;
+                        margin: 5% 0;
+                        text-shadow: 0 0 5px rgba(79,195,255, .8);
+                    }
+
+                        #terminal section p, a, marquee {
+                            font-size: .8vw;
+                            font-family: Consolas;
+                        }
+
+                    @keyframes text-blink {
+                        from, to {
+                            opacity: 1;
+                        }
+
+                        50% {
+                            opacity: 0.5;
+                        }
+                    }
+
+                    ::selection {
+                        background: transparent;
+                    }
+
+                    ::-webkit-selection {
+                        background: transparent;
+                    }
+
+                    abbr {
+                        cursor: help;
+                    }
+
+                    ul {
+                        color: white;
+                        list-style: none;
+                        font-size: .8vw;
+                        font-family: Consolas;
+                    }
+
+                    li {
+                        margin: .5vw 0 0;
+                        font-family: Consolas;
+                        margin-left: -7%;
+                        list-style: none;
+                        color: white;
+                    }
+
+                    ul li a {
+                        color: red;
+                    }
+
+                    @keyframes flashText {
+                        0% {
+                            opacity: .3
+                        }
+
+                        100% {
+                            opacity: 1
+                        }
+                    }
+
+                    kbd {
+                        border: 1px solid dimgray;
+                        font-family: Consolas;
+                        text-transform: uppercase;
+                        color: rgb(8,210,255);
+                        padding: 0 .2em;
+                    }
+
+                    #cod {
+                        border: 10px solid dimgray;
+                        font-family: Consolas;
+                        box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+                    }
+
+                    input[type="text"] {
+                        font-family: Consolas;
+                        max-width: 25em;
+                        border: none;
+                        color: rgb(237, 115, 115);
+                        background: transparent;
+                        padding: 0 .5em;
+                    }
+
+                        input[type="text"]:focus {
+                            background: transparent;
+                            outline: none;
+                        }
+
+                    #cmd2 {
+                        animation-delay: .4s;
+                        animation-duration: .5s;
+                        font-family: Consolas;
+                        color: white;
+                    }
+
+                    .command {
+                        display: block;
+                        font-size: .8vw;
+                        font-family: Consolas;
+                        margin: 2em 0;
+                    }
+
+
+                    section {
+                        display: none;
+                        font-family: Consolas;
+                    }
+
+                    .open {
+                        display: block;
+                    }
+
+                    #cod {
+                        padding: .2vw;
+                    }
+
+                    #nameux {
+                        color: white;
+                        text-transform: uppercase;
+                        padding: .2vw;
+                    }
+
+                    #nameux2 {
+                        color: white;
+                        text-transform: uppercase;
+                        padding: .2vw;
+                    }
+
+                    #terminal span {
+                        font-family: Consolas;
+                        display: block;
+                        font-size: .8vw;
+                        line-height: 1;
+                        color: white;
+                        /*  animation: flashText 1s ease-out alternate infinite;*/
+                    }
+                </style>
+                <section id="error">
+                    <p>Command not found!<p>
+                    <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                </section>
+                <section id="home">
+                    <p>人工智能。 TERMINAL V tech 6.38 NEIG UI V1.94 REV 1.00</p>
+                    <p>A console dev by Neige©</p>
+                    <p>The music player is off by default, to turn it on, type 'next'</p>
+                    <p><br /><span>Type [command] + <kbd>Enter</kbd></span></p>
+                    <ul>
+                        <li>'home' -- Display this menu</li>
+                        <li>'play' 'pause' 'next' 'prev' -- Controls the player</li>
+                        <li>'lists' -- Display music list</li>
+                        <li>'aboutme' -- About this xatspace and console</li>
+                        <li>'listfriends' -- List of friends</li>
+                        <li>'neige' -- Open section about me</li>
+                        <li>'exit' -- Logout</li>
+                    </ul>
+                </section>
+                <section id="listfriends">
+                    <p>//. List Friends / file [42:203] </p>
+                    <p>>...  </p>
+
+                    <ul>
+                        <!--<li>'<a id="afriend" href="#">Yuki</a>' -- the reason for her current state</li>-->
+                        <li>'<a id="afriend" href="#">myt</a>' -- whispers of calm</li>
+                        <li>'<a id="afriend" href="#">kiri</a>' -- an escape door</li>
+                        <li>'<a id="afriend" href="#">lala</a>' -- schizophrenic crazy</li>
+                        <li>'<a id="afriend" href="#">chris</a>' -- depression and joy</li>
+                        <li>'<a id="afriend" href="#">toxic</a>' -- sweet agony</li>
+                        <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                        <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                        <li>Do you want to go to the friends and signatures section?</li>
+                        <li>'signs' -- To go</li>
+                        <li>'home' -- return to main file</li>
+                    </ul>
+                </section>
+                <section id="lists">
+                    <p>
+                        Music player list
+
+                    </p>
+                    <ul>
+                        <li>'play1' -- Avalon</li>
+                        <li>'play2' -- Au crepuscule de nos reves</li>
+                        <li>'play3' -- Full Moon Full Life</li>
+                        <li>'play4' -- drag</li>
+                        <li>'play5' -- la reine trayeuse</li>
+                        <li>'play6' -- Recueillement</li>
+                        <li>'home' -- Return</li>
+                    </ul>
+                </section>
+                <section id="play">
+                    <p>Playing.song...</p>
+
+                </section>
+                <section id="return">
+                    <p>Return to main menu.</p>
+
+                </section>
+                <section id="play1">
+                    <p>Playing now: <br />AVALON / ZERUEL</p>
+                </section>
+                <section id="play3">
+                    <p>Playing now:<br />Full Moon Full Life</p>
+
+                </section>
+                <section id="play2">
+                    <p>Playing now:</p><br />
+                    <p>au crepuscule de nos reves / amesoeurs</p>
+
+                </section>
+                <section id="play4">
+                    <p>Playing now:</p><br />
+                    <p>drag / low</p>
+
+                </section>
+                <section id="play5">
+                    <p>Playing now:</p><br />
+                    <p>la reine trayeuse / amesoeurs</p>
+
+                </section>
+                <section id="play6">
+                    <p>Playing now:</p><br />
+                    <p>Recueillement / amesoeurs</p>
+
+                </section>
+                <section id="deisgns">
+                    <p>Designs... work in progress</p>
+
+                </section>
+                <section id="next">
+                    <p>Next.song...</p>
+
+                </section>   <section id="prev">
+                    <p>Prev.song...</p>
+
+                </section>
+                <section id="sings">
+                    <p>Go to list friends...</p>
+
+                </section>
+                <section id="pause">
+                    <p>Stop.song...</p>
+
+                </section>
+                <section id="error">
+                    <p>Command not found!<p>
+                    <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                </section>
+                <section id="aboutme">
+                    <p>人工智能。 TERMINAL V tech 6.38 VOID UI V1.94 REV 1.00</p>
+                    <p>
+                        A console dev by Neige© <br />
+                        USERNAME: GENERICGUEST%$RSSTY8899000000<br></br>
+                        PASSWORD: GENERICPASS%&&&78256%%%%%00
+                    </p>
+                    <p>LOGIN...&nbsp; &nbsp;&nbsp;&nbsp; DONE!!</p>
+                    <p>
+                        "What a beatifull day to die!"  Welcome to the console of this xatspace <br />
+                        Enjoy you stay!<br />
+                        jQuery Terminal: version 3.38.1 Copyright (c) 2019-2024 <br />
+                        Console AI 0.2 VER 2.0<br />
+                        UI VER 1.94<br />
+                        ALL RIGHTS RESERVED, XAT.COM<br />
+                        Dev by Neige <br />
+
+                    </p>
+                </section>
+
+                <section id="exit">
+
+
+
+                    <p> Breach time Remaing: 7 seconds</p> <br />
+                    <p>
+                        exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                        Plase wait... &nbsp; &nbsp;&nbsp; &nbsp;<br />
+                        Deleting temporal archives... &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                        Logout sucess! &nbsp; &nbsp;&nbsp;&nbsp;
+
+                    </p>
+                </section>
+
+
+
+                <p id="cmd2" class="command">NEIG_UI:SYS:/$<input id="txxt" type="text"></p>
+
+                <script>
+                    var cm = 1;
+                    var at = 0;
+                    function comprobar() {
+
+                        if (cm == 1) { entertomyspace(); cm++; }
+                        else if (cm > 1) { cm = 0; } {
+
+                        }
+                    }
+                    //function comprobarClave() {
+                    //    clave1 = document.getElementById("password").value;
+                    //    user1 = document.getElementById("text1").value;
+
+                    //    if ((clave1 != "") && (user1 != "")) {
+                    //        $("#login").addClass("removelogin"); $("#login").addClass("addlogin");
+                    //        cl();
+
+
+                    //    }
+                    //    else {
+                    //        at++;
+                    //        document.getElementById("attempts").textContent = "Null user or bad password. " + at + " Attempts";
+
+                    //    }
+
+                    //}
+                    var playing = false,
+                        artistname = $(".artist-name"),
+                        musicName = $(".music-name"),
+                        time = $(".time"),
+                        fillBar = $(".fillBar");
+                    imgbar = $("#fillimgbar");
+                    let audioData = [];
+
+                    var song = new Audio();
+                    var CurrentSong = 0;
+                    window.onload = load();
+
+                    function load() {
+                        audioData = [
+                            {
+                                name: "avalon",
+                                artist: "zeruel",
+                                src:
+                                    "Avalon.mp3"
+                            },
+                            {
+                                name: "au crepuscule de nos reves",
+                                artist: "amesoeurs",
+                                src:
+                                    "AuCrepuscule.mp3"
+                            },
+
+                            {
+                                name: "Full Moon Full Life",
+                                artist: "Persona 3 Reload",
+                                src:
+                                    "song2.mp3"
+                            },
+                            {
+                                name: "drag",
+                                artist: "low",
+                                src:
+                                    "Drag.mp3"
+                            },
+                            {
+                                name: "la reine trayeuse",
+                                artist: "amesoeurs",
+                                src:
+                                    "song4.mp3"
+                            },
+                            {
+                                name: "Recueillement",
+                                artist: "amesoeurs",
+                                src:
+                                    "Recueillement.mp3"
+                            }
+
+
+
+                        ]; var namesongxx = audioData[CurrentSong].name;
+
+                        artistname.html(audioData[CurrentSong].artist);
+                        musicName.html(audioData[CurrentSong].name);
+                        song.src = audioData[CurrentSong].src;
+                    }
+
+
+                    function playSong() {
+                        var curSong = audioData[CurrentSong];
+                        //artistname.html();
+                        musicName.html(curSong.name /*+ " / " + curSong.artist*/);
+                        artistname.html(curSong.artist /*+ " /"*/);
+                        song.src = curSong.src;
+                        song.play();
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        $(".player-track").addClass("active");
+                    }
+                    song.addEventListener("timeupdate", function () {
+                        var position = (100 / song.duration) * song.currentTime;
+                        var current = song.currentTime;
+                        var duration = song.duration;
+                        var durationMinute = Math.floor(duration / 60);
+                        var durationSecond = Math.floor(duration - durationMinute * 60);
+                        var durationLabel = durationMinute + ":" + durationSecond;
+                        currentSecond = Math.floor(current);
+                        currentMinute = Math.floor(currentSecond / 60);
+                        currentSecond = currentSecond - currentMinute * 60;
+                        // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                        if (currentSecond < 10) {
+                            currentSecond = "0" + currentSecond;
+                        }
+                        var currentLabel = currentMinute + ":" + currentSecond;
+
+                        var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                        fillBar.css("width", position + "%");
+                        imgbar.css("left", position + "%");
+
+                        $(".time").html(indicatorLabel);
+
+                    });
+
+
+                    $("#play").click(function () {
+
+                        song.play();
+                        playing = true; simus();
+                    });
+                    $("#botonon3").click(function () {
+
+                        song.play();
+                        playing = true; simus();
+                    });
+                    $("#pause").click(function () {
+                        song.pause();
+                        playing = false; nomus();
+                    }); $("#botonoff3").click(function () {
+                        song.pause();
+                        playing = false; nomus();
+                    });
+                    $("#stop").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 5) {
+                            CurrentSong = 0;
+                        }
+                        song.pause(); nomus();
+                        playing = false;
+                    });
+                    $("#prev").click(function prev() {
+                        CurrentSong--;
+                        if (CurrentSong < 0) {
+                            CurrentSong = 5;
+                        }
+                        playSong();
+                    });
+
+                    $("#butonnext").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 5) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    });
+                    function aleatorio() {
+
+                    } var nx = 0;
+                    function entermainsong() {
+                        nx = Math.floor((Math.random() * 5) + 1);
+                        document.getElementById("demo").innerHTML = nx;
+                        var xn;
+                        CurrentSong = nx;
+                        document.getElementById("pre").innerHTML = CurrentSong;
+                        if (CurrentSong > 5) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    }
+
+                    function entertomyspace() {
+                        (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+                        // Let's do it!!
+                        $(document).ready(function () {
+
+
+
+                            $('.command').hide();
+                            $('#home').focus();
+                            $('#txxt').focus();
+                            $('#home').addClass('open');
+                            $('#home').textTyper({
+                                speed: 20,
+                                afterAnimation: function () {
+                                    $('.command').fadeIn();
+                                    $('#txxt').focus();
+                                    $('#txxt').val('');
+                                }
+                                //beforeAnimation: function () { $("nofocus").focus(); }
+                            });
+
+                            // get array of section ids, that exist in DOM
+                            var sectionArray = [];
+                            // We are using <section> here, you can use <div> or <article> if you want
+                            $('section').each(function (i, e) {
+                                //you can use e.id instead of $(e).attr('id')
+                                sectionArray.push($(e).attr('id'));
+                            });
+
+                            // Debug
+                            //console.log(sectionArray);
+
+
+
+                            // Command Input------------------------------
+
+                            $('#txxt').keyup(function (e) {
+
+                                if (e.which == 13) {// ENTER key pressed
+
+                                    clave1 = $('#txxt').val();
+                                    nextsong = $('#txxt').val();
+                                    prevsong = $('#txxt').val();
+                                    $(document).ready(function () {
+
+
+                                    });
+
+
+                                    if (clave1 == "exit") {
+                                        $("#cmd2").addClass("novis"); $("#cmd2").removeClass("visi");
+                                    }
+                                    else if ((clave1 == "media") || (clave1 == "next") || (clave1 == "prev") || (clave1 == "resume")) {
+                                        $("#auid").removeClass("novis"); $("#auid").addClass("visi");
+                                    }
+                                    else { $("#auid").removeClass("visi"); $("#auid").addClass("novis"); }
+                                    $('.command').hide();
+
+                                    var nombresincortar = $('#txxt').val();
+                                    var nombrecortado = nombresincortar.split(" ");
+                                    var destination = nombrecortado[0];
+                                    if (nombrecortado[1] == null) {
+                                        nombrecortado[1] = "Unknow";
+                                    }
+                                    /*  var nameuser = nombrecortado[1];*/
+
+
+                                    $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+
+
+                                    if ($.inArray(destination, sectionArray) == -1) {
+                                        $('#error').addClass('open');
+                                        $('#error').siblings().removeClass('open');
+
+                                    }
+
+                                    // All sections with class .open init textTyper
+
+
+                                    $('.open').textTyper({
+                                        speed: 20,
+                                        afterAnimation: function () {
+                                            $('.command').fadeIn();
+
+                                            $('#txxt').val('');
+
+                                            let reproducir = false;
+                                            let musica = new Audio("be3p.mp3");
+                                            musica.loop = true;
+
+                                            //arranca la música en bucle
+                                            musica.addEventListener('ended', function () {
+
+                                                this.play();
+                                            }, false);
+                                            musica.play();
+
+                                            function resumeAudio() {
+                                                if (!reproducir) {
+                                                    reproducir = true;
+                                                    musica.play();
+                                                }
+                                            }
+
+                                            function pauseAudio() {
+                                                if (reproducir) {
+                                                    reproducir = false;
+                                                    musica.pause();
+                                                }
+                                            }
+
+                                            //$("#cmd2").click(function () {
+                                            //    if (!reproducir) {
+                                            //        reproducir = true;
+                                            //        musica.pause();
+                                            //    }
+                                            //});
+                                            function teclado(objeto) {
+                                                var tecla = objeto.which;
+                                                var num;
+
+                                                switch (tecla) {
+                                                    //case 82: //m
+                                                    //    resumeAudio();
+                                                    //    break;
+                                                    case 13: //n
+                                                        if (!reproducir) {
+                                                            reproducir = true;
+                                                            musica.pause();
+                                                        }
+                                                        break;
+
+                                                }
+
+                                            }
+
+                                            document.addEventListener('keydown', teclado, false);
+                                            $('#txxt').focus();
+                                        }
+                                    });
+
+                                    function ns() {
+                                        CurrentSong++;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "signs") {
+                                        closconsle(); openfriendslist();
+                                    }
+                                    if (nextsong == "next") {
+                                        CurrentSong++;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "play1") {
+                                        CurrentSong = 1;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "play2") {
+                                        CurrentSong = 2;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "play3") {
+                                        CurrentSong = 3;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "play4") {
+                                        CurrentSong = 4;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "play5") {
+                                        CurrentSong = 5;
+                                        if (CurrentSong > 5) {
+                                            CurrentSong = 0;
+                                        }
+
+                                        playSong();
+                                    }
+                                    if (nextsong == "prev") {
+                                        CurrentSong--;
+                                        if (CurrentSong < 0) {
+                                            CurrentSong = 5;
+                                        }
+                                        playSong();
+                                    }
+                                    if (nextsong == "pause") {
+                                        song.pause();
+                                        playing = false;
+                                    } if (nextsong == "exit") {
+
+                                        closconsle();
+                                    }
+                                    if (nextsong == "return") {
+                                        outtomenu();
+                                    }
+                                    if (nextsong == "neige") {
+
+                                        function entrancesurl2() {
+                                            var url = "P3Neige.html";
+                                            $(location).attr('href', url);
+                                        }
+                                        setInterval(entrancesurl2, 10000);
+                                    }
+                                    if (nextsong == "resume") {
+                                        song.play();
+                                        playing = true;
+                                    }
+                                }// end if ENTER key pressed
+                                //$("#cmd2").focus();
+
+                                $().focus();
+                            });// end keyup function
+
+                            // End Command Input-----------------------------
+
+                        });
+
+                    }
+                </script>
+
+            </div>
+        </div>
+
+
+
+        <script>
+            (function () {
+                var Joystick, follow;
+
+                Joystick = (function () {
+                    class Joystick {
+                        setCoordinates(data) {
+                            return this.options.coordiantes_to_follow = data;
+                        }
+
+                        follow() {
+                            var coordinates, dumping, offset, valueX, xd, yd;
+                            if (!this.element.data("dumping")) {
+                                dumping = this.element.data("dumping") || this.options.dumping;
+                                this.element.data("dumping", dumping);
+                            } else {
+                                dumping = this.element.data("dumping");
+                            }
+                            // Offset element
+                            offset = this.element.offset();
+                            xd = this.options.offset.x + this.options.coordiantes_to_follow.x - offset.left;
+                            yd = this.options.offset.y + this.options.coordiantes_to_follow.y - offset.top;
+                            if (this.status === "up") {
+                                valueX = offset.left + xd / dumping;
+                            } else {
+                                valueX = this.startCoordinate.x;
+                            }
+                            if (this.status === "down") {
+                                if (offset.top >= (this.startCoordinate.y + 100) || offset.top <= (this.startCoordinate.y - 100 + 12)) {
+                                    this.destroyDummy();
+                                    this.status = "up";
+                                }
+                            }
+                            coordinates = {
+                                x: valueX,
+                                y: offset.top + yd / dumping
+                            };
+                            this.element.css({
+                                "left": coordinates.x,
+                                "top": coordinates.y
+                            });
+                            this.options.onChange(coordinates);
+                            if (!this.disable) {
+                                return requestAnimationFrame(() => {
+                                    return this.follow();
+                                });
+                            }
+                        }
+
+                        createDummy() {
+                            this.dummy1 = $("<div class=\"joystick__dummy joystick__dummy--up\" />");
+                            this.dummy2 = $("<div class=\"joystick__dummy joystick__dummy--down\" />");
+                            $("body").append(this.dummy1).append(this.dummy2);
+                            $(this.dummy1).css({
+                                "position": "absolute",
+                                "left": this.startCoordinate.x,
+                                "top": this.startCoordinate.y + 100
+                            }).addClass("joystick__dummy--show");
+                            return $(this.dummy2).css({
+                                "position": "absolute",
+                                "left": this.startCoordinate.x,
+                                "top": this.startCoordinate.y - 100
+                            }).addClass("joystick__dummy--show");
+                        }
+
+                        destroyDummy() {
+                            $(this.dummy1).removeClass("joystick__dummy--show");
+                            return $(this.dummy2).removeClass("joystick__dummy--show");
+                        }
+
+                        addBehaviour() {
+                            $(document).on("mousedown", (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                this.status = "down";
+                                this.startCoordinate = {
+                                    "x": e.pageX,
+                                    "y": e.pageY
+                                };
+                                $(this.element).addClass("joystick--down");
+                                return this.createDummy();
+                            });
+                            return $(document).on("mouseup", (e) => {
+                                this.status = "up";
+                                $(this.element).removeClass("joystick--down");
+                                return this.destroyDummy();
+                            });
+                        }
+
+
+                        // Constructor class
+                        constructor(element, options) {
+                            // Set options
+                            this.options = $.extend({}, this.defaults, options);
+                            this.element = $(element);
+                            this.disable = this.options.disable;
+                            this.addBehaviour();
+                            if (!this.disable) {
+                                this.follow();
+                            }
+                        }
+
+                    };
+
+                    Joystick.prototype.status = "up";
+
+                    Joystick.prototype.startCoordinate = {
+                        x: 0,
+                        y: 0
+                    };
+
+                    Joystick.prototype.defaults = {
+                        dumping: 1,
+                        disable: false,
+                        coordiantes_to_follow: {
+                            x: 0,
+                            y: 0
+                        },
+                        offset: {
+                            x: 0,
+                            y: 0
+                        },
+                        onChange: function (coordinates) { }
+                    };
+
+                    return Joystick;
+
+                }).call(this);
+
+                follow = new Joystick("#joystick", {
+                    offset: {
+                        x: 0,
+                        y: 0
+                    }
+                });
+
+                $(window).on("mousemove.follow", function (e) {
+                    return follow.setCoordinates({
+                        x: e.pageX,
+                        y: e.pageY
+                    });
+                });
+
+            }).call(this);
+
+        </script>
+        <!-- slider nav -->
+        <div id="crdts">
+            <style>
+                #p_t6 {
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+                    top: 94%;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                }
+
+                #p_t7 {
+                    mix-blend-mode: difference;
+                    font-family: 'Oswald', sans-serif;
+                    /*font-family: 'Poiret One', cursive;*/ right: 2.5%;
+                    top: 95.5%;
+                    position: absolute;
+                    font-size: .6vw;
+                    color: white;
+                    letter-spacing: .1vw;
+                }
+
+                #icongif {
+                    mix-blend-mode: difference;
+                    filter: grayscale(100%) contrast(200%);
+                    width: 1.3vw;
+                    position: absolute;
+                    right: 1%;
+                    top: 95.5%;
+                }
+            </style>
+            <p id="p_t6">Propulsé par Neige © 2019-2023 Tous droits réservés xat.me</p>
+            <p id="p_t7">1533252890 | contact | xat.com</p>
+            <img id="icongif" src="https://i.postimg.cc/1RVQVXfp/Z23N.gif" />
+        </div>
+    </div>
+
+
+
+</body>
+</html>
