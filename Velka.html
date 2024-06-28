@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -395,7 +395,7 @@
 
         <div id="back_neig"></div>
 
-        <a href="#">
+        <a href="#" onclick="openconsle(); comprobar();">
             <div id="firmN">
                 <style>
                     @font-face {
@@ -413,7 +413,7 @@
                         width: 6%;
                         height: 4%;
                         top: 90%;
-                        right: 1%;
+                        right: 1%; z-index:99;
                     }
 
                         #firmN p {
@@ -644,7 +644,38 @@
             </style>
 
             <!--<a id="p8" href="#" onclick="comprobar(); openconsle();">◇CONSOLE<span id="p88">|</span>◇</a>-->
-
+            <div id="firsttext">
+                <style>                    #firsttext { position:absolute; width:15%; height:10%; top:5%; left:3%; color:#2A5AD5; font-family:Roboto; filter:blur(.7px);
+                    }
+                    #v1 { font-size:.8vw; font-weight:bold; letter-spacing:.1vw; position:absolute;
+                    }
+                    #v2 {
+                        font-size: 1vw;
+                        font-weight: bold;
+                        letter-spacing: .1vw; top:35%;
+                        position: absolute;
+                    }
+                    #v3 {
+                        font-size: .6vw; opacity:.7;
+                        font-weight: bold;
+                        letter-spacing: .1vw;
+                        top: 45%;
+                        position: absolute;
+                    }
+                    #v4 {
+                        font-size: .7vw;
+                        opacity: .8;
+                        font-weight: bold;
+                        letter-spacing: .1vw;
+                        top: 75%;
+                        position: absolute;
+                    }
+                </style>
+                <p id="v1">ASU INTERACTIVE COVER LIFE</p>
+                <b id="v2">创作者和制作人 LIVE</b>
+                <p id="v3">MERIGGIARE</p>
+                <p id="v4">ELEGANT & PERVERSE </p>
+            </div>
             <div id="part1">
                 <style>
                     #part1 {
@@ -901,7 +932,7 @@
                         <polygon fill="#232426" points="55.334,46 49.333,58 43.333,46 " />
                         <path id="textPath" fill="none" d="M89.322,50.197c0,22.09-17.91,40-40,40c-22.089,0-40-17.91-40-40 c0-22.089,17.911-40,40-40C71.412,10.197,89.322,28.108,89.322,50.197z" />
                         <text id="textrot">
-                        <textPath xlink:href="#textPath"><tspan x="10">SCROLL</tspan><tspan x="47" dx="30">SCROLL</tspan><tspan x="77" dx="60">SCROLL</tspan><tspan x="107" dx="90">SCROLL</tspan></textPath>
+                        <textPath xlink:href="#textPath"><tspan x="10">VELKA</tspan><tspan x="47" dx="30">VELKA</tspan><tspan x="77" dx="60">VELKA</tspan><tspan x="107" dx="90">VELKA</tspan></textPath>
         </text>
       </svg>
                     </a>
@@ -920,6 +951,26 @@
                     LEARN.<br />
                 </p>
 
+                <div id="textdates">
+                    <style>
+                        #textdates {
+                            position: absolute;
+                            right: 6.5%;
+                            width: 5%;
+                            height: 13%;
+                            top: 45%;
+                            border-top: .1vw solid white;
+                            border-bottom: .1vw solid white;
+                            opacity: .2;
+                        }
+                            #textdates p { position:relative; color:white; text-align:center; font-size:.4vw; letter-spacing:.05vw; top:.4vw; font-weight:bold;
+                            }
+                    </style>
+                    <p>VELKA</p>
+                    <p>●</p>
+                    <p>SPAIN</p>
+                    <p>09/95</p>
+                </div>
             </div>
 
             <div id="part2">
@@ -1069,15 +1120,29 @@
                 <!--<img src="https://i.postimg.cc/pTsQQ8tL/11q1q.jpg" id="flore" />-->
                 <div id="profillat">
                     <style>
-                        #profillat { position:absolute; width:25%; left:0; height:100%;  
+                        #profillat { position:absolute; width:25%; left:0; height:100%;    
                         }
                         #imgprofl { position:absolute; width:3vw; height:3vw; border-radius:50%; border:.2vw solid white; left:15%; top:5%;
                         }
+                        #ptxttit { position:relative; color:white; font-size:.5vw; font-family:Roboto; letter-spacing:.05vw; left:50%; width:35%; top:15%; opacity:.7; border-bottom:.1vw solid white;  
+                        }
                     </style>
+
+                    <p id="ptxttit">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Agonisent </p>
+                    
+                    <p id="ptxtsub">
+                        L'un après l'autre, mes rêves piétinés.
+                        L'espoir m'a trahi et je reste là, halluciné
+                        Avec sur la face l'expression du renoncement.
+
+                        J'ai pris ton mal, l'ai laissé me ternir,
+                        Dévorant ma fraîcheur toujours un peu plus.
+                        Plu 
+                    </p>
                     <img id="imgprofl" src="https://64.media.tumblr.com/862b58e8d7360bf4d0dbbb514ac41104/b783978f4f501dfd-fd/s1280x1920/3223d826a2a223e500eb985dde90804efe02d643.pnj"/>
                     <div id="profildat">
                         <style>
-                            #profildat { position:absolute; width:60%; height:7%;   top:5.5%; left:50%;
+                            #profildat { position:absolute; width:60%; height:7%;   top:5.5%; left:50%;  
                             }
                             #pp1 { position:absolute; font-family:Calibri; font-weight:bold; color:white; top:-50%;
                             }
@@ -1127,11 +1192,42 @@
                         <p id="lattextx3">相<br /><br />信<br /><br />我<span>M<br />e<br />r<br />i<br />g<br />g<br />i<br />a<br />r<br />e</span></p>
                     </div>
                     <p id="numb">01</p>
+                    <div id="areafrd">
+                        <style>
+                            #areafrd {
+                                position: absolute;
+                                width: 45%;
+                                height: 14%;
+                                left: 63%;
+                                top: 83%;
+                            }
+
+                            #afrd1 {
+                                position: relative;  
+                                color: white;
+                                font-size: .6vw;
+                                letter-spacing: .1vw;
+                                font-family: Roboto;
+                                opacity: .6;
+                                text-transform: uppercase; line-height:.9vw;
+                                font-weight: bold;
+                            }
+
+                                #afrd1 span {
+                                    color: #9c97e2;
+                                }
+                        </style>
+                        <a id="afrd1">09 <span>Jazz</span></a> <br />
+                        <a id="afrd1">06 <span>Andrés</span></a><br />
+                        <a id="afrd1">02 <span>Alu</span></a><br />
+                        <a id="afrd1">07 <span>Yuki</span></a><br />
+                        <a id="afrd1">00 <span>Shiro</span></a>
+                    </div>
                 
                 </div>
                 <div id="backnei">
                     <style>
-                        #numb { position:absolute; color:white; left:5%; top:70%; font-size:6vw; font-weight:bold;
+                        #numb { position:absolute; color:white; left:5%; top:62%; font-size:6vw; font-weight:bold; opacity:.7;
                         }
                         #backnei {
                             position: absolute;
@@ -1143,6 +1239,24 @@
                             background-image: url(https://i.pinimg.com/originals/01/62/f1/0162f15ff87e60ab45b027a1beef99b0.gif);
                         }
                     </style>
+                </div>
+
+                <div id="areacubes">
+                    <style>
+                        #areacubes { filter:grayscale(40%);
+                            position: absolute;
+                            width: 20%;
+                            height: 6%; 
+                            top: 78%;
+                            right: 3%;
+                        }
+                            #areacubes div { position:relative; float:right; width:2vw; height:2vw; margin-left:.5vw; border:.1vw solid #2A5AD5; border-radius:.3vw;
+                            }
+                            #areacubes div  p{
+                                 color:#2A5AD5; text-align:center; position:relative; font-size:1.5vw; top:-1.5vw; font-weight:bold;
+                            }
+                    </style>
+                    <div><p>⍫</p></div> <div><p>⌗</p></div> <div><p>⍭</p></div>
                 </div>
             </div>
 
@@ -1169,13 +1283,13 @@
             <style>
 
                 #Aaudio {
-                    filter: grayscale(100%);
+                   
                     background: inherit;
                     mix-blend-mode: difference;
-                    position: absolute;
-                    width: 20%;
-                    left: 0;
-                    bottom: 0;
+                    position: absolute;  
+                    width: 30%;
+                    left: 25%; z-index:99;
+                    bottom: 17%;
                     height: 10%;
                 }
 
@@ -1183,7 +1297,9 @@
                     position: absolute;
                     width: 100%;
                     height: 70%;
+                    filter: grayscale(100%);
                     top: 60%;
+                    left: -1%;
                 }
 
                 .butplayer {
@@ -1227,15 +1343,15 @@
 
                 .progress-bar {
                     top: 45%;
-                    right: 5%;
-                    width: 90%;
-                    background: rgb(74,82,101);
-                    height: .35vw;
+                    right: 12%;
+                    width: 85%;
+                    background: dimgray;
+                    height: .25vw;
                     position: absolute;
                 }
 
                 .fillBar {
-                    background: rgb(116, 129, 160);
+                    background: #9c97e2;
                     width: 0;
                     height: .35vw;
                 }
@@ -1268,7 +1384,7 @@
 
                 .time {
                     position: absolute;
-                    left: 12%;
+                    left: -20%;
                     top: 100%;
                     width: 220%;
                     color: rgb(8,210,255);
@@ -1283,11 +1399,12 @@
                 }
 
                 .artist-name {
+                    text-transform: uppercase;
                     position: absolute;
                     left: .1vw;
-                    top: 25%;
+                    top: 5%;
                     left: 5%;
-                    color: rgb(8,210,255);
+                    color: #2A5AD5;
                     font-family: Roboto;
                     letter-spacing: .1vw;
                     font-size: .7vw;
@@ -1295,14 +1412,15 @@
                 }
 
                 #namesong {
+                    text-transform: uppercase;
                     position: relative;
-                    color: rgb(8,210,255);
+                    color:#2A5AD5;
                     font-family: Roboto;
                     font-size: 1vw;
                     font-weight: bold;
                     margin-top: .5vw;
                     left: 5%;
-                    top: -8%;
+                    top: -38%;
                 }
 
                 #fillimgbar {
@@ -1641,19 +1759,17 @@
                         <li>'home' -- Display this menu</li>
                         <li>'play' 'pause' 'next' 'prev' -- Controls the player</li>
                         <li>'lists' -- Display music list</li>
-                        <li>'aboutme' -- About this xatspace and console</li>
-                        <li>'listfriends' -- List of friends</li>
-                        <li>'neige' -- Open section about me</li>
+                        <li>'aboutme' -- About this xatspace and console</li> 
                         <li>'exit' -- Logout</li>
                     </ul>
                 </section>
-                <section id="listfriends">
+                <!--<section id="listfriends">
                     <p>//. List Friends / file [42:203] </p>
                     <p>>...  </p>
 
-                    <ul>
+                    <ul>-->
                         <!--<li>'<a id="afriend" href="#">Yuki</a>' -- the reason for her current state</li>-->
-                        <li>'<a id="afriend" href="#">myt</a>' -- whispers of calm</li>
+                        <!--<li>'<a id="afriend" href="#">myt</a>' -- whispers of calm</li>
                         <li>'<a id="afriend" href="#">kiri</a>' -- an escape door</li>
                         <li>'<a id="afriend" href="#">lala</a>' -- schizophrenic crazy</li>
                         <li>'<a id="afriend" href="#">chris</a>' -- depression and joy</li>
@@ -1664,7 +1780,7 @@
                         <li>'signs' -- To go</li>
                         <li>'home' -- return to main file</li>
                     </ul>
-                </section>
+                </section>-->
                 <section id="lists">
                     <p>
                         Music player list
@@ -1726,10 +1842,10 @@
                     <p>Prev.song...</p>
 
                 </section>
-                <section id="sings">
+                <!--<section id="sings">
                     <p>Go to list friends...</p>
 
-                </section>
+                </section>-->
                 <section id="pause">
                     <p>Stop.song...</p>
 
@@ -1752,6 +1868,7 @@
                         jQuery Terminal: version 3.38.1 Copyright (c) 2019-2024 <br />
                         Console AI 0.2 VER 2.0<br />
                         UI VER 1.94<br />
+                        XATSPACE "ELEGANT AND PERVERSE" FOR THE USER "MERIGGIARE"
                         ALL RIGHTS RESERVED, XAT.COM<br />
                         Dev by Neige <br />
 
