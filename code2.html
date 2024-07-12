@@ -1,0 +1,375 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    
+</head>
+
+
+<body >
+    <div id="main">
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+            @font-face {
+                font-family: neigefont3;
+                src: url(PMINGLIU.ttf);
+            }
+
+            @font-face {
+                font-family: neigefont;
+                src: url(neige.otf);
+            }
+
+            @font-face {
+                font-family: neigefont2;
+                src: url(neig.ttf);
+            }
+
+            body {
+                top: 0;
+                left: 0;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                margin: 0;
+            }
+
+            #main {
+                top: 0;
+                left: 0;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+            }
+
+            #back_neig {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: .2;
+                background-image: url(https://i.postimg.cc/QxN1xthT/halftone-background-11.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            #ft1 {
+                position: absolute;
+                width: 20%;
+                height: 120%;
+                background: rgb(181,212,147);
+                right: -11%;
+                transform: rotate(20deg);
+                top: -5%;
+            }
+
+            #ft2 {
+                position: absolute;
+                width: 40%;
+                height: 140%;
+                background: rgb(189,112,150);
+                right: -5%;
+                transform: rotate(20deg);
+                top: -10%;
+            }
+
+            #mainrender {
+                position: absolute;
+                right: -2%;
+                top: -10%;
+                height: 130%;
+            }
+
+            #mainrender2 {
+                filter: blur(2px) brightness(0%);
+                opacity: .6;
+                position: absolute;
+                right: 0%;
+                top: -5%;
+                height: 130%;
+            }
+
+            #cubelt {
+                position: absolute;
+                width: 5%;
+                top: 5%;
+                left: 5%;
+            }
+
+            #firmlin {
+                font-family: neigefont;
+                color: rgb(189,112,150);
+                font-size: 3vw;
+                top: 7%;
+                left: 3%;
+                position: absolute;
+                transform: rotate(-5deg);
+            }
+        </style>
+        <div id="back_neig">
+
+        </div>
+
+        <div id="ft2">
+
+        </div>
+        <img id="mainrender2" src="https://i.postimg.cc/d0s7sN8j/sw-h.png" />
+        <img id="mainrender" src="https://i.postimg.cc/T3ftqGVj/f55cd7a88bc206808c12192027de6809.png" />
+        <div id="ft1">
+
+        </div>
+
+        <img src="https://i.postimg.cc/htLN5QDy/Captura.png" id="cubelt" /><p id="firmlin">Lynette</p>
+                                                                           <div id="mainau" class="sioto">
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div>
+                                                                               <div class="leaf" id="lf2"></div>
+                                                                               <div class="leaf" id="lf3"></div>
+                                                                               <div class="leaf" id="lf1"></div> 
+                                                                               <style>
+                                                                                   .nooto {
+                                                                                       opacity: 0;
+                                                                                   }
+
+                                                                                   .sioto {
+                                                                                       opacity: 1;
+                                                                                   }
+
+                                                                                   #mainau {
+                                                                                       position: absolute;
+                                                                                       width: 100%;
+                                                                                       height: 120%;
+                                                                                       top: -25%;
+                                                                                       left: 0;
+                                                                                       perspective: 1200px;
+                                                                                       overflow: hidden;
+                                                                                       z-index: 5;
+                                                                                   }
+
+                                                                                   .leaf {
+                                                                                       position: absolute;
+                                                                                       right: 0;
+                                                                                       width: 1vw;
+                                                                                       height: 1vw;
+                                                                                   }
+
+                                                                                   #lf1 {
+                                                                                       background-image: url("https://i.postimg.cc/ncH76CtR/p2.png");
+                                                                                       background-repeat: no-repeat;
+                                                                                       background-size: contain;
+                                                                                   }
+
+                                                                                   #lf2 {
+                                                                                       background-image: url("https://i.postimg.cc/8PtWDNp1/p3.png");
+                                                                                       background-repeat: no-repeat;
+                                                                                       background-size: contain;
+                                                                                   }
+                                                                                   #lf3 {
+                                                                                       background-image: url("https://i.postimg.cc/66VnjCF4/p1.png");
+                                                                                       background-repeat: no-repeat;
+                                                                                       background-size: contain;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(1) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 8vh;
+                                                                                       right: -58vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(2) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 64vh;
+                                                                                       right: -30vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(3) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 67vh;
+                                                                                       right: -37vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(4) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 58vh;
+                                                                                       right: -90vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(5) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 85vh;
+                                                                                       right: -3vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(6) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 45vh;
+                                                                                       right: -41vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(7) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 22vh;
+                                                                                       right: -86vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(8) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 35vh;
+                                                                                       right: -32vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(9) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 41vh;
+                                                                                       right: -65vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(10) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 77vh;
+                                                                                       right: -42vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(11) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 76vh;
+                                                                                       right: -57vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(12) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 29vh;
+                                                                                       right: -12vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(13) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 23vh;
+                                                                                       right: -84vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(14) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 30vh;
+                                                                                       right: -90vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(15) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 97vh;
+                                                                                       right: -53vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(16) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 87vh;
+                                                                                       right: -53vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(17) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 57vh;
+                                                                                       right: -56vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(18) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 46vh;
+                                                                                       right: -71vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(19) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 72vh;
+                                                                                       right: -42vh;
+                                                                                   }
+
+                                                                                   .leaf:nth-child(20) {
+                                                                                       filter: blur(1px);
+                                                                                       top: 7vh;
+                                                                                       right: -18vh;
+                                                                                   }
+                                                                               </style>
+                                                                               <script>
+
+                                                                                   $(".leaf").each(function () {
+                                                                                       var tl = new TimelineMax({
+                                                                                           repeat: -1
+                                                                                       });
+                                                                                       tl.to(this, 18 + Math.random() * 10, {
+                                                                                           rotationX: Math.random() * 3360,
+                                                                                           rotationY: Math.random() * 3360,
+                                                                                           rotationZ: Math.random() * 3360,
+                                                                                           z: Math.random() * 30,
+                                                                                           x: -window.innerWidth * 3,
+                                                                                           y: window.innerWidth / 2,
+                                                                                           ease: Power2.easeOut,
+                                                                                           onUpdate: (e) => {
+                                                                                               //var x = this.vars.css.x;
+
+                                                                                               if ($(this).position().left < -100) {
+                                                                                                   tl.seek(0);
+                                                                                               }
+                                                                                           }
+                                                                                       });
+                                                                                   });
+
+                                                                               </script>
+                                                                           </div>
+
+    </div>
+
+
+
+</body>
+</html>
