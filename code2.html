@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -63,46 +63,13 @@
                 top: 0;
                 left: 0;
                 opacity: .2;
-                background-image: url(https://i.postimg.cc/QxN1xthT/halftone-background-11.jpg);
-                background-size: contain;
+                filter: grayscale(30%);
+                background-image: url(https://i.postimg.cc/j5y3RZsL/b253581367f0de670fbebd0550bdd71d.jpg);
+                background-size: cover;
                 background-repeat: no-repeat;
             }
 
-            #ft1 {
-                position: absolute;
-                width: 20%;
-                height: 120%;
-                background: rgb(181,212,147);
-                right: -11%;
-                transform: rotate(20deg);
-                top: -5%;
-            }
 
-            #ft2 {
-                position: absolute;
-                width: 40%;
-                height: 140%;
-                background: rgb(189,112,150);
-                right: -5%;
-                transform: rotate(20deg);
-                top: -10%;
-            }
-
-            #mainrender {
-                position: absolute;
-                right: -2%;
-                top: -10%;
-                height: 130%;
-            }
-
-            #mainrender2 {
-                filter: blur(2px) brightness(0%);
-                opacity: .6;
-                position: absolute;
-                right: 0%;
-                top: -5%;
-                height: 130%;
-            }
 
             #cubelt {
                 position: absolute;
@@ -113,7 +80,7 @@
 
             #firmlin {
                 font-family: neigefont;
-                color: rgb(189,112,150);
+                color: #80086e;
                 font-size: 3vw;
                 top: 7%;
                 left: 3%;
@@ -125,247 +92,776 @@
 
         </div>
 
-        <div id="ft2">
+        <div id="prfl">
+            <style>
+                #prfl {
+                    position: absolute;
+                    width: 12%;
+                    height: 55%;
+                    top: 4%;
+                    right: 5%;
+                }
+                #a_cur2 {
+                    margin-bottom: 2vw;
+                    width: 100%;
+                    height: 2vw;
+                    background: #171717;
+                }
+                #p_titc {
+                    top: .5vw;
+                    font-family:Roboto;
+                    color: lightgray;
+                    position: relative;
+                    margin-left: .5vw;
+                    font-size: 1vw;
+                    letter-spacing: .1vw;
+                }
+                #A-icons2 {
+                    position: absolute;
+                    width: 50%;
+                    height: 80%;
+                    top: 5%;
+                    right: -9%; mix-blend-mode:difference; filter:invert(100%);
+                }
+                .minicon {
+                    width: 1vw;
+                    height: 1vw;
+                    float: left;
+                    margin-left: .3vw;
+                    border: .1vw solid dimgray;
+                    border-radius: .2vw;
+                    background: #c6c6c6;
+                }
+
+                    .minicon img {
+                        width: .7vw;
+                        position: relative;
+                        top: .15vw;
+                        left: .15vw;
+                    }
+                #pimg {
+                    width: 80%;
+                    height: auto;
+                    margin-left: 10%;
+                    border: 4px solid #171717;
+                }
+                #At {
+                    background: #171717;
+                    width: 100%;
+                    height: 10%;
+                    border-radius: 10px 10px 0 0;
+                    text-align: center;
+                }
+
+
+
+                    #At p {
+                        color: lightgray;
+                        font-size: 10px;
+                        letter-spacing: 1px;
+                        padding: 12px;
+                        font-family: Consolas;
+                    }
+
+
+
+                #desc p {
+                    font-family: Consolas;
+                    line-height: 1.2vw;
+                    color: darkgray;
+                    font-size: .65vw;
+                }
+
+                #desc {
+                    margin-left: 6%;
+                    width: 90%;
+                    text-align: center;
+                    height: 26%;
+                }
+
+            </style>
+            <div id="a_cur2">
+                <p id="p_titc">Lynette</p>
+
+                <div id="A-icons2">
+                    <div class="minicon"><img src="https://i.postimg.cc/QMn59HDz/cuadricula.png" /></div>
+                    <div class="minicon"><img src="https://i.postimg.cc/FRdSjNsH/maximizar.png" /></div>
+                    <div class="minicon"><img src="https://i.postimg.cc/KYYB8t6L/cerrar.png" /></div>
+                </div>
+            </div>
+
+           
+            <img id="pimg" src="https://i.pinimg.com/736x/9a/99/87/9a99877dab2a686d9e64d07ac1155bda.jpg" />
+            <div id="At"><p>>> Butterfly Hashira~</p></div>
+            <div id="desc">
+                <p>
+
+
+                    Yukine | ˣˣ | In love <br />
+
+
+                    † 𝖲𝗂𝗅𝗅𝖾𝗇𝗍 ‧ 𝖤𝗀𝗈𝖼𝖾𝗇𝗍𝗋𝗂𝖼 ‧ 𝖠𝗉𝖺𝗍𝗁𝖾𝗍𝗂𝖼 ‧  <br />‧ 𝖨𝗇𝖽𝗂𝖿𝖿𝖾𝗋𝖾𝗇𝗍 ‧ 𝖱𝖾𝖺𝗅𝗂𝗌𝗍𝗂𝖼 ‧ 𝖣𝗂𝗋𝖾𝖼𝗍 ‧  <br />‧ 𝖮𝖻𝖾𝖼𝗍𝗂𝗏𝖾 ‧ 𝖭𝖾𝗎𝗍𝗋𝖺𝗅 ‧ 𝖤𝗀𝗈𝗍𝗂𝗌𝗍𝗂𝖼𝖺𝗅 ‧ <br />
+                    ‧ <br />
+                      <span id="flk">My flickr</span>
+
+
+                </p>
+            </div>
 
         </div>
-        <img id="mainrender2" src="https://i.postimg.cc/d0s7sN8j/sw-h.png" />
-        <img id="mainrender" src="https://i.postimg.cc/T3ftqGVj/f55cd7a88bc206808c12192027de6809.png" />
-        <div id="ft1">
-
-        </div>
-
         <img src="https://i.postimg.cc/htLN5QDy/Captura.png" id="cubelt" /><p id="firmlin">Lynette</p>
-                                                                           <div id="mainau" class="sioto">
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div>
-                                                                               <div class="leaf" id="lf2"></div>
-                                                                               <div class="leaf" id="lf3"></div>
-                                                                               <div class="leaf" id="lf1"></div> 
+
+                                                                           <div id="latertext">
                                                                                <style>
-                                                                                   .nooto {
-                                                                                       opacity: 0;
-                                                                                   }
-
-                                                                                   .sioto {
-                                                                                       opacity: 1;
-                                                                                   }
-
-                                                                                   #mainau {
+                                                                                   #latertext {
                                                                                        position: absolute;
-                                                                                       width: 100%;
-                                                                                       height: 120%;
-                                                                                       top: -25%;
-                                                                                       left: 0;
-                                                                                       perspective: 1200px;
-                                                                                       overflow: hidden;
-                                                                                       z-index: 5;
+                                                                                       width: 5%;
+                                                                                       height: 50%; 
+                                                                                       right: 17%;
+                                                                                       top: 5%;
                                                                                    }
 
-                                                                                   .leaf {
+                                                                                   #plat {
                                                                                        position: absolute;
-                                                                                       right: 0;
-                                                                                       width: 1vw;
-                                                                                       height: 1vw;
+                                                                                       font-size: 1.8vw;
+                                                                                       
+                                                                                       top: 0;
+                                                                                       color: gray;
+                                                                                       line-height: 2vw;
                                                                                    }
 
-                                                                                   #lf1 {
-                                                                                       background-image: url("https://i.postimg.cc/ncH76CtR/p2.png");
-                                                                                       background-repeat: no-repeat;
-                                                                                       background-size: contain;
+                                                                                   #plat2 {
+                                                                                       position: absolute;
+                                                                                       font-size: 2vw;
+                                                                                        left:-22%;
+                                                                                       top: 56%;
+                                                                                       background: #171717;
+                                                                                       color: #5e0880;
+                                                                                       padding: .3vw;
+                                                                                       padding-left: .8vw;
+                                                                                       line-height: 2vw;
                                                                                    }
 
-                                                                                   #lf2 {
-                                                                                       background-image: url("https://i.postimg.cc/8PtWDNp1/p3.png");
-                                                                                       background-repeat: no-repeat;
-                                                                                       background-size: contain;
-                                                                                   }
-                                                                                   #lf3 {
-                                                                                       background-image: url("https://i.postimg.cc/66VnjCF4/p1.png");
-                                                                                       background-repeat: no-repeat;
-                                                                                       background-size: contain;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(1) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 8vh;
-                                                                                       right: -58vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(2) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 64vh;
-                                                                                       right: -30vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(3) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 67vh;
-                                                                                       right: -37vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(4) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 58vh;
-                                                                                       right: -90vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(5) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 85vh;
-                                                                                       right: -3vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(6) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 45vh;
-                                                                                       right: -41vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(7) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 22vh;
-                                                                                       right: -86vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(8) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 35vh;
-                                                                                       right: -32vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(9) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 41vh;
-                                                                                       right: -65vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(10) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 77vh;
-                                                                                       right: -42vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(11) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 76vh;
-                                                                                       right: -57vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(12) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 29vh;
-                                                                                       right: -12vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(13) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 23vh;
-                                                                                       right: -84vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(14) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 30vh;
-                                                                                       right: -90vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(15) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 97vh;
-                                                                                       right: -53vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(16) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 87vh;
-                                                                                       right: -53vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(17) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 57vh;
-                                                                                       right: -56vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(18) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 46vh;
-                                                                                       right: -71vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(19) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 72vh;
-                                                                                       right: -42vh;
-                                                                                   }
-
-                                                                                   .leaf:nth-child(20) {
-                                                                                       filter: blur(1px);
-                                                                                       top: 7vh;
-                                                                                       right: -18vh;
+                                                                                   #pllat {
+                                                                                       font-size: 3.5vw;
+                                                                                       opacity: .3;
+                                                                                       transform: rotate(90deg);
+                                                                                       left: -50%; letter-spacing:.1vw;
+                                                                                       top: 61%;
+                                                                                       position: absolute;
+                                                                                       font-weight: bold;
                                                                                    }
                                                                                </style>
-                                                                               <script>
-
-                                                                                   $(".leaf").each(function () {
-                                                                                       var tl = new TimelineMax({
-                                                                                           repeat: -1
-                                                                                       });
-                                                                                       tl.to(this, 18 + Math.random() * 10, {
-                                                                                           rotationX: Math.random() * 3360,
-                                                                                           rotationY: Math.random() * 3360,
-                                                                                           rotationZ: Math.random() * 3360,
-                                                                                           z: Math.random() * 30,
-                                                                                           x: -window.innerWidth * 3,
-                                                                                           y: window.innerWidth / 2,
-                                                                                           ease: Power2.easeOut,
-                                                                                           onUpdate: (e) => {
-                                                                                               //var x = this.vars.css.x;
-
-                                                                                               if ($(this).position().left < -100) {
-                                                                                                   tl.seek(0);
-                                                                                               }
-                                                                                           }
-                                                                                       });
-                                                                                   });
-
-                                                                               </script>
+                                                                               <p id="pllat">
+                                                                                  Lynette
+                                                                               </p>
+                                                                               <p id="plat">
+                                                                                   神<br />话<br />是<br />真<br />理<br />的<br />耳<br />语
+                                                                               </p>
+                                                                               <p id="plat2">
+                                                                                   神<br />话<br />与
+                                                                               </p>
                                                                            </div>
+
+        <div id="areapres">
+            <style>
+                #areapres { position:absolute; width:30%; height:25%; top:25%;   left:5%;
+                }
+                #lecth { font-family:neigefont3; color:gray; font-size:1vw; letter-spacing:.1vw; position:absolute; right:26%;
+                }
+                #lettit { font-size:3vw; font-family:Roboto; letter-spacing:.1vw; position:absolute; top:-4%; font-weight:bold; 
+                }
+                #titdiv {
+                    position: absolute;
+                    width: 50%; top:50%;
+                    height: 25%;
+                    background: #5e0880;
+                }
+                    #titdiv p { margin-top:.4vw;  font-size:.85vw; text-align:right; font-family:Roboto; line-height:-1vw; text-transform:uppercase; color:white; letter-spacing:.1vw; font-weight:bold; margin-right:.2vw;
+                    }
+            </style>
+            <p id="lecth"> 昆虫柱 忍法 小町 / 莉奈特</p>
+            <p id="lettit">USS SHINOBOU</p>
+            <div id="titdiv">
+                <p>In the darkness, the light<br />is never far away.</p>
+            </div>
+        </div>
+        <div id="areafriends">
+            <style>
+                #areafriends {
+                    position: absolute;
+                    width: 40%;
+                    height: 46%;
+                    top: 46%;
+                    /*background: green;*/
+                    left: 5%; 
+                }
+            </style>
+
+            <div id="cubefriends">
+                <style>
+                    #flk { color:#5e0880;
+                    }
+                    #cubefriends {
+                        position: absolute;
+                        width: 15%; opacity:.8;
+                        height: 90%;  z-index:999; border:.2vw solid #5e0880;
+                    }
+                    .cubefriend { height:12.5%; width:300%;  position:relative;
+                    }
+                    .imgfriend { position:absolute; width:33.33%; height:100%; filter:grayscale(100%); transition:all .5s ease;
+                    }
+                    .cubefriend:hover .imgfriend {
+                        filter: grayscale(0%);
+                    }
+                    #dtfrd { position:absolute; width:100%; height:100%; right:-33.33%;  
+                    }
+                    #fpreg { position:absolute; top:-.5vw; left:5%; font-family:Roboto; font-weight:bold; color:dimgray; font-size:.67vw; letter-spacing:.1vw;
+                    }
+                        #fpreg span { color:#5e0880;
+                        }
+                    #stfrd { top:35%;
+                        position: absolute;
+                        left: 5%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        color: gray;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                    }
+                    #barreg { position:absolute; width:90%; height:.05vw; background:gray; top:50%; left:5%;
+                    }
+                    #stfrd span {
+                        color: #5e0880;
+                    }
+                </style>
+                
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/rstgwQCv/neige.png" />
+                    <div id="dtfrd">
+                        <p id="fpreg">NEIGE / SONGBIRD / GRIS | <span>帖子 鸣禽</span></p>
+                        <div id="barreg"></div>
+                        <p id="stfrd">01 | <span>MRR</span> | 1533252890</p>
+                        
+                    </div>
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/D0gxnXfs/chris.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/sDTTL7NC/d4dec688c3043469c876ee56a9cb2af5.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/TPJTbT99/hank.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/G2MrMz6T/toxic.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/hPmbry5X/velka.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/ZY2x6tVk/shiro.jpg" />
+                </div>
+                <div class="cubefriend">
+                    <img class="imgfriend" src="https://i.postimg.cc/NG5xyf87/azu.jpg" />
+                </div>
+            </div>
+        </div>
+        <div id="areaposts">
+            <style>
+                #areaposts {
+                    position: absolute;
+                    width: 30%;
+                    height: 100%;
+                     
+                    /*background: blue;*/
+                    left: 46%;
+                }
+            </style>
+        </div>
+        <div id="areachat">
+            <style>
+                #areachat {
+                    top: 72%;
+                    position: absolute;
+                    width: 20%;
+                    height: 25%;
+                    right: 4%;
+                    overflow: hidden; z-index:999;
+                }
+                    #areachat:hover #chatmess { animation-play-state:paused;
+                    }
+                    #areachat:hover #chatmess2 {
+                        animation-play-state: paused;
+                    }
+                    #areachat:hover #chatmess3 {
+                        animation-play-state: paused;
+                    }
+                    #areachat:hover #chatmess4 {
+                        animation-play-state: paused;
+                    }
+                #chatmess {
+                    position: relative;
+                    width: 100%;
+                    height: 24%;
+                    margin-bottom: 3%;
+                    animation: up1 4s infinite; 
+                }
+
+                #chatmess2 {
+                    opacity: 0;
+                    position: relative;
+                    width: 100%;
+                    height: 24%;
+                    margin-bottom: 3%;
+                    animation: up2 4s infinite;
+                    animation-delay: 1s; 
+                }
+
+                #chatmess3 {
+                    opacity: 0;
+                    position: relative;
+                    width: 100%;
+                    height: 24%;
+                    margin-bottom: 3%;
+                    animation: up3 4s infinite;
+                    animation-delay: 2s; 
+                }
+                #chatmess4 {
+                    opacity: 0;
+                    position: relative;
+                    width: 100%;
+                    height: 24%;
+                    margin-bottom: 3%;
+                    animation: up4 4s infinite;
+                    animation-delay: 3s; 
+                }
+                .updegrad {
+                    background-image: linear-gradient(180deg, transparent 0 20%, red 100%);
+                }
+
+                .normaldegrad {
+                    background: red;
+                }
+
+                .downdegrad {
+                }
+
+                @keyframes up1 {
+
+                    0% {
+                        top: 90%;
+                        opacity: 0;
+                    }
+
+                    25% {
+                        top: 60%;
+                        opacity: 1;
+                    }
+
+                    50% {
+                        top: 30%;
+                        opacity: 1;
+                    }
+
+                    75% {
+                        top: 1%;
+                        opacity: 1;
+                    }
+
+                    100% {
+                        top: -30%;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes up2 {
+
+                    0% {
+                        top: 60%;
+                        opacity: 0;
+                    }
+
+                    25% {
+                        top: 30%;
+                        opacity: 1;
+                    }
+
+                    50% {
+                        top: 1%;
+                        opacity: 1;
+                    }
+
+                    75% {
+                        top: -30%;
+                        opacity: 1;
+                    }
+
+                    100% {
+                        top: -60%;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes up3 {
+
+                    0% {
+                        top: 30%;
+                        opacity: 0;
+                    }
+
+                    25% {
+                        top: 1%;
+                        opacity: 1;
+                    }
+
+                    50% {
+                        top: -30%;
+                        opacity: 1;
+                    }
+
+                    75% {
+                        top: -60%;
+                        opacity: 1;
+                    }
+
+                    100% {
+                        top: -90%;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes up4 {
+
+                    0% {
+                        top: 1%;
+                        opacity: 0;
+                    }
+
+                    25% {
+                        top: -30%;
+                        opacity: 1;
+                    }
+
+                    50% {
+                        top: -60%;
+                        opacity: 1;
+                    }
+
+                    75% {
+                        top: -90%;
+                        opacity: 1;
+                    }
+
+                    100% {
+                        top: -130%;
+                        opacity: 0;
+                    }
+                }
+            </style>
+            <style>
+                .imgchat { position:absolute; width:2.5vw; height:2.5vw; border:.1vw solid gray; top:5%;  
+                }
+                #titlechat { position:absolute; left:15%; font-size:.7vw; font-family:Roboto; color:#171717; top:-.7vw;
+                }
+                    #titlechat span { color:#80086e;
+                    }
+                #contnchat {
+                    position: absolute;
+                    left: 15%;top:.5vw;
+                    font-size: .6vw;
+                    font-family: Roboto;
+                    color:  darkgray;
+                }
+                    #contnchat span {
+                        color: #80086e;
+                    }
+            </style>
+
+            <div id="chatmess">
+                <img class="imgchat" src="https://i.postimg.cc/Znzf4G9y/98f54dd5827cbe48f5f8214c08fd785c.jpg" />
+                <p id="titlechat">●一 This is a beautiful feeling // <span>这是一种美妙的感觉</span></p>
+                <p id="contnchat">
+                    Everything happened so suddenly, I didn't have time to think about it...
+                    I could only feel it and since that day it has only intensified... <span>NEIGE / 雪灰色</span>
+                </p> 
+
+            </div>
+            <div id="chatmess2">
+                <img class="imgchat" src="https://u.cubeupload.com/nailascln/kan1.png" />
+                <p id="titlechat">●一 Hola Lynette linda ♡ // <span>你好，丽奈特，美丽</span></p>
+                <p id="contnchat">
+                    Tu amistad es un tesoro en mi vida, gracias por cada momento compartido y por ser simplemente tú. Ya sabes que me tienes para lo que quieras, tqm.
+                    Con amorch... <span> VELKA / 中午</span>
+                </p>
+            </div>
+            <div id="chatmess3">
+                <img class="imgchat" src="https://i.postimg.cc/Znzf4G9y/98f54dd5827cbe48f5f8214c08fd785c.jpg" />
+                <p id="titlechat">●一 This is a beautiful feeling // <span>这是一种美妙的感觉</span></p>
+                <p id="contnchat">
+                    Everything happened so suddenly, I didn't have time to think about it...
+                    I could only feel it and since that day it has only intensified... <span>NEIGE / 雪灰色</span>
+                </p>
+            </div>
+            <div id="chatmess4">
+                <img class="imgchat" src="https://i.postimg.cc/Znzf4G9y/98f54dd5827cbe48f5f8214c08fd785c.jpg" />
+                <p id="titlechat">●一 This is a beautiful feeling // <span>这是一种美妙的感觉</span></p>
+                <p id="contnchat">
+                    Everything happened so suddenly, I didn't have time to think about it...
+                    I could only feel it and since that day it has only intensified... <span>NEIGE / 雪灰色</span>
+                </p>
+            </div>
+        </div>
+        <style>
+            #rit { position:absolute; top:88%; font-size:.7vw; letter-spacing:.1vw; font-weight:bold; font-family:Roboto; left:5%;
+            }
+            #fotimg { width:5%; top:91%; left:4.5%; position:absolute;
+            }
+            #flyn {
+                position: absolute;
+                top: 89.4%;
+                font-size: 1vw; color:#5e0880;
+                letter-spacing: .1vw;
+                font-weight: bold;
+                font-family: Roboto;
+                left: 9.7%;
+            }
+        </style>
+        <p id="rit">RITUALIST</p>
+        <img src="https://i.postimg.cc/63C1FWHv/Captura.png" id="fotimg" /> <p id="flyn">莉奈特</p>
+        <div id="mainau" class="sioto">
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <div class="leaf" id="lf2"></div>
+            <div class="leaf" id="lf3"></div>
+            <div class="leaf" id="lf1"></div>
+            <style>
+                .nooto {
+                    opacity: 0;
+                }
+
+                .sioto {
+                    opacity: 1;
+                }
+
+                #mainau {
+                    position: absolute;
+                    width: 100%;
+                    height: 120%;
+                    top: -25%;
+                    left: 0;
+                    perspective: 1200px;
+                    overflow: hidden;
+                    z-index: 5;
+                }
+
+                .leaf {
+                    position: absolute;
+                    right: 0;
+                    width: 1vw;
+                    height: 1vw;
+                }
+
+                #lf1 {
+                    background-image: url("https://i.postimg.cc/ncH76CtR/p2.png");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                #lf2 {
+                    background-image: url("https://i.postimg.cc/8PtWDNp1/p3.png");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                #lf3 {
+                    background-image: url("https://i.postimg.cc/66VnjCF4/p1.png");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                .leaf:nth-child(1) {
+                    filter: blur(1px);
+                    top: 8vh;
+                    right: -58vh;
+                }
+
+                .leaf:nth-child(2) {
+                    filter: blur(1px);
+                    top: 64vh;
+                    right: -30vh;
+                }
+
+                .leaf:nth-child(3) {
+                    filter: blur(1px);
+                    top: 67vh;
+                    right: -37vh;
+                }
+
+                .leaf:nth-child(4) {
+                    filter: blur(1px);
+                    top: 58vh;
+                    right: -90vh;
+                }
+
+                .leaf:nth-child(5) {
+                    filter: blur(1px);
+                    top: 85vh;
+                    right: -3vh;
+                }
+
+                .leaf:nth-child(6) {
+                    filter: blur(1px);
+                    top: 45vh;
+                    right: -41vh;
+                }
+
+                .leaf:nth-child(7) {
+                    filter: blur(1px);
+                    top: 22vh;
+                    right: -86vh;
+                }
+
+                .leaf:nth-child(8) {
+                    filter: blur(1px);
+                    top: 35vh;
+                    right: -32vh;
+                }
+
+                .leaf:nth-child(9) {
+                    filter: blur(1px);
+                    top: 41vh;
+                    right: -65vh;
+                }
+
+                .leaf:nth-child(10) {
+                    filter: blur(1px);
+                    top: 77vh;
+                    right: -42vh;
+                }
+
+                .leaf:nth-child(11) {
+                    filter: blur(1px);
+                    top: 76vh;
+                    right: -57vh;
+                }
+
+                .leaf:nth-child(12) {
+                    filter: blur(1px);
+                    top: 29vh;
+                    right: -12vh;
+                }
+
+                .leaf:nth-child(13) {
+                    filter: blur(1px);
+                    top: 23vh;
+                    right: -84vh;
+                }
+
+                .leaf:nth-child(14) {
+                    filter: blur(1px);
+                    top: 30vh;
+                    right: -90vh;
+                }
+
+                .leaf:nth-child(15) {
+                    filter: blur(1px);
+                    top: 97vh;
+                    right: -53vh;
+                }
+
+                .leaf:nth-child(16) {
+                    filter: blur(1px);
+                    top: 87vh;
+                    right: -53vh;
+                }
+
+                .leaf:nth-child(17) {
+                    filter: blur(1px);
+                    top: 57vh;
+                    right: -56vh;
+                }
+
+                .leaf:nth-child(18) {
+                    filter: blur(1px);
+                    top: 46vh;
+                    right: -71vh;
+                }
+
+                .leaf:nth-child(19) {
+                    filter: blur(1px);
+                    top: 72vh;
+                    right: -42vh;
+                }
+
+                .leaf:nth-child(20) {
+                    filter: blur(1px);
+                    top: 7vh;
+                    right: -18vh;
+                }
+            </style>
+            <script>
+
+                $(".leaf").each(function () {
+                    var tl = new TimelineMax({
+                        repeat: -1
+                    });
+                    tl.to(this, 18 + Math.random() * 10, {
+                        rotationX: Math.random() * 3360,
+                        rotationY: Math.random() * 3360,
+                        rotationZ: Math.random() * 3360,
+                        z: Math.random() * 30,
+                        x: -window.innerWidth * 3,
+                        y: window.innerWidth / 2,
+                        ease: Power2.easeOut,
+                        onUpdate: (e) => {
+                            //var x = this.vars.css.x;
+
+                            if ($(this).position().left < -100) {
+                                tl.seek(0);
+                            }
+                        }
+                    });
+                });
+
+            </script>
+        </div>
 
     </div>
 
