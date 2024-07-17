@@ -1,4 +1,4 @@
-﻿
+ ﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -101,28 +101,34 @@
                     top: 4%;
                     right: 5%;
                 }
+
                 #a_cur2 {
                     margin-bottom: 2vw;
                     width: 100%;
                     height: 2vw;
                     background: #171717;
                 }
+
                 #p_titc {
                     top: .5vw;
-                    font-family:Roboto;
+                    font-family: Roboto;
                     color: lightgray;
                     position: relative;
                     margin-left: .5vw;
                     font-size: 1vw;
                     letter-spacing: .1vw;
                 }
+
                 #A-icons2 {
                     position: absolute;
                     width: 50%;
                     height: 80%;
                     top: 5%;
-                    right: -9%; mix-blend-mode:difference; filter:invert(100%);
+                    right: -9%;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
                 }
+
                 .minicon {
                     width: 1vw;
                     height: 1vw;
@@ -139,12 +145,14 @@
                         top: .15vw;
                         left: .15vw;
                     }
+
                 #pimg {
                     width: 80%;
                     height: auto;
                     margin-left: 10%;
                     border: 4px solid #171717;
                 }
+
                 #At {
                     background: #171717;
                     width: 100%;
@@ -178,7 +186,6 @@
                     text-align: center;
                     height: 26%;
                 }
-
             </style>
             <div id="a_cur2">
                 <p id="p_titc">Lynette</p>
@@ -190,7 +197,7 @@
                 </div>
             </div>
 
-           
+
             <img id="pimg" src="https://i.pinimg.com/736x/9a/99/87/9a99877dab2a686d9e64d07ac1155bda.jpg" />
             <div id="At"><p>>> Butterfly Hashira~</p></div>
             <div id="desc">
@@ -202,10 +209,368 @@
 
                     † 𝖲𝗂𝗅𝗅𝖾𝗇𝗍 ‧ 𝖤𝗀𝗈𝖼𝖾𝗇𝗍𝗋𝗂𝖼 ‧ 𝖠𝗉𝖺𝗍𝗁𝖾𝗍𝗂𝖼 ‧  <br />‧ 𝖨𝗇𝖽𝗂𝖿𝖿𝖾𝗋𝖾𝗇𝗍 ‧ 𝖱𝖾𝖺𝗅𝗂𝗌𝗍𝗂𝖼 ‧ 𝖣𝗂𝗋𝖾𝖼𝗍 ‧  <br />‧ 𝖮𝖻𝖾𝖼𝗍𝗂𝗏𝖾 ‧ 𝖭𝖾𝗎𝗍𝗋𝖺𝗅 ‧ 𝖤𝗀𝗈𝗍𝗂𝗌𝗍𝗂𝖼𝖺𝗅 ‧ <br />
                     ‧ <br />
-                      <span id="flk">My flickr</span>
+                    <span id="flk">My flickr</span>
 
 
                 </p>
+            </div>
+            <div id="auid">
+                <script>
+                    $(document).ready(function () {
+                        var playing = false,
+                            artistname = $(".artist-name"),
+                            musicName = $(".music-name"),
+                            time = $(".time"),
+                            fillBar = $(".fillBar");
+
+                        let audioData = [];
+
+                        var song = new Audio();
+                        var CurrentSong = 0;
+                        window.onload = load();
+
+                        function load() {
+                            audioData = [
+
+                                {
+                                    name: "RADIO OFF",
+                                    artist: "RADIO OFF",
+                                    src:
+                                        ""
+                                },
+                                {
+                                    name: "Tiny light",
+                                    artist: "Akari Kito",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/TinyLight.mp3?raw=true"
+                                },
+
+                                {
+                                    name: "Sweet hurt",
+                                    artist: "ReoNa",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/sweethurt.mp3?raw=true"
+                                },
+                                {
+                                    name: "Aoki tsuki michite",
+                                    artist: "Akira",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/aoki.mp3?raw=true"
+                                },
+
+                                {
+                                    name: "STOP CRYING YOUR HEART",
+                                    artist: "OASIS",
+                                    src:
+                                        "heart.mp3"
+                                },
+                                {
+                                    name: "Little glee monster",
+                                    artist: "Your Name",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/glee.mp3?raw=true"
+                                },
+
+                            ];
+
+                            artistname.html(audioData[CurrentSong].artist);
+                            musicName.html(audioData[CurrentSong].name);
+                            song.src = audioData[CurrentSong].src;
+                        }
+
+                        function playSong() {
+                            var curSong = audioData[CurrentSong];
+                            artistname.html(curSong.artist);
+                            musicName.html(curSong.name);
+                            song.src = curSong.src;
+                            song.play();
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("p").addClass("active");
+                            $(".player-track").addClass("active");
+                        }
+
+                        song.addEventListener("timeupdate", function () {
+                            var position = (100 / song.duration) * song.currentTime;
+                            var current = song.currentTime;
+                            var duration = song.duration;
+                            var durationMinute = Math.floor(duration / 60);
+                            var durationSecond = Math.floor(duration - durationMinute * 60);
+                            var durationLabel = durationMinute + ":" + durationSecond;
+                            currentSecond = Math.floor(current);
+                            currentMinute = Math.floor(currentSecond / 60);
+                            currentSecond = currentSecond - currentMinute * 60;
+                            // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                            if (currentSecond < 10) {
+                                currentSecond = "0" + currentSecond;
+                            }
+                            var currentLabel = currentMinute + ":" + currentSecond;
+
+                            var indicatorLabel = currentLabel + "                                                                                                                                    " + durationLabel;
+
+                            fillBar.css("width", position + "%");
+
+                            $(".time").html(indicatorLabel);
+                        });
+                        //////
+                        $("#a_in").click(function playOrPause() {
+                            if (song.paused) {
+                                song.play();
+                                playing = true;
+                                $("#play").addClass("fa-pause");
+                                $("#play").removeClass("fa-play");
+                                $("p").addClass("active");
+                                /* $("#bar1").addClass("br1");*/
+
+                            } else {
+                                song.pause();
+                                playing = false;
+                                $("#play").removeClass("fa-pause");
+                                $("#play").addClass("fa-play");
+                                $("p").removeClass("active");
+
+
+                            }
+                        });
+
+                        $("#prev").click(function prev() {
+                            CurrentSong--;
+                            if (CurrentSong < 0) {
+                                CurrentSong = 6;
+                            }
+                            playSong();
+                        });
+
+                        $("#next").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 6) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        }); $("#next2").click(function next() {
+                            CurrentSong = 4;
+                            if (CurrentSong > 6) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        });
+                    });
+
+                </script>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+
+                    #auid {
+                           z-index:99999;
+                    }
+
+                    #auid {
+                        position: absolute;
+                        width: 110%;
+                        height: 19%;
+                        bottom:-20%; 
+                         font-family:Roboto;
+                    }
+
+                    .player {
+                        z-index: 9;
+                    }
+
+                    .player-control {
+                        position: absolute;
+                        z-index: 999999999999999;
+                        top: 120%;
+                        right: 12%;
+                    }
+
+                    #prev {
+                        cursor: pointer;
+                        position: absolute;
+                        width: 2vw;
+                        height: 1vw;
+                        left: 0;
+                        z-index: 3;
+                        top: -2.6vw;
+                    }
+
+                    #next {
+                        cursor: pointer;
+                        position: absolute;
+                        width: 2vw;
+                        height: 1vw;
+                        left: 1.2vw;
+                        top: -6vw;
+                    }
+
+                        #next p, #prev p {
+                            position: absolute;
+                            
+                            color: gray;
+                            letter-spacing: .1vw;
+                            text-shadow: 0 0 1vw #171717;
+                            font-size: 1vw;
+                        }
+                    #next2 {
+                        cursor: pointer;
+                        position: absolute;
+                        width: 3vw;
+                        height: 1vw;
+                        left: 40%;
+                        top: 0%;
+                    }
+
+                        #next2 p  {
+                            position: absolute;
+                            color: #5e0880;
+                             
+                            text-shadow: 0 0 1vw #171717;
+                            font-size: 2vw;
+                        }
+                    #namesong {
+                        position: absolute;
+                        width: 188%;
+                        height: 70%;
+                        top: 50%;
+                        color:  gray;
+                        left: 0%;
+                        letter-spacing: .1vw;
+                        font-size: 1vw;
+                    }
+
+
+                    #name_sng {
+                        position: relative;
+                        float: left;
+                    }
+
+                    .progress-bar {
+                        width: 40%;
+                        background:  gray;
+                        height: .2vw;
+                        position: absolute;
+                        top: 30%;
+                        left: 29%;
+                    }
+
+                    .fillBar {
+                        background: #5e0880;
+                        width: 0;
+                        height: .3vw;
+                    }
+
+                    #AT_time {
+                        width: 5vw;
+                        height: 1vw;
+                        top: 35%;
+                        right: 2%;
+                        position: absolute;
+                    }
+
+                        #AT_time p {
+                            position: absolute;
+                            font-family: 'Oswald', sans-serif;
+                            letter-spacing: .1vw;
+                            font-size: .8vw;
+                            color:  #5e0880;
+                        }
+
+                    .time {
+                        position: absolute;
+                        left: 1.7vw;
+                        top: -.8vw;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: 1vw;
+                        width: 4vw;
+                        overflow: hidden;
+                        color: gray;
+                    }
+
+                    #cd_1 {
+                        width: 8vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 21vw;
+                        top: .3vw;
+                    }
+
+                    #cd_2 {
+                        width: 4.7vw;
+                        height: 1.3vw;
+                        border: .1vw solid rgba(199,48,48.3);
+                        position: absolute;
+                        left: 29vw;
+                        top: .3vw;
+                    }
+
+                    .artist-name {
+                        position: absolute;
+                        left: .1vw;
+                        top: 80%;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .6vw;
+                        color: #5e0880;
+                        
+                    }
+
+                    #cd_2 p {
+                        position: absolute;
+                        top: 10%;
+                        letter-spacing: .05vw;
+                        font-size: .4vw;
+                        left: .4vw;
+                        color: rgba(199,48,48.3);
+                        line-height: .5vw;
+                    }
+
+                    #time0 {
+                        color:  gray;
+                        font-size: 1vw;
+                        position: absolute;
+                        left: 0;
+                    }
+                </style>
+
+                <div id="R_plyr">
+                    <div id="dt_rp">
+                        <p id="time0">20 ● 12</p>
+                        <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                    </div>
+
+                    <div id="mor_rpy">
+
+                        <div class="player">
+
+                            <div class="player-track">
+                                <div id="titles">
+
+                                </div>
+
+
+
+                                <div class="progress-bar">
+                                    <div class="fillBar"></div>
+                                </div>
+                                <div id="AT_time"><div class="time">0:00</div></div>
+                                <div class="artist-name"></div>
+
+                            </div>
+
+                            <div class="player-control">
+                                <!--<div id="prev" class="fas fa-backward"><p>◄</p></div>-->
+
+                                <div id="next" class="fas fa-forward"><p>►</p></div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -265,7 +630,7 @@
 
         <div id="areapres">
             <style>
-                #areapres { position:absolute; width:30%; height:25%; top:25%;   left:5%;
+                #areapres { position:absolute; width:30%; height:25%; top:23%;   left:5%;
                 }
                 #lecth { font-family:neigefont3; color:gray; font-size:1vw; letter-spacing:.1vw; position:absolute; right:26%;
                 }
@@ -292,7 +657,7 @@
                     position: absolute;
                     width: 40%;
                     height: 46%;
-                    top: 46%;
+                    top: 44%;
                     /*background: green;*/
                     left: 5%; 
                 }
@@ -300,27 +665,61 @@
 
             <div id="cubefriends">
                 <style>
-                    #flk { color:#5e0880;
+                    #flk {
+                        color: #5e0880;
                     }
+
                     #cubefriends {
                         position: absolute;
-                        width: 15%; opacity:.8;
-                        height: 90%;  z-index:999; border:.2vw solid #5e0880;
+                        width: 15%;
+                        opacity: .8;
+                        height: 100%;
+                        z-index: 999;
+                        border: .2vw solid #5e0880;
                     }
-                    .cubefriend { height:12.5%; width:300%;  position:relative;
+
+                    .cubefriend {
+                        height: 11.1111%;
+                        width: 300%;
+                        position: relative;
                     }
-                    .imgfriend { position:absolute; width:33.33%; height:100%; filter:grayscale(100%); transition:all .5s ease;
+
+                    .imgfriend {
+                        position: absolute;
+                        width: 33.33%;
+                        height: 100%;
+                        filter: grayscale(100%);
+                        transition: all .5s ease;
                     }
+
                     .cubefriend:hover .imgfriend {
                         filter: grayscale(0%);
                     }
-                    #dtfrd { position:absolute; width:100%; height:100%; right:-33.33%;  
+
+                    #dtfrd {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        right: -33.33%;
                     }
-                    #fpreg { position:absolute; top:-.5vw; left:5%; font-family:Roboto; font-weight:bold; color:dimgray; font-size:.67vw; letter-spacing:.1vw;
+
+                    #fpreg {
+                        position: absolute;
+                        top: -.5vw;
+                        left: 5%;
+                        font-family: Roboto;
+                        font-weight: bold;
+                        color: dimgray;
+                        font-size: .67vw;
+                        letter-spacing: .1vw;
                     }
-                        #fpreg span { color:#5e0880;
+
+                        #fpreg span {
+                            color: #5e0880;
                         }
-                    #stfrd { top:35%;
+
+                    #stfrd {
+                        top: 35%;
                         position: absolute;
                         left: 5%;
                         font-family: Roboto;
@@ -329,44 +728,294 @@
                         font-size: .6vw;
                         letter-spacing: .1vw;
                     }
-                    #barreg { position:absolute; width:90%; height:.05vw; background:gray; top:50%; left:5%;
+
+                    #barreg {
+                        position: absolute;
+                        width: 83%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    #barreg2 {
+                        position: absolute;
+                        width: 90%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    #barreg3 {
+                        position: absolute;
+                        width: 67%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    #barreg4 {
+                        position: absolute;
+                        width: 79%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    #barreg5 {
+                        position: absolute;
+                        width: 71%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    #barreg6 {
+                        position: absolute;
+                        width: 79%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+                    #barreg7 {
+                        position: absolute;
+                        width: 78%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+                    #barreg8 {
+                        position: absolute;
+                        width: 93%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
+                    }
+                    #barreg9 {
+                        position: absolute;
+                        width: 88%;
+                        height: .05vw;
+                        background: gray;
+                        top: 50%;
+                        left: 5%;
                     }
                     #stfrd span {
                         color: #5e0880;
                     }
                 </style>
-                
+                <a href="#FirmNeu">
+                    <div class="cubefriend">
+                        <img class="imgfriend" src="https://i.postimg.cc/rstgwQCv/neige.png" />
+                        <div id="dtfrd">
+                            <p id="fpreg">NEIGE / SONGBIRD / GRIS | <span>帖子 鸣禽</span></p>
+                            <div id="barreg"></div>
+                            <p id="stfrd">01 | <span>NTH</span> | 1533252890</p>
+
+                        </div>
+                    </div>
+                </a>
                 <div class="cubefriend">
-                    <img class="imgfriend" src="https://i.postimg.cc/rstgwQCv/neige.png" />
+                    <img class="imgfriend" src="https://i.postimg.cc/D0gxnXfs/chris.jpg" />
                     <div id="dtfrd">
-                        <p id="fpreg">NEIGE / SONGBIRD / GRIS | <span>帖子 鸣禽</span></p>
-                        <div id="barreg"></div>
-                        <p id="stfrd">01 | <span>MRR</span> | 1533252890</p>
-                        
+                        <p id="fpreg">Necessarius / CHRIS / NECE | <span>必要的</span></p>
+                        <div id="barreg2"></div>
+                        <p id="stfrd">02 | <span>FRD</span> | 258635881</p>
+
                     </div>
                 </div>
                 <div class="cubefriend">
-                    <img class="imgfriend" src="https://i.postimg.cc/D0gxnXfs/chris.jpg" />
-                </div>
-                <div class="cubefriend">
                     <img class="imgfriend" src="https://i.postimg.cc/sDTTL7NC/d4dec688c3043469c876ee56a9cb2af5.jpg" />
+                    <div id="dtfrd">
+                        <p id="fpreg">KAGURA / LU / LULO | <span>露西亚</span></p>
+                        <div id="barreg3"></div>
+                        <p id="stfrd">03 | <span>FRD</span> | 1520048635</p>
+
+                    </div>
                 </div>
                 <div class="cubefriend">
                     <img class="imgfriend" src="https://i.postimg.cc/TPJTbT99/hank.jpg" />
+                    <div id="dtfrd">
+                        <p id="fpreg">Mercenarie / HANK / MERC | <span>雇佣兵 </span></p>
+                        <div id="barreg4"></div>
+                        <p id="stfrd">04 | <span>FRD</span> | 1506047406</p>
+
+                    </div>
                 </div>
                 <div class="cubefriend">
                     <img class="imgfriend" src="https://i.postimg.cc/G2MrMz6T/toxic.jpg" />
+                    <div id="dtfrd">
+                        <p id="fpreg">ITOXIC / AWU / TOXIC | <span> 有毒的 </span></p>
+                        <div id="barreg5"></div>
+                        <p id="stfrd">05 | <span>FRD</span> | 301917719</p>
+
+                    </div>
                 </div>
-                <div class="cubefriend">
-                    <img class="imgfriend" src="https://i.postimg.cc/hPmbry5X/velka.jpg" />
-                </div>
-                <div class="cubefriend">
-                    <img class="imgfriend" src="https://i.postimg.cc/ZY2x6tVk/shiro.jpg" />
-                </div>
+                <a href="#postNeura">
+                    <div class="cubefriend">
+                        <img class="imgfriend" src="https://i.postimg.cc/hPmbry5X/velka.jpg" />
+                        <div id="dtfrd">
+                            <p id="fpreg">Meriggiare / VELKA / NAYLA | <span> 中午 </span></p>
+                            <div id="barreg6"></div>
+                            <p id="stfrd">06 | <span>FRD</span> | 1542991141</p>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#postscr">
+                    <div class="cubefriend">
+                        <img class="imgfriend" src="https://i.postimg.cc/ZY2x6tVk/shiro.jpg" />
+                        <div id="dtfrd">
+                            <p id="fpreg">xShirou / SHIROU / ITOME | <span> 伊图梅  </span></p>
+                            <div id="barreg7"></div>
+                            <p id="stfrd">07 | <span>FRD</span> | 1525823861</p>
+
+                        </div>
+                    </div>
+                </a>
                 <div class="cubefriend">
                     <img class="imgfriend" src="https://i.postimg.cc/NG5xyf87/azu.jpg" />
+                    <div id="dtfrd">
+                        <p id="fpreg">Azuchanrosada / AZU / AZUCHAN | <span> 阿祖查  </span></p>
+                        <div id="barreg8"></div>
+                        <p id="stfrd">08 | <span>FRD</span> | 1520246810</p>
+
+                    </div>
                 </div>
+                <a href="#arefirmneu2">
+                    <div class="cubefriend">
+                        <img class="imgfriend" src="https://i.postimg.cc/sfLdrV4z/1de091079b191d843774d7d3a4d54519.jpg" />
+                        <div id="dtfrd">
+                            <p id="fpreg">Trapnest / JAZZ / MELANCHOLIA | <span> 爵士 </span></p>
+                            <div id="barreg9"></div>
+                            <p id="stfrd">09 | <span>FRD</span> | 295527690</p>
+
+                        </div>
+                    </div>
+                </a>
             </div>
+        </div>
+        <div id="areaantpost">
+            <style>
+                #areaantpost {
+                    position: absolute;
+                    width: 10%;
+                    height: 45%;
+                    left: 32%; /*background:Red;*/
+                    top: 5%;
+                }
+
+                #lineapost {
+                    position: absolute;
+                    height: 100%;
+                    width: .05vw;
+                    background: darkgray;
+                    right: 0;
+                }
+
+                #pfchapost {
+                    position: absolute;
+                    font-family: neigefont3;
+                    font-size: .7vw;
+                    color: darkgray;
+                    right: .5vw;
+                    top: -.7vw;
+                }
+
+                #pfchapost2 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    font-size: .7vw;
+                    color: darkgray;
+                    right: 1.7vw;
+                    top: -.7vw;
+                }
+
+                #pfchapost3 {
+                    position: absolute;
+                    font-family: neigefont3;
+                    font-size: .7vw;
+                    color: #5e0880;
+                    right: 34%;
+                    top: -.7vw;
+                }
+
+                #lineapost2 {
+                    position: absolute;
+                    height: 100%;
+                    width: .05vw;
+                    background: darkgray;
+                    right: 29%;
+                }
+
+                #circle1 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 3vw;
+                    border: .2vw solid dimgray;
+                    border-radius: 50%;
+                    left: 20%;
+                    background: white;
+                }
+                #circle2 {
+                    position: absolute;
+                    width: 3vw;
+                    height: 3vw;
+                    border: .2vw solid dimgray;
+                    border-radius: 50%;
+                    left: 20%;
+                    top: 10%;
+                    background: dimgray;
+                }
+                #circle1 p {
+                    font-family: neigefont3;
+                    font-size: 1.2vw;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: .8vw;
+                    color: #5e0880;
+                }
+                #circle2 p {
+                    font-family: neigefont3;
+                    font-size: 1.2vw; color:white;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: 1vw;
+                }
+                #circle1 b { position:relative;
+                     
+                    font-size: 2vw; left:20%;
+                    color: #5e0880;
+                    text-align: center;
+                    font-weight: bold;
+                   top:70%;
+                }
+                #circle1 span {
+                    font-family: neigefont3;
+                    position: relative;
+                    font-size: 2vw;
+                    left: 17%;
+                    color: #5e0880;
+                    text-align: center;
+                    font-weight: bold;
+                    top: 80%;
+                }
+            </style>
+            <div id="lineapost"></div>
+            <p id="pfchapost">无<br />论<br />我<br />身<br />在<br />何<br />处<br /><br />我<br />都<br />渴<br />望<br />你<br />，<br />我<br />想<br />念<br />你<br />，<br /></p>
+            <p id="pfchapost2">每<br />次<br />寻<br />找<br />你<br /> <br />我<br />都<br />只<br />会<br />更<br />加<br />迷<br />失<br />自<br />己<br />。 <br />无<br />论<br />我<br />身<br />在<br />何<br />处<br /><br />我<br />都<br />渴<br />望<br />你</p>
+            <div id="lineapost2"></div>
+            <p id="pfchapost3">我<br />想<br />念<br />你<br /><br />每<br />次<br />寻<br />找<br />你<br /><br />我<br />都<br />只<br />会<br />更<br />加<br /></p>
+
+            <div id="circle2"><p>次</p></div>
+            <div id="circle1"><p>我</p><b>✽</b><span>雪<br />根</span></div>
+
         </div>
         <div id="areaposts">
             <style>
@@ -374,11 +1023,1546 @@
                     position: absolute;
                     width: 30%;
                     height: 100%;
-                     
                     /*background: blue;*/
-                    left: 46%;
+                    left: 43%;
+                    z-index:9999; font-family:Roboto;
                 }
             </style>
+
+            <div id="mainscroll">
+                <style>
+                    #nav {
+                        opacity: .3;
+                        left: 20%;
+                        position: fixed;
+                        width: 5vw;
+                        height: 5vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 300px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+                    #nav2 {
+                        opacity: .5;
+                        left: 50%;
+                        position: fixed;
+                        width: 5vw;
+                        height: 5vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 600px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+                    #nav3 {
+                        opacity: .3;
+                        left: 90%;
+                        position: fixed;
+                        width: 7vw;
+                        height: 7vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 300px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+                    #nav4 {
+                        opacity: .3;
+                        left: -5%;
+                        position: fixed;
+                        width: 10vw;
+                        height: 10vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 400px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+                    #nav5 {
+                        opacity: .3;
+                        left: 65%;
+                        position: fixed;
+                        width: 8vw;
+                        height: 8vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 200px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+                    #nav6 {
+                        opacity: .3;
+                        left: 30%;
+                        position: fixed;
+                        width: 6vw;
+                        height: 6vw;
+                        background: #5e0880;
+                        filter: blur(20px);
+                        top: 500px;
+                        border-radius: 50%;
+                        padding: 4px;
+                    }
+
+
+                    #mainscroll::-webkit-scrollbar {
+                        width: .4vw;
+                        background: transparent;
+                        mix-blend-mode: difference;
+                    }
+
+                    #mainscroll::-webkit-scrollbar-thumb {
+                        width: .4vw;
+                        background: rgba(100,100,100,.1);
+                        border-radius: 1vw;
+                    }
+                    /* #mainscroll:hover #mainscroll::-webkit-scrollbar-thumb {
+
+                        background: rgba(100,100,100,.2);
+
+                    }*/
+                    #mainscroll {
+                        /*backdrop-filter: blur(10px);*/
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0%;
+                        scroll-behavior: smooth;
+                        overflow: auto;
+                        overflow-x: hidden;
+                        transition: all 1s ease;
+                    }
+                    /* #mainscroll:hover {
+                             background:rgba(46,98,136,.1);
+                        }*/
+
+
+
+                </style>
+
+
+
+                <div id="postinfo">
+                    <style>
+                        #postinfo {
+                            position: relative;
+                            width: 100%;
+                            margin-bottom: 20%;
+                            height: 35%;
+                            margin-top: 20%;
+                            backdrop-filter: blur(5px);
+                        }
+
+                        #contimg {
+                            position: absolute;
+                            width: 70%;
+                            height: 100%;
+                            top: 00%;
+                            overflow: hidden;
+                        }
+
+                            #contimg img {
+                                position: absolute;
+                                height: 120%;
+                                left: -5%;
+                                top: -20%;
+                                transform: scaleX(-1)
+                            }
+
+                        #postinfcont {
+                            position: absolute;
+                            width: 55%;
+                            height: 85%;
+                            top: 10%;
+                            right: 3%;
+                            mix-blend-mode: difference;
+                        }
+
+                        #pinfolin {
+                            position: absolute;
+                            width: 95%;
+                            height: 95%;
+                            left: 2.5%;
+                            top: 2.5%;
+                            backdrop-filter: blur(10px);
+                            border: .1vw solid gray;
+                            opacity: .3;
+                        }
+
+                        #inftitj {
+                            position: absolute;
+                            font-size: 2.2vw;
+                            top: -25%;
+                            color: #5e0880;
+                            left: 38%;
+                            letter-spacing: .15vw;
+                        }
+
+                        #inftit {
+                            font-family: Roboto;
+                            position: absolute;
+                            font-size: .9vw;
+                            letter-spacing: .15vw;
+                            top: -2%;
+                            color: gray;
+                            left: 38%;
+                        }
+
+                        #infoname {
+                            position: absolute;
+                            font-size: .7vw;
+                            letter-spacing: .2vw;
+                            top: 10%;
+                            color: darkgray;
+                            left: -3%;
+                        }
+
+                            #infoname span {
+                                color: #5e0880;
+                                font-weight: bold;
+                            }
+
+                        #infoage {
+                            position: absolute;
+                            font-size: .7vw;
+                            top: 20%;
+                            letter-spacing: .2vw;
+                            color: darkgray;
+                            left: -3%;
+                        }
+
+                            #infoage span {
+                                color: #5e0880;
+                                font-weight: bold;
+                            }
+
+                        #infcontry {
+                            position: absolute;
+                            font-size: .7vw;
+                            top: 30%;
+                            letter-spacing: .2vw;
+                            color: darkgray;
+                            left: -3%;
+                        }
+
+                            #infcontry span {
+                                color: #5e0880;
+                                font-weight: bold;
+                            }
+
+                        #infmail {
+                            position: absolute;
+                            font-size: .7vw;
+                            top: 40%;
+                            letter-spacing: .2vw;
+                            color: darkgray;
+                            left: -3%;
+                        }
+
+                            #infmail span {
+                                color: #5e0880;
+                                font-weight: bold;
+                            }
+
+                        #versinfo {
+                            opacity: .5;
+                            position: absolute;
+                            font-size: .5vw;
+                            top: 70%;
+                            width: 60%;
+                            letter-spacing: .1vw;
+                            color: #5e0880;
+                            right: 3%;
+                        }
+
+                        #firminfo {
+                            position: absolute;
+                            width: 7vw;
+                            top: 90%;
+                            right: -5%;
+                            filter: invert(50%);
+                            mix-blend-mode: difference;
+                        }
+
+                        #iconscroll {
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            filter: invert(100%);
+                            right: 1%;
+                            top: 15%;
+                            width: 4vw;
+                            opacity: .5;
+                        }
+                    </style>
+
+                    <p id="inftit">
+                        Atonement:
+                    </p><p id="inftitj">
+                        赎罪:
+                    </p>
+                    <div id="postinfcont">
+
+                        <img src="https://i.postimg.cc/GpvCgvQ9/scroll-down.gif" id="iconscroll" />
+                        <div id="pinfolin"></div>
+                        <p id="infoname"><span>姓名:</span> Yukine | Yuki | XXX</p>
+                        <p id="infoage"><span>年龄:</span> XX | 20</p>
+                        <p id="infcontry"><span>城市:</span> XXXXXX</p>
+                        <p id="infmail">
+                            <span>
+                                邮件:
+                            </span> XXX@XXX.XXX
+                        </p>
+                        <i id="versinfo">
+                            "It didn't matter where I was anymore, I longed for you, I missed you and every time I looked for you it only made me lose myself more."
+                        </i>
+                        <img src="https://i.postimg.cc/y81h1q90/pngwing-com-4.png" id="firminfo" />
+                    </div>
+                    <div id="contimg">
+
+                        <img src="https://i.postimg.cc/6QJXyt0d/xd.png" />
+
+                    </div>
+
+                </div>
+
+                <div id="postNeura">
+                    <style>
+
+
+                        #postNeura {
+                            width: 100%;
+                            height: 30%;
+                            margin-top: 20%;
+                            margin-bottom: 30%;
+                            position: relative;
+                            backdrop-filter: blur(5px);
+                        }
+
+                        #imgagata {
+                            height: 100%;
+                            position: absolute;
+                            right: 0;
+                            /*filter: grayscale(60%) contrast(120%);*/
+                        }
+
+                        #NeuPosTit {
+                            position: absolute;
+                            font-size: 2.2vw;
+                            left: 3%;
+                            top: 0;
+                            color: #5e0880;
+                            font-weight: bold;
+                            font-family: neigefont3;
+                        }
+
+                        #NeuFirm {
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            font-size: .55vw;
+                            line-height: .7vw;
+                            text-align: center;
+                            right: 1%;
+                        }
+
+                        #NeuFirm2 {
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            font-size: .55vw;
+                            line-height: .8vw;
+                            right: 4%;
+                        }
+
+                        #NeuFirm3 {
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            font-size: .6vw;
+                            letter-spacing: .1vw;
+                            right: 1%;
+                            bottom: 1%;
+                        }
+
+                        #NeuFirm4 {
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            font-size: .6vw;
+                            letter-spacing: .1vw;
+                            right: 1%;
+                            bottom: -3%;
+                        }
+
+                        #firstPost {
+                            width: 100%;
+                            height: 25%;
+                            margin-top: 20%;
+                            position: relative;
+                            backdrop-filter: blur(5px);
+                        }
+
+                        #Fpimg {
+                            top: -30%;
+                            height: 130%;
+                            position: absolute;
+                            left: 0;
+                            filter: grayscale(70%) contrast(120%);
+                        }
+
+                        #FIgif1 {
+                            position: absolute;
+                            right: 1%;
+                            width: 5vw;
+                            height: 5vw;
+                            border-radius: 50%;
+                            border: .3vw solid white;
+                            overflow: hidden;
+                            filter: grayscale(70%) contrast(120%);
+                            top: 5%;
+                        }
+
+                            #FIgif1 img {
+                                width: 110%;
+                                position: absolute;
+                                left: -5%;
+                                top: -5%;
+                            }
+
+                        #FIgif2 {
+                            position: absolute;
+                            right: 1%;
+                            width: 5vw;
+                            height: 5vw;
+                            border-radius: 50%;
+                            border: .3vw solid white;
+                            overflow: hidden;
+                            filter: grayscale(70%) contrast(120%);
+                            bottom: 5%;
+                        }
+
+                            #FIgif2 img {
+                                width: 110%;
+                                position: absolute;
+                                left: -5%;
+                                top: -5%;
+                            }
+
+                        #textverse1 {
+                            width: 46%;
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            font-size: .6vw;
+                            letter-spacing: .1vw;
+                            left: 35%;
+                            top: 10%;
+                        }
+
+                        #neurfirm {
+                            position: absolute;
+                            width: 50%;
+                            height: 80%;
+                            left: 12%;
+                            top: 20%;
+                            /*mix-blend-mode: difference;*/
+                        }
+
+                        #Np1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np1 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np1 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #Np2 {
+                            top: 13%;
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np2 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np2 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #Np3 {
+                            top: 26%;
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np3 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np3 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #Np4 {
+                            top: 39%;
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np4 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np4 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #Np5 {
+                            top: 52%;
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np5 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np5 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #Np6 {
+                            top: 65%;
+                            position: absolute;
+                            width: 100%;
+                            height: 13%;
+                            font-size: .8vw;
+                        }
+
+                            #Np6 p {
+                                color: #5e0880;
+                                top: 10%;
+                                position: absolute;
+                                font-size: .45vw;
+                                letter-spacing: .05vw;
+                            }
+
+                            #Np6 b {
+                                color: gray;
+                                position: absolute;
+                                font-size: .6vw;
+                                letter-spacing: .05vw;
+                            }
+
+                        #neurfirm div b span {
+                            color: #5e0880;
+                            font-size: .45vw;
+                            letter-spacing: .05vw;
+                        }
+
+                        #firmD {
+                            /*filter: invert(100%);*/
+                            position: absolute;
+                            width: 9vw;
+                            bottom: -15%;
+                            transform: scaleY(-1) scaleX(-1);
+                            left: 30%;
+                            /*mix-blend-mode: difference;*/
+                        }
+                    </style>
+                    <img id="imgagata" src="https://i.postimg.cc/KvMD7JYF/7fe777ff0325ae0e60f84110265203b4.png" />
+                    <p id="NeuPosTit">脆<br />弱<br />的<br />三<br />月<br />雪</p>
+                    <p id="NeuFirm">灰<br />指<br />甲<br />●<br />M<br />E<br />R<br />I<br />G<br />G<br />I<br />A<br />R<br />E<br /></p>
+                    <p id="NeuFirm2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+                    <p id="NeuFirm3">Grisâtre | Swallow</p>
+                    <p id="NeuFirm4">1533252890</p>
+                    <div id="neurfirm">
+                        <div id="Np1"><b>bebi hermosa, aunque el tiempo que hemos compartido ha sido cortito | <span>漂亮宝贝</span></b></div>
+                        <div id="Np2"><b>tu amistad es un regalo valioso que atesoro con cariño. | <span>你的友谊是一份礼物</span></b></div>
+                        <div id="Np3"><b>las conexiones más valiosas se forman en el menor tiempo posible | <span>最有价值的联系</span></b></div>
+                        <div id="Np4"><b>y contigo siento que he encontrado una amiga maravillosa en muy poco tiempo. | <span>精彩的</span></b></div>
+                        <div id="Np5"><b>gracias por ser una persona tan especial y por dejarme ser parte de tu vida. | <span>谢谢  </span></b></div>
+                        <div id="Np6">
+                            <b>
+                                con mucho afecto, velka | <span>深情地, 债务</span>
+                            </b>
+                        </div>
+                    </div>
+                    <img src="https://i.postimg.cc/28936DYS/pngegg-9.png" id="firmD" />
+                </div>
+
+
+
+
+                <style>
+
+                    #post {
+                        position: relative;
+                        width: 100%;
+                        margin-bottom: 20%;
+                        height: auto;
+                        margin-top: 20%;
+                        backdrop-filter: blur(5px);
+                    }
+
+                    #post1 {
+                        position: relative;
+                        width: 42%;
+                        height: auto;
+                        background: rgba(25,25,25,.2);
+                        margin-top: 2vw;
+                        margin-bottom: 5vw;
+                    }
+
+                    #headpost {
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                        top: .5vw;
+                        background: rgba(25,25,25,.2);
+                        height: 5vw;
+                    }
+
+                    #imgmainpost {
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                        margin-top: 2vw;
+                    }
+
+                    #butonspost {
+                        height: 3vw;
+                        width: 96%;
+                        left: 2%;
+                        text-align: right;
+                        margin-top: 0vw;
+                    }
+
+                        #butonspost p {
+                            font-family: "Roboto", Arial, sans-serif;
+                            background: rgb(25,25,25);
+                            color: white;
+                            padding: .4vw;
+                            margin-left: 1vw;
+                            float: right;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                        }
+
+                    #textareapost {
+                        margin-top: 1vw;
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                    }
+
+                    #ptitlepost {
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        color: #5e0880;
+                        text-decoration: underline;
+                        font-weight: bold;
+                    }
+
+                    #textpost {
+                        position: relative;
+                        width: 92%;
+                        left: 5%;
+                        border-left: .1vw solid #7c6092;
+                    }
+
+                        #textpost p {
+                            margin-left: .5vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            color: gray;
+                        }
+
+                        #textpost span {
+                            color: #7c6092;
+                        }
+
+                    #reproarea {
+                        position: relative;
+                        width: 96%;
+                        height: 15%;
+                        left: 2%;
+                        margin-top: 2vw;
+                    }
+
+                    #clock, #clock2 {
+                        color: #5e0880;
+                        text-transform: uppercase;
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 5vw;
+                        top: 1.5vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #tt, #tt2 {
+                        color: rgb(165,157,154);
+                        text-transform: uppercase;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 5vw;
+                        top: 1.8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #headimg {
+                        width: 3vw;
+                        height: 3vw;
+                        position: relative;
+                        border-radius: .6vw;
+                        background: #5e4870;
+                        left: 1vw;
+                        top: 1vw;
+                    }
+
+                        #headimg img {
+                            width: 1.5vw;
+                            position: absolute;
+                            left: .7vw;
+                            top: .75vw;
+                            filter: invert(100%);
+                        }
+
+                    #buttons {
+                        filter: invert(100%);
+                        position: absolute;
+                        z-index: 9;
+                        width: 12%;
+                        right: 2%;
+                        top: 40%;
+                        height: 8%;
+                        opacity: .4;
+                    }
+
+                    #bt1, #bt12 {
+                        position: absolute;
+                        width: 1vw;
+                        height: 1vw;
+                    }
+
+                    #bt1, #bt2 {
+                        filter: invert(80%);
+                    }
+
+                    .relad3 {
+                        background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
+                        background-size: contain;
+                    }
+
+                    .relad2 {
+                        background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
+                        background-size: contain;
+                    }
+
+                    #bt2, #bt22 {
+                        left: 2vw;
+                        position: absolute;
+                        width: 1vw;
+                        height: 1vw;
+                        background: url(https://i.postimg.cc/W1ytn21n/reload.png);
+                        background-size: contain;
+                    }
+
+                    .relad {
+                        animation: reload 2s 1;
+                    }
+
+                    .reloadpost {
+                        animation: reloadpost 2s 1;
+                    }
+
+                    @keyframes reload {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    @keyframes reloadpost {
+                        0% {
+                            opacity: 0;
+                        }
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    #pbtn1 {
+                        filter: invert(-80%);
+                        color: white;
+                        border-radius: .3vw;
+                        font-size: .6vw;
+                        padding: .5vw;
+                        background: #7c6092;
+                        text-align: center;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        opacity: 0;
+                        transition: all .5s ease;
+                        position: absolute;
+                        width: 8vw;
+                        left: -5.5vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #pbtn2 {
+                        filter: invert(-80%);
+                        color: white;
+                        border-radius: .3vw;
+                        font-size: .6vw;
+                        padding: .5vw;
+                        background: #7c6092;
+                        text-align: center;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        opacity: 0;
+                        left: -6.5vw;
+                        transition: all .5s ease;
+                        position: absolute;
+                        width: 8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                        opacity: 1;
+                    }
+                </style>
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.postimg.cc/Yqr4YqKg/anigif.gif" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">小蝴蝶 | Little Butterfly:</p>
+                        <div id="textpost">
+                            <p>
+
+
+                                <span>在我身边变得脆弱|</span>I am Kocho <span>Shinobu</span>, Insect Pillar of the demon slayers. <br />
+                                I am incapable of cutting off the heads of demons but I created a poison that kills them anyway.
+
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Neige</p><p>#NeigedeMars</p><p>#ForYuki</p></div>
+
+                </div>
+
+                <div id="FirmNeu">
+                    <style>
+                        #FirmNeu {
+                            position: relative;
+                            backdrop-filter: blur(5px);
+                            width: 100%;
+                            height: 70%;
+                            margin-top: 35%;
+                        }
+
+                        #firmimgneur {
+                            position: absolute;
+                            height: 90%;
+                            bottom: 0;
+                            right: -5%;
+                        }
+
+                        #inineura {
+                            position: absolute;
+                            left: 8%;
+                            color: #5e0880;
+                            font-size: 2.5vw;
+                            top: -3%;
+                            border-bottom: .15vw solid gray;
+                        }
+
+                        #subtneur {
+                            position: absolute;
+                            left: 8%;
+                            color: #171717;
+                            font-size: 1.5vw;
+                            top: 9%;
+                        }
+
+                        #subtneur2 {
+                            font-family: Roboto;
+                            position: absolute;
+                            left: 8%;
+                            color: gray;
+                            font-size: 1.3vw;
+                            letter-spacing: .05vw;
+                            top: 14.6%;
+                            font-weight: lighter;
+                        }
+
+                        #titleneura {
+                            font-family: Roboto;
+                            position: absolute;
+                            left: 8%;
+                            color: #5e0880;
+                            font-size: .9vw;
+                            letter-spacing: .1vw;
+                            top: 21%;
+                            font-weight: bold;
+                        }
+
+                        #subtneu {
+                            position: absolute;
+                            left: 8%;
+                            color: gray;
+                            font-size: .55vw;
+                            letter-spacing: .1vw;
+                            top: 26%;
+                            text-transform: uppercase;
+                            font-weight: lighter;
+                            border-bottom: .1vw solid gray;
+                            padding-bottom: .3vw;
+                        }
+
+                        #neuxc {
+                            width: 2vw;
+                            position: absolute;
+                            left: 2%;
+                            top: 50%;
+                            filter: invert(100%);
+                        }
+
+                        #neuxc2 {
+                            height: 1vw;
+                            position: absolute;
+                            left: 7.5%;
+                            top: 37%;
+                            filter: invert(100%);
+                        }
+
+                        #firmnnr {
+                            filter: invert(30%);
+                            /*mix-blend-mode: difference;*/
+                            position: absolute;
+                            right: 2%;
+                            bottom: -5%;
+                            width: 9vw;
+                        }
+
+                        #subtext2 {
+                            position: absolute;
+                            left: 10%;
+                            color: gray;
+                            font-size: 1vw;
+                            letter-spacing: .1vw;
+                            top: 39%;
+                            text-transform: uppercase;
+                            font-weight: lighter;
+                            padding-bottom: .3vw;
+                        }
+
+                            #subtext2 span {
+                                color: #5e0880;
+                                font-size: 1.2vw;
+                                font-weight: bold;
+                            }
+
+                        #versinfo2 {
+                            opacity: .5;
+                            position: absolute;
+                            font-size: .6vw;
+                            top: 90%;
+                            width: 60%;
+                            z-index: 9;
+                            letter-spacing: .1vw;
+                            color: #5e0880;
+                            left: 10%;
+                        }
+
+                            #versinfo2 span {
+                                color: black;
+                                font-weight: bold;
+                            }
+                    </style>
+                    <p id="inineura">
+                        灰指甲
+                    </p>
+                    <p id="subtneur">神经衰弱症</p> <div id="next2" class="fas fa-forward"><p>►</p></div>
+                    <p id="subtneur2">03.04-20.23</p>
+
+                    <p id="titleneura">STOP CRYING YOU HEART</p>
+
+                    <p id="subtneu">
+                        Hold up.<br />
+                        Don't be scared. <br />
+                        You'll never <br />
+                        change what's been and gone.
+                    </p>
+                    <p id="subtext2">
+                        Cause <span>all</span> of the <br />
+                        <span>stars</span> are <br />
+                        fading <span>away</span>. Just <br /><span>try</span> not to worry,<br />
+                        you'll <span>see</span> them<br />
+                        <span>someday</span>. Just <br />
+                        take what <span>you</span><br />
+                        need, and <span>be</span> on<br />
+                        <span>your</span> way and <br />
+                        stop crying your <br />
+                        <span>heart</span> out...
+                    </p>
+                    <i id="versinfo2">
+                        Your destiny may keep<br /> you warm<br /><br />
+                        <span>Neige | Gris</span>
+                    </i>
+                    <img src="https://i.postimg.cc/3NbvpY3Z/xc.png" id="neuxc" /><img src="https://i.postimg.cc/8kyWxBLr/xc1.png" id="neuxc2" />
+                    <img src="https://i.postimg.cc/bvWtB6Qy/3ef3391bf2e05e19e09864831d5c91e3.png" id="firmimgneur" />
+                    <img src="https://i.postimg.cc/pLVCX4gw/Sin-t-tulo-2.png" id="firmnnr" />
+                </div>
+
+
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.postimg.cc/vZc5x7CC/anigif.gif" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">Just like a butterfly, graceful and beautiful</p>
+                        <div id="textpost">
+                            <p>
+
+                                Just like a heavenly angel, float down below
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Neige</p><p>#NeigedeMars</p><p>#ForYuki</p></div>
+
+                </div>
+
+                <div id="postscr">
+                    <style>
+                        #postscr {
+                            width: 100%;
+                            height: 40%;
+                            backdrop-filter: blur(5px);
+                            position: relative;
+                            margin-top: 10%;
+                        }
+
+                        #cubimg {
+                            position: absolute;
+                            width: 50%;
+                            height: 80%;
+                            top: 10%;
+                            left: 25%;
+                            overflow: hidden;
+                        }
+
+                        #cubimg2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0%;
+                            overflow: hidden;
+                        }
+
+                            #cubimg2 img {
+                                width: 100%;
+                            }
+
+                        #dfirmscr {
+                            position: absolute;
+                            width: 10vw;
+                            height: 10vw;
+                            backdrop-filter: blur(15px);
+                            top: 25%;
+                            left: 5%;
+                            mix-blend-mode: difference;
+                        }
+
+                        #dfscrlin {
+                            position: absolute;
+                            width: 95%;
+                            height: 95%;
+                            top: 2.5%;
+                            left: 2.5%;
+                            border: .1vw solid darkgray;
+                            mix-blend-mode: difference;
+                            opacity: .3;
+                        }
+
+                        #dfscrlin2 {
+                            position: absolute;
+                            position: absolute;
+                            width: 90%;
+                            height: 83%;
+                            top: 5%;
+                            left: 5%;
+                            border: .1vw solid darkgray;
+                            mix-blend-mode: difference;
+                            opacity: .3;
+                        }
+
+                        #pscaryuk {
+                            position: absolute;
+                            font-size: 2vw;
+                            color: #5e0880;
+                            top: -10%;
+                            right: 2%;
+                            animation: bluranim 3s infinite;
+                        }
+
+                        #pscaryuk2 {
+                            position: absolute;
+                            font-size: 1vw;
+                            color: #5e0880;
+                            top: -3%;
+                            animation-delay: 2s;
+                            right: 12%;
+                            animation: bluranim 2s infinite;
+                        }
+
+                        @keyframes bluranim {
+                            0% {
+                                filter: blur(1px);
+                            }
+
+                            33% {
+                                filter: blur(3px);
+                            }
+
+                            66% {
+                                filter: blur(2px);
+                            }
+
+                            100% {
+                                filter: blur(1px);
+                            }
+                        }
+
+                        #ptextscar {
+                            position: absolute;
+                            width: 90%;
+                            height: 90%;
+                            top: 5%;
+                            left: 5%;
+                            text-align: center;
+                        }
+
+                            #ptextscar p {
+                                padding-top: 2vw;
+                                font-size: .6vw;
+                                color: gray;
+                                letter-spacing: .05vw;
+                            }
+
+                            #ptextscar span {
+                                color: #5e0880;
+                            }
+
+                        #scrddiv {
+                            position: absolute;
+                            width: .1vw;
+                            background: gray;
+                            height: 30%;
+                            top: 80%;
+                            right: 23%;
+                        }
+
+                        #scrdfirmimg {
+                            position: absolute;
+                            width: 6vw;
+                            right: 2%;
+                            bottom: -10%;
+                            mix-blend-mode: difference;
+                        }
+
+                        #regscrd {
+                            font-size: .55vw;
+                            color: dimgray;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 78%;
+                            opacity: .3;
+                            top: 77%;
+                        }
+
+                        #numregscrd {
+                            font-size: .55vw;
+                            color: #5e0880;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 78%;
+                            opacity: .3;
+                            top: 81%;
+                        }
+
+                        #titscrd {
+                            font-size: .6vw;
+                            color: gray;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 6%;
+                            opacity: .3;
+                            top: 13%;
+                        }
+
+                        #titscrdj {
+                            font-weight: bold;
+                            font-size: .6vw;
+                            color: gray;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            left: 6%;
+                            opacity: .6;
+                            top: 17%;
+                        }
+                    </style>
+
+                    <div id="cubimg">
+                        <div id="cubimg2">
+                            <img src="https://i.pinimg.com/564x/8f/bf/c1/8fbfc1bc843871ca8eb9313f36bf5601.jpg" /><div id="dfscrlin2"></div>
+                        </div>
+                    </div>
+
+                    <div id="dfirmscr">
+                        <div id="ptextscar">
+                            <p>
+                                Entre las <span>cenizas</span> de tus llantos y tus <span>errores</span>, encontraras la versión de ti que pueda <span>restaurar</span> el orden de tu vida.
+
+                            </p>
+                        </div>
+
+                        <div id="dfscrlin"></div>
+                    </div>
+                    <p id="titscrd">Algunas palabras:</p>
+                    <p id="titscrdj">
+                        一些单词:
+                    </p>
+                    <p id="pscaryuk">
+                        不<br />
+                        安<br />
+                        的<br />
+                        ●<br />
+                        寒<br />
+                        冷<br />
+                        的
+                    </p>
+                    <p id="pscaryuk2">20<br />23<br />年<br />03<br />月<br />18<br />日</p>
+                    <div id="scrddiv"></div>
+                    <img id="scrdfirmimg" src="https://i.postimg.cc/0NjDpV6J/pngwing-com-5.png" />
+                    <p id="regscrd">
+                        xShirou
+                    </p>
+                    <p id="numregscrd">1545732774</p>
+                </div>
+
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.postimg.cc/zfBkJZkZ/anigif2.gif" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">Show your smile,</p>
+                        <div id="textpost">
+                            <p>
+                                your charm, so that nobody knows<br />
+                                Underneath your veil, there's an anger that grows<br />
+                                There are countless ways that one can show their strength<br />
+                                So I'll fight my own way until the end
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Neige</p><p>#NeigedeMars</p><p>#ForYuki</p></div>
+
+                </div>
+
+
+                <div id="arefirmneu2">
+                    <style>
+                        #arefirmneu2 {
+                            width: 100%;
+                            height: 50%;
+                            backdrop-filter: blur(5px);
+                            position: relative;
+                            margin-top: 10%; margin-bottom:20%;
+                        }
+
+                        #imgneu1 {
+                            position: absolute;
+                            top: 10%;
+                            left: -55%;
+                            width: 60%;
+                            z-index: 0;
+                        }
+
+                        #imgneu2 {
+                            position: absolute;
+                            top: 10%;
+                            left: 25%;
+                            width: 60%;
+                            z-index: 0;
+                        }
+
+                        #neufirmacub {
+                            position: absolute;
+                            width: 8vw;
+                            height: 10vw;
+                            background: black;
+                            top: 40%;
+                            left: 8%;
+                        }
+
+                        #linescub {
+                            width: 7vw;
+                            height: 9vw;
+                            position: absolute;
+                            left: .48vw;
+                            top: .48vw;
+                            border: .1vw solid white;
+                        }
+
+                        #firmnnr4 {
+                            width: 11vw;
+                            mix-blend-mode: difference;
+                            position: absolute;
+                            filter: invert(100%);
+                            left: -1vw;
+                            top: -1vw;
+                        }
+
+                        #firmtxt1 {
+                            width: 35%;
+                            height: 25%;
+                            top: 13%;
+                            left: 7%;
+                            z-index: 2;
+                            position: absolute;
+                        }
+
+                        #firmtxt2 {
+                            width: 85%;
+                            height: 20%;
+                            top: 80%;
+                            left: 12%;
+                            z-index: 2;
+                            position: absolute;
+                        }
+
+                        #firmtxt1 p {
+                            color: black;
+                            letter-spacing: .05vw;
+                            font-size: .65vw;
+                            position: absolute;
+                            opacity: .6;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #firmtxt2 p {
+                            color: black;
+                            letter-spacing: .05vw;
+                            font-size: .65vw;
+                            position: absolute;
+                            opacity: .6;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #textlate {
+                            position: absolute;
+                            width: 10%;
+                            height: 65%;
+                            top: 9%;
+                            right: 8%;
+                        }
+
+                            #textlate p {
+                                transform: rotate(90deg);
+                                width: 500%;
+                                left: -200%;
+                                top: 33%;
+                                color: #5e0880;
+                                letter-spacing: .05vw;
+                                font-size: 1.3vw;
+                                letter-spacing: .1vw;
+                                text-transform: uppercase;
+                                position: absolute;
+                                opacity: .6;
+                                font-family: neigefont3;
+                                font-weight: bold;
+                            }
+
+                        #neudatx {
+                            position: absolute;
+                            color: white;
+                            letter-spacing: .05vw;
+                            top: 75%;
+                            left: 1vw;
+                            text-align: left;
+                            font-size: .65vw;
+                            position: absolute;
+                            opacity: .6;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+                    </style>
+
+                    <img src="https://i.postimg.cc/1Xk5RYYr/0c9c3161c71c7577cb9c9bc00b0d2194.jpg" id="imgneu1" />
+                    <img src="https://i.postimg.cc/1Xk5RYYr/0c9c3161c71c7577cb9c9bc00b0d2194.jpg" id="imgneu2" />
+                    <div id="firmtxt1">
+                        <p>
+                            Cositaaa, nos conocemos hace poquito pero a esta altura me caes superbien.
+                        </p>
+                    </div>
+                    <div id="firmtxt2">
+                        <p>
+                            Tenemos bastantes gustos en comun como el genshin (?).
+                            Pero es super agradable hablar con vos, todo es tranquilidad y ya, ademas de que lo poco que vi me dio a entender que sos una muy buena persona y una dulzura.
+                            TQM yukicita uwu
+                        </p>
+                    </div>
+
+                    <div id="textlate">
+                        <p>
+                            甜蜜又平静 <br /> 雪根  甜蜜又平静
+                        </p>
+                    </div>
+                    <div id="neufirmacub">
+                        <div id="linescub">
+
+                        </div>
+                        <img src="https://i.postimg.cc/DZj16sxb/signature-series-j-design-illustration-vector.png" id="firmnnr4" />
+                        <div id="neudatx">
+                            | TRAPNEST<br />
+                            | JAZZ
+                        </div>
+                    </div>
+                    <!--<p id="regnm">HIRONDELLE |<br /> 1533252890 |</p>-->
+                </div>
+
+
+
+
+
+
+                <div id="nav">
+
+                </div>
+                <!--<div id="nav2">
+
+    </div>-->
+                <div id="nav3">
+
+                </div>
+                <div id="nav4">
+
+                </div>
+                <!--<div id="nav5">
+
+    </div>-->
+                <div id="nav6">
+
+                </div>
+            </div>
+
         </div>
         <div id="areachat">
             <style>
@@ -580,11 +2764,11 @@
             </style>
 
             <div id="chatmess">
-                <img class="imgchat" src="https://i.postimg.cc/Znzf4G9y/98f54dd5827cbe48f5f8214c08fd785c.jpg" />
-                <p id="titlechat">●一 This is a beautiful feeling // <span>这是一种美妙的感觉</span></p>
+                <img class="imgchat" src="https://i.pinimg.com/736x/1d/5e/00/1d5e00563d52de02cdd8743459370b7b.jpg" />
+                <p id="titlechat">●一 Farewell // <span>这是一种美妙的感觉</span></p>
                 <p id="contnchat">
-                    Everything happened so suddenly, I didn't have time to think about it...
-                    I could only feel it and since that day it has only intensified... <span>NEIGE / 雪灰色</span>
+                    Silent goodbyes are the best option on some occasions.<br />
+                    this is all... <span>NEIGE / 雪灰色</span>
                 </p> 
 
             </div>
@@ -597,11 +2781,10 @@
                 </p>
             </div>
             <div id="chatmess3">
-                <img class="imgchat" src="https://i.postimg.cc/Znzf4G9y/98f54dd5827cbe48f5f8214c08fd785c.jpg" />
-                <p id="titlechat">●一 This is a beautiful feeling // <span>这是一种美妙的感觉</span></p>
+                <img class="imgchat" src="https://i.pinimg.com/564x/1b/4d/e0/1b4de0cb39e27314faf532510981f9e1.jpg" />
+                <p id="titlechat">●一 la vida son tres dias // <span>生命是三天   </span></p>
                 <p id="contnchat">
-                    Everything happened so suddenly, I didn't have time to think about it...
-                    I could only feel it and since that day it has only intensified... <span>NEIGE / 雪灰色</span>
+                    Ey estamos en el segundo... <span>SHIROU / 希罗</span>
                 </p>
             </div>
             <div id="chatmess4">
@@ -614,13 +2797,13 @@
             </div>
         </div>
         <style>
-            #rit { position:absolute; top:88%; font-size:.7vw; letter-spacing:.1vw; font-weight:bold; font-family:Roboto; left:5%;
+            #rit { position:absolute; top:90%; font-size:.7vw; letter-spacing:.1vw; font-weight:bold; font-family:Roboto; left:5%;
             }
-            #fotimg { width:5%; top:91%; left:4.5%; position:absolute;
+            #fotimg { width:5%; top:93%; left:4.5%; position:absolute;
             }
             #flyn {
                 position: absolute;
-                top: 89.4%;
+                top: 91.4%;
                 font-size: 1vw; color:#5e0880;
                 letter-spacing: .1vw;
                 font-weight: bold;
