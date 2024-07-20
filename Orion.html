@@ -1,0 +1,3704 @@
+﻿E﻿
+<!DOCTYPE html>
+
+<html id="bd" lang="en" xmlns="http://www.w3.org/1999/xhtml" >
+<head >
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <style>
+        html,
+        body  {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        body  {
+            background: black;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            overflow: hidden;
+        }
+
+         
+        canvas {
+            display: block;
+        }
+
+         
+        html, canvas {
+           cursor:crosshair;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+         }
+        #bkgmain { opacity:.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url(https://img3.wallspic.com/previews/1/6/5/5/3/135561/135561-cosmos-darkness-sky-star-celestial_event-x750.jpg);
+        }
+        #cube1 {
+            width: .75vw;
+            height: .75vw;
+            border: .1vw solid #7c6092; position:absolute; top:3.3%; left:2.1%; background-color:black; z-index:9;
+        }
+        #cube2 {
+            width: .75vw;
+            height: .75vw;
+            border: .1vw solid #7c6092;
+            position: absolute;
+            bottom: 7%;
+            left: 2.1%;
+            background-color: black;
+            z-index: 9;
+        }
+        #cube3 {
+            width: .75vw;
+            height: .75vw;
+            border: .1vw solid #7c6092;
+            position: absolute;
+            bottom: 7%;
+            right: 3%;
+            background-color: black;
+            z-index: 9;
+        }
+        #cube4 {
+            width: .75vw;
+            height: .75vw;
+            border: .1vw solid #7c6092;
+            position: absolute;
+            top: 3.3%;
+            right: 3%;
+            background-color: black;
+            z-index: 9;
+        }
+        #main2 { width:94%; height:88%; left:2.5%; top:4%; position:absolute;  overflow:hidden; border:.1vw solid #7c6092; background:black;  
+        }
+           
+           
+    </style>
+
+
+</head>
+
+<body  onload="digi()"  >
+    <div id="main">
+        <div id="bkgmain"></div>
+        <div id="cube1"></div> <div id="cube2"></div> <div id="cube3"></div> <div id="cube4"></div>
+        <!--<div id="context">
+              <style>
+                  div#context ul {
+                      list-style: none;
+                      list-style-type: none;
+                      list-style-position: outside;
+                  }
+
+                  div#context li {
+                      list-style: none;
+                      box-shadow: 0 0 0 0 #800;
+                      margin-left: -25%;
+                  }
+
+                      div#context li a:hover {
+                          box-shadow: 250px 0 0 0 #7c6092 inset;
+                          color: white;
+                      }
+
+                      div#context li a { /*text-transform:uppercase;*/
+                          line-height: 2vw;
+                          font-size: .6vw;
+                          letter-spacing: .1vw;
+                          cursor: pointer;
+                          padding-left: 1vw;
+                          color: darkgray;
+                          display: block;
+                          text-decoration: none;
+                          -webkit-transition: all .3s ease;
+                          -o-transition: all .3s ease;
+                          transition: all .3s ease;
+                      }
+
+                          div#context li a span {
+                              float: right;
+                              padding-top: 7px;
+                          }
+
+                  ::selection {
+                      background: #7c6092;
+                      color: white;
+                  }
+
+                  div#context {
+                      width: 15%;
+                      position: absolute;
+                      background: black;
+                      border: .1vw solid #7c6092;
+                      z-index: 999999;
+                      -webkit-transition: all .3s ease;
+                      -o-transition: all .3s ease;
+                      transition: all .3s ease;
+                  }
+
+                  #imgli {
+                      width: 1vw;
+                      height: 1vw;
+                      position: relative;
+                      filter: invert(100%);
+                      top: .2vw;
+                      margin-right: .5vw;
+                  }
+              </style>
+              <div id="codee">
+                  <style>
+                      #codee {
+                          position: absolute;
+                          z-index: -1;
+                          opacity: 0;
+                      }
+
+                      .title {
+                          text-align: center;
+                          font-family: "Open Sans Condensed", sans-serif;
+                          font-size: 1.1vw;
+                          font-weight: 100;
+                          padding-top: 1vw;
+                          padding-bottom: 1vw;
+                          letter-spacing: .6vw;
+                          /* border: .1vw solid #b21160;*/
+
+                          color: white;
+                      }
+                  </style>
+                  <div class='corner-decoration'></div>
+
+
+
+                  <textarea class='textbox' id='text2parse'><!DOCTYPE html>
+                  <html>
+                  <head>
+    </head>
+                  <body>
+                  <h1 id="Broken">hello everyone</h1>
+
+                  <div class="one"></div>
+                  <p class=" ">this is a<br> Gris</p>
+    </body>
+    </html></textarea>
+              </div> <h1 class='title'>HEaR<br />YoUR<br />miNd</h1>
+              <script>
+                  $(document).ready(function () {
+                      //Ocultamos el menú al cargar la página
+                      $("#context").hide();
+
+                      /* mostramos el menú si hacemos click derecho con el ratón */
+                      $(document).bind("contextmenu", function (e) {
+                          $("#context").css({ display: "block", left: e.pageX, top: e.pageY });
+                          return false;
+                      });
+
+                      //cuando hagamos click, el menú desaparecerá
+                      $(document).click(function (e) {
+                          if (e.button == 0) {
+                              $("#context").css("display", "none");
+                          }
+                      });
+
+                      //si pulsamos escape, el menú desaparecerá
+                      $(document).keydown(function (e) {
+                          if (e.keyCode == 27) {
+                              $("#context").css("display", "none");
+                          }
+                      });
+                  });
+
+              </script>
+              <ul>
+
+                  <li>
+                      <a href="#" id="playBtn" class="btn">
+                          <script>
+                              (function () {
+                                  // Audio Context
+                                  var AudioController, audioCtx, generateMusic, html2tones, kit, node2tone, playBtn, playBtn2, playBtn3, playBtn4, trackTiming, waveForNode;
+
+                                  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                                  trackTiming = {
+                                      'sine': 0,
+                                      'square': 0,
+                                      'sawtooth': 0,
+                                      'triangle': 0
+                                  };
+
+                                  /*
+                                        Handles Playing Notes
+                                  */
+                                  AudioController = class AudioController {
+                                      constructor() { }
+
+                                      playTone(wave, freq, start, stop, gain) {
+                                          var gainNode, tone;
+                                          if (wave !== 'silent') {
+                                              gainNode = audioCtx.createGain();
+                                              gainNode.value = gain;
+                                              gainNode.connect(audioCtx.destination);
+                                              tone = audioCtx.createOscillator();
+                                              tone.connect(gainNode);
+                                              tone.type = wave;
+                                              tone.frequency.value = freq;
+                                              tone.start(start);
+                                              return tone.stop(start + stop);
+                                          }
+                                      }
+
+                                  };
+
+                                  // Generates the specifics for a notes sound, timing and duration
+                                  /*
+                                  @TODO Split into 4 tracks, each with its own timing/overlay
+                                     maybe look at number of classes and if there is an ID?
+                                  @TODO Determin Duration of note
+                                  */
+                                  node2tone = function (node, totalNodes) {
+                                      var freq, gain, wave;
+                                      if (node.tagName === 'parsererror') {
+                                          document.getElementById('text2parse').value = "parse error";
+                                      }
+                                      wave = waveForNode(node);
+                                      if (wave === 'silent') {
+                                          trackTiming['sine'] += 0.25;
+                                          trackTiming['square'] += 0.25;
+                                          trackTiming['sawtooth'] += 0.25;
+                                          trackTiming['triangle'] += 0.25;
+                                      } else {
+                                          //yes this is some random algorithm
+                                          freq = Math.abs((1500 - (Math.abs(node.childNodes.length - node.tagName.length) + 1) * 400) % 1500) + (100 * (trackTiming[wave] * 4) % 1500) + ((totalNodes * 10) % 300);
+                                          gain = (node.innerHTML.length % 25) / 100;
+                                          trackTiming[wave] += 0.5;
+                                      }
+                                      //passes note
+                                      return [wave, freq, audioCtx.currentTime + trackTiming[wave] - 0.5, trackTiming[wave] + 0.25, gain];
+                                  };
+
+                                  waveForNode = function (node) {
+                                      if (node.id.length) {
+                                          return 'square';
+                                      } else if (node.classList.length > 1) {
+                                          return 'sawtooth';
+                                      } else if (node.classList.length === 1) {
+                                          return 'sine';
+                                      } else if (node.innerHTML.length > 200) {
+                                          return 'triangle';
+                                      } else {
+                                          return "silent";
+                                      }
+                                  };
+
+
+                                  // Converts a html text into value sets for notes
+                                  html2tones = function (html) {
+                                      var DOM, domNodes, i, parser, tones;
+                                      tones = [];
+                                      parser = new DOMParser();
+                                      // fixes for some common broken DOM things
+                                      html = html.replace(/<![^>]*>/g, "");
+                                      html = html.replace(/<meta[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*\/>/g, "");
+                                      html = html.replace(/<br>/g, "<br />");
+                                      DOM = parser.parseFromString(html, "text/xml");
+                                      domNodes = DOM.getElementsByTagName("*");
+                                      i = 0;
+                                      while (i < domNodes.length) {
+                                          tones[i] = node2tone(domNodes[i], domNodes.length);
+                                          i++;
+                                      }
+                                      return tones;
+                                  };
+
+
+                                  // Reads in textarea calls to parsers and plays notes
+                                  generateMusic = function () {
+                                      var i, note, results, tones;
+                                      trackTiming = {
+                                          'sine': 0,
+                                          'square': 0,
+                                          'sawtooth': 0,
+                                          'triangle': 0
+                                      };
+                                      tones = html2tones(document.getElementById('text2parse').value);
+                                      i = 0;
+                                      results = [];
+                                      while (i < tones.length) {
+                                          note = tones[i];
+                                          kit.playTone(note[0], note[1], note[2], note[3], note[4]);
+                                          results.push(i++);
+                                      }
+                                      return results;
+                                  };
+
+                                  kit = new AudioController();
+
+                                  playBtn = document.getElementById('playBtn');
+                                  playBtn2 = document.getElementById('playBtn2');
+
+                                  playBtn.addEventListener("click", generateMusic, false);
+                                  playBtn2.addEventListener("click", generateMusic, false);
+
+                                  /*
+                                ## these articles were super useful
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave
+                                - https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBiquadFilter
+                                - https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+                                - http://stackoverflow.com/questions/20156888/what-are-the-parameters-for-createperiodicwave-in-google-chrome
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
+                                 */
+
+                              }).call(this);
+
+
+                          </script>
+                          <img id="imgli" src="https://i.postimg.cc/TYNFxTG4/abstracto.png" />Aller dans un meilleur endroit
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" id="playBtn2" class="btn2">
+                          <script>
+                              (function () {
+                                  // Audio Context
+                                  var AudioController, audioCtx, generateMusic, html2tones, kit, node2tone, playBtn, playBtn2, playBtn3, playBtn4, trackTiming, waveForNode;
+
+                                  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                                  trackTiming = {
+                                      'sine': 0,
+                                      'square': 0,
+                                      'sawtooth': 0,
+                                      'triangle': 0
+                                  };
+
+                                  /*
+                                        Handles Playing Notes
+                                  */
+                                  AudioController = class AudioController {
+                                      constructor() { }
+
+                                      playTone(wave, freq, start, stop, gain) {
+                                          var gainNode, tone;
+                                          if (wave !== 'silent') {
+                                              gainNode = audioCtx.createGain();
+                                              gainNode.value = gain;
+                                              gainNode.connect(audioCtx.destination);
+                                              tone = audioCtx.createOscillator();
+                                              tone.connect(gainNode);
+                                              tone.type = wave;
+                                              tone.frequency.value = freq;
+                                              tone.start(start);
+                                              return tone.stop(start + stop);
+                                          }
+                                      }
+
+                                  };
+
+                                  // Generates the specifics for a notes sound, timing and duration
+                                  /*
+                                  @TODO Split into 4 tracks, each with its own timing/overlay
+                                     maybe look at number of classes and if there is an ID?
+                                  @TODO Determin Duration of note
+                                  */
+                                  node2tone = function (node, totalNodes) {
+                                      var freq, gain, wave;
+                                      if (node.tagName === 'parsererror') {
+                                          document.getElementById('text2parse').value = "parse error";
+                                      }
+                                      wave = waveForNode(node);
+                                      if (wave === 'silent') {
+                                          trackTiming['sine'] += 0.25;
+                                          trackTiming['square'] += 0.25;
+                                          trackTiming['sawtooth'] += 0.25;
+                                          trackTiming['triangle'] += 0.25;
+                                      } else {
+                                          //yes this is some random algorithm
+                                          freq = Math.abs((1500 - (Math.abs(node.childNodes.length - node.tagName.length) + 1) * 400) % 1500) + (100 * (trackTiming[wave] * 4) % 1500) + ((totalNodes * 10) % 300);
+                                          gain = (node.innerHTML.length % 25) / 100;
+                                          trackTiming[wave] += 0.5;
+                                      }
+                                      //passes note
+                                      return [wave, freq, audioCtx.currentTime + trackTiming[wave] - 0.5, trackTiming[wave] + 0.25, gain];
+                                  };
+
+                                  waveForNode = function (node) {
+                                      if (node.id.length) {
+                                          return 'square';
+                                      } else if (node.classList.length > 1) {
+                                          return 'sawtooth';
+                                      } else if (node.classList.length === 1) {
+                                          return 'sine';
+                                      } else if (node.innerHTML.length > 200) {
+                                          return 'triangle';
+                                      } else {
+                                          return "silent";
+                                      }
+                                  };
+
+
+                                  // Converts a html text into value sets for notes
+                                  html2tones = function (html) {
+                                      var DOM, domNodes, i, parser, tones;
+                                      tones = [];
+                                      parser = new DOMParser();
+                                      // fixes for some common broken DOM things
+                                      html = html.replace(/<![^>]*>/g, "");
+                                      html = html.replace(/<meta[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*\/>/g, "");
+                                      html = html.replace(/<br>/g, "<br />");
+                                      DOM = parser.parseFromString(html, "text/xml");
+                                      domNodes = DOM.getElementsByTagName("*");
+                                      i = 0;
+                                      while (i < domNodes.length) {
+                                          tones[i] = node2tone(domNodes[i], domNodes.length);
+                                          i++;
+                                      }
+                                      return tones;
+                                  };
+
+
+                                  // Reads in textarea calls to parsers and plays notes
+                                  generateMusic = function () {
+                                      var i, note, results, tones;
+                                      trackTiming = {
+                                          'sine': 0,
+                                          'square': 0,
+                                          'sawtooth': 0,
+                                          'triangle': 0
+                                      };
+                                      tones = html2tones(document.getElementById('text2parse').value);
+                                      i = 0;
+                                      results = [];
+                                      while (i < tones.length) {
+                                          note = tones[3];
+                                          kit.playTone(note[3], note[1], note[2], note[3], note[4]);
+                                          results.push(i++);
+                                      }
+                                      return results;
+                                  };
+
+                                  kit = new AudioController();
+
+                                  playBtn = document.getElementById('playBtn');
+                                  playBtn2 = document.getElementById('playBtn2');
+
+                                  playBtn.addEventListener("click", generateMusic, false);
+                                  playBtn2.addEventListener("click", generateMusic, false);
+
+                                  /*
+                                ## these articles were super useful
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave
+                                - https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBiquadFilter
+                                - https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+                                - http://stackoverflow.com/questions/20156888/what-are-the-parameters-for-createperiodicwave-in-google-chrome
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
+                                 */
+
+                              }).call(this);
+
+
+                          </script>
+                          <img id="imgli" src="https://i.postimg.cc/FFZwPj6m/corazon-1.png" />Répare ta putain de vie
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" id="playBtn3" class="btn3">
+                          <script>
+                              (function () {
+                                  // Audio Context
+                                  var AudioController, audioCtx, generateMusic, html2tones, kit, node2tone, playBtn, playBtn2, playBtn3, playBtn4, trackTiming, waveForNode;
+
+                                  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                                  trackTiming = {
+                                      'sine': 0,
+                                      'square': 0,
+                                      'sawtooth': 0,
+                                      'triangle': 0
+                                  };
+
+                                  /*
+                                        Handles Playing Notes
+                                  */
+                                  AudioController = class AudioController {
+                                      constructor() { }
+
+                                      playTone(wave, freq, start, stop, gain) {
+                                          var gainNode, tone;
+                                          if (wave !== 'silent') {
+                                              gainNode = audioCtx.createGain();
+                                              gainNode.value = gain;
+                                              gainNode.connect(audioCtx.destination);
+                                              tone = audioCtx.createOscillator();
+                                              tone.connect(gainNode);
+                                              tone.type = wave;
+                                              tone.frequency.value = freq;
+                                              tone.start(start);
+                                              return tone.stop(start + stop);
+                                          }
+                                      }
+
+                                  };
+
+                                  // Generates the specifics for a notes sound, timing and duration
+                                  /*
+                                  @TODO Split into 4 tracks, each with its own timing/overlay
+                                     maybe look at number of classes and if there is an ID?
+                                  @TODO Determin Duration of note
+                                  */
+                                  node2tone = function (node, totalNodes) {
+                                      var freq, gain, wave;
+                                      if (node.tagName === 'parsererror') {
+                                          document.getElementById('text2parse').value = "parse error";
+                                      }
+                                      wave = waveForNode(node);
+                                      if (wave === 'silent') {
+                                          trackTiming['sine'] += 0.25;
+                                          trackTiming['square'] += 0.25;
+                                          trackTiming['sawtooth'] += 0.25;
+                                          trackTiming['triangle'] += 0.25;
+                                      } else {
+                                          //yes this is some random algorithm
+                                          freq = Math.abs((1500 - (Math.abs(node.childNodes.length - node.tagName.length) + 1) * 400) % 1500) + (100 * (trackTiming[wave] * 4) % 1500) + ((totalNodes * 10) % 300);
+                                          gain = (node.innerHTML.length % 25) / 100;
+                                          trackTiming[wave] += 0.5;
+                                      }
+                                      //passes note
+                                      return [wave, freq, audioCtx.currentTime + trackTiming[wave] - 0.5, trackTiming[wave] + 0.25, gain];
+                                  };
+
+                                  waveForNode = function (node) {
+                                      if (node.id.length) {
+                                          return 'square';
+                                      } else if (node.classList.length > 1) {
+                                          return 'sawtooth';
+                                      } else if (node.classList.length === 1) {
+                                          return 'sine';
+                                      } else if (node.innerHTML.length > 200) {
+                                          return 'triangle';
+                                      } else {
+                                          return "silent";
+                                      }
+                                  };
+
+
+                                  // Converts a html text into value sets for notes
+                                  html2tones = function (html) {
+                                      var DOM, domNodes, i, parser, tones;
+                                      tones = [];
+                                      parser = new DOMParser();
+                                      // fixes for some common broken DOM things
+                                      html = html.replace(/<![^>]*>/g, "");
+                                      html = html.replace(/<meta[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*\/>/g, "");
+                                      html = html.replace(/<br>/g, "<br />");
+                                      DOM = parser.parseFromString(html, "text/xml");
+                                      domNodes = DOM.getElementsByTagName("*");
+                                      i = 0;
+                                      while (i < domNodes.length) {
+                                          tones[i] = node2tone(domNodes[i], domNodes.length);
+                                          i++;
+                                      }
+                                      return tones;
+                                  };
+
+
+                                  // Reads in textarea calls to parsers and plays notes
+                                  generateMusic = function () {
+                                      var i, note, results, tones;
+                                      trackTiming = {
+                                          'sine': 0,
+                                          'square': 0,
+                                          'sawtooth': 0,
+                                          'triangle': 0
+                                      };
+                                      tones = html2tones(document.getElementById('text2parse').value);
+                                      i = 0;
+                                      results = [];
+                                      while (i < tones.length) {
+                                          note = tones[4];
+                                          kit.playTone(note[0], note[1], note[2], note[3], note[4]);
+                                          results.push(i++);
+                                      }
+                                      return results;
+                                  };
+
+                                  kit = new AudioController();
+
+
+                                  playBtn3 = document.getElementById('playBtn3');
+
+                                  playBtn3.addEventListener("click", generateMusic, false);
+
+                                  /*
+                                ## these articles were super useful
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave
+                                - https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBiquadFilter
+                                - https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+                                - http://stackoverflow.com/questions/20156888/what-are-the-parameters-for-createperiodicwave-in-google-chrome
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
+                                 */
+
+                              }).call(this);
+
+
+                          </script><img id="imgli" src="https://i.postimg.cc/SNx3Hn09/rombo.png" />Répondre à l'appel?
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" id="playBtn4" class="btn4">
+                          <script>
+                              (function () {
+                                  // Audio Context
+                                  var AudioController, audioCtx, generateMusic, html2tones, kit, node2tone, playBtn, playBtn2, playBtn3, playBtn4, trackTiming, waveForNode;
+
+                                  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                                  trackTiming = {
+                                      'sine': 0,
+                                      'square': 0,
+                                      'sawtooth': 0,
+                                      'triangle': 0
+                                  };
+
+                                  /*
+                                        Handles Playing Notes
+                                  */
+                                  AudioController = class AudioController {
+                                      constructor() { }
+
+                                      playTone(wave, freq, start, stop, gain) {
+                                          var gainNode, tone;
+                                          if (wave !== 'silent') {
+                                              gainNode = audioCtx.createGain();
+                                              gainNode.value = gain;
+                                              gainNode.connect(audioCtx.destination);
+                                              tone = audioCtx.createOscillator();
+                                              tone.connect(gainNode);
+                                              tone.type = wave;
+                                              tone.frequency.value = freq;
+                                              tone.start(start);
+                                              return tone.stop(start + stop);
+                                          }
+                                      }
+
+                                  };
+
+                                  // Generates the specifics for a notes sound, timing and duration
+                                  /*
+                                  @TODO Split into 4 tracks, each with its own timing/overlay
+                                     maybe look at number of classes and if there is an ID?
+                                  @TODO Determin Duration of note
+                                  */
+                                  node2tone = function (node, totalNodes) {
+                                      var freq, gain, wave;
+                                      if (node.tagName === 'parsererror') {
+                                          document.getElementById('text2parse').value = "parse error";
+                                      }
+                                      wave = waveForNode(node);
+                                      if (wave === 'silent') {
+                                          trackTiming['sine'] += 0.25;
+                                          trackTiming['square'] += 0.25;
+                                          trackTiming['sawtooth'] += 0.25;
+                                          trackTiming['triangle'] += 0.25;
+                                      } else {
+                                          //yes this is some random algorithm
+                                          freq = Math.abs((1500 - (Math.abs(node.childNodes.length - node.tagName.length) + 1) * 400) % 1500) + (100 * (trackTiming[wave] * 4) % 1500) + ((totalNodes * 10) % 300);
+                                          gain = (node.innerHTML.length % 25) / 100;
+                                          trackTiming[wave] += 0.5;
+                                      }
+                                      //passes note
+                                      return [wave, freq, audioCtx.currentTime + trackTiming[wave] - 0.5, trackTiming[wave] + 0.25, gain];
+                                  };
+
+                                  waveForNode = function (node) {
+                                      if (node.id.length) {
+                                          return 'square';
+                                      } else if (node.classList.length > 1) {
+                                          return 'sawtooth';
+                                      } else if (node.classList.length === 1) {
+                                          return 'sine';
+                                      } else if (node.innerHTML.length > 200) {
+                                          return 'triangle';
+                                      } else {
+                                          return "silent";
+                                      }
+                                  };
+
+
+                                  // Converts a html text into value sets for notes
+                                  html2tones = function (html) {
+                                      var DOM, domNodes, i, parser, tones;
+                                      tones = [];
+                                      parser = new DOMParser();
+                                      // fixes for some common broken DOM things
+                                      html = html.replace(/<![^>]*>/g, "");
+                                      html = html.replace(/<meta[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*>/g, "");
+                                      html = html.replace(/<link[^>]*\/>/g, "");
+                                      html = html.replace(/<br>/g, "<br />");
+                                      DOM = parser.parseFromString(html, "text/xml");
+                                      domNodes = DOM.getElementsByTagName("*");
+                                      i = 0;
+                                      while (i < domNodes.length) {
+                                          tones[i] = node2tone(domNodes[i], domNodes.length);
+                                          i++;
+                                      }
+                                      return tones;
+                                  };
+
+
+                                  // Reads in textarea calls to parsers and plays notes
+                                  generateMusic = function () {
+                                      var i, note, results, tones;
+                                      trackTiming = {
+                                          'sine': 0,
+                                          'square': 0,
+                                          'sawtooth': 0,
+                                          'triangle': 0
+                                      };
+                                      tones = html2tones(document.getElementById('text2parse').value);
+                                      i = 0;
+                                      results = [];
+                                      while (i < tones.length) {
+                                          note = tones[0];
+                                          kit.playTone(note[0], note[1], note[2], note[3], note[4]);
+                                          results.push(i++);
+                                      }
+                                      return results;
+                                  };
+
+                                  kit = new AudioController();
+
+
+                                  playBtn4 = document.getElementById('playBtn4');
+
+                                  playBtn4.addEventListener("click", generateMusic, false);
+
+                                  /*
+                                ## these articles were super useful
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave
+                                - https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBiquadFilter
+                                - https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+                                - http://stackoverflow.com/questions/20156888/what-are-the-parameters-for-createperiodicwave-in-google-chrome
+                                - https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
+                                 */
+
+                              }).call(this);
+
+                          </script><img id="imgli" src="https://i.postimg.cc/7ZCcYjZY/forma-abstracta.png" />Insister?
+                      </a>
+                  </li>
+                  <li><a href="#bd"><img id="imgli" src="https://i.postimg.cc/XqQhpb5X/acerca-de.png" />À propos de...</a></li>
+              </ul>
+          </div>-->
+        <!--<div id="aboutto">
+        <style>
+            #aboutto {
+                z-index: -1;
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,.8);
+                top: 0;
+                left: 0;
+            }
+
+            #aboutmain {
+                width: 40%;
+                height: 50%;
+                overflow: hidden;
+                left: 30%;
+                top: 25%;
+                background: black;
+                border: .2vw solid #7c6092;
+                position: absolute;
+                margin: 0 auto;
+            }
+
+            .container {
+                width: 100%;
+                height: 100%; left:-5%;
+                position: absolute;
+            }
+
+            .console {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                padding: 60px 30px 30px 30px;
+                position: relative;
+                width: 100%;
+            }
+
+
+
+
+                .console .console-output {
+                    color: #fff;
+                    font-size: .8vw;
+                    letter-spacing: .1vw;
+                }
+
+                    .console .console-output span {
+                        display: block;
+                        margin-bottom: 3px;
+                    }
+
+                        .console .console-output span:first-of-type {
+                            color: #7c6092;
+                        }
+
+                .console .console-input span {
+                    display: block;
+                }
+
+                    .console .console-input span.email-input, .console .console-input span.password-input {
+                        display: flex;
+                    }
+
+                    .console .console-input span.password-input {
+                        display: none;
+                    }
+
+                    .console .console-input span input {
+                        background: transparent;
+                        border: none;
+                        color: #7c6092;
+                        cursor: default;
+                        font-family: monospace;
+                        letter-spacing: .1vw;
+                        padding: 0;
+                    }
+
+                        .console .console-input span input:focus {
+                            border: none;
+                            outline: none;
+                        }
+
+                    .console .console-input span label {
+                        color: #fff;
+                        font-family: monospace;
+                        letter-spacing: .1vw;
+                        margin-right: 9px;
+                    }
+
+            #closeabout {
+                position: absolute;
+                width: 1.5vw;
+                height: 1.5vw;
+                right: -1.5vw;
+                top: .3vw;
+                z-index: 99999999;
+                color: #7c6092;
+            }
+
+            #bd:target #aboutto {
+                z-index: 9999999999999999;
+                opacity: 1;
+            }
+
+            #closeabout p {
+                font-size: .7vw;
+                padding-left: .5vw;
+                padding-top: .3vw;
+            }
+
+            #closeabout:hover {
+                color: white;
+                background: #7c6092;
+            }
+            #pab {
+                position: absolute; margin-top:0vw;
+                font-family: monospace;
+            }
+        </style>
+
+
+        <div id="aboutmain">
+
+            <div class="container">
+                <a href="#" id="closeabout"><p id="pab">X</p></a>
+
+                <div class="console">
+
+                    <h1 class='title'>HEaR<br />YoUR<br />miNd</h1>
+                    <samp class="console-output">
+                        <span>
+                            NEIGE ⸻ 2023 - 06➥CONTACT✆聊天.如何© <br />
+                            XAT.ME ALL RIGHTS 三月雪, 太出乎意料了.
+                        </span>
+                        <span style="color:gray">
+                            Bienvenue dans le xatspace de ma princesse.<br />
+                            Si vous n'êtes pas cordialement invité, pourriez-vous vous suicider ?<br />
+                            Bref, ta curiosité a fait de toi ma chienne ;)
+                        </span>
+                    </samp>
+
+                    <kbd class="console-input">
+                        <span class="email-input">
+                            <label for="email">Register name:</label>
+                            <input class="email" id="email" type="email" autofocus>
+                        </span>
+
+                        <span class="password-input">
+                            <label for="password">Password:</label>
+                            <input class="password" id="password" type="password" autofocus>
+                            <script>
+                                const console = document.querySelector(".console");
+                                const console_output = document.querySelector(".console-output");
+                                const console_inputs = document.querySelectorAll(".console-input input");
+                                const email_input = document.querySelector(".email-input");
+                                const password_input = document.querySelector(".password-input");
+
+                                for (const console_input of console_inputs) {
+                                    // Focus input
+                                    console_input.focus();
+
+                                    console.addEventListener("click", function () {
+                                        console_input.focus();
+                                    });
+
+                                    function createLog(message) {
+                                        let console_log = document.createElement("span");
+                                        console_log.innerText = message;
+                                        console_output.append(console_log);
+                                    }
+
+                                    // Listen for when the enter key is pressed
+                                    console_input.addEventListener("keydown", function (event) {
+                                        if (event.key == "Enter") {
+                                            // Get the input value
+                                            const input_value = this.value;
+
+                                            // Warn that input is blank
+                                            if (input_value == "") {
+                                                createLog("Nothing was entered");
+                                            }
+
+                                            // Handle email input
+                                            if (console_input.classList.contains("email") && input_value != "") {
+                                                // Remove email input
+                                                email_input.remove();
+
+                                                // Output the value
+                                                createLog("Register name: " + input_value);
+
+                                                // Add password input
+                                                password_input.style.display = "flex";
+
+                                                // Focus password input
+                                                password_input.querySelector(".password").focus();
+                                            }
+
+                                            // Scroll into view
+                                            console_input.scrollIntoView();
+
+                                            // Handle password input
+                                            if (
+                                                console_input.classList.contains("password") &&
+                                                input_value != ""
+                                            ) {
+                                                password_input.querySelector("input").value = "";
+
+                                                // Output the value
+                                                createLog("Access denied");
+                                            }
+                                        }
+                                    });
+                                }
+
+                            </script>
+                        </span>
+                    </kbd>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+        <div id="main2">
+
+            <canvas id="canvasx">
+                <script>
+
+                    const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                        STAR_SIZE = 1.5,
+                        STAR_MIN_SCALE = 0.2,
+                        OVERFLOW_THRESHOLD = 50;
+
+                    const canvas4 = document.getElementById("canvasx"),
+                        context = canvas4.getContext("2d");
+
+                    let scale = 1, // device pixel ratio
+                        width,
+                        height;
+
+                    let stars = [];
+
+                    let pointerX, pointerY;
+
+                    let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                    let touchInput = false;
+
+                    generate();
+                    resize();
+                    step();
+
+                    window.onresize = resize;
+                    window.onmousemove = onMouseMove;
+                    window.ontouchmove = onTouchMove;
+                    window.ontouchend = onMouseLeave;
+                    document.onmouseleave = onMouseLeave;
+
+                    function generate() {
+                        for (let i = 0; i < STAR_COUNT; i++) {
+                            stars.push({
+                                x: 0,
+                                y: 0,
+                                z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                            });
+
+                        }
+                    }
+
+                    function placeStar(star) {
+                        star.x = Math.random() * width;
+                        star.y = Math.random() * height;
+                    }
+
+                    function recycleStar(star) {
+                        let direction = "z";
+
+                        let vx = Math.abs(velocity.x),
+                            vy = Math.abs(velocity.y);
+
+                        if (vx > 1 || vy > 1) {
+                            let axis;
+
+                            if (vx > vy) {
+                                axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                            } else {
+                                axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                            }
+
+                            if (axis === "h") {
+                                direction = velocity.x > 0 ? "l" : "r";
+                            } else {
+                                direction = velocity.y > 0 ? "t" : "b";
+                            }
+                        }
+
+                        star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                        if (direction === "z") {
+                            star.z = 0.1;
+                            star.x = Math.random() * width;
+                            star.y = Math.random() * height;
+                        } else if (direction === "l") {
+                            star.x = -OVERFLOW_THRESHOLD;
+                            star.y = height * Math.random();
+                        } else if (direction === "r") {
+                            star.x = width + OVERFLOW_THRESHOLD;
+                            star.y = height * Math.random();
+                        } else if (direction === "t") {
+                            star.x = width * Math.random();
+                            star.y = -OVERFLOW_THRESHOLD;
+                        } else if (direction === "b") {
+                            star.x = width * Math.random();
+                            star.y = height + OVERFLOW_THRESHOLD;
+                        }
+                    }
+
+                    function resize() {
+                        scale = window.devicePixelRatio || 1;
+
+                        width = window.innerWidth * scale;
+                        height = window.innerHeight * scale;
+
+                        canvas4.width = width;
+                        canvas4.height = height;
+
+                        stars.forEach(placeStar);
+                    }
+
+                    function step() {
+                        context.clearRect(0, 0, width, height);
+
+                        update();
+                        render();
+
+                        requestAnimationFrame(step);
+                    }
+
+                    function update() {
+                        velocity.tx *= 0.36;
+                        velocity.ty *= 0.36;
+
+                        velocity.x += (velocity.tx - velocity.x) * 0.7;
+                        velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                        stars.forEach(star => {
+                            star.x += velocity.x * star.z;
+                            star.y += velocity.y * star.z;
+
+                            star.x += (star.x - width / 2) * velocity.z * star.z;
+                            star.y += (star.y - height / 2) * velocity.z * star.z;
+                            star.z += velocity.z;
+
+                            // recycle when out of bounds
+                            if (
+                                star.x < -OVERFLOW_THRESHOLD ||
+                                star.x > width + OVERFLOW_THRESHOLD ||
+                                star.y < -OVERFLOW_THRESHOLD ||
+                                star.y > height + OVERFLOW_THRESHOLD) {
+                                recycleStar(star);
+                            }
+                        });
+                    }
+
+                    function render() {
+                        stars.forEach(star => {
+                            context.beginPath();
+                            context.lineCap = "round";
+                            context.lineWidth = STAR_SIZE * star.z * scale;
+                            context.strokeStyle =
+                                "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                            context.beginPath();
+                            context.moveTo(star.x, star.y);
+
+                            var tailX = velocity.x * 2,
+                                tailY = velocity.y * 2;
+
+                            // stroke() wont work on an invisible line
+                            if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                            if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                            context.lineTo(star.x + tailX, star.y + tailY);
+
+                            context.stroke();
+                        });
+                    }
+
+                    function movePointer(x, y) {
+                        if (typeof pointerX === "number" && typeof pointerY === "number") {
+                            let ox = x - pointerX,
+                                oy = y - pointerY;
+
+                            velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                            velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                        }
+
+                        pointerX = x;
+                        pointerY = y;
+                    }
+
+                    function onMouseMove(event) {
+                        touchInput = false;
+
+                        movePointer(event.clientX, event.clientY);
+                    }
+
+                    function onTouchMove(event) {
+                        touchInput = true;
+
+                        movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                        event.preventDefault();
+                    }
+
+                    function onMouseLeave() {
+                        pointerX = null;
+                        pointerY = null;
+                    }
+                </script>
+            </canvas>
+
+            <!--<script>
+            $(document).ready(function () {
+                var playing = false,
+                    artistname = $(".artist-name"),
+                    musicName = $(".music-name"),
+                    time = $(".time"),
+                    fillBar = $(".fillBar");
+
+                let audioData = [];
+
+                var song = new Audio();
+                var CurrentSong = 0;
+                window.onload = load();
+
+                function load() {
+                    audioData = [
+
+                        {
+                            name: "<span id=trackmain>TRACK: </span>Radio éteinte",
+                            artist: "<span id=trackmain>ARTIST: </span>Radio éteinte",
+                            src:
+                                ""
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>Souvenirs d'un autre monde",
+                            artist: "<span id=trackmain>ARTIST: </span>Alcest",
+                            src:
+                                "https://xevangelist.github.io/evangelist/AlcestSouvenirs.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>Something About Us",
+                            artist: "<span id=trackmain>ARTIST: </span>Daft Punk",
+                            src:
+                                "https://xevangelist.github.io/evangelist/somethingaboutus.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>Faux Semblants",
+                            artist: "<span id=trackmain>ARTIST: </span>Amesoeurs",
+                            src:
+                                "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>春雷 Kenshi Yonezu",
+                            artist: "<span id=trackmain>ARTIST: </span>Shunrai",
+                            src:
+                                "https://xevangelist.github.io/evangelist/shunrai.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>FAIBLESSE DES SENS",
+                            artist: "<span id=trackmain>ARTIST: </span>AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                        },
+
+                        {
+                            name: "<span id=trackmain>TRACK: </span>退屈を再演しないで",
+                            artist: "<span id=trackmain>ARTIST: </span>Eve MV",
+                            src:
+                                "https://xevangelist.github.io/evangelist/eve1.mp3?raw=true"
+                        },
+
+                        {
+                            name: "<span id=trackmain>TRACK: </span>Recueillement",
+                            artist: "<span id=trackmain>ARTIST: </span>AMESOEURS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>トーキョーゲットー",
+                            artist: "<span id=trackmain>ARTIST: </span>Eve MV",
+                            src:
+                                "https://xevangelist.github.io/evangelist/eve2.mp3?raw=true"
+                        },
+                        {
+                            name: "<span id=trackmain>TRACK: </span>PULSE / SURREAL",
+                            artist: "<span id=trackmain>ARTIST: </span>LANTLOS",
+                            src:
+                                "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                        },
+
+
+
+                    ];
+
+                    artistname.html(audioData[CurrentSong].artist);
+                    musicName.html(audioData[CurrentSong].name);
+                    song.src = audioData[CurrentSong].src;
+                }
+
+                function playSong() {
+                    var curSong = audioData[CurrentSong];
+                    artistname.html(curSong.artist);
+                    musicName.html(curSong.name);
+                    song.src = curSong.src;
+                    song.play();
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    $(".player-track").addClass("active");
+                }
+
+                song.addEventListener("timeupdate", function () {
+                    var position = (100 / song.duration) * song.currentTime;
+                    var current = song.currentTime;
+                    var duration = song.duration;
+                    var durationMinute = Math.floor(duration / 60);
+                    var durationSecond = Math.floor(duration - durationMinute * 60);
+                    var durationLabel = durationMinute + ":" + durationSecond;
+                    currentSecond = Math.floor(current);
+                    currentMinute = Math.floor(currentSecond / 60);
+                    currentSecond = currentSecond - currentMinute * 60;
+                    // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                    if (currentSecond < 10) {
+                        currentSecond = "0" + currentSecond;
+                    }
+                    var currentLabel = currentMinute + ":" + currentSecond;
+
+                    var indicatorLabel = "<span id=trackmain>DURATION: </span>" + currentLabel + " | " + durationLabel;
+
+                    fillBar.css("width", position + "%");
+
+                    $(".time").html(indicatorLabel);
+                });
+                //////
+                $("#a_in").click(function playOrPause() {
+                    if (song.paused) {
+                        song.play();
+                        playing = true;
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        /* $("#bar1").addClass("br1");*/
+
+                    } else {
+                        song.pause();
+                        playing = false;
+                        $("#play").removeClass("fa-pause");
+                        $("#play").addClass("fa-play");
+                        $("p").removeClass("active");
+
+
+                    }
+                });
+
+                $("#prev").click(function prev() {
+                    CurrentSong--;
+                    if (CurrentSong < 0) {
+                        CurrentSong = 9;
+                    }
+                    playSong();
+                });
+
+                $("#next").click(function next() {
+                    CurrentSong++;
+                    if (CurrentSong > 9) {
+                        CurrentSong = 0;
+                    }
+                    playSong();
+                });
+            });
+
+        </script>-->
+
+            <div id="mainscroll">
+
+
+                <style>
+                    #mainscroll {
+                        width: 84%;
+                        height: 100%;
+                        top: 0;
+                        scroll-behavior: smooth;
+                        right: .5%;
+                        position: absolute;
+                        overflow: auto;
+                    }
+
+                    #trackmain {
+                        font-weight: bold;
+                        color: #7c6092;
+                    }
+
+                    #mainscroll::-webkit-scrollbar {
+                        width: .1vw;
+                        background: transparent;
+                    }
+
+                    #mainscroll::-webkit-scrollbar-thumb {
+                        width: .4vw;
+                        background: linear-gradient(180deg, transparent 0%, transparent 5%, #7c6092 5.1%, #7c6092 95%, transparent 95.1%,transparent 100%);
+                        /*background: #7c6092*/
+                    }
+                </style>
+
+                <div id="settings">
+                    <style>
+                        #settings {
+                            position: fixed;
+                            width: 2vw;
+                            height: 2vw;
+                            bottom: 9%;
+                            right: 4%;
+                        }
+
+                        #cogimg {
+                            width: 1.2vw;
+                            height: 1.2vw;
+                            position: absolute;
+                            left: .4vw;
+                            top: .4vw;
+                        }
+
+                        #settings:hover #pp3 {
+                            opacity: 1;
+                            left: -20vw;
+                        }
+
+                        #settings p {
+                            color: white;
+                            border-radius: .3vw;
+                            font-size: .6vw;
+                            padding: .5vw;
+                            background: #7c6092;
+                            text-align: center;
+                            letter-spacing: .1vw;
+                            opacity: 0;
+                            z-index: -1;
+                            transition: all .5s ease;
+                            position: absolute;
+                            top: -20%;
+                            left: 100%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #pp3 {
+                        }
+
+                        #settings:hover #pp2 {
+                            opacity: 1;
+                            left: -8vw;
+                        }
+
+                        #settings:hover #pp1 {
+                            opacity: 1;
+                            left: -4vw;
+                        }
+                    </style>
+                    <img id="cogimg" src="https://i.postimg.cc/6qT9PMn8/settings.png" />
+                    <p id="pp1">ABOUT</p>
+                    <p id="pp2">EDIT</p>
+                    <p id="pp3">DEVELOPED─NEIGE</p>
+                </div>
+
+                <style>
+
+                    #post {
+                        position: relative;
+                        width: 42%;
+                        height: auto;
+                        background: black;
+                        margin-top: 2vw;
+                        margin-bottom: 5vw;
+                    }
+
+                    #post1 {
+                        position: relative;
+                        width: 42%;
+                        height: auto;
+                        background: black;
+                        margin-top: 2vw;
+                        margin-bottom: 5vw;
+                    }
+
+                    #headpost {
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                        top: .5vw;
+                        background: rgb(25,25,25);
+                        height: 5vw;
+                    }
+
+                    #imgmainpost {
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                        margin-top: 2vw;
+                    }
+
+                    #butonspost {
+                        height: 3vw;
+                        width: 96%;
+                        left: 2%;
+                        text-align: right;
+                        margin-top: 0vw;
+                    }
+
+                        #butonspost p {
+                            font-family: "Roboto", Arial, sans-serif;
+                            background: rgb(25,25,25);
+                            color: white;
+                            padding: .4vw;
+                            margin-left: 1vw;
+                            float: right;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                        }
+
+                    #textareapost {
+                        margin-top: 1vw;
+                        position: relative;
+                        width: 96%;
+                        left: 2%;
+                    }
+
+                    #ptitlepost {
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        color: #b67fb6;
+                        text-decoration: underline;
+                        font-weight: bold;
+                    }
+
+                    #textpost {
+                        position: relative;
+                        width: 92%;
+                        left: 5%;
+                        border-left: .1vw solid #7c6092;
+                    }
+
+                        #textpost p {
+                            margin-left: .5vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            color: white;
+                        }
+
+                        #textpost span {
+                            color: #7c6092;
+                        }
+
+                    #reproarea {
+                        position: relative;
+                        width: 96%;
+                        height: 15%;
+                        left: 2%;
+                        margin-top: 2vw;
+                    }
+
+                    #clock, #clock2 {
+                        color: lightgray;
+                        text-transform: uppercase;
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 5vw;
+                        top: 1.5vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #tt, #tt2 {
+                        color: rgb(165,157,154);
+                        text-transform: uppercase;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 5vw;
+                        top: 1.8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #headimg {
+                        width: 3vw;
+                        height: 3vw;
+                        position: relative;
+                        border-radius: .6vw;
+                        background: #5e4870;
+                        left: 1vw;
+                        top: 1vw;
+                    }
+
+                        #headimg img {
+                            width: 1.5vw;
+                            position: absolute;
+                            left: .7vw;
+                            top: .75vw;
+                            filter: invert(100%);
+                        }
+
+                    #buttons {
+                        filter: invert(100%);
+                        position: absolute;
+                        z-index: 9;
+                        width: 12%;
+                        right: 2%;
+                        top: 40%;
+                        height: 8%;
+                        opacity: .4;
+                    }
+
+                    #bt1, #bt12 {
+                        position: absolute;
+                        width: 1vw;
+                        height: 1vw;
+                    }
+
+                    .relad3 {
+                        background: url(https://i.postimg.cc/jS2LPWt2/me-gusta.png);
+                        background-size: contain;
+                    }
+
+                    .relad2 {
+                        background: url(https://i.postimg.cc/DyBSSQVR/me-gusta-1.png);
+                        background-size: contain;
+                    }
+
+                    #bt2, #bt22 {
+                        left: 2vw;
+                        position: absolute;
+                        width: 1vw;
+                        height: 1vw;
+                        background: url(https://i.postimg.cc/W1ytn21n/reload.png);
+                        background-size: contain;
+                    }
+
+                    .relad {
+                        animation: reload 2s 1;
+                    }
+
+                    .reloadpost {
+                        animation: reloadpost 2s 1;
+                    }
+
+                    @keyframes reload {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    @keyframes reloadpost {
+                        0% {
+                            opacity: 0;
+                        }
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    #pbtn1 {
+                        filter: invert(100%);
+                        color: white;
+                        border-radius: .3vw;
+                        font-size: .6vw;
+                        padding: .5vw;
+                        background: #7c6092;
+                        text-align: center;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        opacity: 0;
+                        transition: all .5s ease;
+                        position: absolute;
+                        width: 8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #pbtn2 {
+                        filter: invert(100%);
+                        color: white;
+                        border-radius: .3vw;
+                        font-size: .6vw;
+                        padding: .5vw;
+                        background: #7c6092;
+                        text-align: center;
+                        letter-spacing: .1vw;
+                        top: 1vw;
+                        opacity: 0;
+                        transition: all .5s ease;
+                        position: absolute;
+                        width: 8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #bt1:hover #pbtn1, #bt2:hover #pbtn2 {
+                        opacity: 1;
+                    }
+                </style>
+
+
+                <div id="post1">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/QNJ9d01p/musical-note.png" />
+                        </div>
+                        <div id="clock"></div><p id="tt"></p>
+                        <script>
+                            var mydate = new Date();
+                            var year = mydate.getYear();
+                            if (year < 1000) year += 1900;
+                            var day = mydate.getDay();
+                            var month = mydate.getMonth();
+                            var daym = mydate.getDate();
+                            if (daym < 10) daym = "0" + daym;
+                            var dayarray = new Array(
+                                "Sunday,",
+                                "Monday,",
+                                "Tuesday,",
+                                "Wednesday,",
+                                "Thursday,",
+                                "Friday,",
+                                "Saturday,"
+                            );
+                            var montharray = new Array(
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December"
+                            );
+                            document.write(
+                                "<font id='clock'>" +
+                                dayarray[day] +
+                                " " +
+                                daym +
+                                "TH " +
+                                montharray[month] +
+                                " " +
+
+                                "</font>"
+                            );
+                            function digi() {
+                                var date = new Date(),
+                                    hour = date.getHours(),
+                                    minute = checkTime(date.getMinutes()),
+                                    ss = checkTime(date.getSeconds());
+
+                                function checkTime(i) {
+                                    if (i < 10) {
+                                        i = "0" + i;
+                                    }
+                                    return i;
+                                }
+
+                                if (hour > 12) {
+                                    hour = hour - 12;
+                                    if (hour == 12) {
+                                        hour = checkTime(hour);
+                                        document.getElementById("tt").innerHTML =
+                                            hour + ":" + minute + ":" + ss + " AM @ 0 NOTES";
+                                    } else {
+                                        hour = checkTime(hour);
+                                        document.getElementById("tt").innerHTML =
+                                            hour + ":" + minute + ":" + ss + " PM @ 0 NOTES";
+                                    }
+                                } else {
+                                    document.getElementById("tt").innerHTML =
+                                        hour + ":" + minute + ":" + ss + " AM @ 0 NOTES";
+                                }
+                                var time = setTimeout(digi, 1000);
+                            }
+
+
+                        </script>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3" onclick="onfull();">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+                                <script>
+                                    var y = 0;
+                                    function onfull() {
+
+                                        y++;
+                                        if (y == 1) {
+                                            $("#bt1").addClass("relad2"); $("#bt1").removeClass("relad3");
+                                        }
+                                        else { y = 0; $("#bt1").removeClass("relad2"); $("#bt1").addClass("relad3"); }
+                                    }
+
+                                </script>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reproarea">
+
+                        <div id="auid">
+                            <style>
+                                #auid {
+                                    mix-blend-mode: difference;
+                                    font-family: "Roboto", Arial, sans-serif;
+                                    position: relative;
+                                }
+
+                                .player {
+                                    z-index: 9;
+                                }
+
+                                .player-control {
+                                    position: absolute;
+                                    z-index: 999999999999999;
+                                    top: 10%;
+                                    left: 3%;
+                                }
+
+
+
+                                #nextx p, #prev p {
+                                    position: absolute;
+                                    padding: .5vw;
+                                    padding-top: 1vw;
+                                    padding-bottom: 1vw;
+                                    background: #7c6092;
+                                    border-radius: 50%;
+                                    color: white;
+                                    font-size: 1vw;
+                                }
+
+                                #namesong {
+                                    position: absolute;
+                                    width: 88%;
+                                    height: 80%;
+                                    top: 10%;
+                                    color: lightgray;
+                                    left: 16%;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                }
+
+
+                                #name_sng {
+                                    position: absolute;
+                                    float: left;
+                                }
+
+                                .progress-bar {
+                                    width: 80%;
+                                    left: 16%;
+                                    background: lightgray;
+                                    height: .2vw;
+                                    position: absolute;
+                                    top: 75%;
+                                }
+
+                                .fillBar {
+                                    background: #7c6092;
+                                    width: 0;
+                                    height: .2vw;
+                                }
+
+
+
+                                .time {
+                                    position: absolute;
+                                    top: 50%;
+                                    width: 40%;
+                                    color: lightgray;
+                                    left: 16%;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                }
+
+
+
+                                .artist-name {
+                                    position: absolute;
+                                    top: 30%;
+                                    left: 16%;
+                                    color: lightgray;
+                                    left: 16%;
+                                    letter-spacing: .1vw;
+                                    font-size: .8vw;
+                                }
+
+                                #R_plyr {
+                                    position: relative;
+                                    height: 7vw;
+                                }
+
+                                #imgmainpost {
+                                    opacity: .7;
+                                    transition: all .9s ease;
+                                }
+
+                                #post:hover #imgmainpost {
+                                    opacity: 1;
+                                }
+
+                                .butplayer {
+                                    height: 2.8vw;
+                                    width: 2.8vw;
+                                    z-index: 99;
+                                    position: relative;
+                                    margin-bottom: .8vw;
+                                    float: left;
+                                }
+
+                                .butpl {
+                                    position: absolute;
+                                    width: 2.2vw;
+                                    height: 2.2vw;
+                                    right: -900%;
+                                    top: 140%;
+                                    top: .3vw;
+                                    border-radius: .2vw;
+                                    transition: all .5s ease;
+                                }
+
+                                    .butpl:hover {
+                                        background: #7c6092;
+                                    }
+
+                                    .butpl img {
+                                        position: absolute;
+                                        width: 1.2vw;
+                                        height: 1.2vw;
+                                        filter: invert(100%);
+                                        left: .5vw;
+                                        top: .5vw;
+                                    }
+                            </style>
+                            <div id="R_plyr">
+                                <div id="playx1" class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/rskQCwzP/tocar.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                                        <div id="play"> </div>
+                                    </div>
+
+                                </div>
+                                <div id="pausex1" class="butplayer">
+                                    <div class="butpl">
+                                        <img src="https://i.postimg.cc/ZKc4N90X/boton-de-pausa.png" />
+                                        <div id="pause"> </div>
+                                    </div>
+
+                                </div>
+                                <div id="dt_rp">
+
+                                    <div id="namesong"> <div id="name_sng" class="music-name"></div> </div>
+                                </div>
+
+                                <div id="mor_rpy">
+
+                                    <div class="player">
+
+                                        <div class="player-track">
+                                            <div id="titles">
+
+                                            </div>
+
+
+
+                                            <div class="progress-bar">
+                                                <div class="fillBar"></div>
+                                            </div>
+                                            <div class="time"></div>
+                                            <div class="artist-name"></div>
+
+                                        </div>
+
+                                        <div class="player-control">
+                                            <!--<div id="prev" class="fas fa-backward"><p>◄</p></div>-->
+
+                                            <div id="nextx" class="fas fa-forward"><p>►►</p></div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div id="textareapost">
+                        <p id="ptitlepost">List songs:</p>
+                        <div id="textpost">
+                            <p>
+                                神经衰弱: 【❝】No one remembers your name| Shamrain <br />
+                                神经衰弱: 【❝】Orion•米津玄師 -|春雷Kenshi Yonezu<br />
+                                神经衰弱: 【❝】My still haven| Shamrain<br />
+                                神经衰弱: 【❝】Chau| No Te Va Gustar<br />
+                            </p>
+                        </div>
+
+                    </div>
+                    <div id="butonspost"><p>#ComaWhite</p><p>#Music</p><p>#Player</p></div>
+
+                </div>
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">SUNDAY, 14TH JUL</div><p id="tt2">02:15:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.pinimg.com/originals/f2/51/97/f25197c789b8ad2de1d03a03ca14111d.gif" style="filter:hue-rotate(300deg) " />
+                    <div id="textareapost">
+                        <p id="ptitlepost">
+                            致我亲爱的午夜太阳 | À mon cher soleil de minuit...
+                            :
+                        </p>
+                        <div id="textpost">
+                            <p>
+                                <span>我还能说什么？ |</span> Que puis-je dire d’autre?<br />
+                                Vous êtes une personne qui, en peu de temps, a gagné ma confiance et mon affection...<br />
+                                Vous êtes un homme incroyable et une personne pleine d’amour lorsque vous gagnez ce rôle (ce qui est un privilège sincèrement)
+                                Merci d’être là quand je suis dans la partie la plus sombre de ma vie, merci pour tout.<br />
+                                Tu sais que tu peux compter sur moi pour tout ce dont tu as besoin, je serai toujours là même si nous sommes accros à un boulot toxique hahahaha, mais ça a joué. Je t’adore et je t’aime beaucoup, Neige. <br />Amour, <span>Kiri</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Kiri</p><p>#ForNeige</p><p>#ForKiri</p></div>
+
+                </div>
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/x85cp1ns/image.pngg" />
+                        </div>
+                        <div id="clock2">MONDAY, 15TH MAY</div><p id="tt2">10:05:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.pinimg.com/originals/f5/93/a4/f593a4f4932080fb7b43c6ae96d1a73d.gif" style="filter:hue-rotate(250deg);" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">
+                            In here no one cares...<br />
+                            And no one remembers your name
+                        </p>
+
+
+                    </div>
+
+                    <div id="butonspost"><p>#Neige</p><p>#World</p> </div>
+
+                </div>
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">SUNDAY, 14TH JUL</div><p id="tt2">02:15:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.postimg.cc/jqz1h6YK/anigif.gif" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">
+                            妮吉，我的亲爱的 | Neige, my dear....
+                             
+                        </p>
+                        <div id="textpost">
+                            <p>
+                                <span>最近这几个月|</span>  Estos últimos meses que sirvieron para conocerte, pude darme cuenta fácilmente de la increíble persona que eres. Siempre tuve admiración por ti desde lo lejos, te observaba y te respetaba (lo sigo haciendo). Que me hayas hablado de pura casualidad fue la excusa perfecta para poder entablar conversación. Conversaciones que fueron cada vez más a menudas, más curiosas y divertidas, hasta que llegamos a donde estamos ahora. Nunca creí que serías así, ya que te estimo mucho y no veía posible que nuestros caminos se crucen, pero que agradecida estoy de que haya pasado; porque me encontré con la agradable sorpresa de que tenemos más en común de lo que creía, y que detrás de esa máscara que te pones, escondes una hermosa personalidad.
+                                Ahora, agradezco toda charla que puedo entablar contigo, porque siempre aprendo algo nuevo: ya sean chismes o diseños, gustos o datos randoms, todo es algo muy bello que me encanta poder compartir contigo.
+                                Gracias por dejarme ser parte de tu vida y por confiar en mi, por apoyarme y aconsejarme, y hasta por salvarme en los momentos de suma oscuridad. Siempre estaré para mi. Te quiero.
+                                <br /> <span>Tøxic</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#iToxic</p><p>#ForNeige</p><p>#FromToxic</p></div>
+
+                </div>
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">SUNDAY, 14TH JUL</div><p id="tt2">02:15:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.pinimg.com/originals/88/38/db/8838db0f94df028c4b84f2092c34d7bd.gif" />
+                    <div id="textareapost">
+                        <p id="ptitlepost">
+                            对于内格 | For Neige....
+                            :
+                        </p>
+                        <div id="textpost">
+                            <p>
+                                <span>你的勇气和真诚 |</span>  Your bravery and authenticity are an inspiration to everyone around you. You have shown that being true to yourself is the most powerful way to live, your homosexuality and strength light the way for those still seeking their truth. On this life journey, you have faced challenges with grace and dignity, and your presence is a testament to the beauty of being yourself without reservation. May this writing be a reflection of the respect and admiration I feel for you.
+                                Thank you for being a beacon of light and hope.
+                                With all my love and admiration<br /> <span>Lala</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Lala</p><p>#ForNeige</p><p>#FromMechanize</p></div>
+
+                </div>
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/brpZRtcD/text-formatting.png" />
+                        </div>
+                        <div id="clock2">SUNDAY, 14TH JUL</div><p id="tt2">02:15:24 PM @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <img id="imgmainpost" src="https://i.pinimg.com/originals/61/94/a8/6194a846f376ea5a56c6c85c72f12a00.gif" style="filter:hue-rotate(100deg) " />
+                    <div id="textareapost">
+                        <p id="ptitlepost">
+                            亲爱的尼吉 | Dear Neige
+                            :
+                        </p>
+                        <div id="textpost">
+                            <p>
+                                <span>感谢您成为最好的同事之一|</span>   Gracias por ser uno de los mejores colegas que he tenido. Eres un tipo sensato que casi siempre va al grano y se anda sin tonterías. En internet, a menudo uno se encuentra con mucho mamón con dobles intenciones que no sabes si están interesados en tu bienestar o si solo quieren pillar tu culo de manera desprevenida y sacar tus nudes. Pero Neige, señoras y señores, Neige jamás haría eso, él es auténtico y leal. Es una persona que siempre te toma en serio, con la que puedes conversar sobre la vida, sobre lo importante y lo trivial... y al final, es difícil perder el enfoque y la determinación cuando tienes a un amigo con las ideas tan claras apoyándote y dándote todo su amor. Fue una excelente decisión tomarme el tiempo en conocerte. Allá donde estés amigo, descansa en paz. Siempre te recordaremos.
+                                <br /> <span> 施罗德兹|  Schroederz - Mythes</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="butonspost"><p>#Mythes</p><p>#ForNeige</p><p>#FromMyt</p></div>
+
+                </div>
+
+
+                <div id="post">
+                    <div id="headpost">
+                        <div id="headimg">
+                            <img src="https://i.postimg.cc/x85cp1ns/image.pngg" />
+                        </div>
+                        <div id="clock2">CONSOLE OF XATSPACE</div><p id="tt2"> @ 0 NOTES</p>
+                        <div id="buttons">
+                            <div id="bt1" class="relad3">
+                                <p id="pbtn1">LIKE THIS POST?</p>
+
+                            </div>
+                            <div id="bt2">
+                                <p id="pbtn2">REBLOG THIS POST?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tTerminal" class="view">
+                        <script>
+                            function openconsle() {
+                                $("#tTerminal").removeClass("noview");
+
+                                $("#tTerminal").addClass("view");
+                            }
+                            function closconsle() {
+                                $("#tTerminal").removeClass("view");
+
+                                $("#tTerminal").addClass("noview");
+                            }
+                            function openfriendslist() {
+                                $("#main_2").addClass("main3");
+                                $("#afirms").addClass("gotofriends");
+                                $("#arfirms").addClass("gotofriends2");
+                                $("#afirms").removeClass("normalfriends");
+                                $("#arfirms").removeClass("normalfriends2");
+
+                            }
+                            function closefriendslist() {
+                                $("#afirms").removeClass("gotofriends");
+                                $("#arfirms").removeClass("gotofriends2");
+
+                                $("#afirms").addClass("normalfriends");
+                                $("#arfirms").addClass("normalfriends2");
+
+
+                            }
+                        </script>
+
+                        <div id="terminal">
+
+                            <style>
+                                .view {
+                                    opacity: 1;
+                                    z-index: 99999999999999999999999;
+                                }
+
+                                .noview {
+                                    opacity: -1;
+                                    z-index: -1;
+                                }
+
+                                #closeconsole p {
+                                    position: absolute;
+                                    top: 0%;
+                                    font-size: .8vw;
+                                    left: 30%;
+                                }
+
+                                #closeconsole {
+                                    position: absolute;
+                                    top: 18%;
+                                    right: 1%;
+                                    border: .1vw solid black;
+                                    width: 1vw;
+                                    height: 1vw;
+                                    cursor: pointer;
+                                }
+
+                                #iconconsole {
+                                    position: absolute;
+                                    height: 1vw;
+                                    left: 1%;
+                                    top: 18%;
+                                }
+
+                                #barconsole {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 5%;
+                                    background: white;
+                                }
+
+                                #titleconsole {
+                                    font-family: Consolas;
+                                    position: absolute;
+                                    top: .5vw;
+                                    z-index: 99;
+                                    font-size: .9vw;
+                                    left: 5%;
+                                }
+
+                                @font-face {
+                                    font-family: space;
+                                    src: url(space.TTF);
+                                }
+
+                                @font-face {
+                                    font-family: spacetext;
+                                    src: url(space.TTF);
+                                }
+
+                                #tTerminal {
+                                    cursor: auto;
+                                    /*position: absolute;*/ position: relative;
+                                    width: 100%;
+                                    height: 70%;
+                                    top: 10%;
+                                    font-family: Consolas;
+                                    background: rgba(0,0,0,.5);
+                                    overflow: hidden;
+                                }
+
+                                #terminal {
+                                    background: black;
+                                    top: -2%;
+                                    color: white;
+                                    font-family: Consolas;
+                                    /*position: absolute;*/
+                                    width: 100%;
+                                    height: 105%;
+                                    animation: text-blink 0.01s steps(2) infinite;
+                                    /*font: .875em/1.6 'Inconsolata', monospace;*/
+
+                                    font-weight: 400;
+                                    padding: 1em;
+                                    margin: 5% 0;
+                                    text-shadow: 0 0 5px rgba(79,195,255, .8);
+                                }
+
+                                    #terminal section p, a, marquee {
+                                        font-size: .8vw;
+                                        font-family: Consolas;
+                                    }
+
+                                @keyframes text-blink {
+                                    from, to {
+                                        opacity: 1;
+                                    }
+
+                                    50% {
+                                        opacity: 0.5;
+                                    }
+                                }
+
+                                ::selection {
+                                    background: transparent;
+                                }
+
+                                ::-webkit-selection {
+                                    background: transparent;
+                                }
+
+                                abbr {
+                                    cursor: help;
+                                }
+
+                                ul {
+                                    color: white;
+                                    list-style: none;
+                                    font-size: .8vw;
+                                    font-family: Consolas;
+                                }
+
+                                li {
+                                    margin: .5vw 0 0;
+                                    font-family: Consolas;
+                                    list-style: none;
+                                    color: white;
+                                }
+
+                                ul li a {
+                                    color: red;
+                                }
+
+                                @keyframes flashText {
+                                    0% {
+                                        opacity: .3
+                                    }
+
+                                    100% {
+                                        opacity: 1
+                                    }
+                                }
+
+                                kbd {
+                                    border: 1px solid dimgray;
+                                    font-family: Consolas;
+                                    text-transform: uppercase;
+                                    color: rgb(8,210,255);
+                                    padding: 0 .2em;
+                                }
+
+                                #cod {
+                                    border: 10px solid dimgray;
+                                    font-family: Consolas;
+                                    box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+                                }
+
+                                input[type="text"] {
+                                    font-family: Consolas;
+                                    max-width: 25em;
+                                    border: none;
+                                    color: rgb(237, 115, 115);
+                                    background: transparent;
+                                    padding: 0 .5em;
+                                }
+
+                                    input[type="text"]:focus {
+                                        background: transparent;
+                                        outline: none;
+                                    }
+
+                                #cmd2 {
+                                    animation-delay: .4s;
+                                    animation-duration: .5s;
+                                    font-family: Consolas;
+                                    color: white;
+                                }
+
+                                .command {
+                                    display: block;
+                                    font-size: .8vw;
+                                    font-family: Consolas;
+                                    margin: 2em 0;
+                                }
+
+
+                                section {
+                                    display: none;
+                                    font-family: Consolas;
+                                }
+
+                                .open {
+                                    display: block;
+                                }
+
+                                #cod {
+                                    padding: .2vw;
+                                }
+
+                                #nameux {
+                                    color: white;
+                                    text-transform: uppercase;
+                                    padding: .2vw;
+                                }
+
+                                #nameux2 {
+                                    color: white;
+                                    text-transform: uppercase;
+                                    padding: .2vw;
+                                }
+
+                                #terminal span {
+                                    font-family: Consolas;
+                                    display: block;
+                                    font-size: .8vw;
+                                    line-height: 1;
+                                    color: white;
+                                    /*  animation: flashText 1s ease-out alternate infinite;*/
+                                }
+                            </style>
+                            <section id="error">
+                                <p>Command not found!<p>
+                                <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                            </section>
+                            <section id="home">
+                                <p>人工智能。 TERMINAL V tech 6.38 NEIG UI V1.94 REV 1.00</p>
+                                <p>A console dev by Neige©</p>
+                                <p>The music player is off by default, to turn it on, type 'next'</p>
+                                <p><br /><span>Type [command] + <kbd>Enter</kbd></span></p>
+                                <ul>
+                                    <li>'home' -- Display this menu</li>
+                                    <li>'play' 'pause' 'next' 'prev' -- Controls the player</li>
+                                    <li>'lists' -- Display music list</li>
+                                    <li>'aboutme' -- About this xatspace and console</li>
+                                    <li>'exit' -- Logout</li>
+                                </ul>
+                            </section>
+                            <!--<section id="listfriends">
+                <p>//. List Friends / file [42:203] </p>
+                <p>>...  </p>
+
+                <ul>-->
+                            <!--<li>'<a id="afriend" href="#">Yuki</a>' -- the reason for her current state</li>-->
+                            <!--<li>'<a id="afriend" href="#">myt</a>' -- whispers of calm</li>
+                        <li>'<a id="afriend" href="#">kiri</a>' -- an escape door</li>
+                        <li>'<a id="afriend" href="#">lala</a>' -- schizophrenic crazy</li>
+                        <li>'<a id="afriend" href="#">chris</a>' -- depression and joy</li>
+                        <li>'<a id="afriend" href="#">toxic</a>' -- sweet agony</li>
+                        <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                        <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                        <li>Do you want to go to the friends and signatures section?</li>
+                        <li>'signs' -- To go</li>
+                        <li>'home' -- return to main file</li>
+                    </ul>
+                </section>-->
+                            <section id="lists">
+                                <p>
+                                    Music player list
+
+                                </p>
+                                <ul>
+                                    <li>'play1' -- Sorry</li>
+                                    <li>'play2' -- Faux semblants</li>
+                                    <li>'play3' -- Memories</li>
+                                    <li>'play4' -- Love(LORN)</li>
+                                    <li>'play5' -- Faiblesse de sens</li>
+                                    <li>'play6' -- la reine trayeuse</li>
+                                    <li>'play7' -- Recueillement</li>
+                                    <li>'play8' -- Pulse/Surreal</li>
+                                    <li>'play9' -- Full moon full life</li>
+                                    <li>'home' -- Return</li>
+                                </ul>
+                            </section>
+                            <section id="play">
+                                <p>Playing.song...</p>
+
+                            </section>
+                            <section id="return">
+                                <p>Return to main menu.</p>
+
+                            </section>
+                            <section id="play1">
+                                <p>Playing selected song 1</p>
+                            </section>
+                            <section id="play3">
+                                <p>Playing selected song 3</p>
+
+                            </section>
+                            <section id="play2">
+                                <p>Playing selected song 2</p>
+
+                            </section>
+                            <section id="play4">
+                                <p>Playing selected song 4</p>
+
+                            </section>
+                            <section id="play5">
+                                <p>Playing selected song 5</p>
+
+                            </section>
+                            <section id="play6">
+                                <p>Playing selected song 6</p>
+
+                            </section>
+                            <section id="play7">
+                                <p>Playing selected song 7</p>
+
+                            </section>
+                            <section id="play8">
+                                <p>Playing selected song 8</p>
+
+                            </section>
+                            <section id="play9">
+                                <p>Playing selected song 9</p>
+
+                            </section>
+                            <section id="deisgns">
+                                <p>Designs... work in progress</p>
+
+                            </section>
+                            <section id="next">
+                                <p>Next.song...</p>
+
+                            </section>   <section id="prev">
+                                <p>Prev.song...</p>
+
+                            </section>
+                            <!--<section id="sings">
+                    <p>Go to list friends...</p>
+
+                </section>-->
+                            <section id="pause">
+                                <p>Stop.song...</p>
+
+                            </section>
+                            <section id="error">
+                                <p>Command not found!<p>
+                                <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                            </section>
+                            <section id="aboutme">
+                                <p>人工智能。 TERMINAL V tech 6.38 VOID UI V1.94 REV 1.00</p>
+                                <p>
+                                    A console dev by Neige© <br />
+                                    USERNAME: GENERICGUEST%$RSSTY8899000000<br></br>
+                                    PASSWORD: GENERICPASS%&&&78256%%%%%00
+                                </p>
+                                <p>LOGIN...&nbsp; &nbsp;&nbsp;&nbsp; DONE!!</p>
+                                <p>
+                                    "What a beatifull day to die!"  Welcome to the console of this xatspace <br />
+                                    Enjoy you stay!<br />
+                                    jQuery Terminal: version 3.38.1 Copyright (c) 2019-2024 <br />
+                                    Console AI 0.2 VER 2.0<br />
+                                    UI VER 1.94<br />
+                                    XATSPACE "ELEGANT AND PERVERSE" FOR THE USER "MERIGGIARE"
+                                    ALL RIGHTS RESERVED, XAT.COM<br />
+                                    Dev by Neige <br />
+
+                                </p>
+                            </section>
+
+                            <section id="exit">
+
+
+
+                                <p> Breach time Remaing: 7 seconds</p> <br />
+                                <p>
+                                    exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                                    Plase wait... &nbsp; &nbsp;&nbsp; &nbsp;<br />
+                                    Deleting temporal archives... &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                                    Logout sucess! &nbsp; &nbsp;&nbsp;&nbsp;
+
+                                </p>
+                            </section>
+
+
+
+                            <p id="cmd2" class="command">NEIG_UI:SYS:/$<input id="txxt" type="text"></p>
+
+                            <script>
+                                var cm = 1;
+                                var at = 0;
+                                function comprobar() {
+
+                                    if (cm == 1) { entertomyspace(); cm++; }
+                                    else if (cm > 1) { cm = 0; } {
+
+                                    }
+                                }
+                                //function comprobarClave() {
+                                //    clave1 = document.getElementById("password").value;
+                                //    user1 = document.getElementById("text1").value;
+
+                                //    if ((clave1 != "") && (user1 != "")) {
+                                //        $("#login").addClass("removelogin"); $("#login").addClass("addlogin");
+                                //        cl();
+
+
+                                //    }
+                                //    else {
+                                //        at++;
+                                //        document.getElementById("attempts").textContent = "Null user or bad password. " + at + " Attempts";
+
+                                //    }
+
+                                //}
+                                var playing = false,
+                                    artistname = $(".artist-name"),
+                                    musicName = $(".music-name"),
+                                    time = $(".time"),
+                                    fillBar = $(".fillBar");
+                                imgbar = $("#fillimgbar");
+                                let audioData = [];
+
+                                var song = new Audio();
+                                var CurrentSong = 0;
+                                window.onload = load();
+
+                                function load() {
+                                    audioData = [
+
+                                        {
+                                            name: "Radio éteinte",
+                                            artist: "Radio éteinte",
+                                            src:
+                                                ""
+                                        },
+                                        {
+                                            name: "No one remembers your name",
+                                            artist: "ShamRain",
+                                            src:
+                                                "noone.mp3"
+                                        },
+
+                                        {
+                                            name: "Orion",
+                                            artist: "春雷Kenshi Yonezu",
+                                            src:
+                                                "orion.mp3"
+                                        },
+                                        {
+                                            name: "Chau",
+                                            artist: "NTVG",
+                                            src:
+                                                "chau.mp3"
+                                        },
+                                        {
+                                            name: "Love(Lorn)",
+                                            artist: "Angor amini",
+                                            src:
+                                                "https://xevangelist.github.io/evangelist/Love.mp3?raw=true"
+                                        },
+                                        {
+                                            name: "FAIBLESSE DES SENS",
+                                            artist: "AMESOEURS",
+                                            src:
+                                                "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                                        },
+
+                                        {
+                                            name: "My still haven",
+                                            artist: "Shamrain",
+                                            src:
+                                                "mystill.mp3"
+                                        },
+
+                                        {
+                                            name: "Recueillement",
+                                            artist: "AMESOEURS",
+                                            src:
+                                                "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                                        },
+                                        {
+                                            name: "PULSE / SURREAL",
+                                            artist: "LANTLOS",
+                                            src:
+                                                "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                                        },
+                                        {
+                                            name: "Full Moon Full Life",
+                                            artist: "Persona 3 Reload",
+                                            src:
+                                                "song2.mp3"
+                                        }
+
+
+                                    ]; var namesongxx = audioData[CurrentSong].name;
+
+                                    artistname.html(audioData[CurrentSong].artist);
+                                    musicName.html(audioData[CurrentSong].name);
+                                    song.src = audioData[CurrentSong].src;
+                                }
+
+
+                                function playSong() {
+                                    var curSong = audioData[CurrentSong];
+                                    //artistname.html();
+                                    musicName.html(curSong.name /*+ " / " + curSong.artist*/);
+                                    artistname.html(curSong.artist /*+ " /"*/);
+                                    song.src = curSong.src;
+                                    song.play();
+                                    $("#play").addClass("fa-pause");
+                                    $("#play").removeClass("fa-play");
+                                    $("p").addClass("active");
+                                    $(".player-track").addClass("active");
+                                }
+                                song.addEventListener("timeupdate", function () {
+                                    var position = (100 / song.duration) * song.currentTime;
+                                    var current = song.currentTime;
+                                    var duration = song.duration;
+                                    var durationMinute = Math.floor(duration / 60);
+                                    var durationSecond = Math.floor(duration - durationMinute * 60);
+                                    var durationLabel = durationMinute + ":" + durationSecond;
+                                    currentSecond = Math.floor(current);
+                                    currentMinute = Math.floor(currentSecond / 60);
+                                    currentSecond = currentSecond - currentMinute * 60;
+                                    // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                                    if (currentSecond < 10) {
+                                        currentSecond = "0" + currentSecond;
+                                    }
+                                    var currentLabel = currentMinute + ":" + currentSecond;
+
+                                    var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                                    fillBar.css("width", position + "%");
+                                    imgbar.css("left", position + "%");
+
+                                    $(".time").html(indicatorLabel);
+
+                                });
+
+
+                                $("#play").click(function () {
+
+                                    song.play();
+                                    playing = true;
+                                }); $("#playx1").click(function () {
+
+                                    song.play();
+                                    playing = true;
+                                });
+                                $("#botonon3").click(function () {
+
+                                    song.play();
+                                    playing = true;
+                                }); $("#pausex1").click(function () {
+                                    song.pause();
+                                    playing = false;
+                                });
+                                $("#pause").click(function () {
+                                    song.pause();
+                                    playing = false;
+                                }); $("#botonoff3").click(function () {
+                                    song.pause();
+                                    playing = false; nomus();
+                                });
+                                $("#stop").click(function next() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    song.pause();
+                                    playing = false;
+                                });
+
+                                $("#prev").click(function prev() {
+                                    CurrentSong--;
+                                    if (CurrentSong < 0) {
+                                        CurrentSong = 9;
+                                    }
+                                    playSong();
+                                });
+                                $("#nextx").click(function next() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    playSong();
+                                });
+                                $("#mainpagex").click(function next() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    playSong();
+                                }); function next3() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    playSong();
+                                }
+                                $("#butonnext").click(function next() {
+                                    CurrentSong++;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    playSong();
+                                });
+                                function aleatorio() {
+
+                                } var nx = 0;
+                                function entermainsong() {
+                                    nx = Math.floor((Math.random() * 9) + 1);
+                                    document.getElementById("demo").innerHTML = nx;
+                                    var xn;
+                                    CurrentSong = nx;
+                                    document.getElementById("pre").innerHTML = CurrentSong;
+                                    if (CurrentSong > 9) {
+                                        CurrentSong = 0;
+                                    }
+                                    playSong();
+                                }
+
+                                function entertomyspace() {
+                                    (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+                                    // Let's do it!!
+                                    $(document).ready(function () {
+
+
+
+                                        $('.command').hide();
+                                        $('#home').focus();
+                                        $('#txxt').focus();
+                                        $('#home').addClass('open');
+                                        $('#home').textTyper({
+                                            speed: 20,
+                                            afterAnimation: function () {
+                                                $('.command').fadeIn();
+                                                $('#txxt').focus();
+                                                $('#txxt').val('');
+                                            }
+                                            //beforeAnimation: function () { $("nofocus").focus(); }
+                                        });
+
+                                        // get array of section ids, that exist in DOM
+                                        var sectionArray = [];
+                                        // We are using <section> here, you can use <div> or <article> if you want
+                                        $('section').each(function (i, e) {
+                                            //you can use e.id instead of $(e).attr('id')
+                                            sectionArray.push($(e).attr('id'));
+                                        });
+
+                                        // Debug
+                                        //console.log(sectionArray);
+
+
+
+                                        // Command Input------------------------------
+
+                                        $('#txxt').keyup(function (e) {
+
+                                            if (e.which == 13) {// ENTER key pressed
+
+                                                clave1 = $('#txxt').val();
+                                                nextsong = $('#txxt').val();
+                                                prevsong = $('#txxt').val();
+                                                $(document).ready(function () {
+
+
+                                                });
+
+
+                                                if (clave1 == "exit") {
+                                                    $("#cmd2").addClass("novis"); $("#cmd2").removeClass("visi");
+                                                }
+                                                else if ((clave1 == "media") || (clave1 == "next") || (clave1 == "prev") || (clave1 == "resume")) {
+                                                    $("#auid").removeClass("novis"); $("#auid").addClass("visi");
+                                                }
+                                                else { $("#auid").removeClass("visi"); $("#auid").addClass("novis"); }
+                                                $('.command').hide();
+
+                                                var nombresincortar = $('#txxt').val();
+                                                var nombrecortado = nombresincortar.split(" ");
+                                                var destination = nombrecortado[0];
+                                                if (nombrecortado[1] == null) {
+                                                    nombrecortado[1] = "Unknow";
+                                                }
+                                                /*  var nameuser = nombrecortado[1];*/
+
+
+                                                $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+
+
+                                                if ($.inArray(destination, sectionArray) == -1) {
+                                                    $('#error').addClass('open');
+                                                    $('#error').siblings().removeClass('open');
+
+                                                }
+
+                                                // All sections with class .open init textTyper
+
+
+                                                $('.open').textTyper({
+                                                    speed: 20,
+                                                    afterAnimation: function () {
+                                                        $('.command').fadeIn();
+
+                                                        $('#txxt').val('');
+
+                                                        let reproducir = false;
+                                                        let musica = new Audio("be3p.mp3");
+                                                        musica.loop = true;
+
+                                                        //arranca la música en bucle
+                                                        musica.addEventListener('ended', function () {
+
+                                                            this.play();
+                                                        }, false);
+                                                        musica.play();
+
+                                                        function resumeAudio() {
+                                                            if (!reproducir) {
+                                                                reproducir = true;
+                                                                musica.play();
+                                                            }
+                                                        }
+
+                                                        function pauseAudio() {
+                                                            if (reproducir) {
+                                                                reproducir = false;
+                                                                musica.pause();
+                                                            }
+                                                        }
+
+                                                        //$("#cmd2").click(function () {
+                                                        //    if (!reproducir) {
+                                                        //        reproducir = true;
+                                                        //        musica.pause();
+                                                        //    }
+                                                        //});
+                                                        function teclado(objeto) {
+                                                            var tecla = objeto.which;
+                                                            var num;
+
+                                                            switch (tecla) {
+                                                                //case 82: //m
+                                                                //    resumeAudio();
+                                                                //    break;
+                                                                case 13: //n
+                                                                    if (!reproducir) {
+                                                                        reproducir = true;
+                                                                        musica.pause();
+                                                                    }
+                                                                    break;
+
+                                                            }
+
+                                                        }
+
+                                                        document.addEventListener('keydown', teclado, false);
+                                                        $('#txxt').focus();
+                                                    }
+                                                });
+
+                                                function ns() {
+                                                    CurrentSong++;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "signs") {
+                                                    closconsle(); openfriendslist();
+                                                }
+                                                if (nextsong == "next") {
+                                                    CurrentSong++;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play1") {
+                                                    CurrentSong = 1;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play2") {
+                                                    CurrentSong = 2;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play3") {
+                                                    CurrentSong = 3;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play4") {
+                                                    CurrentSong = 4;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play5") {
+                                                    CurrentSong = 5;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play6") {
+                                                    CurrentSong = 6;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play7") {
+                                                    CurrentSong = 7;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play8") {
+                                                    CurrentSong = 8;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "play9") {
+                                                    CurrentSong = 9;
+                                                    if (CurrentSong > 9) {
+                                                        CurrentSong = 0;
+                                                    }
+
+                                                    playSong();
+                                                }
+                                                if (nextsong == "prev") {
+                                                    CurrentSong--;
+                                                    if (CurrentSong < 0) {
+                                                        CurrentSong = 9;
+                                                    }
+                                                    playSong();
+                                                }
+                                                if (nextsong == "pause") {
+                                                    song.pause();
+                                                    playing = false;
+                                                } if (nextsong == "exit") {
+
+                                                    closconsle();
+                                                }
+                                                if (nextsong == "return") {
+                                                    outtomenu();
+                                                }
+                                                if (nextsong == "neige") {
+
+                                                    function entrancesurl2() {
+                                                        var url = "P3Neige.html";
+                                                        $(location).attr('href', url);
+                                                    }
+                                                    setInterval(entrancesurl2, 10000);
+                                                }
+                                                if (nextsong == "resume") {
+                                                    song.play();
+                                                    playing = true;
+                                                }
+                                            }// end if ENTER key pressed
+                                            //$("#cmd2").focus();
+
+                                            $().focus();
+                                        });// end keyup function
+
+                                        // End Command Input-----------------------------
+
+                                    });
+
+                                }
+                            </script>
+
+                        </div>
+
+
+                    </div>
+                    <div id="textareapost">
+                        <p id="ptitlepost">Console of xatspace</p>
+
+
+                    </div>
+
+                    <div id="butonspost"><p>#CosoleCommand</p><p>#Neige</p> </div>
+
+                </div>
+
+
+                <div id="areaprofile">
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+                        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+                        #areaprofile {
+                            position: fixed;
+                            top: 57%;
+                            right: 19%;
+                            width: 23%;
+                            height: 20%;
+                        }
+
+                        #ainfo {
+                            position: absolute;
+                            width: 100%;
+                            height: 60%;
+                            top: 0;
+                            left: 0;
+                            background: black;
+                        }
+
+                        #abuttns {
+                            position: absolute;
+                            width: 100%;
+                            height: 20%;
+                            top: 75%;
+                            left: 0;
+                        }
+
+                        #amainimg {
+                            width: 6vw;
+                            height: 6vw;
+                            background: #171717;
+                            position: absolute;
+                        }
+
+                            #amainimg img {
+                                width: 4.5vw;
+                                height: 4.5vw;
+                                position: absolute;
+                                left: .75vw;
+                                top: .75vw;
+                            }
+
+                        #textinfo {
+                            color: gray;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            position: absolute;
+                            width: 67%;
+                            height: 80%;
+                            top: -4%;
+                            line-height: .9vw;
+                            right: 2%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                            #textinfo span {
+                                color: #b67fb6;
+                                text-decoration: underline;
+                            }
+
+                            #textinfo b {
+                                color: #e2bcd7;
+                            }
+
+                        .buton {
+                            width: 20%;
+                            margin-right: 5%;
+                            background: black;
+                            height: 100%;
+                            float: left;
+                        }
+
+                            .buton p {
+                                font-family: "Roboto", Arial, sans-serif;
+                                color: gray;
+                                font-weight: bold;
+                                position: relative;
+                                text-align: center;
+                                font-size: .6vw;
+                                letter-spacing: .15vw;
+                            }
+                    </style>
+                    <div id="ainfo">
+                        <div id="amainimg">
+                            <img src="https://i.postimg.cc/L6mS31jG/a2c0e1f5923a354a75b3b52481b3a33f.jpg" />
+                        </div>
+                        <div id="textinfo">
+                            <p>
+                                Oh, <b>God</b>... please, please let me hear your <i>voice</i>! <br />
+                                Just the <i>slightest words</i> will do! So that we'll never be apart again, <br />
+                                I want you to join with me...<br />
+                                Just <b>like</b> that <span>constellation</span>.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="abuttns">
+                        <div class="buton"><p>NEIGE</p></div>
+                        <div class="buton"><p>XXVII</p></div>
+                        <div class="buton"><p>BROKEN</p></div>
+                        <div class="buton"><p>NOTHING</p></div>
+                    </div>
+
+                </div>
+
+                <div id="aconstell">
+                    <style>
+                        #aconstell {
+                            position: fixed;
+                            top: 24%;
+                            right: 19%;
+                            width: 23%;
+                            height: 30%;
+                        }
+
+                        #alinks {
+                            position: absolute;
+                            right: 0;
+                            top: 5%;
+                            width: 40%;
+                            height: 90%;
+                            font-weight: bold;
+                            color: lightgray;
+                            line-height: 1.7vw;
+                            font-size: .65vw;
+                            letter-spacing: .17vw;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #aconst {
+                            position: absolute;
+                            top: 10%;
+                            left: 0;
+                            width: 55%;
+                            height: 80%;
+                        }
+
+                        #imgconst1 {
+                            position: absolute;
+                            width: 11vw;
+                            height: 11vw;
+                            left: -140%;
+                            top: 10%;
+                            z-index: -1;
+                        }
+
+                        .nolink1 {
+                            opacity: 0;
+                            z-index: -1;
+                        }
+
+                        yeslink1 {
+                            opacity: 1;
+                            z-index: 9;
+                        }
+
+                        #imgconst2 {
+                            position: absolute;
+                            width: 11vw;
+                            height: 11vw;
+                            left: -140%;
+                            top: 10%;
+                        }
+
+                        #imgconst3, #imgconst4, #imgconst5, #imgconst6, #imgconst7, #imgconst8 {
+                            position: absolute;
+                            width: 11vw;
+                            height: 11vw;
+                            left: -140%;
+                            top: 10%;
+                        }
+
+                        .linkcoloryes {
+                            color: #b67fb6;
+                            text-decoration: underline;
+                        }
+
+                        .linkcolorno {
+                            color: white;
+                            text-decoration: none;
+                        }
+
+                        #link1 b {
+                            font-size: .8vw;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: white;
+                            cursor: pointer;
+                        }
+                    </style>
+
+                    <div id="aconst">
+
+
+                    </div>
+
+                    <script>
+                        function onmove1() {
+                            $("#link11").removeClass("linkcolorno"); $("#link11").addClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst1").removeClass("nolink1"); $("#imgconst1").addClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        }
+
+                        function onmove2() {
+                            $("#link12").removeClass("linkcolorno"); $("#link12").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst2").removeClass("nolink1"); $("#imgconst2").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        }
+                        function onmove3() {
+                            $("#link13").removeClass("linkcolorno"); $("#link13").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst3").removeClass("nolink1"); $("#imgconst3").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        }
+                        function onmove4() {
+                            $("#link14").removeClass("linkcolorno"); $("#link14").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst4").removeClass("nolink1"); $("#imgconst4").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        }
+                        function onmove5() {
+                            $("#link15").removeClass("linkcolorno"); $("#link15").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst5").removeClass("nolink1"); $("#imgconst5").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        }
+                        function onmove6() {
+                            $("#link16").removeClass("linkcolorno"); $("#link16").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst6").removeClass("nolink1"); $("#imgconst6").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        } function onmove7() {
+                            $("#link17").removeClass("linkcolorno"); $("#link17").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+                            $("#link18").addClass("linkcolorno"); $("#link18").removeClass("linkcoloryes");
+
+                            $("#imgconst7").removeClass("nolink1"); $("#imgconst7").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                            $("#imgconst8").addClass("nolink1"); $("#imgconst8").removeClass("yeslink1");
+                        } function onmove8() {
+                            $("#link18").removeClass("linkcolorno"); $("#link18").addClass("linkcoloryes");
+                            $("#link11").addClass("linkcolorno"); $("#link11").removeClass("linkcoloryes");
+                            $("#link12").addClass("linkcolorno"); $("#link12").removeClass("linkcoloryes");
+                            $("#link14").addClass("linkcolorno"); $("#link14").removeClass("linkcoloryes");
+                            $("#link13").addClass("linkcolorno"); $("#link13").removeClass("linkcoloryes");
+                            $("#link15").addClass("linkcolorno"); $("#link15").removeClass("linkcoloryes");
+                            $("#link17").addClass("linkcolorno"); $("#link17").removeClass("linkcoloryes");
+                            $("#link16").addClass("linkcolorno"); $("#link16").removeClass("linkcoloryes");
+
+                            $("#imgconst8").removeClass("nolink1"); $("#imgconst8").addClass("yeslink1");
+                            $("#imgconst1").addClass("nolink1"); $("#imgconst1").removeClass("yeslink1");
+                            $("#imgconst2").addClass("nolink1"); $("#imgconst2").removeClass("yeslink1");
+                            $("#imgconst4").addClass("nolink1"); $("#imgconst4").removeClass("yeslink1");
+                            $("#imgconst3").addClass("nolink1"); $("#imgconst3").removeClass("yeslink1");
+                            $("#imgconst5").addClass("nolink1"); $("#imgconst5").removeClass("yeslink1");
+                            $("#imgconst7").addClass("nolink1"); $("#imgconst7").removeClass("yeslink1");
+                            $("#imgconst6").addClass("nolink1"); $("#imgconst6").removeClass("yeslink1");
+                        }
+                    </script>
+
+                    <div id="alinks">
+                        <a id="link1" onmouseover="onmove1();" href="https://xat.me/Neige">
+                            001 ── <span id="link11" class="linkcoloryes">BROKEN.<b></b></span>
+                            <img src="https://i.postimg.cc/qqPYpkLH/orion.png" id="imgconst1" class="yeslink1" />
+
+                        </a><br />
+                        <a onmouseover="onmove2();" href="https://xat.me/Kagura" id="link2">002 ── <span id="link12">KIRI.</span> <img class="nolink1" src="https://i.postimg.cc/Sst3tLYs/Lepus.png" id="imgconst2" /></a><br />
+                        <a onmouseover="onmove3();" href="https://xat.me/azuchanrosada" id="link3">003 ── <span id="link13">MYTEZ.</span> <img class="nolink1" src="https://i.postimg.cc/q7w92Hk2/cygnus.png" id="imgconst3" /></a><br />
+                        <a onmouseover="onmove4();" href="https://xat.me/pieceofshiit" id="link4">004 ── <span id="link14">TOXIC.</span> <img class="nolink1" src="https://i.postimg.cc/MZnpZdD9/Papilio-Charontis.png" id="imgconst4" /></a><br />
+                        <a onmouseover="onmove5();" href="https://xat.me/weathering" id="link5">005 ── <span id="link15">LALA.</span><img class="nolink1" src="https://i.postimg.cc/HxLF2vxR/draco.png" id="imgconst5" /></a><br />
+                        <a onmouseover="onmove6();" href="https://xat.me/sam4elx111" id="link6">006 ── <span id="link16">NECE.</span><img class="nolink1" src="https://i.postimg.cc/mZK2PCpB/pegasus.png" id="imgconst6" /></a><br />
+                        <a onmouseover="onmove7();" href="https://xat.me/veryscared" id="link7">007 ── <span id="link17">SAEYORI.</span><img class="nolink1" src="https://i.postimg.cc/2SQp8BMc/corvus.png" id="imgconst7" /></a><br />
+                        <a onmouseover="onmove8();" href="https://xat.me/nashe" id="link8">008 ── <span id="link18">REMEBER.</span><img class="nolink1" src="https://i.postimg.cc/NF9ShyRx/lyra.png" id="imgconst8" /></a>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        
+        <div id="mainpagex" class="mnge" onclick="ocultpage(); digi(); comprobar(); next3();">
+            <style>
+                .mnge {
+                    z-index: 999999999999999;
+                    opacity: 1;
+                }
+
+                .mnge2 {
+                    z-index: -9;
+                    opacity: 0;
+                }
+
+                #mainpagex {
+                    position: fixed;
+                    background: rgba(0,0,0,0.6);
+                    backdrop-filter: blur(5px);
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+
+
+
+                /*ul {
+                    position: relative;
+                    top: 30%;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                    ul li {
+                        font-size: 5vw;
+                        padding: 3em 0 0 0;
+                        list-style: none;
+                        position: absolute;
+                        color: lightgray;
+                        top: 0;
+                        left: 0;
+                        opacity: 0;
+                        text-align: center;
+                        width: 100%;
+                        -webkit-backface-visibility: hidden;
+                        text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                        transition: opacity 0.4s ease;
+                    }
+
+                        ul li:first-child {*/
+                            /* leave this one on as a background */
+                            /*opacity: 0.2 !important;
+                        }*/
+
+                #firmcoma {
+                    filter: invert(100%);
+                    width: 17vw;
+                    position: absolute;
+                    top: 20%;
+                    left: 43%;
+                }
+
+                #loadtext {
+                    text-transform: uppercase;
+                    color: white;
+                    text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                    top: 57%;
+                    text-align: center;
+                    font-family: 'Montserrat', sans-serif;
+                    position: relative;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    animation: loadanim 1s infinite;
+                }
+
+                    #loadtext::before {
+                        animation: loadanim2 2s 1;
+                        animation-fill-mode: forwards;
+                        content: "chargement"
+                    }
+
+                @keyframes loadanim {
+                    0% {
+                        opacity: 1;
+                    }
+
+                    50% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes loadanim2 {
+                    0% {
+                        content: "Loading"
+                    }
+
+                    99% {
+                        content: "Loading"
+                    }
+
+                    100% {
+                        content: "Click to continue"
+                    }
+                }
+            </style>
+
+            <script>
+                function ocultpage() {
+                    $("#mainpagex").removeClass("mnge");
+                    $("#mainpagex").addClass("mnge2");
+                }
+            </script>
+
+            <p id="loadtext"></p>
+            <p id="firmmyt3"> Neige</p>
+            <p id="firmmyt33">oo one remembers your name...</p>
+            <style>
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+                #firmmyt3 {
+                    font-family: textfirmFont;
+                    color: white;
+                    font-size: 6vw;
+                    position: relative;
+                    text-align: center;
+                    top: 20%;
+                    opacity: .3;
+                }
+                #firmmyt33 {
+                    font-family: textfirmFont;
+                    color: #7c6092;
+                    font-size: 2vw;
+                    position: relative; text-align:center;
+                    top: 5%;
+                    opacity: .8;
+                }
+            </style>
+          
+        </div>
+
+
+    </div>
+
+</body>
+</html>
