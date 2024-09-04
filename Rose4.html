@@ -688,16 +688,34 @@
                 audioData = [
 
                     {
-                        name: "RADIO OFF",
-                        artist: "RADIO OFF",
+                        name: "Nightcore  Sweet",
+                        artist: "Little Bumblebee",
                         src:
-                            ""
+                            "rose1.mp3"
+                    },
+                    {
+                        name: "小鹿乱撞",
+                        artist: "酒酒井Anri",
+                        src:
+                            "rose2.mp3"
                     },
                     {
                         name: "See Tình",
+                        artist: " 酒酒井AnriJapanese ",
+                        src:
+                            "rose3.mp3"
+                    },
+                    {
+                        name: "Paradise",
                         artist: "酒酒井Anri",
                         src:
-                            "https://xevangelist.github.io/evangelist/lantlos-minusmensch-.mp3?raw=true"
+                            "rose4.mp3"
+                    },
+                    {
+                        name: "Say so",
+                        artist: "酒酒井",
+                        src:
+                            "rose5.mp3"
                     },
 
                 ];
@@ -765,14 +783,14 @@
             $("#prev").click(function prev() {
                 CurrentSong--;
                 if (CurrentSong < 0) {
-                    CurrentSong = 1;
+                    CurrentSong = 4;
                 }
                 playSong();
             });
 
             $("#next").click(function next() {
                 CurrentSong++;
-                if (CurrentSong > 1) {
+                if (CurrentSong > 4) {
                     CurrentSong = 0;
                 }
                 playSong();
