@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -17,23 +17,175 @@
     </script>
 </head>
 <body class="demo-5">
+    <div id="back-intro" class="btn btn--trigger">
+        <style>
+            #back-intro {
+                position: fixed;
+                background: rgba(0,0,0,0.6);
+                backdrop-filter: blur(5px);
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 99999999999999999999999999999999999;
+            }
+
+            #clik {
+                color: white;
+                font-size: .8vw;
+                letter-spacing: .1vw;
+                position: absolute;
+                left: 14%;
+                top: 66.5%;
+            }
+
+                #clik span {
+                    position: absolute;
+                    animation: text-blink-2 2s infinite;
+                }
+
+            @keyframes text-blink-2 {
+                0% {
+                    left: -1vw;
+                }
+
+                50% {
+                    left: -2vw;
+                }
+
+                100% {
+                    left: -1vw;
+                }
+            }
+
+            @keyframes to-off {
+                0% {
+                    opacity: 1;
+                }
+
+                99% {
+                    z-index: -2;
+                }
+
+                100% {
+                    opacity: 0;
+                    z-index: -2;
+                }
+            }
+
+            .loadpage1 {
+                animation: to-off 3s 1;
+                animation-fill-mode: forwards;
+            }
+
+            .tooffp {
+                opacity: 0;
+            }
+
+            #firmcoma {
+                filter: invert(100%);
+                width: 17vw;
+                position: absolute;
+                top: 20%;
+                left: 43%;
+            }
+
+            #loadtext {
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
+                top: 57%;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                position: relative;
+                font-size: .5vw;
+                letter-spacing: .1vw;
+                animation: loadanim 1s infinite;
+            }
+
+                #loadtext::before {
+                    animation: loadanim2 2s 1;
+                    animation-fill-mode: forwards;
+                    content: "chargement"
+                }
+
+            @keyframes loadanim {
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes loadanim2 {
+                0% {
+                    content: "Loading"
+                }
+
+                99% {
+                    content: "Loading"
+                }
+
+                100% {
+                    content: "Click to continue"
+                }
+            }
+
+            @font-face {
+                font-family: textfirmFont;
+                src: url(firm.otf);
+            }
+
+            #firmmyt3 {
+                font-family: textfirmFont;
+                color: white;
+                font-size: 6vw;
+                position: relative;
+                text-align: center;
+                top: 15%;
+                opacity: .3;
+            }
+
+            #firmmyt33 {
+                font-family: textfirmFont;
+                color: #723a11;
+                font-size: 2vw;
+                position: relative;
+                text-align: center;
+                top: 0%;
+                opacity: .8;
+            }
+
+            #i3 {
+                position: absolute;
+                top: 0;
+            }
+        </style>
+        
+        <p id="firmmyt3"> Neige</p>
+        <p id="firmmyt33">oo one remembers your name...</p>
+        <div id="lat_txt">
+
+            <div id="i3" onclick="sckl(); next();" class="bottom-nav">  <p id="loadtext"></p> </div>
+
+        </div>
+
+
+
+
+    </div>
+
 
     <main id="mainpage">
-        <script>
 
-
-        </script>
         <div class="segmenter" style="background-image: url(6862b1a6.png)"></div>
-        <!--<h2 class="trigger-headline trigger-headline--hidden"><span>R</span><span>a</span><span>b</span><span>b</span><span>i</span><span>t</span></h2>-->
-        <!--<div class="bottom-nav">
-        <button style="opacity:0;"  class="btn btn--trigger">Show Effect</button>
 
-    </div>-->
-        <style>
-            /*  .segmenter { position:absolute; width:40%; height:100%; left:25%;
-                }*/
-
-        </style>
         <script>
 
             function sckl() {
@@ -135,6 +287,10 @@
                     opacity: .7;
                 }
 
+                #main2 {
+                    z-index: 998;
+                }
+
                 #letlat {
                     transform: rotate(90deg);
                     color: white;
@@ -210,26 +366,927 @@
             <div id="areafriends">
                 <style>
                     #areafriends {
+                        animation: text-blink 0.01s steps(2) infinite;
+                        cursor: pointer;
                         position: absolute;
                         width: 10%;
-                        height: 40%;
-                        top: 75%;
+                        height: 15%;
+                        top: 80%;
                         font-size: .8vw;
-                        right: 16.5%;
-                        transform: rotate(90deg);
-                       color:#C2B07A;
+                        left: 33%;
+                        color: #C2B07A;
                         font-family: 'Times New Roman';
                         letter-spacing: .1vw;
                         text-shadow: .2vw -.2vw .5vw gray;
                         line-height: .7vw;
                     }
-                </style>
-                <p>002-KIRI</p>
-                <p>003-TOXIC</p>
-                <p>003-MYTHES</p>
 
-                <p>005-CHRIS</p>
-                <p>001-LALA</p>
+                        #areafriends p:hover {
+                            color: rgb(223, 152, 0);
+                        }
+                </style> <p onclick="openmenu();">
+                    Signatures
+                </p>
+                <p onclick="openconsle(); comprobar();">Console</p>
+                <p>Dessins</p>
+
+            </div>
+            <div id="tTerminal" class="noview">
+                <script>
+                    function openconsle() {
+                        $("#tTerminal").removeClass("noview");
+
+                        $("#tTerminal").addClass("view");
+                    }
+                    function closconsle() {
+                        $("#tTerminal").removeClass("view");
+
+                        $("#tTerminal").addClass("noview");
+                    }
+
+                    function closefriendslist() {
+                        $("#afirms").removeClass("gotofriends");
+                        $("#arfirms").removeClass("gotofriends2");
+
+                        $("#afirms").addClass("normalfriends");
+                        $("#arfirms").addClass("normalfriends2");
+
+
+                    }
+                </script>
+                <div id="barconsole">
+                    <img src="https://i.postimg.cc/q7YYWS9p/st-small-507x507-pad-600x600-f8f8f8-u6.png" id="iconconsole" /><p id="titleconsole">CONSOLE V2.0899</p>
+                    <div id="closeconsole" onclick="closconsle();"><p>x</p></div>
+                </div>
+                <div id="terminal">
+
+                    <style>
+                        .view {
+                            opacity: 1;
+                            z-index: 99999999999999999999999;
+                        }
+
+                        .noview {
+                            opacity: -1;
+                            z-index: -1;
+                        }
+
+                        #closeconsole p {
+                            position: absolute;
+                            top: 0%;
+                            font-size: .8vw;
+                            left: 30%;
+                        }
+
+                        #closeconsole {
+                            position: absolute;
+                            top: 18%;
+                            right: 1%;
+                            border: .1vw solid black;
+                            width: 1vw;
+                            height: 1vw;
+                            cursor: pointer;
+                        }
+
+                        #iconconsole {
+                            position: absolute;
+                            height: 1vw;
+                            left: 1%;
+                            top: 18%;
+                        }
+
+                        #barconsole {
+                            position: absolute;
+                            width: 100%;
+                            height: 5%;
+                            background: white;
+                        }
+
+                        #titleconsole {
+                            font-family: Consolas;
+                            position: absolute;
+                            top: .5vw;
+                            z-index: 99;
+                            font-size: .9vw;
+                            left: 5%;
+                        }
+
+                        @font-face {
+                            font-family: space;
+                            src: url(space.TTF);
+                        }
+
+                        @font-face {
+                            font-family: spacetext;
+                            src: url(space.TTF);
+                        }
+
+                        #tTerminal {
+                            cursor: auto;
+                            position: absolute;
+                            width: 50%;
+                            height: 70%;
+                            left: 35%;
+                            top: 10%;
+                            border-radius: .4vw;
+                            font-family: Consolas;
+                            border: .2vw solid white;
+                            background: rgba(0,0,0,.8);
+                            overflow: hidden;
+                        }
+
+                        #terminal {
+                            background: black;
+                            top: -2%;
+                            color: white;
+                            font-family: Consolas;
+                            position: absolute;
+                            width: 100%;
+                            height: 105%;
+                            animation: text-blink 0.01s steps(2) infinite;
+                            /*font: .875em/1.6 'Inconsolata', monospace;*/
+
+                            font-weight: 400;
+                            padding: 1em;
+                            margin: 5% 0;
+                            text-shadow: 0 0 5px rgba(79,195,255, .8);
+                        }
+
+                            #terminal section p, a, marquee {
+                                font-size: .8vw;
+                                font-family: Consolas;
+                            }
+
+                        @keyframes text-blink {
+                            from, to {
+                                opacity: 1;
+                            }
+
+                            50% {
+                                opacity: 0.5;
+                            }
+                        }
+
+                        ::selection {
+                            background: transparent;
+                        }
+
+                        ::-webkit-selection {
+                            background: transparent;
+                        }
+
+                        abbr {
+                            cursor: help;
+                        }
+
+                        ul {
+                            color: white;
+                            list-style: none;
+                            font-size: .8vw;
+                            font-family: Consolas;
+                        }
+
+                        li {
+                            margin: .5vw 0 0;
+                            font-family: Consolas;
+                            list-style: none;
+                            color: white;
+                        }
+
+                        ul li a {
+                            color: red;
+                        }
+
+                        @keyframes flashText {
+                            0% {
+                                opacity: .3
+                            }
+
+                            100% {
+                                opacity: 1
+                            }
+                        }
+
+                        kbd {
+                            border: 1px solid dimgray;
+                            font-family: Consolas;
+                            text-transform: uppercase;
+                            color: rgb(8,210,255);
+                            padding: 0 .2em;
+                        }
+
+                        #cod {
+                            border: 10px solid dimgray;
+                            font-family: Consolas;
+                            box-shadow: 0 0 5px rgba(219, 14, 21, .8);
+                        }
+
+                        input[type="text"] {
+                            font-family: Consolas;
+                            max-width: 25em;
+                            border: none;
+                            color: rgb(237, 115, 115);
+                            background: transparent;
+                            padding: 0 .5em;
+                        }
+
+                            input[type="text"]:focus {
+                                background: transparent;
+                                outline: none;
+                            }
+
+                        #cmd2 {
+                            animation-delay: .4s;
+                            animation-duration: .5s;
+                            font-family: Consolas;
+                            color: white;
+                        }
+
+                        .command {
+                            display: block;
+                            font-size: .8vw;
+                            font-family: Consolas;
+                            margin: 2em 0;
+                        }
+
+
+                        section {
+                            display: none;
+                            font-family: Consolas;
+                        }
+
+                        .open {
+                            display: block;
+                        }
+
+                        #cod {
+                            padding: .2vw;
+                        }
+
+                        #nameux {
+                            color: white;
+                            text-transform: uppercase;
+                            padding: .2vw;
+                        }
+
+                        #nameux2 {
+                            color: white;
+                            text-transform: uppercase;
+                            padding: .2vw;
+                        }
+
+                        #terminal span {
+                            font-family: Consolas;
+                            display: block;
+                            font-size: .8vw;
+                            line-height: 1;
+                            color: white;
+                            /*  animation: flashText 1s ease-out alternate infinite;*/
+                        }
+                    </style>
+                    <section id="error">
+                        <p>Command not found!<p>
+                        <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                    </section>
+                    <section id="home">
+                        <p>人工智能。 TERMINAL V tech 6.38 NEIG UI V1.94 REV 1.00</p>
+                        <p>A console dev by Neige©</p>
+                        <p>This console version do not support audio player</p>
+                        <p><br /><span>Type [command] + <kbd>Enter</kbd></span></p>
+                        <ul>
+                            <li>'home' -- Display this menu</li>
+                            <li>'listfriends' -- Display friends list</li>
+                            <li>'aboutme' -- About this xatspace and console</li>
+                            <li>'exit' -- Logout</li>
+                        </ul>
+                    </section>
+                    <section id="listfriends">
+                        <p>//. List Friends / file [42:203] </p>
+                        <p>>...  </p>
+
+                        <ul>
+                            <li>'<a id="afriend" href="#">Yuki</a>' -- the reason for her current state</li>
+                            <li>'<a id="afriend" href="#">myt</a>' -- whispers of calm</li>
+                            <li>'<a id="afriend" href="#">kiri</a>' -- an escape door</li>
+                            <li>'<a id="afriend" href="#">lala</a>' -- schizophrenic crazy</li>
+                            <li>'<a id="afriend" href="#">chris</a>' -- depression and joy</li>
+                            <li>'<a id="afriend" href="#">toxic</a>' -- sweet agony</li>
+                            <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                            <li>'<a id="afriend" href="#">ERR?@NULL!!</a>' -- INVALID_INPUT</li>
+                            <li>Do you want to go to the friends and signatures section?</li>
+                            <li>'signs' -- To go</li>
+                            <li>'home' -- return to main file</li>
+                        </ul>
+                    </section>
+                    <section id="lists">
+                        <p>
+                            Music player list
+
+                        </p>
+                        <ul>
+                            <li>'play1' -- Sorry</li>
+                            <li>'play2' -- Faux semblants</li>
+                            <li>'play3' -- Memories</li>
+                            <li>'play4' -- Love(LORN)</li>
+                            <li>'play5' -- Faiblesse de sens</li>
+                            <li>'play6' -- la reine trayeuse</li>
+                            <li>'play7' -- Recueillement</li>
+                            <li>'play8' -- Pulse/Surreal</li>
+                            <li>'play9' -- Full moon full life</li>
+                            <li>'home' -- Return</li>
+                        </ul>
+                    </section>
+                    <section id="play">
+                        <p>Playing.song...</p>
+
+                    </section>
+                    <section id="return">
+                        <p>Return to main menu.</p>
+
+                    </section>
+                    <section id="play1">
+                        <p>Playing selected song 1</p>
+                    </section>
+                    <section id="play3">
+                        <p>Playing selected song 3</p>
+
+                    </section>
+                    <section id="play2">
+                        <p>Playing selected song 2</p>
+
+                    </section>
+                    <section id="play4">
+                        <p>Playing selected song 4</p>
+
+                    </section>
+                    <section id="play5">
+                        <p>Playing selected song 5</p>
+
+                    </section>
+                    <section id="play6">
+                        <p>Playing selected song 6</p>
+
+                    </section>
+                    <section id="play7">
+                        <p>Playing selected song 7</p>
+
+                    </section>
+                    <section id="play8">
+                        <p>Playing selected song 8</p>
+
+                    </section>
+                    <section id="play9">
+                        <p>Playing selected song 9</p>
+
+                    </section>
+                    <section id="deisgns">
+                        <p>Designs... work in progress</p>
+
+                    </section>
+                    <section id="next">
+                        <p>Next.song...</p>
+
+                    </section>   <section id="prev">
+                        <p>Prev.song...</p>
+
+                    </section>
+                    <!--<section id="sings">
+                        <p>Go to list friends...</p>
+
+                    </section>-->
+                    <section id="pause">
+                        <p>Stop.song...</p>
+
+                    </section>
+                    <section id="error">
+                        <p>Command not found!<p>
+                        <p><br /><span>Type [home] + <kbd>Enter</kbd></span></p>
+                    </section>
+                    <section id="aboutme">
+                        <p>人工智能。 TERMINAL V tech 6.38 VOID UI V1.94 REV 1.00</p>
+                        <p>
+                            A console dev by Neige© <br />
+                            USERNAME: GENERICGUEST%$RSSTY8899000000<br></br>
+                            PASSWORD: GENERICPASS%&&&78256%%%%%00
+                        </p>
+                        <p>LOGIN...&nbsp; &nbsp;&nbsp;&nbsp; DONE!!</p>
+                        <p>
+                            "What a beatifull day to die!"  Welcome to the console of this xatspace <br />
+                            Enjoy you stay!<br />
+                            jQuery Terminal: version 3.38.1 Copyright (c) 2019-2024 <br />
+                            Console AI 0.2 VER 2.0<br />
+                            UI VER 1.94<br />
+                            XATSPACE "ELEGANT AND PERVERSE" FOR THE USER "MERIGGIARE"
+                            ALL RIGHTS RESERVED, XAT.COM<br />
+                            Dev by Neige <br />
+
+                        </p>
+                    </section>
+
+                    <section id="exit">
+
+
+
+                        <p> Breach time Remaing: 7 seconds</p> <br />
+                        <p>
+                            exiting to the interface... &nbsp; &nbsp;&nbsp;&nbsp;<br />
+                            Plase wait... &nbsp; &nbsp;&nbsp; &nbsp;<br />
+                            Deleting temporal archives... &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />
+                            Logout sucess! &nbsp; &nbsp;&nbsp;&nbsp;
+
+                        </p>
+                    </section>
+
+
+
+                    <p id="cmd2" class="command">NEIG_UI:SYS:/$<input id="txxt" type="text"></p>
+
+                    <script>
+                        var cm = 1;
+                        var at = 0;
+                        function comprobar() {
+
+                            if (cm == 1) { entertomyspace(); cm++; }
+                            else if (cm > 1) { cm = 0; } {
+
+                            }
+                        }
+                        //function comprobarClave() {
+                        //    clave1 = document.getElementById("password").value;
+                        //    user1 = document.getElementById("text1").value;
+
+                        //    if ((clave1 != "") && (user1 != "")) {
+                        //        $("#login").addClass("removelogin"); $("#login").addClass("addlogin");
+                        //        cl();
+
+
+                        //    }
+                        //    else {
+                        //        at++;
+                        //        document.getElementById("attempts").textContent = "Null user or bad password. " + at + " Attempts";
+
+                        //    }
+
+                        //}
+                        var playing = false,
+                            artistname = $(".artist-name"),
+                            musicName = $(".music-name"),
+                            time = $(".time"),
+                            fillBar = $(".fillBar");
+                        imgbar = $("#fillimgbar");
+                        let audioData = [];
+
+                        var song = new Audio();
+                        var CurrentSong = 0;
+                        window.onload = load();
+
+                        function load() {
+                            audioData = [
+
+                                {
+                                    name: "Radio éteinte",
+                                    artist: "Radio éteinte",
+                                    src:
+                                        ""
+                                },
+                                {
+                                    name: "Sorry",
+                                    artist: "Only smile",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/sorry.mp3?raw=true"
+                                },
+
+                                {
+                                    name: "Faux Semblants",
+                                    artist: "Amesoeurs",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/FauxSemblants.mp3?raw=true"
+                                },
+                                {
+                                    name: "Mémoires d'Outre Auvergne",
+                                    artist: "Malenuit",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/Memories.mp3?raw=true"
+                                },
+                                {
+                                    name: "Love(Lorn)",
+                                    artist: "Angor amini",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/Love.mp3?raw=true"
+                                },
+                                {
+                                    name: "FAIBLESSE DES SENS",
+                                    artist: "AMESOEURS",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/Faiblesse-des-sens.mp3?raw=true"
+                                },
+
+                                {
+                                    name: "La Reine Trayeuse",
+                                    artist: "AMESOEURS",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/LaReine.mp3?raw=true"
+                                },
+
+                                {
+                                    name: "Recueillement",
+                                    artist: "AMESOEURS",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/Recueillement.mp3?raw=true"
+                                },
+                                {
+                                    name: "PULSE / SURREAL",
+                                    artist: "LANTLOS",
+                                    src:
+                                        "https://xevangelist.github.io/evangelist/Lantl%C3%B4s%20-%20PulseSurreal.mp3?raw=true"
+                                },
+                                {
+                                    name: "Full Moon Full Life",
+                                    artist: "Persona 3 Reload",
+                                    src:
+                                        "song2.mp3"
+                                }
+
+
+                            ]; var namesongxx = audioData[CurrentSong].name;
+
+                            artistname.html(audioData[CurrentSong].artist);
+                            musicName.html(audioData[CurrentSong].name);
+                            song.src = audioData[CurrentSong].src;
+                        }
+
+
+                        function playSong() {
+                            var curSong = audioData[CurrentSong];
+                            //artistname.html();
+                            musicName.html(curSong.name /*+ " / " + curSong.artist*/);
+                            artistname.html(curSong.artist /*+ " /"*/);
+                            song.src = curSong.src;
+                            song.play();
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("p").addClass("active");
+                            $(".player-track").addClass("active");
+                        }
+                        song.addEventListener("timeupdate", function () {
+                            var position = (100 / song.duration) * song.currentTime;
+                            var current = song.currentTime;
+                            var duration = song.duration;
+                            var durationMinute = Math.floor(duration / 60);
+                            var durationSecond = Math.floor(duration - durationMinute * 60);
+                            var durationLabel = durationMinute + ":" + durationSecond;
+                            currentSecond = Math.floor(current);
+                            currentMinute = Math.floor(currentSecond / 60);
+                            currentSecond = currentSecond - currentMinute * 60;
+                            // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                            if (currentSecond < 10) {
+                                currentSecond = "0" + currentSecond;
+                            }
+                            var currentLabel = currentMinute + ":" + currentSecond;
+
+                            var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                            fillBar.css("width", position + "%");
+                            imgbar.css("left", position + "%");
+
+                            $(".time").html(indicatorLabel);
+
+                        });
+
+
+                        $("#play").click(function () {
+
+                            song.play();
+                            playing = true; simus();
+                        });
+                        $("#botonon3").click(function () {
+
+                            song.play();
+                            playing = true; simus();
+                        });
+                        $("#pause").click(function () {
+                            song.pause();
+                            playing = false; nomus();
+                        }); $("#botonoff3").click(function () {
+                            song.pause();
+                            playing = false; nomus();
+                        });
+                        $("#stop").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 9) {
+                                CurrentSong = 0;
+                            }
+                            song.pause(); nomus();
+                            playing = false;
+                        });
+                        $("#prev").click(function prev() {
+                            CurrentSong--;
+                            if (CurrentSong < 0) {
+                                CurrentSong = 9;
+                            }
+                            playSong();
+                        });
+
+                        $("#butonnext").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 9) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        });
+                        function aleatorio() {
+
+                        } var nx = 0;
+                        function entermainsong() {
+                            nx = Math.floor((Math.random() * 9) + 1);
+                            document.getElementById("demo").innerHTML = nx;
+                            var xn;
+                            CurrentSong = nx;
+                            document.getElementById("pre").innerHTML = CurrentSong;
+                            if (CurrentSong > 9) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        }
+
+                        function entertomyspace() {
+                            (function (e) { "use strict"; e.fn.textTyper = function (t) { var n = { typingClass: "typing", beforeAnimation: function () { }, afterAnimation: function () { }, speed: 10, nextLineDelay: 400, startsFrom: 0, repeatAnimation: false, repeatDelay: 4e3, repeatTimes: 1, cursorHtml: '<span class="cursor">|</span>' }, r = e.extend({}, n, t); this.each(function () { var t = e(this), n = 1, i = "typingCursor"; var s = t, o = s.length, u = []; while (o--) { u[o] = e.trim(e(s[o]).html()); e(s[o]).html("") } t.init = function (e) { var n = r.beforeAnimation; if (n) n(); t.animate(0) }; t.animate = function (o) { var a = s[o], f = r.typingClass, l = r.startsFrom; e(a).addClass(f); var c = setInterval(function () { var f = r.cursorHtml; f = e("<div>").append(e(f).addClass(i)).html(); e(a).html(u[o].substr(0, l) + f); l++; if (u[o].length < l) { clearInterval(c); o++; if (s[o]) { setTimeout(function () { e(a).html(u[o - 1]); t.animate(o) }, r.nextLineDelay) } else { e(a).find("." + i).remove(); if (r.repeatAnimation && (r.repeatTimes == 0 || n < r.repeatTimes)) { setTimeout(function () { t.animate(0); n++ }, r.repeatDelay) } else { var h = r.afterAnimation; if (h) h() } } } }, r.speed) }; t.init() }); return this } })(jQuery)
+
+
+                            // Let's do it!!
+                            $(document).ready(function () {
+
+
+
+                                $('.command').hide();
+                                $('#home').focus();
+                                $('#txxt').focus();
+                                $('#home').addClass('open');
+                                $('#home').textTyper({
+                                    speed: 20,
+                                    afterAnimation: function () {
+                                        $('.command').fadeIn();
+                                        $('#txxt').focus();
+                                        $('#txxt').val('');
+                                    }
+                                    //beforeAnimation: function () { $("nofocus").focus(); }
+                                });
+
+                                // get array of section ids, that exist in DOM
+                                var sectionArray = [];
+                                // We are using <section> here, you can use <div> or <article> if you want
+                                $('section').each(function (i, e) {
+                                    //you can use e.id instead of $(e).attr('id')
+                                    sectionArray.push($(e).attr('id'));
+                                });
+
+                                // Debug
+                                //console.log(sectionArray);
+
+
+
+                                // Command Input------------------------------
+
+                                $('#txxt').keyup(function (e) {
+
+                                    if (e.which == 13) {// ENTER key pressed
+
+                                        clave1 = $('#txxt').val();
+                                        nextsong = $('#txxt').val();
+                                        prevsong = $('#txxt').val();
+                                        $(document).ready(function () {
+
+
+                                        });
+
+
+                                        if (clave1 == "exit") {
+                                            $("#cmd2").addClass("novis"); $("#cmd2").removeClass("visi");
+                                        }
+                                        else if ((clave1 == "media") || (clave1 == "next") || (clave1 == "prev") || (clave1 == "resume")) {
+                                            $("#auid").removeClass("novis"); $("#auid").addClass("visi");
+                                        }
+                                        else { $("#auid").removeClass("visi"); $("#auid").addClass("novis"); }
+                                        $('.command').hide();
+
+                                        var nombresincortar = $('#txxt').val();
+                                        var nombrecortado = nombresincortar.split(" ");
+                                        var destination = nombrecortado[0];
+                                        if (nombrecortado[1] == null) {
+                                            nombrecortado[1] = "Unknow";
+                                        }
+                                        /*  var nameuser = nombrecortado[1];*/
+
+
+                                        $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
+
+
+
+                                        if ($.inArray(destination, sectionArray) == -1) {
+                                            $('#error').addClass('open');
+                                            $('#error').siblings().removeClass('open');
+
+                                        }
+
+                                        // All sections with class .open init textTyper
+
+
+                                        $('.open').textTyper({
+                                            speed: 20,
+                                            afterAnimation: function () {
+                                                $('.command').fadeIn();
+
+                                                $('#txxt').val('');
+
+                                                let reproducir = false;
+                                                let musica = new Audio("be3p.mp3");
+                                                musica.loop = true;
+
+                                                //arranca la música en bucle
+                                                musica.addEventListener('ended', function () {
+
+                                                    this.play();
+                                                }, false);
+                                                musica.play();
+
+                                                function resumeAudio() {
+                                                    if (!reproducir) {
+                                                        reproducir = true;
+                                                        musica.play();
+                                                    }
+                                                }
+
+                                                function pauseAudio() {
+                                                    if (reproducir) {
+                                                        reproducir = false;
+                                                        musica.pause();
+                                                    }
+                                                }
+
+                                                //$("#cmd2").click(function () {
+                                                //    if (!reproducir) {
+                                                //        reproducir = true;
+                                                //        musica.pause();
+                                                //    }
+                                                //});
+                                                function teclado(objeto) {
+                                                    var tecla = objeto.which;
+                                                    var num;
+
+                                                    switch (tecla) {
+                                                        //case 82: //m
+                                                        //    resumeAudio();
+                                                        //    break;
+                                                        case 13: //n
+                                                            if (!reproducir) {
+                                                                reproducir = true;
+                                                                musica.pause();
+                                                            }
+                                                            break;
+
+                                                    }
+
+                                                }
+
+                                                document.addEventListener('keydown', teclado, false);
+                                                $('#txxt').focus();
+                                            }
+                                        });
+
+                                        function ns() {
+                                            CurrentSong++;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "signs") {
+                                            closconsle(); openmenu();
+                                        }
+                                        if (nextsong == "next") {
+                                            CurrentSong++;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play1") {
+                                            CurrentSong = 1;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play2") {
+                                            CurrentSong = 2;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play3") {
+                                            CurrentSong = 3;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play4") {
+                                            CurrentSong = 4;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play5") {
+                                            CurrentSong = 5;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play6") {
+                                            CurrentSong = 6;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play7") {
+                                            CurrentSong = 7;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play8") {
+                                            CurrentSong = 8;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "play9") {
+                                            CurrentSong = 9;
+                                            if (CurrentSong > 9) {
+                                                CurrentSong = 0;
+                                            }
+
+                                            playSong();
+                                        }
+                                        if (nextsong == "prev") {
+                                            CurrentSong--;
+                                            if (CurrentSong < 0) {
+                                                CurrentSong = 9;
+                                            }
+                                            playSong();
+                                        }
+                                        if (nextsong == "pause") {
+                                            song.pause();
+                                            playing = false;
+                                        } if (nextsong == "exit") {
+
+                                            closconsle();
+                                        }
+                                        if (nextsong == "return") {
+                                            outtomenu();
+                                        }
+                                        if (nextsong == "neige") {
+
+                                            function entrancesurl2() {
+                                                var url = "P3Neige.html";
+                                                $(location).attr('href', url);
+                                            }
+                                            setInterval(entrancesurl2, 10000);
+                                        }
+                                        if (nextsong == "resume") {
+                                            song.play();
+                                            playing = true;
+                                        }
+                                    }// end if ENTER key pressed
+                                    //$("#cmd2").focus();
+
+                                    $().focus();
+                                });// end keyup function
+
+                                // End Command Input-----------------------------
+
+                            });
+
+                        }
+                    </script>
+
+                </div>
             </div>
 
             <div id="auid">
@@ -241,7 +1298,7 @@
 
                             cont = 1;
                             if (cont == 1) {
-                                       /*clearInterval(id);*/ audio1x.play(); cont = 2;
+                                                                                       /*clearInterval(id);*/ audio1x.play(); cont = 2;
 
                             }
                             if (cont > 1) { cont = 1; }
@@ -1251,215 +2308,766 @@
         </div>
 
 
-        <div>
-
-        </div>
 
     </main>
 
-    <div id="back-intro" class="btn btn--trigger" >
+    <div id="main3" class="no">
         <style>
-            #back-intro {
-                position: fixed;
-                background: rgba(0,0,0,0.6);
-                backdrop-filter: blur(5px);
-                width: 100%;
+            @font-face {
+                font-family: neigefont9;
+                src: url(Zachar.ttf);
+            }
+
+
+
+            #backmenu {
+                position: absolute;
+                width: 83.34%;
                 height: 100%;
+                background: #171717;
+            }
+
+            .main-content {
+                opacity: 1;
+                overflow: hidden;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: column;
+                height: 100vh;
+                background: linear-gradient(to right, rgba(36,31,31,1) 0%, rgba(36,31,31,1) 32%, rgba(74,71,70,1) 100%);
+                color: #fff;
+                text-align: center;
+            }
+
+            .vignette {
+                position: absolute;
+                width: 83.34%;
+                left: 0;
+                height: 100%;
+                box-shadow: inset 0px 0px 150px 20px black;
+                mix-blend-mode: multiply;
+                -webkit-animation: vignette-anim 3s infinite; /* Safari 4+ */
+                -moz-animation: vignette-anim 3s infinite; /* Fx 5+ */
+                -o-animation: vignette-anim 3s infinite; /* Opera 12+ */
+                animation: vignette-anim 3s infinite; /* IE 10+, Fx 29+ */
+            }
+
+            .noise {
+                z-index: 100;
+                position: absolute;
                 top: 0;
                 left: 0;
-                z-index:99999999999999999999999999999999999;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                opacity: .15;
             }
 
-            #clik {
-                color: white;
-                font-size: .8vw;
-                letter-spacing: .1vw;
+            .line {
                 position: absolute;
-                left: 14%;
-                top: 66.5%;
+                height: 100%;
+                width: 1px;
+                opacity: 0.1;
+                background-color: #000;
             }
 
-                #clik span {
-                    position: absolute;
-                    animation: text-blink-2 2s infinite;
-                }
-
-            @keyframes text-blink-2 {
-                0% {
-                    left: -1vw;
-                }
-
-                50% {
-                    left: -2vw;
-                }
-
-                100% {
-                    left: -1vw;
-                }
-            }
-
-            @keyframes to-off {
-                0% {
-                    opacity: 1;
-                }
-
-                99% {
-                    z-index: -2;
-                }
-
-                100% {
-                    opacity: 0;
-                    z-index: -2;
-                }
-            }
-
-            .loadpage1 {
-                animation: to-off 3s 1;
-                animation-fill-mode: forwards;
-            }
-
-            .tooffp {
-                opacity: 0;
-            }
-            #firmcoma {
-                filter: invert(100%);
-                width: 17vw;
-                position: absolute;
-                top: 20%;
-                left: 43%;
-            }
-
-            #loadtext {
-                text-transform: uppercase;
-                color: white;
-                text-shadow: 0 0 1vw rgba(0, 0, 0, 1);
-                top: 57%;
-                text-align: center;
-                font-family: 'Montserrat', sans-serif;
+            .titleCont {
                 position: relative;
-                font-size: .5vw;
-                letter-spacing: .1vw;
-                animation: loadanim 1s infinite;
             }
 
-                #loadtext::before {
-                    animation: loadanim2 2s 1;
-                    animation-fill-mode: forwards;
-                    content: "chargement"
-                }
 
-            @keyframes loadanim {
-                0% {
+
+            .overTitle {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .dot {
+                width: 3px;
+                height: 2px;
+                background-color: white;
+                position: absolute;
+                opacity: 0.3;
+            }
+
+
+            @-webkit-keyframes vignette-anim {
+                0%, 100% {
                     opacity: 1;
                 }
 
                 50% {
-                    opacity: 0;
+                    opacity: 0.7;
                 }
+            }
 
-                100% {
+            @-moz-keyframes vignette-anim {
+                0%, 100% {
                     opacity: 1;
                 }
-            }
 
-            @keyframes loadanim2 {
-                0% {
-                    content: "Loading"
-                }
-
-                99% {
-                    content: "Loading"
-                }
-
-                100% {
-                    content: "Click to continue"
+                50% {
+                    opacity: 0.7;
                 }
             }
-            @font-face {
-                font-family: textfirmFont;
-                src: url(firm.otf);
+
+            @-o-keyframes vignette-anim {
+                0%, 100% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0.7;
+                }
             }
 
-            #firmmyt3 {
-                font-family: textfirmFont;
-                color: white;
-                font-size: 6vw;
-                position: relative;
-                text-align: center;
+            @keyframes vignette-anim {
+                0%, 100% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0.7;
+                }
+            }
+
+            #totlemenu {
+                font-family: neigefont9;
+                color: black;
+                position: absolute;
                 top: 15%;
-                opacity: .3;
-            }
-
-            #firmmyt33 {
-                font-family: textfirmFont;
-                color: #723a11;
-                font-size: 2vw;
-                position: relative;
-                text-align: center;
-                top: 0%;
+                left: 10%;
                 opacity: .8;
             }
-            #i3 { position:absolute; top:0;
+
+            #sp1 {
+                font-size: 3.5vw;
             }
-        </style> 
-            <!--<p>We look up without a destination to reach for Towards the clear, mechanical sky</p>-->
 
+            #sp2 {
+                font-size: 2.5vw;
+                padding-top: 1%;
+            }
+        </style>
 
-           
-            <p id="firmmyt3"> Neige</p>
-            <p id="firmmyt33">oo one remembers your name...</p>
-            <div id="lat_txt">
+        <main role="main" class="main-content" id="main-content">
+            <div class="titleCont" style=" position:absolute; width:100%; height:100%;">
+                <div id="backmenu" style="filter:hue-rotate( -10deg); background: url(https://i.postimg.cc/BvfM1KVn/b54ad018655f56a420f75c7e469c7b336d7eb96a-s2-n3-y1.png); opacity:.4; background-size:cover; transform:scaleY(-1)"></div>
 
-                <div  id="i3" onclick="sckl(); next();" class="bottom-nav">  <p id="loadtext"></p> </div>
 
             </div>
 
-
-             
-        
-    </div>
-
-
-
-    <script src="anime.min.js"></script>
-    <script src="imagesloaded.pkgd.min.js"></script>
-    <script src="main.js"></script>
-    <script>
-        (function () {
-            var headline = document.querySelector('.trigger-headline'),
-                trigger = document.querySelector('.btn--trigger'),
-                segmenter = new Segmenter(document.querySelector('.segmenter'), {
-                    pieces: 4,
-                    positions: [
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 },
-                        { top: 0, left: 0, width: 100, height: 100 }
-                    ],
-                    shadows: false,
-                    parallax: true,
-                    parallaxMovement: { min: 10, max: 30 },
-                    animation: {
-                        duration: 2500,
-                        easing: 'easeOutExpo',
-                        delay: 0,
-                        opacity: .1,
-                        translateZ: { min: 10, max: 25 }
-                    },
-                    onReady: function () {
-                        trigger.classList.remove('btn--hidden');
-                        trigger.addEventListener('click', function () {
-                            segmenter.animate();
-                            headline.classList.remove('trigger-headline--hidden');
-                            this.classList.add('btn--hidden');
-                        });
+            <div id="areaprofil">
+                <style>
+                    #areaprofil {
+                        position: absolute;
+                        width: 16.64%;
+                        right: 0;
+                        background: #171717;
+                        height: 100%;
+                        top: 0;
+                        opacity: .8;
+                        filter: blur(1px);
                     }
-                });
-        })();
-    </script>
+
+                    #neigeh1 {
+                        position: absolute;
+                        font-family: neigefont9;
+                        filter: blur(1px);
+                        font-size: 6vw;
+                        letter-spacing: .5vw;
+                        transform: rotate(-90deg);
+                        right: -47%;
+                        top: 50%;
+                    }
+
+                    #verse1 {
+                        position: absolute;
+                        font-family: neigefont9;
+                        filter: blur(1px);
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        left: 5%;
+                        top: 92%;
+                        text-align: left;
+                    }
+
+                        #verse1 span {
+                            font-size: 1.5vw;
+                        }
+
+                    #mindattox {
+                        position: absolute;
+                        width: 45%;
+                        left: 50%;
+                        top: 14%;
+                        height: 6%;
+                        border-bottom: .1vw dashed gray;
+                    }
+
+                        #mindattox p {
+                            color: lightgray;
+                            font-family: Calibri;
+                            font-size: .8vw;
+                            font-weight: bold;
+                            line-height: .8vw;
+                            top: -.7vw;
+                            position: absolute;
+                        }
+
+                        #mindattox img {
+                            position: absolute;
+                            right: -.6vw;
+                            width: 2.4vw;
+                        }
+
+                    #imgsun {
+                        position: absolute;
+                        width: 8vw;
+                        top: 30%;
+                        left: 2%;
+                    }
+
+                    #neigedates {
+                        position: absolute;
+                        width: 7vw;
+                        top: 52%;
+                        height: 20%;
+                        left: 5%;
+                    }
+
+                    #dateup {
+                        position: absolute;
+                        width: 100%;
+                        font-family: 'Times New Roman';
+                        font-size: .7vw;
+                        text-align: left;
+                        line-height: .8vw;
+                        letter-spacing: .1vw;
+                        transform: rotate(90deg) scaleX(-1);
+                        left: -.2vw;
+                    }
+
+                        #dateup p {
+                            transform: scaleX(-1);
+                        }
+
+                    #datedw {
+                        position: absolute;
+                        width: 100%;
+                        font-family: 'Times New Roman';
+                        font-size: .7vw;
+                        text-align: left;
+                        line-height: .8vw;
+                        top: 50%;
+                        letter-spacing: .1vw;
+                        transform: rotate(270deg);
+                        left: -.2vw;
+                    }
+
+                    #regnum {
+                        position: absolute;
+                        font-family: 'Times New Roman';
+                        font-size: .9vw;
+                        text-align: left;
+                        left: 78%;
+                        top: 67%;
+                        letter-spacing: .3vw;
+                    }
+
+                    @font-face {
+                        font-family: neigefont3;
+                        src: url(PMINGLIU.ttf);
+                    }
+
+                    #letch {
+                        position: absolute;
+                        font-family: neigefont9;
+                        font-size: 2.9vw;
+                        text-align: left;
+                        left: 48%;
+                        top: 23%;
+                        letter-spacing: .3vw;
+                    }
+                </style>
+                <div id="mindattox">
+                    <p>**NOT AN <br /> EXHAUSTIVE <br />LIST</p>
+                    <img src="https://i.postimg.cc/wMV6XQb4/Captura-de-pantalla-2024-08-02-205010.png" />
+                </div>
+                <img src="https://i.postimg.cc/L6M00hTS/Captura-de-pantalla-2024-09-04-171718.png" id="imgsun" />
+
+                <div id="neigedates">
+                    <div id="dateup"><p>CONTACT</p><p>NETWORK</p><p>AGE</p><p>MAIN</p><p>NICKNAME</p></div>
+                    <div id="datedw"><p>GRIS</p><p>NEIGE</p><p>XX</p><p>AFN@XAT</p><p>FVKIU@COM</p></div>
+                </div>
+                <p id="letch">夕<br />汝<br />水 </p>
+                <p id="regnum">1<br />5<br />3<br />3<br />2<br />5<br />2<br />8<br />9<br />0</p>
+                <p id="neigeh1">NEIGE</p>
+                <p id="verse1">The storm of the moon<br /> <span>and the god...</span></p>
+            </div>
+
+            <div id="backgif"></div>
+            <canvas id="noise" class="noise" style="opacity:.2;"></canvas>
+            <div class="vignette"></div>
+
+        </main>
+        <style>
+            #totlemenu {
+                padding-top: 2%;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                color: transparent;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                animation: smokyblur 1s infinite;
+            }
+
+            @-webkit-keyframes smokyblur {
+                0% {
+                    filter: blur(1px);
+                }
+
+                50% {
+                    filter: blur(2px);
+                }
+
+                100% {
+                    filter: blur(1px);
+                }
+            }
+
+            #totlemenu span {
+                display: inline-block;
+                text-shadow: 0 0 0 whitesmoke;
+                /*-webkit-animation: smoky 5s 3s both;*/
+                /*animation: smoky 5s 3s both;*/
+            }
+
+                #totlemenu span:nth-child(even) {
+                    -webkit-animation-name: smoky-mirror;
+                    animation-name: smoky-mirror;
+                }
+
+            .no {
+                opacity: 0;
+                z-index: -1;
+            }
+
+            .si {
+                opacity: 1;
+                z-index: 999;
+            }
+        </style>
+        <p id="totlemenu">
+            <span id="sp1" class="spans">TIMELAND</span> <br />
+            <span id="sp2" class="spans">SIGNATURES? BE FREE!</span>
+        </p> <p id="totlemenu" style="left:72%; top:5%;">
+            <span id="sp1" class="spans">ABOUT ME?</span> <br />
+            <span id="sp2" class="spans">
+                what is the curiosity?
+            </span>
+        </p>
+
+        <div id="roller1" onmouseover="onhoverroller3()"></div>
+        <div id="roller" onmouseover="onhoverroller()">
+            <script>
+                function openmenu() {
+                    $("#main3").removeClass("no"); $("#main3").addClass("si");
+
+                }
+                function closemenu() {
+                    $("#main3").removeClass("si"); $("#main3").addClass("no");
+
+                }
+                function onhoverroller() {
+
+                    $("#main3").removeClass("nomain3"); $("#main3").addClass("main3");
+                } function onhoverroller3() {
+
+                    $("#main3").removeClass("main3"); $("#main3").addClass("nomain3");
+                }
+            </script>
+
+        </div>
+
+        <div id="barsep">
+            <style>
+                #barsep {
+                    position: absolute;
+                    width: 30%;
+                    height: 2%;
+                    left: 10%;
+                    top: 40%;
+                    filter: blur(1px);
+                }
+
+                #circx1 {
+                    position: absolute;
+                    width: .8vw;
+                    height: .8vw;
+                    left: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    background: white;
+                }
+
+                #circx2 {
+                    position: absolute;
+                    width: .8vw;
+                    height: .8vw;
+                    right: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    background: white;
+                }
+
+                #circx3 {
+                    position: absolute;
+                    width: .5vw;
+                    height: .5vw;
+                    left: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    background: white;
+                }
+
+                #circx4 {
+                    position: absolute;
+                    width: .5vw;
+                    height: .5vw;
+                    right: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    background: white;
+                }
+
+                #circx5 {
+                    position: absolute;
+                    width: .8vw;
+                    height: .8vw;
+                    filter: blur(1px);
+                    left: 39.4%;
+                    top: 84.5%;
+                    border-radius: 50%;
+                    background: white;
+                }
+
+                #barlar {
+                    position: absolute;
+                    width: 92%;
+                    left: 4%;
+                    top: 42%;
+                    height: 10%;
+                    background: white;
+                }
+            </style>
+            <div id="circx1"></div><div id="barlar"></div><div id="circx2"></div>
+        </div><div id="circx5"></div>
+        <div id="areanumbers">
+            <div id="areanumeros">
+                <a href="#"><div id="numb1" class="classnumbs"><p>03</p></div></a>
+                <a href="#"><div id="numb1" class="classnumbs"><p>07</p></div></a>
+                <div id="numb1" class="classnumbs"><p>04</p></div>
+                <div id="numb1" class="classnumbs"><p>05</p></div>
+                <div id="numb1" class="classnumbs"><p>08</p></div>
+            </div>
+        </div>
+        <div id="areafriends2">
+            <style>
+                @-webkit-keyframes toleft {
+                    0% {
+                        left: 0%;
+                    }
+
+                    100% {
+                        left: -20%;
+                    }
+                }
+
+                @-webkit-keyframes toroght {
+                    0% {
+                        left: -20%;
+                    }
+
+                    100% {
+                        left: 0%;
+                    }
+                }
+
+                .main3 {
+                    animation: toleft .5s 1;
+                    animation-fill-mode: forwards;
+                }
+
+                .nomain3 {
+                    animation: toroght .5s 1;
+                    animation-fill-mode: forwards;
+                }
+
+                #main3 {
+                    top: 0;
+                    height: 100%;
+                    width: 120%;
+                    overflow: hidden;
+                    position: absolute;
+                }
+
+                #roller {
+                    position: absolute;
+                    width: 5%;
+                    left: 79%;
+                    height: 100%;
+                    top: 0;
+                }
+
+                #roller1 {
+                    position: absolute;
+                    width: 10%;
+                    left: 15%;
+                    height: 100%;
+                    top: 0;
+                }
+
+                #areafriends2 {
+                    animation: text-blink 0.01s steps(2) infinite;
+                    filter: blur(1px);
+                    cursor: pointer;
+                    position: absolute;
+                    width: 10%;
+                    height: 15%;
+                    top: 17%;
+                    font-size: 1.2vw;
+                    left: 10%;
+                    color: #C2B07A;
+                    font-family: neigefont9;
+                    .1vw;
+                    text-shadow: .2vw -.2vw .5vw gray;
+                    line-height: .7vw;
+                }
+
+                    #areafriends2 p:hover {
+                        color: rgb(223, 152, 0);
+                    }
+            </style>
+
+            <p onclick="closemenu();">
+                Return
+            </p>
+        </div>
+
+        <div id="areasigns">
+            <style>
+                .classnumbs {
+                    position: relative;
+                    margin: .2vw;
+                    float: left;
+                    width: 2vw;
+                    height: 2vw;
+                    border: .1vw solid transparent;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                    .classnumbs:hover {
+                        border: .1vw solid white;
+                    }
+
+                    .classnumbs p {
+                        font-family: 'Times New Roman';
+                        font-size: .8vw;
+                        letter-spacing: .1vw;
+                        margin-top: .4vw;
+                    }
+
+                #numb1 {
+                }
+
+                #areanumeros {
+                    position: absolute;
+                    width: 110%;
+                    height: 50%;
+                    top: 15%;
+                    left: 0%;
+                }
+
+                #areanumbers {
+                    position: absolute;
+                    width: 10%;
+                    height: 10%;
+                    top: 85.2%;
+                    left: 29%;
+                    border-top: .15vw solid white;
+                    filter: blur(1px);
+                }
+
+                #areasigns {
+                    position: absolute;
+                    width: 29.8%;
+                    height: 40%;
+                    left: 10%;
+                    top: 43%;
+                    overflow: auto;
+                    overflow-x: hidden;
+                    filter: blur(1px);
+                }
+
+                    #areasigns::-webkit-scrollbar {
+                        width: .15vw;
+                        background: transparent;
+                    }
+
+                    #areasigns::-webkit-scrollbar-thumb {
+                        width: .15vw;
+                        background: white;
+                        /*background: #7c6092*/
+                    }
+
+                .sign {
+                    position: relative;
+                    height: auto;
+                    width: 95%;
+                    margin-top: 5%;
+                    margin-bottom: 15%;
+                }
+
+                #signp1 {
+                    font-family: 'Times New Roman';
+                    font-size: 1.2vw;
+                    letter-spacing: .1vw;
+                }
+
+                #signp2 {
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                }
+
+                #signp3 {
+                    font-family: 'Times New Roman';
+                    width: 100%;
+                    font-size: .8vw;
+                    text-transform: uppercase;
+                    color: darkgray;
+                    text-align: right;
+                    letter-spacing: .1vw;
+                }
+            </style>
+            <div class="sign" id="sign04">
+                <p id="signp1">04 - Kiri - Revendreth</p>
+                <p id="signp2">
+                    À mon cher soleil de minuit...
+                    ue puis-je dire d’autre? Vous êtes une personne qui, en peu de temps, a gagné ma confiance et mon affection... Vous êtes un homme incroyable et une personne pleine d’amour lorsque vous gagnez ce rôle (ce qui est un privilège sincèrement) Merci d’être là quand je suis dans la partie la plus sombre de ma vie, merci pour tout. Tu sais que tu peux compter sur moi pour tout ce dont tu as besoin, je serai toujours là même si nous sommes accros à un boulot toxique hahahaha, mais ça a joué. Je t’adore et je t’aime beaucoup, Neige. Amour, Kiri
+                </p>
+                <p id="signp3">Saturday 15th 2024</p>
+                <div id="barsep2">
+                    <style>
+                        #barsep2 {
+                            position: relative;
+                            width: 100%;
+                            height: .15vw;
+                            color: white;
+                        }
+                    </style>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                </div>
+            </div>
+            <div class="sign" id="sign08">
+                <p id="signp1">08 - Schroederz - Mythes</p>
+                <p id="signp2">Dear Neige...Gracias por ser uno de los mejores colegas que he tenido. Eres un tipo sensato que casi siempre va al grano y se anda sin tonterías. En internet, a menudo uno se encuentra con mucho mamón con dobles intenciones que no sabes si están interesados en tu bienestar o si solo quieren pillar tu culo de manera desprevenida y sacar tus nudes. Pero Neige, señoras y señores, Neige jamás haría eso, él es auténtico y leal. Es una persona que siempre te toma en serio, con la que puedes conversar sobre la vida, sobre lo importante y lo trivial... y al final, es difícil perder el enfoque y la determinación cuando tienes a un amigo con las ideas tan claras apoyándote y dándote todo su amor. Fue una excelente decisión tomarme el tiempo en conocerte. Allá donde estés amigo, descansa en paz. Siempre te recordaremos.</p>
+                <p id="signp3">Saturday 15th 2024</p>
+                <div id="barsep2">
+                    <style>
+                        #barsep2 {
+                            position: relative;
+                            width: 100%;
+                            height: .15vw;
+                            color: white;
+                        }
+                    </style>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                </div>
+            </div>
+            <div class="sign" id="sign07">
+                <p id="signp1">07 - ShatteredDoLL</p>
+                <p id="signp2">Your bravery and authenticity are an inspiration to everyone around you. You have shown that being true to yourself is the most powerful way to live, your homosexuality and strength light the way for those still seeking their truth. On this life journey, you have faced challenges with grace and dignity, and your presence is a testament to the beauty of being yourself without reservation. May this writing be a reflection of the respect and admiration I feel for you. Thank you for being a beacon of light and hope. With all my love and admiration</p>
+                <p id="signp3">Saturday 15th 2024</p>
+                <div id="barsep2">
+                    <style>
+                        #barsep2 {
+                            position: relative;
+                            width: 100%;
+                            height: .15vw;
+                            color: white;
+                        }
+                    </style>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                </div>
+            </div>
+            <div class="sign" id="sign05">
+                <p id="signp1">05 - iTOXIC我有毒，我是花301917719</p>
+                <p id="signp2">Neige, my dear...stos últimos meses que sirvieron para conocerte, pude darme cuenta fácilmente de la increíble persona que eres. Siempre tuve admiración por ti desde lo lejos, te observaba y te respetaba (lo sigo haciendo). Que me hayas hablado de pura casualidad fue la excusa perfecta para poder entablar conversación. Conversaciones que fueron cada vez más a menudas, más curiosas y divertidas, hasta que llegamos a donde estamos ahora. Nunca creí que serías así, ya que te estimo mucho y no veía posible que nuestros caminos se crucen, pero que agradecida estoy de que haya pasado; porque me encontré con la agradable sorpresa de que tenemos más en común de lo que creía, y que detrás de esa máscara que te pones, escondes una hermosa personalidad. Ahora, agradezco toda charla que puedo entablar contigo, porque siempre aprendo algo nuevo: ya sean chismes o diseños, gustos o datos randoms, todo es algo muy bello que me encanta poder compartir contigo. Gracias por dejarme ser parte de tu vida y por confiar en mi, por apoyarme y aconsejarme, y hasta por salvarme en los momentos de suma oscuridad. Siempre estaré para mi. Te quiero.</p>
+                <p id="signp3">Saturday 15th 2024</p>
+                <div id="barsep2">
+                    <style>
+                        #barsep2 {
+                            position: relative;
+                            width: 100%;
+                            height: .15vw;
+                            color: white;
+                        }
+                    </style>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="anime.min.js"></script>
+        <script src="imagesloaded.pkgd.min.js"></script>
+        <script src="main.js"></script>
+        <script>
+            (function () {
+                var headline = document.querySelector('.trigger-headline'),
+                    trigger = document.querySelector('.btn--trigger'),
+                    segmenter = new Segmenter(document.querySelector('.segmenter'), {
+                        pieces: 4,
+                        positions: [
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 },
+                            { top: 0, left: 0, width: 100, height: 100 }
+                        ],
+                        shadows: false,
+                        parallax: true,
+                        parallaxMovement: { min: 10, max: 30 },
+                        animation: {
+                            duration: 2500,
+                            easing: 'easeOutExpo',
+                            delay: 0,
+                            opacity: .1,
+                            translateZ: { min: 10, max: 25 }
+                        },
+                        onReady: function () {
+                            trigger.classList.remove('btn--hidden');
+                            trigger.addEventListener('click', function () {
+                                segmenter.animate();
+                                headline.classList.remove('trigger-headline--hidden');
+                                this.classList.add('btn--hidden');
+                            });
+                        }
+                    });
+            })();
+        </script>
+
+    </div>
 </body>
 </html>
+
