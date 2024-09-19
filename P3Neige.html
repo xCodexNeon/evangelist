@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -594,226 +594,10 @@
 
         <div id="main">
             <!--<img id="backgrand" src="yukiiii.png" />-->
-            <video autoplay="" loop="" muted="" id="video9" src="p3r.mp4" type="video/mp4">
+            <video autoplay="" loop="" muted="" id="video9" src="Makoto.mp4" type="video/mp4" style="transform:scaleX(-1)">
                 <script>$("#video9").coverVid(1920, 1080);</script>
             </video>
-            <!--<div id="mainau" class="sioto">
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <style>
-            .nooto {
-                opacity: 0;
-            }
-
-            .sioto {
-                opacity: 1;
-            }
-
-            #mainau {
-                filter: grayscale(80%);
-                position: absolute;
-                width: 100%;
-                height: 120%;
-                top: -20%;
-                left: 0;
-                perspective: 1200px;
-                overflow: hidden;
-            }
-
-            .leaf {
-                position: absolute;
-                right: 0;
-                background-image: url("li.png");
-                width: 1.5vw;
-                height: 1.5vw;
-                background-repeat: no-repeat;
-                background-size: contain;
-            }
-
-                .leaf:nth-child(1) {
-                    filter: blur(1px);
-                    top: 8vh;
-                    right: -58vh;
-                }
-
-                .leaf:nth-child(2) {
-                    filter: blur(1px);
-                    top: 64vh;
-                    right: -30vh;
-                }
-
-                .leaf:nth-child(3) {
-                    filter: blur(1px);
-                    top: 67vh;
-                    right: -37vh;
-                }
-
-                .leaf:nth-child(4) {
-                    filter: blur(1px);
-                    top: 58vh;
-                    right: -90vh;
-                }
-
-                .leaf:nth-child(5) {
-                    filter: blur(1px);
-                    top: 85vh;
-                    right: -3vh;
-                }
-
-                .leaf:nth-child(6) {
-                    filter: blur(1px);
-                    top: 45vh;
-                    right: -41vh;
-                }
-
-                .leaf:nth-child(7) {
-                    filter: blur(1px);
-                    top: 22vh;
-                    right: -86vh;
-                }
-
-                .leaf:nth-child(8) {
-                    filter: blur(1px);
-                    top: 35vh;
-                    right: -32vh;
-                }
-
-                .leaf:nth-child(9) {
-                    filter: blur(1px);
-                    top: 41vh;
-                    right: -65vh;
-                }
-
-                .leaf:nth-child(10) {
-                    filter: blur(1px);
-                    top: 77vh;
-                    right: -42vh;
-                }
-
-                .leaf:nth-child(11) {
-                    filter: blur(1px);
-                    top: 76vh;
-                    right: -57vh;
-                }
-
-                .leaf:nth-child(12) {
-                    filter: blur(1px);
-                    top: 29vh;
-                    right: -12vh;
-                }
-
-                .leaf:nth-child(13) {
-                    filter: blur(1px);
-                    top: 23vh;
-                    right: -84vh;
-                }
-
-                .leaf:nth-child(14) {
-                    filter: blur(1px);
-                    top: 30vh;
-                    right: -90vh;
-                }
-
-                .leaf:nth-child(15) {
-                    filter: blur(1px);
-                    top: 97vh;
-                    right: -53vh;
-                }
-
-                .leaf:nth-child(16) {
-                    filter: blur(1px);
-                    top: 87vh;
-                    right: -53vh;
-                }
-
-                .leaf:nth-child(17) {
-                    filter: blur(1px);
-                    top: 57vh;
-                    right: -56vh;
-                }
-
-                .leaf:nth-child(18) {
-                    filter: blur(1px);
-                    top: 46vh;
-                    right: -71vh;
-                }
-
-                .leaf:nth-child(19) {
-                    filter: blur(1px);
-                    top: 72vh;
-                    right: -42vh;
-                }
-
-                .leaf:nth-child(20) {
-                    filter: blur(1px);
-                    top: 7vh;
-                    right: -18vh;
-                }
-        </style>
-        <script>
-
-            $(".leaf").each(function () {
-                var tl = new TimelineMax({
-                    repeat: -1
-                });
-                tl.to(this, 18 + Math.random() * 10, {
-                    rotationX: Math.random() * 3360,
-                    rotationY: Math.random() * 3360,
-                    rotationZ: Math.random() * 3360,
-                    z: Math.random() * 30,
-                    x: -window.innerWidth * 3,
-                    y: window.innerWidth / 2,
-                    ease: Power2.easeOut,
-                    onUpdate: (e) => {
-                        //var x = this.vars.css.x;
-
-                        if ($(this).position().left < -100) {
-                            tl.seek(0);
-                        }
-                    }
-                });
-            });
-
-        </script>
-    </div>-->
+         
             <div id="boxfires2" class="ag-fireflies_box sifires">
                 <style>
                     #boxfires {
@@ -1162,11 +946,11 @@
                     #divlatup {
                         box-shadow: 0vw 0vw 2vw black;
                         z-index: 3;
-                        height: 60%;
+                        height: 50%;
                         left: -10%;
-                        top: -40%;
+                        top: -38%;
                         position: absolute;
-                        transform: rotate(8deg);
+                        transform: rotate(4deg);
                         backdrop-filter: blur(10px);
                         width: 120%;
                         background: rgba(0,0,0,.7);
@@ -1616,7 +1400,7 @@
                         var cnt;
                         var conta = 0;
                         var fecha;
-                        var fecha1 = "2024/09/18 00:00:01";
+                        var fecha1 = "2024/10/17 00:00:01";
                         var phase0 = "https://img.game8.co/3825863/17f6586973b117c9d723a37ec2bcf192.png/show";
                         var phase1 = "https://img.game8.co/3825859/35fe77362c8e8734f3003865181fb1c6.png/show";
                         var phase2 = "https://img.game8.co/3825877/0c6ba187fc1f7382fe546fc58606dccc.png/show";
@@ -1639,7 +1423,7 @@
                             if (cnt > 15 && cnt < 17) { $("#moonimg").attr("src", phase3); }
                             if (cnt > 11 && cnt < 16) { $("#moonimg").attr("src", phase4); }
                             if (cnt > 6 && cnt < 12) { $("#moonimg").attr("src", phase5); }
-                            if (cnt > 1 && cnt < 7) { $("#moonimg").attr("src", phase6); }
+                            if (cnt > 0 && cnt < 7) { $("#moonimg").attr("src", phase6); }
                             if (cnt > -1 && cnt < 1) { $("#moonimg").attr("src", phase7); }
 
 
