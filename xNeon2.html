@@ -1,0 +1,897 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background:black;
+        }
+
+        
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+        #imgmain { position:absolute; width:100%; height:100%;
+        }
+       
+    </style>
+</head> 
+
+
+<body>
+    <div id="main">
+        <style>
+        </style>
+        <!--<img src="https://i.postimg.cc/4x7ZTWQF/back.jpg" id="imgmain" />-->
+        <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+        <script>
+            // set images
+            // demo works but images are blocked by codepen Cors issue
+            var images = [
+                "https://i.postimg.cc/4x7ZTWQF/back.jpg",
+                "https://i.postimg.cc/4x7ZTWQF/back.jpg",
+                "https://i.postimg.cc/4x7ZTWQF/back.jpg"
+            ];
+            // instanciate slider
+            var rbgShiftSlider = new rbgShiftSlider({
+                nav: true,
+                navElement: ".scene-nav",
+                slideImages: images,
+                stageWidth: 2220,
+                stageHeight: 1080,
+                displacementImage:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjWc46Nh4O7zOmnRig-jiwufCsY_scj8p0qQ&s", transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                transitionGhostDuration: 0.25,
+                transitionFilterIntensity: 150,
+                transitionSpriteIntensity: 1,
+                mouseDispIntensity: 3,
+                interactive: true,
+                autoPlay: true,
+                autoPlaySpeed: 12000
+
+            });
+
+        </script>
+        <div id="pxneon">
+            <p id="mainp">BUTTERFLY</p>
+            <p id="reg">xNeon</p>
+            <p id="mainp2">BLACKHEARTED</p>
+        </div>
+        <img src="https://i.postimg.cc/qvBQ41ST/reb.png" id="render" />
+        <p id="subtext1">
+            Mʯ wσɾlɗ ɓɾeɑƙiɳɠ ɑ ʋɳiνeɾse ɓlʋe...<br />
+            A wσeʄʋl sceɳe... Bʋɾieɗ iɳ sɳσw i ʄσʋɳɗ ʯσʋ cɑst ɑsiɗe ɑɳɗ leʄt tσ ɗie
+        </p>
+        <p id="dat">
+            ԶԶ˖11˖Զ0ⲭⲭ
+        </p>
+        <p id="ppage">
+            PAGE NOT FOUND
+        </p>
+        <div id="Aaudio">
+            <script>
+                $(document).ready(function () {
+                    var playing = false,
+                        artistname = $(".artist-name"),
+                        musicName = $(".music-name"),
+                        time = $(".time"),
+                        fillBar = $(".fillBar");
+
+                    let audioData = [];
+
+                    var song = new Audio();
+                    var CurrentSong = 0;
+                    window.onload = load();
+
+                    function load() {
+                        audioData = [
+
+                            {
+                                name: "Radio off",
+                                artist: "Radio off",
+                                src:
+                                    ""
+                            },
+                            {
+                                name: "stars will fall",
+                                artist: "shamrain",
+                                src:
+                                    "stars.mp3"
+                            },
+                            {
+                                name: "No one remembers your name",
+                                artist: "ShamRain",
+                                src:
+                                    "noone.mp3"
+                            },
+
+
+                            {
+                                name: "My still haven",
+                                artist: "Shamrain",
+                                src:
+                                    "mystill.mp3"
+                            },
+
+                         
+
+                            {
+                                name: "STOP CRYING YOUR HEART",
+                                artist: "OASIS",
+                                src:
+                                    "heart.mp3"
+                            },
+                            {
+                                name: "Chau",
+                                artist: "NTVG",
+                                src:
+                                    "chau.mp3"
+                            },
+
+
+
+
+                        ];
+
+                        artistname.html(audioData[CurrentSong].artist);
+                        musicName.html(audioData[CurrentSong].name);
+                        song.src = audioData[CurrentSong].src;
+                    }
+
+                    function playSong() {
+                        var curSong = audioData[CurrentSong];
+                        artistname.html(curSong.artist);
+                        musicName.html(curSong.name);
+                        song.src = curSong.src;
+                        song.play();
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        $(".player-track").addClass("active");
+                    }
+
+                    song.addEventListener("timeupdate", function () {
+                        var position = (100 / song.duration) * song.currentTime;
+                        var current = song.currentTime;
+                        var duration = song.duration;
+                        var durationMinute = Math.floor(duration / 60);
+                        var durationSecond = Math.floor(duration - durationMinute * 60);
+                        var durationLabel = durationMinute + ":" + durationSecond;
+                        currentSecond = Math.floor(current);
+                        currentMinute = Math.floor(currentSecond / 60);
+                        currentSecond = currentSecond - currentMinute * 60;
+                        // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                        if (currentSecond < 10) {
+                            currentSecond = "0" + currentSecond;
+                        }
+                        var currentLabel = currentMinute + ":" + currentSecond;
+
+                        var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                        fillBar.css("width", position + "%");
+
+                        $(".time").html(indicatorLabel);
+                    });
+                    //////
+                    $("#a_in").click(function playOrPause() {
+                        if (song.paused) {
+                            song.play();
+                            playing = true;
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("p").addClass("active");
+                            /* $("#bar1").addClass("br1");*/
+
+                        } else {
+                            song.pause();
+                            playing = false;
+                            $("#play").removeClass("fa-pause");
+                            $("#play").addClass("fa-play");
+                            $("p").removeClass("active");
+
+
+                        }
+                    });
+                    $("#play").click(function () {
+
+                        song.play();
+                        playing = true;
+                    });
+                    $("#pause").click(function () {
+                        song.pause();
+                        playing = false;
+                    });
+                    $("#stop").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 4) {
+                            CurrentSong = 0;
+                        }
+                        song.pause();
+                        playing = false;
+                    });
+                    $("#prev").click(function prev() {
+                        CurrentSong--;
+                        if (CurrentSong < 0) {
+                            CurrentSong = 4;
+                        }
+                        playSong();
+                    });
+
+                    $("#next").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 4) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    });
+                    $("#next2").click(function next() {
+                        CurrentSong = 4;
+                        if (CurrentSong > 6) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    });
+                });
+
+            </script>
+
+            <style>
+                #postinfcont {
+                    z-index: 9999999999999999999;
+                }
+
+                #Aaudio { z-index:99;
+                    font-family: 'Raleway', sans-serif;
+                    position: absolute;
+                    width: 20%;
+                    left:43%;  
+                    top: 30%; 
+                    height: 5%;
+                }
+
+                #abtnaud {
+                    cursor: pointer;
+                    filter: grayscale(100%);
+                    position: absolute;
+                    width: 60%;
+                    height: 23%;
+                    left: 62%;
+                    top: 75%;
+                }
+
+                .butplayer {
+                    float: left;
+                    height: 1vw;
+                    top: -.25vw;
+                    width: 1vw;
+                    margin-left: .4vw;
+                    position: relative;
+                }
+
+                .butpl {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    left: 0;
+                    top: .3vw;
+                    border-radius: .2vw;
+                    transition: all .5s ease;
+                }
+
+                    .butpl:hover {
+                        /*background: #5e0880;*/
+                    }
+
+                    .butpl img {
+                        position: absolute;
+                        width: .8vw;
+                        height: .8vw;
+                        /*filter: invert(100%);*/
+                        left: .07vw;
+                        top: .1vw;
+                    }
+
+                #pause, #play, #next, #prev, #stop {
+                    width: 1vw;
+                    height: 1vw;
+                    position: absolute;
+                    left: 0;
+                }
+
+                .progress-bar {
+                    top: 55%;
+                    left: 10%;
+                    width: 80%;
+                    background: darkgray;
+                    height: .35vw;
+                    position: absolute;
+                }
+
+                .fillBar {
+                    background: #b21160;
+                    width: 0;
+                    height: .35vw;
+                }
+
+
+                #namesong {
+                    text-transform: uppercase;
+                    position: absolute;
+                    width: 100%;
+                    height: 70%;
+                    top: 10%;
+                    left: 10%;
+                    font-weight: bold;
+                    color:#b21160;
+                    letter-spacing: .1vw;
+                    font-family:tw;
+                    font-size: .55vw;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    width: 88%;
+                    left: 10%;
+                    height: 100%;
+                    top: 75%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .5vw;
+                    color: dimgray;
+                }
+
+                #AT_time {
+                    width: 70%;
+                    height: 1vw;
+                    top: 85%;
+                    right: 0;
+                    position: absolute;
+                }
+
+                    #AT_time p {
+                        position: absolute;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        color: lightgray;
+                    }
+
+                .time {
+                    position: absolute;
+                    right: 13%;
+                    top: -150%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .45vw;
+                    overflow: hidden;
+                    color: #b21160;
+                }
+
+                #name_sng {
+                    position: relative;
+                    float: left;
+                }
+
+                #next2 {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 3vw;
+                    height: 1vw;
+                    left: 40%;
+                    top: 0%;
+                }
+
+                    #next2 p {
+                        position: absolute;
+                        color: #5e0880;
+                        text-shadow: 0 0 1vw #171717;
+                        font-size: 2vw;
+                    }
+            </style>
+            <div class="progress-bar">
+                <div class="fillBar"></div>
+            </div>
+
+
+            <div id="AT_time"><div class="time"></div></div>
+            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+            <div> </div>
+            <div class="artist-name"></div>
+
+            <div id="abtnaud">
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                        <div id="prev" class="fas fa-backward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:.6vw; height:.6vw; left:.15vw; top:.2vw;" />
+                        <div id="play"> </div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                        <div id="next" class="fas fa-forward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                        <div id="pause"> </div>
+                    </div>
+
+                </div>
+                <!--<div class="butplayer">
+                <div class="butpl">
+                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                    <div id="stop"> </div>
+                </div>
+
+            </div>-->
+            </div>
+
+
+
+        </div>
+
+        <div id="backgif">
+            <style>
+                #ppage {
+                    transform: rotate(270deg);
+                    position: absolute;
+                    left: 35.4%;
+                    top: 48%;
+                    letter-spacing: .12vw;
+                    font-family: europe;
+                    font-size: .75vw;
+                    animation: flicker5 1.7s infinite alternate;
+                    opacity: .7;
+                    color: rgb(92, 92, 92);
+                    filter: blur(.5px);
+                }
+
+                #subtext1 {
+                    position: absolute;
+                    color: lightgray;
+                    font-size: 1vw;
+                    top: 85%;
+                    left: 10%;
+                    opacity: .8;
+                }
+
+                #dat {
+                    position: absolute;
+                    color: lightgray;
+                    font-size: 1.5vw;
+                    top: 90%;
+                    left: 10%;
+                    opacity: .8;
+                }
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                #reg {
+                    position: absolute;
+                    color: #cc2241;
+                    font-family: textfirmFont;
+                    font-size: 4vw;
+                    font-weight: lighter;
+                    top: 1vw;
+                    left: 20%;
+                    opacity: .8;
+                    animation: flicker5 2s infinite alternate;
+                    animation-delay: .5s;
+                    color: rgb(92, 92, 92);
+                    filter: blur(1px);
+                }
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+                #pxneon {
+                    position: absolute;
+                    width: 35%;
+                    height: 18%;
+                    top: 0%;
+                    left: 20%;
+                }
+
+                #mainp {
+                    position: absolute;
+                    color: gray;
+                    font-family: 'Times New Roman';
+                    font-size: 7.5vw;
+                    font-weight: lighter;
+                    top: 0vw;
+                    opacity: .8;
+                }
+
+                #mainp2 {
+                    position: absolute;
+                    color: dimgray;
+                    left: 50%;
+                    font-family: 'Times New Roman';
+                    font-size: 2.5vw;
+                    font-weight: lighter;
+                    top: 4vw;
+                    opacity: .8;
+                }
+
+                #render {
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .05;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+        <style>
+            .rgbShiftSlider {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                /*mix-blend-mode: hard-light;*/
+                opacity: 0.85;
+                width: 100vw;
+                height: 100%;
+                overflow: hidden;
+                /*transform-origin : 50vw 300vh;*/
+                transform-origin: 50% 50%;
+            }
+
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            #leaves {
+                filter: contrast(280%);
+                position: relative;
+                top: -15%;
+                width: 100%;
+                right: 30%;
+                text-align: right;
+            }
+
+                #leaves i {
+                    display: inline-block;
+                    width: 200px;
+                    height: 150px;
+                    background: linear-gradient(to bottom right, #990066, #560030);
+                    transform: skew(20deg);
+                    border-radius: 5% 40% 70%;
+                    box-shadow: inset 0px 0px 1px #222;
+                    border: 1px solid #333;
+                    z-index: 1;
+                    -webkit-animation: falling 5s 0s infinite;
+                }
+
+                    #leaves i:nth-of-type(2n) {
+                        -webkit-animation: falling2 5s 0s infinite;
+                    }
+
+                    #leaves i:nth-of-type(3n) {
+                        -webkit-animation: falling3 5s 0s infinite;
+                    }
+
+                    #leaves i:before {
+                        position: absolute;
+                        content: '';
+                        top: 117px;
+                        right: 9px;
+                        height: 27px;
+                        width: 32px;
+                        transform: rotate(49deg);
+                        border-radius: 0% 15% 15% 0%;
+                        border-top: 1px solid #222;
+                        border-bottom: 1px solid #222;
+                        border-left: 0px solid #222;
+                        border-right: 1px solid #222;
+                        background: linear-gradient(to right,9e2e7d, #560030);
+                        z-index: 1;
+                    }
+
+                    #leaves i:after {
+                        content: '';
+                        height: 125px;
+                        width: 10px;
+                        background: linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,0));
+                        display: block;
+                        transform: rotate(125deg);
+                        position: absolute;
+                        left: 85px;
+                        border-radius: 50%;
+                    }
+
+
+                    #leaves i:nth-of-type(n) {
+                        height: 23px;
+                        width: 30px;
+                    }
+
+                        #leaves i:nth-of-type(n):before {
+                            width: 7px;
+                            height: 5px;
+                            top: 17px;
+                            right: 1px;
+                        }
+
+                        #leaves i:nth-of-type(n):after {
+                            width: 2px;
+                            height: 17px;
+                            left: 12px;
+                            top: 0px;
+                        }
+
+                    #leaves i:nth-of-type(2n+1) {
+                        height: 11px;
+                        width: 16px;
+                    }
+
+                        #leaves i:nth-of-type(2n+1):before {
+                            width: 4px;
+                            height: 3px;
+                            top: 7px;
+                            right: 0px;
+                        }
+
+                        #leaves i:nth-of-type(2n+1):after {
+                            width: 2px;
+                            height: 6px;
+                            left: 5px;
+                            top: 1px;
+                        }
+
+                    #leaves i:nth-of-type(3n+2) {
+                        height: 17px;
+                        width: 23px;
+                    }
+
+                        #leaves i:nth-of-type(3n+2):before {
+                            height: 4px;
+                            width: 4px;
+                            top: 12px;
+                            right: 1px;
+                        }
+
+                        #leaves i:nth-of-type(3n+2):after {
+                            height: 10px;
+                            width: 2px;
+                            top: 1px;
+                            left: 8px;
+                        }
+
+                    #leaves i:nth-of-type(n) {
+                        -webkit-animation-delay: 1.9s;
+                    }
+
+                    #leaves i:nth-of-type(2n) {
+                        -webkit-animation-delay: 3.9s;
+                    }
+
+                    #leaves i:nth-of-type(3n) {
+                        -webkit-animation-delay: 2.3s;
+                    }
+
+                    #leaves i:nth-of-type(4n) {
+                        -webkit-animation-delay: 4.4s;
+                    }
+
+                    #leaves i:nth-of-type(5n) {
+                        -webkit-animation-delay: 5s;
+                    }
+
+                    #leaves i:nth-of-type(6n) {
+                        -webkit-animation-delay: 3.5s;
+                    }
+
+                    #leaves i:nth-of-type(7n) {
+                        -webkit-animation-delay: 2.8s;
+                    }
+
+                    #leaves i:nth-of-type(8n) {
+                        -webkit-animation-delay: 1.5s;
+                    }
+
+                    #leaves i:nth-of-type(9n) {
+                        -webkit-animation-delay: 3.3s;
+                    }
+
+                    #leaves i:nth-of-type(10n) {
+                        -webkit-animation-delay: 2.5s;
+                    }
+
+                    #leaves i:nth-of-type(11n) {
+                        -webkit-animation-delay: 1.2s;
+                    }
+
+                    #leaves i:nth-of-type(12n) {
+                        -webkit-animation-delay: 4.1s;
+                    }
+
+                    #leaves i:nth-of-type(13n) {
+                        -webkit-animation-delay: 1s;
+                    }
+
+                    #leaves i:nth-of-type(14n) {
+                        -webkit-animation-delay: 4.7s;
+                    }
+
+                    #leaves i:nth-of-type(15n) {
+                        -webkit-animation-delay: 3s;
+                    }
+
+                    #leaves i:nth-of-type(n) {
+                        background: linear-gradient(to bottom right, #990066, #560030);
+                    }
+
+                    #leaves i:nth-of-type(2n+2) {
+                        background: linear-gradient(to bottom right, #99008b, #56002b);
+                    }
+
+                    #leaves i:nth-of-type(4n+1) {
+                        background: linear-gradient(to bottom right, #f95ecc, #56003d);
+                    }
+
+                    #leaves i:nth-of-type(n) {
+                        opacity: .7;
+                    }
+
+                    #leaves i:nth-of-type(3n+1) {
+                        opacity: .5;
+                    }
+
+                    #leaves i:nth-of-type(3n+2) {
+                        opacity: .3;
+                    }
+
+                    #leaves i:nth-of-type(n) {
+                        transform: rotate(180deg);
+                    }
+
+
+                    #leaves i:nth-of-type(n) {
+                        -webkit-animation-timing-function: ease-in-out;
+                    }
+
+            @-webkit-keyframes falling {
+
+                0% {
+                    -webkit-transform: translate3d(300,0,0) rotate(0deg);
+                }
+
+                100% {
+                    -webkit-transform: translate3d(-350px,700px,0) rotate(90deg);
+                    opacity: 0;
+                }
+            }
+
+            @-webkit-keyframes falling3 {
+                0% {
+                    -webkit-transform: translate3d(0,0,0) rotate(-20deg);
+                }
+
+                100% {
+                    -webkit-transform: translate3d(-230px,640px,0) rotate(-70deg);
+                    opacity: 0;
+                }
+            }
+
+            @-webkit-keyframes falling2 {
+                0% {
+                    -webkit-transform: translate3d(0,0,0) rotate(90deg);
+                }
+
+                100% {
+                    -webkit-transform: translate3d(-400px,680px,0) rotate(0deg);
+                    opacity: 0;
+                }
+            }
+        </style>
+        <div id="leaves">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+   
+</body>
+
+</html>
