@@ -1,0 +1,1723 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script> 
+
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        #imgbackground {
+            position: absolute;
+            height: 90%;
+            opacity: .4;
+            top: 0;
+            left: 0;
+            width: 90%;
+            left: 10%;
+        }
+    </style>
+</head> 
+
+
+<body>
+    <div id="main">
+        <img src="https://i.postimg.cc/hvy7Ht4n/69d64e147e4fc42d5a3ce5c1c1f7fc58-waifu2x-photo-noise3-scale.png" id="imgbackground" />
+
+
+        <div id="contentbackrender">
+            <style>
+                #contentbackrender {
+                    position: absolute;
+                    width: 40%;
+                    height: 25%;
+                    top: 10%;
+                    left: 45%;
+                }
+
+                #titmain {
+                    position: absolute;
+                    font-family: Rei;
+                    font-size: 14vw;
+                    color: #171717;
+                    top: -22vw;
+                    letter-spacing: 2vw;
+                    left: -5vw;
+                    text-shadow: .5vw .5vw 1vw #303030;
+                }
+
+                #titmain2 {
+                    background: linear-gradient(to right, #830101, #5E1111, #340404);
+                    background-size: cover;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    text-shadow: .5vw .5vw 1vw #303030;
+                    font-size: 9vw;
+                    letter-spacing: 1vw;
+                    left: 0vw;
+                    top: -12vw;
+                    position: absolute;
+                    font-family: bird;
+                }
+
+                #subtextfirm {
+                    position: absolute;
+                    font-size: 1vw;
+                    color: black;
+                    font-family: tw;
+                    letter-spacing: .1vw;
+                    left: 22%;
+                }
+
+                html, button, body, a {
+                    cursor: url(https://xatimg.com/image/OO2bFehDakZr.png), zoom-in;
+                }
+
+                #subtextfirm span {
+                    color: #580E1B;
+                }
+            </style>
+            <p id="subtextfirm">from all over the world <span>この地獄は私のお気に入りの場所だ♡</span></p>
+            <p id="titmain">Velvet</p>
+            <p id="titmain2">Dawn</p>
+            <div id="areayuna">
+                <style>
+                    #areayuna {
+                        position: absolute;
+                        width: 100%;
+                        height: 20%;
+                        top: -15%;
+                    }
+
+                    #pyuna {
+                        position: absolute;
+                        font-family: tw;
+                        font-size: 1.6vw;
+                        top: -1vw;
+                    }
+
+                    #line1 {
+                        position: absolute;
+                        width: 65%;
+                        height: 6%;
+                        border-radius: 1vw;
+                        background: #171717;
+                        left: 10%;
+                        top: 53%;
+                    }
+
+                    #starimg {
+                        height: 120%;
+                        position: absolute;
+                        right: 0;
+                        top: -7%;
+                    }
+
+                    #circle {
+                        position: absolute;
+                        width: 1.6vw;
+                        height: 1.6vw;
+                        background: #580E1B;
+                        border: .2vw solid #171717;
+                        left: 78%;
+                        border-radius: 50%;
+                        top: 15%;
+                    }
+                </style>
+                <p id="pyuna">YUNA</p><div id="line1"></div><div id="circle"></div><img src="https://i.postimg.cc/vZ5VbJqK/Captura-de-pantalla-2024-12-14-233522.png" id="starimg" />
+            </div>
+
+
+        </div>
+        <div id="areainfo">
+            <style>
+                #areainfo {
+                    position: absolute;
+                    left: 88%;
+                    height: 27%;
+                    width: 9%;
+                    top: 55.5%;
+                }
+
+                #pinfo {
+                    position: relative;
+                    font-size: 1vw;
+                    font-family: neigefont3;
+                    color: dimgray;
+                    font-weight: bold;
+                    letter-spacing: .1vw;
+                }
+
+                    #pinfo span {
+                        font-size: .5vw;
+                        letter-spacing: .2vw;
+                        top: -.5vw;
+                        position: relative;
+                    }
+
+                #year {
+                    position: absolute;
+                    top: 19%;
+                    color: dimgray;
+                    letter-spacing: .1vw;
+                    font-weight: bold;
+                    font-family: Rei;
+                    font-size: .8vw;
+                }
+
+                #firstdate {
+                    font-weight: bold;
+                    position: absolute;
+                    top: 25%;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                    font-family: Rei;
+                    color: dimgray;
+                }
+
+                    #firstdate b {
+                        position: relative;
+                    }
+
+                    #firstdate span {
+                        font-size: 1.6vw;
+                    }
+
+                #secondpsan {
+                    color: #81082a;
+                }
+
+                #sfirstdate {
+                    font-weight: bold;
+                    position: absolute;
+                    top: 55%;
+                    font-size: .7vw;
+                    letter-spacing: .2vw;
+                    font-family: Rei;
+                    color: dimgray;
+                }
+
+                    #sfirstdate b {
+                        position: relative;
+                    }
+
+                    #sfirstdate span {
+                        font-size: 1.6vw;
+                    }
+
+                #linesep {
+                    position: absolute;
+                    width: .15vw;
+                    height: 15%;
+                    background: #9a243a;
+                    top: 49%;
+                    left: 11%;
+                }
+
+                #infos {
+                    position: absolute;
+                    top: 77%;
+                    height: 22%;
+                    width: 100%;
+                }
+
+                .infoprofil {
+                    font-family: tw;
+                    font-size: .6vw;
+                    color: dimgray;
+                    line-height: .08vw;
+                    letter-spacing: .1vw;
+                }
+
+                    .infoprofil span {
+                        font-size: .4vw;
+                        color: #9a243a;
+                    }
+            </style>
+            <p id="pinfo">私について<span><br />情報夜明け⭑ユナ 明け</span></p>
+            <p id="year">2021</p>
+            <p id="firstdate"><span>03</span><b> / </b><span id="secondpsan">08</span></p>
+            <div id="linesep"></div>
+            <p id="sfirstdate"><span>05</span><b> / </b><span id="secondpsan">10</span></p>
+            <div id="infos">
+                <p class="infoprofil">Aylin <span>/ アイリン</span></p>
+                <p class="infoprofil">22 XXII <span>/ 22年</span></p>
+                <p class="infoprofil">ARG <span>/ アルゼンチン</span></p>
+                <p class="infoprofil">Libra <span>/ ポンド</span></p>
+                <p class="infoprofil">Taken𖹭𖹭♡ <span>/ 交際中</span></p>
+            </div>
+
+
+        </div>
+        <img src="https://i.postimg.cc/9MZfdPNs/Sister-Progenitor-Rein.png" id="backrender" />
+
+        <img src="https://i.postimg.cc/D07FsvW4/render.png" id="render" />
+        <a href="https://xat.me/xNeon">
+            <div id="neonpage">
+                <style>
+                    #neonpage {
+                        cursor: pointer;
+                        position: absolute;
+                        width: 5%;
+                        height: 5%;
+                        right: 2%;
+                        bottom: 0;
+                        z-index: 9;
+                    }
+                </style>
+            </div>
+        </a>
+        <div id="barlinbot">
+            <style>
+                #render {
+                    position: absolute;
+                    height: 110%;
+                    top: 0%;
+                    left: 40%;
+                    filter: brightness(110%) contrast(110%);
+                }
+
+                #backrender {
+                    position: absolute;
+                    height: 110%;
+                    top: 1%;
+                    left: 41%;
+                    filter: brightness(0%) blur(3px);
+                    opacity: .5;
+                }
+
+                #barlinbot {
+                    box-shadow: .2vw -.2vw 1.5vw black;
+                    position: absolute;
+                    width: 100%;
+                    height: 15%;
+                    bottom: 0;
+                    background: #580E1B;
+                }
+
+                #patron {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: url(https://i.postimg.cc/x1yspqc7/pexels-damir-mijailovic-1921088-3695238.jpg);
+                    opacity: .15;
+                }
+
+                #firmtext {
+                    font-family: bird;
+                    line-height: .7vw;
+                    font-size: .6vw;
+                    top: -30%;
+                    position: relative;
+                    color: dimgray;
+                    text-align: right;
+                }
+            </style>
+            <div id="patron">
+
+            </div>
+            <p id="maintan">
+                雛
+            </p>
+            <p id="secontan">希<br />納<br />空<br />間</p>
+            <div id="contentbot">
+                <style>
+                    #contentbot {
+                        position: absolute;
+                        right: .5%;
+                        height: 80%;
+                        width: 30%;
+                        top: 10%;
+                    }
+
+                    #contenboot1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                    }
+
+                    #contentboot2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 60%;
+                        border-top: .2vw solid dimgray;
+                        top: 40%;
+                    }
+
+                    #conten1 {
+                        position: absolute;
+                        width: 24%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten2 {
+                        position: absolute;
+                        width: 24%;
+                        left: 25%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten3 {
+                        position: absolute;
+                        width: 28%;
+                        left: 50%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten4 {
+                        position: absolute;
+                        width: 24%;
+                        left: 79%;
+                        height: 70%;
+                        top: 35%;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        height: 100%;
+                        border-radius: .2vw;
+                    }
+
+                    #cont4jap1 {
+                        position: absolute;
+                        color: gray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont4jap2 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.5vw;
+                        letter-spacing: -.15vw;
+                        top: -.9vw;
+                        left: .5vw;
+                    }
+
+                        #cont4jap2 span {
+                            animation: flicker5 2s infinite alternate;
+                            animation-delay: .5s;
+                            color: #303030;
+                            filter: blur(1px);
+                        }
+
+                    #cont3jap1 {
+                        font-weight: bold;
+                        position: absolute;
+                        color: dimgray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont3jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: .3vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: -.1vw;
+                        left: 1.5vw;
+                    }
+
+                    #thirddate {
+                        font-weight: bold;
+                        position: absolute;
+                        top: -2%;
+                        right: 5%;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        font-family: Rei;
+                        color: gray;
+                    }
+
+                        #thirddate b {
+                            position: relative;
+                        }
+
+                        #thirddate span {
+                            font-size: 1.6vw;
+                        }
+
+                    #secondpsan2 {
+                        color: #505050;
+                    }
+
+                    #cont3jap3 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: 0;
+                        top: -.1vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap1 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: .1vw;
+                        left: .1vw;
+                        top: -.2vw;
+                    }
+
+                    #maintan {
+                        position: absolute;
+                        font-size: 5vw;
+                        font-family: neigefont3;
+                        color: gray;
+                        top: -4vw;
+                        left: 16%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+
+                    #secontan {
+                        position: absolute;
+                        font-size: .8vw;
+                        line-height: 1.2vw;
+                        top: 1vw;
+                        font-family: neigefont3;
+                        color: dimgray;
+                        left: 21.5%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+                </style>
+
+                <div id="contenboot1">
+                    <p id="firmtext">
+                        I’m not doing this to be a hero.<br />I’m not doing it to save the world. <br />I’m doing it because I want to.
+                    </p>
+                </div>
+                <div id="contentboot2">
+                    <div id="conten1">
+                        <img src="https://i.postimg.cc/gJT1dCdg/qr.png" id="qrimg" />
+                        <div id="redes">
+                            <style>
+                                #redes {
+                                    position: absolute;
+                                    width: 58%;
+                                    height: 100%;
+                                    right: 0;
+                                }
+
+                                #red1 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                }
+
+                                #red2 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                    top: 50%;
+                                }
+
+                                .icon {
+                                    position: absolute;
+                                    height: 90%;
+                                    filter: brightness(160%);
+                                }
+
+                                #icon2 {
+                                    top: 10%;
+                                }
+
+                                #red1 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #red2 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #iconi1 {
+                                    position: absolute;
+                                    width: 3vw;
+                                    right: 2%;
+                                    bottom: -5%;
+                                }
+
+                                #iconi2 {
+                                    position: absolute;
+                                    width: 1.3vw;
+                                    left: 0%;
+                                    top: -5%;
+                                }
+                            </style>
+                            <div id="red1">
+                                <img class="icon" src="https://i.postimg.cc/1zT3MzV5/fb.png" /><span>@fuukys</span>
+                            </div>
+                            <div id="red2">
+                                <img class="icon" id="icon2" src="https://i.postimg.cc/1tq5dZD0/insta.png" /><span>@fuukys</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conten2">
+                        <img id="iconi2" src="https://i.postimg.cc/NFprbc6s/iconito2-waifu2x-photo-noise3-scale.png" /> <p id="cont2jap2"> な言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont2jap1">希娜尤</p><img id="iconi1" src="https://i.postimg.cc/xdw8PdBy/iconito-waifu2x-photo-noise3-scale.png" />
+                    </div>
+                    <div id="conten3">
+                        <p id="cont3jap1">夕方─ユウナ さらに遠く</p>
+                        <p id="cont3jap2"> 私の人生で最もな言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont3jap3">著作権 </p>
+                        <p id="thirddate"><span>11</span><b> / </b><span id="secondpsan2">12</span></p>
+                    </div>
+                    <div id="conten4">
+                        <p id="cont4jap1">作成され、設計された</p>
+                        <p id="cont4jap2"><span>˟NEON</span>|ゼ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="https://i.postimg.cc/sXYsvQ2R/rend2.png" id="render" />
+
+        <div id="contlat">
+            <style>
+                #contlat {
+                    position: absolute;
+                    width: 3%;
+                    height: 54%;
+                    left: 14.5%;
+                    top: 15%;
+                }
+
+                #contfirst {
+                    position: absolute;
+                    width: 100%;
+                    height: 25%;
+                }
+
+                #secondlatp {
+                    font-family: tw;
+                    font-size: .6vw;
+                    color: dimgray;
+                    width: 800%;
+                    position: absolute;
+                    transform: rotate(90deg);
+                    left: -385%;
+                    top: 75%;
+                }
+
+                #circx {
+                    position: absolute;
+                    width: .45vw;
+                    height: .5vw;
+                    border-radius: 50%;
+                    background: #580E1B;
+                    top: 30%;
+                    left: 30%;
+                }
+
+                #firstcube {
+                    position: absolute;
+                    width: 100%;
+                    height: 20%;
+                    background: #580E1B;
+                }
+
+                #number {
+                    position: absolute;
+                    font-family: tw;
+                    width: 300%;
+                    transform: rotate(90deg);
+                    color: #5E1111;
+                    font-size: 1.5vw;
+                    left: -79%;
+                    top: 56%;
+                }
+
+                    #number span {
+                        font-family: neigefont3;
+                        font-size: 1.2vw;
+                        font-weight: bold;
+                        color: black;
+                        top: .1vw;
+                        position: absolute;
+                    }
+
+                #subtt {
+                    font-family: tw;
+                    font-size: .6vw;
+                    color: dimgray;
+                    top: 1.2vw;
+                    position: absolute;
+                    line-height: .7vw;
+                }
+
+                #subtt2 {
+                    font-family: tw;
+                    font-size: .6vw;
+                    top: 1.2vw;
+                    color: dimgray;
+                    left: .7vw;
+                    position: absolute;
+                    line-height: .7vw;
+                }
+            </style>
+            <div id="contfirst">
+                <div id="firstcube"></div>
+                <p id="number">108<span>尤奈 </span></p>
+                <p id="subtt">私<br />は<br />英<br />雄<br />に<br />な<br />る<br /> な<br />い</p>
+                <p id="subtt2"> る<br />た<br />め<br />に<br />こ  <br />な<br />い</p>
+            </div>
+            <div id="secondlatp">
+                YUNA XATSPACEㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤXAT.COM ALL RIGHTS RESERVED<div id="circx"></div>
+            </div>
+        </div>
+
+        <div id="japnick">
+            <style>
+                #japnick {
+                    position: absolute;
+                    width: 5%;
+                    height: 60%;
+                    top: 15%;
+                    left: 18%;
+                }
+
+                #mainnick {
+                    position: absolute;
+                    font-size: 3vw;
+                    line-height: 3vw;
+                    top: -3vw;
+                    font-family: neigefont3;
+                }
+
+                    #mainnick span {
+                        font-size: .6vw;
+                        letter-spacing: .14vw;
+                        top: -2vw;
+                        position: relative;
+                        color: dimgray;
+                    }
+            </style>
+            <p id="mainnick">
+                ベ<br />ル<br />ベ<br /> ト<br />の<br />夜<br />明<br />け<span><br />|DAWN|</span>
+            </p>
+        </div>
+        <div id="textlatrot">
+            <style>
+                #textlatrot {
+                    position: absolute;
+                    width: 30%;
+                    height: 20%;
+                    transform: rotate(-90deg);
+                    top: 43%;
+                    right: -17.5%;
+                    text-align: left;
+                    color: dimgray;
+                }
+
+                    #textlatrot b {
+                        position: absolute;
+                        font-size: .6vw;
+                        letter-spacing: .05vw;
+                        left: 0;
+                        font-family: tw;
+                    }
+            </style>
+            <b>
+                Taste the fear, tasting uncertainty. What will you do?  when there's nothing <br />for you to cling to.... when your life has rot...
+                Can you hear it? can you hear the sound?
+                As your broken mind, come crashing down.
+            </b>
+        </div>
+
+        <div id="boxfires2" class="ag-fireflies_box sifires">
+            <style>
+                 
+
+                #boxfires2 {
+                    /*filter: sepia(1);*/ mix-blend-mode: difference;
+                    filter: grayscale(100%)/* hue-rotate(-80deg)*/; opacity:.8;
+                    transition: all 2s ease;
+                    z-index: 8;
+                }
+
+                
+            </style>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+        </div>
+
+
+        <div id="friends">
+            <style>
+                #friends {
+                    position: absolute;
+                    width: 16%;
+                    height: 13%;
+                    top: 70%;
+                    left: 15%;
+                    z-index: 9;
+                }
+
+                #titfriends {
+                    position: absolute;
+                    width: auto;
+                    right: 0;
+                    top: 0;
+                }
+
+                #spn {
+                    font-family: Rei;
+                    letter-spacing: .2vw;
+                    font-size: 1vw;
+                    color: dimgray;
+                }
+
+                #divvp {
+                    background: #580E1B;
+                    width: 105%;
+                    height: .15vw;
+                    top: 1.3vw;
+                    position: absolute;
+                    left: -5%;
+                }
+
+                #cubedivp {
+                    background: #580E1B;
+                    width: 10%;
+                    top: -.05vw;
+                    height: .2vw;
+                    position: absolute;
+                }
+
+                #Seps {
+                    position: absolute;
+                    width: 100%;
+                    height: 70%;
+                    top: 30%;
+                    overflow: hidden;
+                }
+
+                .cells {
+                    width: 10%;
+                    height: 100%;
+                    float: right;
+                }
+
+                .cpp {
+                    text-align: center;
+                    font-size: .6vw;
+                    line-height: 1vw;
+                    transition: all .5s ease;
+                    font-family: Rei;
+                }
+
+                    .cpp:hover {
+                        color: #5E1111;
+                        line-height: 1.1vw;
+                    }
+
+                .sepp {
+                    text-align: center;
+                    line-height: 1vw;
+                    font-family: Rei;
+                    font-size: .4vw;
+                    color: dimgray;
+                }
+            </style>
+            <div id="titfriends"><span id="spn">Writer</span><div id="divvp"><div id="cubedivp"></div></div></div>
+
+            <div id="Seps">
+                <div class="cells"><p class="cpp">催<br />眠<br />術<br />♡</p></div>
+                <div class="cells"><p class="sepp"><br />/<br />/</p></div>
+                <div class="cells"><p class="cpp">ナ<br />イ<br />ラ</p></div>
+                <div class="cells"><p class="sepp"><br />/<br />/</p></div>
+
+                <div class="cells"><p class="cpp">完<br />璧<br />な<br />剣</p></div>
+                <div class="cells"><p class="sepp"><br />/<br />/</p></div>
+
+                <div class="cells"><p class="cpp">燃<br />え<br />る</p></div>
+                <div class="cells"><p class="sepp"><br />/<br />/</p></div>
+                <div class="cells"><p class="cpp">ネ<br />オ<br />ン</p></div>
+                <div class="cells"><p class="sepp"><br />/<br />/</p></div>
+            </div>
+        </div>
+        <div id="part2">
+            <style>
+                #part2 {
+                    position: absolute;
+                    background: #171717;
+                    width: 14%;
+                    height: 100%;
+                }
+            </style>
+
+            <div id="Aaudio">
+                <script>
+                    $(document).ready(function () {
+                        var playing = false,
+                            artistname = $(".artist-name"),
+                            musicName = $(".music-name"),
+                            time = $(".time"),
+                            fillBar = $(".fillBar");
+
+                        let audioData = [];
+
+                        var song = new Audio();
+                        var CurrentSong = 0;
+                        window.onload = load();
+
+                        function load() {
+                            audioData = [
+
+                                {
+                                    name: "Radio off",
+                                    artist: "Radio off",
+                                    src:
+                                        ""
+                                },
+                                {
+                                    name: "Devil's Pit",
+                                    artist: "Tekken 7 OST",
+                                    src:
+                                        "yuna.mp3"
+                                },
+                                
+
+
+
+
+                            ];
+
+                            artistname.html(audioData[CurrentSong].artist);
+                            musicName.html(audioData[CurrentSong].name);
+                            song.src = audioData[CurrentSong].src;
+                        }
+
+                        function playSong() {
+                            var curSong = audioData[CurrentSong];
+                            artistname.html(curSong.artist);
+                            musicName.html(curSong.name);
+                            song.src = curSong.src;
+                            song.play();
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("p").addClass("active");
+                            $(".player-track").addClass("active");
+                        }
+
+                        song.addEventListener("timeupdate", function () {
+                            var position = (100 / song.duration) * song.currentTime;
+                            var current = song.currentTime;
+                            var duration = song.duration;
+                            var durationMinute = Math.floor(duration / 60);
+                            var durationSecond = Math.floor(duration - durationMinute * 60);
+                            var durationLabel = durationMinute + ":" + durationSecond;
+                            currentSecond = Math.floor(current);
+                            currentMinute = Math.floor(currentSecond / 60);
+                            currentSecond = currentSecond - currentMinute * 60;
+                            // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                            if (currentSecond < 10) {
+                                currentSecond = "0" + currentSecond;
+                            }
+                            var currentLabel = currentMinute + ":" + currentSecond;
+
+                            var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                            fillBar.css("width", position + "%");
+
+                            $(".time").html(indicatorLabel);
+                        });
+                        //////
+                        $("#a_in").click(function playOrPause() {
+                            if (song.paused) {
+                                song.play();
+                                playing = true;
+                                $("#play").addClass("fa-pause");
+                                $("#play").removeClass("fa-play");
+                                $("p").addClass("active");
+                                /* $("#bar1").addClass("br1");*/
+
+                            } else {
+                                song.pause();
+                                playing = false;
+                                $("#play").removeClass("fa-pause");
+                                $("#play").addClass("fa-play");
+                                $("p").removeClass("active");
+
+
+                            }
+                        });
+                        $("#play").click(function () {
+
+                            song.play();
+                            playing = true;
+                        });
+                        $("#pause").click(function () {
+                            song.pause();
+                            playing = false;
+                        });
+                        $("#stop").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 2) {
+                                CurrentSong = 0;
+                            }
+                            song.pause();
+                            playing = false;
+                        });
+                        $("#prev").click(function prev() {
+                            CurrentSong--;
+                            if (CurrentSong < 0) {
+                                CurrentSong = 2;
+                            }
+                            playSong();
+                        });
+
+                        $("#next").click(function next() {
+                            CurrentSong++;
+                            if (CurrentSong > 2) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        });
+                        $("#next2").click(function next() {
+                            CurrentSong = 1;
+                            if (CurrentSong > 2) {
+                                CurrentSong = 0;
+                            }
+                            playSong();
+                        });
+                    });
+
+                </script>
+
+                <style>
+
+                    #Aaudio {
+                        z-index: 99;
+                        font-family: 'Raleway', sans-serif;
+                        position: absolute;
+                        width: 100%;
+                        bottom: 0;
+                        top: 87%;
+                        height: 10%;
+                    }
+
+                    #abtnaud {
+                        cursor: pointer;
+                        filter: grayscale(100%);
+                        position: absolute;
+                        width: 60%;
+                        height: 23%;
+                        left: 18%;
+                        top: 65%;
+                    }
+
+                    .butplayer {
+                        float: left;
+                        height: 1vw;
+                        top: -.25vw;
+                        width: 1vw;
+                        margin-left: .4vw;
+                        position: relative;
+                    }
+
+                    .butpl {
+                        position: absolute;
+                        width: 1vw;
+                        height: 1vw;
+                        left: 0;
+                        top: .3vw;
+                        border-radius: .2vw;
+                        transition: all .5s ease;
+                    }
+
+                        .butpl:hover {
+                            /*background: #5e0880;*/
+                        }
+
+                        .butpl img {
+                            position: absolute;
+                            width: .8vw;
+                            height: .8vw;
+                            /*filter: invert(100%);*/
+                            left: .07vw;
+                            top: .1vw;
+                        }
+
+                    #pause, #play, #next, #prev, #stop {
+                        width: 1vw;
+                        height: 1vw;
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    .progress-bar {
+                        top: 55%;
+                        left: 20%;
+                        width: 57%;
+                        background: darkgray;
+                        height: .35vw;
+                        position: absolute;
+                    }
+
+                    .fillBar {
+                        background: #5E1111;
+                        width: 0;
+                        height: .35vw;
+                    }
+
+
+                    #namesong {
+                        text-transform: uppercase;
+                        position: absolute;
+                        width: 100%;
+                        height: 70%;
+                        top: 15%;
+                        left: 20%;
+                        font-weight: bold;
+                        color: #5E1111;
+                        letter-spacing: .1vw;
+                        font-family: tw;
+                        font-size: .75vw;
+                    }
+
+                    .artist-name {
+                        position: absolute;
+                        width: 88%;
+                        left: 20%;
+                        height: 100%;
+                        top: 35%;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        color: dimgray;
+                    }
+
+                    #AT_time {
+                        width: 70%;
+                        height: 1vw;
+                        top: 85%;
+                        right: 0;
+                        position: absolute;
+                    }
+
+                        #AT_time p {
+                            position: absolute;
+                            font-family: 'Oswald', sans-serif;
+                            letter-spacing: .1vw;
+                            font-size: .5vw;
+                            color: lightgray;
+                        }
+
+                    .time {
+                        position: absolute;
+                        right: 13%;
+                        top: -150%;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .45vw;
+                        overflow: hidden;
+                        color: #b21160;
+                    }
+
+                    #name_sng {
+                        position: relative;
+                        float: left;
+                    }
+
+                    #next2 {
+                        cursor: pointer;
+                        position: absolute;
+                        width: 3vw;
+                        height: 1vw;
+                        left: 40%;
+                        top: 0%;
+                    }
+
+                    #pplay {
+                        position: absolute;
+                        top: -1.3vw;
+                        left: -20%;
+                    }
+
+                    #play {
+                    }
+
+                    #next2 p {
+                        position: absolute;
+                        color: #5e0880;
+                        text-shadow: 0 0 1vw #171717;
+                        font-size: 2vw;
+                    }
+                </style>
+                <div class="progress-bar">
+                    <div class="fillBar"></div>
+                </div>
+
+
+                <!--<div id="AT_time"><div class="time"></div></div>-->
+                <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+                <div> </div>
+                <div class="artist-name"></div>
+
+                <div id="abtnaud">
+                    <div class="butplayer">
+                        <div class="butpl">
+                            <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                            <div id="prev" class="fas fa-backward"><p></p></div>
+                        </div>
+
+                    </div> <div class="butplayer">
+                        <div class="butpl">
+                            <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                            <div id="pause"> </div>
+                        </div>
+
+                    </div>
+                    <div class="butplayer" id="pplay">
+                        <div class="butpl">
+                            <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:.8vw; height:.8vw; left:.15vw; top:.2vw;" />
+                            <div id="play"> </div>
+                        </div>
+
+                    </div>
+                    <div class="butplayer">
+                        <div class="butpl">
+                            <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                            <div id="next" class="fas fa-forward"><p></p></div>
+                        </div>
+
+                    </div>
+
+                    <!--<div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                        <div id="stop"> </div>
+                    </div>
+
+                </div>-->
+                </div>
+
+
+
+            </div>
+
+            <div id="contentlala">
+                <style>
+                    #lalatit {
+                        position: relative;
+                        text-align: center;
+                        font-size: .8vw;
+                        color: white;
+                        letter-spacing: .15vw;
+                        font-family: tw;
+                        margin-top: 80%;
+                    }
+
+                    #lalatit2 {
+                        position: absolute;
+                        width: 70%;
+                        text-align: center;
+                        font-size: .45vw;
+                        color: white;
+                        top: 36%;
+                        left: 15%;
+                        font-weight: lighter;
+                        letter-spacing: .1vw;
+                        font-family: Calibri;
+                    }
+
+                    #barlala {
+                        position: absolute;
+                        width: 80%;
+                        left: 10%;
+                        top: 28%;
+                    }
+
+                    #fontlala {
+                        position: absolute;
+                        left: 20%;
+                        font-size: 3.7vw;
+                        font-family: neigefont3;
+                        color: #580E1B;
+                        text-shadow: .5vw .5vw .5vw #580E1B;
+                        width: 200%;
+                        top: -2vw;
+                    }
+
+                        #fontlala span {
+                            position: absolute;
+                            left: 10%;
+                            bottom: -5%;
+                            font-size: .5vw;
+                            color: gray;
+                            letter-spacing: .2vw;
+                        }
+                </style>
+                <p id="fontlala">機械娃娃<span> 私の人生で最もな言葉だ。私の翼は決して飛び立つことはない。</span></p>
+                <p id="lalatit">*control*</p>
+                <img src="https://i.postimg.cc/PJtN282N/Captura-de-pantalla-2024-08-07-125822.png" id="barlala" />
+                <p id="lalatit2">
+                    Your bravery and authenticity are an inspiration to everyone around you. You have shown that being true to yourself is the most powerful way to live, your homosexuality and strength light the way for those still seeking their truth. On this life journey, you have faced challenges with grace and dignity, and your presence is a testament to the beauty of being yourself without reservation. May this writing be a reflection of the respect and admiration I feel for you.
+                    Thank you for being a beacon of light and hope.
+                    With all my love and admiration
+                </p>
+                <div id="lalacueimg">
+                    <style>
+                        #lalacueimg {
+                            position: absolute;
+                            width: 10vw;
+                            height: 10vw;
+                            top: 64%;
+                            left: 12%;
+                        }
+
+                        #markimglala {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        #bakimglala {
+                            position: absolute;
+                            width: 86%;
+                            left: 7%;
+                            top: 7%;
+                            height: 86%;
+                        }
+                    </style>
+                    <img src="https://i.postimg.cc/260sM4cT/5f33ae4b1471c1a348a518210817cc6d.jpg" id="bakimglala" />
+                    <img id="markimglala" src="https://i.postimg.cc/ZK5CNpWM/Captura-de-pantalla-2024-08-07-125835.png" />
+
+                </div>
+            </div>
+        </div>
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: europe;
+                    src: url(Europa.otf);
+                }
+
+                @font-face {
+                    font-family: tw;
+                    src: url(tw.ttf);
+                }
+
+                @font-face {
+                    font-family: kenFont;
+                    src: url(ken.otf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                @font-face {
+                    font-family: Rei;
+                    src: url(Rei.otf);
+                }
+
+                @font-face {
+                    font-family: bird;
+                    src: url(aston.ttf);
+                }
+
+                @keyframes flicker5 {
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .1;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+
+    </div>
+   
+</body>
+
+</html>
