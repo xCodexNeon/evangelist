@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
             left: 0;
             position: fixed;
         }
-        #imgmain { position:absolute; width:100%; height:100%;
+        #imgmain { position:absolute; width:100%; height:100%; opacity:.7;
         }
        
     </style>
@@ -47,8 +47,205 @@
     <div id="main">
         <style>
         </style>
-        <!--<img src="https://i.postimg.cc/4x7ZTWQF/back.jpg" id="imgmain" />-->
-        <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+        <img src="https://i.postimg.cc/4x7ZTWQF/back.jpg" id="imgmain" />
+        <!--<div id="rbgShiftSlider" class="rgbShiftSlider"></div>-->
+        <canvas id="canvasx">
+            <script>
+
+                const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                    STAR_SIZE = 1.5,
+                    STAR_MIN_SCALE = 0.2,
+                    OVERFLOW_THRESHOLD = 50;
+
+                const canvas4 = document.getElementById("canvasx"),
+                    context = canvas4.getContext("2d");
+
+                let scale = 1, // device pixel ratio
+                    width,
+                    height;
+
+                let stars = [];
+
+                let pointerX, pointerY;
+
+                let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                let touchInput = false;
+
+                generate();
+                resize();
+                step();
+
+                window.onresize = resize;
+                window.onmousemove = onMouseMove;
+                window.ontouchmove = onTouchMove;
+                window.ontouchend = onMouseLeave;
+                document.onmouseleave = onMouseLeave;
+
+                function generate() {
+                    for (let i = 0; i < STAR_COUNT; i++) {
+                        stars.push({
+                            x: 0,
+                            y: 0,
+                            z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                        });
+
+                    }
+                }
+
+                function placeStar(star) {
+                    star.x = Math.random() * width;
+                    star.y = Math.random() * height;
+                }
+
+                function recycleStar(star) {
+                    let direction = "z";
+
+                    let vx = Math.abs(velocity.x),
+                        vy = Math.abs(velocity.y);
+
+                    if (vx > 1 || vy > 1) {
+                        let axis;
+
+                        if (vx > vy) {
+                            axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                        } else {
+                            axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                        }
+
+                        if (axis === "h") {
+                            direction = velocity.x > 0 ? "l" : "r";
+                        } else {
+                            direction = velocity.y > 0 ? "t" : "b";
+                        }
+                    }
+
+                    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                    if (direction === "z") {
+                        star.z = 0.1;
+                        star.x = Math.random() * width;
+                        star.y = Math.random() * height;
+                    } else if (direction === "l") {
+                        star.x = -OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "r") {
+                        star.x = width + OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "t") {
+                        star.x = width * Math.random();
+                        star.y = -OVERFLOW_THRESHOLD;
+                    } else if (direction === "b") {
+                        star.x = width * Math.random();
+                        star.y = height + OVERFLOW_THRESHOLD;
+                    }
+                }
+
+                function resize() {
+                    scale = window.devicePixelRatio || 1;
+
+                    width = window.innerWidth * scale;
+                    height = window.innerHeight * scale;
+
+                    canvas4.width = width;
+                    canvas4.height = height;
+
+                    stars.forEach(placeStar);
+                }
+
+                function step() {
+                    context.clearRect(0, 0, width, height);
+
+                    update();
+                    render();
+
+                    requestAnimationFrame(step);
+                }
+
+                function update() {
+                    velocity.tx *= 0.36;
+                    velocity.ty *= 0.36;
+
+                    velocity.x += (velocity.tx - velocity.x) * 0.7;
+                    velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                    stars.forEach(star => {
+                        star.x += velocity.x * star.z;
+                        star.y += velocity.y * star.z;
+
+                        star.x += (star.x - width / 2) * velocity.z * star.z;
+                        star.y += (star.y - height / 2) * velocity.z * star.z;
+                        star.z += velocity.z;
+
+                        // recycle when out of bounds
+                        if (
+                            star.x < -OVERFLOW_THRESHOLD ||
+                            star.x > width + OVERFLOW_THRESHOLD ||
+                            star.y < -OVERFLOW_THRESHOLD ||
+                            star.y > height + OVERFLOW_THRESHOLD) {
+                            recycleStar(star);
+                        }
+                    });
+                }
+
+                function render() {
+                    stars.forEach(star => {
+                        context.beginPath();
+                        context.lineCap = "round";
+                        context.lineWidth = STAR_SIZE * star.z * scale;
+                        context.strokeStyle =
+                            "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                        context.beginPath();
+                        context.moveTo(star.x, star.y);
+
+                        var tailX = velocity.x * 2,
+                            tailY = velocity.y * 2;
+
+                        // stroke() wont work on an invisible line
+                        if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                        if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                        context.lineTo(star.x + tailX, star.y + tailY);
+
+                        context.stroke();
+                    });
+                }
+
+                function movePointer(x, y) {
+                    if (typeof pointerX === "number" && typeof pointerY === "number") {
+                        let ox = x - pointerX,
+                            oy = y - pointerY;
+
+                        velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                        velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                    }
+
+                    pointerX = x;
+                    pointerY = y;
+                }
+
+                function onMouseMove(event) {
+                    touchInput = false;
+
+                    movePointer(event.clientX, event.clientY);
+                }
+
+                function onTouchMove(event) {
+                    touchInput = true;
+
+                    movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                    event.preventDefault();
+                }
+
+                function onMouseLeave() {
+                    pointerX = null;
+                    pointerY = null;
+                }
+            </script>
+        </canvas>
+
         <script>
             // set images
             // demo works but images are blocked by codepen Cors issue
@@ -138,7 +335,7 @@
                                     "mystill.mp3"
                             },
 
-                         
+
 
                             {
                                 name: "STOP CRYING YOUR HEART",
@@ -265,12 +462,13 @@
                     z-index: 9999999999999999999;
                 }
 
-                #Aaudio { z-index:99;
+                #Aaudio {
+                    z-index: 99;
                     font-family: 'Raleway', sans-serif;
                     position: absolute;
                     width: 20%;
-                    left:43%;  
-                    top: 30%; 
+                    left: 43%;
+                    top: 30%;
                     height: 5%;
                 }
 
@@ -347,9 +545,9 @@
                     top: 10%;
                     left: 10%;
                     font-weight: bold;
-                    color:#b21160;
+                    color: #b21160;
                     letter-spacing: .1vw;
-                    font-family:tw;
+                    font-family: tw;
                     font-size: .55vw;
                 }
 
@@ -465,6 +663,316 @@
 
 
         </div>
+        <div id="barlinbot">
+            <style>
+
+                #barlinbot {
+                    position: absolute;
+                    width: 100%;
+                    height: 15%;
+                    bottom: 0;
+                }
+
+                #patron {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: url(https://i.postimg.cc/x1yspqc7/pexels-damir-mijailovic-1921088-3695238.jpg);
+                    opacity: .15;
+                }
+
+                #firmtext {
+                    font-family: bird;
+                    line-height: .7vw;
+                    font-size: .6vw;
+                    top: -30%;
+                    position: relative;
+                    color: dimgray;
+                    text-align: right;
+                }
+            </style>
+
+            <div id="contentbot">
+                <style>
+                    @font-face {
+                        font-family: Rei;
+                        src: url(Rei.otf);
+                    }
+
+                    #contentbot {
+                        position: absolute;
+                        right: .5%;
+                        height: 80%;
+                        width: 30%;
+                        top: 10%;
+                        opacity: .8;
+                    }
+
+                    #contenboot1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                    }
+
+                    #contentboot2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 60%;
+                        top: 40%;
+                    }
+
+                    #conten1 {
+                        position: absolute;
+                        width: 24%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten2 {
+                        position: absolute;
+                        width: 24%;
+                        left: 25%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten3 {
+                        position: absolute;
+                        width: 28%;
+                        left: 50%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten4 {
+                        position: absolute;
+                        width: 24%;
+                        left: 79%;
+                        height: 70%;
+                        top: 35%;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        height: 100%;
+                        border-radius: .2vw;
+                    }
+
+                    #cont4jap1 {
+                        position: absolute;
+                        color: gray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont4jap2 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.5vw;
+                        letter-spacing: -.15vw;
+                        top: -.9vw;
+                        left: .5vw;
+                    }
+
+                        #cont4jap2 span {
+                            animation: flicker5 2s infinite alternate;
+                            animation-delay: .5s;
+                            color: #303030;
+                            filter: blur(1px);
+                        }
+
+                    #cont3jap1 {
+                        font-weight: bold;
+                        position: absolute;
+                        color: dimgray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont3jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: .3vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: -.1vw;
+                        left: 1.5vw;
+                    }
+
+                    #thirddate {
+                        font-weight: bold;
+                        position: absolute;
+                        top: -2%;
+                        right: 5%;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        font-family: Rei;
+                        color: gray;
+                    }
+
+                        #thirddate b {
+                            position: relative;
+                        }
+
+                        #thirddate span {
+                            font-size: 1.6vw;
+                        }
+
+                    #secondpsan2 {
+                        color: #505050;
+                    }
+
+                    #cont3jap3 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: 0;
+                        top: -.1vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap1 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: .1vw;
+                        left: .1vw;
+                        top: -.2vw;
+                    }
+
+                    #maintan {
+                        position: absolute;
+                        font-size: 5vw;
+                        font-family: neigefont3;
+                        color: gray;
+                        top: -4vw;
+                        left: 16%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+
+                    #secontan {
+                        position: absolute;
+                        font-size: .8vw;
+                        line-height: 1.2vw;
+                        top: 1vw;
+                        font-family: neigefont3;
+                        color: dimgray;
+                        left: 21.5%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+                </style>
+
+
+                <div id="contentboot2">
+                    <div id="conten1">
+                        <img src="https://i.postimg.cc/gJT1dCdg/qr.png" id="qrimg" />
+                        <div id="redes">
+                            <style>
+                                #redes {
+                                    position: absolute;
+                                    width: 58%;
+                                    height: 100%;
+                                    right: 0;
+                                }
+
+                                #red1 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                }
+
+                                #red2 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                    top: 50%;
+                                }
+
+                                .icon {
+                                    position: absolute;
+                                    height: 90%;
+                                    filter: brightness(160%);
+                                }
+
+                                #icon2 {
+                                    top: 10%;
+                                }
+
+                                #red1 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #red2 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #iconi1 {
+                                    position: absolute;
+                                    width: 3vw;
+                                    right: 2%;
+                                    bottom: -5%;
+                                }
+
+                                #iconi2 {
+                                    position: absolute;
+                                    width: 1.3vw;
+                                    left: 0%;
+                                    top: -5%;
+                                }
+                            </style>
+                            <div id="red1">
+                                <img class="icon" src="https://i.postimg.cc/1zT3MzV5/fb.png" /><span>@xNeon</span>
+                            </div>
+                            <div id="red2">
+                                <img class="icon" id="icon2" src="https://i.postimg.cc/1tq5dZD0/insta.png" /><span>@xNeon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conten2">
+                        <img id="iconi2" src="https://i.postimg.cc/NFprbc6s/iconito2-waifu2x-photo-noise3-scale.png" /> <p id="cont2jap2"> な言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont2jap1">希娜尤</p><img id="iconi1" src="https://i.postimg.cc/xdw8PdBy/iconito-waifu2x-photo-noise3-scale.png" />
+                    </div>
+                    <div id="conten3">
+                        <p id="cont3jap1">夕方─ユウナ さらに遠く</p>
+                        <p id="cont3jap2"> 私の人生で最もな言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont3jap3">著作権 </p>
+                        <p id="thirddate"><span>21</span><b> / </b><span id="secondpsan2">12</span></p>
+                    </div>
+                    <div id="conten4">
+                        <p id="cont4jap1">作成され、設計された</p>
+                        <p id="cont4jap2"><span>˟NEON</span>|ゼ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="backgif">
             <style>
@@ -579,7 +1087,7 @@
                     width: 100%;
                     top: 0%;
                     height: 100%;
-                    opacity: .05;
+                    opacity: .05; z-index:2;
                     background-image: url("https://i.gifer.com/M2gN.gif");
                 }
             </style>
@@ -895,3 +1403,4 @@
 </body>
 
 </html>
+
