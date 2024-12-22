@@ -1,0 +1,737 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: lightgray;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        #imgbackground {
+            position: absolute;
+            height: 90%;
+            opacity: .4;
+            top: 0;
+            left: 0;
+            width: 90%;
+            left: 10%;
+        }
+    </style>
+</head> 
+
+
+<body>
+    <div id="main">
+        
+        <div id="scrollcontent">
+
+            <style>
+                #scrollcontent { position:absolute; width:100%; height:100%; top:0; left:0;
+                    z-index: 99;
+                }
+                #cont { position:absolute;
+                    width: 100%;
+                    height: 50%; bottom:.5%; 
+                    /*transform:scaleX(-1);*/
+                    overflow: hidden;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    white-space: nowrap; scroll-behavior:smooth;
+                   
+                }
+                    #cont::-webkit-scrollbar { height:.2vw; 
+                    }
+                    #cont::-webkit-scrollbar-thumb {
+                        background: dimgray;
+                        border-radius: 4px;
+                    }
+
+                .item {/*transform:scaleX(-1);*/
+                    display: inline-block;  
+                      margin-left:2vw;
+                     width: 20vw; height:20vw;  z-index:99; position:relative;
+                }
+                #firstitem { margin-left:35%;
+                }
+                #imggif {
+                    position: relative; width:100%; box-shadow: .5vw .5vw .5vw dimgray;
+                }
+                #namespace { position:relative; font-size:1vw; font-weight:bold; font-family:bt;  
+                }
+                #descspace {
+                    position: relative; color:dimgray;
+                    top:-1vw;
+                    font-size: .7vw;
+                    font-weight: bold; line-height:.8vw;
+                    font-family: bt;
+                }
+                #see {
+                    position: relative;
+                    font-size: .7vw;
+                    font-weight: bold;
+                    font-family: bt;
+                }
+                #flecha { position:absolute; width:1vw; left:25%;
+                }
+                #tags {
+                    position: relative;
+                    color: gray;
+                    top: -1vw;
+                    font-size: .5vw; letter-spacing:.1vw;
+                    line-height: .8vw;
+                    font-family: bt;
+                }
+            </style>
+            
+            <div id=cont>
+                <script>
+                    $('#cont').on('wheel', function (ev) {
+                        let y = parseInt(ev.originalEvent.deltaY);
+                        if (y)
+                            this.scrollLeft += y;
+                        console.log(y, this.scrollLeft);
+                    });
+
+
+                    $('.item').each((i, x) => {
+                        let c = i.toString(16);
+                        x.style.background = '#' + c + c + c;
+                    })
+                </script>
+                <div class="item" id="firstitem">
+                    <a href="https://i.postimg.cc/2Szz1c42/xneon.gif"><img src="https://i.postimg.cc/2Szz1c42/xneon.gif" id="imggif" /></a>
+                    <p id="namespace">xNeon</p>
+                    <p id="descspace">
+                        "Butterfly what a beautiful wings you have<br />
+                        Butterfly  fly away to Sheol<br />
+                        Fly away our Blackhearted Butterfly"
+                    </p>
+                    <p id="tags">#Animated #Loop #Anime #OneScreen #Music</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+                <div class="item">
+                    <a href="https://i.postimg.cc/PrmV27KH/yuna.gif"><img src="https://i.postimg.cc/PrmV27KH/yuna.gif" id="imggif" /></a>
+                    <p id="namespace">Velvet Dawn</p>
+                    <p id="descspace">
+                        "Feel the spot don't let it burn <br />
+                        We all want we all yearn<br />
+                        Be soft don't be stern"
+                    </p>
+                    <p id="tags">#Animated #Loop #Anime #OneScreen #Music</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+                <div class="item">
+                    <a href="https://i.postimg.cc/wMRnkcTG/yuki.gif"><img src="https://i.postimg.cc/wMRnkcTG/yuki.gif" id="imggif" /></a>
+                    <p id="namespace">Yukine</p>
+                    <p id="descspace">
+                        "And if the wind broke my wings<br />
+                        I no longer fly but I can still run<br />
+                        I will always pursue my dreams"
+                    </p>
+                    <p id="tags">#Animated #Loop #Anime #OneScreen #Music</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+                <div class="item">
+                    <a href="https://i.postimg.cc/wMZXzDzL/p3.gif"><img src="https://i.postimg.cc/wMZXzDzL/p3.gif" id="imggif" /></a>
+                    <p id="namespace">Frigid Palace</p>
+                    <p id="descspace">
+                        "Disturbing the peace<br />
+                        Look into my eyes now tell me the things<br />
+                        You blabbing about behind my back"
+                    </p>
+                    <p id="tags">#Animated #Loop #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+                <!--<div class="item">
+        <a href="https://i.postimg.cc/ZK0QgNzY/shinobou.gif"><img src="https://i.postimg.cc/ZK0QgNzY/shinobou.gif" id="imggif" /></a>
+        <p id="namespace">USS SHINOBOU</p>
+        <p id="descspace">
+            "The moon is beautiful tonight<br />
+            isn't it?"<br />
+            ㅤ
+        </p>
+        <p id="tags">#Animated #Loop #Anime #Dinamic #Music #ScrollScreen</p>
+        <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+    </div>-->
+                <div class="item">
+                    <a href="https://i.postimg.cc/C5sdyKBS/morimens.gif"><img src="https://i.postimg.cc/C5sdyKBS/morimens.gif" id="imggif" /></a>
+                    <p id="namespace">Morimens FM</p>
+                    <p id="descspace">
+                        "A feeling not be denied<br />
+                        But I know I know I know I know I know<br />
+                        We'll be together someday"
+                    </p>
+                    <p id="tags">#Animated #Loop #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="latcontent">
+            <style>
+                #latcontent {
+                    position: absolute;
+                    width: 30%;
+                    height: 100%;
+                    backdrop-filter: blur(5px);
+                    z-index: 100;
+                }
+
+                #mainrender {
+                    position: absolute;
+                    bottom: -10%;
+                    height: 90%;
+                    right: -21%;
+                    filter: grayscale(50%) contrast(110%); /* transform:scaleX(-1);*/
+                }
+
+                #mainrender2 {
+                    position: absolute;
+                    bottom: -11%;
+                    right: -24%;
+                    filter: brightness(-100%) blur(5px);
+                    opacity: .7;
+                    /*transform: scaleX(-1);*/
+                    height: 90%;
+                }
+
+                #neonnick {
+                    position: relative;
+                    text-align: center;
+                    font-size: 3.5vw;
+                    font-family: bt;
+                    top: 18%;
+                }
+
+                #com1 {
+                    position: absolute;
+                    width: 1vw;
+                    filter: invert(90%);
+                    left: 45%;
+                    top: 35%;
+                }
+
+                #com2 {
+                    position: absolute;
+                    width: 1vw;
+                    filter: invert(90%);
+                    right: 45%;
+                    transform: scale(-1);
+                    top: 35%;
+                }
+
+                #numbers {
+                    position: absolute;
+                    width: 50%;
+                    left: 25%;
+                    top: 22%;
+                    height: 1.3vw;
+                    text-align: center;
+                }
+
+                    #numbers span {
+                        font-family: tw;
+                        font-size: .8vw;
+                        margin: 4%;
+                        padding: .2vw;
+                        border-radius: 50%;
+                    }
+
+                #selected {
+                    background: #c66025
+                }
+                #msge {
+                    position: absolute;
+                    width: 50%;
+                    height: 30%;
+                    left: 25%;
+                    text-align: center;
+                    top: 40%;
+                }
+
+                #mg1 { 
+                    animation: flicker5 2s infinite alternate;
+                    animation-delay: .5s;
+                    color: rgb(92, 92, 92);
+                    font-size: .8vw;
+                    font-family: tw; 
+                }
+
+                #mg2 {  
+                    color: gray;
+                    font-size: .8vw;
+                    font-family: tw;
+                }
+
+            </style>  <div id="backgif">
+
+            </div>
+                      <div id="upcont">
+                          <style>
+                              #upcont {
+                                  position: absolute;
+                                  width: 80%;
+                                  height: 3%;
+                                  left: 10%;
+                                  top: 8%;
+                              }
+
+                              #barup {
+                                  width: 30%;
+                                  height: .1vw;
+                                  position: absolute;
+                                  left: 35%;
+                                  top: 44.5%;
+                                  background: #171717;
+                              }
+
+                              #1px {
+                              }
+                          </style>
+                          <p id="1px" style="position: relative; left: 0; font-family: tw; font-size: .65vw; top:-.6vw;">
+
+                              Minimalist<br />Universe
+                          </p> <p id="2px" style="position: relative; right: 0; font-family: tw; font-size: .65vw; top:-2.8vw; text-align:right">
+
+                             Logistic<br />Holographic
+                          </p>
+                          <div id="barup"></div>
+                      </div>
+            <p id="neonnick">×Neon</p>
+            <div id="numbers"><span>26</span><span id="selected">27</span><span>28</span><span>29</span><span>30</span><span>31</span></div>
+            <div id="msge">
+                <p id="mg2"> Disembodied,  gasping,  I tumbled   <br />
+                  In the flush   <br />
+                 of a thousand  cold lights,   <br /> through this night  
+                <br />
+                <span id="mg1"> of neon, </span> <br />
+                 That I'll never belong to... </p>
+            </div>
+
+            <img id="com1" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" /><img id="com2" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" />
+            <img src="https://i.postimg.cc/vHcnqw3x/rend5.png" id="mainrender2" />
+            <img src="https://i.postimg.cc/vHcnqw3x/rend5.png" id="mainrender" />
+        </div>
+
+        <img src="https://i.postimg.cc/mgHy5t7K/028dff8934b78e302dc036a9fe17f4b4.png" id="letjap" />
+        <p id="title">"My work"</p>
+        <i id="sutit">
+            [Null] ⁶
+            <span>
+                <br />
+                Matter is running through my fingers<br />
+                Time is laughing at me...
+            </span>
+        </i>
+        <div id="barlinbot">
+            <style>
+                #letjap { position:absolute; width:11%; right:1%; top:2%;
+                }
+                #barlinbot { 
+                    position: absolute;
+                    width: 100%;
+                    height: 15%;
+                    bottom: 0;
+                }
+                #title { position:absolute; left:36%; font-size:4vw; font-family:bt; top:20%;
+                }
+                #sutit {
+                    position: absolute;
+                    left: 37%;
+                    font-size: 1vw;
+                    font-family: bt;
+                    top: 37%; font-family:tw;
+                }
+                    #sutit span { color:gray; font-size:.7vw;  
+                    }
+            </style>
+
+
+            <div id="contentbot">
+                <style>
+                    #contentbot {
+                        position: absolute;
+                        right: .5%;
+                        height: 80%;
+                        width: 30%;
+                        top: 10%;
+                    }
+
+                    #contenboot1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                    }
+
+                    #contentboot2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 60%;
+                        top: 40%;
+                    }
+
+                    #conten1 {
+                        position: absolute;
+                        width: 24%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten2 {
+                        position: absolute;
+                        width: 24%;
+                        left: 25%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten3 {
+                        position: absolute;
+                        width: 28%;
+                        left: 50%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten4 {
+                        position: absolute;
+                        width: 24%;
+                        left: 79%;
+                        height: 70%;
+                        top: 35%;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        height: 100%;
+                        border-radius: .2vw;
+                    }
+
+                    #cont4jap1 {
+                        position: absolute;
+                        color: gray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont4jap2 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.5vw;
+                        letter-spacing: -.15vw;
+                        top: -.9vw;
+                        left: .5vw;
+                    }
+
+                        #cont4jap2 span {
+                            animation: flicker5 2s infinite alternate;
+                            animation-delay: .5s;
+                            color: #303030;
+                            filter: blur(1px);
+                        }
+
+                    #cont3jap1 {
+                        font-weight: bold;
+                        position: absolute;
+                        color: dimgray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont3jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: .3vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: -.1vw;
+                        left: 1.5vw;
+                    }
+
+                    #thirddate {
+                        font-weight: bold;
+                        position: absolute;
+                        top: -2%;
+                        right: 5%;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        font-family: Rei;
+                        color: gray;
+                    }
+
+                        #thirddate b {
+                            position: relative;
+                        }
+
+                        #thirddate span {
+                            font-size: 1.6vw;
+                        }
+
+                    #secondpsan2 {
+                        color: #505050;
+                    }
+
+                    #cont3jap3 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: 0;
+                        top: -.1vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap1 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: .1vw;
+                        left: .1vw;
+                        top: -.2vw;
+                    }
+
+                    #maintan {
+                        position: absolute;
+                        font-size: 5vw;
+                        font-family: neigefont3;
+                        color: gray;
+                        top: -4vw;
+                        left: 16%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+
+                    #secontan {
+                        position: absolute;
+                        font-size: .8vw;
+                        line-height: 1.2vw;
+                        top: 1vw;
+                        font-family: neigefont3;
+                        color: dimgray;
+                        left: 21.5%;
+                        text-shadow: .5vw .5vw .5vw black;
+                    }
+                </style>
+
+
+                <div id="contentboot2">
+                    <div id="conten1">
+                        <img src="https://i.postimg.cc/gJT1dCdg/qr.png" id="qrimg" />
+                        <div id="redes">
+                            <style>
+                                #redes {
+                                    position: absolute;
+                                    width: 58%;
+                                    height: 100%;
+                                    right: 0;
+                                }
+
+                                #red1 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                }
+
+                                #red2 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                    top: 50%;
+                                }
+
+                                .icon {
+                                    position: absolute;
+                                    height: 90%;
+                                    filter: brightness(160%);
+                                }
+
+                                #icon2 {
+                                    top: 10%;
+                                }
+
+                                #red1 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #red2 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #iconi1 {
+                                    position: absolute;
+                                    width: 3vw;
+                                    right: 2%;
+                                    bottom: -5%;
+                                }
+
+                                #iconi2 {
+                                    position: absolute;
+                                    width: 1.3vw;
+                                    left: 0%;
+                                    top: -5%;
+                                }
+                            </style>
+                            <div id="red1">
+                                <img class="icon" src="https://i.postimg.cc/1zT3MzV5/fb.png" /><span>@fuukys</span>
+                            </div>
+                            <div id="red2">
+                                <img class="icon" id="icon2" src="https://i.postimg.cc/1tq5dZD0/insta.png" /><span>@fuukys</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conten2">
+                        <img id="iconi2" src="https://i.postimg.cc/NFprbc6s/iconito2-waifu2x-photo-noise3-scale.png" /> <p id="cont2jap2"> な言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont2jap1">希娜尤</p><img id="iconi1" src="https://i.postimg.cc/xdw8PdBy/iconito-waifu2x-photo-noise3-scale.png" />
+                    </div>
+                    <div id="conten3">
+                        <p id="cont3jap1">夕方─ユウナ さらに遠く</p>
+                        <p id="cont3jap2"> 私の人生で最もな言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont3jap3">著作権 </p>
+                        <p id="thirddate"><span>11</span><b> / </b><span id="secondpsan2">12</span></p>
+                    </div>
+                    <div id="conten4">
+                        <p id="cont4jap1">作成され、設計された</p>
+                        <p id="cont4jap2"><span>˟NEON</span>|ゼ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+
+
+            <style>
+
+                @font-face {
+                    font-family: neigefont;
+                    src: url(neige.otf);
+                }
+                @font-face {
+                    font-family: bt;
+                    src: url(bea.otf);
+                }
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: europe;
+                    src: url(Europa.otf);
+                }
+
+                @font-face {
+                    font-family: tw;
+                    src: url(tw.ttf);
+                }
+
+                @font-face {
+                    font-family: kenFont;
+                    src: url(ken.otf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                @font-face {
+                    font-family: Rei;
+                    src: url(Rei.otf);
+                }
+
+                @font-face {
+                    font-family: bird;
+                    src: url(aston.ttf);
+                }
+
+                @keyframes flicker5 {
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .15;
+                    background-image: url("https://i.postimg.cc/7hBvVjgB/bak.png");
+                }
+            </style>
+
+      
+        </div>
+
+     
+   
+</body>
+
+</html>
