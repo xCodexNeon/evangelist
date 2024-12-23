@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -54,94 +54,184 @@
 
 <body>
     <div id="main">
-        
+        <script>
+            var contador = 0;
+            var phase0 = "https://i.postimg.cc/2Szz1c42/xneon.gif";
+            var phase1 = "https://i.postimg.cc/PrmV27KH/yuna.gif";
+            var phase2 = "https://i.postimg.cc/wMRnkcTG/yuki.gif";
+            var phase3 = "https://img.game8.co/3825876/4444dff673dcc2910915187e166be12e.png/show";
+            var phase4 = "https://img.game8.co/3825878/eb77d97b4cfa4dd1cdc8dc40c6f05d1c.png/show";
+            var phase5 = "https://img.game8.co/3825871/d861d72a21c80ec36edea761693b654f.png/show";
+            var phase6 = "https://img.game8.co/3825873/c9566ee36523fe144e6be3c754e29aad.png/show";
+            var phase7 = "https://img.game8.co/3825875/4e3cd94cb21436c21bb459de114a3159.png/show";
+
+            function openmail() { $("#imgbig").addClass("apar"); $("#imgbig").removeClass("ocult"); }
+            function closemail() { $("#imgbig").addClass("ocult"); $("#imgbig").removeClass("apar"); }
+
+            function cambiarurl() {
+                if (contador == 1) { $("#imgchange").attr("src", phase0); }
+                if (contador == 2) { $("#imgchange").attr("src", phase1); }
+                if (contador == 3) { $("#imgchange").attr("src", phase2); }
+            }
+
+            function numbercontador1() {
+                contador = 1;
+                cambiarurl();
+            }
+            function numbercontador2() {
+                contador = 2;
+                cambiarurl();
+            }
+            function numbercontador3() {
+                contador = 3;
+                cambiarurl();
+            }
+        </script>
         <div id="scrollcontent">
-           
+
             <style>
                 #see2 {
                     position: absolute;
                     font-size: 1vw;
-                    font-weight: bold; width:20%;
-                    font-family: bt; color:black;
-                    left:35%;  
+                    font-weight: bold;
+                    width: 20%;
+                    font-family: bt;
+                    color: black;
+                    left: 35%;
                 }
+
                 @keyframes toleft {
                     0% {
                         left: 25%;
                     }
+
                     50% {
                         left: 27%;
                     }
+
                     100% {
                         left: 25%;
                     }
                 }
+
                 #flecha2 {
                     position: absolute;
-                    width: 1vw; top:15%;
-                    left: 25%; animation: toleft 2s infinite;
+                    width: 1vw;
+                    top: 15%;
+                    left: 25%;
+                    animation: toleft 2s infinite;
                 }
-                #scrollcontent { position:absolute; width:100%; height:100%; top:0; left:0;
+
+                #scrollcontent {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
                     z-index: 99;
                 }
-                #cont { position:absolute;
+
+                #cont {
+                    position: absolute;
                     width: 100%;
-                    height: 55%; bottom:.5%; 
-                    /*transform:scaleX(-1);*/ 
-                    overflow-x: auto; 
-                    white-space: nowrap; scroll-behavior:smooth;
-                   
+                    height: 55%;
+                    bottom: .5%;
+                    /*transform:scaleX(-1);*/
+                    overflow-x: auto;
+                    white-space: nowrap;
+                    scroll-behavior: smooth;
                 }
-                    #cont::-webkit-scrollbar { height:.2vw; 
+
+                    #cont::-webkit-scrollbar {
+                        height: .2vw;
                     }
+
                     #cont::-webkit-scrollbar-thumb {
                         background: dimgray;
                         border-radius: 4px;
                     }
 
-                .item {/*transform:scaleX(-1);*/
-                    display: inline-block;  
-                      margin-left:2vw;
-                     width: 20vw; height:20vw;  z-index:99; position:relative; top:13%;
+                .item { /*transform:scaleX(-1);*/
+                    display: inline-block;
+                    margin-left: 2vw;
+                    width: 20vw;
+                    height: 20vw;
+                    z-index: 99;
+                    position: relative;
+                    top: 13%;
                 }
-                #firstitem { margin-left:35%;
+
+                #firstitem {
+                    margin-left: 35%;
                 }
+
                 #imggif {
-                    position: relative; width:100%; box-shadow: .5vw .5vw .5vw dimgray;  
+                    position: relative;
+                    width: 100%;
+                    box-shadow: .5vw .5vw .5vw dimgray;
                 }
-                #namespace { position:relative; font-size:1vw; font-weight:bold; font-family:bt;  
-                }
-                #descspace {
-                    position: relative; color:dimgray;
-                    top:-1vw;
-                    font-size: .7vw;
-                    font-weight: bold; line-height:.8vw;
+
+                #namespace {
+                    position: relative;
+                    font-size: 1vw;
+                    font-weight: bold;
                     font-family: bt;
                 }
+
+                #descspace {
+                    position: relative;
+                    color: dimgray;
+                    top: -1vw;
+                    font-size: .7vw;
+                    font-weight: bold;
+                    line-height: .8vw;
+                    font-family: bt;
+                }
+
                 #see {
                     position: relative;
                     font-size: .7vw;
                     font-weight: bold;
                     font-family: bt;
                 }
-                #flecha { position:relative; width:1vw; left:5%; top:.3vw;
+
+                #flecha {
+                    position: relative;
+                    width: 1vw;
+                    left: 5%;
+                    top: .3vw;
                 }
+
                 #tags {
                     position: relative;
                     color: gray;
                     top: -1vw;
-                    font-size: .5vw; letter-spacing:.1vw;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
                     line-height: .8vw;
                     font-family: bt;
                 }
-                #see a:hover { color:#7a3131; text-decoration:underline; cursor:pointer;
+
+                #see a:hover {
+                    color: #7a3131;
+                    text-decoration: underline;
+                    cursor: pointer;
                 }
+
                 #namespace i {
                     color: gray;
-                    font-size: .8vw; font-family:tw; letter-spacing:.05vw;
+                    font-size: .8vw;
+                    font-family: tw;
+                    letter-spacing: .05vw;
+                }
+                #imggif { cursor:pointer;
+                }
+                .ocult { opacity:0; z-index:-1;
+                }
+                .apar { opacity:1; z-index:999;
                 }
             </style>
-            
+
             <div id=cont>
                 <p id="see2">Scroll this<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha2" /></p>
                 <script>
@@ -159,7 +249,7 @@
                     })
                 </script>
                 <div class="item" id="firstitem">
-                    <a href="https://i.postimg.cc/2Szz1c42/xneon.gif"><img src="https://i.postimg.cc/2Szz1c42/xneon.gif" id="imggif" /></a>
+                    <img src="https://i.postimg.cc/2Szz1c42/xneon.gif" id="imggif" onclick="numbercontador1(); openmail();"  />
                     <p id="namespace">xNeon</p>
                     <p id="descspace">
                         "Butterfly what a beautiful wings you have<br />
@@ -170,7 +260,7 @@
                     <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
                 </div>
                 <div class="item">
-                    <a href="https://i.postimg.cc/PrmV27KH/yuna.gif"><img src="https://i.postimg.cc/PrmV27KH/yuna.gif" id="imggif" /></a>
+                     <img src="https://i.postimg.cc/PrmV27KH/yuna.gif" id="imggif" onclick="numbercontador2(); openmail();" /> 
                     <p id="namespace">Velvet Dawn</p>
                     <p id="descspace">
                         "Feel the spot don't let it burn <br />
@@ -181,7 +271,7 @@
                     <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
                 </div>
                 <div class="item">
-                    <a href="https://i.postimg.cc/wMRnkcTG/yuki.gif"><img src="https://i.postimg.cc/wMRnkcTG/yuki.gif" id="imggif" /></a>
+                   <img src="https://i.postimg.cc/wMRnkcTG/yuki.gif" id="imggif"   onclick="numbercontador3(); openmail();" /> 
                     <p id="namespace">Yukine</p>
                     <p id="descspace">
                         "And if the wind broke my wings<br />
@@ -203,16 +293,16 @@
                     <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
                 </div>
                 <!--<div class="item">
-        <a href="https://i.postimg.cc/ZK0QgNzY/shinobou.gif"><img src="https://i.postimg.cc/ZK0QgNzY/shinobou.gif" id="imggif" /></a>
-        <p id="namespace">USS SHINOBOU</p>
-        <p id="descspace">
-            "The moon is beautiful tonight<br />
-            isn't it?"<br />
-            ㅤ
-        </p>
-        <p id="tags">#Animated #Loop #Anime #Dinamic #Music #ScrollScreen</p>
-        <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
-    </div>-->
+                <a href="https://i.postimg.cc/ZK0QgNzY/shinobou.gif"><img src="https://i.postimg.cc/ZK0QgNzY/shinobou.gif" id="imggif" /></a>
+                <p id="namespace">USS SHINOBOU</p>
+                <p id="descspace">
+                    "The moon is beautiful tonight<br />
+                    isn't it?"<br />
+                    ㅤ
+                </p>
+                <p id="tags">#Animated #Loop #Anime #Dinamic #Music #ScrollScreen</p>
+                <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+            </div>-->
                 <div class="item">
                     <a href="https://i.postimg.cc/C5sdyKBS/morimens.gif"><img src="https://i.postimg.cc/C5sdyKBS/morimens.gif" id="imggif" /></a>
                     <p id="namespace">Morimens FC <i>[Match]</i></p>
@@ -372,6 +462,7 @@
                 #selected {
                     background: #c66025
                 }
+
                 #msge {
                     position: absolute;
                     width: 50%;
@@ -381,63 +472,64 @@
                     top: 40%;
                 }
 
-                #mg1 { 
+                #mg1 {
                     animation: flicker5 2s infinite alternate;
                     animation-delay: .5s;
                     color: rgb(92, 92, 92);
                     font-size: .8vw;
-                    font-family: tw; 
+                    font-family: tw;
                 }
 
-                #mg2 {  
+                #mg2 {
                     color: gray;
                     font-size: .8vw;
                     font-family: tw;
                 }
-
             </style>  <div id="backgif">
 
             </div>
-                      <div id="upcont">
-                          <style>
-                              #upcont {
-                                  position: absolute;
-                                  width: 80%;
-                                  height: 3%;
-                                  left: 10%;
-                                  top: 8%;
-                              }
+            <div id="upcont">
+                <style>
+                    #upcont {
+                        position: absolute;
+                        width: 80%;
+                        height: 3%;
+                        left: 10%;
+                        top: 8%;
+                    }
 
-                              #barup {
-                                  width: 30%;
-                                  height: .1vw;
-                                  position: absolute;
-                                  left: 35%;
-                                  top: 44.5%;
-                                  background: #171717;
-                              }
+                    #barup {
+                        width: 30%;
+                        height: .1vw;
+                        position: absolute;
+                        left: 35%;
+                        top: 44.5%;
+                        background: #171717;
+                    }
 
-                              #1px {
-                              }
-                          </style>
-                          <p id="1px" style="position: relative; left: 0; font-family: tw; font-size: .65vw; top:-.6vw;">
+                    #1px {
+                    }
+                </style>
+                <p id="1px" style="position: relative; left: 0; font-family: tw; font-size: .65vw; top:-.6vw;">
 
-                              Minimalist<br />Universe
-                          </p> <p id="2px" style="position: relative; right: 0; font-family: tw; font-size: .65vw; top:-2.8vw; text-align:right">
+                    Minimalist<br />Universe
+                </p> <p id="2px" style="position: relative; right: 0; font-family: tw; font-size: .65vw; top:-2.8vw; text-align:right">
 
-                             Logistic<br />Holographic
-                          </p>
-                          <div id="barup"></div>
-                      </div>
+                    Logistic<br />Holographic
+                </p>
+                <div id="barup"></div>
+            </div>
             <p id="neonnick">×Neon</p>
             <div id="numbers"><span>26</span><span id="selected">27</span><span>28</span><span>29</span><span>30</span><span>31</span></div>
             <div id="msge">
-                <p id="mg2"> Disembodied,  gasping,  I tumbled   <br />
-                  In the flush   <br />
-                 of a thousand  cold lights,   <br /> through this night  
-                <br />
-                <span id="mg1"> of neon, </span> <br />
-                 That I'll never belong to... </p>
+                <p id="mg2">
+                    Disembodied,  gasping,  I tumbled   <br />
+                    In the flush   <br />
+                    of a thousand  cold lights,   <br /> through this night
+                    <br />
+                    <span id="mg1"> of neon, </span> <br />
+                    That I'll never belong to...
+                </p>
             </div>
 
             <img id="com1" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" /><img id="com2" src="https://i.postimg.cc/25KKBMS7/COMILLAS.png" />
@@ -455,26 +547,87 @@
                 Time is laughing at me...
             </span>
         </i>
+        <div id="imgbig" class="ocult">
+            <style>
+                #imgbig {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,.6); 
+                    backdrop-filter: blur(5px);
+                }
+
+                #contimg {
+                    position: absolute;
+                    width: 60%;
+                    height: 60%;
+                    top: 20%;
+                    left: 20%;
+                }
+
+                #imgchange {
+                    position: absolute;
+                    width: 100%;
+                }
+
+                #return {
+                    position: absolute;
+                    color: lightgray;
+                    right: 20%;
+                    font-family: bt;
+                    font-size: 2vw;
+                    top: 10%;
+                    transition: all .5s ease;
+                }
+
+                    #return:hover {
+                        color: #be6161;
+                        cursor: pointer;
+                    }
+            </style>
+
+            <div id="contimg">
+                <img id="imgchange" src="" />
+            </div>
+            <p id="return" onclick="closemail()">Return</p>
+            
+        </div>
         <div id="barlinbot">
             <style>
-                #letjap { position:absolute; width:11%; right:1%; top:2%;
+                #letjap {
+                    position: absolute;
+                    width: 11%;
+                    right: 1%;
+                    top: 2%;
                 }
-                #barlinbot { 
+
+                #barlinbot {
                     position: absolute;
                     width: 100%;
                     height: 15%;
                     bottom: 0;
                 }
-                #title { position:absolute; left:36%; font-size:4vw; font-family:bt; top:20%;
+
+                #title {
+                    position: absolute;
+                    left: 36%;
+                    font-size: 4vw;
+                    font-family: bt;
+                    top: 20%;
                 }
+
                 #sutit {
                     position: absolute;
                     left: 37%;
                     font-size: 1vw;
                     font-family: bt;
-                    top: 37%; font-family:tw;
+                    top: 37%;
+                    font-family: tw;
                 }
-                    #sutit span { color:gray; font-size:.7vw;  
+
+                    #sutit span {
+                        color: gray;
+                        font-size: .7vw;
                     }
             </style>
 
@@ -754,85 +907,86 @@
                 </div>
             </div>
         </div>
-        
-
-        
 
 
-            <style>
 
-                @font-face {
-                    font-family: neigefont;
-                    src: url(neige.otf);
-                }
-                @font-face {
-                    font-family: bt;
-                    src: url(bea.otf);
-                }
-                @font-face {
-                    font-family: neigefont3;
-                    src: url(PMINGLIU.ttf);
-                }
 
-                @font-face {
-                    font-family: europe;
-                    src: url(Europa.otf);
-                }
 
-                @font-face {
-                    font-family: tw;
-                    src: url(tw.ttf);
-                }
+        <style>
 
-                @font-face {
-                    font-family: kenFont;
-                    src: url(ken.otf);
-                }
+            @font-face {
+                font-family: neigefont;
+                src: url(neige.otf);
+            }
 
-                @font-face {
-                    font-family: textfirmFont;
-                    src: url(firm.otf);
-                }
+            @font-face {
+                font-family: bt;
+                src: url(bea.otf);
+            }
 
-                @font-face {
-                    font-family: Rei;
-                    src: url(Rei.otf);
-                }
+            @font-face {
+                font-family: neigefont3;
+                src: url(PMINGLIU.ttf);
+            }
 
-                @font-face {
-                    font-family: bird;
-                    src: url(aston.ttf);
-                }
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
 
-                @keyframes flicker5 {
-                    20%, 24%, 55%, 100% {
-                        color: #FFF;
-                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
-                    }
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
 
-                    0%, 18%, 22% {
-                        color: rgba(66, 66, 66, 0.5);
-                        text-shadow: none;
-                    }
+            @font-face {
+                font-family: kenFont;
+                src: url(ken.otf);
+            }
+
+            @font-face {
+                font-family: textfirmFont;
+                src: url(firm.otf);
+            }
+
+            @font-face {
+                font-family: Rei;
+                src: url(Rei.otf);
+            }
+
+            @font-face {
+                font-family: bird;
+                src: url(aston.ttf);
+            }
+
+            @keyframes flicker5 {
+                20%, 24%, 55%, 100% {
+                    color: #FFF;
+                    text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
                 }
 
-
-                #backgif {
-                    position: absolute;
-                    width: 100%;
-                    top: 0%;
-                    height: 100%;
-                    opacity: .15;
-                    background-image: url("https://i.postimg.cc/7hBvVjgB/bak.png");
+                0%, 18%, 22% {
+                    color: rgba(66, 66, 66, 0.5);
+                    text-shadow: none;
                 }
-            </style>
+            }
 
-      
-        </div>
+
+            #backgif {
+                position: absolute;
+                width: 100%;
+                top: 0%;
+                height: 100%;
+                opacity: .15;
+                background-image: url("https://i.postimg.cc/7hBvVjgB/bak.png");
+            }
+        </style>
+
+
+    </div>
 
      
    
 </body>
 
 </html>
-
