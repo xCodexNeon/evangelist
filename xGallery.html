@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -56,18 +56,39 @@
     <div id="main">
         
         <div id="scrollcontent">
-
+           
             <style>
+                #see2 {
+                    position: absolute;
+                    font-size: 1vw;
+                    font-weight: bold; width:20%;
+                    font-family: bt; color:black;
+                    left:35%;  
+                }
+                @keyframes toleft {
+                    0% {
+                        left: 25%;
+                    }
+                    50% {
+                        left: 27%;
+                    }
+                    100% {
+                        left: 25%;
+                    }
+                }
+                #flecha2 {
+                    position: absolute;
+                    width: 1vw; top:15%;
+                    left: 25%; animation: toleft 2s infinite;
+                }
                 #scrollcontent { position:absolute; width:100%; height:100%; top:0; left:0;
                     z-index: 99;
                 }
                 #cont { position:absolute;
                     width: 100%;
-                    height: 50%; bottom:.5%; 
-                    /*transform:scaleX(-1);*/
-                    overflow: hidden;
-                    overflow-x: auto;
-                    overflow-y: hidden;
+                    height: 55%; bottom:.5%; 
+                    /*transform:scaleX(-1);*/ 
+                    overflow-x: auto; 
                     white-space: nowrap; scroll-behavior:smooth;
                    
                 }
@@ -81,12 +102,12 @@
                 .item {/*transform:scaleX(-1);*/
                     display: inline-block;  
                       margin-left:2vw;
-                     width: 20vw; height:20vw;  z-index:99; position:relative;
+                     width: 20vw; height:20vw;  z-index:99; position:relative; top:13%;
                 }
                 #firstitem { margin-left:35%;
                 }
                 #imggif {
-                    position: relative; width:100%; box-shadow: .5vw .5vw .5vw dimgray;
+                    position: relative; width:100%; box-shadow: .5vw .5vw .5vw dimgray;  
                 }
                 #namespace { position:relative; font-size:1vw; font-weight:bold; font-family:bt;  
                 }
@@ -103,7 +124,7 @@
                     font-weight: bold;
                     font-family: bt;
                 }
-                #flecha { position:absolute; width:1vw; left:25%;
+                #flecha { position:relative; width:1vw; left:5%; top:.3vw;
                 }
                 #tags {
                     position: relative;
@@ -113,9 +134,16 @@
                     line-height: .8vw;
                     font-family: bt;
                 }
+                #see a:hover { color:#7a3131; text-decoration:underline; cursor:pointer;
+                }
+                #namespace i {
+                    color: gray;
+                    font-size: .8vw; font-family:tw; letter-spacing:.05vw;
+                }
             </style>
             
             <div id=cont>
+                <p id="see2">Scroll this<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha2" /></p>
                 <script>
                     $('#cont').on('wheel', function (ev) {
                         let y = parseInt(ev.originalEvent.deltaY);
@@ -187,15 +215,87 @@
     </div>-->
                 <div class="item">
                     <a href="https://i.postimg.cc/C5sdyKBS/morimens.gif"><img src="https://i.postimg.cc/C5sdyKBS/morimens.gif" id="imggif" /></a>
-                    <p id="namespace">Morimens FM</p>
+                    <p id="namespace">Morimens FC <i>[Match]</i></p>
                     <p id="descspace">
                         "A feeling not be denied<br />
                         But I know I know I know I know I know<br />
                         We'll be together someday"
                     </p>
-                    <p id="tags">#Animated #Loop #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="tags">#Animated #Match #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="see"><a>Morimens FC</a> / Morimens MC<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /> </p>
+                </div>
+
+                <div class="item">
+                    <a href="https://i.postimg.cc/JhwGfGqB/neon.gif"><img src="https://i.postimg.cc/JhwGfGqB/neon.gif" id="imggif" /></a>
+                    <p id="namespace">B𝟐 Experimental</p>
+                    <p id="descspace">
+                        "Swallow your freedom<br />
+                        Swallow your smile<br />
+                        Swallow your sanity that crawls and itching inside"
+                    </p>
+                    <p id="tags">#Animated #Design #Dinamic #Music #OnlyScreen</p>
                     <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
                 </div>
+
+                <div class="item">
+                    <a href="https://i.postimg.cc/kMtgWxd3/meri.gif"><img src="https://i.postimg.cc/kMtgWxd3/meri.gif" id="imggif" /></a>
+                    <p id="namespace">Meriggiare</p>
+                    <p id="descspace">
+                        "The snow has fallen<br />
+                        And raised this white mountain<br />
+                        On which you will die and fade away in silence"
+                    </p>
+                    <p id="tags">#Anime #Loop #Dinamic #Music #OnlyScreen</p>
+                    <p id="see">More Details<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /></p>
+                </div>
+                <div class="item">
+                    <a href="https://i.postimg.cc/28Nf8wny/hutao.gif"><img src="https://i.postimg.cc/28Nf8wny/hutao.gif" id="imggif" /></a>
+                    <p id="namespace">Genshin UI VHuTao <i>[Match]</i></p>
+                    <p id="descspace">
+                        "The moon shines over the vast ocean<br />
+                        hanging from a clear sky<br />
+                        This is a perfect moment to compose a poem"
+                    </p>
+                    <p id="tags">#Animated #Match #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="see">VHuTao / <a>VFurina</a> / VZhongli<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /> </p>
+                </div>
+
+                <div class="item">
+                    <a href="https://i.postimg.cc/vBmZhv0b/zhongli.gif"><img src="https://i.postimg.cc/vBmZhv0b/zhongli.gif" id="imggif" /></a>
+                    <p id="namespace">Genshin UI VZhongli <i>[Match]</i></p>
+                    <p id="descspace">
+                        "Every journey must come to an end<br />
+                        There is no hurry<br />
+                        ㅤ"
+                    </p>
+                    <p id="tags">#Animated #Match #Game #Dinamic #Music #MultiScreen</p>
+                    <p id="see">VHuTao / <a>VFurina</a> / VZhongli<img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /> </p>
+                </div>
+
+                <div class="item">
+                    <a href="https://i.postimg.cc/0Q7kZTjq/astralis.gif"><img src="https://i.postimg.cc/0Q7kZTjq/astralis.gif" id="imggif" /></a>
+                    <p id="namespace">Astralis <i>[xNeon VER]</i></p>
+                    <p id="descspace">
+                        "We're all of the stars<br />
+                        we're fading away Just try not to worry<br /> you'll see us some day"
+                    </p>
+                    <p id="tags">#Animated #Loop #Anime #Dinamic #Music #OnlyScreen</p>
+                    <p id="see"><a>More Details</a><img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /> </p>
+                </div>
+
+                <div class="item">
+                    <a href="https://i.postimg.cc/y63KFT9h/hiro.gif"><img src="https://i.postimg.cc/y63KFT9h/hiro.gif" id="imggif" /></a>
+                    <p id="namespace">Faux Semblants <i>[Hirondelle]</i></p>
+                    <p id="descspace">
+                        "Désincarné² haletant⁸ je suis<br /> tombé
+                        Dans la lumière⁷ de mille lumières¹<br />
+                        froides⁶ À travers¹ cette nuit de néon³"
+                    </p>
+                    <p id="tags">#Animated #Loop #Victorian #Dinamic #Music #MultiScreen</p>
+                    <p id="see"><a>More Details</a><img src="https://i.postimg.cc/PxZM3phx/flecha-correcta.png" id="flecha" /> </p>
+                </div>
+
+
             </div>
         </div>
 
@@ -735,3 +835,4 @@
 </body>
 
 </html>
+
