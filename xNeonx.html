@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -568,8 +568,8 @@
                     }
                 #numbers {
                     position: absolute;
-                    width: 50%;
-                    left: 0%; 
+                    width: 60%;
+                    left: -2%; 
                     top: 82%;
                     height: 1.3vw;
                     text-align: center;
@@ -577,7 +577,7 @@
                     #numbers span {
                         font-family: tw; font-weight:bold;
                         font-size: .8vw; transition:all .3s ease;
-                        margin: 4%;
+                        margin: 2.7%;
                         padding: .2vw; cursor:pointer;
                         border-radius: 50%;
                     }
@@ -594,6 +594,25 @@
                 }
                 #dateimg { position:absolute; width:55%; border-left:.1vw solid gray; top:45%;
                 }
+                #mywork { position:absolute; top:29%; z-index:99; font-family:bt; font-size:1vw; left:10%; color:#171717; font-weight:bold;
+                }
+                    #mywork span { animation:toleft2 2s infinite; position:absolute;
+                    }
+                #mywork:hover { color:#677994;
+                }
+                @keyframes toleft2 {
+                    0% {
+                        left: -15%;
+                    }
+
+                    50% {
+                        left: -7%;
+                    }
+
+                    100% {
+                        left: -15%;
+                    }
+                }
             </style>
             <script>
                 function deselected() {
@@ -609,11 +628,22 @@
                 <p id="pareapx">MY SWEET<span> DECADENCE</span></p>
             </div>
             <img src="https://i.postimg.cc/W4xcLG6m/fecha-waifu2x-photo-noise3-scale.png" id="dateimg" />
-            <div id="numbers" onmouseover="deselected();"><span>26</span><span class="selected" id="desel">27</span><span>28</span><span>29</span><span>30</span><span>31</span></div>
+            <div id="numbers" onmouseover="deselected();">
+                <a href="https://xat.me/Lynette"> <span>26</span></a>
+                <a href="https://xat.me/id=942659922"><span class="selected" id="desel">27</span></a>
+                <a href="https://xat.me/Necessarius"><span>28</span></a>
+                <a href="https://xat.me/Kiri"> <span>29</span></a>
+                <a href="https://xat.me/Saeroyi"><span>30</span></a>
+                <a href="https://xat.me/bratttttttttttttt"> <span>31</span></a>
+            </div>
+        
+        
         </div>
-
+        <a href="https://xcodexneon.github.io/evangelist/xGallery.html"><p id="mywork"><span>></span>My work</p></a>
         <div id="areatextonick">
             <style>
+                #numbers a { position:relative; text-decoration:none; margin:0; color:#171717;
+                }
                 #areatextonick {
                     z-index: 999;
                     position: absolute;
@@ -1440,3 +1470,4 @@
 </body>
 
 </html>
+
