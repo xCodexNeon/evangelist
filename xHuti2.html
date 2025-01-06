@@ -1,0 +1,1190 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <link rel="stylesheet" href="anticlockwise_styles.css">
+    <script type="text/javascript" src="cdn.jsdelivr.net_particles.js_2.0.0_particles.min.js"></script>
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 120%;
+            top: 0; 
+            position: fixed;
+        }
+
+        @font-face {
+            font-family: bt;
+            src: url(bea.otf);
+        }
+
+        #background {
+            position: absolute;
+            width: 92%;
+            height: 100%;
+            left: 8%;
+            opacity: .3;
+        }
+
+        #motiv {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://i.postimg.cc/Wz6jNkDR/motiv1.png);
+            opacity: .1;
+           
+        }
+        #motiv2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:#ff6a00;
+            opacity: .1;
+        }
+
+        #roller {
+            position: absolute;
+            width: 5%;
+            left: 79%;
+            height: 100%;  z-index:999;
+            top: 0;
+        }
+
+        #roller1 {
+            position: absolute;
+            width: 10%;
+            left: 15%;
+            height: 100%;
+            top: 0; 
+            z-index: 999;
+        }
+        @-webkit-keyframes toleft {
+            0% {
+                left: 0%;
+            }
+
+            100% {
+                left: -20%;
+            }
+        }
+
+        @-webkit-keyframes toroght {
+            0% {
+                left: -20%;
+            }
+
+            100% {
+                left: 0%;
+            }
+        }
+
+        .main3 {
+            animation: toleft .5s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .nomain3 {
+            animation: toroght .5s 1;
+            animation-fill-mode: forwards;
+        }
+         
+    </style>
+</head>
+
+
+<body>
+    <div id="main">
+        <style>
+        </style>
+
+        <div id="motiv">
+
+        </div>
+        <div id="linup">
+
+        </div>
+
+        <div id="occult" class="noocult">
+            <style>
+                #occult { position:absolute; width: 25%; height:80%;   left:32%;  transition:all 1s ease;
+                }
+                .siocult {
+                    top: 80%;
+                    filter:blur(5px); opacity:0;
+                }
+                .noocult {
+                    top: 2%;
+                    filter: blur(0px);
+                    opacity: 1;
+                }
+
+                #firstdivch { position:absolute; width:55%; left:15%;   height:80%; top:5%; border-right:.1vw solid gray;
+                }
+                #first1 {
+                    position: absolute;
+                    width: 70%;
+                    height: 7%;
+                    border-bottom: .1vw solid gray;
+                }
+                    #first1p {
+                        font-family: neigefont3;
+                        position: absolute;
+                        width: 40%; top:25%; height:50%;
+                        border-right: .1vw solid gray; font-size:1.7vw;
+                    }
+                        #first1p p {
+                            position: absolute;
+                            top: -2.2vw;
+                            color: #660607;
+                            left: 0%;
+                            letter-spacing: .2vw;
+                        }
+                #pgenshin { position:absolute; font-family:tw; font-size:.7vw; left:50%; letter-spacing:.05vw; color:dimgray;
+                }
+                #hutaop { position:absolute; font-family:tw; font-size:3vw; top:-3%; letter-spacing:0vw; color:#660607;
+                }
+                    #hutaop span { color:dimgray;
+                    }
+            </style>
+            
+            <div id="firstdivch">
+                <div id="first1">
+                    <div id="first1p">  <p>胡濤</p></div>
+                  <p id="pgenshin">Genshin Impact</p>
+                </div>
+                <p id="hutaop">Hu &nbsp;<span>Tao</span>&nbsp; ▪</p>
+            </div>
+        </div>
+
+        <div id="barbot2">
+            <style>
+                #barbot2 {
+                    position: absolute;
+                    width: 100%;
+                    height: 30%;
+                    bottom: 0;
+                    background: #660607; 
+                }
+
+                
+                 
+            </style>
+            <div id="half">
+
+            </div>
+        </div>
+        <!--<img src="https://i.postimg.cc/cJYpvV05/render.png" id="renderback" />-->
+        <script>
+            function onhoverroller() {
+
+                $("#main").removeClass("nomain3"); $("#main").addClass("main3");
+                $("#occult").removeClass("siocult"); $("#occult").addClass("noocult");
+            }
+
+            function onhoverroller3() {
+
+                $("#main").removeClass("main3"); $("#main").addClass("nomain3");
+                $("#occult").removeClass("noocult"); $("#occult").addClass("siocult");
+            }
+        </script>
+        <div id="roller1" onmouseover="onhoverroller3()"></div>
+        <div id="roller" onmouseover="onhoverroller()"></div>
+        <div id="main2">
+            <style>
+                #main2 {
+                    position: absolute;
+                    width: 83.4%;
+                    height: 100%;
+                }
+            </style>
+
+            <img src="https://i.postimg.cc/cJYpvV05/render.png" id="render" />
+            <div id="barbot">
+                <style>
+                    #barbot {
+                        position: absolute;
+                        width: 100%;
+                        height: 30%;
+                        bottom: 0;
+                        background: #660607;
+                        box-shadow: 0 -.5vw 1.5vw #171717;
+                    }
+
+                    #render {
+                        position: absolute;
+                        height: 97%;
+                        top: 3%;
+                        left: 48%;
+                    }
+
+                    #renderback {
+                        position: absolute;
+                        opacity: .6;
+                        filter: blur(5px) brightness(-100%);
+                        height: 97%;
+                        top: 4%;
+                        left: 49%;
+                    }
+
+                    #linup {
+                        position: absolute;
+                        width: 100%;
+                        height: 2%;
+                        background: #660607;
+                        box-shadow: 0 .5vw 1.5vw #171717;
+                    }
+
+                    #half {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        transform: scaleY(-1);
+                        background-image: url(https://static.vecteezy.com/system/resources/thumbnails/007/354/882/small/abstract-halftone-gradient-background-free-vector.jpg);
+                        opacity: .1;
+                        background-size: contain;
+                    }
+                </style>
+                <div id="half">
+
+                </div>
+            </div>
+            <img src="https://i.postimg.cc/k5qx3b1Y/render2.png" id="renderback" />
+            <img src="https://i.postimg.cc/k5qx3b1Y/render2.png" id="render" />
+            <div id="pyukine">
+                <style>
+                    #pyukine { position:absolute; width:15%; height:20%;   top:15%; left:60%; 
+                    }
+                    #div1 {
+                        position: absolute;
+                        width: 80%;
+                        height: 40%;
+                        background: #660607;
+                    }
+                        #div1 p { color:white; font-family:europe; font-size:3.3vw; letter-spacing:.2vw; position:absolute; top:-3vw; left:.3vw;
+                        }
+                </style>
+                <div id="div1">
+                    <p>YUKINE</p>
+                </div>
+            </div>
+
+
+            <div id="areapr1">
+                <style>
+                    @font-face {
+                        font-family: bird;
+                        src: url(aston.ttf);
+                    }
+
+                    #areapr1 {
+                        position: absolute;
+                        width: 30%;
+                        height: 40%;
+                        top: 10%;
+                        left: 12%;
+                    }
+
+                    #friends {
+                        position: absolute;
+                        width: 100%;
+                        height: 10%;
+                        top: 20%;
+                    }
+
+                    #plyn {
+                        position: absolute;
+                        font-size: 7vw;
+                        font-family: bt;
+                        letter-spacing: -.1vw;
+                        text-shadow: .5vw .5vw 1vw #171717;
+                        color: #290B0D;
+                    }
+
+                    #psai {
+                        background: linear-gradient(to right, #AF2F00, #830101, #5E1111, #340404);
+                        background-size: cover;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-shadow: .5vw .5vw 1vw #303030;
+                        font-size: 9vw;
+                        left: 30%;
+                        position: absolute;
+                        font-family: textfirmFont;
+                        /* position: absolute;
+                        color: #AF2F00;
+
+                        font-size: 8vw; top:30%; left:30%;
+                        text-shadow: .5vw .5vw .5vw #171717;*/
+                    }
+
+                    #form1f {
+                        font-size: 3.1vw;
+                        font-weight: bold;
+                        font-family: europe;
+                        margin-right: .7vw;
+                        background: linear-gradient(to right, #830101, #5E1111, #340404);
+                        background-size: cover;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+
+                    #form2f {
+                        font-size: 3vw;
+                        margin-right: .7vw;
+                        font-weight: bold;
+                        font-family: europe;
+                        color: transparent;
+                        -webkit-text-stroke-width: .2px;
+                        -webkit-text-stroke-color: #290B0D;
+                    }
+                </style>
+                <div id="friends">
+                    <span id="form1f">+</span> <span id="form2f">+</span><span id="form1f">+</span> <span id="form2f">+</span><span id="form1f">+</span> <span id="form2f">+</span>
+                    <span id="form1f">+</span>
+                </div>
+                <p id="plyn">LYNETTE</p>
+                <p id="psai">Saikai</p>
+            </div>
+
+            <script>
+                function onhoverp1() {
+                    $("#foto1").removeClass("nohover");
+                    $("#foto1").addClass("hoveron");
+
+                    $("#foto2").removeClass("hoveron");
+                    $("#foto2").addClass("noveron");
+                    $("#foto3").removeClass("hoveron");
+                    $("#foto3").addClass("noveron");
+                }
+                function onhoverp2() {
+                    $("#foto2").removeClass("nohover");
+                    $("#foto2").addClass("hoveron");
+
+                    $("#foto1").removeClass("hoveron");
+                    $("#foto1").addClass("noveron");
+                    $("#foto3").removeClass("hoveron");
+                    $("#foto3").addClass("noveron");
+                }
+                function onhoverp3() {
+                    $("#foto3").removeClass("nohover");
+                    $("#foto3").addClass("hoveron");
+
+                    $("#foto1").removeClass("hoveron");
+                    $("#foto1").addClass("noveron");
+                    $("#foto2").removeClass("hoveron");
+                    $("#foto2").addClass("noveron");
+                }
+            </script>
+            <div id="areapolarois">
+                <style>
+                    .hoveron {
+                        z-index: 2;
+                    }
+
+                    .nohover {
+                        z-index: 1;
+                    }
+
+                    #areapolarois {
+                        position: absolute;
+                        width: 10%;
+                        height: 70%;
+                        top: 15%;
+                        z-index: 99;
+                    }
+
+                    .polaroid {
+                        position: absolute;
+                        width: 7vw;
+                        height: 8vw;
+                        background: white;
+                        box-shadow: .4vw .4vw .6vw #505050;
+                    }
+
+                    #foto1 {
+                        left: 20%;
+                        transform: rotate(5deg);
+                        transition: all .5s ease;
+                    }
+
+                        #foto1:hover {
+                            transform: rotate(-5deg);
+                        }
+
+                    #foto2 {
+                        top: 20%;
+                        left: 20%;
+                        transform: rotate(-7deg);
+                        transition: all .5s ease;
+                    }
+
+                        #foto2:hover {
+                            transform: rotate(3deg);
+                        }
+
+                    #foto3 {
+                        top: 40%;
+                        left: 20%;
+                        transform: rotate(4deg);
+                        transition: all .5s ease;
+                    }
+
+                        #foto3:hover {
+                            transform: rotate(-7deg);
+                        }
+
+                    .pin {
+                        position: fixed;
+                        width: 2vw;
+                        left: 42%;
+                        top: -.5vw;
+                        filter: hue-rotate(260deg);
+                    }
+
+                    #contimgpol {
+                        position: absolute;
+                        width: 80%;
+                        height: 65%;
+                        left: 10%;
+                        top: 10%;
+                        overflow: hidden;
+                        border: .1vw solid black;
+                    }
+
+                        #contimgpol img {
+                            position: absolute;
+                            height: 100%;
+                        }
+                </style>
+                <div class="polaroid nohover" id="foto1" onmouseover="onhoverp1();">
+                    <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
+                    <div id="contimgpol">
+                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
+                    </div>
+                    <div id="backgif"></div>
+                </div>
+                <div class="polaroid nohover" id="foto2" onmouseover="onhoverp2();">
+                    <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
+                    <div id="contimgpol">
+                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
+                    </div>
+                    <div id="backgif"></div>
+                </div>
+                <div class="polaroid nohover" id="foto3" onmouseover="onhoverp3();">
+                    <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
+                    <div id="contimgpol">
+                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
+                    </div>
+                    <div id="backgif"></div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div id="boxfires2" class="ag-fireflies_box sifires">
+            <style>
+
+
+                #boxfires2 {
+                    /*filter: sepia(1);*/
+                    filter: hue-rotate( -20deg) saturate(900%) blur(2px);
+                    opacity: .9;
+                    transition: all 2s ease;
+                    z-index: 8;
+                }
+            </style>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+            <div class="ag-fireflies_item">
+                <div class="ag-fireflies_inner"></div>
+            </div>
+        </div>
+
+
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .1;
+                    z-index: 0;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                opacity: .6;
+                /*animation:brig .5s infinite;*/
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+        </style>
+
+    </div>
+        <div id="barlinbot">
+            <style>
+
+                #barlinbot {
+                    position: fixed;
+                    width: 100%;
+                    height: 15%;
+                    bottom: 0;
+                    z-index: 1;
+                }
+            </style>
+
+            <div id="contentbot">
+                <style>
+                    @font-face {
+                        font-family: Rei;
+                        src: url(Rei.otf);
+                    }
+
+                    #contentbot {
+                        position: absolute;
+                        right: .5%;
+                        height: 80%;
+                        width: 30%;
+                        top: 10%;
+                        opacity: .8;
+                    }
+
+                    #contenboot1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                    }
+
+                    #contentboot2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 60%;
+                        top: 40%;
+                    }
+
+                    #conten1 {
+                        position: absolute;
+                        width: 24%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten2 {
+                        position: absolute;
+                        width: 24%;
+                        left: 25%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten3 {
+                        position: absolute;
+                        width: 28%;
+                        left: 50%;
+                        height: 70%;
+                        top: 35%;
+                        border-right: .2vw solid dimgray;
+                    }
+
+                    #conten4 {
+                        position: absolute;
+                        width: 24%;
+                        left: 79%;
+                        height: 70%;
+                        top: 35%;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        height: 100%;
+                        border-radius: .2vw;
+                    }
+
+                    #cont4jap1 {
+                        position: absolute;
+                        color: gray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont4jap2 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.5vw;
+                        letter-spacing: -.15vw;
+                        top: -.9vw;
+                        left: .5vw;
+                    }
+
+                        #cont4jap2 span {
+                            animation: flicker5 2s infinite alternate;
+                            animation-delay: .5s;
+                            color: #303030;
+                            filter: blur(1px);
+                        }
+
+                    #cont3jap1 {
+                        font-weight: bold;
+                        position: absolute;
+                        color: dimgray;
+                        font-size: .65vw;
+                        letter-spacing: -.1vw;
+                        top: -.7vw;
+                        left: .5vw;
+                    }
+
+                    #cont3jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: .3vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap2 {
+                        position: absolute;
+                        letter-spacing: -.1vw;
+                        color: gray;
+                        font-size: .4vw;
+                        top: -.1vw;
+                        left: 1.5vw;
+                    }
+
+                    #thirddate {
+                        font-weight: bold;
+                        position: absolute;
+                        top: -2%;
+                        right: 5%;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        font-family: Rei;
+                        color: gray;
+                    }
+
+                        #thirddate b {
+                            position: relative;
+                        }
+
+                        #thirddate span {
+                            font-size: 1.6vw;
+                        }
+
+                    #secondpsan2 {
+                        color: #505050;
+                    }
+
+                    #cont3jap3 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: 0;
+                        top: -.1vw;
+                        left: .5vw;
+                    }
+
+                    #cont2jap1 {
+                        font-family: tw;
+                        position: absolute;
+                        color: gray;
+                        font-size: 1.2vw;
+                        letter-spacing: .1vw;
+                        left: .1vw;
+                        top: -.2vw;
+                    }
+                </style>
+
+
+                <div id="contentboot2">
+                    <div id="conten1">
+                        <img src="https://i.postimg.cc/gJT1dCdg/qr.png" id="qrimg" />
+                        <div id="redes">
+                            <style>
+                                #redes {
+                                    position: absolute;
+                                    width: 58%;
+                                    height: 100%;
+                                    right: 0;
+                                }
+
+                                #red1 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                }
+
+                                #red2 {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 50%;
+                                    top: 50%;
+                                }
+
+                                .icon {
+                                    position: absolute;
+                                    height: 90%;
+                                    filter: brightness(160%);
+                                }
+
+                                #icon2 {
+                                    top: 10%;
+                                }
+
+                                #red1 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #red2 span {
+                                    color: gray;
+                                    font-size: .7vw;
+                                    font-family: tw;
+                                    left: 33%;
+                                    position: absolute;
+                                    top: .4vw;
+                                }
+
+                                #iconi1 {
+                                    position: absolute;
+                                    width: 3vw;
+                                    right: 2%;
+                                    bottom: -5%;
+                                }
+
+                                #iconi2 {
+                                    position: absolute;
+                                    width: 1.3vw;
+                                    left: 0%;
+                                    top: -5%;
+                                }
+                            </style>
+                            <div id="red1">
+                                <img class="icon" src="https://i.postimg.cc/1zT3MzV5/fb.png" /><span>@xNeon</span>
+                            </div>
+                            <div id="red2">
+                                <img class="icon" id="icon2" src="https://i.postimg.cc/1tq5dZD0/insta.png" /><span>@xNeon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conten2">
+                        <img id="iconi2" src="https://i.postimg.cc/NFprbc6s/iconito2-waifu2x-photo-noise3-scale.png" /> <p id="cont2jap2"> な言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont2jap1">希娜尤</p><img id="iconi1" src="https://i.postimg.cc/xdw8PdBy/iconito-waifu2x-photo-noise3-scale.png" />
+                    </div>
+                    <div id="conten3">
+                        <p id="cont3jap1">夕方─ユウナ さらに遠く</p>
+                        <p id="cont3jap2"> 私の人生で最もな言葉だ 私の翼は決 して飛び立つ</p>
+                        <p id="cont3jap3">著作権 </p>
+                        <p id="thirddate"><span>21</span><b> / </b><span id="secondpsan2">12</span></p>
+                    </div>
+                    <div id="conten4">
+                        <p id="cont4jap1">作成され、設計された</p>
+                        <p id="cont4jap2"><span>˟NEON</span>|ゼ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
