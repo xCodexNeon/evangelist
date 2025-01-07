@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -128,55 +128,264 @@
 
         </div>
 
-        <div id="occult" class="noocult">
+        <div id="occult" class="siocult">
             <style>
-                #occult { position:absolute; width: 25%; height:80%;   left:32%;  transition:all 1s ease;
+                #occult {
+                    position: absolute;
+                    width: 25%;
+                    height: 80%;
+                    left: 32%;
+                    transition: all 1s ease;
                 }
+
                 .siocult {
                     top: 80%;
-                    filter:blur(5px); opacity:0;
+                    filter: blur(5px);
+                    opacity: 0;
                 }
+
                 .noocult {
                     top: 2%;
                     filter: blur(0px);
                     opacity: 1;
                 }
 
-                #firstdivch { position:absolute; width:55%; left:15%;   height:80%; top:5%; border-right:.1vw solid gray;
+                #firstdivch {
+                    position: absolute;
+                    width: 55%;
+                    left: 15%;
+                    height: 80%;
+                    top: 5%;
+                    border-right: .1vw solid gray;
                 }
+
                 #first1 {
                     position: absolute;
                     width: 70%;
                     height: 7%;
                     border-bottom: .1vw solid gray;
                 }
-                    #first1p {
-                        font-family: neigefont3;
+
+                #first1p {
+                    font-family: neigefont3;
+                    position: absolute;
+                    width: 40%;
+                    top: 25%;
+                    height: 50%;
+                    border-right: .1vw solid gray;
+                    font-size: 1.7vw;
+                }
+
+                    #first1p p {
                         position: absolute;
-                        width: 40%; top:25%; height:50%;
-                        border-right: .1vw solid gray; font-size:1.7vw;
+                        top: -2.2vw;
+                        color: #660607;
+                        left: 0%;
+                        letter-spacing: .2vw;
                     }
-                        #first1p p {
-                            position: absolute;
-                            top: -2.2vw;
-                            color: #660607;
-                            left: 0%;
-                            letter-spacing: .2vw;
-                        }
-                #pgenshin { position:absolute; font-family:tw; font-size:.7vw; left:50%; letter-spacing:.05vw; color:dimgray;
+
+                #pgenshin {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: .7vw;
+                    left: 50%;
+                    letter-spacing: .05vw;
+                    color: dimgray;
                 }
-                #hutaop { position:absolute; font-family:tw; font-size:3vw; top:-3%; letter-spacing:0vw; color:#660607;
+
+                #hutaop {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: 3vw;
+                    top: -3%;
+                    letter-spacing: 0vw;
+                    color: #660607;
                 }
-                    #hutaop span { color:dimgray;
+
+                    #hutaop span {
+                        color: dimgray;
+                    }
+
+                #gif1 {
+                    position: absolute;
+                    width: 69%;
+                    border: .2vw solid #660607;
+                    border-radius: .4vw;
+                    top: 20%;
+                }
+
+                #hashs {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: .55vw;
+                    color: dimgray;
+                    top: 15.5%;
+                    left: 1%;
+                    letter-spacing: .05vw;
+                }
+
+                #over {
+                    position: absolute;
+                    width: 70%;
+                    left: 1%;
+                    height: 12%;
+                    top: 39%;
+                    border-radius: 0 0 0 .2vw;
+                    border-left: .1vw solid gray;
+                    border-bottom: .1vw solid gray;
+                }
+
+                #linupcube {
+                    position: absolute;
+                    color: #660607;
+                    top: -3.4vw;
+                    font-size: 1.8vw;
+                    left: -.35vw;
+                }
+
+                #overv {
+                    left: 4vw;
+                    font-size: .6vw;
+                    position: absolute;
+                    left: 15%;
+                    font-family: tw;
+                    letter-spacing: .05vw;
+                    top: -1vw;
+                }
+
+                #overtext {
+                    left: 4vw;
+                    font-size: .5vw;
+                    position: absolute;
+                    left: 15%;
+                    color: dimgray;
+                    font-family: tw;
+                    letter-spacing: .05vw;
+                }
+
+                #linupcube2 {
+                    position: absolute;
+                    color: #660607;
+                    top: 46%;
+                    font-size: 1.8vw;
+                    left: -.5%;
+                }
+
+                #letchover {
+                    position: absolute;
+                    color: dimgray;
+                    top: 52%;
+                    font-size: .5vw;
+                    width: 58%;
+                    letter-spacing: .02vw;
+                    left: 11%;
+                }
+
+                #butonsover {
+                    position: absolute;
+                    width: 70%;
+                    height: 6%;
+                    top: 60%;
+                }
+
+                #iconi1x {
+                    position: absolute;
+                    width: 1.8vw;
+                    background: #660607;
+                    height: 1.8vw;
+                    border-radius: .1vw;
+                }
+
+                    #iconi1x img {
+                        position: absolute;
+                        width: 1.5vw;
+                        left: 1.5vw;
+                        left: .15vw;
+                        top: .15vw;
+                        filter: invert(80%);
+                    }
+
+                #piconi1x {
+                    position: absolute;
+                    color: dimgray;
+                    font-size: .6vw;
+                    letter-spacing: .02vw;
+                    left: 20%;
+                }
+
+                #iconi2x {
+                    position: absolute;
+                    width: 1.8vw;
+                    background: #660607;
+                    height: 1.8vw;
+                    left: 60%;
+                    border-radius: .1vw;
+                }
+
+                    #iconi2x img {
+                        position: absolute;
+                        width: 1.5vw;
+                        left: 1.5vw;
+                        left: .15vw;
+                        top: .15vw;
+                        filter: invert(80%);
+                    }
+
+                #piconi2x {
+                    position: absolute;
+                    color: dimgray;
+                    font-size: .6vw;
+                    letter-spacing: .02vw;
+                    left: 80%;
+                }
+
+                #barlateralx {
+                    position: absolute;
+                    width: 70%;
+                    left: 0%;
+                    top: 70%;
+                    height: 2%;
+                    background: linear-gradient(to right, #660607,#5E1111,#290B0D,transparent );
+                }
+
+                #fantasyp {
+                    position: absolute;
+                    font-family: europe;
+                    top: 70%;
+                    font-size: 2.5vw;
+                    color: gray;
+                }
+
+                    #fantasyp span {
+                        color: #830101;
                     }
             </style>
-            
+
             <div id="firstdivch">
                 <div id="first1">
                     <div id="first1p">  <p>胡濤</p></div>
-                  <p id="pgenshin">Genshin Impact</p>
+                    <p id="pgenshin">Genshin Impact</p>
                 </div>
                 <p id="hutaop">Hu &nbsp;<span>Tao</span>&nbsp; ▪</p>
+                <p id="hashs">#Genshin #Character</p>
+                <img src="https://cdn.pfps.gg/banners/7098-hutao-and-her-ghost.gif" id="gif1" />
+                <div id="over">
+                    <p id="linupcube">▪</p><span id="overv">Overview&nbsp;&nbsp;&nbsp; //////</span>
+                    <p id="overtext">Hu Tao's antics and eccentricity belies her role as the 77th Director of the Wangsheng Funeral Parlor and her talent as a poet</p>
+                </div>
+                <p id="linupcube2">▪</p> <p id="letchover">胡濤的滑稽和古怪掩蓋了她作為旺生殯儀館第77任院長的身份和詩人的才華</p>
+                <div id="butonsover">
+                    <div id="iconi1x">
+                        <img src="https://i.postimg.cc/c1gyDxL4/forma-abstracta.png" />
+                    </div> <p id="piconi1x">Female/Her/She</p>
+                    <div id="iconi2x">
+                        <img src="https://i.postimg.cc/c1gyDxL4/forma-abstracta.png" />
+                    </div> <p id="piconi2x">21/XXI</p>
+                </div>
+                <div id="barlateralx">
+
+                </div>
+                <p id="fantasyp">Is a <span>Broken</span> <br /> Fantasy<span>▪</span></p>
             </div>
         </div>
 
@@ -187,11 +396,8 @@
                     width: 100%;
                     height: 30%;
                     bottom: 0;
-                    background: #660607; 
+                    background: #660607;
                 }
-
-                
-                 
             </style>
             <div id="half">
 
@@ -221,7 +427,95 @@
                     height: 100%;
                 }
             </style>
+            <div id="secc1">
+                <style>
+                    #secc1 {
+                        position: absolute;
+                        width: 20%;
+                        height: 10%;
+                        top: 4%;
+                        left: 2%;
+                    }
 
+                    #hutitext {
+                        position: absolute;
+                        width: 40%;
+                        height: 100%;
+                    }
+
+                        #hutitext p {
+                            position: absolute;
+                            font-family: neigefont3;
+                            font-size: 4vw;
+                            top: -4vw;
+                        }
+
+                            #hutitext p span {
+                                position: absolute;
+                                font-family: neigefont3;
+                                font-size: 3vw;
+                                top: 1vw;
+                            }
+
+                    #spinflower {
+                        position: absolute;
+                        width: 3.5vw;
+                        left: 45%;
+                        top: -15%;
+                        opacity: .8;
+                        animation: toleftx 6s infinite;
+                    }
+
+                    @-webkit-keyframes toleftx {
+                        0% {
+                            transform: rotate(0deg)
+                        }
+
+                        12.5% {
+                            transform: rotate(45deg)
+                        }
+
+                        25% {
+                            transform: rotate(90deg)
+                        }
+
+                        38% {
+                            transform: rotate(135deg)
+                        }
+
+                        50% {
+                            transform: rotate(180deg)
+                        }
+
+                        63% {
+                            transform: rotate(225deg)
+                        }
+
+                        73% {
+                            transform: rotate(270deg)
+                        }
+
+                        91% {
+                            transform: rotate(315deg)
+                        }
+
+                        100% {
+                            transform: rotate(360deg)
+                        }
+                    }
+
+                    #prueba {
+                        position: absolute;
+                        height: 20%;
+                        bottom: 3%;
+                        left: 15%;
+                    }
+                </style>
+                <div id="hutitext">
+                    <img src="https://i.postimg.cc/yxMPqWsy/893251316b0485315f89c2e811250a36.png" id="spinflower" />
+                    <p>胡<span>濤</span></p>
+                </div>
+            </div>
             <img src="https://i.postimg.cc/cJYpvV05/render.png" id="render" />
             <div id="barbot">
                 <style>
@@ -271,27 +565,143 @@
                 <div id="half">
 
                 </div>
+
+                <div id="subtitle">
+                    <style>
+                        @font-face {
+                            font-family: queen;
+                            src: url(queen.otf);
+                        }
+
+                        #subtitle {
+                            position: absolute;
+                            width: 20%;
+                            height: 80%;
+                            top: 20%;
+                        }
+
+                        #sparks {
+                            position: absolute;
+                            font-family: tw;
+                            top: -30%;
+                            font-size: 3.5vw;
+                            letter-spacing: -.1vw;
+                            line-height: 2.5vw;
+                            left: 3%;
+                            color: gray;
+                            text-transform: uppercase;
+                            background: linear-gradient(to right, gray, #290B0D, #340404);
+                            background-size: cover;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+
+                        #barcode {
+                            position: absolute;
+                            height: 16%;
+                            bottom: 3%;
+                            filter: grayscale(100%) invert(30%);
+                            left: 3%;
+                        }
+
+                        #sparkspsub {
+                            position: absolute;
+                            width: 80%;
+                            font-size: .6vw;
+                            color: dimgray;
+                            font-family: tw;
+                            left: 5%;
+                            top: 40%;
+                            text-transform: uppercase;
+                            background: linear-gradient(to right, gray, #290B0D, #340404);
+                            background-size: cover;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+                    </style>
+                    <p id="sparks">Sparks of <br />Liyue</p>
+                    <p id="sparkspsub">Eldest hilichurl got sickThe second one took careThe third one brought the medicineFourth hilichurl preparedEldest hilichurl got sick</p>
+                    <img src="https://i.postimg.cc/1tCrSz2m/cd.png" id="barcode">
+                </div>
+
+                <div id="subtitle2">
+                    <style>
+                        #subtitle2 {
+                            position: absolute;
+                            width: 40%;
+                            height: 90%;
+                            left: 20%;
+                            top: 5%;
+                        }
+
+                        #subt1p {
+                            position: absolute;
+                            font-family: queen;
+                            font-size: 5vw;
+                            text-transform: uppercase;
+                            letter-spacing: -.2vw;
+                            top: -4vw;
+                            background: linear-gradient(to right, gray, #290B0D, #340404);
+                            background-size: cover;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            text-shadow: .5vw .5vw 1vw black;
+                        }
+
+                        #subt2p {
+                            position: absolute;
+                            font-family: queen;
+                            font-size: 5vw;
+                            left: 5%;
+                            text-transform: uppercase;
+                            letter-spacing: -.2vw;
+                            background: linear-gradient(to left, gray, #290B0D, #340404);
+                            background-size: cover;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            text-shadow: .5vw .5vw 1vw black;
+                        }
+                    </style>
+                    <p id="subt1p">Papilio.</p>
+                    <p id="subt2p">Charontis~</p>
+                </div>
+
+
             </div>
             <img src="https://i.postimg.cc/k5qx3b1Y/render2.png" id="renderback" />
             <img src="https://i.postimg.cc/k5qx3b1Y/render2.png" id="render" />
             <div id="pyukine">
                 <style>
-                    #pyukine { position:absolute; width:15%; height:20%;   top:15%; left:60%; 
+                    #pyukine {
+                        position: absolute;
+                        width: 15%;
+                        height: 20%;
+                        top: 15%;
+                        left: 60%;
                     }
+
                     #div1 {
                         position: absolute;
                         width: 80%;
                         height: 40%;
                         background: #660607;
                     }
-                        #div1 p { color:white; font-family:europe; font-size:3.3vw; letter-spacing:.2vw; position:absolute; top:-3vw; left:.3vw;
+
+                        #div1 p {
+                            color: white;
+                            font-family: europe;
+                            font-size: 3.3vw;
+                            letter-spacing: .2vw;
+                            position: absolute;
+                            top: -3vw;
+                            left: .3vw;
                         }
                 </style>
                 <div id="div1">
                     <p>YUKINE</p>
                 </div>
-            </div>
 
+            </div>
 
             <div id="areapr1">
                 <style>
@@ -361,6 +771,13 @@
                         -webkit-text-stroke-width: .2px;
                         -webkit-text-stroke-color: #290B0D;
                     }
+
+                    #adorn1 {
+                        position: absolute;
+                        width: 8%;
+                        top: 75%;
+                        filter: hue-rotate(310deg) contrast(120%) brightness(50%);
+                    }
                 </style>
                 <div id="friends">
                     <span id="form1f">+</span> <span id="form2f">+</span><span id="form1f">+</span> <span id="form2f">+</span><span id="form1f">+</span> <span id="form2f">+</span>
@@ -368,6 +785,8 @@
                 </div>
                 <p id="plyn">LYNETTE</p>
                 <p id="psai">Saikai</p>
+                <img src="https://i.postimg.cc/CMtrCQCV/balls-waifu2x-photo-noise3-scale.png" id="adorn1" />
+
             </div>
 
             <script>
@@ -379,6 +798,8 @@
                     $("#foto2").addClass("noveron");
                     $("#foto3").removeClass("hoveron");
                     $("#foto3").addClass("noveron");
+                    $("#foto4").removeClass("hoveron");
+                    $("#foto4").addClass("noveron");
                 }
                 function onhoverp2() {
                     $("#foto2").removeClass("nohover");
@@ -388,6 +809,8 @@
                     $("#foto1").addClass("noveron");
                     $("#foto3").removeClass("hoveron");
                     $("#foto3").addClass("noveron");
+                    $("#foto4").removeClass("hoveron");
+                    $("#foto4").addClass("noveron");
                 }
                 function onhoverp3() {
                     $("#foto3").removeClass("nohover");
@@ -397,10 +820,29 @@
                     $("#foto1").addClass("noveron");
                     $("#foto2").removeClass("hoveron");
                     $("#foto2").addClass("noveron");
+                    $("#foto4").removeClass("hoveron");
+                    $("#foto4").addClass("noveron");
+                }
+                function onhoverp4() {
+                    $("#foto4").removeClass("nohover");
+                    $("#foto4").addClass("hoveron");
+
+                    $("#foto1").removeClass("hoveron");
+                    $("#foto1").addClass("noveron");
+                    $("#foto2").removeClass("hoveron");
+                    $("#foto2").addClass("noveron");
+                    $("#foto3").removeClass("hoveron");
+                    $("#foto3").addClass("noveron");
                 }
             </script>
             <div id="areapolarois">
                 <style>
+
+                    @font-face {
+                        font-family: sketch;
+                        src: url(sketch.ttf);
+                    }
+
                     .hoveron {
                         z-index: 2;
                     }
@@ -422,7 +864,7 @@
                         width: 7vw;
                         height: 8vw;
                         background: white;
-                        box-shadow: .4vw .4vw .6vw #505050;
+                        box-shadow: .4vw .4vw .6vw #303030;
                     }
 
                     #foto1 {
@@ -457,6 +899,17 @@
                             transform: rotate(-7deg);
                         }
 
+                    #foto4 {
+                        top: 60%;
+                        left: 20%;
+                        transform: rotate(-4deg);
+                        transition: all .5s ease;
+                    }
+
+                        #foto4:hover {
+                            transform: rotate(7deg);
+                        }
+
                     .pin {
                         position: fixed;
                         width: 2vw;
@@ -473,35 +926,65 @@
                         top: 10%;
                         overflow: hidden;
                         border: .1vw solid black;
+                        overflow: hidden;
                     }
 
                         #contimgpol img {
                             position: absolute;
-                            height: 100%;
+                            width: 100%;
                         }
+
+                    #polaroidfirm {
+                        position: relative;
+                        font-family: sketch;
+                        top: 58%;
+                        font-size: 1.5vw;
+                        text-align: center;
+                        transform: rotate(-6deg);
+                    }
+
+                    #polaroiddate {
+                        position: absolute;
+                        top: 18%;
+                        left: -1.4vw;
+                        font-size: .8vw;
+                        transform: rotate(-90deg);
+                        opacity: .7;
+                    }
                 </style>
                 <div class="polaroid nohover" id="foto1" onmouseover="onhoverp1();">
                     <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
                     <div id="contimgpol">
-                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
+                        <img src="https://i.postimg.cc/t70TGnJk/a657a99db8d5964a0d7eb6c4cf1383c1.jpg" />
                     </div>
+                    <p id="polaroiddate">౹੨-੨੫-੨੫</p>
+                    <p id="polaroidfirm">Yuki x Neon</p>
                     <div id="backgif"></div>
                 </div>
                 <div class="polaroid nohover" id="foto2" onmouseover="onhoverp2();">
                     <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
                     <div id="contimgpol">
-                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
-                    </div>
+                        <img src="https://i.postimg.cc/pTFQf8wY/469509740-596907899559528-2381400418752381126-n.jpg" />
+                    </div> <p id="polaroiddate">౹੨-੨੫-੨੫</p>
+                    <p id="polaroidfirm">Yuki x Lucia</p>
                     <div id="backgif"></div>
                 </div>
                 <div class="polaroid nohover" id="foto3" onmouseover="onhoverp3();">
                     <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
                     <div id="contimgpol">
-                        <img src="https://i.postimg.cc/m20wkVJ2/hu-tao-and-boo-tao-genshin-impact-drawn-by-gya-144-sample-059f2cc4f7be0b392eef835e5ee8620f.jpg" />
-                    </div>
+                        <img src="https://i.pinimg.com/originals/90/d2/f8/90d2f80bbb8e27aeefa73b00d0fb9fee.jpg" />
+                    </div> <p id="polaroiddate">౹੨-੨੫-੨੫</p>
+                    <p id="polaroidfirm">Yuki x Hank</p>
                     <div id="backgif"></div>
                 </div>
-
+                <div class="polaroid nohover" id="foto4" onmouseover="onhoverp4();">
+                    <img src="https://i.postimg.cc/cH526wf7/klipartz-com-5.png" class="pin" />
+                    <div id="contimgpol">
+                        <img src="https://i.postimg.cc/3RQ5fZgB/Captura-de-pantalla-2025-01-06-205939.png" />
+                    </div> <p id="polaroiddate">౹੨-੨੫-੨੫</p>
+                    <p id="polaroidfirm">Yuki x Nece</p>
+                    <div id="backgif"></div>
+                </div>
 
             </div>
 
@@ -911,13 +1394,392 @@
             }
         </style>
 
+        <div id="Aaudio">
+            <script>
+                $(document).ready(function () {
+                    var playing = false,
+                        artistname = $(".artist-name"),
+                        musicName = $(".music-name"),
+                        time = $(".time"),
+                        fillBar = $(".fillBar");
+
+                    let audioData = [];
+
+                    var song = new Audio();
+                    var CurrentSong = 0;
+                    window.onload = load();
+
+                    function load() {
+                        audioData = [
+
+                            {
+                                name: "Radio off",
+                                artist: "Radio off",
+                                src:
+                                    ""
+                            },
+                            {
+                                name: "stars will fall",
+                                artist: "shamrain",
+                                src:
+                                    "stars.mp3"
+                            },
+                            {
+                                name: "No one remembers your name",
+                                artist: "ShamRain",
+                                src:
+                                    "noone.mp3"
+                            },
+
+
+                            {
+                                name: "My still haven",
+                                artist: "Shamrain",
+                                src:
+                                    "mystill.mp3"
+                            },
+
+
+
+                            {
+                                name: "STOP CRYING YOUR HEART",
+                                artist: "OASIS",
+                                src:
+                                    "heart.mp3"
+                            },
+                            {
+                                name: "Chau",
+                                artist: "NTVG",
+                                src:
+                                    "chau.mp3"
+                            },
+
+
+
+
+                        ];
+
+                        artistname.html(audioData[CurrentSong].artist);
+                        musicName.html(audioData[CurrentSong].name);
+                        song.src = audioData[CurrentSong].src;
+                    }
+
+                    function playSong() {
+                        var curSong = audioData[CurrentSong];
+                        artistname.html(curSong.artist);
+                        musicName.html(curSong.name);
+                        song.src = curSong.src;
+                        song.play();
+                        $("#play").addClass("fa-pause");
+                        $("#play").removeClass("fa-play");
+                        $("p").addClass("active");
+                        $(".player-track").addClass("active");
+                    }
+
+                    song.addEventListener("timeupdate", function () {
+                        var position = (100 / song.duration) * song.currentTime;
+                        var current = song.currentTime;
+                        var duration = song.duration;
+                        var durationMinute = Math.floor(duration / 60);
+                        var durationSecond = Math.floor(duration - durationMinute * 60);
+                        var durationLabel = durationMinute + ":" + durationSecond;
+                        currentSecond = Math.floor(current);
+                        currentMinute = Math.floor(currentSecond / 60);
+                        currentSecond = currentSecond - currentMinute * 60;
+                        // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                        if (currentSecond < 10) {
+                            currentSecond = "0" + currentSecond;
+                        }
+                        var currentLabel = currentMinute + ":" + currentSecond;
+
+                        var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                        fillBar.css("width", position + "%");
+
+                        $(".time").html(indicatorLabel);
+                    });
+                    //////
+                    $("#a_in").click(function playOrPause() {
+                        if (song.paused) {
+                            song.play();
+                            playing = true;
+                            $("#play").addClass("fa-pause");
+                            $("#play").removeClass("fa-play");
+                            $("p").addClass("active");
+                            /* $("#bar1").addClass("br1");*/
+
+                        } else {
+                            song.pause();
+                            playing = false;
+                            $("#play").removeClass("fa-pause");
+                            $("#play").addClass("fa-play");
+                            $("p").removeClass("active");
+
+
+                        }
+                    });
+                    $("#play").click(function () {
+
+                        song.play();
+                        playing = true;
+                    });
+                    $("#pause").click(function () {
+                        song.pause();
+                        playing = false;
+                    });
+                    $("#stop").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 4) {
+                            CurrentSong = 0;
+                        }
+                        song.pause();
+                        playing = false;
+                    });
+                    $("#prev").click(function prev() {
+                        CurrentSong--;
+                        if (CurrentSong < 0) {
+                            CurrentSong = 4;
+                        }
+                        playSong();
+                    });
+
+                    $("#next").click(function next() {
+                        CurrentSong++;
+                        if (CurrentSong > 4) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    });
+                    $("#next2").click(function next() {
+                        CurrentSong = 4;
+                        if (CurrentSong > 6) {
+                            CurrentSong = 0;
+                        }
+                        playSong();
+                    });
+                });
+
+            </script>
+
+            <style>
+
+
+                #Aaudio {
+                    position: absolute;
+                    width: 24%;
+                    left: 18.5%;  top:91%;
+                    height: 10%; z-index:999;
+                }
+
+                #backrepro {
+                    position: absolute;
+                    width: 100%;
+                    height: 85%;
+                }
+
+                #abtnaud {
+                    cursor: pointer;
+                    filter: sepia(1) brightness(80%);
+                    position: absolute;
+                    width: 23.5%;
+                    height: 23%;
+                    right:-2%;
+                    top: 60%;
+                }
+
+                .butplayer {
+                    float: left;
+                    height: 1vw;
+                    top: -.25vw;
+                    width: 1vw;
+                    margin-left: .4vw;
+                    position: relative;
+                }
+
+                .butpl {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    left: 0;
+                    top: .3vw;
+                    border-radius: .2vw;
+                    transition: all .5s ease;
+                }
+
+                    .butpl:hover {
+                        /*background: #5e0880;*/
+                    }
+
+                    .butpl img {
+                        position: absolute;
+                        width: .8vw;
+                        height: .8vw;
+                        /*filter: invert(100%);*/
+                        left: .07vw;
+                        top: .1vw;
+                    }
+
+                #pause, #play, #next, #prev, #stop {
+                    width: 1vw;
+                    height: 1vw;
+                    position: absolute;
+                    left: 0;
+                }
+
+
+                .progress-bar {
+                    top: 30%;
+                    width: 82%;
+                    left: 7%;
+                    height: .35vw;
+                    position: absolute;
+                    background: linear-gradient(to right, #B8AA6B, #B8AA6B, #171717, #171717, transparent, transparent);
+                    filter: grayscale(50%);
+                }
+
+                .fillBar {
+                    background: #628796;
+                    width: 0;
+                    height: .35vw;
+                    background: linear-gradient(to left, #B8AA6B, #B8AA6B, #171717, #171717, transparent, transparent);
+                }
+
+
+                #namesong {
+                    text-transform: uppercase;
+                    position: absolute;
+                    width: 100%;
+                    height: 70%;
+                    top: 10%;
+                    left: 7.2%;
+                    color: #B8AA6B;
+                    font-family: tw;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    width: 88%;
+                    height: 100%; left:7%;
+                    top: 42%;
+                    font-size: .6vw; 
+                    color:  gray;
+                    font-family: tw;
+                }
+
+                #AT_time {
+                    width: 70%;
+                    height: 1vw;
+                    top: 85%;
+                    right: 0;
+                    position: absolute;
+                }
+
+                    #AT_time p {
+                        position: absolute;
+                        font-family: 'Oswald', sans-serif;
+                        letter-spacing: .1vw;
+                        font-size: .5vw;
+                        color: lightgray;
+                    }
+
+                .time {
+                    position: absolute;
+                    right: 13%;
+                    top: -150%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .1vw;
+                    font-size: .45vw;
+                    overflow: hidden;
+                    color: #B8AA6B;
+                }
+
+                #name_sng {
+                    position: relative;
+                    float: left;
+                }
+
+                #next2 {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 3vw;
+                    height: 1vw;
+                    left: 40%;
+                    top: 0%;
+                }
+
+                    #next2 p {
+                        position: absolute;
+                        color: #5e0880;
+                        text-shadow: 0 0 1vw #171717;
+                        font-size: 2vw;
+                    }
+            </style>
+
+            <img src="https://i.postimg.cc/8kqsxGnH/ss.png" id="backrepro" />
+
+            <div class="progress-bar">
+                <div class="fillBar"></div>
+            </div>
+
+
+            <div id="AT_time"><div class="time"></div></div>
+            <div id="namesong"> <div id="name_sng" class="music-name"></div></div>
+            <div> </div>
+            <div class="artist-name"></div>
+
+            <div id="abtnaud">
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" style="transform:rotate(180deg);" />
+                        <div id="prev" class="fas fa-backward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/RCY7bkhn/play.png" style="width:.6vw; height:.6vw; left:.15vw; top:.2vw;" />
+                        <div id="play"> </div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/4yjp79q1/next.png" />
+
+                        <div id="next" class="fas fa-forward"><p></p></div>
+                    </div>
+
+                </div>
+                <div class="butplayer">
+                    <div class="butpl">
+                        <img src="https://i.postimg.cc/Nfr6hd2C/pause.png" />
+                        <div id="pause"> </div>
+                    </div>
+
+                </div>
+                <!--<div class="butplayer">
+                <div class="butpl">
+                    <img src="https://i.postimg.cc/3r6bxSW-b/parada.png" style="width:1vw; height:1vw; left:.6vw; top:.6vw;" />
+                    <div id="stop"> </div>
+                </div>
+
+            </div>-->
+            </div>
+
+
+
+        </div>
+
+
     </div>
         <div id="barlinbot">
             <style>
 
                 #barlinbot {
                     position: fixed;
-                    width: 100%;
+                    width: 30%;right:0;
                     height: 15%;
                     bottom: 0;
                     z-index: 1;
@@ -935,7 +1797,7 @@
                         position: absolute;
                         right: .5%;
                         height: 80%;
-                        width: 30%;
+                        width: 100%;
                         top: 10%;
                         opacity: .8;
                     }
@@ -1188,3 +2050,4 @@
 </body>
 
 </html>
+
