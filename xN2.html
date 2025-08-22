@@ -1,0 +1,1500 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        #imgmain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .7;
+        }
+        #render {
+            position: absolute;
+            right: -5%;
+            height: 120%;
+            top: 0;
+            z-index: 1;
+        }
+        #backrender {
+            z-index: 1;
+            filter: brightness(-100%) blur(10px);
+            opacity: .8;
+            position: absolute;
+            right: -6%;
+            height: 120%;
+            top: 2%;
+        }
+        #maintext1 {
+            z-index: 1;
+            position: absolute;
+            font-size: 10vw;
+            font-family: tw;
+            color: darkgray;
+            text-align: right;
+            right: -15%;
+            transform: rotate(90deg);
+            top: 15%;
+            /* mix-blend-mode:difference;*/
+            text-shadow: 0 0 1vw black;
+            line-height: 7vw;
+        }
+        @font-face {
+            font-family: bt;
+            src: url(bea.otf);
+        }
+        
+        @font-face {
+            font-family:migueto;
+            src: url(Migueto.ttf);
+        }
+        @font-face {
+            font-family: migueto2;
+            src: url(migueto2.otf);
+        }
+        @font-face {
+            font-family: comp2;
+            src: url(comp.otf);
+        }
+        #background { position:absolute; width:92%; height:100%; left:8%; opacity:.3;
+        }
+    </style>
+</head>
+
+
+<body onload="digi()">
+    <div id="main">
+        <style>
+        </style>
+
+        <canvas id="canvasx">
+            <script>
+
+                const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                    STAR_SIZE = 1.5,
+                    STAR_MIN_SCALE = 0.2,
+                    OVERFLOW_THRESHOLD = 50;
+
+                const canvas4 = document.getElementById("canvasx"),
+                    context = canvas4.getContext("2d");
+
+                let scale = 1, // device pixel ratio
+                    width,
+                    height;
+
+                let stars = [];
+
+                let pointerX, pointerY;
+
+                let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                let touchInput = false;
+
+                generate();
+                resize();
+                step();
+
+                window.onresize = resize;
+                window.onmousemove = onMouseMove;
+                window.ontouchmove = onTouchMove;
+                window.ontouchend = onMouseLeave;
+                document.onmouseleave = onMouseLeave;
+
+                function generate() {
+                    for (let i = 0; i < STAR_COUNT; i++) {
+                        stars.push({
+                            x: 0,
+                            y: 0,
+                            z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                        });
+
+                    }
+                }
+
+                function placeStar(star) {
+                    star.x = Math.random() * width;
+                    star.y = Math.random() * height;
+                }
+
+                function recycleStar(star) {
+                    let direction = "z";
+
+                    let vx = Math.abs(velocity.x),
+                        vy = Math.abs(velocity.y);
+
+                    if (vx > 1 || vy > 1) {
+                        let axis;
+
+                        if (vx > vy) {
+                            axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                        } else {
+                            axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                        }
+
+                        if (axis === "h") {
+                            direction = velocity.x > 0 ? "l" : "r";
+                        } else {
+                            direction = velocity.y > 0 ? "t" : "b";
+                        }
+                    }
+
+                    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                    if (direction === "z") {
+                        star.z = 0.1;
+                        star.x = Math.random() * width;
+                        star.y = Math.random() * height;
+                    } else if (direction === "l") {
+                        star.x = -OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "r") {
+                        star.x = width + OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "t") {
+                        star.x = width * Math.random();
+                        star.y = -OVERFLOW_THRESHOLD;
+                    } else if (direction === "b") {
+                        star.x = width * Math.random();
+                        star.y = height + OVERFLOW_THRESHOLD;
+                    }
+                }
+
+                function resize() {
+                    scale = window.devicePixelRatio || 1;
+
+                    width = window.innerWidth * scale;
+                    height = window.innerHeight * scale;
+
+                    canvas4.width = width;
+                    canvas4.height = height;
+
+                    stars.forEach(placeStar);
+                }
+
+                function step() {
+                    context.clearRect(0, 0, width, height);
+
+                    update();
+                    render();
+
+                    requestAnimationFrame(step);
+                }
+
+                function update() {
+                    velocity.tx *= 0.36;
+                    velocity.ty *= 0.36;
+
+                    velocity.x += (velocity.tx - velocity.x) * 0.7;
+                    velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                    stars.forEach(star => {
+                        star.x += velocity.x * star.z;
+                        star.y += velocity.y * star.z;
+
+                        star.x += (star.x - width / 2) * velocity.z * star.z;
+                        star.y += (star.y - height / 2) * velocity.z * star.z;
+                        star.z += velocity.z;
+
+                        // recycle when out of bounds
+                        if (
+                            star.x < -OVERFLOW_THRESHOLD ||
+                            star.x > width + OVERFLOW_THRESHOLD ||
+                            star.y < -OVERFLOW_THRESHOLD ||
+                            star.y > height + OVERFLOW_THRESHOLD) {
+                            recycleStar(star);
+                        }
+                    });
+                }
+
+                function render() {
+                    stars.forEach(star => {
+                        context.beginPath();
+                        context.lineCap = "round";
+                        context.lineWidth = STAR_SIZE * star.z * scale;
+                        context.strokeStyle =
+                            "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                        context.beginPath();
+                        context.moveTo(star.x, star.y);
+
+                        var tailX = velocity.x * 2,
+                            tailY = velocity.y * 2;
+
+                        // stroke() wont work on an invisible line
+                        if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                        if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                        context.lineTo(star.x + tailX, star.y + tailY);
+
+                        context.stroke();
+                    });
+                }
+
+                function movePointer(x, y) {
+                    if (typeof pointerX === "number" && typeof pointerY === "number") {
+                        let ox = x - pointerX,
+                            oy = y - pointerY;
+
+                        velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                        velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                    }
+
+                    pointerX = x;
+                    pointerY = y;
+                }
+
+                function onMouseMove(event) {
+                    touchInput = false;
+
+                    movePointer(event.clientX, event.clientY);
+                }
+
+                function onTouchMove(event) {
+                    touchInput = true;
+
+                    movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                    event.preventDefault();
+                }
+
+                function onMouseLeave() {
+                    pointerX = null;
+                    pointerY = null;
+                }
+            </script>
+        </canvas>
+
+
+
+        <div id="part1">
+            <style>
+                #part1 {
+                    position: absolute;
+                    width: 20%;
+                    height: 100%;
+                    background: #171717;
+                    z-index: 1;
+                }
+                @font-face {
+                    font-family: ht;
+                    src: url(ht.ttf);
+                }
+                @font-face {
+                    font-family: tak;
+                    src: url(tak.otf);
+                }
+            </style>
+            <div id="namenick">
+                <style>
+                    #namenick { position:absolute; width:80%; left:10%; top:67%; height:18%;  
+                    }
+                    #txtmain1 { font-size:3vw; font-family:migueto;  color:lightgray; text-align:center; position:relative;
+                    }
+                    #neontxt {
+                        font-size: 4vw;
+                        top: -8.5vw;
+                        font-family: tak;
+                        color: lightgray;
+                        text-align: center;
+                        position: relative;
+                        text-shadow: 0 0 .3vw white;
+                        animation: flickerx 2s infinite alternate;
+                    }
+                    @keyframes flickerx {
+
+                        20%, 24%, 55%, 100% {
+                            color: lightgray;
+                            text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                        }
+
+                        0%, 18%, 22% {
+                            color: rgba(66, 66, 66, 0.5);
+                            text-shadow: none;
+                        }
+                    }
+                    #p1txt { 
+                        left:20%;
+                        position:absolute; text-align:center; color:lightgray; font-size:.6vw; font-family:tw; border-bottom:.1vw solid gray; padding-bottom:.2vw;  top: 90%; letter-spacing:.1vw; opacity:.5;
+                    }
+                    #p2txt {
+                        left: 30%;
+                        position: absolute;
+                        text-align: center;
+                        color: lightgray;
+                        font-size: .6vw;
+                        font-family: tw;
+                        border-bottom: .1vw solid gray;
+                        padding-bottom: .2vw;
+                        top: 105%;
+                        letter-spacing: .1vw;
+                        opacity: .5;
+                    }
+                    #divbartxt { position:absolute; width:50%; height:1vw;   left:25%; top:5%;
+                    }
+                    #divbardiv { width:60%; height:.1vw; background:darkgray; left:20%; top:45%; position:absolute;
+                    }
+                    #txtsp1 { position:absolute; font-size:.6vw; color:darkgray; font-family:tw; top:.2vw; left:5%;
+                    }
+                    #txtsp2 {
+                        position: absolute;
+                        font-size: .6vw;
+                        color: darkgray;
+                        font-family: tw;
+                        top: .2vw;
+                        right: 5%;
+                    }
+
+                </style>
+                <div id="divbartxt">
+                    <span id="txtsp1">02</span><div id="divbardiv"></div><span id="txtsp2">13</span>
+                </div>
+                <p id="txtmain1">Froid Perçant</p>
+                <p id="neontxt">Lumiere</p>
+                <p id="p1txt">DECEMBRE // xNEON //</p><p id="p2txt"> DKSL - FROID</p>
+            </div>
+             
+        </div>
+        <div id="friendsarea">
+            <style>
+                #friendsarea { position:absolute; width:20%; height:13%;  z-index:9; top:1%;
+                }
+                #fisrtpf { position:absolute; left:2%; font-family:tw; color:darkgray; font-size:1.2vw;  text-transform:uppercase; top:0vw;
+                }
+                #fisrtpf2 {
+                    position: absolute;
+                    left: 2%;
+                    font-family: tw;
+                    color: darkgray;
+                    font-size: 1.2vw;
+                    text-transform: uppercase; top:1.5vw; border-bottom:.2vw solid darkgray; padding-bottom:.2vw;
+                }
+                #fisrtpf span {
+                    animation: flickerstar 2s alternate infinite; 
+                }
+                    #fisrtpf span a {
+                        color: darkgray;
+                    }
+                @keyframes flickerstar {
+
+                    0% { text-shadow: 0 0 0vw white;
+                    }
+                    50% {
+                        text-shadow: 0 0 .5vw white;
+                    }
+                    100% {
+                        text-shadow: 0 0 .5vw white;
+                    }
+                }
+                a { text-decoration:none;
+                }
+
+            </style> 
+            <p id="fisrtpf">
+                Pour toute cette &nbsp;&nbsp;<span> <a href="https://xat.me/942659922">✦</a></span>
+                <span><a href="https://xat.me/Necessarius">✦</a></span>
+                <span> <a href="https://xat.me/bratttttttttttttt">✦</a></span>
+                <span><a href="https://xat.me/itami">✦</a></span> <span><a href="https://xat.me/kiri">✦</a></span>
+            </p> 
+
+            <p id="fisrtpf2">L'éternité</p>
+        </div>
+       
+
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .15;
+                    z-index: 0;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            canvas {
+                opacity: .6;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .5s infinite;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+            
+        </style>
+         
+        <div id="mainnick">
+            <style>
+                @font-face {
+                    font-family: cloudx;
+                    src: url(cloud.otf);
+                }
+                #mainnick { position:absolute; width:25%; height:17%;   left:21%; top:2%;
+                }
+                #mainnickpx{   position:absolute; font-size:6vw; color:#171717; font-family:migueto; text-shadow: .2vw .2vw .3vw black; top:-6vw;
+
+                }
+                #submain {
+                    position: absolute;
+                    font-size: .7vw; opacity:.7; letter-spacing:.15vw;
+                  
+                    font-family: tw; text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                    top:  4.9vw; right:-.7vw;
+                }
+            </style>
+            
+            <p id="submain">
+                1553803116
+            </p><p id="mainnickpx">
+    DÉCEMBRE
+</p>
+        </div>
+
+        <div id="repro">
+            <style>
+                #repro { position:absolute; width:14%; height:6%;   z-index:9;  right:0%; top:18%;
+                }
+            </style>
+            <style>
+
+                .wrapper {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    
+                }
+
+                input[type=range] {
+                    appearance: none; 
+                    border-radius: 2px;
+                    outline: none;
+                    flex-grow: 1;
+                    height: 5px;
+                }
+
+                    input[type=range]::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: .5vw;
+                        height: .5vw; 
+                         transform:rotate(45deg);
+                        background-color: #171717;
+                    }
+
+                    input[type=range]::-moz-range-thumb {
+                        width: 15px;
+                        height: 15px;
+                        border: 2px #3d143d solid;
+                        border-radius: 7.5px;
+                        background-color: #b651b8;
+                    }
+
+                .player {
+                     
+                }
+
+                    .player .equalizer {
+                        /*position: absolute;*/
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: right;
+                        justify-content: right;  margin-top:2.4vw;
+                    }
+
+                        .player .equalizer .vertical {
+                            height: .1vw;
+                            width: .1vw;
+                            margin: .1vw;
+                            background-color: dimgray;
+                            border-radius: .3vw;
+                            transition: all 0.01s;
+                            transition-timing-function: ease-in-out;
+                        }
+
+                    .player .controls .line {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        justify-content: space-between;
+                        margin: 10px 0;
+                    }
+
+                    .player .controls .progress {
+                        font-size: 0.5em;
+                        font-weight: bold; position:absolute;
+                    }
+
+                        .player .controls .progress .duration {
+                            margin: 0 10px 0 0;
+                        }
+
+                    .player .controls .play-pause {
+                        box-sizing: border-box;
+                        transition: all 0.1s;
+                        transition-timing-function: ease-in-out;
+                        will-change: border-width;
+                        cursor: pointer;
+                        height: 20px; background:transparent;
+                        width: 20px;
+                        filter: grayscale(100%);
+                        border-color: transparent transparent transparent #171717; opacity:.8;
+                    }
+
+                        .player .controls .play-pause[aria-checked=false] {
+                            border-style: solid;
+                            border-width: 10px 0 10px 15px;
+                        }
+
+                        .player .controls .play-pause[aria-checked=true] {
+                            border-style: double;
+                            border-width: 0 0 0 15px;
+                        }
+
+                    .player .controls .description {
+                        margin: 0 10px;
+                    }
+
+                    .player .controls .volume {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                        .player .controls .volume input[type=range] {
+                            width: 0px;
+                            margin: 0 10px 0 0;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            cursor: pointer;
+                        }
+
+                        .player .controls .volume:hover input[type=range] {
+                            display: block;
+                            width: 50px;
+                        }
+
+                        .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                            display: none;
+                        }
+
+                        .player .controls .volume input[type=range]::-moz-range-thumb {
+                            display: none;
+                        }
+
+                        .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                            display: inherit;
+                        }
+
+                        .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                            display: inherit;
+                        }
+
+                        .player .controls .volume input[type=checkbox] {
+                            display: none;
+                        }
+
+                            .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                display: block;
+                            }
+
+                        .player .controls .volume img {
+                            display: none;
+                            cursor: pointer;
+                            height: 20px;
+                            width: 20px;
+                            filter: invert(11%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);
+                        }
+                #progresss { background:dimgray; height:.1vw; width:400%;   position:absolute;  top:1vw;
+                }
+                #namesong { font-family:tw; font-size:.5vw; position:absolute; top:.95vw;
+                }
+                #current, .duration { opacity:0;
+                } 
+                #playbtn { position:absolute; right:-7.7vw;
+                }
+            </style>
+            <script>
+                function updateEqualizer(analyser, buffer, columns) {
+                    analyser.getByteFrequencyData(buffer);
+                    for (let i = 0; i < columns.length; i += 1) {
+                        let column = columns[i];
+                        const height = (buffer[i] / 255) *  35 + 2;
+                        column.setAttribute("style", `height: ${height}px`);
+                    }
+                }
+
+                function toMinutesAndSeconds(time) {
+                    const minutes = Math.floor(time / 60);
+                    const seconds = Math.floor(time % 60);
+                    if (seconds < 10) {
+                        return `${minutes}:0${seconds}`;
+                    }
+
+                    return `${minutes}:${seconds}`;
+                }
+
+                function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                    const currentTime = track.mediaElement.currentTime.toFixed(1);
+                    const duration = track.mediaElement.duration;
+                    timeDisplay.innerHTML = toMinutesAndSeconds(
+                        currentTime > duration ? duration : currentTime
+                    );
+                    progressBar.value = currentTime > duration ? duration : currentTime;
+                }
+                console.clear();
+
+                // instigate our audio context
+                let audioElement = new Audio();
+                audioElement.crossOrigin = "anonymous";
+                audioElement.src = "https://xcodexneon.github.io/evangelist/FauxSemblants.mp3";
+
+                audioElement.addEventListener(
+                    "loadedmetadata",
+                    (event) => {
+                        // for cross browser
+                        const AudioContext = window.AudioContext || window.webkitAudioContext;
+                        const audioCtx = new AudioContext();
+
+                        // load some sound
+                        const track = audioCtx.createMediaElementSource(audioElement);
+                        const playButton = document.querySelector("button");
+
+                        // play pause audio
+                        playButton.addEventListener(
+                            "click",
+                            function () {
+                                // check if context is in suspended state (autoplay policy)
+                                if (audioCtx.state === "suspended") {
+                                    audioCtx.resume();
+                                }
+
+                                if (this.dataset.playing === "false") {
+                                    audioElement.play();
+                                    this.dataset.playing = "true";
+                                    // if track is playing pause it
+                                } else if (this.dataset.playing === "true") {
+                                    audioElement.pause();
+                                    this.dataset.playing = "false";
+                                }
+
+                                let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                this.setAttribute("aria-checked", state ? "false" : "true");
+                            },
+                            false
+                        );
+
+                        // if track ends
+                        audioElement.addEventListener(
+                            "ended",
+                            () => {
+                                playButton.dataset.playing = "false";
+                                playButton.setAttribute("aria-checked", "false");
+                            },
+                            false
+                        );
+
+                        // initialize gain
+                        let gainNode = audioCtx.createGain();
+
+                        // initialize analyser
+                        let analyser = audioCtx.createAnalyser();
+                        analyser.fftSize = 64; //32 bins
+                        const frequencyBinsCount = analyser.frequencyBinCount;
+                        let buffer = new Uint8Array(frequencyBinsCount);
+                        track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                        // equalizer animation
+                        const equalizer = document.getElementById("equalizer");
+                        // 32 bins -> 32 columns
+                        const columns = document.getElementsByClassName("vertical");
+                        setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                        const currentTimeDisplay = document.querySelector(".current-time");
+                        const progressBar = document.querySelector(".progress-bar");
+                        const durationDisplay = document.querySelector(".duration");
+                        durationDisplay.innerHTML = toMinutesAndSeconds(
+                            track.mediaElement.duration
+                        );
+                        progressBar.max = track.mediaElement.duration;
+
+                        setInterval(
+                            updateProgressBar,
+                            100,
+                            track,
+                            progressBar,
+                            currentTimeDisplay,
+                            durationDisplay
+                        );
+
+                        const volumeControl = document.querySelector("#range-volume");
+
+                        volumeControl.addEventListener(
+                            "input",
+                            function () {
+                                gainNode.gain.value = this.value;
+                            },
+                            false
+                        );
+
+                        // mute button
+                        const mute_button = document.getElementById("mute");
+                        mute_button.addEventListener(
+                            "change",
+                            (event) => {
+                                if (event.target.checked) {
+                                    audioElement.muted = true;
+                                } else {
+                                    audioElement.muted = false;
+                                }
+                            },
+                            false
+                        );
+                    },
+                    false
+                );
+
+            </script>
+            <div class="wrapper">
+                <div class="player"><span class="description" id="namesong" style="text-transform:uppercase">Faux semblants  • Audrey Sylvain</span>
+                    <div class="controls">
+                        <div class="line progress">
+                            <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                            </button>
+
+                            <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                            <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                        </div>
+                        
+                        <div class="line">
+                            
+                            <!--<div class="volume">
+            <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+            <input type="checkbox" name="mute" id="mute">
+            <label for="mute" class="unmute">
+                <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+            </label>
+            <label for="mute" class="mute">
+                <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+            </label>
+        </div>-->
+                        </div>
+                    </div>
+                    <div class="equalizer" id="equalizer">
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div id="japdates">
+            <style>
+                #japdates {
+                    position: absolute;
+                    width: 13%;
+                    left: 21%;
+                    height: 40%;
+                    top: 25%;
+                }
+
+                #jap2div {
+                    position: absolute;
+                    width: 80%;
+                    left: 10%;
+                    border-left: .1vw solid dimgray;
+                    height: 45%;
+                    top: 15%;
+                }
+
+                #jl1 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.3vw; 
+                }
+
+                #jl2 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.5vw;
+                    left: .5vw;
+                    top: 10%; 
+                }
+                #jl4 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.5vw;
+                    left: .5vw;
+                    top: 43%; 
+                }
+                #jl3 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 3vw; 
+                    top: 65%; 
+                }
+                #flchp {
+                    font-family: neigefont3;
+                    font-size: .45vw;
+                    color: dimgray;
+                    position: absolute;
+                    top: -.2vw;
+                    letter-spacing: .1vw; 
+                }
+                #datefchp {
+                    font-family: migueto2;
+                    font-size: 1.35vw;
+                    letter-spacing: .1vw;
+                    color: #171717;
+                    position: absolute;
+                    top: -.5vw;
+                    font-weight: bold; 
+                }
+                #datefchp2 {
+                    font-family: neigefont3;
+                    font-size: 1.1vw;
+                    letter-spacing: .4vw;
+                    color: #171717;
+                    position: absolute;
+                    top: -.2vw; 
+                }
+                #divlettch { position:absolute; width: .9vw; height:.9vw; border:.1vw solid dimgray; right:20%; top:50%; text-align:center; opacity:.8;
+                }
+                    #divlettch p, #divlettch2 p {
+                        position: relative;
+                        font-family: neigefont3;
+                        font-size: .6vw; top:-.5vw;
+                        color: #171717;
+                    }
+                #divlettch2 {
+                    position: absolute;
+                    width: .9vw;
+                    height: .9vw;
+                    border: .1vw solid dimgray;
+                    right: 30%;
+                    top: 40%;
+                    text-align: center;
+                    opacity: .8;
+                }
+                #flchp3 {
+                    font-family: migueto2;
+                    font-size: .45vw;
+                    color: #171717;
+                    position: absolute;
+                    top: 2.2vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+            <div id="jl1">
+                <p id="flchp">生日日期</p>
+                <p id="datefchp">13.02</p>
+                <div id="divlettch"><p>氖</p></div>
+            </div>
+            <div id="jap2div">
+                <div id="jl2">
+                    <p id="flchp">註冊日期</p>
+                    <p id="datefchp">19.08</p>
+                    <div id="divlettch"><p>氖</p></div>
+                </div>
+                <div id="jl4">
+                    <p id="flchp">關於此帳戶 關於我</p>
+                    <p id="datefchp2">沒有訊息</p>
+                </div>
+            </div>
+            <div id="jl3">
+                <p id="flchp">最後日期</p>
+                <p id="datefchp">12.12</p>
+                <div id="divlettch2"><p>氖</p></div> 
+                <p id="flchp3">xat.me/xneon@me </p>
+            </div>
+        </div>
+       
+        <div id="submenuunder">
+            <style>
+                #submenuunder {
+                    position: absolute;
+                    width: 25%;
+                    left: 23%;
+                    height: 15%;
+                    bottom: 3%;
+                    z-index: 9;
+                }
+
+                #undermenu {
+                    position: absolute;
+                    width: 100%;
+                    height: 25%;
+                }
+
+                #lastword {
+                    position: absolute;
+                    font-family: bt;
+                    color: #171717;
+                    font-size: 1.3vw;
+                    top: -1.3vw;
+                    opacity: .8;
+                }
+
+                #underbar {
+                    position: absolute;
+                    width: 20%;
+                    height: .1vw;
+                    background: dimgray;
+                    left: 37.5%;
+                    top: 47%;
+                }
+
+                #iconsbar {
+                    position: absolute;
+                    width: 50%;
+                    right: -10%;
+                    height: 100%;
+                }
+
+                .iconimg {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    top: 25%;
+                    cursor: pointer;
+                }
+
+                #icon2 {
+                    left: 1.4vw;
+                }
+
+                #icon3 {
+                    left: 2.8vw;
+                }
+
+                #icon4 {
+                    left: 4.2vw;
+                }
+
+                #icon5 {
+                    left: 5.6vw;
+                }
+
+                #icon6 {
+                    left: 7vw;
+                }
+
+                .iconimg img {
+                    position: absolute;
+                    width: 80%;
+                    height: 80%;
+                    opacity: .8;
+                    top: 10%;
+                    left: 10%;
+                    filter: blur(.5px);
+                }
+
+                #txtarea {
+                    position: absolute;
+                    width: 33%;
+                    height: 40%;
+                    top: 30%;
+                    right: 0;
+                    -webkit-user-modify: read-write;
+                    overflow: hidden;
+                    border-radius: .1vw;
+                    border: .1vw solid darkgray;
+                    opacity: .7;
+                    font-family: tw;
+                    font-size: .65vw;
+                    padding-left: .1vw;
+                    color: dimgray;
+                    cursor: text;
+                }
+
+                #lasttex {
+                    position: absolute;
+                    bottom: -6%; width:130%; font-family:tw; font-size:.7vw; opacity:.8; filter:blur(.5px);
+                }
+            </style>
+            <div id="undermenu">
+                <p id="lastword">un dernier mot</p><div id="underbar"></div>
+                <div id="iconsbar">
+                    <div class="iconimg" id="icon1">
+                        <img src="https://i.postimg.cc/52SQ5LxL/dibujar.png" />
+                    </div>
+                    <div class="iconimg" id="icon2">
+                        <img style=" width: 70%; height: 70%;  top: 15%; left: 15%;" src="https://i.postimg.cc/ryDW6DJ2/calendario.png" />
+                    </div>
+                    <div class="iconimg" id="icon3">
+                        <img src="https://i.postimg.cc/PNGT93MJ/correo-electronico.png" />
+                    </div>
+                    <div class="iconimg" id="icon4">
+                        <img src="https://i.postimg.cc/L4GPmmCY/bengala.png" />
+                    </div>
+                    <div class="iconimg" id="icon5">
+                        <img style=" width: 70%; height: 70%;  top: 15%; left: 15%;" src="https://i.postimg.cc/8PW65x9y/musica.png" />
+                    </div>
+                    <div class="iconimg" id="icon6">
+                        <img src="https://i.postimg.cc/7ZkTTmyq/lupa.png" />
+                    </div>
+
+                    <label id="txtarea">
+                        Rechercher:
+                    </label>
+                </div>
+
+            </div>
+
+            <p id="lasttex">
+                <i>Les souvenirs s'amassent, gardés au fond de soi</i><br />
+                S'useront comme les pages qui ne résistent pas
+                Au cadran sinistre qui continue sa loi
+                Il aurait mieux valu oublier beaucoup de choses
+                Les voix du passé déclenchent le battement de cœur de la conscience
+                Qui coule, qui bat au rythme d'une <b>
+    pulsation dans ma tête
+    Parfois
+</b>
+            </p>
+        </div>
+        <div id="divsub">
+            <style>
+                #divsub { position:absolute; width:20%; height:13%; left:21%; top:14%;  
+                }
+                #fistsub { position:absolute; width:60%; height:50%;  
+                }
+                #sub1 {
+                    font-size: 1.2vw;
+                    opacity: .7; color:#171717; 
+                    font-family: tw; top:-1.2vw; position:absolute; letter-spacing:.1vw;
+                    text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                     
+                }
+                #key {
+                    font-size: 3.2vw; 
+                    color: #171717;
+                    font-family: migueto;
+                    top: -3.7vw; left:60%;
+                    position: absolute; opacity:.8;
+                    letter-spacing: .1vw;
+                    text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                }
+                #stars {
+                    font-size: 1.5vw;
+                    color: #171717;
+                    font-family: migueto;
+                    top: -1.2vw;
+                    left: 70%;
+                    position: absolute;
+                    opacity: .8;
+                    letter-spacing: .7vw; 
+                }
+                #lastsub {
+                    text-transform: uppercase;
+                    opacity: .7;
+                    color: #171717;
+                    font-size: 2.2vw;
+                    font-family: tw;
+                    top: -1.8vw;
+                    position: absolute; 
+                    text-align: right;
+                    text-shadow: .2vw .2vw .3vw black; 
+                }
+            </style>
+            <div id="fistsub">
+                <p id="sub1">UNE<br /> NUIT GRISE</p><p id="key">}</p><p id="stars">✦✦</p>
+            </div>
+            <p id="lastsub">et une <br />  brise froide d'hiver</p>
+        </div>
+    
+
+        <div id="datex">
+            <style>
+                #datex {
+                    position: absolute;
+                    width: 25%;
+                    height: 13%; left:20%;  
+                    top: 70%; overflow:hidden;
+                }
+                #clock {
+                    color: dimgray;
+                    text-transform: uppercase;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    position: absolute;
+                    left: 6vw;
+                    top: 1.5vw;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+
+                #tt { position:absolute;
+                    text-transform: uppercase; 
+                    font-family: migueto2; letter-spacing:.1vw;
+                    font-size: .7vw;
+                    left: 10vw;
+                    top: 57%;
+                    color: #171717; text-align:right;
+                }
+                #numberday {
+                    position: absolute;
+                    font-family: migueto;
+                    font-size: 5vw;
+                    top: -5.8vw; left:-2.8vw;
+                    color: #171717; 
+                }
+                #nameday {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: 2vw;
+                    top: -1.1vw; opacity:.8; text-shadow:.2vw .2vw .4vw rgba(0,0,0,.6);
+                    left:.8vw; left:2vw;
+                    color: #171717;
+                }
+                #numberdayth {
+                    position: absolute;
+                    font-family: bt;
+                    font-size: .7vw; left: 2.3vw;
+                    top: 2.3vw;
+                    color: #171717; 
+                }
+                #cubeclock { position:absolute; width:3vw; height:3vw; transform:rotate(45deg); background:#171717; left:-1.5vw; top:30%;
+                }
+                #namemonth {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: migueto2;
+                    letter-spacing: .1vw;
+                    font-size: .7vw;
+                    left:  2.2vw;
+                    top: -.5vw;
+                    color: #171717;
+                }
+            </style>
+            <div id="cubeclock">
+
+            </div>
+            <div id="clock"></div><p id="tt"></p>
+            <script>
+                var mydate = new Date();
+                var year = mydate.getYear();
+                if (year < 1000) year += 1900;
+                var day = mydate.getDay();
+                var month = mydate.getMonth();
+                var daym = mydate.getDate();
+                if (daym < 10) daym = "0" + daym;
+                var dayarray = new Array(
+                    "Dimanche",
+                    "Lundi",
+                    "Mardi",
+                    "Mercredi",
+                    "Jeudi",
+                    "Vendredi",
+                    "Samedi"
+                );
+                var montharray = new Array(
+                    "Janvier",
+                    "Février",
+                    "Mars",
+                    "Avril",
+                    "Mai",
+                    "Juin",
+                    "Julliet",
+                    "Août",
+                    "Septembre",
+                    "Octobre",
+                    "Novembre",
+                    "Décembre"
+                );
+                document.write(
+                    "<font id='clock'>" +
+                    "<p id='nameday'>"+dayarray[day] +"</p>"+
+                    " " +
+                    "<p id='numberday'>" +daym +"</p>"+
+                    "<p id='numberdayth'> TH </p>" +
+                   "<p id='namemonth'>" + montharray[month] + "</p>" +
+                    " " +
+
+                    "</font>"
+                );
+                function digi() {
+                    var date = new Date(),
+                        hour = date.getHours(),
+                        minute = checkTime(date.getMinutes()),
+                        ss = checkTime(date.getSeconds());
+
+                    function checkTime(i) {
+                        if (i < 10) {
+                            i = "0" + i;
+                        }
+                        return i;
+                    }
+
+                    if (hour > 12) {
+                        hour = hour - 12;
+                        if (hour == 12) {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                               "/ " +hour + ":" + minute + ":" + ss + " AM ";
+                        } else {
+                            hour = checkTime(hour);
+                            document.getElementById("tt").innerHTML =
+                                "/ " + hour + ":" + minute + ":" + ss + " PM ";
+                        }
+                    } else {
+                        document.getElementById("tt").innerHTML =
+                            "/ " + hour + ":" + minute + ":" + ss + " AM ";
+                    }
+                    var time = setTimeout(digi, 1000);
+                }
+
+
+            </script>
+        </div>
+        
+        
+        <div id="profile">
+            <style>
+                #profile { position:absolute; width:15%; height:90%; right:2%; top:2%;   
+                }
+                #pnmber { position:absolute; font-size:10vw; color:#171717; font-family:comp2; opacity:.9; top:-12vw; text-shadow:.2vw .2vw .5vw black; right:0%;
+                }
+                #name {
+                    position: absolute;
+                    font-family: sten;
+                    color: #171717;
+                    font-size: 2vw;
+                    opacity: .8;
+                    top: 11vw;
+                    text-align: right;
+                    right: 0;
+                    text-shadow: .2vw .2vw .3vw black; line-height:2vw;
+                }
+                #txtsub { position:absolute; right:0; text-align:right; font-size:.4vw; color:#171717; top:36%; font-family:tw; opacity:.8; line-height:.4vw;
+                }
+            </style>
+           <p id="pnmber">02</p>
+           <p id="name">CANDIDE<br />.NEON</p>
+           
+       </div>
+        <div id="subprofile">
+            <style>
+                #subprofile {
+                    position: absolute;
+                    width: 10%;
+                    height: 61%;
+                    right: 2%;
+                    top: 35.5%;
+                }
+
+                #subpart1 {
+                    position: absolute;
+                    width: 100%;
+                    border-right: .1vw solid dimgray;
+                    height: 8%;
+                    filter: blur(.5px); top:1%;
+                }
+
+                #subpart2 {
+                    position: absolute;
+                    width: 100%;
+                    top: 13%;
+                    border-right: .1vw solid dimgray;
+                    height: 75%;
+                    filter: blur(.5px);
+                }
+                #subpart3 {
+                    position: absolute;
+                    width: 40%; right:0;
+                   bottom:0;
+                    border-bottom: .1vw solid dimgray;
+                    height: 10%;
+                    filter: blur(.5px);
+                }
+                    #subpart3 p { position:absolute; text-align:right; font-size:.6vw; color:#171717; font-family:tw; text-transform:uppercase;
+                    }
+                #subtextsmenus {
+                    position: absolute; 
+                    font-size: .55vw; right:7%; letter-spacing:.05vw;
+                    color: #171717; line-height:.7vw; top:-.3vw;
+                    font-family: tw;
+                    
+                }
+                    #subtextsmenus span {
+                        font-family: textfirmFont;
+                        font-size: .9vw;
+                        position: absolute;
+                        top: 1.3vw;
+                        right: -.5vw;
+                        letter-spacing: 0vw;
+                    }
+            </style>
+            <div id="subpart1">
+                <p id="subtextsmenus">
+                    • OISEAU<br />
+                    • DECEMBER<br />
+                    • NO <span id="firm">xNeon</span>
+                </p>
+            </div>
+            <div id="subpart2">
+
+            </div>
+            <div id="subpart3">
+                <p>
+                    <b>#3</b><br /><br />
+                    reminiscences
+                </p>
+            </div>
+        </div>
+        <img src="archris/ew.png" id="mainrenderback" />
+        <img src="archris/ew.png" id="mainrender" />
+        <style>
+            #mainrender { position:absolute; height:120%; right:-6%; bottom:-28%;
+            }
+            #mainrenderback {
+                position: absolute;
+                height: 120%;
+                right:-5%;
+                bottom: -29%;
+                filter:opacity(.4) blur(5px) brightness(-100%);
+            }
+        </style>
+      
+    </div>
+
+</body>
+
+</html>
