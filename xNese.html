@@ -175,8 +175,248 @@
         <div id="backbardates">
 
         </div>
+        <div id="btnclose" onclick="closefriends();">
+            <style>
+                #btnclose { position:absolute; width:2vw; height:2vw; left:4%;bottom:7%; z-index:9; backdrop-filter:blur(3px); cursor:pointer;
+                }
+                #abtn { position:absolute; width:1.2vw; height:1.2vw; border:.1vw solid rgba(66, 66, 66,.5); border-radius:.2vw; left:.3vw; top:.3vw;
+                }
+                    #abtn p { position:relative; text-align:center; font-size:.8vw; top:-.8vw;
+                    }
+                #btnclose:hover #pbtn { color:#b02727;
+                }
+            </style>
+            <div id="abtn">
+                <p id="pbtn">✖</p>
+            </div>
 
+
+
+
+        </div>
         <div id="areaposts">
+
+            <div id="Firmnonse">
+                <style>
+                    #Firmnonse {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 70%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #firmimgnonse {
+                        position: absolute;
+                        height: 100%;
+                        bottom: 0;
+                        left: -35%;
+                    }
+
+                    #divgifs {
+                        position: absolute;
+                        width: 17%;
+                        right: 2%;
+                        height: 35%;
+                        bottom: 2%;
+                    }
+
+                        #divgifs img {
+                            position: relative;
+                            width: 96%;
+                            margin: 2%;
+                            border: .1vw solid gray;
+                            box-shadow: .2vw .2vw .3vw rgba(0,0,0,.5);
+                        }
+                </style>
+
+
+                <!--<div id="firstcontentdai"><p></p></div>-->
+
+                <div id="infoprof">
+                    <style>
+
+
+                        #infoprof {
+                            position: absolute;
+                            width: 90%;
+                            height: 40%;
+                            left: 18%;
+                            top: -4%;
+                        }
+
+                        #maint {
+                            position: absolute;
+                            color: #6c1a1a;
+                            top: -3vw;
+                            left: 0;
+                            font-family: neigefont3;
+                            font-size: 3vw;
+                            text-shadow: .2vw .2vw .3vw black;
+                            letter-spacing: .3vw;
+                        }
+
+                            #maint span {
+                                font-size: 3.5vw;
+                                top: .25vw;
+                                position: relative;
+                            }
+
+                        #pointsxx {
+                            position: absolute;
+                            width: 50%;
+                            height: 26%;
+                            background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                            filter: grayscale(100%);
+                            left: -2%;
+                            top: -2%;
+                        }
+
+
+
+                        #k1 {
+                            position: absolute;
+                            font-size: 1.2vw;
+                            color: gray;
+                            font-weight: bold;
+                            top: 74%;
+                            left: 10%;
+                        }
+
+                        #k2 {
+                            position: absolute;
+                            font-size: 5vw;
+                            color: gray;
+                            top: 57%;
+                            left: 20%;
+                        }
+
+                        #k3 {
+                            position: absolute;
+                            font-size: 2.2vw;
+                            color: gray;
+                            top: 69%;
+                            left: 33%;
+                        }
+
+                        #l0 {
+                            position: absolute;
+                            font-size: .75vw;
+                            color: gray;
+                            top: 23%;
+                            left: 10%;
+                        }
+
+                        #lattext {
+                            font-family: tw;
+                            color: gray;
+                            font-size: .6vw;
+                            letter-spacing: .07vw;
+                            transform: rotate(-90deg);
+                            position: absolute;
+                            top: 75%;
+                            left: -30%;
+                        }
+
+                        #iconrose {
+                            position: absolute;
+                            width: 6vw;
+                            top: 0%;
+                            right: 16%;
+                            z-index: -1;
+                            filter: contrast(160%) brightness(80%);
+                        }
+
+                        #numbernonse {
+                            position: absolute;
+                            color: #171717;
+                            bottom: -22%;
+                            left: 17%;
+                            font-size: 7vw;
+                            font-family: comp2;
+                            text-shadow: .2vw .2vw .2vw black;
+                        }
+
+                        #firmtextnonse {
+                            position: absolute;
+                            color: rgb(66, 66, 66);
+                            font-size: .7vw;
+                            font-family: tw;
+                            width: 50%;
+                            left: 40%;
+                            top: 36%;
+                        }
+
+                        #firmnicknonse {
+                            position: absolute;
+                            font-family: textfirmFont;
+                            font-size: 4vw;
+                            color: rgb(66, 66, 66);
+                            left: 52%;
+                            opacity: 7;
+                            bottom: -15%;
+                            z-index: 1;
+                        }
+
+                        #datesayra {
+                            position: absolute;
+                            width: 30%;
+                            height: 7.3%;
+                            right: 0;
+                            top: 20%;
+                            border-right: .2vw solid rgb(163, 55, 48);
+                        }
+
+                            #datesayra p {
+                                position: relative;
+                                font-size: .5vw;
+                                letter-spacing: .05vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: dimgray;
+                                text-align: right;
+                                text-transform: uppercase;
+                                line-height: .5vw;
+                                right: 2%;
+                                margin-top: .1vw;
+                            }
+                    </style>
+                    <div id="pointsxx">
+
+                    </div>
+
+                    <p id="maint"><span>廢·</span>話並且是必</p>
+                    <!--<img src="https://i.postimg.cc/CLP25kw5/f781b2cdc78bb3b8e98d0638cd4a109c.png" id="iconrose" />-->
+
+
+                    <p id="l0">親愛なるあなた、もし私がここで誰かを傷つけたいと思っていたら...<br>私はすでにそうしていたでしょう。</p>
+
+
+                </div>
+                <div id="datesayra">
+                    <p>iNonsenses</p>
+                    <p>﻿1530380590</p>
+                    <p>AYRA | HINO | DAI</p>
+                </div>
+                <p id="firmnicknonse">
+                    Ayra
+                </p>
+                <p id="firmtextnonse">
+                    Chris aún cuando nuestro primer encuento fuera inesperado y algo reciente, para ninguno de los dos fue nada raro que estos sentimientos florecieran el uno por el otro tan pronto.
+                    Siento que estamos creando algo hermoso juntos, me bastaron solo unos días para saber dónde quiero quedarme... y aquí me tienes, contigo, pénsandote siempre y deseando que lo
+                    nuestro nunca termine. Te quiero muchisimo~
+                </p>
+                <p id="numbernonse">04</p>
+                <p id="lattext">AYRA&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 阿拉斯托 &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;﻿1530380590 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雪红</p>
+                <img id="firmimgnonse" src="https://i.ibb.co/PGyPBrGk/vorren.png" />
+                <div id="divgifs">
+                    <img src="https://64.media.tumblr.com/3658f79758ed0b01d49f9a8550c7b91d/tumblr_nrlkqxWvws1rr3vglo6_250.gifv" />
+                    <img src="https://64.media.tumblr.com/2a54742e507009f83f51913d7f03a6ad/tumblr_nrlkqxWvws1rr3vglo5_250.gifv" />
+                    <img src="https://64.media.tumblr.com/0616cbbb0c32032dd677403b7893ffd3/tumblr_nrlkqxWvws1rr3vglo2_250.gifv" />
+                </div>
+            </div>
+
             <div id="autofirm">
                 <style>
 
@@ -231,8 +471,9 @@
                         position: absolute;
                         left: 10%;
                         bottom: 0%;
-                        font-family:tw;
-                        color: white; opacity:.9;
+                        font-family: tw;
+                        color: white;
+                        opacity: .9;
                         font-size: .5vw;
                         letter-spacing: .1vw;
                     }
@@ -241,14 +482,15 @@
                         mix-blend-mode: difference;
                         position: absolute;
                         left: 12%;
-                        font-family:tw;
+                        font-family: tw;
                         color: dimgray;
                         font-size: .6vw;
                         letter-spacing: .1vw;
                         line-height: 1vw;
                     }
 
-                        #textcomab span { font-family:neigefont3;
+                        #textcomab span {
+                            font-family: neigefont3;
                             color: #46324E;
                             font-size: .6vw;
                         }
@@ -259,7 +501,8 @@
                         top: -1.5vw;
                         left: 1%;
                         font-family: neigefont3;
-                        color: #46324E; font-size: 1.8vw; 
+                        color: #46324E;
+                        font-size: 1.8vw;
                         letter-spacing: .1vw;
                     }
 
@@ -274,15 +517,23 @@
                         opacity: .6;
                         letter-spacing: .1vw;
                     }
-                    #taifirm { position:absolute; font-family:tak; font-size:3vw; right:5%; bottom:-20%;
+
+                    #taifirm {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3vw;
+                        right: 5%;
+                        bottom: -20%;
                     }
+
                     #numbertai {
                         text-shadow: .2vw .2vw .3vw black;
                         position: absolute;
                         font-family: comp2;
                         font-size: 5vw;
                         opacity: .8;
-                        top: 53%; z-index:2;
+                        top: 53%;
+                        z-index: 2;
                         margin: 0;
                         right: 1%;
                     }
@@ -324,219 +575,20 @@
                     Je T´Aime Beaucoup ♥BFFUCHOS4EVER♥ | TAIGA
                 </p>
                 <p id="taifirm">Tai</p>
-               
+
             </div>
 
-
-            <div id="Firmmyt">
-               
-                <style>
-                    #Firmmyt {
-                        left: 5%;
-                        width: 93%;
-                        position: relative;
-                        backdrop-filter: blur(2px);
-                        height: 55%;
-                        margin-top: 15%;
-                    }
-
-                    #mytimg {
-                        position: absolute;
-                        width: 100%;
-                        bottom: 0;
-                        right: 0; filter:grayscale(40%);
-                    }
-
-                    #pnumlala2 {
-                        position: absolute;
-                        text-shadow: 0 0 .2vw black;
-                        color: #171717;
-                        font-family: comp2;
-                        font-size: 8vw;
-                        left: 3%;
-                        bottom: -26%;
-                    }
-
-                    #shertex2 {
-                        top: -10%;
-                        font-size: 4vw;
-                        color: #171717;
-                        position: absolute;
-                        font-family: 'Times New Roman';
-                        font-weight: bold;
-                        opacity: .6;
-                        letter-spacing: .4vw;
-                    }
-
-                    #shertex {
-                        top: 10%;
-                        font-size: 5vw;
-                        color: #171717;
-                        position: absolute;
-                        font-family: Calibri;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        opacity: .6;
-                        letter-spacing: .2vw;
-                    }
-
-                    #nummyt {
-                        top: 38%;
-                        left: 1%;
-                        font-size: .7vw;
-                        color: #171717;
-                        position: absolute;
-                        font-family: Calibri;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        opacity: .3;
-                        letter-spacing: .2vw;
-                    }
-
-                    #mytfirmm {
-                        position: absolute;
-                        color: #C3BDA1;
-                        font-size: 2vw;
-                        right: 5%;
-                        bottom: -5%;
-                        z-index: 2;
-                        text-shadow: 0 0 .2vw black;
-                        font-family: textfirmFont;
-                    }
-                </style>
-                <div id="maintext1x">
-                    <style>
-                        #maintext1x {
-                            position: absolute;
-                            width: 100%;
-                            height: 55%;
-                            left: 1%;
-                            top: 5%;
-                        }
-
-                        #cubetextx {
-                            position: absolute;
-                            width: 70%;
-                            height: 16%;
-                            border: .14vw solid rgb(36, 36, 36);
-                        }
-
-                            #cubetextx p {
-                                position: absolute;
-                                font-size: 1.8vw;
-                                top: -1.7vw;
-                                letter-spacing: .2vw;
-                                left: .3vw; ca
-                            }
-
-                            #cubetextx span {
-                                position: absolute;
-                                font-size: 1vw;
-                                top: .5vw;
-                                letter-spacing: .2vw;
-                                left: 40%;
-                            }
-
-                        #ptaste {
-                            position: absolute;
-                            font-size: 1.6vw;
-                            top: 7%;
-                            letter-spacing: .2vw;
-                            left: 1%;
-                            color: #C3BDA1;
-                            text-shadow: 0 0 .2vw black;
-                        }
-
-                        #ptaste2 {
-                            position: absolute;
-                            font-size: .6vw;
-                            top: 27%;
-                            letter-spacing: .1vw;
-                            left: 0%;
-                            font-family: "Roboto", Arial, sans-serif;
-                        }
-
-                        #ptaste3 {
-                            position: absolute;
-                            font-size: .53vw;
-                            top: 33%;
-                            letter-spacing: .1vw;
-                            left: 2%;
-                            font-family: "Roboto", Arial, sans-serif;
-                        }
-                    </style>
-
-                    <div id="cubetextx"><p> ) | ( </p><span>涅格西尤基</span></div>
-                    <p id="ptaste">恐怖を味わう</p>
-                    <p id="ptaste2">【雪】SEIKISHIDAN</p>
-                    <p id="ptaste3"> RG | 1538562470</p>
-                </div>
-                <p id="pnumlala2">37</p>
-                <p id="mytfirmm">Seikishidan</p>
-                <img src="https://i.postimg.cc/qvy3yR9y/Izaya-Orihara.png" id="mytimg">
-                <div id="contentfirmyt">
-
-                    <style>
-
-
-                        #contentfirmyt {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 99;
-                            mask: linear-gradient(black, black, black);
-                            backdrop-filter: blur(0px);
-                            background: linear-gradient(180deg, transparent 0%, rgba(200,200,200,0.5) 60%);
-                            top: 0%;
-                            opacity: 0;
-                            transition: all 1.5s ease;
-                        }
-
-                        #Firmmyt:hover #contentfirmyt {
-                            opacity: 1;
-                            backdrop-filter: blur(2px);
-                        }
-
-
-
-                        #contentfirmyt span {
-                            position: absolute;
-                            color: #C3BDA1;
-                            text-shadow: 0 0 .2vw black; font-family:tw;
-                            font-size: 1.5vw;
-                            left: 5%;
-                            top: 38%;
-                            text-shadow: 0 0 .5vw black; 
-                        }
-
-                        #contentfirmyt i {
-                            position: absolute;
-                            color: black;
-                            font-size: .7vw;
-                            left: 5%;
-                            width: 90%;
-                            top: 50%;
-                            text-shadow: 0 0 .5vw white;
-                            font-family: Calibri
-                        }
-                    </style>
-                    <span> Nece... </span>
-                    <i>
-                    Gran compañero de aventuras virtuales. Compartimos batallas y salvamos mundos, a pesar de conocernos entre rencillas. Pero dicen que así empiezan aquellos
-                    que mejor se entienden al final. Gracias por cubrirme la espalda. Sos valioso xoxo
-                        <br>
-
-                    </i><span style="top:85%;"> 施罗德兹   Seikishidan - Izaya</span>
-                </div>
-            </div>
             <div id="xpost">
                 <style>
-                    #xpost { position:relative;
-                        width: 97%; left:1%;
+                    #xpost {
+                        position: relative;
+                        width: 97%;
+                        left: 1%;
                         margin-top: 35%;
-                        backdrop-filter: blur(2px);  
+                        backdrop-filter: blur(2px);
                         margin-bottom: 25%;
-                        height: auto; border-radius:.2vw;
+                        height: auto;
+                        border-radius: .2vw;
                     }
 
 
@@ -545,17 +597,20 @@
                         width: 90%;
                         left: 5%;
                         height: auto;
-                        border-radius: .2vw;  filter:grayscale(60%);
+                        border-radius: .2vw;
+                        filter: grayscale(60%);
                         top: 1.5vw;
                         /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
                     }
 
                     #areapost {
                         position: relative;
-                        width: 90%; left:5%;
-                        height: auto; 
+                        width: 90%;
+                        left: 5%;
+                        height: auto;
                         direction: ltr;
-                        margin-top: 3vw; font-family:tw;
+                        margin-top: 3vw;
+                        font-family: tw;
                     }
 
                     #areaetiq {
@@ -564,7 +619,8 @@
                         width: 98%;
                         left: 2%;
                         height: 2vw;
-                        bottom: -.5vw; font-family:tw;
+                        bottom: -.5vw;
+                        font-family: tw;
                     }
 
                     #areaauth {
@@ -680,8 +736,11 @@
                     #xpost:last-child {
                         margin-bottom: 15%;
                     }
-                    #specialtext { font-family:tw;
+
+                    #specialtext {
+                        font-family: tw;
                     }
+
                     #numberyuki {
                         text-shadow: .2vw .2vw .3vw black;
                         position: absolute;
@@ -692,17 +751,18 @@
                         margin: 0;
                         right: 1%;
                     }
+
                     #firmtextyuk {
                         position: absolute;
                         font-family: tak;
                         font-size: 3vw;
                         color: rgb(66, 66, 66);
                         left: 80%;
-                        z-index: 9; 
+                        z-index: 9;
                         top: 65%;
                     }
                 </style>
-                
+
 
                 <img src="https://pa1.aminoapps.com/6622/894b5d1a0051224efeb3a3284e7398fb01211529_00.gif" id="imgpostinx">
 
@@ -733,395 +793,6 @@
                 </div>
                 <div id="areaetiq">  <span class="spaneti">#Nece</span><span class="spaneti">#Yuki</span><span class="spaneti">#KarisawaErika</span></div>
 
-            </div>
-
-            <div id="Firmbel">
-
-                <style>
-                    #Firmbel {
-                        position: relative;
-                        backdrop-filter: blur(2px);
-                        width: 100%;
-                        height: 40%;
-                        margin-top: 35%;
-                        margin-bottom: 25%;
-                    }
-
-                    #imgfirmbel {
-                        height: 110%;
-                        right: -5%;
-                        bottom: 0;
-                        position: absolute;
-                    }
-
-                    #areafirmbeltxt {
-                        position: absolute;
-                        width: 55%;
-                        height: 80%;
-                        mix-blend-mode: difference;
-                    }
-                </style>
-                <div id="areafirmbeltxt">
-                    <div id="maintext2">
-                        <style>
-                            #maintext2 {
-                                width: 100%;
-                                height: 100%;
-                                position: absolute;
-                            }
-
-                            #textlatrot {
-                                position: absolute;
-                                width: 130%;
-                                height: 10%;
-                                left: -45%;
-                                top: 35%;
-                            }
-
-                                #textlatrot span {
-                                    transform: rotate(270deg);
-                                    position: absolute;
-                                    font-size: .6vw;
-                                    letter-spacing: .05vw;
-                                    left: 0;
-                                    font-family: tw;
-                                }
-
-                            #imgbars {
-                                position: absolute;
-                                transform: rotate(90deg);
-                                height: 2vw;
-                                width: 11vw;
-                                opacity: .4;
-                                left: 0%;
-                                top: 24%;
-                                /*filter: invert(100%);*/
-                            }
-
-
-
-                            #px1 {
-                                font-family: neigefont3;
-                                position: absolute;
-                                font-size: 1.1vw;
-                                left: 55%;
-                                text-align: center;
-                                top: -5%;
-                            }
-
-                            #px2 {
-                                font-family: neigefont3;
-                                position: absolute;
-                                font-size: .7vw;
-                                left: 77%;
-                                text-align: center;
-                                top: -.4vw;
-                            }
-
-                            #barsep {
-                                height: 80%;
-                                width: .1vw;
-                                background: rgb(225, 193, 67);
-                                left: 70%;
-                                top: 2%;
-                                position: absolute;
-                            }
-
-                            #belnumber {
-                                position: absolute;
-                                font-family: comp2;
-                                font-size: 6vw;
-                                opacity: .8;
-                                bottom: -33%;
-                                text-shadow: .2vw .2vw .3vw black;
-                                margin: 0;
-                                left: 1%;
-                            }
-
-                            #firmtextbell {
-                                position: absolute;
-                                font-family: tak;
-                                font-size: 3vw;
-                                color: gray;
-                                left: 75%;
-                                z-index: 9;
-                                mix-blend-mode: difference;
-                                top: 55%;
-                            }
-
-                            #regisbel {
-                                position: absolute;
-                                font-size: .7vw;
-                                font-family: tw;
-                                color: gray;
-                                text-transform: uppercase;
-                                right: 2%;
-                                top: 91%;
-                            }
-
-                                #regisbel span {
-                                    color: rgb(225, 193, 67);
-                                }
-                        </style>
-                        <div id="textlatrot">
-                            <span>
-                                Mi geme, somos tan cercanos, pero las veces que conversamos, me río bastante de tus ocurrencias, no cambies nunca, se te aprecia así todo seco (?
-                                jajaja, es broma. Gracias por estar siempre con mi gordo y acompañarlo cuando no estoy, abrazo!
-                            </span>
-                        </div>
-                        <img id="imgbars" src="https://i.postimg.cc/y8M4TgC4/vecteezy-heartbeat-line-png-17398778-110.png">
-                        <div id="barsep"></div>
-                        <p id="px1">
-                            品<br>味<br>不<br>确<br>定<br>性<br>和<br>不<br>安
-                        </p>
-                        <p id="px2">
-
-                            享<br>受<br>你<br>的<br>不<br>安<br>全<br>感<br>如<br>何<br>逐<br>渐<br>摧<br>毁<br>你<br>的<br>理<br>智
-                        </p>
-                        <p id="belnumber">08</p>
-
-                    </div>
-
-                </div>
-                <img src="https://i.postimg.cc/1RwhPx2W/pngwing-com-1.png" id="imgfirmbel" />
-                <p id="firmtextbell">unLuck</p> <p id="regisbel"><span>unLuck</span> | 1505034120</p>
-            </div>
-
-            <div id="postscr">
-                <style>
-                    #postscr {
-                        width: 100%;
-                        height: 30%;
-                        backdrop-filter: blur(2px);
-                        position: relative;
-                        margin-top: 30%;
-                    }
-
-                    #cubimg {
-                        position: absolute;
-                        width: 50%;
-                        height: 80%;
-                        top: 10%;
-                        left: 25%;
-                        overflow: hidden;
-                    }
-
-                    #cubimg2 {
-                        position: absolute;
-                        filter: grayscale(60%);
-                        width: 180%;
-                        height: 100%;
-                        top: 0%;
-                        left: -20%;
-                        overflow: hidden;
-                    }
-
-                        #cubimg2 img {
-                            width: 100%;
-                        }
-
-                    #dfirmscr {
-                        position: absolute;
-                        width: 8vw;
-                        height: 8vw;
-                        backdrop-filter: blur(15px);
-                        top: 27%;
-                        left: 0%;
-                        mix-blend-mode: difference;
-                    }
-
-                    #dfscrlin {
-                        position: absolute;
-                        width: 90%;
-                        height: 90%;
-                        top: 5%;
-                        left: 5%;
-                        border: .1vw solid darkgray;
-                        mix-blend-mode: difference;
-                        opacity: .3;
-                    }
-
-                    #dfscrlin2 {
-                        position: absolute;
-                        width: 48%;
-                        left: 14.5%;
-                        height: 76%;
-                        top: 6%;
-                        border: .1vw solid darkgray;
-                        mix-blend-mode: difference;
-                        opacity: .3;
-                    }
-
-                    #pscaryuk {
-                        font-family: neigefont3;
-                        position: absolute;
-                        font-size: 1.5vw;
-                        color: dimgray;
-                        top: 10%;
-                        right: 2%;
-                        animation: bluranim 3s infinite;
-                    }
-
-                    #pscaryuk2 {
-                        font-family: neigefont3;
-                        position: absolute;
-                        font-size: 1vw;
-                        color: dimgray;
-                        top: 14%;
-                        animation-delay: 2s;
-                        right: 12%;
-                        animation: bluranim 2s infinite;
-                    }
-
-                    /* @keyframes bluranim {
-                        0% {
-                            filter: blur(1px);
-                        }
-
-                        33% {
-                            filter: blur(3px);
-                        }
-
-                        66% {
-                            filter: blur(2px);
-                        }
-
-                        100% {
-                            filter: blur(1px);
-                        }
-                    }*/
-
-                    #ptextscar {
-                        font-family: tw;
-                        position: absolute;
-                        width: 80%;
-                        height: 90%;
-                        top: 2%;
-                        line-height: .6vw;
-                        left: 8%;
-                        mix-blend-mode: difference;
-                    }
-
-                        #ptextscar p {
-                            font-size: .6vw;
-                            color: #171717;
-                            letter-spacing: .05vw;
-                        }
-
-                        #ptextscar span {
-                            color: #8e4610
-                        }
-
-                    #scrddiv {
-                        position: absolute;
-                        width: .1vw;
-                        background: dimgray;
-                        height: 30%;
-                        top: 80%;
-                        left: 23%;
-                    }
-
-                    #scrdfirmimg {
-                        position: absolute;
-                        width: 6vw;
-                        left: 0%;
-                        bottom: -13%;
-                        mix-blend-mode: difference;
-                    }
-
-                    #regscrd {
-                        font-size: .55vw;
-                        color: #171717;
-                        letter-spacing: .1vw;
-                        position: absolute;
-                        right: 78%;
-                        opacity: .3;
-                        top: 77%;
-                    }
-
-                    #numregscrd {
-                        font-size: .55vw;
-                        color: #171717;
-                        letter-spacing: .1vw;
-                        position: absolute;
-                        right: 78%;
-                        opacity: .3;
-                        top: 81%;
-                    }
-
-                    #titscrd {
-                        font-size: .6vw;
-                        color: #171717;
-                        letter-spacing: .1vw;
-                        position: absolute;
-                        left: 6%;
-                        opacity: .3;
-                        top: 13%;
-                    }
-
-                    #titscrdj {
-                        font-weight: bold;
-                        font-size: .6vw;
-                        color: #171717;
-                        letter-spacing: .1vw;
-                        position: absolute;
-                        left: 6%;
-                        opacity: .6;
-                        top: 17%;
-                    }
-
-                    #pnumreti {
-                        position: absolute;
-                        font-family: comp2;
-                        font-size: 4vw;
-                        opacity: .8;
-                        top: -8%;
-                        text-shadow: .2vw .2vw .3vw black;
-                        margin: 0;
-                        right: 1%;
-                    }
-                </style>
-
-                <div id="cubimg">
-                    <div id="cubimg2">
-                        <img src="https://64.media.tumblr.com/cd1db7316dca88aee14423e8257cf551/tumblr_ntuxqw4QhA1rr2m2co2_500.gif"><div id="dfscrlin2"></div>
-                    </div>
-                </div>
-
-                <div id="dfirmscr">
-                    <div id="ptextscar">
-                        <p>
-                            <span>Nece</span>, en el tiempo que llevo conociendote, me caes muy bien y hemos podido establecer una bonita amistad.
-                            Espero que se mantenga por mucho <span>tiempo</span> más! se te quiere y aprecia mucho, abrazos!
-
-                        </p>
-                    </div>
-
-                    <div id="dfscrlin"></div>
-                </div>
-                <p id="titscrd">Nece:</p>
-                <p id="titscrdj">
-                    一些单词:
-                </p>
-                <p id="pnumreti">
-                    27
-                </p>
-                <p id="pscaryuk">
-                    不<br>
-                    安<br>
-                    的<br>
-                    ●<br>
-                    寒<br>
-                    冷<br>
-                    的
-                </p>
-                <p id="pscaryuk2">20<br>23<br>年<br>03<br>月<br>18<br>日</p>
-                <div id="scrddiv"></div>
-                <img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png">
-                <p id="regscrd">
-                    RETICENCIA
-                </p>
-                <p id="numregscrd">1545198896</p>
             </div>
 
             <div id="FirmNeu">
@@ -1369,13 +1040,947 @@
 
             </div>
 
+            <div id="Firmkei">
+
+                <style>
+                    #Firmkei {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 40%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgfirmbel {
+                        height: 110%;
+                        right: -5%;
+                        bottom: 0;
+                        position: absolute;
+                    }
+
+                    #areafirmbeltxt {
+                        position: absolute;
+                        width: 55%;
+                        height: 80%;
+                        mix-blend-mode: difference;
+                    }
+                </style>
+                <div id="areafirmbeltxt">
+                    <div id="maintext2">
+                        <style>
+                            #maintext2 {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #textlatrot {
+                                position: absolute;
+                                width: 130%;
+                                height: 10%;
+                                left: -45%;
+                                top: 35%;
+                            }
+
+                                #textlatrot span {
+                                    transform: rotate(270deg);
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    letter-spacing: .05vw;
+                                    left: 0;
+                                    font-family: tw;
+                                }
+
+                            #imgbars {
+                                position: absolute;
+                                transform: rotate(90deg);
+                                height: 2vw;
+                                width: 11vw;
+                                opacity: .4;
+                                left: 0%;
+                                top: 24%;
+                                /*filter: invert(100%);*/
+                            }
+
+
+
+                            #px1 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: 1.1vw;
+                                left: 55%;
+                                text-align: center;
+                                top: -5%;
+                            }
+
+                            #px2 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: .7vw;
+                                left: 77%;
+                                text-align: center;
+                                top: -.4vw;
+                            }
+
+                            #barsep {
+                                height: 80%;
+                                width: .1vw;
+                                background: rgb(225, 193, 67);
+                                left: 70%;
+                                top: 2%;
+                                position: absolute;
+                            }
+
+                            #belnumber {
+                                position: absolute;
+                                font-family: comp2;
+                                font-size: 6vw;
+                                opacity: .8;
+                                bottom: -33%;
+                                text-shadow: .2vw .2vw .3vw black;
+                                margin: 0;
+                                left: 1%;
+                            }
+
+                            #firmtextbell {
+                                position: absolute;
+                                font-family: tak;
+                                font-size: 3vw;
+                                color: gray;
+                                left: 75%;
+                                z-index: 9;
+                                mix-blend-mode: difference;
+                                top: 55%;
+                            }
+
+                            #regisbel {
+                                position: absolute;
+                                font-size: .7vw;
+                                font-family: tw;
+                                color: gray;
+                                text-transform: uppercase;
+                                right: 2%;
+                                top: 91%;
+                            }
+
+                                #regisbel span {
+                                    color: rgb(225, 193, 67);
+                                }
+                        </style>
+                        <div id="subtitlexx">
+                            <style>
+                                @font-face {
+                                    font-family: queen;
+                                    src: url(queen.otf);
+                                }
+
+                                #subtitlexx {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 95%;
+                                    top: 2%;
+                                }
+
+                                #sparks {
+                                    position: absolute;
+                                    font-family: tw;
+                                    top: -20%;
+                                    width: 220%;
+                                    font-size: 3.5vw;
+                                    letter-spacing: -.1vw;
+                                    line-height: 2.5vw;
+                                    left: 3%;
+                                    color: gray;
+                                    text-transform: uppercase;
+                                    background: linear-gradient(to right, gray, rgb(66, 66, 66), #528b00);
+                                    background-size: cover;
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+
+                                #barcode {
+                                    position: absolute;
+                                    height: 16%;
+                                    bottom: 3%;
+                                    filter: grayscale(100%) invert(30%);
+                                    left: 3%;
+                                }
+
+                                #sparkspsub {
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    color: dimgray;
+                                    font-family: tw;
+                                    left: 5%;
+                                    top: 35%;
+                                    background: linear-gradient(to right, gray, rgb(66, 66, 66), #528b00);
+                                    background-size: cover;
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+                            </style>
+                            <p id="sparks">Savage of <br>Dami</p>
+                            <p id="sparkspsub">
+                                Hola gordito grasiento, qué bueno encontrarte en este momento de felicidad, te deseo que sea infinito, gracias por estar siempre para mi y para la gorda
+                                sos literalmente una jungla de nuestra relación, el padrino, sin vos todo sería distinto. Se te aprecia mucho, aunque a veces me desconozcas y seas una
+                                waifu toxica. PD: Dormí un poco más y come mejor, obeso.
+                            </p>
+                            <img src="https://i.postimg.cc/1tCrSz2m/cd.png" id="barcode">
+                        </div>
+                        <p id="belnumber">09</p>
+
+                    </div>
+
+                </div>
+                <img src="https://i.postimg.cc/Vv1x5mTj/shinra-kishitani-render-by-galangthekid-d9wn5yb-pre.png" id="imgfirmbel" />
+                <p id="firmtextbell">Keiou</p> <p id="regisbel"><span style="color:#528b00">Keiou</span> | 108534737</p>
+            </div>
+
+
+            <div id="Firmbel">
+
+                <style>
+                    #Firmbel {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 40%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgfirmbel {
+                        height: 110%;
+                        right: -5%;
+                        bottom: 0;
+                        position: absolute;
+                    }
+
+                    #areafirmbeltxt {
+                        position: absolute;
+                        width: 55%;
+                        height: 80%;
+                        mix-blend-mode: difference;
+                    }
+                </style>
+                <div id="areafirmbeltxt">
+                    <div id="maintext2">
+                        <style>
+                            #maintext2 {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #textlatrot {
+                                position: absolute;
+                                width: 130%;
+                                height: 10%;
+                                left: -45%;
+                                top: 35%;
+                            }
+
+                                #textlatrot span {
+                                    transform: rotate(270deg);
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    letter-spacing: .05vw;
+                                    left: 0;
+                                    font-family: tw;
+                                }
+
+                            #imgbars {
+                                position: absolute;
+                                transform: rotate(90deg);
+                                height: 2vw;
+                                width: 11vw;
+                                opacity: .4;
+                                left: 0%;
+                                top: 24%;
+                                /*filter: invert(100%);*/
+                            }
+
+
+
+                            #px1 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: 1.1vw;
+                                left: 55%;
+                                text-align: center;
+                                top: -5%;
+                            }
+
+                            #px2 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: .7vw;
+                                left: 77%;
+                                text-align: center;
+                                top: -.4vw;
+                            }
+
+                            #barsep {
+                                height: 80%;
+                                width: .1vw;
+                                background: rgb(225, 193, 67);
+                                left: 70%;
+                                top: 2%;
+                                position: absolute;
+                            }
+
+                            #belnumber {
+                                position: absolute;
+                                font-family: comp2;
+                                font-size: 6vw;
+                                opacity: .8;
+                                bottom: -33%;
+                                text-shadow: .2vw .2vw .3vw black;
+                                margin: 0;
+                                left: 1%;
+                            }
+
+                            #firmtextbell {
+                                position: absolute;
+                                font-family: tak;
+                                font-size: 3vw;
+                                color: gray;
+                                left: 75%;
+                                z-index: 9;
+                                mix-blend-mode: difference;
+                                top: 55%;
+                            }
+
+                            #regisbel {
+                                position: absolute;
+                                font-size: .7vw;
+                                font-family: tw;
+                                color: gray;
+                                text-transform: uppercase;
+                                right: 2%;
+                                top: 91%;
+                            }
+
+                                #regisbel span {
+                                    color: rgb(225, 193, 67);
+                                }
+                        </style>
+                        <div id="textlatrot">
+                            <span>
+                                Mi geme, somos tan cercanos, pero las veces que conversamos, me río bastante de tus ocurrencias, no cambies nunca, se te aprecia así todo seco (?
+                                jajaja, es broma. Gracias por estar siempre con mi gordo y acompañarlo cuando no estoy, abrazo!
+                            </span>
+                        </div>
+                        <img id="imgbars" src="https://i.postimg.cc/y8M4TgC4/vecteezy-heartbeat-line-png-17398778-110.png">
+                        <div id="barsep"></div>
+                        <p id="px1">
+                            品<br>味<br>不<br>确<br>定<br>性<br>和<br>不<br>安
+                        </p>
+                        <p id="px2">
+
+                            享<br>受<br>你<br>的<br>不<br>安<br>全<br>感<br>如<br>何<br>逐<br>渐<br>摧<br>毁<br>你<br>的<br>理<br>智
+                        </p>
+                        <p id="belnumber">08</p>
+
+                    </div>
+
+                </div>
+                <img src="https://i.postimg.cc/1RwhPx2W/pngwing-com-1.png" id="imgfirmbel" />
+                <p id="firmtextbell">unLuck</p> <p id="regisbel"><span>unLuck</span> | 1505034120</p>
+            </div>
+
+
+
+            <div id="postscr">
+                <style>
+                    #postscr {
+                        width: 100%;
+                        height: 30%;
+                        backdrop-filter: blur(2px);
+                        position: relative;
+                        margin-top: 30%;
+                    }
+
+                    #cubimg {
+                        position: absolute;
+                        width: 50%;
+                        height: 80%;
+                        top: 10%;
+                        left: 25%;
+                        overflow: hidden;
+                    }
+
+                    #cubimg2 {
+                        position: absolute;
+                        filter: grayscale(60%);
+                        width: 180%;
+                        height: 100%;
+                        top: 0%;
+                        left: -20%;
+                        overflow: hidden;
+                    }
+
+                        #cubimg2 img {
+                            width: 100%;
+                        }
+
+                    #dfirmscr {
+                        position: absolute;
+                        width: 8vw;
+                        height: 8vw;
+                        backdrop-filter: blur(15px);
+                        top: 27%;
+                        left: 0%;
+                        mix-blend-mode: difference;
+                    }
+
+                    #dfscrlin {
+                        position: absolute;
+                        width: 90%;
+                        height: 90%;
+                        top: 5%;
+                        left: 5%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #dfscrlin2 {
+                        position: absolute;
+                        width: 48%;
+                        left: 14.5%;
+                        height: 76%;
+                        top: 6%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #pscaryuk {
+                        font-family: neigefont3;
+                        position: absolute;
+                        font-size: 1.5vw;
+                        color: dimgray;
+                        top: 10%;
+                        right: 2%;
+                        animation: bluranim 3s infinite;
+                    }
+
+                    #pscaryuk2 {
+                        font-family: neigefont3;
+                        position: absolute;
+                        font-size: 1vw;
+                        color: dimgray;
+                        top: 14%;
+                        animation-delay: 2s;
+                        right: 12%;
+                        animation: bluranim 2s infinite;
+                    }
+
+                    /* @keyframes bluranim {
+                        0% {
+                            filter: blur(1px);
+                        }
+
+                        33% {
+                            filter: blur(3px);
+                        }
+
+                        66% {
+                            filter: blur(2px);
+                        }
+
+                        100% {
+                            filter: blur(1px);
+                        }
+                    }*/
+
+                    #ptextscar {
+                        font-family: tw;
+                        position: absolute;
+                        width: 80%;
+                        height: 90%;
+                        top: 2%;
+                        line-height: .6vw;
+                        left: 8%;
+                        mix-blend-mode: difference;
+                    }
+
+                        #ptextscar p {
+                            font-size: .6vw;
+                            color: #171717;
+                            letter-spacing: .05vw;
+                        }
+
+                        #ptextscar span {
+                            color: #8e4610
+                        }
+
+                    #scrddiv {
+                        position: absolute;
+                        width: .1vw;
+                        background: dimgray;
+                        height: 30%;
+                        top: 80%;
+                        left: 23%;
+                    }
+
+                    #scrdfirmimg {
+                        position: absolute;
+                        width: 6vw;
+                        left: 0%;
+                        bottom: -13%;
+                        mix-blend-mode: difference;
+                    }
+
+                    #regscrd {
+                        font-size: .55vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 77%;
+                    }
+
+                    #numregscrd {
+                        font-size: .55vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 81%;
+                    }
+
+                    #titscrd {
+                        font-size: .6vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .3;
+                        top: 13%;
+                    }
+
+                    #titscrdj {
+                        font-weight: bold;
+                        font-size: .6vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .6;
+                        top: 17%;
+                    }
+
+                    #pnumreti {
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 4vw;
+                        opacity: .8;
+                        top: -8%;
+                        text-shadow: .2vw .2vw .3vw black;
+                        margin: 0;
+                        right: 1%;
+                    }
+                </style>
+
+                <div id="cubimg">
+                    <div id="cubimg2">
+                        <img src="https://64.media.tumblr.com/cd1db7316dca88aee14423e8257cf551/tumblr_ntuxqw4QhA1rr2m2co2_500.gif"><div id="dfscrlin2"></div>
+                    </div>
+                </div>
+
+                <div id="dfirmscr">
+                    <div id="ptextscar">
+                        <p>
+                            <span>Nece</span>, en el tiempo que llevo conociendote, me caes muy bien y hemos podido establecer una bonita amistad.
+                            Espero que se mantenga por mucho <span>tiempo</span> más! se te quiere y aprecia mucho, abrazos!
+
+                        </p>
+                    </div>
+
+                    <div id="dfscrlin"></div>
+                </div>
+                <p id="titscrd">Nece:</p>
+                <p id="titscrdj">
+                    一些单词:
+                </p>
+                <p id="pnumreti">
+                    27
+                </p>
+                <p id="pscaryuk">
+                    不<br>
+                    安<br>
+                    的<br>
+                    ●<br>
+                    寒<br>
+                    冷<br>
+                    的
+                </p>
+                <p id="pscaryuk2">20<br>23<br>年<br>03<br>月<br>18<br>日</p>
+                <div id="scrddiv"></div>
+                <img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png">
+                <p id="regscrd">
+                    RETICENCIA
+                </p>
+                <p id="numregscrd">1545198896</p>
+            </div>
+
+
+
+            <div id="Firmmyt">
+
+                <style>
+                    #Firmmyt {
+                        left: 5%;
+                        width: 93%;
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        height: 55%;
+                        margin-top: 15%;
+                    }
+
+                    #mytimg {
+                        position: absolute;
+                        width: 100%;
+                        bottom: 0;
+                        right: 0;
+                        filter: grayscale(40%);
+                    }
+
+                    #pnumlala2 {
+                        position: absolute;
+                        text-shadow: 0 0 .2vw black;
+                        color: #171717;
+                        font-family: comp2;
+                        font-size: 8vw;
+                        left: 3%;
+                        bottom: -26%;
+                    }
+
+                    #shertex2 {
+                        top: -10%;
+                        font-size: 4vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: 'Times New Roman';
+                        font-weight: bold;
+                        opacity: .6;
+                        letter-spacing: .4vw;
+                    }
+
+                    #shertex {
+                        top: 10%;
+                        font-size: 5vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: Calibri;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        opacity: .6;
+                        letter-spacing: .2vw;
+                    }
+
+                    #nummyt {
+                        top: 38%;
+                        left: 1%;
+                        font-size: .7vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: Calibri;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        opacity: .3;
+                        letter-spacing: .2vw;
+                    }
+
+                    #mytfirmm {
+                        position: absolute;
+                        color: #C3BDA1;
+                        font-size: 2vw;
+                        right: 5%;
+                        bottom: -5%;
+                        z-index: 2;
+                        text-shadow: 0 0 .2vw black;
+                        font-family: textfirmFont;
+                    }
+                </style>
+                <div id="maintext1x">
+                    <style>
+                        #maintext1x {
+                            position: absolute;
+                            width: 100%;
+                            height: 55%;
+                            left: 1%;
+                            top: 5%;
+                        }
+
+                        #cubetextx {
+                            position: absolute;
+                            width: 70%;
+                            height: 16%;
+                            border: .14vw solid rgb(36, 36, 36);
+                        }
+
+                            #cubetextx p {
+                                position: absolute;
+                                font-size: 1.8vw;
+                                top: -1.7vw;
+                                letter-spacing: .2vw;
+                                left: .3vw;
+                                ca
+                            }
+
+                            #cubetextx span {
+                                position: absolute;
+                                font-size: 1vw;
+                                top: .5vw;
+                                letter-spacing: .2vw;
+                                left: 40%;
+                            }
+
+                        #ptaste {
+                            position: absolute;
+                            font-size: 1.6vw;
+                            top: 7%;
+                            letter-spacing: .2vw;
+                            left: 1%;
+                            color: #C3BDA1;
+                            text-shadow: 0 0 .2vw black;
+                        }
+
+                        #ptaste2 {
+                            position: absolute;
+                            font-size: .6vw;
+                            top: 27%;
+                            letter-spacing: .1vw;
+                            left: 0%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #ptaste3 {
+                            position: absolute;
+                            font-size: .53vw;
+                            top: 33%;
+                            letter-spacing: .1vw;
+                            left: 2%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+                    </style>
+
+                    <div id="cubetextx"><p> ) | ( </p><span>涅格西尤基</span></div>
+                    <p id="ptaste">恐怖を味わう</p>
+                    <p id="ptaste2">【雪】SEIKISHIDAN</p>
+                    <p id="ptaste3"> RG | 1538562470</p>
+                </div>
+                <p id="pnumlala2">37</p>
+                <p id="mytfirmm">Seikishidan</p>
+                <img src="https://i.postimg.cc/qvy3yR9y/Izaya-Orihara.png" id="mytimg">
+                <div id="contentfirmyt">
+
+                    <style>
+
+
+                        #contentfirmyt {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 99;
+                            mask: linear-gradient(black, black, black);
+                            backdrop-filter: blur(0px);
+                            background: linear-gradient(180deg, transparent 0%, rgba(200,200,200,0.5) 60%);
+                            top: 0%;
+                            opacity: 0;
+                            transition: all 1.5s ease;
+                        }
+
+                        #Firmmyt:hover #contentfirmyt {
+                            opacity: 1;
+                            backdrop-filter: blur(2px);
+                        }
+
+
+
+                        #contentfirmyt span {
+                            position: absolute;
+                            color: #C3BDA1;
+                            text-shadow: 0 0 .2vw black;
+                            font-family: tw;
+                            font-size: 1.5vw;
+                            left: 5%;
+                            top: 38%;
+                            text-shadow: 0 0 .5vw black;
+                        }
+
+                        #contentfirmyt i {
+                            position: absolute;
+                            color: black;
+                            font-size: .7vw;
+                            left: 5%;
+                            width: 90%;
+                            top: 50%;
+                            text-shadow: 0 0 .5vw white;
+                            font-family: Calibri
+                        }
+                    </style>
+                    <span> Nece... </span>
+                    <i>
+                        Gran compañero de aventuras virtuales. Compartimos batallas y salvamos mundos, a pesar de conocernos entre rencillas. Pero dicen que así empiezan aquellos
+                        que mejor se entienden al final. Gracias por cubrirme la espalda. Sos valioso xoxo
+                        <br>
+
+                    </i><span style="top:85%;"> 施罗德兹   Seikishidan - Izaya</span>
+                </div>
+            </div>
+
+            <div id="Firmmarie">
+
+                <style>
+                    #Firmmarie {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 50%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgmar {
+                        position: absolute;
+                        width: 90%;
+                        left: 5%;
+                        top: 22%;
+                        border-radius: .2vw;
+                    }
+
+                    #belnummar {
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 5vw;
+                        opacity: .8;
+                        top: -1%;
+                        text-shadow: .2vw .2vw .3vw black;
+                        margin: 0;
+                        left: 5%;
+                    }
+
+                    #firmtextmar {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 2.8vw;
+                        color: #171717;
+                        left: 30%;
+                        z-index: 9;
+                        opacity: .6;
+                        text-shadow: .2vw .2vw .2vw black;
+                        mix-blend-mode: difference;
+                        top: -2.5vw;
+                    }
+                </style>
+                <p id="belnummar">31</p><p id="firmtextmar">WizzDarkness</p>
+                <div id="latertext">
+                    <style>
+                        #latertext {
+                            position: absolute;
+                            width: 5%;
+                            height: 50%;
+                            z-index: 1;
+                            right: 17%;
+                            top: 5%;
+                        }
+
+                        #plat {
+                            position: absolute;
+                            font-size: 1.8vw;
+                            top: -3vw;
+                            text-shadow: .2vw .2vw .2vw black;
+                            color: gray;
+                            line-height: 2vw;
+                            font-family: neigefont3;
+                        }
+
+                        #plat2 {
+                            position: absolute;
+                            font-size: 2vw;
+                            left: 2.2vw;
+                            top: -3vw;
+                            font-family: neigefont3;
+                            background: dimgray;
+                            color: #47cb92;
+                            padding: .3vw;
+                            line-height: 2vw;
+                        }
+
+                        #pllat {
+                            font-size: 3.5vw;
+                            opacity: .5;
+                            transform: rotate(90deg);
+                            left: -2vw;
+                            color: gray;
+                            letter-spacing: .1vw;
+                            top: 38%;
+                            position: absolute;
+                            font-family: bt;
+                            font-weight: bold;
+                        }
+
+                        #textmarie {
+                            position: absolute;
+                            width: 89%;
+                            height: auto;
+                            top: 73%;
+                            left: 5%;
+                            border-left: .2vw solid #47cb92;
+                        }
+
+                            #textmarie p {
+                                text-align: right;
+                                font-family: tw;
+                                font-size: .7vw;
+                                color: gray;
+                            }
+
+                                #textmarie p span {
+                                    color: #171717;
+                                }
+                    </style>
+                    <p id="pllat">
+                        Marie
+                    </p>
+                    <p id="plat">
+                        神<br>话<br>是<br>真<br>理<br>的<br>耳<br>语
+                    </p>
+                    <p id="plat2">
+                        神<br>话<br>与
+                    </p>
+                </div>
+                <img src="https://i.postimg.cc/2j1BrtBX/c60cebb3c909fbdb481f936bf4057004.jpg" id="imgmar" />
+                <div id="textmarie">
+                    <p>
+                        Qué tal, Nece... dejando un saludo enorme. Son pocas las palabras pero grande el afecto que siento por el corto tiempo que nos conocemos. Aún así te considero
+                        un tipo algo extraño y con gustos exóticos pero muy buena onda. Se te quiere y estima.
+                        <br /><br /><br /> <span>MARIE | WIZZDARKNESS - 15363211332</span>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>
 
     <div id="main" class="noopenedfirms">
-        <div id="open" onclick="openedfriends();"></div>
-        <div id="close" onclick="closefriends()"></div>
+        
         <canvas id="canvasx">
             <script>
 
@@ -1574,10 +2179,44 @@
         </canvas>
 
         <!--<img src="https://i.postimg.cc/nhcSM8bP/hex-waifu2x-art-scan-noise3-scale-waifu2x-art-scan-noise3-scale.png" id="pentagon" />-->
-
+        <p id="mywork" onclick="openedfriends()"><span>></span>My firms</p>
         <div id="part1">
             <style>
 
+                #mywork {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 68.5%;
+                    z-index: 99;
+                    font-family: bt;
+                    font-size: 1vw;
+                    left: 19%;
+                    color: #171717;
+                    font-weight: bold;
+                }
+
+                    #mywork span {
+                        animation: toleft2 2s infinite;
+                        position: absolute;
+                    }
+
+                    #mywork:hover {
+                        color: #677994;
+                    }
+
+                @keyframes toleft2 {
+                    0% {
+                        left: -15%;
+                    }
+
+                    50% {
+                        left: -7%;
+                    }
+
+                    100% {
+                        left: -15%;
+                    }
+                }
 
                 #part1 {
                     position: absolute;
@@ -2200,117 +2839,139 @@
 
 
                 <!--<div id="divend">
-                    <style>
-                        #divend { position:absolute; width:100%; height:20%; top:118%; border:.3vw solid rgb(86,22,22); overflow:hidden;
-                        }
-                        #linsep1 {
-                            position: absolute;
-                            width: 100%;
-                            top: 60%;
-                            height: .3vw;
-                            background: rgb(86,22,22);
-                        }
-                        #linsep2 {
-                            position: absolute;
-                            width: .3vw;
-                            top: 0%; left:30%;
-                            height: 60%;
-                            background: rgb(86,22,22);
-                        }
-                    </style>
-                    <div id="linsep1"></div>
-                    <div id="linsep2"></div>
-                </div>-->
+                <style>
+                    #divend { position:absolute; width:100%; height:20%; top:118%; border:.3vw solid rgb(86,22,22); overflow:hidden;
+                    }
+                    #linsep1 {
+                        position: absolute;
+                        width: 100%;
+                        top: 60%;
+                        height: .3vw;
+                        background: rgb(86,22,22);
+                    }
+                    #linsep2 {
+                        position: absolute;
+                        width: .3vw;
+                        top: 0%; left:30%;
+                        height: 60%;
+                        background: rgb(86,22,22);
+                    }
+                </style>
+                <div id="linsep1"></div>
+                <div id="linsep2"></div>
+            </div>-->
             </div>
         </div>
-
-        <div id="contbars">
+        <div id="mindattox">
             <style>
-                #contbars {
+                #mindattox {
                     position: absolute;
-                    width: 20%;
-                    height: 10%;
-                    left: 18.2%;
+                    width: 10.5%;
+                    left: 18.5%;
                     top: 35%;
+                    height: 6%;
+                    border-bottom: .1vw dashed gray;  filter:invert(70%);
                 }
 
-                #bar1 {
+                    #mindattox p {
+                        color: lightgray;
+                        font-family: Calibri;
+                        font-size: .8vw;
+                        font-weight: bold;
+                        line-height: .8vw;
+                        top: -.7vw;
+                        position: absolute;
+                    }
+
+                    #mindattox img {
+                        position: absolute;
+                        right: -.6vw;
+                        width: 2.4vw;
+                    }
+            </style>
+            <p>**NOT AN <br /> EXHAUSTIVE <br />LIST</p>
+            <img src="https://i.postimg.cc/wMV6XQb4/Captura-de-pantalla-2024-08-02-205010.png" />
+        </div>
+        <div id="listoffriends">
+            <style>
+                #listoffriends {
                     position: absolute;
-                    width: 100%;
-                    height: 30%;
+                    left: 18%;
+                    width: 30%;
+                    height: 4%;
+                    top: 42%;
+                    z-index: 9;
+                    filter: blur(.5px);
                 }
 
-                #bar2 {
-                    position: absolute;
-                    width: 100%;
-                    height: 30%;
-                    top: 30%;
-                }
-
-                #bar3 {
-                    position: absolute;
-                    width: 100%;
-                    height: 30%;
-                    top: 60%;
-                }
-
-                .circleicon {
-                    position: absolute;
-                    width: .8vw;
-                    filter: invert(70%);
-                }
-
-                #barred1 {
-                    position: absolute;
-                    width: 50%;
-                    height: 14%;
-                    left: 1vw;
-                    background: rgb(26,42,78);
-                    top: 25%;
-                }
-
-                #barred2 {
-                    position: absolute;
-                    width: 32%;
-                    height: 15%;
-                    left: 1vw;
-                    background: rgb(26,42,78);
-                    top: 25%;
-                }
-
-                #barred3 {
-                    position: absolute;
-                    width: 60%;
-                    height: 15%;
-                    left: 1vw;
-                    background: rgb(26,42,78);
-                    top: 25%;
-                }
-
-                #p1 {
-                    position: absolute;
-                    right: 8%;
+                a {
                     color: rgb(66, 66, 66);
-                    font-family: Consolas;
-                    font-size: .65vw;
-                    letter-spacing: .05vw;
-                    top: -.6vw;
+                    text-decoration: none;
+                }
+
+                .stars {
+                    font-size: 1.2vw;
+                    color: rgb(66, 66, 66);
+                    position: relative;
+                    width: 1.8vw;
+                    float: left;
+                    text-align: center;
+                }
+
+                    .stars:hover .occulttext {
+                        opacity: 1;
+                    }
+
+                .occulttext {
+                    position: relative;
+                    font-size: .5vw;
+                    top: -2.5vw;
+                    font-family: tw;
+                    text-transform: uppercase;
+                    opacity: 0;
+                }
+
+                    .occulttext:hover {
+                        color: #b64334;
+                    }
+
+                .pstar {
+                    position: relative;
+                    top: -1.2vw;
+                }
+
+                .stars:hover .pstar {
+                    animation: flickerstar 1s alternate infinite;
+                    color: dimgray;
+                }
+
+                @keyframes flickerstar {
+
+                    0% {
+                        text-shadow: 0 0 0vw rgb(66, 66, 66);
+                    }
+
+                    25% {
+                        text-shadow: 0 0 .5vw rgb(66, 66, 66);
+                    }
+
+                    100% {
+                        text-shadow: 0 0 0vw rgb(66, 66, 66);
+                    }
                 }
             </style>
-            <div id="bar1">
-                <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
-                <div id="barred1"></div><p id="p1">FRIGIDITY</p>
-            </div>
-            <div id="bar2">
-                <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
-                <div id="barred2"></div><p id="p1">BLACK SOULNESS</p>
-            </div>
-            <div id="bar3">
-                <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
-                <div id="barred3"></div><p id="p1">MISERY</p>
-            </div>
+            <div class="stars"><a href="#Firmnonse"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/iNonsenses"><p class="occulttext" id="neonname">iNonsenses</p></a></div>
+            <div class="stars"><a href="#autofirm"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/Taiga"><p class="occulttext" id="neonname">Taiga</p></a></div>
+            <div class="stars"><a href="#xpost"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/lynette"><p class="occulttext" id="neonname">lynette</p></a></div>
+            <div class="stars"><a href="#"><p class="pstar">✦</p></a><a href="https://xat.me/itami"><p class="occulttext" id="neonname">itami</p></a></div>
+            <div class="stars"><a href="#FirmNeu"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/xNeon"><p class="occulttext" id="neonname">xNeon</p></a></div>
+            <div class="stars"><a href="#Firmkei"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/keiou"><p class="occulttext" id="neonname">keiou</p></a></div>
+            <div class="stars"><a href="#Firmbel"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/unLuck"><p class="occulttext" id="neonname">unLuck</p></a></div>
+            <div class="stars"><a href="#contentfirmyt"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/seikishidan"><p class="occulttext" id="neonname">seikishidan</p></a></div>
+            <div class="stars"><a href="#postscr"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/RETICENCIA"><p class="occulttext" id="neonname">RETICENCIA</p></a></div>
+            <div class="stars"><a href="#Firmmarie"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/wizzdarkness"><p class="occulttext" id="neonname">wizzdarkness</p></a></div>
+             
         </div>
-
         <div id="antrepro">
             <style>
                 #antrepro {
@@ -2751,15 +3412,15 @@
                             <div class="line">
 
                                 <!--<div class="volume">
-                                    <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
-                                    <input type="checkbox" name="mute" id="mute">
-                                    <label for="mute" class="unmute">
-                                        <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
-                                    </label>
-                                    <label for="mute" class="mute">
-                                        <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
-                                    </label>
-                                </div>-->
+                                <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                                <input type="checkbox" name="mute" id="mute">
+                                <label for="mute" class="unmute">
+                                    <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                                </label>
+                                <label for="mute" class="mute">
+                                    <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                                </label>
+                            </div>-->
                             </div>
                         </div>
                         <div class="equalizer" id="equalizer">
