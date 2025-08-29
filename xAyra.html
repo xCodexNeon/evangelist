@@ -1,0 +1,3579 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        html,
+        body, #main {
+            top: 0; 
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0; 
+            position: fixed; transition:all .5s ease;
+        }
+
+        #imgmain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .7;
+        }
+        #render {
+            position: absolute;
+            right: -5%;
+            height: 120%;
+            top: 0;
+            z-index: 1;
+        }
+        #backrender {
+            z-index: 1;
+            filter: brightness(-100%) blur(10px);
+            opacity: .8;
+            position: absolute;
+            right: -6%;
+            height: 120%;
+            top: 2%;
+        }
+        #maintext1 {
+            z-index: 1;
+            position: absolute;
+            font-size: 10vw;
+            font-family: tw;
+            color: darkgray;
+            text-align: right;
+            right: -15%;
+            transform: rotate(90deg);
+            top: 15%;
+            /* mix-blend-mode:difference;*/
+            text-shadow: 0 0 1vw black;
+            line-height: 7vw;
+        }
+        @font-face {
+            font-family: bt;
+            src: url(bea.otf);
+        }
+        
+        @font-face {
+            font-family:migueto;
+            src: url(Migueto.ttf);
+        }
+        @font-face {
+            font-family: migueto2;
+            src: url(migueto2.otf);
+        }
+        @font-face {
+            font-family: comp2;
+            src: url(comp.otf);
+        }
+        #background { position:absolute; width:92%; height:100%; left:8%; opacity:.3;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div id="areafirms" class="closefr">
+        <script>
+
+            function openedfriends() {
+                $("#areafirms").addClass("openfr");
+                $("#areafirms").removeClass("closefr");
+
+                $("#main").addClass("openedfirms");
+                $("#main").removeClass("noopenedfirms");
+            }
+            function closefriends() {
+                $("#areafirms").addClass("closefr");
+                $("#areafirms").removeClass("openfr");
+
+                $("#main").addClass("noopenedfirms");
+                $("#main").removeClass("openedfirms");
+            }
+           
+        </script>
+        <style>
+            .openfr {
+                left: -1%;
+            }
+            .closefr { left:-25%;
+            }
+            #areafirms { transition:all 1s ease;
+                position: absolute;
+                width: 23.6%;
+                top: -1%;
+                
+                height: 101%;
+                background: lightgray;
+                z-index: 1; /*border-right:.3vw solid #171717;*/
+                box-shadow: -.3vw -.3vw .7vw black;
+                overflow: hidden;
+            }
+            #areaposts {
+                position: absolute;
+                width: 94%;
+                height: 100%;
+                left: 5%; 
+                scroll-behavior: smooth;
+                overflow: auto;
+                overflow-x: hidden;
+                transition: all 1s ease;
+            }
+                #areaposts::-webkit-scrollbar {
+                    width: .4vw;
+                    background: transparent;
+                    mix-blend-mode: difference;
+                }
+
+                #areaposts::-webkit-scrollbar-thumb {
+                    width: .4vw;
+                    background: rgba(100,100,100,.1);
+                    border-radius: 1vw;
+                }
+            .openedfirms {
+                left: 6%;
+            }
+
+            .noopenedfirms {
+                left: 0%;
+            }
+            #open { position:absolute; width:2vw; height:2vw; left:40%; top:5%; background:red; z-index:99;
+            }
+            #close {
+                z-index:99;
+                position: absolute;
+                width: 2vw;
+                height: 2vw;
+                left: 45%;
+                top: 5%;
+                background: red;
+            }
+        </style>
+        <div id="backbardates">
+
+        </div>
+        <div id="btnclose" onclick="closefriends();">
+            <style>
+                #btnclose { position:absolute; width:2vw; height:2vw; left:4%;bottom:7%; z-index:9; backdrop-filter:blur(3px); cursor:pointer;
+                }
+                #abtn { position:absolute; width:1.2vw; height:1.2vw; border:.1vw solid rgba(66, 66, 66,.5); border-radius:.2vw; left:.3vw; top:.3vw;
+                }
+                    #abtn p { position:relative; text-align:center; font-size:.8vw; top:-.8vw;
+                    }
+                #btnclose:hover #pbtn { color:#b02727;
+                }
+            </style>
+            <div id="abtn">
+                <p id="pbtn">✖</p>
+            </div>
+
+
+
+
+        </div>
+        <div id="areaposts">
+
+            <div id="Firmnonse">
+                <style>
+                    #Firmnonse {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 70%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #firmimgnonse {
+                        position: absolute;
+                        height: 100%;
+                        bottom: 0;
+                        left: -35%;
+                    }
+
+                    #divgifs {
+                        position: absolute;
+                        width: 17%;
+                        right: 2%;
+                        height: 35%;
+                        bottom: 2%;
+                    }
+
+                        #divgifs img {
+                            position: relative;
+                            width: 96%;
+                            margin: 2%;
+                            border: .1vw solid gray;
+                            box-shadow: .2vw .2vw .3vw rgba(0,0,0,.5);
+                        }
+                </style>
+
+
+                <!--<div id="firstcontentdai"><p></p></div>-->
+
+                <div id="infoprof">
+                    <style>
+
+
+                        #infoprof {
+                            position: absolute;
+                            width: 90%;
+                            height: 40%;
+                            left: 18%;
+                            top: -4%;
+                        }
+
+                        #maint {
+                            position: absolute;
+                            color: #6c1a1a;
+                            top: -3vw;
+                            left: 0;
+                            font-family: neigefont3;
+                            font-size: 3vw;
+                            text-shadow: .2vw .2vw .3vw black;
+                            letter-spacing: .3vw;
+                        }
+
+                            #maint span {
+                                font-size: 3.5vw;
+                                top: .25vw;
+                                position: relative;
+                            }
+
+                        #pointsxx {
+                            position: absolute;
+                            width: 50%;
+                            height: 26%;
+                            background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                            filter: grayscale(100%);
+                            left: -2%;
+                            top: -2%;
+                        }
+
+
+
+                        #k1 {
+                            position: absolute;
+                            font-size: 1.2vw;
+                            color: gray;
+                            font-weight: bold;
+                            top: 74%;
+                            left: 10%;
+                        }
+
+                        #k2 {
+                            position: absolute;
+                            font-size: 5vw;
+                            color: gray;
+                            top: 57%;
+                            left: 20%;
+                        }
+
+                        #k3 {
+                            position: absolute;
+                            font-size: 2.2vw;
+                            color: gray;
+                            top: 69%;
+                            left: 33%;
+                        }
+
+                        #l0 {
+                            position: absolute;
+                            font-size: .75vw;
+                            color: gray;
+                            top: 23%;
+                            left: 10%;
+                        }
+
+                        #lattext {
+                            font-family: tw;
+                            color: gray;
+                            font-size: .6vw;
+                            letter-spacing: .07vw;
+                            transform: rotate(-90deg);
+                            position: absolute;
+                            top: 75%;
+                            left: -30%;
+                        }
+
+                        #iconrose {
+                            position: absolute;
+                            width: 6vw;
+                            top: 0%;
+                            right: 16%;
+                            z-index: -1;
+                            filter: contrast(160%) brightness(80%);
+                        }
+
+                        #numbernonse {
+                            position: absolute;
+                            color: #171717;
+                            bottom: -22%;
+                            left: 17%;
+                            font-size: 7vw;
+                            font-family: comp2;
+                            text-shadow: .2vw .2vw .2vw black;
+                        }
+
+                        #firmtextnonse {
+                            position: absolute;
+                            color: rgb(66, 66, 66);
+                            font-size: .7vw;
+                            font-family: tw;
+                            width: 50%;
+                            left: 40%;
+                            top: 36%;
+                        }
+
+                        #firmnicknonse {
+                            position: absolute;
+                            font-family: textfirmFont;
+                            font-size: 4vw;
+                            color: rgb(66, 66, 66);
+                            left: 52%;
+                            opacity: 7;
+                            bottom: -15%;
+                            z-index: 1;
+                        }
+
+                        #datesayra {
+                            position: absolute;
+                            width: 30%;
+                            height: 7.3%;
+                            right: 0;
+                            top: 20%;
+                            border-right: .2vw solid rgb(163, 55, 48);
+                        }
+
+                            #datesayra p {
+                                position: relative;
+                                font-size: .5vw;
+                                letter-spacing: .05vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: dimgray;
+                                text-align: right;
+                                text-transform: uppercase;
+                                line-height: .5vw;
+                                right: 2%;
+                                margin-top: .1vw;
+                            }
+                    </style>
+                    <div id="pointsxx">
+
+                    </div>
+
+                    <p id="maint"><span>廢·</span>話並且是必</p>
+                    <!--<img src="https://i.postimg.cc/CLP25kw5/f781b2cdc78bb3b8e98d0638cd4a109c.png" id="iconrose" />-->
+
+
+                    <p id="l0">親愛なるあなた、もし私がここで誰かを傷つけたいと思っていたら...<br>私はすでにそうしていたでしょう。</p>
+
+
+                </div>
+                <div id="datesayra">
+                    <p>iNonsenses</p>
+                    <p>﻿1530380590</p>
+                    <p>AYRA | HINO | DAI</p>
+                </div>
+                <p id="firmnicknonse">
+                    Ayra
+                </p>
+                <p id="firmtextnonse">
+                    Chris <span style="color:#8a2e2e; font-size:1vw; position:relative; top:.2vw; left:-.2vw;">♥</span>aún cuando nuestro primer encuento fuera inesperado y algo reciente, para ninguno de los dos fue nada raro que estos sentimientos florecieran el uno por el otro tan pronto.
+                    Siento que estamos creando algo hermoso juntos, me bastaron solo unos días para saber dónde quiero quedarme... y aquí me tienes, contigo, pénsandote siempre y deseando que lo
+                    nuestro nunca termine. Te quiero muchisimo~
+                </p>
+                <p id="numbernonse">04</p>
+                <p id="lattext">AYRA&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 阿拉斯托 &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;﻿1530380590 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雪红</p>
+                <img id="firmimgnonse" src="https://i.ibb.co/PGyPBrGk/vorren.png" />
+                <div id="divgifs">
+                    <img src="https://64.media.tumblr.com/3658f79758ed0b01d49f9a8550c7b91d/tumblr_nrlkqxWvws1rr3vglo6_250.gifv" />
+                    <img src="https://64.media.tumblr.com/2a54742e507009f83f51913d7f03a6ad/tumblr_nrlkqxWvws1rr3vglo5_250.gifv" />
+                    <img src="https://64.media.tumblr.com/0616cbbb0c32032dd677403b7893ffd3/tumblr_nrlkqxWvws1rr3vglo2_250.gifv" />
+                </div>
+            </div>
+
+            <div id="autofirm">
+                <style>
+
+
+                    #autofirm {
+                        position: relative;
+                        width: 97%;
+                        left: 1%;
+                        margin-top: 35%;
+                        backdrop-filter: blur(2px);
+                        margin-bottom: 25%;
+                        height: 55%;
+                    }
+
+                    #imgautofirm {
+                        width: 95%;
+                        position: absolute;
+                        bottom: 0;
+                        filter: grayscale(60%);
+                        right: 0;
+                    }
+
+                    #bordimg {
+                        width: 80%;
+                        height: 9vw;
+                        bottom: 20%;
+                        border-left: .1vw solid gray;
+                        border-top: .1vw solid gray;
+                        position: absolute;
+                    }
+
+                    #borpost {
+                        width: 70%;
+                        height: 5vw;
+                        top: 0;
+                        right: 5%;
+                        border-right: .1vw solid gray;
+                        border-top: .1vw solid gray;
+                        position: absolute;
+                    }
+
+                    #firmcomax {
+                        width: 6vw;
+                        filter: invert(100%);
+                        mix-blend-mode: difference;
+                        right: -1%;
+                        bottom: -5%;
+                        position: absolute;
+                    }
+
+                    #subtextxx {
+                        position: absolute;
+                        left: 10%;
+                        bottom: 0%;
+                        font-family: tw;
+                        color: white;
+                        opacity: .9;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                    }
+
+                    #textcomab {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        left: 12%;
+                        font-family: tw;
+                        color: dimgray;
+                        font-size: .6vw; 
+                        line-height: 1vw;
+                    }
+
+                        #textcomab span {
+                            font-family: neigefont3;
+                            color: #46324E;
+                            font-size: .6vw;
+                        }
+
+                    #comalat {
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        top: -1.5vw;
+                        left: 1%;
+                        font-family: neigefont3;
+                        color: #46324E;
+                        font-size: 1.8vw;
+                        letter-spacing: .1vw;
+                    }
+
+                    #ultp {
+                        position: absolute;
+                        top: 15%;
+                        right: 3%;
+                        font-family: neigefont3;
+                        color: #46324E;
+                        font-weight: bold;
+                        font-size: .9vw;
+                        opacity: .6;
+                        letter-spacing: .1vw;
+                    }
+
+                    #taifirm {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3vw;
+                        right: 5%;
+                        bottom: -20%;
+                    }
+
+                    #numbertai {
+                        text-shadow: .2vw .2vw .3vw black;
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 5vw;
+                        opacity: .8;
+                        top: 53%;
+                        z-index: 2;
+                        margin: 0;
+                        right: 1%;
+                    }
+                </style>
+                <p id="ultp">血<br>鹰<br>之<br>翼</p>
+                <div id="borpost"></div>
+                <div id="bordimg"></div>
+                <p id="numbertai">07</p>
+                <img src="https://i.postimg.cc/wjZ4qHP7/tumblr-457a48768f7abc01a2d264574cefac11-6164f694-500.gif" id="imgautofirm">
+                <div id="textcomab">
+                    <p>
+                        <span>我问你: </span>( />w< )/ :.:*: Mi querido gran amigo <br>
+
+                        <span>我问你: </span> Recuerdo como si fuera ayer el día que nos conocimos<br>
+
+
+                        <span>
+                            为什么不能接受？
+                        </span>
+                        Gracias a Muzhi en un xat pedorro con nick de lolita<br />
+                        jajaja. Te veías super cute, mejor que yo (? jaksajs. Gracias a él pude <br />
+                        conocer a una gran persona; Honesta, dulce, respetuosa, carismático y <br />
+                        sobre todo, una persona de gran corazón. Llegaste a mi vida en el  <br />
+                        momento justo, como si fuera una broma del destino.  Entre todas las  <br />
+                        personas inmundas que conocí en xat, tú fuiste la única amistad  <br />
+                        que realmentevalió la pena. Cuántas alegrías y tristezas compartimos?
+                        <br />
+                        Gracias por ser mi mejor amigo.  Vamos hacia el futuro juntos,  <br />
+                        tú empujándome y yolevantándote siempre porque juntos <br />somos indestructibles.<br> 
+                        <b>♥/KI-KI-KISS ATTACK!!♥♥♥</b>
+
+                    </p>
+                </div>
+                <p id="comalat">
+                    昏<br>迷<br>黑<br>色<br>20<br>23<br>年<br>05<br>月<br>04<br>日
+                </p>
+                <p id="subtextxx">
+                    Al mejor compañero de risas, llantos y momentos.♥<br>
+
+                    Je T´Aime Beaucoup ♥BFFUCHOS4EVER♥ | TAIGA
+                </p>
+                <p id="taifirm">Tai</p>
+
+            </div>
+
+            <div id="xpost">
+                <style>
+                    #xpost {
+                        position: relative;
+                        width: 97%;
+                        left: 1%;
+                        margin-top: 35%;
+                        backdrop-filter: blur(2px);
+                        margin-bottom: 25%;
+                        height: auto;
+                        border-radius: .2vw;
+                    }
+
+
+                    #imgpostinx {
+                        position: relative;
+                        width: 90%;
+                        left: 5%;
+                        height: auto;
+                        border-radius: .2vw;
+                        filter: grayscale(60%);
+                        top: 1.5vw;
+                        /*filter:hue-rotate(190deg) contrast(110%) saturate(130%) ;*/
+                    }
+
+                    #areapost {
+                        position: relative;
+                        width: 90%;
+                        left: 5%;
+                        height: auto;
+                        direction: ltr;
+                        margin-top: 3vw;
+                        font-family: tw;
+                    }
+
+                    #areaetiq {
+                        direction: ltr;
+                        position: relative;
+                        width: 98%;
+                        left: 2%;
+                        height: 2vw;
+                        bottom: -.5vw;
+                        font-family: tw;
+                    }
+
+                    #areaauth {
+                        width: 100%;
+                        height: 1.5vw;
+                        left: 2%;
+                    }
+
+                    #areatextx {
+                        width: 90%;
+                        position: relative;
+                        left: 3%;
+                        margin-top: 1vw;
+                        border-left: .2vw solid #633C37;
+                    }
+
+                    #iconprfil {
+                        position: relative;
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        border-radius: 50%;
+                        border: .1vw solid #633C37;
+                    }
+
+                    #authtp {
+                        position: relative;
+                        margin-left: 2vw;
+                        top: 0;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        top: -2.5vw;
+                        color: #633C37;
+                    }
+
+                    #titletext {
+                        position: relative;
+                        margin-left: .5vw;
+                        font-weight: bolder;
+                        font-size: .6vw;
+                        letter-spacing: .1vw;
+                        text-transform: uppercase;
+                        color: #633C37;
+                        text-decoration: underline;
+                        margin-bottom: .7vw;
+                    }
+
+                    #contenttext {
+                        line-height: .7vw;
+                        position: relative;
+                        margin-left: .5vw;
+                        font-size: .55vw;
+                        letter-spacing: .1vw;
+                        color: dimgray;
+                    }
+
+                    .spaneti {
+                        position: relative;
+                        padding: .2vw;
+                        transition: all .5s ease;
+                        background: transparent;
+                        border-bottom: .1vw solid #633C37;
+                        font-size: .55vw;
+                        letter-spacing: .1vw;
+                        color: #633C37;
+                        margin-right: 1vw;
+                    }
+
+                        .spaneti:hover {
+                            background: #633C37;
+                            color: gray;
+                        }
+
+                    #specialtext {
+                        text-transform: uppercase;
+                        position: relative;
+                        margin-top: .8vw;
+                        font-size: .55vw;
+                        letter-spacing: .1vw;
+                        color: #633C37;
+                        margin-left: 2%;
+                    }
+
+                    .butttt {
+                        width: 1.5vw;
+                        height: 1.5vw;
+                        margin-bottom: .25vw;
+                        transition: all .5s ease;
+                        background: #171717;
+                    }
+
+                    #butimg {
+                        width: 1.1vw;
+                        height: 1.1vw;
+                        border-radius: .2vw;
+                        position: relative;
+                        left: -.2vw;
+                        direction: ltr;
+                        opacity: .7;
+                    }
+
+                    .butttt:hover {
+                        background: #789ffb;
+                    }
+
+                    #butimg img {
+                        position: relative;
+                        width: 70%;
+                        left: 15%;
+                        top: 15%;
+                        filter: invert(100%);
+                    }
+
+                    #xpost:last-child {
+                        margin-bottom: 15%;
+                    }
+
+                    #specialtext {
+                        font-family: tw;
+                    }
+
+                    #numberyuki {
+                        text-shadow: .2vw .2vw .3vw black;
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 5vw;
+                        opacity: .8;
+                        top: -10%;
+                        margin: 0;
+                        right: 1%;
+                    }
+
+                    #firmtextyuk {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3vw;
+                        color: rgb(66, 66, 66);
+                        left: 80%;
+                        z-index: 9;
+                        top: 65%;
+                    }
+                </style>
+
+
+                <img src="https://pa1.aminoapps.com/6622/894b5d1a0051224efeb3a3284e7398fb01211529_00.gif" id="imgpostinx">
+
+                <div id="areapost">
+                    <div id="areaauth">
+                        <img id="iconprfil" src="https://64.media.tumblr.com/55afb2cbc8b80256f46299332c0f07ea/e30f8261a58e76bf-30/s400x600/76146f4e0aae0f0d9ae887adbd0aaab88d0cb4cd.pnj">
+                        <p id="authtp">Hola!!!</p>
+
+                    </div>
+                    <p id="numberyuki">
+                        16
+                    </p>
+                    <div id="areatextx">
+                        <p id="titletext">必要的降雪</p>
+                        <p id="contenttext">
+                            En primer lugar, gracias por dejarme escribir en tu space, me hace feliz que me consideres para algo así de bonito. por dónde empezar...? Nos conocemos hace tiempo, no mucho
+                            como para decir que somos compas de toda la vida pero no tan poco para simplemente tener charlas triviales. Sólo quería agradecerte porque, aunque te enojes re izi siempre haz
+                            estado ahí para mí :3 y eso es algo que valoro mucho, me tienes tanta paciencia. No te rindes conmigo aún cuando hago tonterías y me sigues aconsejando. Gracias por tratar de
+                            animarme cuando me pasan cosas que me deprimen, tratas de hacer que piense en otras cosas o distraerme llevandome a bingos y más cosas. Solo quiero decirte que siempre estaré ahí
+                            para ti en lo que necesites y te estaré apoyando en todo. Quiero hacer por ti lo que tu haces por mi. Te quiero mucho, Chris, siempre valoraré lo que has hecho por mi sin esperar
+                            nada a cambio y siempre voy a  apreciarlo con todo mi corazón, espero realmente que seamos amigos por muuuucho mas tiempito. espero que me lo puedas permitir.
+                            Con cariño, Yuki < 3
+                        </p>
+                        <p id="specialtext">
+                            LYNETTE | Augost 24TH 2024 21:12 PM
+                        </p><p id="firmtextyuk">Lynette</p>
+                    </div>
+                </div>
+                <div id="areaetiq">  <span class="spaneti">#Nece</span><span class="spaneti">#Yuki</span><span class="spaneti">#KarisawaErika</span></div>
+
+            </div>
+
+            <div id="FirmNeu">
+                <style>
+                    #FirmNeu {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 70%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #firmimgneur {
+                        position: absolute;
+                        height: 70%;
+                        bottom: 0;
+                        transform: scaleX(-1);
+                        right: 0;
+                    }
+
+                    #inineura {
+                        position: absolute;
+                        left: 8%;
+                        color: #8a2e2e;
+                        font-family: neigefont3;
+                        font-size: 2.5vw;
+                        top: -3%;
+                        border-bottom: .15vw solid gray;
+                    }
+
+                    #subtneur {
+                        font-family: neigefont3;
+                        position: absolute;
+                        left: 8%;
+                        color: #171717;
+                        font-size: 1.5vw;
+                        top: 9%;
+                    }
+
+                    #subtneur2 {
+                        font-family: comp2;
+                        position: absolute;
+                        left: 8%;
+                        color: gray;
+                        font-size: 1.3vw;
+                        letter-spacing: .05vw;
+                        top: 14.6%;
+                        font-weight: lighter;
+                    }
+
+                    #titleneura {
+                        font-family: tw;
+                        position: absolute;
+                        left: 8%;
+                        color: #8a2e2e;
+                        font-size: .9vw;
+                        letter-spacing: .1vw;
+                        top: 21%;
+                        font-weight: bold;
+                    }
+
+                    #subtneu {
+                        position: absolute;
+                        left: 8%;
+                        color: gray;
+                        font-size: .55vw;
+                        letter-spacing: .1vw;
+                        top: 26%;
+                        text-transform: uppercase;
+                        font-weight: lighter;
+                        border-bottom: .1vw solid gray;
+                        padding-bottom: .3vw;
+                        font-family: tw;
+                    }
+
+                    #neuxc {
+                        width: 2vw;
+                        position: absolute;
+                        left: 2%;
+                        top: 50%;
+                        filter: invert(100%);
+                    }
+
+                    #neuxc2 {
+                        height: 1vw;
+                        position: absolute;
+                        left: 7.5%;
+                        top: 37%;
+                        filter: invert(100%);
+                    }
+
+                    #firmnnr {
+                        filter: invert(30%);
+                        /*mix-blend-mode: difference;*/
+                        position: absolute;
+                        right: 2%;
+                        bottom: -5%;
+                        width: 9vw;
+                    }
+
+                    #subtext2 {
+                        position: absolute;
+                        left: 10%;
+                        color: gray;
+                        font-size: 1vw;
+                        letter-spacing: .1vw;
+                        top: 39%;
+                        text-transform: uppercase;
+                        font-weight: lighter;
+                        padding-bottom: .3vw;
+                        font-family: tw;
+                    }
+
+                        #subtext2 span {
+                            color: #8a2e2e;
+                            font-size: 1.2vw;
+                            font-weight: bold;
+                        }
+
+                    #versinfo2 {
+                        opacity: .5;
+                        position: absolute;
+                        font-size: .6vw;
+                        top: 90%;
+                        width: 60%;
+                        z-index: 9;
+                        letter-spacing: .1vw;
+                        color: #b02424;
+                        left: 10%;
+                    }
+
+                        #versinfo2 span {
+                            color: black;
+                            font-weight: bold;
+                        }
+                </style>
+                <p id="inineura">
+                    灰指甲
+                </p>
+                <p id="subtneur">神经衰弱症</p>
+                <p id="subtneur2">03.04-20.23</p>
+
+                <p id="titleneura" style="text-transform:uppercase">Colors of life that's excellent</p>
+
+                <p id="subtneu">
+                    Though pictures fade away<br />
+                    Beauty will remain the same
+                </p>
+                <p id="subtext2">
+                    Only  <span>time</span> will tell<br>
+                    the magnitude <span>of</span> deeds<br>
+                    <span>Longer</span> we wait may it<br>
+                    be the <span>sweeter</span> kiss<br>
+                    shed no <span>tears</span> Nothing easy<br>
+                    get <span>up</span> and go, get it, go<br>
+                    <span>Only</span> from the heart<br>
+                    one <span>reaches</span> to the sky<br>
+                    No one's <span>sure</span> what lies<br>
+                    ahead, be <span>bold</span> and brave<br>
+
+                </p>
+
+                <p id="numfnei">02</p>
+                <p id="decembre">xNEON/DECEMBRE</p>
+                <style>
+                    #decembre::first-letter {
+                        color: #8a2e2e;
+                    }
+
+                    #decembre {
+                        position: absolute;
+                        font-family: tw;
+                        font-size: .6vw;
+                        opacity: .8;
+                        letter-spacing: .15vw;
+                        top: 19%;
+                        margin: 0;
+                        right: 2.5%;
+                    }
+
+                    #numfnei {
+                        text-shadow: .2vw .2vw .3vw black;
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 7vw;
+                        opacity: .8;
+                        top: -1%;
+                        margin: 0;
+                        right: 1%;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/3NbvpY3Z/xc.png" id="neuxc" /><img src="https://i.postimg.cc/8kyWxBLr/xc1.png" id="neuxc2" />
+                <img src="https://i.postimg.cc/jjv85pdF/neon.png" id="firmimgneur" />
+
+
+                <div id="areaprofil">
+                    <style>
+                        #areaprofil {
+                            position: absolute;
+                            width: 80%;
+                            right: -10.5%;
+                            height: 95%;
+                            top: 10%;
+                            opacity: .8;
+                        }
+
+                        #neigeh1 {
+                            position: absolute;
+                            font-family: neigefont9;
+                            filter: blur(.5px);
+                            color: dimgray;
+                            text-shadow: .3vw .3vw .3vw black;
+                            font-size: 6vw;
+                            letter-spacing: 0vw;
+                            transform: rotate(-90deg);
+                            right: -30%;
+                            top: 40%;
+                        }
+
+                        #verse1 {
+                            position: absolute;
+                            font-family: neigefont9;
+                            filter: blur(.5px);
+                            font-size: 1vw;
+                            letter-spacing: .1vw;
+                            left: 15%;
+                            top: 82%;
+                            color: gray;
+                            text-shadow: .3vw .3vw .3vw black;
+                            text-align: left;
+                        }
+
+                            #verse1 span {
+                                font-size: 1.5vw;
+                            }
+                    </style>
+
+
+
+                    <p id="neigeh1"><!--NEON--></p>
+                    <p id="verse1">The storm of the moon<br /> <span>AND THE GOD...</span></p>
+                </div>
+
+
+            </div>
+
+            <div id="Firmkei">
+
+                <style>
+                    #Firmkei {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 40%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgfirmbel {
+                        height: 110%;
+                        right: -5%;
+                        bottom: 0;
+                        position: absolute;
+                    }
+
+                    #areafirmbeltxt {
+                        position: absolute;
+                        width: 55%;
+                        height: 80%;
+                        mix-blend-mode: difference;
+                    }
+                </style>
+                <div id="areafirmbeltxt">
+                    <div id="maintext2">
+                        <style>
+                            #maintext2 {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #textlatrot {
+                                position: absolute;
+                                width: 130%;
+                                height: 10%;
+                                left: -45%;
+                                top: 35%;
+                            }
+
+                                #textlatrot span {
+                                    transform: rotate(270deg);
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    letter-spacing: .05vw;
+                                    left: 0;
+                                    font-family: tw;
+                                }
+
+                            #imgbars {
+                                position: absolute;
+                                transform: rotate(90deg);
+                                height: 2vw;
+                                width: 11vw;
+                                opacity: .4;
+                                left: 0%;
+                                top: 24%;
+                                /*filter: invert(100%);*/
+                            }
+
+
+
+                            #px1 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: 1.1vw;
+                                left: 55%;
+                                text-align: center;
+                                top: -5%;
+                            }
+
+                            #px2 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: .7vw;
+                                left: 77%;
+                                text-align: center;
+                                top: -.4vw;
+                            }
+
+                            #barsep {
+                                height: 80%;
+                                width: .1vw;
+                                background: rgb(225, 193, 67);
+                                left: 70%;
+                                top: 2%;
+                                position: absolute;
+                            }
+
+                            #belnumber {
+                                position: absolute;
+                                font-family: comp2;
+                                font-size: 6vw;
+                                opacity: .8;
+                                bottom: -33%;
+                                text-shadow: .2vw .2vw .3vw black;
+                                margin: 0;
+                                left: 1%;
+                            }
+
+                            #firmtextbell {
+                                position: absolute;
+                                font-family: tak;
+                                font-size: 3vw;
+                                color: gray;
+                                left: 75%;
+                                z-index: 9;
+                                mix-blend-mode: difference;
+                                top: 55%;
+                            }
+
+                            #regisbel {
+                                position: absolute;
+                                font-size: .7vw;
+                                font-family: tw;
+                                color: gray;
+                                text-transform: uppercase;
+                                right: 2%;
+                                top: 91%;
+                            }
+
+                                #regisbel span {
+                                    color: rgb(225, 193, 67);
+                                }
+                        </style>
+                        <div id="subtitlexx">
+                            <style>
+                                @font-face {
+                                    font-family: queen;
+                                    src: url(queen.otf);
+                                }
+
+                                #subtitlexx {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 95%;
+                                    top: 2%;
+                                }
+
+                                #sparks {
+                                    position: absolute;
+                                    font-family: tw;
+                                    top: -20%;
+                                    width: 220%;
+                                    font-size: 3.5vw;
+                                    letter-spacing: -.1vw;
+                                    line-height: 2.5vw;
+                                    left: 3%;
+                                    color: gray;
+                                    text-transform: uppercase;
+                                    background: linear-gradient(to right, gray, rgb(66, 66, 66), #528b00);
+                                    background-size: cover;
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+
+                                #barcode {
+                                    position: absolute;
+                                    height: 16%;
+                                    bottom: 3%;
+                                    filter: grayscale(100%) invert(30%);
+                                    left: 3%;
+                                }
+
+                                #sparkspsub {
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    color: dimgray;
+                                    font-family: tw;
+                                    left: 5%;
+                                    top: 35%;
+                                    background: linear-gradient(to right, gray, rgb(66, 66, 66), #528b00);
+                                    background-size: cover;
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+                            </style>
+                            <p id="sparks">Savage of <br>Dami</p>
+                            <p id="sparkspsub">
+                                Hola gordito grasiento, qué bueno encontrarte en este momento de felicidad, te deseo que sea infinito, gracias por estar siempre para mi y para la gorda
+                                sos literalmente una jungla de nuestra relación, el padrino, sin vos todo sería distinto. Se te aprecia mucho, aunque a veces me desconozcas y seas una
+                                waifu toxica. PD: Dormí un poco más y come mejor, obeso.
+                            </p>
+                            <img src="https://i.postimg.cc/1tCrSz2m/cd.png" id="barcode">
+                        </div>
+                        <p id="belnumber">09</p>
+
+                    </div>
+
+                </div>
+                <img src="https://i.postimg.cc/Vv1x5mTj/shinra-kishitani-render-by-galangthekid-d9wn5yb-pre.png" id="imgfirmbel" />
+                <p id="firmtextbell">Keiou</p> <p id="regisbel"><span style="color:#528b00">Keiou</span> | 108534737</p>
+            </div>
+
+
+            <div id="Firmbel">
+
+                <style>
+                    #Firmbel {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 40%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgfirmbel {
+                        height: 110%;
+                        right: -5%;
+                        bottom: 0;
+                        position: absolute;
+                    }
+
+                    #areafirmbeltxt {
+                        position: absolute;
+                        width: 55%;
+                        height: 80%;
+                        mix-blend-mode: difference;
+                    }
+                </style>
+                <div id="areafirmbeltxt">
+                    <div id="maintext2">
+                        <style>
+                            #maintext2 {
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #textlatrot {
+                                position: absolute;
+                                width: 130%;
+                                height: 10%;
+                                left: -45%;
+                                top: 35%;
+                            }
+
+                                #textlatrot span {
+                                    transform: rotate(270deg);
+                                    position: absolute;
+                                    font-size: .6vw;
+                                    letter-spacing: .05vw;
+                                    left: 0;
+                                    font-family: tw;
+                                }
+
+                            #imgbars {
+                                position: absolute;
+                                transform: rotate(90deg);
+                                height: 2vw;
+                                width: 11vw;
+                                opacity: .4;
+                                left: 0%;
+                                top: 24%;
+                                /*filter: invert(100%);*/
+                            }
+
+
+
+                            #px1 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: 1.1vw;
+                                left: 55%;
+                                text-align: center;
+                                top: -5%;
+                            }
+
+                            #px2 {
+                                font-family: neigefont3;
+                                position: absolute;
+                                font-size: .7vw;
+                                left: 77%;
+                                text-align: center;
+                                top: -.4vw;
+                            }
+
+                            #barsep {
+                                height: 80%;
+                                width: .1vw;
+                                background: rgb(225, 193, 67);
+                                left: 70%;
+                                top: 2%;
+                                position: absolute;
+                            }
+
+                            #belnumber {
+                                position: absolute;
+                                font-family: comp2;
+                                font-size: 6vw;
+                                opacity: .8;
+                                bottom: -33%;
+                                text-shadow: .2vw .2vw .3vw black;
+                                margin: 0;
+                                left: 1%;
+                            }
+
+                            #firmtextbell {
+                                position: absolute;
+                                font-family: tak;
+                                font-size: 3vw;
+                                color: gray;
+                                left: 75%;
+                                z-index: 9;
+                                mix-blend-mode: difference;
+                                top: 55%;
+                            }
+
+                            #regisbel {
+                                position: absolute;
+                                font-size: .7vw;
+                                font-family: tw;
+                                color: gray;
+                                text-transform: uppercase;
+                                right: 2%;
+                                top: 91%;
+                            }
+
+                                #regisbel span {
+                                    color: rgb(225, 193, 67);
+                                }
+                        </style>
+                        <div id="textlatrot">
+                            <span>
+                                Mi geme, no somos muy cercanos, pero las veces que conversámos, me río bastante de tus ocurrencias, no cambies nunca, se te aprecia así todo seco (?
+                                jajaja, es broma. Gracias por estar siempre con mi gordo y acompañarlo cuando no estoy, abrazo!
+                            </span>
+                        </div>
+                        <img id="imgbars" src="https://i.postimg.cc/y8M4TgC4/vecteezy-heartbeat-line-png-17398778-110.png">
+                        <div id="barsep"></div>
+                        <p id="px1">
+                            品<br>味<br>不<br>确<br>定<br>性<br>和<br>不<br>安
+                        </p>
+                        <p id="px2">
+
+                            享<br>受<br>你<br>的<br>不<br>安<br>全<br>感<br>如<br>何<br>逐<br>渐<br>摧<br>毁<br>你<br>的<br>理<br>智
+                        </p>
+                        <p id="belnumber">08</p>
+
+                    </div>
+
+                </div>
+                <img src="https://i.postimg.cc/1RwhPx2W/pngwing-com-1.png" id="imgfirmbel" />
+                <p id="firmtextbell">unLuck</p> <p id="regisbel"><span>unLuck</span> | 1505034120</p>
+            </div>
+
+
+
+            <div id="postscr">
+                <style>
+                    #postscr {
+                        width: 100%;
+                        height: 30%;
+                        backdrop-filter: blur(2px);
+                        position: relative;
+                        margin-top: 30%;
+                    }
+
+                    #cubimg {
+                        position: absolute;
+                        width: 50%;
+                        height: 80%;
+                        top: 10%;
+                        left: 25%;
+                        overflow: hidden;
+                    }
+
+                    #cubimg2 {
+                        position: absolute;
+                        filter: grayscale(60%);
+                        width: 180%;
+                        height: 100%;
+                        top: 0%;
+                        left: -20%;
+                        overflow: hidden;
+                    }
+
+                        #cubimg2 img {
+                            width: 100%;
+                        }
+
+                    #dfirmscr {
+                        position: absolute;
+                        width: 8vw;
+                        height: 8vw;
+                        backdrop-filter: blur(15px);
+                        top: 27%;
+                        left: 0%;
+                        mix-blend-mode: difference;
+                    }
+
+                    #dfscrlin {
+                        position: absolute;
+                        width: 90%;
+                        height: 90%;
+                        top: 5%;
+                        left: 5%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #dfscrlin2 {
+                        position: absolute;
+                        width: 48%;
+                        left: 14.5%;
+                        height: 76%;
+                        top: 6%;
+                        border: .1vw solid darkgray;
+                        mix-blend-mode: difference;
+                        opacity: .3;
+                    }
+
+                    #pscaryuk {
+                        font-family: neigefont3;
+                        position: absolute;
+                        font-size: 1.5vw;
+                        color: dimgray;
+                        top: 10%;
+                        right: 2%;
+                        animation: bluranim 3s infinite;
+                    }
+
+                    #pscaryuk2 {
+                        font-family: neigefont3;
+                        position: absolute;
+                        font-size: 1vw;
+                        color: dimgray;
+                        top: 14%;
+                        animation-delay: 2s;
+                        right: 12%;
+                        animation: bluranim 2s infinite;
+                    }
+
+                    /* @keyframes bluranim {
+                        0% {
+                            filter: blur(1px);
+                        }
+
+                        33% {
+                            filter: blur(3px);
+                        }
+
+                        66% {
+                            filter: blur(2px);
+                        }
+
+                        100% {
+                            filter: blur(1px);
+                        }
+                    }*/
+
+                    #ptextscar {
+                        font-family: tw;
+                        position: absolute;
+                        width: 80%;
+                        height: 90%;
+                        top: 2%;
+                        line-height: .6vw;
+                        left: 8%;
+                        mix-blend-mode: difference;
+                    }
+
+                        #ptextscar p {
+                            font-size: .6vw;
+                            color: #171717;
+                            letter-spacing: .05vw;
+                        }
+
+                        #ptextscar span {
+                            color: #8e4610
+                        }
+
+                    #scrddiv {
+                        position: absolute;
+                        width: .1vw;
+                        background: dimgray;
+                        height: 30%;
+                        top: 80%;
+                        left: 23%;
+                    }
+
+                    #scrdfirmimg {
+                        position: absolute;
+                        width: 6vw;
+                        left: 0%;
+                        bottom: -13%;
+                        mix-blend-mode: difference;
+                    }
+
+                    #regscrd {
+                        font-size: .55vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 77%;
+                    }
+
+                    #numregscrd {
+                        font-size: .55vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        right: 78%;
+                        opacity: .3;
+                        top: 81%;
+                    }
+
+                    #titscrd {
+                        font-size: .6vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .3;
+                        top: 13%;
+                    }
+
+                    #titscrdj {
+                        font-weight: bold;
+                        font-size: .6vw;
+                        color: #171717;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 6%;
+                        opacity: .6;
+                        top: 17%;
+                    }
+
+                    #pnumreti {
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 4vw;
+                        opacity: .8;
+                        top: -8%;
+                        text-shadow: .2vw .2vw .3vw black;
+                        margin: 0;
+                        right: 1%;
+                    }
+                </style>
+
+                <div id="cubimg">
+                    <div id="cubimg2">
+                        <img src="https://64.media.tumblr.com/cd1db7316dca88aee14423e8257cf551/tumblr_ntuxqw4QhA1rr2m2co2_500.gif"><div id="dfscrlin2"></div>
+                    </div>
+                </div>
+
+                <div id="dfirmscr">
+                    <div id="ptextscar">
+                        <p>
+                            <span>Nece</span>, en el tiempo que llevo conociendote, me caes muy bien y hemos podido establecer una bonita amistad.
+                            Espero que se mantenga por mucho <span>tiempo</span> más! se te quiere y aprecia mucho, abrazos!
+
+                        </p>
+                    </div>
+
+                    <div id="dfscrlin"></div>
+                </div>
+                <p id="titscrd">Nece:</p>
+                <p id="titscrdj">
+                    一些单词:
+                </p>
+                <p id="pnumreti">
+                    27
+                </p>
+                <p id="pscaryuk">
+                    不<br>
+                    安<br>
+                    的<br>
+                    ●<br>
+                    寒<br>
+                    冷<br>
+                    的
+                </p>
+                <p id="pscaryuk2">20<br>23<br>年<br>03<br>月<br>18<br>日</p>
+                <div id="scrddiv"></div>
+                <img id="scrdfirmimg" src="https://i.postimg.cc/Pthn5NF1/kisspng-digital-signature-wikipedia-5b001d50699993-4821836915267341604326.png">
+                <p id="regscrd">
+                    RETICENCIA
+                </p>
+                <p id="numregscrd">1545198896</p>
+            </div>
+
+
+
+            <div id="Firmmyt">
+
+                <style>
+                    #Firmmyt {
+                        left: 5%;
+                        width: 93%;
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        height: 55%;
+                        margin-top: 15%;
+                    }
+
+                    #mytimg {
+                        position: absolute;
+                        width: 100%;
+                        bottom: 0;
+                        right: 0;
+                        filter: grayscale(40%);
+                    }
+
+                    #pnumlala2 {
+                        position: absolute;
+                        text-shadow: 0 0 .2vw black;
+                        color: #171717;
+                        font-family: comp2;
+                        font-size: 8vw;
+                        left: 3%;
+                        bottom: -26%;
+                    }
+
+                    #shertex2 {
+                        top: -10%;
+                        font-size: 4vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: 'Times New Roman';
+                        font-weight: bold;
+                        opacity: .6;
+                        letter-spacing: .4vw;
+                    }
+
+                    #shertex {
+                        top: 10%;
+                        font-size: 5vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: Calibri;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        opacity: .6;
+                        letter-spacing: .2vw;
+                    }
+
+                    #nummyt {
+                        top: 38%;
+                        left: 1%;
+                        font-size: .7vw;
+                        color: #171717;
+                        position: absolute;
+                        font-family: Calibri;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        opacity: .3;
+                        letter-spacing: .2vw;
+                    }
+
+                    #mytfirmm {
+                        position: absolute;
+                        color: #C3BDA1;
+                        font-size: 2vw;
+                        right: 5%;
+                        bottom: -5%;
+                        z-index: 2;
+                        text-shadow: 0 0 .2vw black;
+                        font-family: textfirmFont;
+                    }
+                </style>
+                <div id="maintext1x">
+                    <style>
+                        #maintext1x {
+                            position: absolute;
+                            width: 100%;
+                            height: 55%;
+                            left: 1%;
+                            top: 5%;
+                        }
+
+                        #cubetextx {
+                            position: absolute;
+                            width: 70%;
+                            height: 16%;
+                            border: .14vw solid rgb(36, 36, 36);
+                        }
+
+                            #cubetextx p {
+                                position: absolute;
+                                font-size: 1.8vw;
+                                top: -1.7vw;
+                                letter-spacing: .2vw;
+                                left: .3vw;
+                                ca
+                            }
+
+                            #cubetextx span {
+                                position: absolute;
+                                font-size: 1vw;
+                                top: .5vw;
+                                letter-spacing: .2vw;
+                                left: 40%;
+                            }
+
+                        #ptaste {
+                            position: absolute;
+                            font-size: 1.6vw;
+                            top: 7%;
+                            letter-spacing: .2vw;
+                            left: 1%;
+                            color: #C3BDA1;
+                            text-shadow: 0 0 .2vw black;
+                        }
+
+                        #ptaste2 {
+                            position: absolute;
+                            font-size: .6vw;
+                            top: 27%;
+                            letter-spacing: .1vw;
+                            left: 0%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+
+                        #ptaste3 {
+                            position: absolute;
+                            font-size: .53vw;
+                            top: 33%;
+                            letter-spacing: .1vw;
+                            left: 2%;
+                            font-family: "Roboto", Arial, sans-serif;
+                        }
+                    </style>
+
+                    <div id="cubetextx"><p> ) | ( </p><span>涅格西尤基</span></div>
+                    <p id="ptaste">恐怖を味わう</p>
+                    <p id="ptaste2">【雪】SEIKISHIDAN</p>
+                    <p id="ptaste3"> RG | 1538562470</p>
+                </div>
+                <p id="pnumlala2">37</p>
+                <p id="mytfirmm">Seikishidan</p>
+                <img src="https://i.postimg.cc/qvy3yR9y/Izaya-Orihara.png" id="mytimg">
+                <div id="contentfirmyt">
+
+                    <style>
+
+
+                        #contentfirmyt {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 99;
+                            mask: linear-gradient(black, black, black);
+                            backdrop-filter: blur(0px);
+                            background: linear-gradient(180deg, transparent 0%, rgba(200,200,200,0.5) 60%);
+                            top: 0%;
+                            opacity: 0;
+                            transition: all 1.5s ease;
+                        }
+
+                        #Firmmyt:hover #contentfirmyt {
+                            opacity: 1;
+                            backdrop-filter: blur(2px);
+                        }
+
+
+
+                        #contentfirmyt span {
+                            position: absolute;
+                            color: #C3BDA1;
+                            text-shadow: 0 0 .2vw black;
+                            font-family: tw;
+                            font-size: 1.5vw;
+                            left: 5%;
+                            top: 38%;
+                            text-shadow: 0 0 .5vw black;
+                        }
+
+                        #contentfirmyt i {
+                            position: absolute;
+                            color: black;
+                            font-size: .7vw;
+                            left: 5%;
+                            width: 90%;
+                            top: 50%;
+                            text-shadow: 0 0 .5vw white;
+                            font-family: Calibri
+                        }
+                    </style>
+                    <span> Nece... </span>
+                    <i>
+                        Gran compañero de aventuras virtuales. Compartimos batallas y salvamos mundos, a pesar de conocernos entre rencillas. Pero dicen que así empiezan aquellos
+                        que mejor se entienden al final. Gracias por cubrirme la espalda. Sos valioso xoxo
+                        <br>
+
+                    </i><span style="top:85%;"> 施罗德兹   Seikishidan - Izaya</span>
+                </div>
+            </div>
+
+            <div id="Firmmarie">
+
+                <style>
+                    #Firmmarie {
+                        position: relative;
+                        backdrop-filter: blur(2px);
+                        width: 100%;
+                        height: 50%;
+                        margin-top: 35%;
+                        margin-bottom: 25%;
+                    }
+
+                    #imgmar {
+                        position: absolute;
+                        width: 90%;
+                        left: 5%;
+                        top: 22%;
+                        border-radius: .2vw;
+                    }
+
+                    #belnummar {
+                        position: absolute;
+                        font-family: comp2;
+                        font-size: 5vw;
+                        opacity: .8;
+                        top: -1%;
+                        text-shadow: .2vw .2vw .3vw black;
+                        margin: 0;
+                        left: 5%;
+                    }
+
+                    #firmtextmar {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 2.8vw;
+                        color: #171717;
+                        left: 30%;
+                        z-index: 9;
+                        opacity: .6;
+                        text-shadow: .2vw .2vw .2vw black;
+                        mix-blend-mode: difference;
+                        top: -2.5vw;
+                    }
+                </style>
+                <p id="belnummar">31</p><p id="firmtextmar">WizzDarkness</p>
+                <div id="latertext">
+                    <style>
+                        #latertext {
+                            position: absolute;
+                            width: 5%;
+                            height: 50%;
+                            z-index: 1;
+                            right: 17%;
+                            top: 5%;
+                        }
+
+                        #plat {
+                            position: absolute;
+                            font-size: 1.8vw;
+                            top: -3vw;
+                            text-shadow: .2vw .2vw .2vw black;
+                            color: gray;
+                            line-height: 2vw;
+                            font-family: neigefont3;
+                        }
+
+                        #plat2 {
+                            position: absolute;
+                            font-size: 2vw;
+                            left: 2.2vw;
+                            top: -3vw;
+                            font-family: neigefont3;
+                            background: dimgray;
+                            color: #47cb92;
+                            padding: .3vw;
+                            line-height: 2vw;
+                        }
+
+                        #pllat {
+                            font-size: 3.5vw;
+                            opacity: .5;
+                            transform: rotate(90deg);
+                            left: -2vw;
+                            color: gray;
+                            letter-spacing: .1vw;
+                            top: 38%;
+                            position: absolute;
+                            font-family: bt;
+                            font-weight: bold;
+                        }
+
+                        #textmarie {
+                            position: absolute;
+                            width: 89%;
+                            height: auto;
+                            top: 73%;
+                            left: 5%;
+                            border-left: .2vw solid #47cb92;
+                        }
+
+                            #textmarie p {
+                                text-align: right;
+                                font-family: tw;
+                                font-size: .7vw;
+                                color: gray;
+                            }
+
+                                #textmarie p span {
+                                    color: #171717;
+                                }
+                    </style>
+                    <p id="pllat">
+                        Marie
+                    </p>
+                    <p id="plat">
+                        神<br>话<br>是<br>真<br>理<br>的<br>耳<br>语
+                    </p>
+                    <p id="plat2">
+                        神<br>话<br>与
+                    </p>
+                </div>
+                <img src="https://i.postimg.cc/2j1BrtBX/c60cebb3c909fbdb481f936bf4057004.jpg" id="imgmar" />
+                <div id="textmarie">
+                    <p>
+                        Qué tal, Nece... dejando un saludo enorme. Son pocas las palabras pero grande el afecto que siento por el corto tiempo que nos conocemos. Aún así te considero
+                        un tipo algo extraño y con gustos exóticos pero muy buena onda. Se te quiere y estima.
+                        <br /><br /><br /> <span>MARIE | WIZZDARKNESS - 15363211332</span>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <div id="main" class="noopenedfirms">
+        
+        <canvas id="canvasx">
+            <script>
+
+                const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                    STAR_SIZE = 1.5,
+                    STAR_MIN_SCALE = 0.2,
+                    OVERFLOW_THRESHOLD = 50;
+
+                const canvas4 = document.getElementById("canvasx"),
+                    context = canvas4.getContext("2d");
+
+                let scale = 1, // device pixel ratio
+                    width,
+                    height;
+
+                let stars = [];
+
+                let pointerX, pointerY;
+
+                let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                let touchInput = false;
+
+                generate();
+                resize();
+                step();
+
+                window.onresize = resize;
+                window.onmousemove = onMouseMove;
+                window.ontouchmove = onTouchMove;
+                window.ontouchend = onMouseLeave;
+                document.onmouseleave = onMouseLeave;
+
+                function generate() {
+                    for (let i = 0; i < STAR_COUNT; i++) {
+                        stars.push({
+                            x: 0,
+                            y: 0,
+                            z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                        });
+
+                    }
+                }
+
+                function placeStar(star) {
+                    star.x = Math.random() * width;
+                    star.y = Math.random() * height;
+                }
+
+                function recycleStar(star) {
+                    let direction = "z";
+
+                    let vx = Math.abs(velocity.x),
+                        vy = Math.abs(velocity.y);
+
+                    if (vx > 1 || vy > 1) {
+                        let axis;
+
+                        if (vx > vy) {
+                            axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                        } else {
+                            axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                        }
+
+                        if (axis === "h") {
+                            direction = velocity.x > 0 ? "l" : "r";
+                        } else {
+                            direction = velocity.y > 0 ? "t" : "b";
+                        }
+                    }
+
+                    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                    if (direction === "z") {
+                        star.z = 0.1;
+                        star.x = Math.random() * width;
+                        star.y = Math.random() * height;
+                    } else if (direction === "l") {
+                        star.x = -OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "r") {
+                        star.x = width + OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "t") {
+                        star.x = width * Math.random();
+                        star.y = -OVERFLOW_THRESHOLD;
+                    } else if (direction === "b") {
+                        star.x = width * Math.random();
+                        star.y = height + OVERFLOW_THRESHOLD;
+                    }
+                }
+
+                function resize() {
+                    scale = window.devicePixelRatio || 1;
+
+                    width = window.innerWidth * scale;
+                    height = window.innerHeight * scale;
+
+                    canvas4.width = width;
+                    canvas4.height = height;
+
+                    stars.forEach(placeStar);
+                }
+
+                function step() {
+                    context.clearRect(0, 0, width, height);
+
+                    update();
+                    render();
+
+                    requestAnimationFrame(step);
+                }
+
+                function update() {
+                    velocity.tx *= 0.36;
+                    velocity.ty *= 0.36;
+
+                    velocity.x += (velocity.tx - velocity.x) * 0.7;
+                    velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                    stars.forEach(star => {
+                        star.x += velocity.x * star.z;
+                        star.y += velocity.y * star.z;
+
+                        star.x += (star.x - width / 2) * velocity.z * star.z;
+                        star.y += (star.y - height / 2) * velocity.z * star.z;
+                        star.z += velocity.z;
+
+                        // recycle when out of bounds
+                        if (
+                            star.x < -OVERFLOW_THRESHOLD ||
+                            star.x > width + OVERFLOW_THRESHOLD ||
+                            star.y < -OVERFLOW_THRESHOLD ||
+                            star.y > height + OVERFLOW_THRESHOLD) {
+                            recycleStar(star);
+                        }
+                    });
+                }
+
+                function render() {
+                    stars.forEach(star => {
+                        context.beginPath();
+                        context.lineCap = "round";
+                        context.lineWidth = STAR_SIZE * star.z * scale;
+                        context.strokeStyle =
+                            "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                        context.beginPath();
+                        context.moveTo(star.x, star.y);
+
+                        var tailX = velocity.x * 2,
+                            tailY = velocity.y * 2;
+
+                        // stroke() wont work on an invisible line
+                        if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                        if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                        context.lineTo(star.x + tailX, star.y + tailY);
+
+                        context.stroke();
+                    });
+                }
+
+                function movePointer(x, y) {
+                    if (typeof pointerX === "number" && typeof pointerY === "number") {
+                        let ox = x - pointerX,
+                            oy = y - pointerY;
+
+                        velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                        velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                    }
+
+                    pointerX = x;
+                    pointerY = y;
+                }
+
+                function onMouseMove(event) {
+                    touchInput = false;
+
+                    movePointer(event.clientX, event.clientY);
+                }
+
+                function onTouchMove(event) {
+                    touchInput = true;
+
+                    movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                    event.preventDefault();
+                }
+
+                function onMouseLeave() {
+                    pointerX = null;
+                    pointerY = null;
+                }
+            </script>
+        </canvas>
+
+        <!--<img src="https://i.postimg.cc/nhcSM8bP/hex-waifu2x-art-scan-noise3-scale-waifu2x-art-scan-noise3-scale.png" id="pentagon" />-->
+        <p id="mywork" onclick="openedfriends()"><span>></span>My firms</p>
+        <div id="part1">
+            <style>
+
+                #mywork {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 68.5%;
+                    z-index: 99;
+                    font-family: bt;
+                    font-size: 1vw;
+                    left: 19%;
+                    color: #171717;
+                    font-weight: bold;
+                }
+
+                    #mywork span {
+                        animation: toleft2 2s infinite;
+                        position: absolute;
+                    }
+
+                    #mywork:hover {
+                        color: #677994;
+                    }
+
+                @keyframes toleft2 {
+                    0% {
+                        left: -15%;
+                    }
+
+                    50% {
+                        left: -7%;
+                    }
+
+                    100% {
+                        left: -15%;
+                    }
+                }
+
+                #part1 {
+                    position: absolute;
+                    width: 5%;
+                    height: 100%;
+                    right: 0;
+                    background: #171717;
+                    z-index: 1;
+                }
+
+                @font-face {
+                    font-family: ht;
+                    src: url(ht.ttf);
+                }
+
+                @font-face {
+                    font-family: tak;
+                    src: url(tak.otf);
+                }
+            </style>
+
+
+
+        </div>
+
+
+
+        <div id="subcode">
+            <style>
+                #subcode {
+                    position: absolute;
+                    width: 25%;
+                    height: 10%;
+                    top: 73%;
+                    right: 1.5%;
+                    z-index: 2;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                }
+
+                #code2 {
+                    position: absolute;
+                    right: 0;
+                    font-size: 5vw;
+                    font-family: migueto;
+                    top: -4vw;
+                    font-weight: bold;
+                    letter-spacing: .3vw;
+                    color: #171717;
+                }
+
+                #code1 {
+                    position: absolute;
+                    right: 0;
+                    font-size: 1.63vw;
+                    top: -2vw;
+                    font-family: neigefont3;
+                    letter-spacing: .3vw;
+                    color: #171717;
+                }
+            </style>
+            <p id="code1">反射性集中 ✦ 要的</p>
+            <p id="code2">BK-121</p>
+
+        </div>
+
+        <div id="lat1">
+            <div id="listsong">
+                <style>
+                    #listsong {
+                        z-index: 2;
+                        transform: scaleX(-1);
+                        position: absolute;
+                        width: 30%;
+                        height: 8%;
+                        right: 1.5%;
+                        bottom: 9%;
+                    }
+
+                        #listsong p {
+                            font-family: tw;
+                            text-transform: uppercase;
+                            color: dimgray;
+                            font-size: .6vw;
+                            position: absolute;
+                            letter-spacing: .1vw;
+                            text-shadow: .1vw .1vw .3vw black;
+                        }
+
+                    #p1-1 {
+                        top: 0;
+                        transform: scaleX(-1);
+                    }
+
+                    #p1-2 {
+                        top: .8vw;
+                        transform: scaleX(-1);
+                    }
+
+                    #p1-3 {
+                        top: 1.6vw;
+                        transform: scaleX(-1);
+                    }
+
+                    #p1-4 {
+                        top: 2.4vw;
+                        transform: scaleX(-1);
+                    }
+
+                    #listsong span {
+                        color: darkgray;
+                        font-weight: bold;
+                    }
+                </style>
+                <p id="p1-1"><span>神必要的</span>: 【❝】Nece MV<span>•トーキョーゲットー</span>|</p>
+                <p id="p1-2"><span>必要的弱</span>: 【❝】Nece MV⸻<span>•退屈を再演しないで</span>|</p>
+                <p id="p1-3"><span>必要的弱</span>: 【❝】Database如何©<span>•米津玄師 - 春雷</span>CDPR OSSR DATA|</p>
+                <p id="p1-4"><span>必要的弱</span>: 【❝】PROJECT CODE<span>•AMESOEUR-M VER UI 1.0 </span>所|</p>
+
+            </div>
+            <div id="crdt">
+                <style>
+                    #crdt {
+                        transform: scaleX(-1);
+                        position: absolute;
+                        width: 30%;
+                        height: 3%;
+                        right: 1.5%;
+                        bottom: 6%;
+                        z-index: 2;
+                        font-family: tw;
+                        text-transform: uppercase;
+                        text-shadow: .1vw .1vw .3vw black;
+                    }
+
+                        #crdt p {
+                            transform: scaleX(-1);
+                            color: dimgray;
+                            font-size: .6vw;
+                            position: absolute;
+                            letter-spacing: .1vw;
+                        }
+
+                        #crdt span {
+                            transform: scaleX(-1);
+                            color: darkgray;
+                            font-weight: bold;
+                        }
+                </style>
+                <p><span>神经衰弱</span>: 【❝】➥✎𓆙✉✆⸻聊天.如何©<span>•xNEON/DECEMBRE</span>所有权利®</p>
+            </div>
+        </div>
+
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .15;
+                    z-index: 0;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            canvas {
+                opacity: .6;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .5s infinite;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+        </style>
+        <div id="profile">
+            <style>
+                #profile {
+                    position: absolute;
+                    width: 15%;
+                    height: 90%;
+                    right: 2%;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    top: 0%;
+                    z-index: 1;
+                }
+
+                #pnmber {
+                    position: absolute;
+                    font-size: 10vw;
+                    color: #171717;
+                    font-family: comp2;
+                    mix-blend-mode: difference;
+                    opacity: .9;
+                    top: -12vw;
+                    text-shadow: .2vw .2vw .5vw black;
+                    right: 20%;
+                }
+
+                #name {
+                    position: absolute;
+                    font-family: sten;
+                    color: #171717;
+                    font-size: 2vw;
+                    opacity: .8;
+                    top: -1.5vw;
+                    text-align: right;
+                    right: 95%;
+                    text-shadow: .2vw .2vw .3vw black;
+                    line-height: 2vw;
+                }
+            </style>
+            <p id="pnmber">03</p>
+            <p id="name">RECUILLEMENT<br />.CHRIS</p>
+
+        </div>
+        <div id="bardates">
+            <style>
+                #bardates {
+                    position: absolute;
+                    width: 17%;
+                    height: 100%;
+                    background: lightgray;
+                    z-index: 1; /*border-right:.3vw solid #171717;*/
+                    box-shadow: -.3vw -.3vw .7vw black;
+                    overflow: hidden;
+                }
+
+                #backbardates {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: url(https://i.postimg.cc/85LfbWH7/pattern.png);
+                    opacity: .1;
+                }
+
+                #mainnick {
+                    position: absolute;
+                    width: 100%;
+                    height: 4%;
+                    top: 5%;
+                    border-left: .6vw solid rgb(26,42,78);
+                }
+
+                    #mainnick span {
+                        font-family: neigefont3;
+                        font-size: 2vw;
+                        color: rgb(82, 82, 82);
+                        font-weight: bold;
+                        position: absolute;
+                        left: 1vw;
+                        top: -10%;
+                    }
+
+                #icons {
+                    position: absolute;
+                    width: 35%;
+                    height: 45%;
+                    left: 5%;
+                    bottom: 2%;
+                }
+
+                    #icons img {
+                        border-radius: .2vw;
+                        box-shadow: .2vw .2vw .5vw rgba(0,0,0,.5);
+                        width: 100%;
+                        margin-bottom: 15%;
+                    }
+
+                #pentagon {
+                    animation: rotation 15s infinite linear;
+                    position: absolute;
+                    opacity: .4;
+                    width: 60%;
+                    left: 69%;
+                    top: 13%;
+                }
+
+                @keyframes rotation {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(359deg);
+                    }
+                }
+
+                #pentagonp {
+                    position: absolute;
+                    width: 95%;
+                    left: 3%;
+                    top: 20%;
+                    height: 5%;
+                }
+
+                #cubeimg {
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                }
+
+                #pchre {
+                    font-family: neigefont3;
+                    font-size: 2.3vw;
+                    color: rgb(66, 66, 66);
+                    font-weight: bold;
+                    position: absolute;
+                    left: 3vw;
+                    top: -2.3vw;
+                }
+
+                #ptext1 {
+                    left: 3%;
+                    position: absolute;
+                    width: 70%;
+                    height: 3%;
+                    top: 30%;
+                }
+
+                    #ptext1 span, #ptext2 span {
+                        font-size: 1vw;
+                        color: rgb(66, 66, 66);
+                        font-family: neigefont3;
+                        font-weight: bold;
+                        letter-spacing: .1vw;
+                    }
+
+                #ptext2 {
+                    left: 3%;
+                    position: absolute;
+                    width: 70%;
+                    height: 3%;
+                    top: 35%;
+                }
+
+                #cubein {
+                    width: .5vw;
+                    height: .5vw;
+                    background: lightgray;
+                    border: .1vw solid rgb(26,42,78);
+                    position: absolute;
+                    transform: rotate(45deg);
+                    left: 37%;
+                    top: .3vw;
+                }
+
+                #incub {
+                    width: .3vw;
+                    position: absolute;
+                    left: .1vw;
+                    top: .1vw;
+                    height: .3vw;
+                    background: rgb(26,42,78);
+                }
+            </style>
+            <div id="backbardates">
+
+            </div>
+            <div id="ptext1">
+                <span>必要的: </span>&nbsp; &nbsp; <div id="cubein"><div id="incub"></div></div> &nbsp; &nbsp;<span> 反射</span>
+            </div>
+            <div id="ptext2">
+                <span>必要的: </span>&nbsp; &nbsp; <div id="cubein"><div id="incub"></div></div> &nbsp; &nbsp;<span> 反射性集中</span>
+            </div>
+            <div id="mainnick">
+                <span>这是必要的 </span>
+            </div>
+            <img src="https://i.postimg.cc/WpJg33fy/68c7596db350a9f635303026bb929d97-waifu2x-art-scan-noise3-scale.png" id="pentagon" />
+
+            <div id="pentagonp">
+                <img src="https://i.postimg.cc/RVBJXzvp/Captura-de-pantalla-2025-08-23-141859-waifu2x-art-scan-noise3-scale.png" id="cubeimg" /><p id="pchre">冥想与微妙</p>
+            </div>
+            <div id="icons">
+                <img src="https://i.postimg.cc/Pxr5RrBM/d24297bea945d8af4332a22ed1165cb7.jpg" />
+                <img src="https://i.pinimg.com/736x/4c/2c/e9/4c2ce9cb2c99c3357ebf833d5a20fcd6.jpg" style="filter:grayscale(100%)" />
+                <img src="https://i.pinimg.com/736x/f7/39/c4/f739c4369a2e1bfffc47de7130c1115f.jpg" style="filter:grayscale(100%)" />
+            </div>
+            <div id="dwnprofile">
+                <style>
+                    #dwnprofile {
+                        position: absolute;
+                        width: 50%;
+                        height: 39%;
+                        top: 53%;
+                        left: 45%;
+                    }
+
+                    #cubes {
+                        position: absolute;
+                        width: 100%;
+                        height: 26%;
+                        top: 2%;
+                        border-left: .2vw solid rgb(26,42,78);
+                    }
+
+                    #letch {
+                        position: relative;
+                        font-family: neigefont3;
+                        color: rgb(66, 66, 66);
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        top: -15%;
+                        left: 5%;
+                    }
+
+                    #lin1cubes {
+                        position: relative;
+                        height: 1vw;
+                        width: 70%;
+                        left: 5%;
+                        top: -1vw;
+                        margin-bottom: .2vw;
+                    }
+
+                        #lin1cubes div {
+                            float: left;
+                            margin-left: .2vw;
+                        }
+
+                    .df1 {
+                        position: relative;
+                        width: .6vw;
+                        height: .6vw;
+                        border: .2vw solid rgb(26,42,78);
+                        background: rgb(26,42,78);
+                    }
+
+                    .df2 {
+                        position: relative;
+                        width: .6vw;
+                        height: .6vw;
+                        border: .2vw solid rgb(26,42,78);
+                    }
+                </style>
+                <div id="cubes">
+                    <p id="letch">电源和图形</p>
+                    <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df1"></div><div class="df2"></div></div>
+                    <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df2"></div><div class="df2"></div><div class="df2"></div></div>
+                    <div id="lin1cubes"><div class="df1"></div><div class="df1"></div><div class="df1"></div><div class="df1"></div></div>
+                </div>
+                <div id="cb1">
+                    <style>
+                        #demo, #pre {
+                            z-index: -1;
+                            opacity: 0;
+                        }
+
+                        #cb1 {
+                            position: absolute;
+                            top: 37%;
+                            height: 26%;
+                            width: 100%;
+                            border-left: .2vw solid rgb(26,42,78);
+                        }
+
+                        #datespcb1 {
+                            position: absolute;
+                            left: 3%;
+                            color: rgb(66, 66, 66);
+                            font-family: neigefont3;
+                            font-size: .65vw;
+                            letter-spacing: .1vw;
+                            line-height: 1vw;
+                            top: -10%;
+                        }
+                    </style>
+                    <p id="datespcb1">
+                        阿拉斯托//
+                        <br />
+                        位置//无线电领主
+                        <br />
+                        墨西哥//北部
+                        <br />
+                        欢迎来到我的空间，下一个奴隶
+                    </p>
+                </div>
+                <div id="cb2">
+                    <style>
+                        #cb2 {
+                            position: absolute;
+                            top: 72%;
+                            height: 26%;
+                            width: 100%;
+                            border-left: .2vw solid rgb(26,42,78);
+                        }
+
+
+
+                        #datespcb2 {
+                            position: absolute;
+                            left: 3%;
+                            color: rgb(66, 66, 66);
+                            font-family: neigefont3;
+                            font-size: .65vw;
+                            letter-spacing: .1vw;
+                            line-height: 1vw;
+                            top: -10%;
+                        }
+                    </style>
+
+                    <p id="datespcb2">
+                        燃烧的雪//
+                        <br />
+                        年龄：¿¿??
+                        <br />
+                        品味和偏好// 那么你想知道吗？
+                        <br />
+                        欢迎来  孽的代价......
+                    </p>
+                </div>
+                <div id="cb3">
+                    <style>
+                        #cb3 {
+                            position: absolute;
+                            top: 120%;
+                            height: 10%;
+                            width: 100%;
+                            border-left: .2vw solid #6c1a1a;
+                        }
+
+                        #iconalastor {
+                            position: absolute;
+                            width: 3.5vw;
+                            height: 3.5vw;
+                            left: 3%;
+                            border: .3vw solid #6c1a1a
+                        }
+
+                        #datespcb3 {
+                            position: absolute;
+                            left: 3%;
+                            color: gray;
+                            font-family: neigefont3;
+                            font-size: .65vw;
+                            letter-spacing: .1vw;
+                            line-height: 1vw;
+                            top: -10%;
+                        }
+                    </style>
+
+                    <p id="datespcb3">
+                        信.和版权所有2024 开发和创建者雪 开发权利和联系方式
+
+
+                    </p>
+                </div>
+
+
+                <!--<div id="divend">
+                <style>
+                    #divend { position:absolute; width:100%; height:20%; top:118%; border:.3vw solid rgb(86,22,22); overflow:hidden;
+                    }
+                    #linsep1 {
+                        position: absolute;
+                        width: 100%;
+                        top: 60%;
+                        height: .3vw;
+                        background: rgb(86,22,22);
+                    }
+                    #linsep2 {
+                        position: absolute;
+                        width: .3vw;
+                        top: 0%; left:30%;
+                        height: 60%;
+                        background: rgb(86,22,22);
+                    }
+                </style>
+                <div id="linsep1"></div>
+                <div id="linsep2"></div>
+            </div>-->
+            </div>
+        </div>
+        <div id="mindattox">
+            <style>
+                #mindattox {
+                    position: absolute;
+                    width: 10.5%;
+                    left: 18.5%;
+                    top: 35%;
+                    height: 6%;
+                    border-bottom: .1vw dashed gray;  filter:invert(70%);
+                }
+
+                    #mindattox p {
+                        color: lightgray;
+                        font-family: Calibri;
+                        font-size: .8vw;
+                        font-weight: bold;
+                        line-height: .8vw;
+                        top: -.7vw;
+                        position: absolute;
+                    }
+
+                    #mindattox img {
+                        position: absolute;
+                        right: -.6vw;
+                        width: 2.4vw;
+                    }
+            </style>
+            <p>**NOT AN <br /> EXHAUSTIVE <br />LIST</p>
+            <img src="https://i.postimg.cc/wMV6XQb4/Captura-de-pantalla-2024-08-02-205010.png" />
+        </div>
+        <div id="listoffriends">
+            <style>
+                #listoffriends {
+                    position: absolute;
+                    left: 18%;
+                    width: 30%;
+                    height: 4%;
+                    top: 42%;
+                    z-index: 9;
+                    filter: blur(.5px);
+                }
+
+                a {
+                    color: rgb(66, 66, 66);
+                    text-decoration: none;
+                }
+
+                .stars {
+                    font-size: 1.2vw;
+                    color: rgb(66, 66, 66);
+                    position: relative;
+                    width: 1.8vw;
+                    float: left;
+                    text-align: center;
+                }
+
+                    .stars:hover .occulttext {
+                        opacity: 1;
+                    }
+
+                .occulttext {
+                    position: relative;
+                    font-size: .5vw;
+                    top: -2.5vw;
+                    font-family: tw;
+                    text-transform: uppercase;
+                    opacity: 0;
+                }
+
+                    .occulttext:hover {
+                        color: #b64334;
+                    }
+
+                .pstar {
+                    position: relative;
+                    top: -1.2vw;
+                }
+
+                .stars:hover .pstar {
+                    animation: flickerstar 1s alternate infinite;
+                    color: dimgray;
+                }
+
+                @keyframes flickerstar {
+
+                    0% {
+                        text-shadow: 0 0 0vw rgb(66, 66, 66);
+                    }
+
+                    25% {
+                        text-shadow: 0 0 .5vw rgb(66, 66, 66);
+                    }
+
+                    100% {
+                        text-shadow: 0 0 0vw rgb(66, 66, 66);
+                    }
+                }
+            </style>
+            <div class="stars"><a href="#Firmnonse"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/iNonsenses"><p class="occulttext" id="neonname">iNonsenses</p></a></div>
+            <div class="stars"><a href="#autofirm"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/Taiga"><p class="occulttext" id="neonname">Taiga</p></a></div>
+            <div class="stars"><a href="#xpost"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/lynette"><p class="occulttext" id="neonname">lynette</p></a></div>
+            <div class="stars"><a href="#"><p class="pstar">✦</p></a><a href="https://xat.me/itami"><p class="occulttext" id="neonname">itami</p></a></div>
+            <div class="stars"><a href="#FirmNeu"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/xNeon"><p class="occulttext" id="neonname">xNeon</p></a></div>
+            <div class="stars"><a href="#Firmkei"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/keiou"><p class="occulttext" id="neonname">keiou</p></a></div>
+            <div class="stars"><a href="#Firmbel"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/unLuck"><p class="occulttext" id="neonname">unLuck</p></a></div>
+            <div class="stars"><a href="#contentfirmyt"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/seikishidan"><p class="occulttext" id="neonname">seikishidan</p></a></div>
+            <div class="stars"><a href="#postscr"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/RETICENCIA"><p class="occulttext" id="neonname">RETICENCIA</p></a></div>
+            <div class="stars"><a href="#Firmmarie"><p class="pstar" onclick="openedfriends()">✦</p></a><a href="https://xat.me/wizzdarkness"><p class="occulttext" id="neonname">wizzdarkness</p></a></div>
+             
+        </div>
+        <div id="antrepro">
+            <style>
+                #antrepro {  
+                    position: absolute;
+                    width: 20%;
+                    left: 18.5%;
+                    height: 13%;
+                    top: 1.5%;
+                }
+
+                #pref {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: 2vw;
+                    color: rgba(66, 66, 66,1);
+                    text-transform: uppercase;
+                    top: -2vw;
+                    font-weight: bold;
+                }
+
+                #pref2 {
+                    position: absolute;
+                    font-family: tw;
+                    font-size: 1vw;
+                    color: rgb(26,42,78);
+                    letter-spacing: .33vw;
+                    text-transform: uppercase;
+                    top: 1.3vw;
+                    left: .2vw;
+                    font-weight: bold;
+                }
+
+                @font-face {
+                    font-family: cloudx;
+                    src: url(cloud.otf);
+                }
+
+                #fsubtext {
+                    position: absolute;
+                    font-size: .55vw;
+                    left: .1vw;
+                    letter-spacing: .05vw;
+                    color: #171717;
+                    line-height: .7vw;
+                    opacity: .8;
+                    top: 52%;
+                    font-family: tw;
+                }
+            </style>
+            <p id="pref">reflection</p>
+            <p id="pref2">
+                intersection
+            </p>
+            <i id="fsubtext">
+                There is no better teacher <br />
+                than error, nor more sweetness <br />
+                than the one who suffers and then heals his pain.
+            </i>
+        </div>
+        <div id="reprox">
+            <style>
+
+                #firstdate {
+                    position: absolute;
+                    font-size: 4vw;
+                    font-family: migueto;
+                    color: rgb(26,42,78);
+                    top: -4.2vw;
+                    font-weight: bold;
+                    left: .5vw;
+                }
+
+                #reprox {
+                    position: absolute;
+                    width: 15%;
+                    height: 15%;
+                    border-left: .3vw solid dimgray;
+                    top: 15.5%;
+                    left: 18.5%;
+                }
+
+                #cuberepro {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    transform: rotate(45deg);
+                    background: dimgray;
+                    opacity: .5;
+                    left: -15%;
+                    top: 42.5%;
+                }
+            </style>
+            <p id="firstdate">22<span>/</span>08</p>
+            <div id="repro">
+                <style>
+                    #repro {
+                        opacity: .7;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 9;
+                        left: -2vw;
+                        top: 60%;
+                    }
+                </style>
+                <style>
+
+                    .wrapper {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type=range] {
+                        appearance: none;
+                        border-radius: 2px;
+                        outline: none;
+                        flex-grow: 1;
+                        height: 5px;
+                    }
+
+                        input[type=range]::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: .5vw;
+                            height: .5vw;
+                            transform: rotate(45deg);
+                            background-color: #171717;
+                        }
+
+                        input[type=range]::-moz-range-thumb {
+                            width: 15px;
+                            height: 15px;
+                            border: 2px #3d143d solid;
+                            border-radius: 7.5px;
+                            background-color: #b651b8;
+                        }
+
+                    .player {
+                    }
+
+                        .player .equalizer {
+                            /*position: absolute;*/
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: right;
+                            justify-content: right;
+                            margin-top: 2.4vw;
+                        }
+
+                            .player .equalizer .vertical {
+                                height: .1vw;
+                                width: .1vw;
+                                margin: .1vw;
+                                background-color: dimgray;
+                                border-radius: .3vw;
+                                transition: all 0.01s;
+                                transition-timing-function: ease-in-out;
+                            }
+
+                        .player .controls .line {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                            justify-content: space-between;
+                            margin: 10px 0;
+                        }
+
+                        .player .controls .progress {
+                            font-size: 0.5em;
+                            font-weight: bold;
+                            position: absolute;
+                        }
+
+                            .player .controls .progress .duration {
+                                margin: 0 10px 0 0;
+                            }
+
+                        .player .controls .play-pause {
+                            box-sizing: border-box;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            will-change: border-width;
+                            cursor: pointer;
+                            height: 20px;
+                            background: transparent;
+                            width: 20px;
+                            filter: grayscale(100%);
+                            border-color: transparent transparent transparent #171717;
+                            opacity: .8;
+                        }
+
+                            .player .controls .play-pause[aria-checked=false] {
+                                border-style: solid;
+                                border-width: 10px 0 10px 15px;
+                            }
+
+                            .player .controls .play-pause[aria-checked=true] {
+                                border-style: double;
+                                border-width: 0 0 0 15px;
+                            }
+
+                        .player .controls .description {
+                            margin: 0 10px;
+                        }
+
+                        .player .controls .volume {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                            .player .controls .volume input[type=range] {
+                                width: 0px;
+                                margin: 0 10px 0 0;
+                                transition: all 0.1s;
+                                transition-timing-function: ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            .player .controls .volume:hover input[type=range] {
+                                display: block;
+                                width: 50px;
+                            }
+
+                            .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume input[type=range]::-moz-range-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume input[type=checkbox] {
+                                display: none;
+                            }
+
+                                .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                    display: block;
+                                }
+
+                            .player .controls .volume img {
+                                display: none;
+                                cursor: pointer;
+                                height: 20px;
+                                width: 20px;
+                                filter: invert(11%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);
+                            }
+
+                    #progresss {
+                        background: dimgray;
+                        height: .1vw;
+                        width: 400%;
+                        position: absolute;
+                        top: 1vw;
+                    }
+
+                    #namesong {
+                        font-family: tw;
+                        font-size: .5vw;
+                        position: absolute;
+                        top: .95vw;
+                    }
+
+                    #current, .duration {
+                        opacity: 0;
+                    }
+
+                    #playbtn {
+                        position: absolute;
+                        right: -7.7vw;
+                    }
+                </style>
+                <script>
+                    function updateEqualizer(analyser, buffer, columns) {
+                        analyser.getByteFrequencyData(buffer);
+                        for (let i = 0; i < columns.length; i += 1) {
+                            let column = columns[i];
+                            const height = (buffer[i] / 255) * 35 + 2;
+                            column.setAttribute("style", `height: ${height}px`);
+                        }
+                    }
+
+                    function toMinutesAndSeconds(time) {
+                        const minutes = Math.floor(time / 60);
+                        const seconds = Math.floor(time % 60);
+                        if (seconds < 10) {
+                            return `${minutes}:0${seconds}`;
+                        }
+
+                        return `${minutes}:${seconds}`;
+                    }
+
+                    function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                        const currentTime = track.mediaElement.currentTime.toFixed(1);
+                        const duration = track.mediaElement.duration;
+                        timeDisplay.innerHTML = toMinutesAndSeconds(
+                            currentTime > duration ? duration : currentTime
+                        );
+                        progressBar.value = currentTime > duration ? duration : currentTime;
+                    }
+                    console.clear();
+
+                    // instigate our audio context
+                    let audioElement = new Audio();
+                    audioElement.crossOrigin = "anonymous";
+                    audioElement.src = "https://xcodexneon.github.io/evangelist/nesesong.mp3";
+
+                    audioElement.addEventListener(
+                        "loadedmetadata",
+                        (event) => {
+                            // for cross browser
+                            const AudioContext = window.AudioContext || window.webkitAudioContext;
+                            const audioCtx = new AudioContext();
+
+                            // load some sound
+                            const track = audioCtx.createMediaElementSource(audioElement);
+                            const playButton = document.querySelector("button");
+
+                            // play pause audio
+                            playButton.addEventListener(
+                                "click",
+                                function () {
+                                    // check if context is in suspended state (autoplay policy)
+                                    if (audioCtx.state === "suspended") {
+                                        audioCtx.resume();
+                                    }
+
+                                    if (this.dataset.playing === "false") {
+                                        audioElement.play();
+                                        this.dataset.playing = "true";
+                                        // if track is playing pause it
+                                    } else if (this.dataset.playing === "true") {
+                                        audioElement.pause();
+                                        this.dataset.playing = "false";
+                                    }
+
+                                    let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                    this.setAttribute("aria-checked", state ? "false" : "true");
+                                },
+                                false
+                            );
+
+                            // if track ends
+                            audioElement.addEventListener(
+                                "ended",
+                                () => {
+                                    playButton.dataset.playing = "false";
+                                    playButton.setAttribute("aria-checked", "false");
+                                },
+                                false
+                            );
+
+                            // initialize gain
+                            let gainNode = audioCtx.createGain();
+
+                            // initialize analyser
+                            let analyser = audioCtx.createAnalyser();
+                            analyser.fftSize = 64; //32 bins
+                            const frequencyBinsCount = analyser.frequencyBinCount;
+                            let buffer = new Uint8Array(frequencyBinsCount);
+                            track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                            // equalizer animation
+                            const equalizer = document.getElementById("equalizer");
+                            // 32 bins -> 32 columns
+                            const columns = document.getElementsByClassName("vertical");
+                            setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                            const currentTimeDisplay = document.querySelector(".current-time");
+                            const progressBar = document.querySelector(".progress-bar");
+                            const durationDisplay = document.querySelector(".duration");
+                            durationDisplay.innerHTML = toMinutesAndSeconds(
+                                track.mediaElement.duration
+                            );
+                            progressBar.max = track.mediaElement.duration;
+
+                            setInterval(
+                                updateProgressBar,
+                                100,
+                                track,
+                                progressBar,
+                                currentTimeDisplay,
+                                durationDisplay
+                            );
+
+                            const volumeControl = document.querySelector("#range-volume");
+
+                            volumeControl.addEventListener(
+                                "input",
+                                function () {
+                                    gainNode.gain.value = this.value;
+                                },
+                                false
+                            );
+
+                            // mute button
+                            const mute_button = document.getElementById("mute");
+                            mute_button.addEventListener(
+                                "change",
+                                (event) => {
+                                    if (event.target.checked) {
+                                        audioElement.muted = true;
+                                    } else {
+                                        audioElement.muted = false;
+                                    }
+                                },
+                                false
+                            );
+                        },
+                        false
+                    );
+
+                </script>
+                <div class="wrapper">
+                    <div class="player">
+                        <span class="description" id="namesong" style="text-transform:uppercase">People In The Box  • Seijatachi</span>
+                        <div class="controls">
+                            <div class="line progress">
+                                <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                                </button>
+
+                                <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                                <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                            </div>
+
+                            <div class="line">
+
+                                <!--<div class="volume">
+                                <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                                <input type="checkbox" name="mute" id="mute">
+                                <label for="mute" class="unmute">
+                                    <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                                </label>
+                                <label for="mute" class="mute">
+                                    <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                                </label>
+                            </div>-->
+                            </div>
+                        </div>
+                        <div class="equalizer" id="equalizer">
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="cuberepro">
+
+            </div>
+        </div>
+
+
+        <div id="points">
+
+        </div>
+        <p id="bignick">
+            Nece
+        </p>
+        <p id="regnumbig">
+            2200022 
+        </p>
+        <p id="subbig">
+            Recueillement et subtilité
+        </p>
+        <img src="shizo.png" id="mainrenderback" />
+        <img src="shizo.png" id="mainrender" />
+        <style>
+            #regnumbig {
+                position: absolute;
+                font-family: tw;
+                left: 39.5%;
+                bottom: 22%;
+                font-size: .6vw;
+                letter-spacing: .3vw;
+                filter: blur(.5px);
+                text-shadow: .3vw .3vw .3vw rgba(0,0,0,.8);
+                color: dimgray;
+            }
+
+            #subbig {
+                position: absolute;
+                font-family: tak;
+                left: 35%;
+                bottom: 1%;
+                font-size: 2.8vw;
+                color: #171717;
+                opacity: .8;
+                filter: blur(.5px);
+                text-shadow: .3vw .3vw .3vw rgba(0,0,0,.8);
+            }
+
+            #points {
+                position: absolute;
+                width: 14%;
+                height: 8%;
+                background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                left: 19%;
+                top: 74%;
+                filter: grayscale(100%);
+            }
+
+            #bignick {
+                position: absolute;
+                left: 18%;
+                font-family: migueto;
+                font-size: 11vw;
+                text-transform: uppercase;
+                bottom: -18%;
+                color: rgb(26,42,78);
+                filter: blur(.5px);
+                text-shadow: .3vw .3vw .3vw rgba(0,0,0,.5);
+            }
+
+            #mainrender {
+                position: absolute;
+                height: 85%;
+                right: 4%;
+                bottom: 0%; /*transform:scaleX(-1);*/
+                z-index: 1;
+                filter: grayscale(20%);
+            }
+
+            #mainrenderback {
+                position: absolute;
+                height: 85%;
+                right: 5%;
+                bottom: -1%;
+                /*transform: scaleX(-1);*/
+                filter: opacity(.4) blur(5px) brightness(-100%);
+            }
+        </style>
+
+    </div>
+    <div id="footbar">
+        <style>
+            #footbar {
+                position: absolute;
+                width: 101%;
+                height: 6%;
+                bottom: 0; left:-1%;
+                background: lightgray;
+                z-index: 1;
+                box-shadow: -.3vw .2vw .7vw black;
+            }
+
+            #linbarfot {
+                position: absolute;
+                width: 100%;
+                top: .2vw;
+                height: .5vw;
+                background: rgb(26,42,78);
+                z-index: 1;
+            }
+        </style>
+        <div id="linbarfot">
+
+        </div>
+    </div>
+</body>
+
+</html>
