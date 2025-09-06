@@ -1,0 +1,826 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+    <script>
+
+
+
+        $(document).ready(function () {
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+            z = 0;
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+
+                        name: "Radio éteinte",
+                        artist: "Radio éteinte",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "stars will fall",
+                        artist: "shamrain",
+                        src:
+                            "stars.mp3"
+                    },
+                     
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "                     " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+
+
+
+
+
+                if (playing != false) {
+                    CurrentSong++;
+                    if (CurrentSong < 0) {
+                        CurrentSong = 9;
+                    } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                    playSong();
+                }
+
+                else {
+                    song.play();
+                    playing = true; $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                }
+
+
+
+            });
+            $("#stopcircle").click(function () {
+                song.pause();
+                playing = false; $("i").addClass("playeq"); $("i").removeClass("stopeq");
+            });
+            $("#stopcircle").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 1) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 1;
+                } $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                playSong();
+            });
+
+            $("#playcircle").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 1) {
+                    CurrentSong = 0;
+                }
+                $("i").addClass("stopeq"); $("i").removeClass("playeq");
+                playSong();
+            });
+        });
+
+
+
+    </script>
+
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: black;
+        }
+
+        .rgbShiftSlider {
+            filter: grayscale(80%);
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*mix-blend-mode: hard-light;*/
+            opacity: 0.95;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /*transform-origin : 50vw 300vh;*/
+            transform-origin: 50% 50%;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+    </style>
+</head> 
+
+
+<body>
+    <div id="main">
+        <div id="backcontent">
+            <style>
+                #backcontent {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    background-color: #191919;
+                    overflow: hidden;
+                }
+            </style>
+            <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+        </div>
+        <div id="backcontent2">
+            <style>
+                #backcontent2 {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    background: black;
+                    opacity: .3;
+                }
+            </style>
+        </div>
+        <div id="contenyblock">
+            <style>
+                @font-face {
+                    font-family: europe;
+                    src: url(Europa.otf);
+                }
+
+                #contenyblock {
+                    position: absolute;
+                    width: 50%;
+                    left: 25%;
+                    top: 10%;
+                    height: 70%;
+                    background-color: #191919;
+                }
+
+                #name {
+                    position: absolute;
+                    color: white;
+                    font-size: 5.5vw;
+                    top: -14%;
+                    left: 3%;
+                    font-family: europe;
+                    letter-spacing: .1vw;
+                }
+
+                #imgprofile {
+                    position: absolute;
+                    width: 61%;
+                    border: .1vw solid #8f3b3b;
+                    top: 30%;
+                    left: 3%;
+                    height: 38%;
+                    overflow: hidden;
+                }
+
+                #gifold {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    opacity: .3;
+                }
+
+                #gifold2 {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    opacity: .1;
+                    background-image: url(https://cliply.co/wp-content/uploads/2021/07/402107790_STATIC_NOISE_400.gif);
+                }
+
+                #imgniert {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    opacity: .7;
+                }
+
+                #icon1 {
+                    position: absolute;
+                    width: 3vw;
+                    left: 36%;
+                    top: 3.5%;
+                }
+
+                #b2 {
+                    position: absolute;
+                    font-family: europe;
+                    color: white;
+                    left: 3%;
+                    top: 67%;
+                    font-size: 1.8vw;
+                    letter-spacing: .1vw;
+                }
+
+                #points2 {
+                    position: absolute;
+                    left: 3%;
+                    top: 94%;
+                    width: 34%;
+                }
+
+                #ptext2 {
+                    position: absolute;
+                    left: 33.4%;
+                    color: white;
+                    font-family: Consolas;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                    top: 71%;
+                    text-transform: uppercase;
+                    width: 25%;
+                }
+                #ptext3 {
+                    position: absolute;
+                    left: 3.4%;
+                    color: white;
+                    font-family: Consolas;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                    top: 85%;
+                    text-transform: uppercase;
+                    width: 25%;
+                }
+            </style>
+            <p id="name">Neige.</p><img src="https://i.postimg.cc/VkkY79vg/icon1.png" id="icon1" />
+
+            <img src="https://i.postimg.cc/J75TmnPn/5338179e40fc08e0baea3df3bcbb43ee295a2fb7-s2-n3-y1.png" id="points1" />
+
+            <img src="https://i.postimg.cc/MpPzRt6j/12.png" id="pointsimg" />
+            <div id="imgprofile">
+
+                <img id="imgniert" src="https://i.postimg.cc/d0BNcZ7y/bc87c99183ca63601199d2695c85b239.jpg" />
+
+                <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+                <div id="gifold2"></div>
+            </div>
+
+            <p id="b2">
+                B2.
+            </p>
+            <p id="ptext2">
+                buried in snow i found you
+                deserted and left to pine
+                buried in snow i found you
+                cast aside and left to die
+                one fleeting touch
+                soul ever aching
+                a woeful scene
+                my world breaking
+                a universe blue
+                you still adorn
+                <br />
+                <br /> <br /><br />
+                A Woeful Song <br /> Neige.
+            </p> 
+            <p id="ptext3">
+               Neige reserved
+            </p>
+            <img id="globe" src="https://i.postimg.cc/rz6RTdNy/globe.png" />
+            <img id="vs" src="https://i.postimg.cc/nVN3r0dr/vss.png" />
+            <img src="https://i.postimg.cc/LsXvqLRx/03958b11b3cb12104e598d41ec96bea62a6e7017-s2-n3-y1.png" id="points2" />
+            <div id="latcont">
+                <style>
+                    #vs {
+                        position: absolute;
+                        width: 7vw;
+                        left: 50%;
+                        top: 89%;
+                    }
+
+                    #globe {
+                        position: absolute;
+                        width: 3vw;
+                        left: 2.5%;
+                        top: 88%;
+                    }
+
+                    #points1 {
+                        position: absolute;
+                        width: 60%;
+                        left: 2.5%;
+                        top: 17%;
+                    }
+
+                    #pointsimg {
+                        position: absolute;
+                        width: 50%;
+                        left: 9%;
+                        top: 22%;
+                    }
+
+                    #latcont {
+                        position: absolute;
+                        width: 24%;
+                        height: 92%;
+                        right: 3%;
+                        top: 4%;
+                    }
+
+                    #num1 {
+                        position: absolute;
+                        font-family: europe;
+                        font-size: 3.8vw;
+                        color: #8f3b3b;
+                        top: -3.8vw;
+                    }
+
+                    #num2 {
+                        position: absolute;
+                        font-family: europe;
+                        height: 2vw;
+                        top: 29%;
+                        left: 0;
+                        width: 50%;
+                        top: 3.1vw;
+                        overflow: hidden;
+                    }
+
+                        #num2 p {
+                            font-size: 3.8vw;
+                            top: -5.4vw;
+                            position: absolute;
+                            color: #8f3b3b;
+                        }
+
+                    #num3 {
+                        position: absolute;
+                        font-family: europe;
+                        height: 2vw;
+                        left: 0;
+                        width: 50%;
+                        top: 4.6vw;
+                        overflow: hidden;
+                    }
+
+                        #num3 p {
+                            font-size: 3.8vw;
+                            top: -6.2vw;
+                            position: absolute;
+                            color: #8f3b3b;
+                        }
+
+                    #icon2 {
+                        position: absolute;
+                        width: 3vw;
+                        left: 70%;
+                        top: 0;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/PqbSV7xv/icon2.png" id="icon2" />
+                <div id="contnumber">
+                    <p id="num1">033</p>
+                    <div id="num2"><p>033</p></div>
+                    <div id="num3"><p>033</p></div>
+                </div>
+                <div id="contbars">
+                    <style>
+                        #contbars {
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            top: 20%;
+                        }
+
+                        #bar1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 30%;
+                        }
+
+                        #bar2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 30%;
+                            top: 30%;
+                        }
+
+                        #bar3 {
+                            position: absolute;
+                            width: 100%;
+                            height: 30%;
+                            top: 60%;
+                        }
+
+                        .circleicon {
+                            position: absolute;
+                            width: .8vw;
+                        }
+
+                        #barred1 {
+                            position: absolute;
+                            width: 50%;
+                            height: 15%;
+                            left: 1vw;
+                            background: #8f3b3b;
+                            top: 35%;
+                        }
+
+                        #barred2 {
+                            position: absolute;
+                            width: 32%;
+                            height: 15%;
+                            left: 1vw;
+                            background: #8f3b3b;
+                            top: 35%;
+                        }
+
+                        #barred3 {
+                            position: absolute;
+                            width: 55%;
+                            height: 15%;
+                            left: 1vw;
+                            background: #8f3b3b;
+                            top: 35%;
+                        }
+
+                        #p1 {
+                            position: absolute;
+                            right: 8%;
+                            color: white;
+                            font-family: Consolas;
+                            font-size: .65vw;
+                            letter-spacing: .05vw;
+                            top: -.6vw;
+                        }
+                    </style>
+                    <div id="bar1">
+                        <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
+                        <div id="barred1"></div><p id="p1">HOPENESS</p>
+                    </div>
+                    <div id="bar2">
+                        <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
+                        <div id="barred2"></div><p id="p1">DESRIE TO LIVE</p>
+                    </div>
+                    <div id="bar3">
+                        <img src="https://i.postimg.cc/J7c3ZXFK/5fa3fcfc37584268a28d735fdb2d2db93c105d52-s2-n3-y2.png" class="circleicon" />
+                        <div id="barred3"></div><p id="p1">DREAMER</p>
+                    </div>
+                </div>
+                <div id="lintext">
+                    <style>
+                        #lintext {
+                            position: absolute;
+                            width: 100%;
+                            height: 15%;
+                            top: 32%;
+                        }
+
+                        #barx1 {
+                            position: absolute;
+                            width: 100%;
+                            height: 50%;
+                        }
+
+                        #barx2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 50%;
+                            top: 50%;
+                        }
+
+                        #textbar1 {
+                            position: absolute;
+                            color: white;
+                            font-family: europe;
+                            text-transform: uppercase;
+                            font-size: 1.8vw;
+                            top: -1.7vw;
+                            letter-spacing: .1vw;
+                        }
+
+                        #sep1 {
+                            position: absolute;
+                            width: 15%;
+                            height: .3vw;
+                            background: white;
+                            left: 23%;
+                            top: 35%;
+                        }
+
+                        #textbar2 {
+                            position: absolute;
+                            color: white;
+                            font-family: europe;
+                            text-transform: uppercase;
+                            font-size: 1.8vw;
+                            top: -1.7vw;
+                            letter-spacing: .1vw;
+                            left: 40%;
+                        }
+
+                        #sep2 {
+                            position: absolute;
+                            width: 28%;
+                            height: .3vw;
+                            background: white;
+                            left: 66%;
+                            top: 35%;
+                        }
+
+                        #textbar3 {
+                            position: absolute;
+                            color: white;
+                            font-family: europe;
+                            text-transform: uppercase;
+                            font-size: 1.8vw;
+                            top: -1.7vw;
+                            letter-spacing: .1vw;
+                            left: 77%;
+                        }
+
+                        #sep3 {
+                            position: absolute;
+                            width: 52%;
+                            height: .3vw;
+                            background: white;
+                            left: 22%;
+                            top: 35%;
+                        }
+                    </style>
+                    <div id="barx1"><p id="textbar1">fri</p><div id="sep1"></div><p id="textbar2">gid</p><div id="sep2"></div></div>
+                    <div id="barx2"><p id="textbar1">so</p><div id="sep3"></div><p id="textbar3">ul</p> </div>
+                </div>
+
+                <img src="https://i.postimg.cc/bwHLYqVJ/icon4.png" id="world" />
+                <img src="https://i.postimg.cc/g2HF9Fvy/icon3.png" id="leftworld" />
+                <p id="ptext1">
+                    The sky is black<br />
+                    Like when the world ends, she said <br /><br /><br />
+                    The air is thick
+                    And heavy to breath
+                    The dust burns my throat
+                    She stood in a doorway
+                    As pale as someone already gone
+                    No hellos no goodbyes.
+                    Premonitions in the rising wind
+                    Tonight the stars will fall
+                    The world in a cyclone, pouring out
+                    No escape, but hey who cares
+                    Just go with the flow <br /> <br />
+                    The sky is black
+                    In abandoned lands, which time has left, has left, has left...
+                </p>
+
+                <img id="imgbarlast" src="https://i.postimg.cc/pdVd4BnT/icon6.png" />
+            </div>
+        </div>
+        <div id="backgif">
+            <style>
+                #ptext1 {    position:absolute; left:0; color:white; font-family:Consolas; font-size:.5vw; letter-spacing:.05vw; top:60%; text-transform:uppercase; width:96%;
+    } 
+                #imgbarlast { width:100%; position:absolute; bottom:0; left:-2%;
+                }
+                #world { position:absolute; width:4vw; top:47%; right:6%;
+                }
+                #leftworld { position:absolute; left:0; width:3.7vw; top:53.5%;
+                }
+                #backgif {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .05;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+
+        <div id="repro">
+            <style>
+                #repro {
+                    position: absolute;
+                    width: 10%;
+                    height: 3%;
+                    top: 25%;
+                    left: 26.5%;
+                    z-index: 99;
+                }
+
+                #playcircle {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    border-radius: 50%;
+                    border: .1vw solid white;
+                    top: 10%; cursor:pointer;
+                }
+
+                #stopcircle {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    border-radius: 50%;
+                    left: 15%;
+                    border: .1vw solid white;
+                    top: 10%;
+                    cursor: pointer;
+                }
+
+                .progress-bar {
+                    left: 30%;
+                    top: 30%;
+                    width: 63%;
+                    border-radius: .3vw;
+                    background: transparent;
+                    height: 35%;
+                    position: absolute;
+                    overflow: hidden;
+                }
+
+                .fillBar {
+                    background: #8f3b3b;
+                    width: 0;
+                    height: 100%;
+                }
+                #namesong {
+                    position: absolute;
+                    text-transform: uppercase; 
+                    width: 40%;
+                    height: 20%;
+                    right: 4%;
+                    top: 30%; 
+                    color: white; font-family:europe;
+                    font-size: .55vw; letter-spacing:.05vw;
+                }
+
+                .artist-name {
+                    position: absolute;
+                    text-transform: uppercase;
+                    text-align: right;
+                    width: 40%;
+                    height: 20%;
+                    right: 4%;
+                    top: 50%;
+                    font-family: 'Oswald', sans-serif;
+                    letter-spacing: .2vw;
+                    font-size: .5vw;
+                    color: #789ffb;
+                }
+                #playcircle img { position:absolute; width:.5vw; height:.5vw; left:.30vw; top:.25vw;
+                }
+                #stopcircle img {
+                    position: absolute;
+                    width: .6vw;
+                    height: .6vw;
+                    left: .15vw;
+                    top: .19vw;
+                }
+            </style>
+            <div id="playcircle">
+                <img src="https://i.postimg.cc/zDppmXN5/tocar.png" />
+            </div>
+            <div id="stopcircle">
+                <img src="https://i.postimg.cc/R0YhJDjN/pausa.png" />
+            </div>
+            <div class="progress-bar">
+                <div class="fillBar"></div>
+            </div>
+            <!--<div id="namesong"> <div id="name_sng" class="music-name"></div></div>-->
+        </div>
+    </div>
+    <script>
+        // set images
+        // demo works but images are blocked by codepen Cors issue
+        var images = [
+            "https://i.postimg.cc/Lsw-B0sgD/neon.png",
+            "https://i.postimg.cc/Lsw-B0sgD/neon.png",
+
+            "https://i.postimg.cc/Lsw-B0sgD/neon.png"
+        ];
+        // instanciate slider
+        var rbgShiftSlider = new rbgShiftSlider({
+            nav: true,
+            navElement: ".scene-nav",
+            slideImages: images,
+            stageWidth: 1080,
+            stageHeight: 1080,
+            displacementImage:
+                "https://images.unsplash.com/photo-1495757450029-09dbedacbc36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+               fullScreen: true,
+            transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+            transitionGhostDuration: 0.25,
+            transitionFilterIntensity: 150,
+            transitionSpriteIntensity: 1,
+            mouseDispIntensity: 3,
+            interactive: true,
+            autoPlay: true,
+            autoPlaySpeed: 12000
+        });
+
+    </script>
+</body>
+
+</html>
