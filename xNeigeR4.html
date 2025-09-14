@@ -1,0 +1,1248 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+   <script> 
+      </script>
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: black;
+        }
+
+        .rgbShiftSlider {
+            filter: grayscale(80%);
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*mix-blend-mode: hard-light;*/
+            opacity: 0.95;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /*transform-origin : 50vw 300vh;*/
+            transform-origin: 50% 50%;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+    </style>
+</head> 
+
+
+<body  onclick="playes();">
+    <div id="main"  >
+        <div id="backcontent">
+            <style>
+                #backcontent {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    background-color: #191919;
+                    overflow: hidden;
+                }
+            </style>
+            <div id="rbgShiftSlider" class="rgbShiftSlider"></div>
+        </div>
+        <div id="backcontent2">
+            <style>
+                #backcontent2 {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    background: black;
+                    opacity: .3;
+                }
+            </style>
+        </div>
+        <div id="contenyblock">
+            <style>
+                @font-face {
+                    font-family: europe;
+                    src: url(Europa.otf);
+                }
+
+                #contenyblock {
+                    position: absolute;
+                    width: 50%;
+                    left: 25%;
+                    top: 10%;
+                    height: 80%;
+                    background-color: #191919;
+                    /*border-bottom:.2vw solid #9b3232*/
+                }
+
+                #barright {
+                    position: absolute;
+                    width: 4%;
+                    height: 100%;
+                    right: 0;
+                }
+
+                #cointimg {
+                    position: absolute;
+                    right: 4%;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 40%;
+                }
+
+                #imgporf {
+                    position: absolute;
+                    height: 100%;
+                    left: -25%;
+                    filter: grayscale(30%);
+                }
+
+                #gifold {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    opacity: .3;
+                }
+
+                #gifold2 {
+                    position: absolute;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    opacity: .1;
+                    background-image: url(https://cliply.co/wp-content/uploads/2021/07/402107790_STATIC_NOISE_400.gif);
+                }
+            </style>
+
+            <div id="barright">
+                <style>
+                    #barcodestar {
+                        position: absolute;
+                        width: 70%;
+                        left: 15%;
+                        bottom: 5%;
+                    }
+                    #plusimg2 {
+                        position: absolute;
+                        width: 1.6vw;
+                        height: 1.6vw; 
+                        left: 10%;
+                        top: 32%;
+                    }
+                    #plusimg1 {
+                        position: absolute;
+                        width: 1.6vw;
+                        height: 1.6vw; 
+                        left: 10%;
+                        top: 2%;
+                    }
+                        #plusimg1 img, #plusimg2 img {
+                            position: absolute;
+                            width: 100%;
+                            filter: invert(100%);
+                        }
+                    #chinmyt { position:absolute;  color:white; font-family:ch1; font-size:1.3vw; line-height:1.1vw; opacity:.6; text-align:center; left:26%; top:1.8vw;
+                    }
+                </style>
+                <img src="https://i.postimg.cc/Lsf3T0dq/Captura-de-pantalla-2025-09-14-002740.png" id="barcodestar" />
+                <div id="plusimg1"><img src="https://i.postimg.cc/dQ7rmx8J/mas.png" /></div>
+                <p id="chinmyt">穿<br />过<br />这<br />寂<br />静<br />的<br />世<br />界</p>
+                <div id="plusimg2"><img src="https://i.postimg.cc/dQ7rmx8J/mas.png" /></div>
+            </div>
+            <div id="barleft">
+                <style>
+                    #barleft {
+                        position: absolute;
+                        width: 60%;
+                        height: 100%;
+                    }
+
+                    @font-face {
+                        font-family: neigefont;
+                        src: url(neige.otf);
+                    }
+
+                    @font-face {
+                        font-family: neigefont3;
+                        src: url(PMINGLIU.ttf);
+                    }
+
+                    @font-face {
+                        font-family: europe;
+                        src: url(Europa.otf);
+                    }
+
+                    @font-face {
+                        font-family: tw;
+                        src: url(tw.ttf);
+                    }
+
+                    @font-face {
+                        font-family: kenFont;
+                        src: url(ken.otf);
+                    }
+
+                    @font-face {
+                        font-family: textfirmFont;
+                        src: url(firm.otf);
+                    }
+
+                    @font-face {
+                        font-family: Rei;
+                        src: url(Rei.otf);
+                    }
+
+                    @font-face {
+                        font-family: bird;
+                        src: url(aston.ttf);
+                    }
+
+                    @font-face {
+                        font-family: erot;
+                        src: url(Erot.ttf);
+                    }
+
+                    @font-face {
+                        font-family: migueto;
+                        src: url(Migueto.ttf);
+                    }
+
+                    @font-face {
+                        font-family: migueto2;
+                        src: url(migueto2.otf);
+                    }
+
+                    @font-face {
+                        font-family: comp2;
+                        src: url(comp.otf);
+                    }
+
+                    @font-face {
+                        font-family: ht;
+                        src: url(ht.ttf);
+                    }
+
+                    @font-face {
+                        font-family: tak;
+                        src: url(tak.otf);
+                    }
+                    @font-face {
+                        font-family: ch2;
+                        src: url(ch2.ttf);
+                    }
+
+                    @font-face {
+                        font-family: ch1;
+                        src: url(ch1.ttf);
+                    }
+                    #bigname {
+                        position: absolute;
+                        color: white;
+                        font-size: 6vw;
+                        font-family: migueto;
+                    }
+
+                    #areanames {
+                        position: absolute;
+                        width: 100%;
+                        height: 20%;
+                    }
+                </style>
+                <div id="namenick">
+                    <style>
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+                        #namenick {
+                            position: absolute;
+                            width: 80%;  
+                            left: 1%;
+                            top: 0%;
+                            height: 18%;
+                        }
+
+                        #txtmain1 {
+                            top: -5.2vw;
+                            font-size: 5vw; opacity:.9;
+                            font-family: 'Poiret One'; font-weight:bold;
+                            color: lightgray; 
+                            position: relative; text-shadow:.2vw .2vw .3vw black;
+                        }
+
+                        #neontxt {
+                            font-size: 4vw;
+                            top: -8.5vw;
+                            font-family: bird;
+                            color: lightgray;
+                            text-align: center;
+                            position: relative;
+                            text-shadow: 0 0 .3vw white;
+                            animation: flickerx 2s infinite alternate;
+                        }
+
+                        @keyframes flickerx {
+
+                            20%, 24%, 55%, 100% {
+                                color: lightgray;
+                                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                            }
+
+                            0%, 18%, 22% {
+                                color: rgba(66, 66, 66, 0.5);
+                                text-shadow: none;
+                            }
+                        }
+
+                        #p1txt {
+                           
+                            position: relative;  
+                            text-align: center; width:100%;
+                            color: lightgray;
+                            font-size: .6vw;
+                            font-family: tw;
+                            border-bottom: .1vw solid gray;
+                            padding-bottom: .2vw;
+                            top: 0%;
+                            letter-spacing: .1vw;
+                            opacity: .5;
+                        }
+
+                        #p2txt {
+                            left: 30%;
+                            position: absolute; 
+                            color: lightgray;
+                            font-size: .6vw;
+                            font-family: tw;
+                            border-bottom: .1vw solid gray;
+                            padding-bottom: .2vw;
+                            top: 105%;
+                            letter-spacing: .1vw;
+                            opacity: .5;
+                        }
+
+                        #divbartxt {
+                            position: absolute;
+                            width: 50%;
+                            height: 1vw;
+                            left: 12%;
+                            top: 5%;
+                        }
+
+                        #divbardiv {
+                            width: 60%;
+                            height: .1vw;
+                            background: darkgray;
+                            left: 20%;
+                            top: 45%;
+                            position: absolute;
+                        }
+
+                        #txtsp1 {
+                            position: absolute;
+                            font-size: .6vw;
+                            color: darkgray;
+                            font-family: tw;
+                            top: .2vw;
+                            left: 5%;
+                        }
+
+                        #txtsp2 {
+                            position: absolute;
+                            font-size: .6vw;
+                            color: darkgray;
+                            font-family: tw; letter-spacing:.1vw;
+                            top: .2vw;
+                            right: -12%;
+                        }
+                        #fireimg { position:absolute; width:20%;  top:0; left:72%;
+                        }
+                    </style>
+                    <div id="divbartxt">
+                        <span id="txtsp1">94</span><div id="divbardiv"></div><span id="txtsp2">2659922</span>
+                    </div>
+                    <p id="txtmain1">Schroederz </p> <img id="fireimg" src="https://i.postimg.cc/pXVBb1jq/fire-waifu2x-art-scan-noise3-scale.png" />
+                    <img src="https://i.postimg.cc/PqbSV7xv/icon2.png" id="icon2">
+                </div>
+                <div id="secondconten">
+                    <style>
+                        #icon2 { position:absolute; width:10%;  top:12%; left:102%;
+                        }
+                        #secondconten { position:absolute; width:100%; height:8%; top:14%;  
+                        }
+                        #decolr {
+                            position: absolute;
+                            width: 50%;
+                            left: 1%;
+                            height: 100%;
+                            background-image: linear-gradient(90deg, rgba(30,30,30, 1) 10%,darkgray 40%, dimgray 60%, #d2d2d2  100%);
+                        }
+                        #cubefriends { position:absolute;   height:100%; width:39%;   left:53%;
+                        }
+                        #mcub1 { position:absolute; width:.8vw; height:.8vw; border-top:.1vw solid gray; border-left:.1vw solid gray; top:0; left:0;
+                        }
+                        #mcub2 {
+                            position: absolute;
+                            width: .8vw;
+                            height: .8vw;
+                            border-top: .1vw solid gray;
+                            border-right: .1vw solid gray;
+                            top: 0;
+                            right: 0;
+                        }
+                        #mcub3 {
+                            position: absolute;
+                            width: .8vw;
+                            height: .8vw;
+                            border-bottom: .1vw solid gray;
+                            border-right: .1vw solid gray;
+                            bottom: 0;
+                            right: 0;
+                        }
+                        #mcub4 {
+                            position: absolute;
+                            width: .8vw;
+                            height: .8vw;
+                            border-bottom: .1vw solid gray;
+                            border-left: .1vw solid gray;
+                            bottom: 0;
+                            left: 0;
+                        }
+                    </style>
+                    <div id="decolr">
+                    </div>
+                    <div id="cubefriends">
+                        <div id="mcub1"></div><div id="mcub2"></div><div id="mcub3"></div><div id="mcub4"></div>
+                        <p id="pch1">月<br />亮<br />再</p>
+                        <p id="pch2">月<br />亮<br />再</p>
+                        <p id="pch3">月<br />亮<br />再</p>
+                        <p id="pch4">月<br />亮<br />再</p>
+                        <p id="pch5">月<br />亮<br />再</p>
+                    </div>
+                </div>
+                <div id="thirdpart">
+                    <style>
+                        #pch1, #pch2, #pch3, #pch4, #pch5 {
+                            position: absolute;
+                            top: -1.3vw; left:10%;
+                            color: darkgray;
+                            font-size: 1.3vw;
+                            font-family: ch1;
+                            line-height: 1vw;
+                            position: absolute;
+                            background-image: linear-gradient(0deg, rgba(66, 66, 66, 1), dimgray, darkgray 100%);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+                        #pch2 { left:27%;
+                        }
+                        #pch3 { left:45%;
+                        }
+                        #pch4 { left:62%;
+                        }
+                        #pch5 { left:80%;
+                        }
+                        #thirdpart { 
+                            position: absolute;
+                            width: 91%;
+                            left: 1%;
+                            height: 12%;
+                            background: red;
+                            overflow: hidden;
+                            top: 24%;
+                        }
+
+                        #imgthird {
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0;
+                        }
+                    </style>
+                    <img id="imgthird" src="https://i.pinimg.com/originals/06/da/fa/06dafa731159bcd8c5d3a6115be73fd7.gif" /> <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+                    <div id="gifold2"></div>
+                </div>
+               
+                <div id="divcentral">
+                    <style>
+                        #divcentral { position:absolute; width: 72%; height:38%; top:37%; right:8%;  
+                        }
+                        #imggraf {
+                            width: 55%;
+                            bottom: -1%;
+                            
+                            position: absolute;
+                            right: -2%;
+                        }
+                        #textdiv { opacity:.8;
+                            position: absolute;
+                            border: .1vw solid white; width:51%; height:62%; right:0%;
+                        }
+                        #divfriends { position:absolute; width:72%; height:36%;   left:-25%; top:35%;   opacity:.7;
+                        }
+                        #pbk {
+                            position: absolute;
+                            font-size: 4.5vw; letter-spacing:.1vw;
+                            font-weight: bold;
+                            font-family: 'Poiret One'; color:white; top:-2.8vw; text-shadow:.2vw .2vw .2vw black;
+                        }
+                        #pbi { text-transform:uppercase;
+                            position: absolute;
+                            font-size:2vw;
+                            letter-spacing: .07vw;
+                            font-weight: bold;
+                            font-family:tw;
+                            color: white;
+                            top: -2.1vw;
+                            text-shadow: .2vw .2vw .2vw black;
+                        }
+                        #imgcontent { width:93%; height:92%; left:3%; top:3%; border:.1vw solid white; position:absolute; overflow:hidden;
+                        }
+                        #img3 {width:100%; top:-10%; position:absolute;
+                        }
+                        #imgad { position:absolute; width:24%; right:45%; top:11%; transform:rotate(90deg);
+
+                        }
+                        #divmyt4 { position:absolute; width: 23%; height:30%; border:.1vw solid white; top:1%; text-align:center;
+                        }
+                            #divmyt4 p { position:relative; font-family:tw; font-size:3vw; color:white;  top:-2.8vw; line-height:2.2vw; font-weight:bold; letter-spacing:0vw;
+                            }
+                        #ptextmyt { position:absolute; width:45%; height:19%; border:.1vw solid white; bottom:0; left:1%;
+                        }
+                            #ptextmyt p { position:relative; font-size:.65vw; font-weight:bold; font-family:tw; color:white; opacity:.8; text-align:center; text-transform:uppercase; top:-.2vw;
+                            }
+                        #codep {
+                            position: absolute;
+                            width: 15%; left:24%;
+                            height: 30%; top:1%; 
+                              
+                        }
+                            #codep p {
+                                position: relative;
+                                font-size: 2vw;
+                                font-weight: bold; line-height:1.62vw;
+                                font-family: tw;
+                                color: white; top:-2vw;
+                                opacity: .8;
+                                text-align: center;
+                                text-transform: uppercase;
+                            }
+                    </style>
+                    <div id="codep"><p>22<br />26<br />63</p>
+                       
+                    </div>
+                    <img src="https://i.postimg.cc/gk5zys93/Captura-de-pantalla-2025-09-13-020554-waifu2x-art-scan-noise3-scale.png" id="imggraf" />
+                    <div id="textdiv">
+                        <div id="imgcontent">
+                            <img id="img3" src="https://i.redd.it/o8lw993rcqz91.gif" />
+                            <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+                            <div id="gifold2"></div>
+                        </div>
+                    </div>
+                    <div id="divmyt4">
+                        <p>MY<br />T H</p>
+                    </div>
+                    <div id="divfriends">
+                        <p id="pbi">intercorrupted</p>
+                        <p id="pbk">BK-265</p>
+                    </div>
+                    <img src="https://i.postimg.cc/1zVdwH5X/Captura-de-pantalla-2025-09-13-235836.png" id="imgad" />
+                    <div id="ptextmyt">
+                        <p> IN-M3D14-H13M3 T4ND3M-D1D1C1 A35T4T3M-1NV1CT4M 1N-M3-L4T3R3.</p>
+                    </div>
+                </div>
+
+                <div id="divlat">
+                    <style>
+                        #divlat { width:18%;   top:37%; height:38%; position:absolute; opacity:.8; left:1%;
+                        }
+                        #codebarimg { width:100%; position:absolute;
+                        }
+                        #restrimg { width:105%; position:absolute; bottom:-1%;
+                        }
+                        #livediv {
+                            position: absolute;
+                            width: 100%;
+                            border: .1vw solid red;
+                            height: 7%;
+                            bottom: 12%;
+                            left: 2%;
+                            border-radius: .2vw;
+                            animation: flicker6 2s infinite alternate;
+                        }
+                        @keyframes flicker5 {
+                            20%, 24%, 55%, 100% {
+                                color: #FFF;
+                                text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                            }
+
+                            0%, 18%, 22% {
+                                color: rgba(66, 66, 66, 0.5);
+                                text-shadow: none;
+                            }
+                        }
+                        #ponl {
+                            animation: flicker5 2s infinite alternate;
+                            font-family:tw; font-size:.8vw; letter-spacing:.15vw; position:relative; text-align:center; top:-.6vw;
+                        }
+                        @keyframes flicker6 {
+                            20%, 24%, 55%, 100% {
+                                border-color: #FFF;
+                                
+                                box-shadow: inset 0 0 .2vw #fff, 0 0 .2vw #fff, inset 0 0 .8vw #fff,0 0 .8vw #fff, inset 0 0 1.3vw #FF0000,0 0 1.3vw #FF0000, inset 0 0 2.9vw #FF0000,0 0 2.9vw #FF0000;
+                            }
+
+                            0%, 18%, 22% {
+                                border-color: rgba(66, 66, 66, 0.5);
+                                box-shadow: none;
+                            }
+                        }
+                    </style>
+                    <img id="codebarimg" src="https://i.postimg.cc/9Q0SJYBY/Captura-de-pantalla-2025-09-13-012528-waifu2x-art-scan-noise3-scale.png" />
+
+                    <div id="livediv"><p id="ponl">ONLINE</p></div>
+                    <img id="restrimg" src="https://i.postimg.cc/D0Bhby2v/Captura-de-pantalla-2025-09-13-013432-waifu2x-art-scan-noise3-scale.png" />
+                    
+                </div>
+                <div id="lastpart">
+                    <style>
+                        #lastpart { position:absolute; width:91%; height:17%; bottom:7%;   left:1%;
+                        }
+                        #mytp {
+                            position: absolute;
+                            font-family: tw;
+                            font-size: 5vw;
+                            top: -2.5vw;
+                            background: url(https://i.pinimg.com/originals/60/87/27/60872716e802e74652c4e308870ada42.gif) repeat; filter:contrast(120%);
+                            background-size: auto 100%;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                        }
+                        #upmyt {
+                            position: absolute;
+                            width: 100%;
+                            height: 25%;
+                            top: 5%;
+                            opacity: .8;
+                        }
+                        #cubeimgic {
+                            position: absolute;
+                            width: 1.7vw;
+                            height: 1.7vw;
+                            background: white;
+                           
+                        }
+                            #cubeimgic img {
+                                position: absolute;
+                                width: 70%;
+                                left: 15%;
+                                top: 15%;
+                                opacity: .8;
+                            }
+                        #pdpart1 { position:absolute; width:20%; height:100%;   left:8%; border-right:.4vw solid white;
+                        }
+                            #pdpart1 p { color:white; font-family:neigefont3; position:absolute; font-size:.55vw; letter-spacing:.1vw; top:-.3vw;
+                            }
+                            #pdpart1 span {
+                                color: white;
+                                font-size: .35vw;
+                                top: 1vw; position:absolute;
+                                letter-spacing: .05vw;
+                            }
+                        #pdpart2 {
+                            position: absolute;
+                            width: 64%;
+                            height: 100%;
+                            left: 35%;
+                            border-right: .4vw solid white;  
+                        }
+                        #pd2p {
+                            color: white;
+                            font-family: tw;
+                            position: absolute;
+                            font-size: .6vw;
+                            letter-spacing: .1vw;
+                            top: -.3vw;
+                            font-family:tw;
+                            /*font-family: 'Poiret One';*/
+                        }
+                        #pd2p2 {
+                            color: white;
+                            left:  0%;
+                            width: 45%;
+                            top: -.2vw;
+                            font-family: neigefont3;
+                            position: absolute;
+                            font-size: .55vw;
+                            letter-spacing: .1vw;
+                            text-align: right;
+                        }
+
+                            #pd2p2 span {
+                                color: white;
+                                font-size: .35vw;
+                                top: 1vw; 
+                                letter-spacing: .05vw;
+                            }
+                        #cbflecha { position:absolute; width:1vw; height:1vw;  left:50%;  top:20%;
+                        }
+                        #flh { position:absolute; width:.3vw; height:100%; right:0; background:white;
+                        }
+                        #flw { position:absolute; width:100%; height:.3vw; bottom:0; background:white;
+                        }
+                        #flz {
+                            position: absolute;
+                            width: 110%;
+                            height: .3vw;
+                           top:30%; left:-10%;
+                            background: white; transform:rotate(45deg)
+                        }
+                        #pdpart2p3 {
+                          position:absolute;
+                            color: white; left:60%;
+                            font-size: .35vw;
+                            top: -.2vw;
+                            letter-spacing: .05vw;
+                            font-family: bt;
+                        }
+                        #rumbimg { position:absolute; width:38%; right:-1%; bottom:-3%;
+                        }
+                    </style>
+                    <div id="upmyt">
+                        <div id="cubeimgic"><img src="https://i.postimg.cc/rFHDpLMp/nudo.png" /></div>
+                        <div id="pdpart1">
+                            <p>神現實</p><br /><span>穿越這//寂靜的世界</span>
+                        </div> 
+                        <div id="pdpart2">
+                            <p id="pd2p">XC<br />3XX5</p>
+                            <p id="pd2p2">的世界<br /><span>穿越這//寂靜的世界</span></p>
+                            <div id="cbflecha">
+                                <div id="flh"></div><div id="flw"></div><div id="flz"></div>
+                            </div>
+                            <p id="pdpart2p3">
+                                必要的弱:  PROJECT CODE•MYT VER UI 1.0 所| 
+                                神经衰弱: 【❝】 聊天.如何©•NEIGE / LYRA所有权利®
+                            </p>
+                        </div>
+                    </div>
+                    <p id="mytp">MYTHES.</p>
+                    <img src="https://i.postimg.cc/fTyRbW3K/Captura-de-pantalla-2025-09-13-104439-waifu2x-art-scan-noise3-scale.png" id="rumbimg" />
+                </div>
+            </div>
+            <div id="cointimg">
+                <img src="https://i.postimg.cc/HWcLWFcB/bi.jpg" id="imgporf" />
+                <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+                <div id="gifold2"></div>
+            </div>
+            <img src="https://i.postimg.cc/XYq6GbGL/Captura-de-pantalla-2025-09-13-005521.png" id="rumbb" />
+            <div id="repro">
+                <style>
+                    #rumbb{
+                        position:absolute; width:15%; bottom:0; left:56.5%; opacity:.5;
+                    }
+                    #repro {
+                        position: absolute;
+                        width: 56%; background:black;
+                        height: 6%;
+                        z-index: 9;
+                       bottom:0; left:0;
+                    }
+                </style>
+                <style>
+
+                    .wrapper {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type=range] {
+                        appearance: none;
+                        border-radius: 2px;
+                        outline: none;
+                        flex-grow: 1;
+                        height: 5px;
+                    }
+
+                        input[type=range]::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: .4vw;
+                            height: .4vw;
+                            transform: rotate(45deg);
+                            background-color: #171717;
+                        }
+
+                        input[type=range]::-moz-range-thumb {
+                            width: 15px;
+                            height: 15px;
+                            border: 2px #3d143d solid;
+                            border-radius: 7.5px;
+                            background-color: #171717;
+                        }
+
+                    .player {
+                    }
+
+                        .player .equalizer {
+                            /*position: absolute;*/
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: left;
+                            position: absolute;
+                            justify-content: left; opacity:0;
+                            left: 0%;
+                            margin-top: 2vw;
+                        }
+
+                            .player .equalizer .vertical {
+                                opacity: 0;
+                                height: .1vw;
+                                width: .1vw;
+                                margin: .1vw;
+                                background-image: linear-gradient(180deg, #171717 40%, #827A99 80%, #FCCACB 100%);
+                                border-radius: .3vw;
+                                transition: all 0.01s;
+                                transition-timing-function: ease-in-out;
+                            }
+
+                        .player .controls .line {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                            justify-content: space-between;
+                            margin: 10px 0;
+                        }
+
+                        .player .controls .progress {
+                            font-size: 0.5em;
+                            font-weight: bold;
+                            position: absolute;
+                        }
+
+                            .player .controls .progress .duration {
+                                margin: 0 10px 0 0;
+                            }
+
+                        .player .controls .play-pause {
+                            box-sizing: border-box;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            will-change: border-width;
+                            cursor: pointer;
+                            height: 20px;
+                            background: transparent;
+                            width: 20px;
+                            filter: grayscale(100%) invert(50%); 
+                            border-color: transparent transparent transparent #171717;
+                            opacity: .8;
+                        }
+
+                            .player .controls .play-pause[aria-checked=false] {
+                                border-style: solid;
+                                border-width: 10px 0 10px 15px;
+                            }
+
+                            .player .controls .play-pause[aria-checked=true] {
+                                border-style: double;
+                                border-width: 0 0 0 15px;
+                            }
+
+                        .player .controls .description {
+                            margin: 0 10px;
+                        }
+
+                        .player .controls .volume {
+                            position: absolute;
+                            top: 35%;
+                            left: 55%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            filter: invert(40%);
+                            justify-content: center;
+                        }
+
+                            .player .controls .volume input[type=range] {
+                                width: 0px;
+                                margin: 0 10px 0 0;
+                                transition: all 0.1s;
+                                transition-timing-function: ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            .player .controls .volume:hover input[type=range] {
+                                display: block;
+                                width: 50px;
+                            }
+
+                            .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                                display: none;
+                                background: #dd8731;
+                            }
+
+                            .player .controls .volume input[type=range]::-moz-range-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume input[type=checkbox] {
+                                display: none;
+                            }
+
+                                .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                    display: block;
+                                }
+
+                            .player .controls .volume img {
+                                display: none;
+                                cursor: pointer;
+                                height: 20px;
+                                filter: invert(100%);
+                                width: 20px;
+                                /*filter: invert(11%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);*/
+                            }
+
+                    #progresss {
+                        background:gray;
+                        height: .5vw;
+                        width: 600%;
+                        position: absolute;
+                        top: 0vw;
+                        left: -580%;
+                    }
+
+                    #namesong {
+                        font-family: tw;
+                        width: 100%;
+                        font-size: .6vw;
+                        position: absolute; color:gray;
+                        left: 1%;
+                        top: 10%;
+                    }
+
+                    #current, .duration {
+                        opacity: 0;
+                    }
+
+                    #playbtn {
+                        position: absolute;
+                      right:-460%;
+                    }
+                </style>
+                <script>
+                    function updateEqualizer(analyser, buffer, columns) {
+                        analyser.getByteFrequencyData(buffer);
+                        for (let i = 0; i < columns.length; i += 1) {
+                            let column = columns[i];
+                            const height = (buffer[i] / 255) * 35 + 2;
+                            column.setAttribute("style", `height: ${height}px`);
+                        }
+                    }
+
+                    function toMinutesAndSeconds(time) {
+                        const minutes = Math.floor(time / 60);
+                        const seconds = Math.floor(time % 60);
+                        if (seconds < 10) {
+                            return `${minutes}:0${seconds}`;
+                        }
+
+                        return `${minutes}:${seconds}`;
+                    }
+
+                    function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                        const currentTime = track.mediaElement.currentTime.toFixed(1);
+                        const duration = track.mediaElement.duration;
+                        timeDisplay.innerHTML = toMinutesAndSeconds(
+                            currentTime > duration ? duration : currentTime
+                        );
+                        progressBar.value = currentTime > duration ? duration : currentTime;
+                    }
+                    console.clear();
+
+                    // instigate our audio context
+                    let audioElement = new Audio();
+                    audioElement.crossOrigin = "anonymous";
+                    audioElement.src = "https://xcodexneon.github.io/evangelist/butt.mp3";
+                  
+                    audioElement.addEventListener(
+                        "loadedmetadata",
+                        (event) => {
+                            // for cross browser
+                            const AudioContext = window.AudioContext || window.webkitAudioContext;
+                            const audioCtx = new AudioContext();
+
+                            // load some sound
+                            const track = audioCtx.createMediaElementSource(audioElement);
+                            const playButton = document.querySelector("button");
+                            function playit() {
+                                audioElement.play();
+
+                            }
+                            // play pause audio
+                            playButton.addEventListener(
+                                "click",
+                                function () {
+                                    // check if context is in suspended state (autoplay policy)
+                                    if (audioCtx.state === "suspended") {
+                                        audioCtx.resume();
+                                    }
+
+                                    if (this.dataset.playing === "false") {
+                                        audioElement.play();
+                                        this.dataset.playing = "true";
+                                        // if track is playing pause it
+                                    } else if (this.dataset.playing === "true") {
+                                        audioElement.pause();
+                                        this.dataset.playing = "false";
+                                    }
+
+                                    let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                    this.setAttribute("aria-checked", state ? "false" : "true");
+                                },
+                                false
+
+                            );
+                             
+                                   
+                          
+                            // if track ends
+                            audioElement.addEventListener(
+                                "ended",
+                                () => {
+                                    playButton.dataset.playing = "false";
+                                    playButton.setAttribute("aria-checked", "false");
+                                },
+                                false
+                            );
+
+                            // initialize gain
+                            let gainNode = audioCtx.createGain();
+
+                            // initialize analyser
+                            let analyser = audioCtx.createAnalyser();
+                            analyser.fftSize = 64; //32 bins
+                            const frequencyBinsCount = analyser.frequencyBinCount;
+                            let buffer = new Uint8Array(frequencyBinsCount);
+                            track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                            // equalizer animation
+                            const equalizer = document.getElementById("equalizer");
+                            // 32 bins -> 32 columns
+                            const columns = document.getElementsByClassName("vertical");
+                            setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                            const currentTimeDisplay = document.querySelector(".current-time");
+                            const progressBar = document.querySelector(".progress-bar");
+                            const durationDisplay = document.querySelector(".duration");
+                            durationDisplay.innerHTML = toMinutesAndSeconds(
+                                track.mediaElement.duration
+                            );
+                            progressBar.max = track.mediaElement.duration;
+
+                            setInterval(
+                                updateProgressBar,
+                                100,
+                                track,
+                                progressBar,
+                                currentTimeDisplay,
+                                durationDisplay
+                            );
+
+                            const volumeControl = document.querySelector("#range-volume");
+
+                            volumeControl.addEventListener(
+                                "input",
+                                function () {
+                                    gainNode.gain.value = this.value;
+                                },
+                                false
+                            );
+
+                            // mute button
+                            const mute_button = document.getElementById("mute");
+                            mute_button.addEventListener(
+                                "change",
+                                (event) => {
+                                    if (event.target.checked) {
+                                        audioElement.muted = true;
+                                    } else {
+                                        audioElement.muted = false;
+                                    }
+                                },
+                                false
+                            );
+                        },
+                        false
+                    );
+
+                </script>
+                <div class="wrapper">
+                    <div class="player">
+                        <span class="description" id="namesong" style="text-transform:uppercase">
+                            Our Wings Are Burning
+                            • virgin black
+                        </span>
+                        <div class="controls">
+                            <div class="line progress">
+                                <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                                </button>
+
+                                <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                                <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                            </div>
+
+                            <div class="line">
+
+                                <div class="volume">
+                                    <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                                    <input type="checkbox" name="mute" id="mute">
+                                    <label for="mute" class="unmute">
+                                        <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                                    </label>
+                                    <label for="mute" class="mute">
+                                        <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="equalizer" id="equalizer">
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="backgif">
+            <style>
+                #ptext1 {    position:absolute; left:0; color:white; font-family:Consolas; font-size:.5vw; letter-spacing:.05vw; top:60%; text-transform:uppercase; width:96%;
+    } 
+                #imgbarlast { width:100%; position:absolute; bottom:0; left:-2%;
+                }
+                #world { position:absolute; width:4vw; top:47%; right:6%;
+                }
+                #leftworld { position:absolute; left:0; width:3.7vw; top:53.5%;
+                }
+                #backgif {
+                    position: absolute;
+                    width: 64%;
+                    left: 18%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .05;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+
+    
+    </div>
+    <script>
+        // set images
+        // demo works but images are blocked by codepen Cors issue
+        var images = [
+            "https://i.postimg.cc/gkbqDL3M/Captura-de-pantalla-2025-09-14-010818.png",
+            "https://i.postimg.cc/gkbqDL3M/Captura-de-pantalla-2025-09-14-010818.png",
+
+            "https://i.postimg.cc/gkbqDL3M/Captura-de-pantalla-2025-09-14-010818.png"
+        ];
+        // instanciate slider
+        var rbgShiftSlider = new rbgShiftSlider({
+            nav: true,
+            navElement: ".scene-nav",
+            slideImages: images,
+            stageWidth: 1080,
+            stageHeight: 1080,
+            displacementImage:
+                "https://images.unsplash.com/photo-1495757450029-09dbedacbc36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+               fullScreen: true,
+            transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+            transitionGhostDuration: 0.25,
+            transitionFilterIntensity: 150,
+            transitionSpriteIntensity: 1,
+            mouseDispIntensity: 3,
+            interactive: true,
+            autoPlay: true,
+            autoPlaySpeed: 12000
+        });
+
+    </script>
+</body>
+
+</html>
