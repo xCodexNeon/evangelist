@@ -1,0 +1,2993 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <style>
+        body {
+            position: absolute;
+            height: 101%;
+            width: 101%;
+            background: white;
+            top: -1%;
+            left: -1%;
+            overflow: hidden;
+        }
+
+        #main {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        *,
+        *:after,
+        *:before {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+ 
+
+        .notice {
+            position: absolute;
+            top: 4vw;
+            right: 4vw;
+            color: white;
+            z-index: 1;
+        }
+
+            .notice a {
+                color: white;
+            }
+
+        /*slider styles*/
+        .rgbShiftSlider {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*mix-blend-mode: hard-light;*/
+            opacity: .95;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /*transform-origin : 50vw 300vh;*/
+            transform-origin: 50% 50%;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        nav {
+            position: absolute;
+            top: 4vw;
+            left: 4vw;
+            z-index: 1;
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin-right: 14px;
+            }
+
+
+
+        #auid {
+            text-transform: uppercase;
+            font-family: "Roboto", Arial, sans-serif;
+            position: absolute;
+            width: 25%;
+            height: 10%;
+            bottom: 3%;
+            left: 2%;
+        }
+
+        .player {
+            z-index: 9;
+        }
+
+        .player-control {
+            position: absolute;
+            z-index: 999999999999999;
+            top: 120%;
+            right: 12%;
+        }
+
+        #prev {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 0;
+            z-index: 3;
+            top: -2.6vw;
+        }
+
+        #next {
+            cursor: pointer;
+            position: absolute;
+            width: 2vw;
+            height: 1vw;
+            left: 2vw;
+            top: -2.6vw;
+        }
+
+            #next p, #prev p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                color: white;
+                letter-spacing: .1vw;
+                text-shadow: 0 0 1vw #171717;
+                font-size: 1vw;
+            }
+
+        #namesong {
+            position: absolute;
+            width: 88%;
+            height: 70%;
+            top: 50%;
+            color: lightgray;
+            left: 0%;
+            letter-spacing: .1vw;
+            font-size: 1vw;
+        }
+
+
+        #name_sng {
+            position: relative;
+            float: left;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: lightgray;
+            height: .2vw;
+            position: absolute;
+            top: 80%;
+        }
+
+        .fillBar {
+            background: #292929;
+            ;
+            width: 0;
+            height: .3vw;
+        }
+
+        #AT_time {
+            width: 5vw;
+            height: 1vw;
+            top: 35%;
+            right: 2%;
+            position: absolute;
+        }
+
+            #AT_time p {
+                position: absolute;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .1vw;
+                font-size: .8vw;
+                color: lightgray;
+            }
+
+        .time {
+            position: absolute;
+            left: 4vw;
+            top: 1vw;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .7vw;
+            width: 2vw;
+            overflow: hidden;
+            color: white;
+        }
+
+        #cd_1 {
+            width: 8vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 21vw;
+            top: .3vw;
+            overflow: hidden;
+        }
+
+        #cd_2 {
+            width: 4.7vw;
+            height: 1.3vw;
+            border: .1vw solid rgba(199,48,48.3);
+            position: absolute;
+            left: 29vw;
+            top: .3vw;
+        }
+
+        .artist-name {
+            position: absolute;
+            left: .1vw;
+            top: 90%;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: .1vw;
+            font-size: .6vw;
+            color: lightgray;
+        }
+
+        #cd_2 p {
+            position: absolute;
+            top: 10%;
+            letter-spacing: .05vw;
+            font-size: .4vw;
+            left: .4vw;
+            color: rgba(199,48,48.3);
+            line-height: .5vw;
+        }
+    </style>
+
+    <script type="module">
+        // Constants for wave animation behavior
+        const WAVE_THRESH = 3;
+        const CHAR_MULT = 3;
+        const ANIM_STEP = 40;
+        const WAVE_BUF = 5;
+
+        /**
+         * ASCII ripple animation instance for an element
+         */
+        export const createASCIIShift = (el, opts = {}) => {
+            // State variables
+            let origTxt = el.textContent;
+            let origChars = origTxt.split("");
+            let isAnim = false;
+            let cursorPos = 0;
+            let waves = [];
+            let animId = null;
+            let isHover = false;
+            let origW = null;
+
+            // options
+            const cfg = {
+                dur: 600,
+                chars: '░▒▓█▄░▒▓▀▌▐',
+                
+                preserveSpaces: true,
+                spread: 0.3,
+                ...opts
+            };
+
+            /**
+             * Updates cursor position based on mouse move
+             */
+            const updateCursorPos = (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const len = origTxt.length;
+                const pos = Math.round((x / rect.width) * len);
+                cursorPos = Math.max(0, Math.min(pos, len - 1));
+            };
+
+            /**
+             * Starts a new wave animation from current cursor pos
+             */
+            const startWave = () => {
+                waves.push({
+                    startPos: cursorPos,
+                    startTime: Date.now(),
+                    id: Math.random()
+                });
+
+                if (!isAnim) start();
+            };
+
+            /**
+             * Clean up expired waves that have exceeded their duration
+             */
+            const cleanupWaves = (t) => {
+                waves = waves.filter((w) => t - w.startTime < cfg.dur);
+            };
+
+            /**
+             * Calculates wave fx for a character at given index
+             * Returns whether to animate and which character to show
+             */
+            const calcWaveEffect = (charIdx, t) => {
+                let shouldAnim = false;
+                let resultChar = origChars[charIdx];
+
+                for (const w of waves) {
+                    const age = t - w.startTime;
+                    const prog = Math.min(age / cfg.dur, 1);
+                    const dist = Math.abs(charIdx - w.startPos);
+                    const maxDist = Math.max(w.startPos, origChars.length - w.startPos - 1);
+                    const rad = (prog * (maxDist + WAVE_BUF)) / cfg.spread;
+
+                    if (dist <= rad) {
+                        shouldAnim = true;
+                        const intens = Math.max(0, rad - dist);
+
+                        // Chars in the wave zone shift through character sequence
+                        if (intens <= WAVE_THRESH && intens > 0) {
+                            const charIdx =
+                                (dist * CHAR_MULT + Math.floor(age / ANIM_STEP)) % cfg.chars.length;
+                            resultChar = cfg.chars[charIdx];
+                        }
+                    }
+                }
+
+                return { shouldAnim, char: resultChar };
+            };
+
+            /**
+             * Generates scrambled text based on current waves
+             */
+            const genScrambledTxt = (t) =>
+                origChars
+                    .map((char, i) => {
+                        if (cfg.preserveSpaces && char === " ") return " ";
+                        const res = calcWaveEffect(i, t);
+                        return res.shouldAnim ? res.char : char;
+                    })
+                    .join("");
+
+            /**
+             * Stops the animation and resets to original text
+             */
+            const stop = () => {
+                el.textContent = origTxt;
+                el.classList.remove("as");
+
+                // Reset width to allow natural text flow
+                if (origW !== null) {
+                    el.style.width = "";
+                    origW = null;
+                }
+                isAnim = false;
+            };
+
+            /**
+             * Start the animation loop
+             */
+            const start = () => {
+                if (isAnim) return;
+
+                // Preserve original width to prevent layout shifts
+                if (origW === null) {
+                    origW = el.getBoundingClientRect().width;
+                    el.style.width = `${origW}px`;
+                }
+
+                isAnim = true;
+                el.classList.add("as");
+
+                const animate = () => {
+                    const t = Date.now();
+
+                    // Clean up expired waves first
+                    cleanupWaves(t);
+
+                    if (waves.length === 0) {
+                        stop();
+                        return;
+                    }
+
+                    // Generate scrambled text
+                    el.textContent = genScrambledTxt(t);
+                    animId = requestAnimationFrame(animate);
+                };
+
+                animId = requestAnimationFrame(animate);
+            };
+
+            /**
+             * Event handlers
+             */
+            const handleEnter = (e) => {
+                isHover = true;
+                updateCursorPos(e);
+                startWave();
+            };
+
+            const handleMove = (e) => {
+                if (!isHover) return;
+                const old = cursorPos;
+                updateCursorPos(e);
+                if (cursorPos !== old) startWave();
+            };
+
+            const handleLeave = () => {
+                isHover = false;
+            };
+
+            /**
+             * Initializes event listeners
+             */
+            const init = () => {
+                const events = [
+                    ["mouseenter", handleEnter],
+                    ["mousemove", handleMove],
+                    ["mouseleave", handleLeave]
+                ];
+                events.forEach(([evt, handler]) => el.addEventListener(evt, handler));
+            };
+
+            /**
+             * Resets animation to original state
+             */
+            const resetToOrig = () => {
+                waves = [];
+                if (animId) {
+                    cancelAnimationFrame(animId);
+                    animId = null;
+                }
+
+                // Reset width preservation
+                if (origW !== null) {
+                    el.style.width = "";
+                    origW = null;
+                }
+                stop();
+            };
+
+            /**
+             * Updates the text content
+             */
+            const updateTxt = (newTxt) => {
+                origTxt = newTxt;
+                origChars = newTxt.split("");
+                if (!isAnim) el.textContent = newTxt;
+            };
+
+            /**
+             * Destroys the instance and cleans up event listeners
+             */
+            const destroy = () => {
+                resetToOrig();
+                ["mouseenter", "mousemove", "mouseleave"].forEach((evt, i) =>
+                    el.removeEventListener(evt, [handleEnter, handleMove, handleLeave][i])
+                );
+            };
+
+            // Initialize the instance
+            init();
+
+            // public API
+            return { updateTxt, resetToOrig, destroy };
+        };
+
+        /**
+         * Initialize animation for all links on the page
+         */
+        const initASCIIShift = () => {
+            const links = document.querySelectorAll("p,a,span,b");
+            links.forEach((link) => {
+                if (!link.textContent.trim()) return;
+                createASCIIShift(link, { dur: 1000, spread: 1 });
+            });
+        };
+        initASCIIShift();
+    </script>
+</head>
+
+
+<body >
+     
+    <div id="main" onload="digi()" onclick="digi()">
+        <div id="sectimg">
+            <img id="mainimgf" src="imgr.png" />
+            <style>
+                p, a, span {
+                    z-index: 99999999999;
+                }
+
+                #mainimgf {
+                    height: 100%;
+                    left: -40%;
+                    position: absolute;
+                }
+
+                #sectimg {
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: 2;
+                    width: 28%;
+                    right: 0;
+                    height: 100%;
+                    border-left: .5vw solid #171717;
+                }
+
+                #crdt {
+                    position: absolute;
+                    width: 25%;
+                    height: 7%;
+                    bottom: 2%;
+                    right: 5%;
+                }
+
+                    #crdt img {
+                        position: absolute;
+                        width: 4vw;
+                        filter: invert(100%);
+                        right: 0;
+                    }
+
+                #g1 {
+                    color: white;
+                    top: 0;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g2 {
+                    color: white;
+                    top: .6vw;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g3 {
+                    color: white;
+                    top: 1.2vw;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                #g4 {
+                    color: white;
+                    text-transform: uppercase;
+                    bottom: 4%;
+                    left: 6%;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: .5vw;
+                    letter-spacing: .05vw;
+                }
+
+                    #g4 span {
+                        font-weight: bold;
+                        font-size: .6vw;
+                    }
+
+                #txtimg {
+                    opacity: .8;
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    position: absolute;
+                    /*font-weight: bold;*/
+                    width: 35%;
+                    left: 5%;
+                    top: 56%;
+                    height: 35%;
+                    font-size: .4vw;
+                    letter-spacing: .1vw;
+                }
+
+                    #txtimg span {
+                        font-size: .45vw;
+                    }
+
+                #mainnick {
+                    text-align: center;
+                    position: absolute;
+                    width: 80%;
+                    height: 8%;
+                    top: 8%;
+                    left: 10%;
+                }
+
+                #c1 {
+                    color: white;
+                    left: 5%;
+                    top: -80%;
+                    opacity: .6;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: 3.5vw;
+                    font-weight: lighter;
+                    letter-spacing: .3vw;
+                }
+
+                a {
+                    cursor: pointer;
+                }
+
+                #tt {
+                    color: rgb(165,157,154);
+                    text-transform: uppercase;
+                    font-size: .7vw;
+                    letter-spacing: .1vw;
+                    position: absolute;
+                    left: 50%;
+                    top: 48%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+
+                #clock {
+                    color: rgb(165,157,154);
+                    z-index: 9;
+                    text-transform: uppercase;
+                    font-size: .5vw;
+                    letter-spacing: .1vw;
+                    position: relative;
+                    left: 45%;
+                    top: 11%;
+                    font-family: "Roboto", Arial, sans-serif;
+                }
+                /* html { filter:invert(100%);
+                }*/
+                #c2 {
+                    right: 5%;
+                    color: white;
+                    top: -80%;
+                    opacity: .6;
+                    font-family: 'Montserrat', sans-serif;
+                    position: absolute;
+                    font-size: 3.5vw;
+                    font-weight: lighter;
+                    letter-spacing: .3vw;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            </style>
+
+
+            <!--<div id="rbgShiftSlider" class="rgbShiftSlider"></div>-->
+            <script>
+                // set images
+                // demo works but images are blocked by codepen Cors issue
+                var images = [
+                    "https://i.postimg.cc/qRpg4qSH/c10213265a13c8176ff09ce807965c5f.jpg",
+                    "https://i.postimg.cc/qRpg4qSH/c10213265a13c8176ff09ce807965c5f.jpg",
+
+                    "https://i.postimg.cc/qRpg4qSH/c10213265a13c8176ff09ce807965c5f.jpg"];
+                // instanciate slider
+                var rbgShiftSlider = new rbgShiftSlider({
+                    nav: true,
+                    navElement: ".scene-nav",
+                    slideImages: images,
+                    stageWidth: 650,
+                    stageHeight: 940,
+                    displacementImage:
+                        "https://images.unsplash.com/photo-1495757450029-09dbedacbc36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+                    fullScreen: true,
+                    transitionDuration: 0.2, // must be 0.1 > transitionGhostDuration
+                    transitionGhostDuration: 0.25,
+                    transitionFilterIntensity: 150,
+                    transitionSpriteIntensity: 1,
+                    mouseDispIntensity: 3,
+                    interactive: true,
+                    autoPlay: true,
+                    autoPlaySpeed: 12000
+                });
+
+            </script>
+
+            <div id="datexc">
+                <style>
+                    #datexc {
+                        position: absolute;
+                        width: 75%;
+                        height: 13%;
+                        left: 0%;
+                        top: 3%;
+                        overflow: hidden;
+                    }
+
+                    #clock {
+                        color: dimgray;
+                        text-transform: uppercase;
+                        font-size: .7vw;
+                        letter-spacing: .1vw;
+                        position: absolute;
+                        left: 5.2vw;
+                        top: 1.8vw;
+                        font-family: "Roboto", Arial, sans-serif;
+                    }
+
+                    #tt {
+                        position: absolute;
+                        text-transform: uppercase;
+                        font-family: migueto2;
+                        letter-spacing: .1vw;
+                        font-size: .7vw;
+                        left: 10vw;
+                        top: 57%;
+                        color: #171717;
+                        text-align: right;
+                    }
+
+                    #numberday {
+                        position: absolute;
+                        font-family: migueto;
+                        font-size: 5vw;
+                        top: -5.8vw;
+                        left: -2.8vw;
+                        color: #171717;
+                    }
+
+                    #nameday {
+                        position: absolute;
+                        font-family: tw;
+                        font-size: 2vw;
+                        top: -1.1vw;
+                        opacity: .8;
+                        text-shadow: .2vw .2vw .4vw rgba(0,0,0,.6);
+                        left: .8vw;
+                        left: 2.8vw;
+                        color: #171717;
+                    }
+
+                    #numberdayth {
+                        position: absolute;
+                        font-family: bt;
+                        font-size: .7vw;
+                        left: 2.9vw;
+                        top: 2.2vw;
+                        color: #171717;
+                    }
+
+                    #cubeclock {
+                        position: absolute;
+                        width: 3vw;
+                        height: 3vw;
+                        transform: rotate(45deg);
+                        background: #171717;
+                        left: -1.5vw;
+                        top: 30%;
+                    }
+
+                    #namemonth {
+                        position: absolute;
+                        text-transform: uppercase;
+                        font-family: migueto2;
+                        letter-spacing: .1vw;
+                        font-size: .7vw;
+                        left: 3vw;
+                        top: -.5vw;
+                        color: #171717;
+                    }
+                </style>
+                <div id="cubeclock">
+
+                </div>
+                <div id="clock"></div><p id="tt"></p>
+                <script>
+                    var mydate = new Date();
+                    var year = mydate.getYear();
+                    if (year < 1000) year += 1900;
+                    var day = mydate.getDay();
+                    var month = mydate.getMonth();
+                    var daym = mydate.getDate();
+                    if (daym < 10) daym = "0" + daym;
+                    var dayarray = new Array(
+                        "Dimanche",
+                        "Lundi",
+                        "Mardi",
+                        "Mercredi",
+                        "Jeudi",
+                        "Vendredi",
+                        "Samedi"
+                    );
+                    var montharray = new Array(
+                        "Janvier",
+                        "Février",
+                        "Mars",
+                        "Avril",
+                        "Mai",
+                        "Juin",
+                        "Julliet",
+                        "Août",
+                        "Septembre",
+                        "Octobre",
+                        "Novembre",
+                        "Décembre"
+                    );
+                    document.write(
+                        "<font id='clock'>" +
+                        "<p id='nameday'>" + dayarray[day] + "</p>" +
+                        " " +
+                        "<p id='numberday'>" + daym + "</p>" +
+                        "<p id='numberdayth'> TH </p>" +
+                        "<p id='namemonth'>" + montharray[month] + "</p>" +
+                        " " +
+
+                        "</font>"
+                    );
+                    function digi() {
+                        var date = new Date(),
+                            hour = date.getHours(),
+                            minute = checkTime(date.getMinutes()),
+                            ss = checkTime(date.getSeconds());
+
+                        function checkTime(i) {
+                            if (i < 10) {
+                                i = "0" + i;
+                            }
+                            return i;
+                        }
+
+                        if (hour > 12) {
+                            hour = hour - 12;
+                            if (hour == 12) {
+                                hour = checkTime(hour);
+                                document.getElementById("tt").innerHTML =
+                                    "/ " + hour + ":" + minute + ":" + ss + " AM ";
+                            } else {
+                                hour = checkTime(hour);
+                                document.getElementById("tt").innerHTML =
+                                    "/ " + hour + ":" + minute + ":" + ss + " PM ";
+                            }
+                        } else {
+                            document.getElementById("tt").innerHTML =
+                                "/ " + hour + ":" + minute + ":" + ss + " AM ";
+                        }
+                        var time = setTimeout(digi, 1000);
+                    }
+
+
+                </script>
+            </div>
+
+
+
+
+            <!--<div id="txtimg">
+            <span>总是一样的 | </span>C'est toujours pareil, <br />
+            <span>愚蠢折磨着我们 </span><br /><br />
+            <span> 折磨 | </span> la bêtise nous tourmente<br /><br />
+            <span> 愚蠢的我们 </span><br /><span> | Mais tu sais, </span>
+            <br /> <br />
+            会很 | ce sera très <br /><br />
+            <span>
+                痛苦如果今晚 | douloureux si cette nuit <br />
+            </span><br /><br />
+            ne finit jamais <span>| 永不结束</span><br />
+            <span>
+                当然一
+            </span>Sûrement vous, qui <br /><br />
+            <span>不要怀疑</span><br /> n'en doutez pas, <br /><br />
+            êtes capables d'aimer ce <span>
+                这
+            </span><br /> <br />
+            一monde maudit <br /><span>被诅咒的世界</span>
+            <br /><br />
+            <span>我们必须 | </span>Nous devons <br />
+            <span>支持者 | </span> supporter <br /><br />
+            tout cela et maintenant...<br />
+            <span>现在...</span>
+        </div>-->
+
+            <div id="crdt">
+
+                <img src="https://i.postimg.cc/SKc2nHPt/pngwing-com-6.png" />
+
+            </div>
+            <p id="g4">Élaboré par <span>×Neige ◙xat.me® ∞2025</span></p>
+        </div>
+        <div id="lateralrightx">
+            <style>
+                #lateralrightx {
+                    position: absolute;
+                    width: 11%;
+                    right: 1%;
+                    top: 69%;
+                    height: 25%; overflow:hidden;
+                    z-index: 99;
+                }
+
+                #cret {
+                    position: absolute;
+                    color: lightgray;
+                    font-family: 'Times New Roman';
+                    font-style: italic;
+                    font-size: .7vw;
+                    letter-spacing: .05vw;
+                    right: 0;
+                    opacity: .7;
+                    top: -1vw;
+                }
+
+                    #cret span {
+                        font-size: .5vw;
+                        color: darkgray;
+                    }
+
+                #lastwordpx {
+                    position: absolute;
+                    bottom: 2vw;
+                    right: 0;
+                    text-align: right;
+                    font-size: .5vw;
+                    color: lightgray;
+                    opacity: .6;
+                    font-family: tw; z-index:99;
+                }
+            </style>
+            <!--<p id="cret"><span>by</span> Neige Lyra</p>-->
+
+
+            <div id="lastwordpx">
+                <b>A VOID MODEL</b> <br /><br />
+                <span>
+                    Tant de jours incolores...
+                    Que reste-t-il ? Tu étais tout pour moi.
+                    Juste ton absence qui m'insupporte,
+                    Des promesses non tenues,
+                    et mes souvernirs
+                </span>
+            </div>
+        </div>
+
+
+        <div id="chletimg">
+            <style>
+                @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+                @font-face {
+                    font-family: ch3;
+                    src: url(ch3.TTF);
+                }
+
+                @font-face {
+                    font-family: ch4;
+                    src: url(ch4.ttf);
+                }
+
+                #chletimg { z-index:9;  
+                    position: absolute;
+                    left: 73%;
+                    height: 38%;
+                    width: 30%;
+                    top: 60%;
+                }
+
+                #ch1 {
+                    position: absolute;
+                    font-family: ch4;
+                    font-size: 4.5vw;
+                    color: gray;
+                    left: -.5vw;
+                    top: -5vw;
+                    text-shadow: .2vw .2vw .3vw #303030;
+                }
+
+                #psub1 {
+                    position: absolute;
+                    font-family: 'Poiret One';
+                    font-size: 2vw;
+                    color: gray;
+                    left: 1%;
+                    letter-spacing: .2vw;
+                    top: 10%;
+                    text-transform: uppercase;
+                    text-shadow: .2vw .2vw .3vw #303030;
+                }
+
+                #psub2 {
+                    position: absolute;
+                    font-family: 'Poiret One';
+                    font-size: 3vw;
+                    color: darkgray;
+                    left: 1%;
+                    line-height: 2.5vw;
+                    letter-spacing: .1vw;
+                    top: 16%;
+                    text-transform: uppercase;
+                    text-shadow: .2vw .2vw .3vw #303030;
+                }
+                #psub3 {
+                    position: absolute;
+                    font-family: 'Poiret One';
+                    font-size: 3vw;
+                    color: darkgray;
+                    left: 1%;
+                    line-height: 2.5vw;
+                    letter-spacing: .1vw;
+                    top: 30%;
+                    text-transform: uppercase;
+                    text-shadow: .2vw .2vw .3vw #303030;
+                }
+
+                #ch2 {
+                    position: absolute;
+                    text-shadow: .2vw .2vw .3vw #303030;
+                    font-family: ch4;
+                    font-size: 4.5vw;
+                    color: gray;
+                    top: 35%;
+                }
+            </style>
+            <p id="ch1">莉</p>
+            <p id="psub1">La </p>
+            <p id="psub2">dernière  </p>
+            <p id="psub3"> tentation</p>
+            <p id="ch2">奈</p>
+        </div>
+
+        <div id="areafrds">
+            <style>
+                #areafrds { position:absolute; width:7%; height:10%; left:63%; top:79%;   z-index:99;
+                }
+                #areabff { position:absolute; width:100%; height:65%; border-top:.1vw solid dimgray; border-bottom:.1vw solid dimgray; 
+                }
+                #areaseconds {
+                    position: absolute;
+                    width: 100%;top:66%;
+                    height: 34%; left:5%;
+                }
+                   .divfrdss { position:relative;  width:1.3vw; height:1vw; float:left; border-right:.1vw solid dimgray; margin-right:.1vw; margin-top:.4vw; overflow:hidden;
+                    }
+                #lasttdiv {
+                    position: relative;
+                    width: 1.3vw;
+                    height: 1vw;
+                    float: left;
+                    margin-right: .1vw;
+                    margin-top: .4vw;
+                    overflow: hidden;
+                }
+                #pfriends { position:relative; top:-.8vw; font-family:neigefont3; font-size:.8vw; font-weight:bold;   margin-left:.1vw; color:#171717; transition:all .5s ease;
+                }
+                    #pfriends:hover { color:#892e2e;
+                    }
+            </style>
+            <div id="areabff">
+                <div id="uppertxt">
+                    <style>
+
+                        #uppertxt {
+                            position: absolute;
+                            width: 90%;
+                            height: 80%;
+                            right: 5%;
+                            top: 10%;
+                        }
+
+                        #up1 {
+                            position: absolute;
+                            font-family: ch4;
+                            font-size: 9vw;
+                            top: -9vw;
+                            text-shadow: .4vw .2vw .5vw rgba(0,0,0,.4);
+                            background-image: linear-gradient(0deg,#171717 40%,#7A1628 100%);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            z-index: -1;
+                        }
+
+                        #up2 {
+                            position: absolute;
+                            left: 0vw;
+                            width: 40%;
+                            height: 100%; z-index:-1; opacity:.9; 
+                        }
+
+                        #upp1 {
+                            position: absolute;
+                            color: #171717;
+                            text-shadow: .4vw .2vw .5vw rgba(0,0,0,.6);
+                            font-family: ch1;
+                            font-size: 2.5vw;
+                            top: -3.8vw;
+                        }
+
+                        #upp2 {
+                            position: absolute;
+                            color: #171717;
+                            text-shadow: .4vw .2vw .5vw rgba(0,0,0,.6);
+                            font-family: ch1;
+                            top: -2.5vw;
+                            font-size: 2.5vw;
+                        }
+
+                        #textin {
+                            position: absolute;
+                            font-family: fant;
+                            font-size: 1.3vw;
+                            letter-spacing: .1vw;
+                            left: 15%;
+                        }
+                    </style>
+
+                    <div id="up2">
+                        <p id="upp1">上</p>
+                        <p id="upp2">弦</p>
+                    </div>
+
+                </div>
+                <div id="mainlogo">
+                    <style>
+                        #mainlogo {
+                            position: absolute;
+                            height: 100%;
+                            width: 100%; 
+                        }
+
+                        #flc {
+                            font-family: neigefont3;
+                            font-size: 7vw;
+                            opacity: .8;
+                            top: -7vw;
+                            position: absolute;
+                        }
+
+                        #flc2 {
+                            font-family: neigefont3;
+                            font-size: 7vw;
+                            opacity: .8;
+                            top: -4vw;
+                            left: 55%;
+                            position: absolute;
+                        }
+
+                        #ar1 {
+                            position: absolute;
+                            width: 58%;
+                            height: 50%; left:37%;
+                            top: 45%;
+                            border-left: .3vw solid #404040;
+                        }
+
+                            #ar1 span {
+                                font-family: tw;
+                                color: #171717;
+                                font-size: .55vw;
+                                letter-spacing: .1vw;
+                                opacity: .8;
+                                position: relative;
+                                left: 10%;
+                                top: 2%;
+                            }
+
+                        #simbols {
+                            font-family: neigefont3;
+                            color: #171717;
+                            font-size: .6vw;
+                            letter-spacing: .15vw;
+                            opacity: .6;
+                            position: absolute;
+                            bottom: -1vw;
+                        }
+
+                        #ar2 {
+                            position: absolute;
+                            width: 10%;
+                            height: 60%;
+                            left: 45%;
+                            top: 23%;
+                        }
+
+                        #ar2p1 {
+                            font-family: tw;
+                            color: #d77575;
+                            font-size: 1vw;
+                            position: absolute;
+                            top: -1vw;
+                        }
+
+                        #ar2p2 {
+                            font-family: tw;
+                            color: #d77575;
+                            transform: rotate(90deg);
+                            font-size: 1.5vw;
+                            opacity: .7;
+                            letter-spacing: .2vw;
+                            position: absolute;
+                            left: -1.5vw;
+                            top: 1.5vw;
+                        }
+
+                        #par3 {
+                            position: absolute;
+                            right: 4%;
+                            font-family: tw;
+                            color: #171717;
+                            font-size: 1.2vw;
+                            font-weight: bold;
+                            letter-spacing: .1vw;
+                        }
+                        #lastdatep { position:absolute; width:60%; height:40%;  right:0; text-align:right;
+                        }
+                        #ldp1 { position:absolute; color:#202020; font-size:.5vw; font-family:tw; right:0; font-weight:bold; letter-spacing:.05vw; top:-.4vw;
+                        }
+                        #ldp2 {
+                            position: absolute;
+                            color: #202020;
+                            font-size: .7vw;
+                            font-family: tw;
+                            right: 0;
+                            font-weight: bold;
+                            letter-spacing: .05vw;
+                            top: -.1vw;
+                        }
+                    </style>
+                     
+                    <div id="ar1">
+                        <span> EP: kiri</span> <br />  <span>PL: xat.me/kiri</span>
+                    </div>
+                    <div id="lastdatep">
+                        <p id="ldp1">VOLUME</p><p id="ldp2">2025</p>
+                    </div>
+                   
+                </div>
+
+            </div>
+            <div id="areaseconds">
+                <div class="divfrdss"><p id="pfriends">弐</p></div>
+                <div class="divfrdss"><p id="pfriends">参</p></div>
+                <div class="divfrdss"><p id="pfriends">肆</p></div>
+                <div class="divfrdss"><p id="pfriends">伍</p></div>
+                <div id="lasttdiv"><p id="pfriends">陸</p></div>
+            </div>
+        </div>
+
+        <canvas id='canv'>
+            <style>
+                @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+                /* body {
+                    background: hsla(0, 0%, 0%, 1);
+                    margin: 0;
+                    overflow: hidden;
+                    cursor: move;
+                }*/
+            </style>
+            <script>
+                var c = document.getElementById("canv");
+                var $ = c.getContext("2d");
+
+                var w = (c.width = window.innerWidth);
+                var h = (c.height = window.innerHeight);
+
+                var arr = [];
+                var u = 0;
+                var dep = w;
+                var dp = 0.7;
+                var ms = {
+                    x: 0,
+                    y: 0
+                };
+                var msd = {
+                    x: 0,
+                    y: 0
+                };
+
+                function Obj(x, y, z) {
+                    this.set(x, y, z);
+                }
+
+                Obj.prototype = {
+                    set: function (x, y, z) {
+                        this.x = x || 0;
+                        this.y = y || 0;
+                        this.z = z || 0;
+                    },
+                    rotX: function (ang) {
+                        var y = this.y;
+                        var z = this.z;
+                        this.y = y * Math.cos(ang) - z * Math.sin(ang);
+                        this.z = z * Math.cos(ang) + y * Math.sin(ang);
+                    },
+                    rotY: function (ang) {
+                        var x = this.x;
+                        var z = this.z;
+                        this.x = x * Math.cos(ang) - z * Math.sin(ang);
+                        this.z = z * Math.cos(ang) + x * Math.sin(ang);
+                    },
+                    rotZ: function (ang) {
+                        var x = this.x;
+                        var y = this.y;
+                        this.x = x * Math.cos(ang) - y * Math.sin(ang);
+                        this.y = y * Math.cos(ang) + x * Math.sin(ang);
+                    }
+                };
+
+                function Part(x, y, z) {
+                    this.op = new Obj(x, y, z);
+                    this.rp = new Obj(x, y, z);
+                    this.rot = new Obj();
+                    this.vel = new Obj();
+                    this.col = "hsla(216,95%,85%," + rnd(0.5, 1) + ")";
+                }
+
+                function upd(rot) {
+                    var pos;
+                    var rot;
+                    var vel;
+                    var op;
+                    var rp;
+                    var col;
+                    var size;
+                    for (var i in arr) {
+                        op = arr[i].op;
+                        rp = arr[i].rp;
+                        rot = arr[i].rot;
+                        vel = arr[i].vel;
+                        col = arr[i].col;
+                        vel.x += msd.x * 0.15;
+                        vel.y += msd.y * 0.15;
+                        rp.set(op.x, op.y, op.z);
+
+                        rot.x += vel.x;
+                        rot.y += vel.y;
+                        rot.z += vel.z;
+
+                        rot.x = rot.x > Math.PI * 2 ? 0 : rot.x;
+                        rot.y = rot.y > Math.PI * 2 ? 0 : rot.y;
+
+                        rp.rotY(rot.y);
+                        rp.rotX(rot.x);
+
+                        vel.set(vel.x * dp, vel.y * dp, 0);
+                    }
+                    msd.x = 0.0005;
+                    msd.y = 0.0005;
+                }
+
+                function draw() {
+                    var t = " ".split("").join(String.fromCharCode(0x2004));
+                    $.font = "4em Poiret One";
+                    $.fillStyle = "hsla(216,95%,85%,.3)";
+                    $.textBaseline = "middle";
+                    $.fillText(t, (c.width - $.measureText(t).width) * 0.5, c.height * 0.5);
+                    var p, dth;
+                    for (var i in arr) {
+                        p = arr[i];
+                        dth = p.rp.z / dep + 1;
+                        $.fillStyle = p.col;
+                        $.fillRect(w + p.rp.x, h + p.rp.y, rnd(dth / 0.8, dth / 2), dth / 0.9);
+                    }
+                }
+
+                function rnd(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+
+                function go() {
+                    for (var i = 0; i < 6800; i++) {
+                        var d = new Part(rnd(-w, h), rnd(-w, h), rnd(-dep, dep));
+                        d.vel.set(0, 0, 0);
+                        arr.push(d);
+                    }
+                }
+
+                window.addEventListener(
+                    "mousemove",
+                    function (e) {
+                        msd.x = (e.clientY - ms.y) / w;
+                        msd.y = (e.clientX - ms.x) / h;
+                        ms.x = e.clientX;
+                        ms.y = e.clientY;
+                    },
+                    false
+                );
+
+                window.addEventListener(
+                    "touchmove",
+                    function (e) {
+                        e.preventDefault();
+                        msd.x = (e.touches[0].clientY - ms.y) / w;
+                        msd.y = (e.touches[0].clientX - ms.x) / h;
+                        ms.x = e.touches[0].clientX;
+                        ms.y = e.touches[0].clientY;
+                    },
+                    false
+                );
+
+                window.addEventListener(
+                    "resize",
+                    function (e) {
+                        c.width = w = window.innerWidth;
+                        c.height = h = window.innerHeight;
+                    },
+                    false
+                );
+
+                function run() {
+                    $.clearRect(0, 0, w, h);
+                    var g_ = $.createLinearGradient(
+                        c.width + c.width,
+                        c.height + c.height * 1.5,
+                        c.width + c.width,
+                        1
+                    );
+
+                    $.globalCompositeOperation = "normal";
+                    $.fillStyle = g_;
+                    $.fillRect(0, 0, w, h);
+                    $.globalCompositeOperation = "lighter";
+                    upd();
+                    draw();
+                    window.requestAnimationFrame(run);
+                }
+
+                go();
+                run();
+
+            </script>
+        </canvas>
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+                @font-face {
+                    font-family: fant;
+                    src: url(fant.ttf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 101%;
+                    top: 0%;
+                    left: -1%;
+                    height: 100%;
+                    opacity: .04;
+                    z-index: 1;
+                    background-image: url("https://media.tenor.com/fYBdWHPfC-wAAAAM/art-pattern.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            #canv {
+                opacity: 1;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .5s infinite;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+
+            @font-face {
+                font-family: muit;
+                src: url(Mutiara.ttf);
+            }
+
+            @font-face {
+                font-family: ch2;
+                src: url(ch2.ttf);
+            }
+
+            @font-face {
+                font-family: ch1;
+                src: url(ch1.ttf);
+            }
+        </style>
+        <div id="backhaori">
+            <style>
+                #backhaori {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(https://t3.ftcdn.net/jpg/03/29/70/04/360_F_329700442_nsps75UJpc4lKweL004OETShw8LwNx70.jpg);
+                    opacity: .1;
+                    filter: grayscale(100%);
+                }
+            </style>
+        </div>
+        <div id="mainnickxx">
+            <style>
+                @font-face {
+                    font-family: cloudx;
+                    src: url(cloud.otf);
+                }
+
+                @font-face {
+                    font-family: bt;
+                    src: url(bea.otf);
+                }
+
+                @font-face {
+                    font-family: migueto;
+                    src: url(Migueto.ttf);
+                }
+
+                @font-face {
+                    font-family: migueto2;
+                    src: url(migueto2.otf);
+                }
+
+                @font-face {
+                    font-family: comp2;
+                    src: url(comp.otf);
+                }
+
+                #mainnickxx {
+                    position: absolute;
+                    width: 25%;
+                    height: 17%;
+                    left: 8%;
+                    top: 1%;
+                }
+
+                #mainnickpx {
+                    position: absolute;
+                    font-size: 6vw;
+                    color: #171717;
+                    font-family: migueto;
+                    text-shadow: .2vw .2vw .3vw black;
+                    z-index: -22;
+                    top: -6vw;
+                }
+
+                #submain {
+                    position: absolute;
+                    font-size: .7vw;
+                    opacity: .7;
+                    letter-spacing: .15vw;
+                    font-family: tw;
+                    text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                    top: 4.9vw;
+                    width: 8vw;
+                    right: -5.7vw;
+                }
+            </style>
+
+            <p id="submain">
+                1553803116
+            </p><p id="mainnickpx">
+                DÉCEMBRE
+            </p>
+        </div>
+        <div id="repro">
+            <style>
+                #repro {
+                    position: absolute;
+                    width: 14%;
+                    height: 6%;
+                    z-index: 9;
+                    left: 59%;
+                    top: 18%;
+                }
+            </style>
+            <style>
+
+                .wrapper {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                input[type=range] {
+                    appearance: none;
+                    border-radius: 2px;
+                    outline: none;
+                    flex-grow: 1;
+                    height: 5px;
+                }
+
+                    input[type=range]::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: .5vw;
+                        height: .5vw;
+                        transform: rotate(45deg);
+                        background-color: #171717;
+                    }
+
+                    input[type=range]::-moz-range-thumb {
+                        width: 15px;
+                        height: 15px;
+                        border: 2px #3d143d solid;
+                        border-radius: 7.5px;
+                        background-color: #b651b8;
+                    }
+
+                .player {
+                }
+
+                    .player .equalizer {
+                        /*position: absolute;*/
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: right;
+                        justify-content: right;
+                        margin-top: 2.4vw;
+                    }
+
+                        .player .equalizer .vertical {
+                            height: .1vw;
+                            width: .1vw;
+                            margin: .1vw;
+                            background-color: dimgray;
+                            border-radius: .3vw;
+                            transition: all 0.01s;
+                            transition-timing-function: ease-in-out;
+                        }
+
+                    .player .controls .line {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        justify-content: space-between;
+                        margin: 10px 0;
+                    }
+
+                    .player .controls .progress {
+                        font-size: 0.5em;
+                        font-weight: bold;
+                        position: absolute;
+                    }
+
+                        .player .controls .progress .duration {
+                            margin: 0 10px 0 0;
+                        }
+
+                    .player .controls .play-pause {
+                        box-sizing: border-box;
+                        transition: all 0.1s;
+                        transition-timing-function: ease-in-out;
+                        will-change: border-width;
+                        cursor: pointer;
+                        height: 20px;
+                        background: transparent;
+                        width: 20px;
+                        filter: grayscale(100%);
+                        border-color: transparent transparent transparent #171717;
+                        opacity: .8;
+                    }
+
+                        .player .controls .play-pause[aria-checked=false] {
+                            border-style: solid;
+                            border-width: 10px 0 10px 15px;
+                        }
+
+                        .player .controls .play-pause[aria-checked=true] {
+                            border-style: double;
+                            border-width: 0 0 0 15px;
+                        }
+
+                    .player .controls .description {
+                        margin: 0 10px;
+                    }
+
+                    .player .controls .volume {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                        .player .controls .volume input[type=range] {
+                            width: 0px;
+                            margin: 0 10px 0 0;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            cursor: pointer;
+                        }
+
+                        .player .controls .volume:hover input[type=range] {
+                            display: block;
+                            width: 50px;
+                        }
+
+                        .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                            display: none;
+                        }
+
+                        .player .controls .volume input[type=range]::-moz-range-thumb {
+                            display: none;
+                        }
+
+                        .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                            display: inherit;
+                        }
+
+                        .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                            display: inherit;
+                        }
+
+                        .player .controls .volume input[type=checkbox] {
+                            display: none;
+                        }
+
+                            .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                display: block;
+                            }
+
+                        .player .controls .volume img {
+                            display: none;
+                            cursor: pointer;
+                            height: 20px;
+                            width: 20px;
+                            filter: invert(11%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);
+                        }
+
+                #progresss {
+                    background: dimgray;
+                    height: .1vw;
+                    width: 400%;
+                    position: absolute;
+                    top: 1vw;
+                }
+
+                #namesongx {
+                    font-family: tw;
+                    font-size: .6vw;
+                    letter-spacing: .05vw;
+                    position: absolute;
+                    top: .95vw;
+                }
+
+                #current, .duration {
+                    opacity: 0;
+                }
+
+                #playbtn {
+                    position: absolute;
+                    right: -7.7vw;
+                }
+            </style>
+            <script>
+                function updateEqualizer(analyser, buffer, columns) {
+                    analyser.getByteFrequencyData(buffer);
+                    for (let i = 0; i < columns.length; i += 1) {
+                        let column = columns[i];
+                        const height = (buffer[i] / 255) * 35 + 2;
+                        column.setAttribute("style", `height: ${height}px`);
+                    }
+                }
+
+                function toMinutesAndSeconds(time) {
+                    const minutes = Math.floor(time / 60);
+                    const seconds = Math.floor(time % 60);
+                    if (seconds < 10) {
+                        return `${minutes}:0${seconds}`;
+                    }
+
+                    return `${minutes}:${seconds}`;
+                }
+
+                function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                    const currentTime = track.mediaElement.currentTime.toFixed(1);
+                    const duration = track.mediaElement.duration;
+                    timeDisplay.innerHTML = toMinutesAndSeconds(
+                        currentTime > duration ? duration : currentTime
+                    );
+                    progressBar.value = currentTime > duration ? duration : currentTime;
+                }
+                console.clear();
+
+                // instigate our audio context
+                let audioElement = new Audio();
+                audioElement.crossOrigin = "anonymous";
+                audioElement.src = "https://xcodexneon.github.io/evangelist/FauxSemblants.mp3";
+
+                audioElement.addEventListener(
+                    "loadedmetadata",
+                    (event) => {
+                        // for cross browser
+                        const AudioContext = window.AudioContext || window.webkitAudioContext;
+                        const audioCtx = new AudioContext();
+
+                        // load some sound
+                        const track = audioCtx.createMediaElementSource(audioElement);
+                        const playButton = document.querySelector("button");
+
+                        // play pause audio
+                        playButton.addEventListener(
+                            "click",
+                            function () {
+                                // check if context is in suspended state (autoplay policy)
+                                if (audioCtx.state === "suspended") {
+                                    audioCtx.resume();
+                                }
+
+                                if (this.dataset.playing === "false") {
+                                    audioElement.play();
+                                    this.dataset.playing = "true";
+                                    // if track is playing pause it
+                                } else if (this.dataset.playing === "true") {
+                                    audioElement.pause();
+                                    this.dataset.playing = "false";
+                                }
+
+                                let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                this.setAttribute("aria-checked", state ? "false" : "true");
+                            },
+                            false
+                        );
+
+                        // if track ends
+                        audioElement.addEventListener(
+                            "ended",
+                            () => {
+                                playButton.dataset.playing = "false";
+                                playButton.setAttribute("aria-checked", "false");
+                            },
+                            false
+                        );
+
+                        // initialize gain
+                        let gainNode = audioCtx.createGain();
+
+                        // initialize analyser
+                        let analyser = audioCtx.createAnalyser();
+                        analyser.fftSize = 64; //32 bins
+                        const frequencyBinsCount = analyser.frequencyBinCount;
+                        let buffer = new Uint8Array(frequencyBinsCount);
+                        track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                        // equalizer animation
+                        const equalizer = document.getElementById("equalizer");
+                        // 32 bins -> 32 columns
+                        const columns = document.getElementsByClassName("vertical");
+                        setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                        const currentTimeDisplay = document.querySelector(".current-time");
+                        const progressBar = document.querySelector(".progress-bar");
+                        const durationDisplay = document.querySelector(".duration");
+                        durationDisplay.innerHTML = toMinutesAndSeconds(
+                            track.mediaElement.duration
+                        );
+                        progressBar.max = track.mediaElement.duration;
+
+                        setInterval(
+                            updateProgressBar,
+                            100,
+                            track,
+                            progressBar,
+                            currentTimeDisplay,
+                            durationDisplay
+                        );
+
+                        const volumeControl = document.querySelector("#range-volume");
+
+                        volumeControl.addEventListener(
+                            "input",
+                            function () {
+                                gainNode.gain.value = this.value;
+                            },
+                            false
+                        );
+
+                        // mute button
+                        const mute_button = document.getElementById("mute");
+                        mute_button.addEventListener(
+                            "change",
+                            (event) => {
+                                if (event.target.checked) {
+                                    audioElement.muted = true;
+                                } else {
+                                    audioElement.muted = false;
+                                }
+                            },
+                            false
+                        );
+                    },
+                    false
+                );
+
+            </script>
+            <div class="wrapper">
+                <div class="player">
+                    <span class="description" id="namesongx" style="text-transform:uppercase">Chezile  • Beanie  </span>
+                    <div class="controls">
+                        <div class="line progress">
+                            <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                            </button>
+
+                            <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                            <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                        </div>
+
+                        <div class="line">
+
+                            <!--<div class="volume">
+                            <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                            <input type="checkbox" name="mute" id="mute">
+                            <label for="mute" class="unmute">
+                                <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                            </label>
+                            <label for="mute" class="mute">
+                                <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                            </label>
+                        </div>-->
+                        </div>
+                    </div>
+                    <div class="equalizer" id="equalizer">
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                        <div class="vertical"></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <p id="lasttexc">
+
+            <i>Les souvenirs s'amassent, gardés au fond de soi</i><br />
+            S'useront comme les pages qui ne résistent pas
+            Au cadran sinistre qui continue sa loi
+            Il aurait mieux valu oublier beaucoup de choses
+            Les voix du passé déclenchent le battement de cœur de la conscience
+            Qui coule, qui bat au rythme d'une <b>
+                pulsation dans ma tête
+                Parfois
+            </b>
+        </p>
+        <div id="divsub">
+            <style>
+                #lasttexc {
+                    z-index: -1;
+                    position: absolute;
+                    left: 9.5%;
+                    width: 23%;
+                    bottom: 10%;
+                    font-family: tw;
+                    font-size: .7vw;
+                    opacity: .8;
+                    filter: blur(.5px);
+                }
+
+                #divsub {
+                    position: absolute;
+                    width: 20%;
+                    height: 13%;
+                    left: 8%;
+                    top: 14%;
+                    z-index: -1;
+                }
+
+                #fistsub {
+                    position: absolute;
+                    width: 60%;
+                    height: 50%;
+                }
+
+                #sub1 {
+                    font-size: 1.2vw;
+                    opacity: .7;
+                    color: #171717;
+                    font-family: tw;
+                    top: -1.2vw;
+                    position: absolute;
+                    letter-spacing: .1vw;
+                    text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                }
+
+                #key {
+                    font-size: 3.2vw;
+                    color: #171717;
+                    font-family: migueto;
+                    top: -3.7vw;
+                    left: 60%;
+                    position: absolute;
+                    opacity: .8;
+                    letter-spacing: .1vw;
+                    text-shadow: .2vw .2vw .3vw black; /*filter:grayscale(50%);*/
+                }
+
+                #stars {
+                    font-size: 1.5vw;
+                    color: #171717;
+                    font-family: migueto;
+                    top: -1.2vw;
+                    left: 70%;
+                    position: absolute;
+                    opacity: .8;
+                    letter-spacing: .7vw;
+                }
+
+                #lastsub {
+                    text-transform: uppercase;
+                    opacity: .7;
+                    color: #171717;
+                    font-size: 2.2vw;
+                    font-family: tw;
+                    top: -1.8vw;
+                    position: absolute;
+                    text-align: right;
+                    text-shadow: .2vw .2vw .3vw black;
+                }
+            </style>
+
+            <div id="fistsub">
+                <p id="sub1">UNE<br /> NUIT GRISE</p><p id="key">}</p><p id="stars">✦✦</p>
+            </div>
+            <p id="lastsub">et une <br />  brise froide d'hiver</p>
+        </div>
+
+        <div id="japdates">
+            <style>
+                #japdates {
+                    position: absolute;
+                    width: 13%;
+                    left: 9%;
+                    height: 40%;
+                    top: 25%;
+                }
+
+                #jap2div {
+                    position: absolute;
+                    width: 80%;
+                    left: 10%;
+                    border-left: .1vw solid dimgray;
+                    height: 45%;
+                    top: 15%;
+                }
+
+                #jl1 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.3vw;
+                }
+
+                #jl2 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.5vw;
+                    left: .5vw;
+                    top: 10%;
+                }
+
+                #jl4 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 2.5vw;
+                    left: .5vw;
+                    top: 43%;
+                }
+
+                #jl3 {
+                    position: absolute;
+                    width: 6vw;
+                    height: 3vw;
+                    top: 65%;
+                }
+
+                #flchp {
+                    font-family: neigefont3;
+                    font-size: .45vw;
+                    color: dimgray;
+                    position: absolute;
+                    top: -.2vw;
+                    letter-spacing: .1vw;
+                }
+
+                #datefchp {
+                    font-family: migueto2;
+                    font-size: 1.35vw;
+                    letter-spacing: .1vw;
+                    color: #171717;
+                    position: absolute;
+                    top: -.5vw;
+                    font-weight: bold;
+                }
+
+                #datefchp2 {
+                    font-family: neigefont3;
+                    font-size: 1.1vw;
+                    letter-spacing: .4vw;
+                    color: #171717;
+                    position: absolute;
+                    top: -.2vw;
+                }
+
+                #divlettch {
+                    position: absolute;
+                    width: .9vw;
+                    height: .9vw;
+                    border: .1vw solid dimgray;
+                    right: 20%;
+                    top: 50%;
+                    text-align: center;
+                    opacity: .8;
+                }
+
+                    #divlettch p, #divlettch2 p {
+                        position: relative;
+                        font-family: neigefont3;
+                        font-size: .6vw;
+                        top: -.5vw;
+                        color: #171717;
+                    }
+
+                #divlettch2 {
+                    position: absolute;
+                    width: .9vw;
+                    height: .9vw;
+                    border: .1vw solid dimgray;
+                    right: 30%;
+                    top: 40%;
+                    text-align: center;
+                    opacity: .8;
+                }
+
+                #flchp3 {
+                    font-family: migueto2;
+                    font-size: .45vw;
+                    color: #171717;
+                    position: absolute;
+                    top: 2.2vw;
+                    letter-spacing: .1vw;
+                }
+            </style>
+            <div id="jl1">
+                <p id="flchp">生日日期</p>
+                <p id="datefchp">13.02</p>
+                <div id="divlettch"><p>氖</p></div>
+            </div>
+            <div id="jap2div">
+                <div id="jl2">
+                    <p id="flchp">註冊日期</p>
+                    <p id="datefchp">19.08</p>
+                    <div id="divlettch"><p>氖</p></div>
+                </div>
+                <div id="jl4">
+                    <p id="flchp">關於此帳戶 關於我</p>
+                    <p id="datefchp2">沒有訊息</p>
+                </div>
+            </div>
+            <div id="jl3">
+                <p id="flchp">最後日期</p>
+                <p id="datefchp">12.12</p>
+                <div id="divlettch2"><p>氖</p></div>
+                <p id="flchp3">xat.me/xneige@me </p>
+            </div>
+        </div>
+
+
+
+
+        <div id="sectmenu">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+                #txtimg, #mainnick, #crdt, #g4 {
+                    mix-blend-mode: difference;
+                }
+
+                #sectmenu {
+                    filter: invert(100%);
+                    mix-blend-mode: difference;
+                    position: absolute;
+                    width: 30%;
+                    height: 35%; /*border:.1vw solid black;*/
+                    top: 82%;
+                    right: 39%;
+                }
+
+                #amenus {
+                    position: absolute;
+                    width: 80%;
+                    height: 15%;
+                    left: 10%;
+                }
+
+                #nav1 {
+                    transform: skew(-10deg);
+                    width: 20%;
+                    height: 60%;
+                    background: #171717;
+                    position: absolute;
+                    top: 25%;
+                }
+
+                #nav2 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    width: 20%;
+                    left: 27%;
+                    position: absolute;
+                    height: 60%;
+                    background: #171717;
+                }
+
+                #nav3 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    width: 20%;
+                    left: 55%;
+                    position: absolute;
+                    height: 60%;
+                    background: #171717;
+                }
+
+                #nav4 {
+                    filter: grayscale(100%);
+                    transform: skew(-10deg);
+                    top: 25%;
+                    left: 83%;
+                    width: 20%;
+                    position: absolute;
+                    height: 60%;
+                    background: #171717;
+                }
+
+                #p1 {
+                    text-align: center;
+                    margin-top: .4vw;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: .7vw;
+                    letter-spacing: .05vw;
+                    color: white;
+                    transition: all .5s ease;
+                    top: 0vw;
+                    transform: skew(10deg);
+                }
+
+                #bor1 {
+                    position: absolute;
+                    width: 0%;
+                    height: .2vw;
+                    background: #ee6b6b;
+                    top: 100%;
+                    transform: skew(30deg);
+                    transition: all .5s ease;
+                }
+
+                #nav1:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav3:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav2:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav4:hover #bor1 {
+                    width: 101%;
+                }
+
+                #nav1:hover #p1, #nav2:hover #p1, #nav3:hover #p1, #nav4:hover #p1 {
+                    color: #ee6b6b;
+                }
+            </style>
+
+
+        </div>
+        <div id="sectfoot">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+                #sectfoot {
+                    position: absolute;
+                    width: 72%;
+                    height: 10%;
+                    bottom: 0;
+                    left: 0;
+                    background: #171717;
+                }
+
+                #Regname {
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    transform: rotate(270deg);
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: 4vw;
+                    right: 20%;
+                    bottom: 18%;
+                    border-bottom: .2vw solid black;
+                    line-height: 4.2vw;
+                }
+
+                #regwhite {
+                    font-weight: bold;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    transform: rotate(90deg);
+                    position: absolute;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #171717;
+                    font-size: 1.2vw;
+                    letter-spacing: .2vw;
+                    right: 30%;
+                    top: 18%;
+                }
+
+                #brr2 {
+                    height: 40%;
+                    width: .2vw;
+                    position: absolute;
+                    background: #171717;
+                    right: 36%;
+                    top: 1.5%;
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                }
+
+                #sectcrt {
+                    position: absolute;
+                    width: 40%;
+                    height: 45%;
+                    left: 65%;
+                    top: 40%;
+                }
+
+                #crt {
+                    font-family: 'Montserrat', sans-serif;
+                    color: white;
+                    font-size: .45vw;
+                    letter-spacing: .1vw;
+                    text-transform: uppercase;
+                    opacity: .7;
+                }
+
+                @keyframes textentrance3 {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    20% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+            </style>
+
+
+        </div>
+        <div id="sectprof">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+                #sectprof {
+                    position: absolute;
+                    width: 25%;
+                    height: 16%;
+                    bottom: 11%;
+                    left: 1%;
+                }
+
+                #imgprof {
+                    position: absolute;
+                    height: 8vw;
+                    width: 8vw;
+                    border: .1vw solid #171717;
+                }
+
+                    #imgprof img {
+                        position: absolute;
+                        width: 90%;
+                        height: 90%;
+                        left: 5%;
+                        top: 5%;
+                    }
+
+                #firmwhite {
+                    mix-blend-mode: difference;
+                    font-size: 1.5vw;
+                    font-weight: lighter;
+                    left: 6.5vw;
+                    top: 2.1vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: white;
+                }
+
+                #prop1 {
+                    mix-blend-mode: difference;
+                    font-size: .5vw;
+                    font-weight: lighter;
+                    left: 6.5vw;
+                    top: 84%;
+                    letter-spacing: .5vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: white;
+                }
+
+                #prop2 {
+                    font-size: .7vw;
+                    font-weight: lighter;
+                    left: 33%;
+                    top: 0%;
+                    letter-spacing: .2vw;
+                    position: absolute;
+                    z-index: 9;
+                    color: #171717;
+                }
+
+                #prop3 {
+                    font-size: .7vw;
+                    font-weight: lighter;
+                    color: darkgray;
+                    left: 33%;
+                    top: 22%;
+                    letter-spacing: .2vw;
+                    position: absolute;
+                    z-index: 9;
+                }
+
+                #mainnickx {
+                    position: absolute;
+                    font-family: tw;
+                    color: gray;
+                    font-size: 2vw;
+                    left: 33%;
+                    top: -2vw;
+                    text-shadow: .2vw .2vw .3vw rgba(0,0,0,.6);
+                }
+
+                @font-face {
+                    font-family: tak;
+                    src: url(tak.otf);
+                }
+
+                #firmlyra {
+                    position: absolute;
+                    font-family: tak;
+                    color: #303030;
+                    font-size: 2vw;
+                    left: 51%;
+                    opacity: .7;
+                    top: -2.5vw;
+                    text-shadow: .2vw .2vw .3vw rgba(0,0,0,.6);
+                }
+
+                #dateslyra {
+                    position: absolute;
+                    font-family: tw;
+                    color: gray;
+                    letter-spacing: .05vw;
+                    font-size: .45vw;
+                    left: 34%;
+                    top: 2.7vw;
+                    width: 10vw;
+                    text-transform: uppercase;
+                    text-shadow: .2vw .2vw .3vw rgba(0,0,0,.6);
+                }
+
+                #dateslyra2 {
+                    width: 10vw;
+                    position: absolute;
+                    font-family: tw;
+                    color: gray;
+                    letter-spacing: .05vw;
+                    font-size: .45vw;
+                    left: 34%;
+                    top: 3.3vw;
+                    text-transform: uppercase;
+                    text-shadow: .2vw .2vw .3vw rgba(0,0,0,.6);
+                }
+            </style>
+            <div id="imgprof">
+
+                <img src="https://i.postimg.cc/hvfDtdrD/5124af3e53bbd1fcfb4a03057afa95f5.jpg" />
+            </div>
+
+            <p id="mainnickx">NEIGE</p>
+            <p id="firmlyra"> Lyra</p>
+            <p id="dateslyra">-incendie catastrophique</p>
+            <p id="dateslyra2">-XXVI | OFFLINE</p>
+            <br />
+        </div>
+
+        <div id="profile">
+            <style>
+                #profile {
+                    position: absolute;
+                    width: 15%;
+                    height: 90%;
+                    left: 56%;
+                    top: 2%;
+                }
+
+                #pnmber {
+                    position: absolute;
+                    font-size: 10vw;
+                    color: #171717;
+                    font-family: comp2;
+                    opacity: 1;
+                    top: -12vw;
+                    text-shadow: .2vw .2vw .5vw black;
+                    right: 0%;
+                    z-index: -11;
+                }
+
+                #name {
+                    position: absolute;
+                    font-family: sten;
+                    color: #171717;
+                    font-size: 2vw;
+                    opacity: .8;
+                    top: 11vw;
+                    text-align: right;
+                    right: 0;
+                    overflow: hidden;
+                    text-shadow: .1vw .1vw .3vw black;
+                }
+
+                #name2 {
+                    position: absolute;
+                    font-family: sten;
+                    color: #171717;
+                    font-size: 2vw;
+                    opacity: .8;
+                    top: 13vw;
+                    text-align: right;
+                    right: 0;
+                    overflow: hidden;
+                    text-shadow: .1vw .1vw .3vw black;
+                }
+
+                #txtsub {
+                    position: absolute;
+                    right: 0;
+                    text-align: right;
+                    font-size: .4vw;
+                    color: #171717;
+                    top: 36%;
+                    font-family: tw;
+                    opacity: .8;
+                    line-height: .4vw;
+                }
+            </style>
+            <p id="pnmber">02</p>
+            <p id="name">CANDIDE </p>
+            <p id="name2">.NEIGE</p>
+
+        </div>
+        <div id="subprofile">
+            <style>
+                #subprofile {
+                    position: absolute;
+                    width: 10%;
+                    height: 61%;
+                    left: 61%;
+                    top: 35.5%;
+                }
+
+                #subpart1 {
+                    position: absolute;
+                    width: 100%;
+                    border-right: .1vw solid dimgray;
+                    height: 8%;
+                    filter: blur(.5px);
+                    z-index: 99;
+                    top: 1%;
+                }
+
+                #subpart2 {
+                    position: absolute;
+                    width: 100%;
+                    top: 13%;
+                    border-right: .1vw solid dimgray;
+                    height: 75%;
+                    filter: blur(.5px);
+                }
+
+                #subpart3 {
+                    position: absolute;
+                    width: 40%;
+                    right: 0;
+                    bottom: 0;
+                    border-bottom: .1vw solid dimgray;
+                    height: 10%;
+                    filter: blur(.5px);
+                }
+
+                    #subpart3 p {
+                        position: absolute;
+                        text-align: right;
+                        font-size: .6vw;
+                        color: #171717;
+                        filter: invert(100%);
+                        font-family: tw;
+                        text-transform: uppercase;
+                    }
+
+                #subtextsmenus {
+                    position: absolute;
+                    font-size: .55vw;
+                    right: 7%;
+                    letter-spacing: .05vw;
+                    color: #171717;
+                    line-height: .7vw;
+                    top: -.3vw;
+                    width: 5vw;
+                    text-align: right;
+                    font-family: tw;
+                }
+
+                #subtextsmenus2 {
+                    position: absolute;
+                    font-size: .55vw;
+                    right: 7%;
+                    letter-spacing: .05vw;
+                    color: #171717;
+                    line-height: .7vw;
+                    top: .4vw;
+                    width: 5vw;
+                    text-align: right;
+                    font-family: tw;
+                }
+
+                #subtextsmenus3 {
+                    position: absolute;
+                    font-size: .55vw;
+                    right: 7%;
+                    letter-spacing: .05vw;
+                    color: #171717;
+                    line-height: .7vw;
+                    top: 1.3vw;
+                    width: 3vw;
+                    font-family: tw;
+                }
+
+                #firmc {
+                    font-family: textfirmFont;
+                    font-size: .9vw;
+                    position: absolute;
+                    top: 1.4vw;
+                    right: 0vw;
+                    letter-spacing: 0vw;
+                }
+            </style>
+            <div id="subpart1">
+                <p id="subtextsmenus">
+                    • LYRA
+                </p>
+                <p id="subtextsmenus2">
+                    • DECEMBER
+                </p>
+                <p id="subtextsmenus3">
+                    • NO
+                </p> <span id="firmc">xNeige</span>
+
+
+            </div>
+            <div id="subpart2">
+
+            </div>
+            <div id="subpart3">
+                <p>
+                    <b>#3</b><br /><br />
+                    reminiscences
+                </p>
+            </div>
+        </div>
+        <div id="submenuunder">
+            <style>
+                #submenuunder {
+                    mix-blend-mode: difference;
+                    filter: invert(100%);
+                    position: absolute;
+                    width: 25%;
+                    left: 1%;
+                    height: 15%;
+                    bottom: -7%;
+                    z-index: 9;
+                }
+
+                #undermenu {
+                    position: absolute;
+                    border-bottom: .1vw solid gray;
+                    width: 100%;
+                    height: 30%;
+                }
+
+                #lastword {
+                    position: absolute;
+                    font-family: bt;
+                    color: #171717;
+                    font-size: 1.3vw;
+                    top: -1.3vw;
+                    opacity: .8;
+                }
+
+                #underbar {
+                    position: absolute;
+                    width: 20%;
+                    height: .1vw;
+                    background: dimgray;
+                    left: 37.5%;
+                    top: 47%;
+                }
+
+                #iconsbar {
+                    position: absolute;
+                    width: 50%;
+                    right: -10%;
+                    height: 100%;
+                }
+
+                .iconimg {
+                    position: absolute;
+                    width: 1vw;
+                    height: 1vw;
+                    top: 25%;
+                    cursor: pointer;
+                }
+
+                #icon2 {
+                    left: 1.4vw;
+                }
+
+                #icon3 {
+                    left: 2.8vw;
+                }
+
+                #icon4 {
+                    left: 4.2vw;
+                }
+
+                #icon5 {
+                    left: 5.6vw;
+                }
+
+                #icon6 {
+                    left: 7vw;
+                }
+
+                .iconimg img {
+                    position: absolute;
+                    width: 80%;
+                    height: 80%;
+                    opacity: .8;
+                    top: 10%;
+                    left: 10%;
+                    filter: blur(.5px);
+                }
+
+                #txtarea {
+                    position: absolute;
+                    width: 33%;
+                    height: 40%;
+                    top: 30%;
+                    right: 0;
+                    -webkit-user-modify: read-write;
+                    overflow: hidden;
+                    border-radius: .1vw;
+                    border: .1vw solid darkgray;
+                    opacity: .7;
+                    font-family: tw;
+                    font-size: .65vw;
+                    padding-left: .1vw;
+                    color: dimgray;
+                    cursor: text;
+                }
+            </style>
+            <div id="undermenu">
+                <p id="lastword">un dernier mot</p><div id="underbar"></div>
+                <div id="iconsbar">
+                    <div class="iconimg" id="icon1">
+                        <img src="https://i.postimg.cc/52SQ5LxL/dibujar.png" />
+                    </div>
+                    <div class="iconimg" id="icon2">
+                        <img style=" width: 70%; height: 70%;  top: 15%; left: 15%;" src="https://i.postimg.cc/ryDW6DJ2/calendario.png" />
+                    </div>
+                    <div class="iconimg" id="icon3">
+                        <img src="https://i.postimg.cc/PNGT93MJ/correo-electronico.png" />
+                    </div>
+                    <div class="iconimg" id="icon4">
+                        <img src="https://i.postimg.cc/L4GPmmCY/bengala.png" />
+                    </div>
+                    <div class="iconimg" id="icon5">
+                        <img style=" width: 70%; height: 70%;  top: 15%; left: 15%;" src="https://i.postimg.cc/8PW65x9y/musica.png" />
+                    </div>
+                    <div class="iconimg" id="icon6">
+                        <img src="https://i.postimg.cc/7ZkTTmyq/lupa.png" />
+                    </div>
+
+                    <label id="txtarea">
+                        Rechercher:
+                    </label>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="sectlat1">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+                #sectlat1 {
+                    position: absolute;
+                    width: 8%;
+                    height: 90%;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+
+                #br1 {
+                    position: absolute;
+                    background: #404040;
+                    height: .1vw;
+                    left: 10%;
+                    top: 2%;
+                    width: 80%;
+                }
+
+                #num1 {
+                    position: absolute;
+                    color: #404040;
+                    text-shadow: .2vw .2vw .3vw #404040;
+                    font-size: 6vw;
+                    top: -15%;
+                    left: 15%;
+                    font-family: 'Playfair Display', serif;
+                }
+
+                #br2 {
+                    position: absolute;
+                    background: #404040;
+                    height: 40%;
+                    left: 49.5%;
+                    top: 16%;
+                    width: .2vw;
+                }
+
+                #num2 {
+                    position: absolute;
+                    color: #404040;
+                    text-shadow: .2vw .2vw .3vw #404040;
+                    font-size: 6vw;
+                    top: 45%;
+                    line-height: 3.5vw;
+                    left: 15%;
+                    font-family: 'Playfair Display', serif;
+                }
+
+                #br3 {
+                    position: absolute;
+                    background: #404040;
+                    height: .1vw;
+                    left: 10%;
+                    top: 79%;
+                    width: 80%;
+                }
+            </style>
+            <div id="br1"></div>
+            <p id="num1">14</p>
+            <div id="br2"></div>
+            <p id="num2">26.<br />03</p>
+            <div id="br3"></div>
+        </div>
+
+
+
+    </div>
+
+    
+    <style>
+        canvas#mainx {
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+        a:hover, p:hover, b:hover, span:hover { color:#171717;
+        }
+    </style>
+</body>
+</html>
