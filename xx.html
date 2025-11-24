@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
@@ -31,7 +31,7 @@
             width: 100%;
             top: 0;
             left: 0;
-            overflow: hidden;
+            overflow: hidden; 
         }
     </style>
     <style>
@@ -494,7 +494,24 @@
      
     <div id="main" onload="digi()" onclick="digi()">
         <div id="sectimg">
-            <img id="mainimgf" src="imgr.png" />
+            <!--<img id="mainimgf" src="imgr.png" />-->
+            <video autoplay="" loop="" muted="" id="video1" src="honey4.mp4" type="video/mp4">
+                <script>
+                    $('video').coverVid(1920, 1080);
+                </script>
+                <style>
+                    video {
+                        /*top: -2.5%;*/
+                        transform: scaleY(1.05); top:0%;
+                        overflow: hidden;
+                        height: 100%;
+                        left: 0%;
+                        width: 100%;
+                        position: absolute;
+                    }
+                </style>
+            </video>
+
             <style>
                 p, a, span {
                     z-index: 99999999999;
@@ -640,7 +657,7 @@
                     font-family: "Roboto", Arial, sans-serif;
                 }
                 /* html { filter:invert(100%);
-                }*/
+                    }*/
                 #c2 {
                     right: 5%;
                     color: white;
@@ -860,30 +877,30 @@
 
 
             <!--<div id="txtimg">
-            <span>总是一样的 | </span>C'est toujours pareil, <br />
-            <span>愚蠢折磨着我们 </span><br /><br />
-            <span> 折磨 | </span> la bêtise nous tourmente<br /><br />
-            <span> 愚蠢的我们 </span><br /><span> | Mais tu sais, </span>
-            <br /> <br />
-            会很 | ce sera très <br /><br />
-            <span>
-                痛苦如果今晚 | douloureux si cette nuit <br />
-            </span><br /><br />
-            ne finit jamais <span>| 永不结束</span><br />
-            <span>
-                当然一
-            </span>Sûrement vous, qui <br /><br />
-            <span>不要怀疑</span><br /> n'en doutez pas, <br /><br />
-            êtes capables d'aimer ce <span>
-                这
-            </span><br /> <br />
-            一monde maudit <br /><span>被诅咒的世界</span>
-            <br /><br />
-            <span>我们必须 | </span>Nous devons <br />
-            <span>支持者 | </span> supporter <br /><br />
-            tout cela et maintenant...<br />
-            <span>现在...</span>
-        </div>-->
+        <span>总是一样的 | </span>C'est toujours pareil, <br />
+        <span>愚蠢折磨着我们 </span><br /><br />
+        <span> 折磨 | </span> la bêtise nous tourmente<br /><br />
+        <span> 愚蠢的我们 </span><br /><span> | Mais tu sais, </span>
+        <br /> <br />
+        会很 | ce sera très <br /><br />
+        <span>
+            痛苦如果今晚 | douloureux si cette nuit <br />
+        </span><br /><br />
+        ne finit jamais <span>| 永不结束</span><br />
+        <span>
+            当然一
+        </span>Sûrement vous, qui <br /><br />
+        <span>不要怀疑</span><br /> n'en doutez pas, <br /><br />
+        êtes capables d'aimer ce <span>
+            这
+        </span><br /> <br />
+        一monde maudit <br /><span>被诅咒的世界</span>
+        <br /><br />
+        <span>我们必须 | </span>Nous devons <br />
+        <span>支持者 | </span> supporter <br /><br />
+        tout cela et maintenant...<br />
+        <span>现在...</span>
+    </div>-->
 
             <div id="crdt">
 
@@ -1849,7 +1866,7 @@
                 // instigate our audio context
                 let audioElement = new Audio();
                 audioElement.crossOrigin = "anonymous";
-                audioElement.src = "https://xcodexneon.github.io/evangelist/Beanie.mp3";
+                audioElement.src = "https://xcodexneon.github.io/evangelist/web.mp3";
 
                 audioElement.addEventListener(
                     "loadedmetadata",
@@ -1959,7 +1976,7 @@
             </script>
             <div class="wrapper">
                 <div class="player">
-                    <span class="description" id="namesongx" style="text-transform:uppercase">Chezile  • Beanie  </span>
+                    <span class="description" id="namesongx" style="text-transform:uppercase">Charlotte's Web  </span>
                     <div class="controls">
                         <div class="line progress">
                             <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
@@ -2582,7 +2599,7 @@
             </style>
             <div id="imgprof">
 
-                <img src="https://i.postimg.cc/hvfDtdrD/5124af3e53bbd1fcfb4a03057afa95f5.jpg" />
+                <img src="https://i.postimg.cc/X7BCb296/xd.png" />
             </div>
 
             <p id="mainnickx">NEIGE</p>
@@ -2990,5 +3007,4 @@
         }
     </style>
 </body>
-
 </html>
