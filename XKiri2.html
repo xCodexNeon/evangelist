@@ -105,9 +105,9 @@
         </style>
         <canvas id='canv'>
             <style>
-                      @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
-                      /* body {
+                /* body {
                     background: hsla(0, 0%, 0%, 1);
                     margin: 0;
                     overflow: hidden;
@@ -397,21 +397,10 @@
                 src: url(ch1.ttf);
             }
         </style>
-        <div id="part0">
-            <style>
-                #part0 {
-                    position: absolute;
-                    width: 35%;
-                    height: 1.5%;
-                    top: 0;
-                    left: .5%;
-                    background: #171717;
-                }
-            </style>
-        </div>
         <div id="part1">
             <style>
                 #part1 {
+                    z-index: 9;
                     position: absolute;
                     width: 1.5%;
                     height: 100%;
@@ -422,26 +411,17 @@
         <div id="part2">
             <style>
                 #part2 {
+                    z-index: 9;
                     position: absolute;
                     width: 1.5%;
-                    height: 90%;
-                    top: 10%;
+                    height: 100%;
                     right: -.5%;
                     background-image: linear-gradient(-180deg, #171717 40%, #c3a807 100%);
                 }
             </style>
         </div>
-        <div id="part3">
-            <style>
-                #part3 {
-                    position: absolute;
-                    width: 35%;
-                    height: 2%;
-                    bottom: 0;
-                    right: .5%;
-                    background: #c3a807;
-                }
-            </style>
+        <div id="pattern">
+
         </div>
 
         <div id="central">
@@ -491,11 +471,11 @@
             <div id="barup1"></div>
             <!--<div id="imgprofile">
 
-        <img id="imgniert" src="https://i.postimg.cc/02yWdXjm/Osaragi-1024-4407052.png" />
+            <img id="imgniert" src="https://i.postimg.cc/02yWdXjm/Osaragi-1024-4407052.png" />
 
-        <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
-        <div id="gifold2"></div>
-    </div>-->
+            <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+            <div id="gifold2"></div>
+        </div>-->
 
             <div id="firstp">
                 <style>
@@ -572,86 +552,84 @@
 
 
             <!--<div id="render" style="--img: url(https://i.postimg.cc/3JfLLj0G/Osaragi-1024-4407052-waifu2x-art-scan-noise3-scale.png)">
-        <style>
-            .card {
-                border-radius: 20px;
-                /*   box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 1px 16px rgba(0,0,0,0.3); */
-                width: 100%;
-                aspect-ratio: 1 / 1.5;
-                overflow: hidden;
-                position: relative;
-            }
-
-            div:has(.card) {
-                position: relative;
-            }
-
-                div:has(.card):before {
-                    content: "";
+            <style>
+                .card {
                     border-radius: 20px;
-                    position: absolute;
-                    inset: 0;
-                    top: 10px;
-                    background: var(--img);
-                    background-size: cover;
-                    filter: blur(16px) brightness(1.1);
+                    /*   box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 1px 16px rgba(0,0,0,0.3); */
+                    width: 100%;
+                    aspect-ratio: 1 / 1.5;
+                    overflow: hidden;
+                    position: relative;
                 }
 
-            .card .thumb {
-                position: absolute;
-                object-fit: cover;
-                width: calc(100% + 60px);
-                height: calc(30% + 60px);
-                position: absolute;
-                left: -30px;
-                top: -30px;
-            }
+                div:has(.card) {
+                    position: relative;
+                }
 
-            .thumb:before {
-                content: "";
-                background: var(--img);
-                background-size: cover;
-                position: absolute;
-                inset: 0;
-            }
+                    div:has(.card):before {
+                        content: "";
+                        border-radius: 20px;
+                        position: absolute;
+                        inset: 0;
+                        top: 10px;
+                        background: var(--img);
+                        background-size: cover;
+                        filter: blur(16px) brightness(1.1);
+                    }
 
-            .thumb:after {
-                content: "";
-                background: var(--img);
-                background-size: cover;
-                position: absolute;
-                inset: 0;
-                filter: blur(10px) saturate(2.1) brightness(3.1) grayscale(100%);
-                -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
-                mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-            }
+                .card .thumb {
+                    position: absolute;
+                    object-fit: cover;
+                    width: calc(100% + 60px);
+                    height: calc(30% + 60px);
+                    position: absolute;
+                    left: -30px;
+                    top: -30px;
+                }
 
-            #firm1 {
-                /*mix-blend-mode:darken;*/ transform: rotate(-5deg);
-                position: absolute;
-                font-family: tak;
-                font-size: 3.1vw;
-                top: -4.1vw;
-                left: 1%;
-                background-image: linear-gradient(90deg, gray, #703939 40%, white 100%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-shadow: 0 0 .2vw #171717;
-            }
-        </style>
-        <div class="card">
-            <div class="thumb"></div>
+                .thumb:before {
+                    content: "";
+                    background: var(--img);
+                    background-size: cover;
+                    position: absolute;
+                    inset: 0;
+                }
 
-        </div>
-        <p id="firm1">
+                .thumb:after {
+                    content: "";
+                    background: var(--img);
+                    background-size: cover;
+                    position: absolute;
+                    inset: 0;
+                    filter: blur(10px) saturate(2.1) brightness(3.1) grayscale(100%);
+                    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
+                    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                }
 
-            .Egocentrique et fier
-        </p>
 
-    </div>-->
+            </style>
+            <div class="card">
+                <div class="thumb"></div>
+
+            </div>
+
+        </div>-->
             <div id="menu">
                 <style>
+                    #firm1 {
+                        /*mix-blend-mode:darken;*/ transform: rotate(-5deg);
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3.1vw;
+                        top: -4.1vw;
+                        left: 1%;
+                        background-image: linear-gradient(90deg, gray, #c3a807 40%, white 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-shadow: 0 0 .2vw #171717;
+                    }
+
                     #menu {
                         position: absolute;
                         width: 15%;
@@ -822,7 +800,12 @@
                 <p id="lastfirmkiri">... Lumiere</p>
             </div>
             <!--<img id="render" src="https://i.postimg.cc/3JfLLj0G/Osaragi-1024-4407052-waifu2x-art-scan-noise3-scale.png" />-->
-            <div id="render"> <img id="rend" src="https://i.ibb.co/pB3sbSbp/lovebanner.png" /></div>
+            <div id="render">
+                <img id="rend" src="https://i.ibb.co/pB3sbSbp/lovebanner.png" /> <p id="firm1">
+
+                    .Egocentrique et fier
+                </p>
+            </div>
 
             <div id="par2">
                 <style>
