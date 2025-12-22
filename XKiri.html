@@ -1,0 +1,1793 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 101%;
+            width: 100.5%;
+            left: -.5%;
+            top: 0;
+            position: fixed;
+            background: #d2d2d2;
+            transition: all .5s ease;
+        }
+
+        #imgmain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .7;
+        }
+
+
+        @font-face {
+            font-family: bt;
+            src: url(bea.otf);
+        }
+
+        @font-face {
+            font-family: migueto;
+            src: url(Migueto.ttf);
+        }
+
+        @font-face {
+            font-family: migueto2;
+            src: url(migueto2.otf);
+        }
+
+        @font-face {
+            font-family: comp2;
+            src: url(comp.otf);
+        }
+
+        @font-face {
+            font-family: ht;
+            src: url(ht.ttf);
+        }
+
+        @font-face {
+            font-family: tak;
+            src: url(tak.otf);
+        }
+
+        #background {
+            position: absolute;
+            width: 92%;
+            height: 100%;
+            left: 8%;
+            opacity: .3;
+        }
+
+       
+
+        #backrenderx {
+            position: absolute;
+            width: 35%;
+            right: .5%;
+            bottom: -.5%;
+            opacity: .2;
+            -webkit-filter: blur(5px) brightness(-100%) opacity(.3);
+            filter: blur(5px) brightness(-100%) opacity(.3);
+        }
+    </style>
+</head>
+
+
+<body onload="digi()">
+   
+    <div id="main">
+        <style>
+        </style>
+        
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 101%;
+                    top: 0%;
+                    left: -1%;
+                    height: 100%;
+                    opacity: .04;
+                    z-index: 1;
+                    background-image: url("https://media.tenor.com/fYBdWHPfC-wAAAAM/art-pattern.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            canvas {
+                opacity: 1;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .5s infinite;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+
+            @font-face {
+                font-family: muit;
+                src: url(Mutiara.ttf);
+            }
+
+            @font-face {
+                font-family: ch2;
+                src: url(ch2.ttf);
+            }
+
+            @font-face {
+                font-family: ch1;
+                src: url(ch1.ttf);
+            }
+        </style>
+        <div id="part0">
+            <style>
+                #part0 {
+                    position: absolute;
+                    width: 35%;
+                    height: 1.5%;
+                    top: 0;
+                    left: .5%;
+                    background: #171717;
+                }
+            </style>
+        </div>
+        <div id="part1">
+            <style>
+                #part1 {
+                    position: absolute;
+                    width: 1.5%;
+                    height: 100%;
+                    background-image: linear-gradient(-180deg, #171717 40%, #600808 100%);
+                }
+            </style>
+        </div>
+        <div id="part2">
+            <style>
+                #part2 {
+                    position: absolute;
+                    width: 1.5%;
+                    height: 90%;
+                    top: 10%;
+                    right: -.5%;
+                    background-image: linear-gradient(-180deg, #171717 40%, #600808 100%);
+                }
+            </style>
+        </div>
+        <div id="part3">
+            <style>
+                #part3 {
+                    position: absolute;
+                    width: 35%;
+                    height: 2%;
+                    bottom: 0;
+                    right: .5%;
+                    background: #600808
+                }
+            </style>
+        </div>
+
+        <div id="central">
+            <style>
+                #central {
+                    position: absolute;
+                    height: 88%;
+                    width: 40%;
+                    left: 30%;
+                    background: white;
+                    top: 6%;
+                    /*border-radius: .4vw;*/
+                    overflow: hidden;
+                }
+
+                #barup1 {
+                    position: absolute;
+                    width: 100%;
+                    height: 5%;
+                    background-image: linear-gradient(90deg, #600808 40%, transparent 85%);
+                }
+
+                #bardw {
+                    position: absolute;
+                    width: 100%;
+                    height: 1.5%;
+                    bottom: 0;
+                    background: #600808;
+                }
+
+                #render {
+                    position: absolute;
+                    width: 99.7%;
+                    border: .1vw solid #8f3b3b;
+                    height: 45%;
+                    top: 13%;
+                    left: 0;
+                    overflow: hidden;
+                }
+                #rend { position:absolute; width:100%; top:-10%;
+                }
+            </style>
+            <div id="barup1"></div>
+            <!--<div id="imgprofile">
+
+        <img id="imgniert" src="https://i.postimg.cc/02yWdXjm/Osaragi-1024-4407052.png" />
+
+        <img src="https://64.media.tumblr.com/73fe8aab4254665252c0026bc9f3e942/tumblr_pfy6mo95zi1wn4t3ao1_540.gifv" id="gifold" />
+        <div id="gifold2"></div>
+    </div>-->
+
+            <div id="firstp">
+                <style>
+                    @font-face {
+                        font-family: mofavit;
+                        src: url(mofavit.otf);
+                    }
+
+                    #firstp {
+                        position: absolute;
+                        width: 60%;
+                        height: 6%;
+                        top: 7%;
+                    }
+
+                    #p1spear {
+                        position: absolute;
+                        width: 100%;
+                        height: 1.1vw;
+                    }
+
+                    #spear1 {
+                        position: absolute;
+                        width: 8%;
+                        background: #171717;
+                        height: 100%;
+                    }
+
+                    #sp1span {
+                        position: absolute;
+                        color: #171717;
+                        font-family: mofavit;
+                        font-size: 1.5vw;
+                        left: 7.7%;
+                        font-weight: bold;
+                        top: -.4vw;
+                    }
+
+                    #p2spear {
+                        bottom: 0;
+                        position: absolute;
+                        width: 100%;
+                        height: 1.5vw;
+                    }
+
+                    #sp2span {
+                        position: absolute;
+                        color: #171717;
+                        font-family: mofavit;
+                        font-size: 1.8vw;
+                        left: 0%;
+                        font-weight: bold;
+                        top: -.4vw;
+                    }
+
+                    #spear2 {
+                        position: relative;
+                        width: 50%;
+                        left: 62%;
+                        height: 99%;
+                        background-image: linear-gradient(90deg, #171717 40%, transparent 75%);
+                    }
+                </style>
+                <div id="p1spear">
+                    <div id="spear1"></div><soan id="sp1span">Kirigan</soan>
+
+                </div>
+
+                <div id="p2spear">
+                    <span id="sp2span">Pretresse Des etoiles</span><div id="spear2"></div>
+                </div>
+            </div>
+
+
+            <!--<div id="render" style="--img: url(https://i.ibb.co/SFh3dWs/kiribanner2.png)">
+                <style>
+                    .card {
+                        border-radius: 20px;
+                        /*   box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 1px 16px rgba(0,0,0,0.3); */
+                        width: 100%;
+                        aspect-ratio: 1 / 1.5;
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                    div:has(.card) {
+                        position: relative;
+                    }
+
+                        div:has(.card):before {
+                            content: "";
+                            border-radius: 20px;
+                            position: absolute;
+                            inset: 0;
+                            top: 10px;
+                            background: var(--img);
+                            background-size: cover;
+                            filter: blur(16px) brightness(1.1);
+                        }
+
+                    .card .thumb {
+                        position: absolute;
+                        object-fit: cover;
+                        width: calc(100% + 60px);
+                        height: calc(30% + 60px);
+                        position: absolute;
+                        left: -30px;
+                        top: -30px;
+                    }
+
+                    .thumb:before {
+                        content: "";
+                        background: var(--img);
+                        background-size: cover;
+                        position: absolute;
+                        inset: 0;
+                    }
+
+                    .thumb:after {
+                        content: "";
+                        background: var(--img);
+                        background-size: cover;
+                        position: absolute;
+                        inset: 0;
+                        filter: blur(10px) saturate(2.1) brightness(3.1) grayscale(100%);
+                        -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 1) 65%);
+                        mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                    }
+
+                    #firm1 {
+                        /*mix-blend-mode:darken;*/ transform: rotate(-5deg);
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3.1vw;
+                        top: -4.1vw;
+                        left: 1%;
+                        background-image: linear-gradient(90deg, gray, #703939 40%, white 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-shadow: 0 0 .2vw #171717;
+                    }
+                </style>
+                <div class="card">
+                    <div class="thumb"></div>
+
+                </div>
+                <p id="firm1">
+
+                    .Mystère et subtilité
+                </p>
+
+            </div>-->
+            <div id="menu">
+                <style>
+                    #menu {
+                        position: absolute;
+                        width: 15%;
+                        height: 40%;
+                        top: 17%;
+                        right: 0;
+                        z-index: 2;
+                    }
+
+                    #options {
+                        position: absolute;
+                        width: 50%;
+                        height: 90%;
+                        right: 0;
+                        mix-blend-mode: difference;
+                    }
+
+                    #opt1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 40%;
+                        top: 15%;
+                        cursor: pointer;
+                        mix-blend-mode: difference;
+                    }
+
+                    #opt2 {
+                        position: absolute;
+                        width: 100%;
+                        cursor: pointer;
+                        height: 20%;
+                        mix-blend-mode: difference;
+                        top: 55%;
+                    }
+
+                    #opt3 {
+                        position: absolute;
+                        cursor: pointer;
+                        mix-blend-mode: difference;
+                        width: 100%;
+                        height: 25%;
+                        top: 75%;
+                    }
+
+                    #indx {
+                        position: absolute;
+                        width: .6vw;
+                        height: 22%;
+                        background: #600808;
+                        right: 0;
+                        transition: all .5s ease;
+                    }
+
+                    .indop1 {
+                        top: 18%;
+                    }
+
+                    .indop2 {
+                        top: 56%;
+                    }
+
+                    .indop3 {
+                        top: 77%;
+                    }
+
+                    #opspan {
+                        position: absolute;
+                        font-family: mofavit;
+                        color: #171717;
+                        font-weight: bold;
+                        font-size: .5vw;
+                        text-transform: uppercase;
+                        mix-blend-mode: difference;
+                        right: -.3vw;
+                        top: .2vw;
+                    }
+
+                    #op1span {
+                        filter: invert(100%);
+                        mix-blend-mode: difference;
+                        position: absolute;
+                        font-family: mofavit;
+                        color: #171717;
+                        transform: rotate(90deg);
+                        font-weight: bold;
+                        font-size: .5vw;
+                        text-transform: uppercase;
+                        right: -.3vw;
+                        top: 1vw;
+                    }
+
+                    #op2span {
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                        position: absolute;
+                        font-family: mofavit;
+                        color: #171717;
+                        transform: rotate(90deg);
+                        font-weight: bold;
+                        font-size: .4vw;
+                        text-transform: uppercase;
+                        right: -.3vw;
+                        top: 1.2vw;
+                    }
+
+                    #op3span {
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                        position: absolute;
+                        font-family: mofavit;
+                        color: #171717;
+                        transform: rotate(90deg);
+                        font-weight: bold;
+                        font-size: .5vw;
+                        letter-spacing: .05vw;
+                        text-transform: uppercase;
+                        right: .3vw;
+                        top: .6vw;
+                    }
+
+                    #lastfirmkiri {
+                        position: absolute;
+                        font-family: tak;
+                        bottom: -12%;
+                        right: 12%;
+                        font-size: 2vw;
+                        color: lightgray;
+                        text-shadow: 0 0 .2vw #171717;
+                        animation: flickerx 2s infinite alternate;
+                    }
+                </style>
+
+                <div id="options">
+                    <span id="opspan">protocole zéro</span>
+
+                    <div id="opt1" onclick="press1();">
+                        <span id="op1span">signatures</span>
+                    </div>
+                    <div id="opt2" onclick="press2();">
+                        <span id="op2span">contacts et amis</span>
+                    </div>
+                    <div id="opt3" onclick="press3();">
+                        <span id="op3span">MAIN</span>
+                    </div>
+                    <div id="indx" class="indop3"></div>
+                </div>
+                <script>
+                    function press1() {
+                        $("#indx").addClass("indop1");
+                        $("#indx").removeClass("indop2");
+                        $("#indx").removeClass("indop3");
+                    }
+                    function press2() {
+                        $("#indx").addClass("indop2");
+                        $("#indx").removeClass("indop1");
+                        $("#indx").removeClass("indop3");
+                    }
+                    function press3() {
+                        $("#indx").addClass("indop3");
+                        $("#indx").removeClass("indop2");
+                        $("#indx").removeClass("indop1");
+                    }
+                    function oppened() {
+                        $("#extendeddiv").addClass("oppened");
+                        $("#extendeddiv").removeClass("occult");
+                    }
+                </script>
+                <p id="lastfirmkiri">... Liuunara</p>
+            </div>
+            <div id="render"> <img id="rend" src="https://i.ibb.co/SFh3dWs/kiribanner2.png" /></div>
+           
+
+            <div id="par2">
+                <style>
+                    #par2 {
+                        position: absolute;
+                        width: 92%;
+                        top: 60%;
+                        height: 35%;
+                        left: 4%;
+                    }
+
+                    #subline1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 30%;
+                        border-top: .1vw solid #171717;
+                        border-bottom: .1vw solid #171717;
+                    }
+
+                    #qrdiv {
+                        position: absolute;
+                        width: 3.5vw;
+                        height: 3.5vw;
+                        top: 14%;
+                        filter: contrast(140%) brightness(100%);
+                    }
+
+                    #backqr {
+                        position: absolute;
+                        width: 3.5vw;
+                        height: 3.5vw;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        width: 2.5vw;
+                        left: .5vw;
+                        top: .5vw;
+                        height: 2.5vw;
+                    }
+                </style>
+                <div id="subline1">
+                    <div id="qrdiv">
+                        <img src="https://i.postimg.cc/P5trzFRq/qrcube.png" id="backqr" />
+                        <img src="https://i.postimg.cc/qBjmvtHs/qr.png" id="qrimg" />
+                    </div>
+                    <div id="midtext">
+                        <style>
+                            #midtext {
+                                position: absolute;
+                                width: 20%;
+                                left: 12%;
+                                height: 100%;
+                            }
+
+                            #pmid1 {
+                                font-size: .4vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: #171717;
+                                position: absolute;
+                                top: .2vw;
+                            }
+
+                            #pmid2 {
+                                font-size: .5vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: #171717;
+                                position: absolute;
+                                top: 1.1vw;
+                            }
+
+                            #pmid3 {
+                                font-size: .7vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: #171717;
+                                position: absolute;
+                                top: 1.8vw;
+                            }
+
+                            #pmid4 {
+                                font-size: 1vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: #202020;
+                                position: absolute;
+                                top: 2.2vw;
+                            }
+
+                            #pmid5 {
+                                font-size: 2vw;
+                                font-family: tw;
+                                font-weight: bold;
+                                color: #202020;
+                                position: absolute;
+                                left: 3.5vw;
+                                top: -.1vw;
+                                line-height: 1vw;
+                            }
+                        </style>
+
+                        <p id="pmid1">
+                            [VA//JP]:<br />
+                            Kirigan´s place
+                        </p>
+                        <p id="pmid2">キリガン</p>
+                        <p id="pmid3">Mday</p>
+                        <p id="pmid4">15-12</p>
+                        <p id="pmid5">*<br />.25</p>
+                    </div>
+                    <div id="lattext">
+                        <style>
+                            #lattext {
+                                position: absolute;
+                                width: 70%;
+                                height: 100%;
+                                left: 30%;
+                            }
+
+                            #mainplattetx {
+                                font-family: mofavit;
+                                font-size: 2.7vw;
+                                right: -.5vw;
+                                text-transform: uppercase;
+                                position: absolute;
+                                top: -2.6vw;
+                                color: #171717;
+                            }
+
+                                #mainplattetx span {
+                                    font-family: consolas;
+                                    font-weight: bold;
+                                    font-size: 3.4vw;
+                                }
+
+                            #japsubtext {
+                                font-family: mofavit;
+                                font-size: .9vw;
+                                font-weight: bold;
+                                position: absolute;
+                                top: 2.2vw;
+                                left: 3vw;
+                                color: #171717;
+                            }
+
+                            #japsubtext2 {
+                                font-family: mofavit;
+                                font-size: .9vw;
+                                font-weight: bold;
+                                position: absolute;
+                                top: 2.3vw;
+                                right: 2.1vw;
+                                text-align: right;
+                                letter-spacing: .01vw;
+                                text-transform: uppercase;
+                                color: #171717;
+                            }
+
+                            #subuuptext {
+                                font-size: 2vw;
+                                font-family: tak;
+                                color: #600808;
+                                position: absolute;
+                                transform: rotate(-5deg);
+                                top: -2vw;
+                                left: 4.5vw;
+                            }
+                        </style>
+                        <p id="mainplattetx"><span>[</span> Gouttes Rouges <span>]</span> </p><p id="subuuptext">Neige’s wife</p>
+                        <p id="japsubtext">キリガンの考え</p> <p id="japsubtext2">Sadisutikku</p>
+                    </div>
+                </div>
+                <div id="subline2">
+                    <style>
+                        #subline2 {
+                            position: absolute;
+                            width: 100%;
+                            height: 62%;
+                            top: 38%;
+                        }
+                    </style>
+                    <div id="gallery">
+                        <style>
+                            #gallery {
+                                position: absolute;
+                                width: 45%;
+                                height: 60%;
+                                background: #600808;
+                            }
+
+                            #effectdegrad {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background-image: linear-gradient(90deg, transparent 50%, white 95%);
+                            }
+
+                            #icon1 {
+                                position: absolute;
+                                width: 4vw;
+                                height: 4vw;
+                                top: 22%;
+                                left: 4%;
+                            }
+
+                            #icon2 {
+                                position: absolute;
+                                width: 4vw;
+                                height: 4vw;
+                                top: 22%;
+                                left: 34%;
+                            }
+
+                            #icon3 {
+                                position: absolute;
+                                width: 4vw;
+                                height: 4vw;
+                                top: 22%;
+                                left: 64%;
+                            }
+
+                            #pgall {
+                                position: absolute;
+                                font-family: mofavit;
+                                color: darkgray;
+                                font-weight: bold;
+                                letter-spacing: .01vw;
+                                font-size: .6vw;
+                                left: 4%;
+                                text-shadow: 0 0 .2vw #171717;
+                                top: -.2vw;
+                            }
+
+                            @keyframes flickerx {
+
+                                20%, 24%, 55%, 100% {
+                                    color: lightgray;
+                                    text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                                }
+
+                                0%, 18%, 22% {
+                                    color: rgba(66, 66, 66, 0.5);
+                                    text-shadow: none;
+                                }
+                            }
+                        </style>
+                        <p id="pgall">.Gallery</p>
+                        <img src="https://i.ibb.co/jvsRQYFL/match2.png" id="icon1" />
+                        <img src="https://i.ibb.co/Rkmh1rJk/match1s.png" id="icon2" />
+                        <img src="https://i.ibb.co/211CkQVW/match3.png" id="icon3" />
+
+
+                        <div id="effectdegrad">
+
+                        </div>
+                    </div>
+                    <div id="secondline2Oc" class="oc">
+                        <style>
+                            .oc {
+                                z-index: -1;
+                                opacity: 0;
+                            }
+
+                            .ad {
+                                z-index: 8;
+                                opacity: 1;
+                            }
+
+                            #secondline2Oc {
+                                position: absolute;
+                                width: 20%;
+                                height: 60%;
+                                left: 45%;
+                            }
+
+                            #barlatt {
+                                position: absolute;
+                                width: .05vw;
+                                height: 70%;
+                                background: #171717;
+                                top: 30%;
+                                right: 0;
+                            }
+
+                            #titlecub {
+                                position: absolute;
+                                width: .8vw;
+                                height: .2vw;
+                                border-top: .25vw solid #171717;
+                                border-bottom: .25vw solid #171717;
+                            }
+
+                            #pliun {
+                                font-size: .8vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                position: absolute;
+                                top: -.9vw;
+                                left: 1vw;
+                            }
+
+                            #desc {
+                                font-size: .40vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                top: 1.2vw;
+                                position: absolute;
+                                width: 92%;
+                            }
+
+                            #points {
+                                font-size: 1vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                letter-spacing: .2vw;
+                            }
+                        </style>
+                        <div id="titlecub">
+                        </div>
+                        <p id="pliun">KATANA</p>
+                        <p id="desc">
+                            —Tu es arrivé(e) discrètement,
+
+                            et tu es resté(e).
+
+                            Ta façon de prendre soin des autres est empreinte de sérénité,
+
+                            et ta douceur est réconfortante.
+
+                            Quel bonheur de communiquer avec toi,
+
+                            sans hâte, avec sincérité.
+                            <br /><span id="points">...</span>
+                        </p>
+                        <div id="barlatt">
+
+                        </div>
+                    </div>
+                    <div id="pages">
+                        <span id="page00" onclick="tofirm0();" class="si">00</span> <span id="seppages" class="no">/</span> <span id="page01" class="no" onclick="tofirm1()">01</span>
+                        <script>
+                            function tofirm1() {
+                                $("#page00").addClass("no");
+                                $("#secondline2Oc").addClass("ad");
+                                $("#page00").removeClass("si");
+                                $("#secondline2Oc").removeClass("oc");
+
+                                $("#page01").addClass("si");
+                                $("#secondline2").addClass("oc");
+                                $("#page01").removeClass("no");
+                                $("#secondline2").removeClass("ad");
+                            }
+                            function tofirm0() {
+                                $("#page00").addClass("si");
+                                $("#secondline2Oc").addClass("oc");
+                                $("#page00").removeClass("no");
+                                $("#secondline2Oc").removeClass("ad");
+
+                                $("#page01").addClass("no");
+                                $("#secondline2").addClass("ad");
+                                $("#page01").removeClass("si");
+                                $("#secondline2").removeClass("no");
+                            }
+                        </script>
+                        <style>
+                            #pages {
+                                position: absolute;
+                                cursor: pointer;
+                                width: 8%;
+                                height: 8%;
+                                top: 54%;
+                                left: 56%;
+                                z-index: 9;
+                                font-size: .6vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                text-align: right;
+                            }
+
+                            .si {
+                                color: #600808
+                            }
+
+                            .no {
+                                color: #303030;
+                            }
+                        </style>
+                    </div>
+
+
+
+                    <div id="secondline2" class="ad">
+                        <style>
+                            #secondline2 {
+                                position: absolute;
+                                width: 20%;
+                                height: 60%;
+                                left: 45%;
+                                z-index: 8;
+                            }
+
+                            #barlatt {
+                                position: absolute;
+                                width: .05vw;
+                                height: 70%;
+                                background: #171717;
+                                top: 30%;
+                                right: 0;
+                            }
+
+                            #titlecub {
+                                position: absolute;
+                                width: .8vw;
+                                height: .2vw;
+                                border-top: .25vw solid #171717;
+                                border-bottom: .25vw solid #171717;
+                            }
+
+                            #pliun {
+                                font-size: .8vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                position: absolute;
+                                top: -.9vw;
+                                left: 1vw;
+                            }
+
+                            #desc {
+                                font-size: .40vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                top: 1.2vw;
+                                position: absolute;
+                                width: 92%;
+                            }
+
+                            #points {
+                                font-size: 1vw;
+                                font-weight: bold;
+                                font-family: tw;
+                                letter-spacing: .2vw;
+                            }
+                        </style>
+                        <div id="titlecub">
+                        </div>
+                        <p id="pliun">MALADIE</p>
+                        <p id="desc">
+                            N'est-ce pas incroyable ?
+                            Le sentiment d'être aimé…
+                            Le frisson de réaliser que c'était toujours cette personne…
+                            Savoir qu'il suffisait de franchir le pas...
+                            Avoir le sentiment que le simple fait de penser à lui vous remplit de vie...
+                            <br /><span id="points">...</span>
+                        </p>
+                        <div id="barlatt">
+
+                        </div>
+                    </div>
+                    <div id="thirdline">
+                        <style>
+                            #thirdline {
+                                width: 33%;
+                                right: 0;
+                                height: 60%;
+                                position: absolute;
+                                z-index: 9;
+                            }
+
+                            #tr1 {
+                                position: absolute;
+                                width: .8vw;
+                                transform: rotate(90deg) scaleY(1);
+                            }
+
+                            #tr2 {
+                                position: absolute;
+                                width: .5vw;
+                                transform: rotate(0deg) scaleY(1);
+                                bottom: 0;
+                            }
+
+                            #comas {
+                                position: absolute;
+                                width: .8vw;
+                                left: 18%;
+                            }
+
+                            #desccomas {
+                                position: absolute;
+                                left: 30%;
+                                font-size: .45vw;
+                                color: black;
+                                font-family: tw;
+                                font-weight: bold;
+                                top: -.5vw;
+                            }
+                        </style>
+                        <img id="tr1" src="https://i.postimg.cc/GmJD89mL/triangulo-rectangulo.png" />
+
+                        <img id="comas" src="https://i.postimg.cc/DzQ98S00/comillas.png" />
+                        <p id="desccomas">Peu importe à quel point le monde est sombre pour toi. Je te tendrai la main jusqu'à ce que tu la trouves, et je ne la lâcherai pas. </p>
+                        <div id="divfirmtext">
+                            <style>
+                                #divfirmtext {
+                                    position: absolute;
+                                    width: 83%;
+                                    height: 40%;
+                                    top: 30%;
+                                    right: 0;
+                                    background-image: linear-gradient(90deg, transparent 0%, #600808 20%);
+                                }
+
+                                #signp1 {
+                                    color: white;
+                                    font-size: 1.1vw;
+                                    letter-spacing: .05vw;
+                                    font-family: mofavit;
+                                    font-weight: bold;
+                                    position: absolute;
+                                    top: -1vw;
+                                    right: .4vw;
+                                }
+
+                                #signp2 {
+                                    color: white;
+                                    font-size: .7vw;
+                                    letter-spacing: .05vw;
+                                    font-family: tw;
+                                    font-weight: bold;
+                                    position: absolute;
+                                    top: .6vw;
+                                    right: .4vw;
+                                }
+                            </style>
+                            <p id="signp1">Signature du jour</p>
+                            <p id="signp2">"Pour toujours"</p>
+                        </div>
+
+                        <div id="extendeddiv" class="oppened">
+                            <style>
+                                #extendeddiv {
+                                    position: absolute;
+                                    width: 100%;
+                                    top: 75%;
+                                    transition: all .5s ease;
+                                }
+
+                                #textfirmf {
+                                    position: absolute;
+                                    width: 75%;
+                                    right: 0;
+                                    height: 100%;
+                                    overflow: auto;
+                                }
+
+                                    #textfirmf::-webkit-scrollbar {
+                                    }
+
+                                    #textfirmf::-webkit-scrollbar-track {
+                                        background: #c3a807;
+                                    }
+
+                                .occult {
+                                    height: 25%;
+                                }
+
+                                .oppened {
+                                    height: 100%;
+                                }
+
+                                #firmopened {
+                                    position: relative;
+                                    text-align: left;
+                                    font-size: .45vw;
+                                    color: #171717;
+                                    font-family: tw;
+                                    top: -.3vw;
+                                    line-height: .4vw;
+                                    font-weight: bold;
+                                }
+
+                                #firmocculted {
+                                    position: relative;
+                                    text-align: left;
+                                    font-size: .45vw;
+                                    color: #171717;
+                                    font-family: tw;
+                                    line-height: .4vw;
+                                    font-weight: bold;
+                                    height: auto;
+                                }
+
+                                #tr3 {
+                                    position: absolute;
+                                    width: .5vw;
+                                    right: .1vw;
+                                    transform: rotate(-45deg) scaleY(1);
+                                    bottom: .2vw;
+                                    animation: bluranim 2s infinite;
+                                    z-index: 9;
+                                }
+
+                                @keyframes bluranim {
+                                    0% {
+                                        bottom: .2vw;
+                                    }
+
+                                    50% {
+                                        bottom: .4vw;
+                                    }
+
+                                    100% {
+                                        bottom: .2vw;
+                                    }
+                                }
+
+                                #pneigfirm {
+                                    position: absolute;
+                                    text-align: left;
+                                    right: 0;
+                                    font-size: 1.6vw;
+                                    color: #171717;
+                                    font-family: tak;
+                                    bottom: -3vw;
+                                }
+                            </style>
+
+                            <div id="textfirmf">
+                                <p id="firmopened">Ton éclat dans le ciel sombre murmure mon nom, effleurant ma peau pour me rappeler que <br />je suis encore en vie…</p>
+
+                                <p id="firmocculted">
+                                    Comment vivre sans toi ?<br />
+
+                                    J'ai tenté de renaître
+                                    Pour échapper à cette nuit<br /><br />
+                                    J'ai tenté de renaître
+                                    Pour vivre avec une âme morte<br /><br />
+
+                                    Tu as brisé ces chaînes et tu m'as montré
+                                    Le monde qui a grandi Autour de mon cœur
+                                    <br />
+                                    Un monde où nous pouvons vivre ensemble
+                                    <br />
+                                    en murmurant nos noms…<br />
+                                    <br />
+
+                                    Je t’aime, Kirigan.
+                                </p>
+
+                            </div>
+                            <div id="bartextfirm">
+                                <style>
+                                    #bartextfirm {
+                                        position: absolute;
+                                        width: 75%;
+                                        right: 0;
+                                        top: 100%;
+                                        height: .3vw;
+                                        border-bottom: .1vw solid gray;
+                                    }
+                                </style>
+                            </div>
+                            <p id="pneigfirm"><a style="text-decoration:none; color:#171717" href="https://xat.me/neige">Neige</a></p>
+                            <img id="tr2" src="https://i.postimg.cc/GmJD89mL/triangulo-rectangulo.png" />
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--<img id="tr3" src="https://i.postimg.cc/GmJD89mL/triangulo-rectangulo.png" onclick="oppened();" />-->
+            </div>
+            <div id="barfriends">
+                <style>
+                    #barfriends {
+                        position: absolute;
+                        width: 40%;
+                        height: 3%;
+                        left: 4%;
+                        background-image: linear-gradient(90deg, #303030 70%, white 97%);
+                        
+                        top: 88%;
+                    }
+
+                    #t1 {
+                        margin: 0 auto;
+                        width: 0;
+                        position: absolute;
+                        height: 0;
+                        border-right: .7vw solid transparent;
+                        border-top: .7vw solid transparent;
+                        border-left: .7vw solid transparent;
+                        border-bottom: .7vw solid #882733;
+                        transform: rotate(-45deg);
+                        left: -.8vw;
+                        top: -1vw;
+                    }
+
+                    #t2 {
+                        margin: 0 auto;
+                        width: 0;
+                        position: absolute;
+                        height: 0;
+                        border-right: .7vw solid transparent;
+                        border-top: .7vw solid transparent;
+                        border-left: .7vw solid transparent;
+                        border-bottom: .7vw solid #882733;
+                        transform: rotate(-225deg);
+                        left: 30%;
+                        bottom: -.9vw;
+                    }
+
+                    #barcolor {
+                        position: absolute;
+                        width: 40%;
+                        height: .2vw;
+                        left: 4%;
+                        background-image: linear-gradient(90deg, #303030 10%, #600808 20%,#600808 70%, white 97%);
+                        top: 93%;
+                    }
+
+                    #textfriends {
+                        position: absolute;
+                        font-family: ch1;
+                        font-size: 1.4vw;
+                        color: red;
+                        top: -1.8vw;
+                        left: 4%;
+                        background-image: linear-gradient(-90deg, #600808 20%, white 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                </style>
+                <p id="textfriends">基里根 </p>
+                <div id="t1"></div> <div id="t2"></div>
+            </div>
+            <div id="barcolor">
+
+            </div>
+            <div id="repro">
+                <style>
+                    #repro {
+                        position: absolute;
+                        width: 30%;
+                        height: 6%;
+                        z-index: 9;
+                        left:19%;
+                        top: 86.7%; 
+                    }
+                </style>
+                <style>
+
+                    .wrapper {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type=range] {  
+                        appearance: none;
+                        border-radius: 2px;
+                        outline: none;
+                        flex-grow: 1;
+                        height: 5px;
+                    }
+
+                        input[type=range]::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: .5vw;
+                            height: .5vw;
+                            transform: rotate(45deg);
+                            background-color: #171717;
+                        }
+
+                        input[type=range]::-moz-range-thumb {
+                            width: 15px;
+                            height: 15px;
+                            border: 2px #3d143d solid;
+                            border-radius: 7.5px;
+                            background-color: #171717;
+                        }
+
+                    .player {
+                    }
+
+                        .player .equalizer {
+                            /*position: absolute;*/
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: left;
+                            position: absolute;
+                            justify-content: left;
+                            left: -50%;
+                            margin-top: 2.2vw;
+                        }
+
+                            .player .equalizer .vertical {
+                                height: .1vw;
+                                width: .1vw;
+                                margin: .1vw;
+                                background: linear-gradient(-180deg, #600808 50%, #171717 100%);
+                                border-radius: .3vw;
+                                transition: all 0.01s;
+                                transition-timing-function: ease-in-out;
+                            }
+
+                        .player .controls .line {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                            justify-content: space-between;
+                            margin: 10px 0;
+                        }
+
+                        .player .controls .progress {
+                            font-size: 0.5em;
+                            font-weight: bold;
+                            position: absolute;
+                        }
+
+                            .player .controls .progress .duration {
+                                margin: 0 10px 0 0;
+                            }
+
+                        .player .controls .play-pause {
+                            box-sizing: border-box;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            will-change: border-width;
+                            cursor: pointer;
+                            height: 20px;
+                            background: transparent;
+                            width: 20px;
+                            filter: grayscale(100%);
+                            border-color: transparent transparent transparent #171717;
+                            opacity: .8;
+                        }
+
+                            .player .controls .play-pause[aria-checked=false] {
+                                border-style: solid;
+                                border-width: 10px 0 10px 15px;
+                            }
+
+                            .player .controls .play-pause[aria-checked=true] {
+                                border-style: double;
+                                border-width: 0 0 0 15px;
+                            }
+
+                        .player .controls .description {
+                            margin: 0 10px;
+                        }
+
+                        .player .controls .volume {
+                            position: absolute;
+                            top: 3.5vw;
+                            display: flex;  margin-left:.7vw;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            filter: invert(80%);
+                            justify-content: center;
+                        }
+
+                            .player .controls .volume input[type=range] {
+                                width: 0px;
+                                margin: 0 10px 0 0;
+                                transition: all 0.1s;
+                                transition-timing-function: ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            .player .controls .volume:hover input[type=range] {
+                                display: block;
+                                width: 50px;
+                            }
+
+                            .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                                display: none;
+                                background: #dd8731;
+                            }
+
+                            .player .controls .volume input[type=range]::-moz-range-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume input[type=checkbox] {
+                                display: none;
+                            }
+
+                                .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                    display: block;
+                                }
+
+                            .player .controls .volume img {
+                                display: none;
+                                cursor: pointer;
+                                height: 20px;
+                                filter: invert(100%);
+                                width: 20px;
+                                /*filter: invert(11%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);*/
+                            }
+
+                    #progresss {
+                        background: dimgray;
+                        height: .1vw;
+                        width: 400%;
+                        position: absolute;
+                        opacity: 0;
+                        top: 1vw;
+                    }
+
+                    #namesong {
+                        font-family: tw;
+                        width: 100%;
+                        font-size: .5vw;
+                        position: absolute;
+                        left:-115%;
+                        text-align: right;
+                        top: 2.3vw;
+                    }
+
+                    #current, .duration {
+                        opacity: 0;
+                    }
+
+                    #playbtn {
+                        position: absolute;
+                        right: -3.5vw;
+                    }
+                </style>
+                <script>
+                    function updateEqualizer(analyser, buffer, columns) {
+                        analyser.getByteFrequencyData(buffer);
+                        for (let i = 0; i < columns.length; i += 1) {
+                            let column = columns[i];
+                            const height = (buffer[i] / 255) * 35 + 2;
+                            column.setAttribute("style", `height: ${height}px`);
+                        }
+                    }
+
+                    function toMinutesAndSeconds(time) {
+                        const minutes = Math.floor(time / 60);
+                        const seconds = Math.floor(time % 60);
+                        if (seconds < 10) {
+                            return `${minutes}:0${seconds}`;
+                        }
+
+                        return `${minutes}:${seconds}`;
+                    }
+
+                    function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                        const currentTime = track.mediaElement.currentTime.toFixed(1);
+                        const duration = track.mediaElement.duration;
+                        timeDisplay.innerHTML = toMinutesAndSeconds(
+                            currentTime > duration ? duration : currentTime
+                        );
+                        progressBar.value = currentTime > duration ? duration : currentTime;
+                    }
+                    console.clear();
+
+                    // instigate our audio context
+                    let audioElement = new Audio();
+                    audioElement.crossOrigin = "anonymous";
+                    audioElement.src = "https://xcodexneon.github.io/evangelist/Rain.mp3";
+
+                    audioElement.addEventListener(
+                        "loadedmetadata",
+                        (event) => {
+                            // for cross browser
+                            const AudioContext = window.AudioContext || window.webkitAudioContext;
+                            const audioCtx = new AudioContext();
+
+                            // load some sound
+                            const track = audioCtx.createMediaElementSource(audioElement);
+                            const playButton = document.querySelector("button");
+
+                            // play pause audio
+                            playButton.addEventListener(
+                                "click",
+                                function () {
+                                    // check if context is in suspended state (autoplay policy)
+                                    if (audioCtx.state === "suspended") {
+                                        audioCtx.resume();
+                                    }
+
+                                    if (this.dataset.playing === "false") {
+                                        audioElement.play();
+                                        this.dataset.playing = "true";
+                                        // if track is playing pause it
+                                    } else if (this.dataset.playing === "true") {
+                                        audioElement.pause();
+                                        this.dataset.playing = "false";
+                                    }
+
+                                    let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                    this.setAttribute("aria-checked", state ? "false" : "true");
+                                },
+                                false
+                            );
+
+                            // if track ends
+                            audioElement.addEventListener(
+                                "ended",
+                                () => {
+                                    playButton.dataset.playing = "false";
+                                    playButton.setAttribute("aria-checked", "false");
+                                },
+                                false
+                            );
+
+                            // initialize gain
+                            let gainNode = audioCtx.createGain();
+
+                            // initialize analyser
+                            let analyser = audioCtx.createAnalyser();
+                            analyser.fftSize = 64; //32 bins
+                            const frequencyBinsCount = analyser.frequencyBinCount;
+                            let buffer = new Uint8Array(frequencyBinsCount);
+                            track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                            // equalizer animation
+                            const equalizer = document.getElementById("equalizer");
+                            // 32 bins -> 32 columns
+                            const columns = document.getElementsByClassName("vertical");
+                            setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                            const currentTimeDisplay = document.querySelector(".current-time");
+                            const progressBar = document.querySelector(".progress-bar");
+                            const durationDisplay = document.querySelector(".duration");
+                            durationDisplay.innerHTML = toMinutesAndSeconds(
+                                track.mediaElement.duration
+                            );
+                            progressBar.max = track.mediaElement.duration;
+
+                            setInterval(
+                                updateProgressBar,
+                                100,
+                                track,
+                                progressBar,
+                                currentTimeDisplay,
+                                durationDisplay
+                            );
+
+                            const volumeControl = document.querySelector("#range-volume");
+
+                            volumeControl.addEventListener(
+                                "input",
+                                function () {
+                                    gainNode.gain.value = this.value;
+                                },
+                                false
+                            );
+
+                            // mute button
+                            const mute_button = document.getElementById("mute");
+                            mute_button.addEventListener(
+                                "change",
+                                (event) => {
+                                    if (event.target.checked) {
+                                        audioElement.muted = true;
+                                    } else {
+                                        audioElement.muted = false;
+                                    }
+                                },
+                                false
+                            );
+                        },
+                        false
+                    );
+
+                </script>
+                <div class="wrapper">
+                    <div class="player">
+                        <span class="description" id="namesong" style="text-transform:uppercase"> Rain • Sleep token</span>
+                        <div class="controls">
+                            <div class="line progress">
+                                <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                                </button>
+
+                                <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                                <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                            </div>
+
+                            <div class="line">
+
+                                <div class="volume">
+                                    <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                                    <input type="checkbox" name="mute" id="mute">
+                                    <label for="mute" class="unmute">
+                                        <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                                    </label>
+                                    <label for="mute" class="mute">
+                                        <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="equalizer" id="equalizer">
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="bardw"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
