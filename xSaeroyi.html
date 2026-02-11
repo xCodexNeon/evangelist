@@ -1,0 +1,950 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <style>
+        html,
+        body, #main {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            /*background: black;*/
+            /*background-image: url(https://embed.pixiv.net/artwork.php?illust_id=109452625);*/
+            background-size: cover;
+            background: white;
+        }
+
+
+        #main {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        #imgmain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .7;
+        }
+        #render {
+            position: absolute;
+            right: -5%;
+            height: 120%;
+            top: 0;
+            z-index: 1;
+        }
+        #backrender {
+            z-index: 1;
+            filter: brightness(-100%) blur(10px);
+            opacity: .8;
+            position: absolute;
+            right: -6%;
+            height: 120%;
+            top: 2%;
+        }
+        #maintext1 {
+            z-index: 1;
+            position: absolute;
+            font-size: 10vw;
+            font-family: tw;
+            color: darkgray;
+            text-align: right;
+            right: -15%;
+            transform: rotate(90deg);
+            top: 15%;
+            /* mix-blend-mode:difference;*/
+            text-shadow: 0 0 1vw black;
+            line-height: 7vw;
+        }
+        @font-face {
+            font-family: bt;
+            src: url(bea.otf);
+        }
+        
+        @font-face {
+            font-family:migueto;
+            src: url(Migueto.ttf);
+        }
+        @font-face {
+            font-family: migueto2;
+            src: url(migueto2.otf);
+        }
+        @font-face {
+            font-family: comp2;
+            src: url(comp.otf);
+        }
+        #background { position:absolute; width:92%; height:100%; left:8%; opacity:.3;
+        }
+    </style>
+</head>
+<script>
+    window.addEventListener('load', function () {
+        $(document).ready(function () {
+
+
+            boton = document.getElementById("next")
+            var playing = false,
+                artistname = $(".artist-name"),
+                musicName = $(".music-name"),
+                time = $(".time"),
+                fillBar = $(".fillBar");
+
+            let audioData = [];
+
+            var song = new Audio();
+            var CurrentSong = 0;
+            window.onload = load();
+
+            function load() {
+                audioData = [
+
+                    {
+                        name: "Radio off",
+                        artist: "Radio off",
+                        src:
+                            ""
+                    },
+                    {
+                        name: "stars will fall",
+                        artist: "shamrain",
+                        src:
+                            "stars.mp3"
+                    },
+                    {
+                        name: "No one remembers your name",
+                        artist: "ShamRain",
+                        src:
+                            "noone.mp3"
+                    },
+
+
+                    {
+                        name: "My still haven",
+                        artist: "Shamrain",
+                        src:
+                            "mystill.mp3"
+                    },
+
+
+
+                    {
+                        name: "STOP CRYING YOUR HEART",
+                        artist: "OASIS",
+                        src:
+                            "heart.mp3"
+                    },
+                    {
+                        name: "Chau",
+                        artist: "NTVG",
+                        src:
+                            "chau.mp3"
+                    },
+
+
+
+
+                ];
+
+                artistname.html(audioData[CurrentSong].artist);
+                musicName.html(audioData[CurrentSong].name);
+                song.src = audioData[CurrentSong].src;
+            }
+
+            function playSong() {
+                var curSong = audioData[CurrentSong];
+                artistname.html(curSong.artist);
+                musicName.html(curSong.name);
+                song.src = curSong.src;
+                song.play();
+                $("#play").addClass("fa-pause");
+                $("#play").removeClass("fa-play");
+                $("p").addClass("active");
+                $(".player-track").addClass("active");
+            }
+
+            song.addEventListener("timeupdate", function () {
+                var position = (100 / song.duration) * song.currentTime;
+                var current = song.currentTime;
+                var duration = song.duration;
+                var durationMinute = Math.floor(duration / 60);
+                var durationSecond = Math.floor(duration - durationMinute * 60);
+                var durationLabel = durationMinute + ":" + durationSecond;
+                currentSecond = Math.floor(current);
+                currentMinute = Math.floor(currentSecond / 60);
+                currentSecond = currentSecond - currentMinute * 60;
+                // currentSecond = (String(currentSecond).lenght > 1) ? currentSecond : ( String("0") + currentSecond );
+                if (currentSecond < 10) {
+                    currentSecond = "0" + currentSecond;
+                }
+                var currentLabel = currentMinute + ":" + currentSecond;
+
+                var indicatorLabel = currentLabel + "  " + durationLabel;
+
+                fillBar.css("width", position + "%");
+
+                $(".time").html(indicatorLabel);
+            });
+            //////
+            $("#a_in").click(function playOrPause() {
+                if (song.paused) {
+                    song.play();
+                    playing = true;
+                    $("#play").addClass("fa-pause");
+                    $("#play").removeClass("fa-play");
+                    $("p").addClass("active");
+                    /* $("#bar1").addClass("br1");*/
+
+                } else {
+                    song.pause();
+                    playing = false;
+                    $("#play").removeClass("fa-pause");
+                    $("#play").addClass("fa-play");
+                    $("p").removeClass("active");
+
+
+                }
+            });
+            $("#play").click(function () {
+
+                song.play();
+                playing = true;
+            });
+            $("#pause").click(function () {
+                song.pause();
+                playing = false;
+            });
+            $("#stop").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 4) {
+                    CurrentSong = 0;
+                }
+                song.pause();
+                playing = false;
+            });
+            $("#prev").click(function prev() {
+                CurrentSong--;
+                if (CurrentSong < 0) {
+                    CurrentSong = 4;
+                }
+                playSong();
+            });
+
+            $("#next").click(function next() {
+                CurrentSong++;
+                if (CurrentSong > 4) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+            $("#next2").click(function next() {
+                CurrentSong = 4;
+                if (CurrentSong > 6) {
+                    CurrentSong = 0;
+                }
+                playSong();
+            });
+
+
+
+            boton.click(function () {
+
+                song.play();
+                playing = true; playSong();
+            });
+
+
+        });
+    });
+</script>
+
+<body >
+    <div id="main">
+        <style>
+        </style>
+
+        <canvas id="canvasx">
+            <script>
+
+                const STAR_COUNT = (window.innerWidth + window.innerHeight) / 4,
+                    STAR_SIZE = 1.5,
+                    STAR_MIN_SCALE = 0.2,
+                    OVERFLOW_THRESHOLD = 50;
+
+                const canvas4 = document.getElementById("canvasx"),
+                    context = canvas4.getContext("2d");
+
+                let scale = 1, // device pixel ratio
+                    width,
+                    height;
+
+                let stars = [];
+
+                let pointerX, pointerY;
+
+                let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+
+                let touchInput = false;
+
+                generate();
+                resize();
+                step();
+
+                window.onresize = resize;
+                window.onmousemove = onMouseMove;
+                window.ontouchmove = onTouchMove;
+                window.ontouchend = onMouseLeave;
+                document.onmouseleave = onMouseLeave;
+
+                function generate() {
+                    for (let i = 0; i < STAR_COUNT; i++) {
+                        stars.push({
+                            x: 0,
+                            y: 0,
+                            z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+                        });
+
+                    }
+                }
+
+                function placeStar(star) {
+                    star.x = Math.random() * width;
+                    star.y = Math.random() * height;
+                }
+
+                function recycleStar(star) {
+                    let direction = "z";
+
+                    let vx = Math.abs(velocity.x),
+                        vy = Math.abs(velocity.y);
+
+                    if (vx > 1 || vy > 1) {
+                        let axis;
+
+                        if (vx > vy) {
+                            axis = Math.random() < vx / (vx + vy) ? "h" : "v";
+                        } else {
+                            axis = Math.random() < vy / (vx + vy) ? "v" : "h";
+                        }
+
+                        if (axis === "h") {
+                            direction = velocity.x > 0 ? "l" : "r";
+                        } else {
+                            direction = velocity.y > 0 ? "t" : "b";
+                        }
+                    }
+
+                    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+                    if (direction === "z") {
+                        star.z = 0.1;
+                        star.x = Math.random() * width;
+                        star.y = Math.random() * height;
+                    } else if (direction === "l") {
+                        star.x = -OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "r") {
+                        star.x = width + OVERFLOW_THRESHOLD;
+                        star.y = height * Math.random();
+                    } else if (direction === "t") {
+                        star.x = width * Math.random();
+                        star.y = -OVERFLOW_THRESHOLD;
+                    } else if (direction === "b") {
+                        star.x = width * Math.random();
+                        star.y = height + OVERFLOW_THRESHOLD;
+                    }
+                }
+
+                function resize() {
+                    scale = window.devicePixelRatio || 1;
+
+                    width = window.innerWidth * scale;
+                    height = window.innerHeight * scale;
+
+                    canvas4.width = width;
+                    canvas4.height = height;
+
+                    stars.forEach(placeStar);
+                }
+
+                function step() {
+                    context.clearRect(0, 0, width, height);
+
+                    update();
+                    render();
+
+                    requestAnimationFrame(step);
+                }
+
+                function update() {
+                    velocity.tx *= 0.36;
+                    velocity.ty *= 0.36;
+
+                    velocity.x += (velocity.tx - velocity.x) * 0.7;
+                    velocity.y += (velocity.ty - velocity.y) * 0.7;
+
+                    stars.forEach(star => {
+                        star.x += velocity.x * star.z;
+                        star.y += velocity.y * star.z;
+
+                        star.x += (star.x - width / 2) * velocity.z * star.z;
+                        star.y += (star.y - height / 2) * velocity.z * star.z;
+                        star.z += velocity.z;
+
+                        // recycle when out of bounds
+                        if (
+                            star.x < -OVERFLOW_THRESHOLD ||
+                            star.x > width + OVERFLOW_THRESHOLD ||
+                            star.y < -OVERFLOW_THRESHOLD ||
+                            star.y > height + OVERFLOW_THRESHOLD) {
+                            recycleStar(star);
+                        }
+                    });
+                }
+
+                function render() {
+                    stars.forEach(star => {
+                        context.beginPath();
+                        context.lineCap = "round";
+                        context.lineWidth = STAR_SIZE * star.z * scale;
+                        context.strokeStyle =
+                            "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
+
+                        context.beginPath();
+                        context.moveTo(star.x, star.y);
+
+                        var tailX = velocity.x * 2,
+                            tailY = velocity.y * 2;
+
+                        // stroke() wont work on an invisible line
+                        if (Math.abs(tailX) < 0.1) tailX = 0.5;
+                        if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+                        context.lineTo(star.x + tailX, star.y + tailY);
+
+                        context.stroke();
+                    });
+                }
+
+                function movePointer(x, y) {
+                    if (typeof pointerX === "number" && typeof pointerY === "number") {
+                        let ox = x - pointerX,
+                            oy = y - pointerY;
+
+                        velocity.tx = velocity.tx + ox / 8 * scale * (touchInput ? 1 : -1);
+                        velocity.ty = velocity.ty + oy / 8 * scale * (touchInput ? 1 : -1);
+                    }
+
+                    pointerX = x;
+                    pointerY = y;
+                }
+
+                function onMouseMove(event) {
+                    touchInput = false;
+
+                    movePointer(event.clientX, event.clientY);
+                }
+
+                function onTouchMove(event) {
+                    touchInput = true;
+
+                    movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+
+                    event.preventDefault();
+                }
+
+                function onMouseLeave() {
+                    pointerX = null;
+                    pointerY = null;
+                }
+            </script>
+        </canvas>
+
+
+
+        <div id="part1">
+            <style>
+                #part1 {
+                    position: absolute;
+                    width: 6%;
+                    height: 100%;
+                    background: #171717;
+                    z-index: 1;
+                }
+
+                @font-face {
+                    font-family: ht;
+                    src: url(ht.ttf);
+                }
+
+                @font-face {
+                    font-family: tak;
+                    src: url(tak.otf);
+                }
+
+                #mainrender2 {
+                    position: absolute;
+                    height: 107%;
+                    top: -.5%;
+                    opacity: .5;
+                    z-index: -1;
+                    filter: blur(5px);
+                    left: 1%;
+                }
+
+                #mainrender {
+                    position: absolute;
+                    height: 107%;
+                    top: -1%;
+                    z-index: 0;
+                    left: 0%; z-index:9;
+                }
+
+                #icon1 {
+                    width: 5vw;
+                    height: 5vw;
+                    border-radius: .4vw;
+                    position: absolute;
+                    top: 12%;
+                    left: 3%;
+                    z-index: 9;
+                    box-shadow: .2vw .2vw .5vw rgba(0,0,0,.5);
+                }
+
+                #icon2 {
+                    width: 5vw;
+                    height: 5vw;
+                    border-radius: .4vw;
+                    position: absolute;
+                    top: 24%;
+                    left: 3%;
+                    z-index: 9;
+                    box-shadow: .2vw .2vw .5vw rgba(0,0,0,.5);
+                }
+
+                #part1p {
+                    position: absolute;
+                    font-size: 5.4vw;
+                    font-weight: bold;
+                    font-family: tw;
+                    color: #d2d2d2;
+                    transform: rotate(270deg);
+                    left: -7.5vw;
+                    letter-spacing: .8vw;
+                    bottom: 4.5vw;
+                }
+            </style>
+           
+        </div>
+        <div id="areaposts">
+            <style>
+                #areaposts {
+                    position: absolute;
+                    width: 35%;
+                    height: 60%;
+                    top: 20%;
+                    left: 23%; 
+                }
+
+                #img1 {
+                    position: absolute;
+                    width: 49.8%;
+                    top: 0;
+                }
+                #img2{
+                    position: absolute;
+                    width: 49.8%; right:0;
+                    top: 0;
+                }
+                #poststext1 { position:absolute; top:60%; font-size:.7vw; letter-spacing:.05vw; font-family:tw; 
+                }
+               #poststext1 span {
+                    color: #F1D6DA; font-size:.8vw; margin-right:.3vw;
+                }
+                #subpost { position:absolute; top:66%;   height:5%; left:2%; border-left:1px solid darkgray;
+                }
+                 #suppp1{
+                        font-size: .7vw; 
+                        font-family: tw; color:gray; margin-left:2%; width:200%; margin-top:1.4%;
+                    }
+                    #suppp1 span { font-family:neigefont3; font-size:.5vw; margin-top:.1vw; letter-spacing:.1vw;
+                    }
+                #linessub { position:absolute; width:100%; height:1px; top:74%; 
+                }
+                #l1 { position:absolute; width:10%; height:100%; background:darkgray;
+                }
+                #l2 {
+                    position: absolute;
+                    width: 10%;
+                    height: 100%; right:0;
+                    background: darkgray;
+                }
+                #datessub { position:absolute; width:100%; height:5%; top:78%;  
+                }
+                #poststext2 {
+                    position: absolute;
+                    top: 15%;
+                    font-size: .7vw;
+                    letter-spacing: .05vw;
+                    font-family: tw;
+                }
+
+                    #poststext2 span {
+                        color: #F1D6DA;
+                        font-size: .8vw;
+                        margin-right: .3vw;
+                    }
+                #poststext3 {
+                    position: absolute;
+                    top: 15%;
+                    font-size: .7vw;
+                    letter-spacing: .05vw;
+                    font-family: tw; right:0;
+                }
+
+                    #poststext3 span {
+                        color: #F1D6DA;
+                        font-size: .8vw;
+                        margin-right: .3vw;
+                    }
+            </style>
+            <img src="https://i.postimg.cc/26RcVKtg/Whats-App-Image-2026-02-08-at-12-46-10-AM-(1).jpg" id="img1" />
+            <img src="https://i.postimg.cc/mDfXt5qG/Whats-App-Image-2026-02-08-at-12-46-10-AM.jpg" id="img2" />
+            <b id="poststext1"><span>● </span> sudden shower </b>
+            <div id="subpost"><p id="suppp1"> En ese día que viniste a mí por primera vez <span>잠시 동안 적시는 그런 비가 아니길</span></p></div>
+            <div id="linessub">
+                <div id="l1"></div>
+                <div id="l2"></div>
+            </div>
+            <div id="datessub">
+                <b id="poststext2">THURSDAY<span> ● </span> 23.2K N </b>
+                <b id="poststext3">REBLOG<span> ● </span> LIKE </b>
+            </div>
+        </div>
+
+     <div id="areprofile">
+         <style>
+             @font-face {
+                 font-family: bt;
+                 src: url(bea.otf);
+             }
+
+             @font-face {
+                 font-family: tw;
+                 src: url(tw.ttf);
+             }
+
+             #areprofile {
+                 position: absolute;
+                 width: 17%;
+                 height: 60%;
+                 top: 20%;
+                 left: 68%;
+             }
+
+             #imgprof {
+                 position: absolute;
+                 width: 100%;
+                 top: 0;
+             }
+
+             #pprofile1 {
+                 font-size: 1vw;
+                 font-weight: bold;
+                 font-family: tw;
+                 position: absolute;
+                 letter-spacing: .15vw;
+                 top: 35%;
+             }
+
+             #ptext1 {
+                 font-size: .6vw;
+                 color: gray;
+                 font-family: tw;
+                 top: 40%;
+                 position: absolute;
+             }
+
+                 #ptext1:first-letter {
+                     color: #EDC8CD
+                 }
+
+             #circles {
+                 position: absolute;
+                 width: 30%;
+                 height: 3%;
+                 top: 48%;
+             }
+
+             .circ {
+                 float: left;
+                 width: .4vw;
+                 height: .4vw;
+                 margin-right: .45vw;
+                 border-radius: 50%;
+                 background: red;
+             }
+
+             #subtext {
+                 position: absolute;
+                 top: 53%;
+                 font-family: tw;
+                 color: gray;
+                 font-size: .75vw;
+             }
+         </style>
+         <img src="https://64.media.tumblr.com/67e339588ace1907ca3c69126e56db14/b748662453e31c86-67/s2048x3072/2adc284e39d8e6f3fcdeebc62e8ed34687157ecc.jpg" id="imgprof" />
+         <p id="pprofile1" style="text-transform:uppercase">Saekwoo </p>
+         <p id="ptext1">@Saeroyi</p>
+         <div id="circles">
+             <div class="circ" style="background: #E8BAC1;"></div>
+             <div class="circ" style="background: #EDC8CD;"></div>
+             <div class="circ" style="background: #F1D6DA;"></div>
+             <div class="circ" style="background: #F6E3E6;"></div>
+             <div class="circ" style="background: #F8EAEC;"></div>
+         </div>
+         <p id="subtext">
+             Incluso cuando puedes retroceder en el tiempo, sigues estando indefenso porque no puedes detener el paso del tiempo.
+         </p> 
+            
+         <div id="iconsbar">
+             <style>
+                
+                 #iconsbar {
+                     position: absolute;
+                     width: 100%;
+                     right: 0%; top:65%;
+                     height: 5%;   z-index:9;
+                 }
+
+                 .iconimg {
+                     position: absolute;
+                     width: 2vw;
+                     height: 2vw;
+                      cursor: pointer;
+                 }
+
+                
+
+                 #icon6 {
+                     left:-.3vw;
+                 }
+
+                 .iconimg img {
+                     position: absolute;
+                     width: 80%;
+                     height: 80%;
+                     opacity: .8; 
+                     filter: blur(.5px);
+                 }
+
+                 #txtarea {
+                     position: absolute;
+                     width: auto;
+                     height: 66%;
+                     top: 0%;
+                     left:1.6vw;
+                     -webkit-user-modify: read-write;
+                     overflow: hidden;
+                     border-radius: .1vw;
+                     border: .1vw solid transparent;
+                     opacity: .7;
+                     font-family: tw;
+                     font-size: .8vw;
+                     padding: .1vw;
+                     color: dimgray;
+                     cursor: text;
+                 }
+                 #lin1 { position:absolute; width:20%; height:1px; background:darkgray; top:74%; 
+                 }
+                 #ipcx { position:absolute; top:79%; color:gray; font-size:.7vw;  font-family:tw; letter-spacing:.05vw;
+                 }
+                     #ipcx span { color:#F1D6DA
+                     }
+             </style>
+             <div class="iconimg" id="icon6">
+                 <img src="https://i.postimg.cc/Y0FsXwm5/lup.png" />
+             </div>
+
+             <label id="txtarea">
+                 SEARCH THIS BLOG
+             </label>
+         </div>
+         <div id="lin1">
+
+         </div>
+              
+                  <i id="ipcx">Hobbies <span>●</span> Series <span>●</span> Peliculas <span>●</span> Juegos <span>●</span> Kdramas </i>
+              
+     </div>
+
+
+        <div id="part2">
+            <style>
+                #part2 {
+                    position: absolute;
+                    width: 2.5%;
+                    height: 100%;
+                    background: #171717;
+                    z-index: 1;
+                    right: 0;
+                }
+
+              
+            </style>
+            <div id="imgbar2" ></div>
+        </div>
+        
+        <div id="profile4">
+            <style>
+                #profile4 {
+                    position: absolute;
+                    width: 15%;
+                    height: 5%;
+                    top: 2%;
+                    left: 3%;
+                    z-index: 2;
+                }
+
+                #kriganp {
+                    position: absolute;
+                    font-size: 1.5vw;
+                    color: gray;
+                    font-weight: bold;
+                    font-family: tw;
+                    letter-spacing: .2vw;
+                    text-shadow: .2vw .2vw .4vw rgba(0,0,0,.6);
+                    top: -1vw;
+                }
+
+                #pointspng {
+                    position: absolute;
+                    width: 60%;
+                    height: 50%;
+                    background: url(https://i.postimg.cc/nLSLr1yW/pngegg-7.png);
+                    left: 10%;
+                    filter: grayscale(100%);
+                    top: 50%;
+                }
+            </style>
+             
+        </div>
+
+    
+       
+    
+        <div id="backgif">
+            <style>
+
+                @font-face {
+                    font-family: neigefont3;
+                    src: url(PMINGLIU.ttf);
+                }
+
+                @font-face {
+                    font-family: textfirmFont;
+                    src: url(firm.otf);
+                }
+
+
+                @keyframes flicker5 {
+
+                    20%, 24%, 55%, 100% {
+                        color: #FFF;
+                        text-shadow: 0 0 .2vw #fff, 0 0 .8vw #fff, 0 0 1.3vw #FF0000, 0 0 2.9vw #FF0000, 0 0 5.8vw #FF0000, 0 0 6.5vw #FF0000, 0 0 7.3vw #FF0000, 0 0 11vw #FF0000;
+                    }
+
+                    0%, 18%, 22% {
+                        color: rgba(66, 66, 66, 0.5);
+                        text-shadow: none;
+                    }
+                }
+
+
+
+                #backgif {
+                    position: absolute;
+                    width: 100%;
+                    top: 0%;
+                    height: 100%;
+                    opacity: .05;
+                    z-index: 0;
+                    background-image: url("https://i.gifer.com/M2gN.gif");
+                }
+            </style>
+        </div>
+        <style>
+            @keyframes brig {
+
+                0% {
+                    filter: invert( 40%);
+                }
+
+                50% {
+                    filter: invert(80%);
+                }
+
+                100% {
+                    filter: invert( 40%);
+                }
+            }
+
+            canvas {
+                opacity: .6;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .5s infinite;
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+        </style>
+
+    </div>
+
+</body>
+
+</html>
