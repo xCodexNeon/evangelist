@@ -55,7 +55,7 @@
 </head>
 
 
-<body onload="digi()" onclick="digi()">
+<body onload="digi()" onclick="digi()" >
   
     <div id="main"  >
 
@@ -224,14 +224,15 @@
 
                 #mainname {
                     position: absolute;
-                    font-size: 7vw;
+                    font-size: 8vw;
                     font-family: q2;
                     text-align: center;
                     width: 100%;
-                    top: -8.4vw;
+                    top: -10.4vw;
                     left: 2%;
                     text-shadow: .3vw .3vw .4vw rgba(0,0,0,.7);
                     color: #171717;
+                    /*transform: scale(1.2, 1);*/
                 }
 
                 #namered {
@@ -255,7 +256,7 @@
                     letter-spacing: -.8vw
                 }
             </style>
-            <p id="mainname">NOTHINGNESS</p>
+            <p id="mainname" style="text-transform:uppercase">blasphemy</p>
             <div id="namered"></div>
 
             <img src="2rend.png" id="princrender2" />
@@ -266,20 +267,25 @@
             </p>
             <div id="friendsx">
                 <style>
-                    p::selection {
+                    
+                    .invert { filter:invert(100%);
+                    }
+                    .noinvert { filter:invert(0%);
+                    }
+                    p::selection, span::selection, div::selection {
                          
-                        background: #a9f8f3;
+                        background: black;
                     }
                     #friendsx {
                         position: absolute;
                         width: 34%;
                         height: 5%; 
-                        right: -2%;
-                        top: 57%;
+                        right: 9%;
+                        top: 54%;
                         mix-blend-mode: difference;
                         filter: invert(100%);
                     }
-                    #ptextfriends { position:absolute; width:40%; font-family:tw; font-size:.4vw; line-height:.4vw; top:-.2vw;
+                    #ptextfriends { position:absolute; width:48%; font-family:tw; font-size:.4vw; line-height:.4vw; top:55%; text-transform:uppercase; left:40%;
                     }
                     #arrowsc {  
                               position:absolute; width:60%; height:60%; left:40%; top:15%;
@@ -299,7 +305,7 @@
                     #barlatimg { position:absolute; transform:rotate(90deg); width:1vw; right:12%;top:30%;
                     }
                 </style>
-                <p id="ptextfriends"> i see your shape within to find and lose again to stray in the dark to let my heart explode </p>
+                <p id="ptextfriends"> Rien ni personne ne peut arrêter mes rêves, car désormais ma réalité en fait partie depuis le jour où je t'ai rencontré. </p>
                 <div id="arrowsc">
                     <div class="imgarr"><img class="imgr" src="https://i.postimg.cc/0jX471J2/flecha-abajo-derecha.png" /></div>
                     <div class="imgarr2"><img class="imgr" src="https://i.postimg.cc/0jX471J2/flecha-abajo-derecha.png" /></div>
@@ -354,11 +360,70 @@
 
                 </style>
                 I<span id="submain2">N.VEINS</span><span id="fname3">
-                   Krigstid
+                   Kirigan
                 </span><span id="fname4">
                     un.bon.souvenir
                 </span>
             </p> 
+
+            <div id="profile4">
+                <style>
+                    #profile4 {
+                        position: absolute;
+                        width: 5%;
+                        height: 70%;
+                        top: 38%;
+                       right: -1%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+                </style>
+                <div id="contcirc1">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+                <p id="star1"> ✦ </p>
+                <div id="contcirc2">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+            </div>
+            <div id="prf5">
+                <style>
+                    #prf5 {
+                        position: absolute;
+                        width: 3%;
+                        height: 17%;
+                        top: 51%;
+                        right: 2%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #l1 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 5%;
+                        filter: invert(100%);
+                    }
+                    #l2 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 40%;
+                        filter: invert(100%);
+                    }
+                    #l3 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 75%;
+                        filter: invert(100%);
+                    }
+                </style>
+                <img id="l1" src="https://i.postimg.cc/4NNHccxx/1.png" />
+                <img id="l2" src="https://i.postimg.cc/bwZGCjbX/2.png" />
+                <img id="l3" src="https://i.postimg.cc/X7HGkvrc/3.png" />
+            </div>
             <div id="profile3">
                 <style>
                     #profile3 {
@@ -524,11 +589,37 @@
                     Comme des fous dans les sombres allées
                 </p>
                 <p id="crossp">✝✝</p>
-                <p id="barcodep">THE EVANGELIST</p>
+                <p id="barcodep">SONGBIRD</p>
                 <img src="https://i.postimg.cc/h4d88CGf/barrcode.png" id="barcode" />
                 <p id="arrows">►►►</p>
             </div>
-
+            <div id="areamrr">
+                <style>
+                    #areamrr {
+                        position: absolute;
+                        width: 17%;
+                        height: 3%;
+                        top: 51%;
+                        right: 12.3%;
+                        text-shadow: .1vw .1vw .3vw rgba(0,0,0,.5);
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+                    #statusmrr { font-size:.45vw; font-family:tw
+                    }
+                        #statusmrr span { font-size:.8vw;
+                        }
+                            #statusmrr span:hover {
+                                color: #00ffff;
+                                filter: invert(100%);
+                            }
+                            a {
+                                text-decoration: none;
+                                color: black;
+                            }
+                </style>
+                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="#"><span> NEIGE</span></a>❤</p>
+            </div>
 
             <div id="divfot">
                 <style>
@@ -562,10 +653,14 @@
                     }
 
                     #textpfot {
+                        width: 100%;
+                        height: 100%;
                         position: absolute;
-                        bottom: -.5vw;
+                        bottom: 0vw;
                         font-size: .45vw;
                         letter-spacing: .05vw;
+                        text-transform: uppercase;
+                        overflow: auto;
                         font-family: tw;
                         line-height: .5vw;
                         left: 2%;
@@ -575,17 +670,9 @@
                     Nothingness
                 </p>
                 <div id="textfot">
-                    <p id="textpfot">
-                        to hear a thousand screams
-                        to drown inside my dreams
-                        every time i close my eyes
-                        i see your shape within
-
-                        to find and lose again
-                        to stray in the dark
-                        to let my heart explode
-                        I can't let go
-                    </p>
+                    <div id="textpfot">
+                        Ton éclat dans le ciel sombre murmure mon nom, effleurant ma peau pour me rappeler que je suis encore en vie… Comment vivre sans toi ? J'ai tenté de renaître Pour échapper à cette nuit J'ai tenté de renaître Pour vivre avec une âme morte Tu as brisé ces chaînes et tu m'as montré Le monde qui a grandi Autour de mon cœur Un monde où nous pouvons vivre ensemble en murmurant nos noms… Je t’aime, Kirigan.<br /> <b>[ <span style="color:#c80a16; filter:invert(100%)">NEIGE </span>/ LUMIERE ]</b>
+                    </div>
                 </div>
             </div>
             <div id="repro">
@@ -765,7 +852,7 @@
 
                     #namesongx {
                         font-family: tw;
-                        font-size: .6vw;
+                        font-size: .52vw;
                         letter-spacing: .05vw;
                         position: absolute;
                         top: .95vw;
@@ -813,7 +900,7 @@
                     // instigate our audio context
                     let audioElement = new Audio();
                     audioElement.crossOrigin = "anonymous";
-                    audioElement.src = "https://xcodexneon.github.io/evangelist/Drag.mp3";
+                    audioElement.src = "https://xcodexneon.github.io/evangelist/hyp.mp3";
 
                     audioElement.addEventListener(
                         "loadedmetadata",
@@ -923,7 +1010,10 @@
                 </script>
                 <div class="wrapper">
                     <div class="player">
-                        <span class="description" id="namesongx" style="text-transform:uppercase">DRAG - LOW  </span>
+                        <span class="description" id="namesongx" style="text-transform:uppercase">
+                            Hypnosis -
+                            Sleep Token
+                        </span>
                         <div class="controls">
                             <div class="line progress">
                                 <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
