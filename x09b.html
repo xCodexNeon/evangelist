@@ -55,7 +55,7 @@
 </head>
 
 
-<body onload="digi()" onclick="digi()" >
+<body onload="digi()" onclick="digi()">
   
     <div id="main"  >
 
@@ -210,14 +210,16 @@
                     height: 102%;
                     bottom: 0;
                     left: -1%;
+                    transform: scaleX(-1);
                 }
 
                 #princrender2 {
+                    transform: scaleX(-1);
                     position: absolute;
                     height: 102%;
                     bottom: 0;
-                    left: 4%;
-                    top: .5%;
+                    left: 1%;
+                    top: -1.5%;
                     opacity: .5;
                     filter: blur(5px);
                 }
@@ -234,7 +236,6 @@
                     color: #171717;
                     /*transform: scale(1.2, 1);*/
                 }
-
                 #namered {
                     position: absolute;
                     width: 35%;
@@ -259,50 +260,177 @@
             <p id="mainname" style="text-transform:uppercase">blasphemy</p>
             <div id="namered"></div>
 
-            <img src="2rend.png" id="princrender2" />
+            <img src="neigeremd2.png" id="princrender2" />
 
-            <img src="1render.png" id="princrender" />
+            <img src="neigeremd.png" id="princrender" />
             <p id="letchx">
                 有什
             </p>
+            <div id="profile4">
+                <style>
+                    #profile4 {
+                        position: absolute;
+                        width: 5%;
+                        height: 70%;
+                        top: 38%;
+                        right: -1%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+                </style>
+                <div id="contcirc1">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+                <p id="star1"> ✦ </p>
+                <div id="contcirc2">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+            </div>
+            <div id="prf5">
+                <style>
+                    #prf5 {
+                        position: absolute;
+                        width: 3%;
+                        height: 17%;
+                        top: 51%;
+                        right: 1.5%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #l1 {
+                        position: absolute;
+                        width: 1.2vw;
+                        right: 0;
+                        top: 5%; 
+                    }
+
+                    #l2 {
+                        position: absolute;
+                        width: 1.2vw;
+                        right: 0;
+                        top: 40%;
+                    }
+
+                    #l3 {
+                        position: absolute;
+                        width: 1.2vw;
+                        right: 0;
+                        top: 75%;
+                    }
+                </style>
+                <img id="l1" src="https://i.postimg.cc/VvN6cB2R/estrella-(2).png" />
+                <img id="l2" src="https://i.postimg.cc/FzKRQgwV/estrella-(3).png" />
+                <img id="l3" src="https://i.postimg.cc/tJgTHt8k/bengala-(1).png" />
+            </div>
+            <div id="areamrr">
+                <style>
+                    #areamrr {
+                        position: absolute;
+                        width: 17%;
+                        height: 3%;
+                        top: 51%;
+                        right: 12.3%;
+                        text-shadow: .1vw .1vw .3vw rgba(0,0,0,.5);
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #statusmrr {
+                        font-size: .45vw;
+                        font-family: tw
+                    }
+
+                        #statusmrr span {
+                            font-size: .8vw;
+                        }
+
+                            #statusmrr span:hover {
+                                color: #00ffff;
+                                filter: invert(100%);
+                            }
+
+                    a {
+                        text-decoration: none;
+                        color: black;
+                    }
+                </style>
+                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="https://xat.me/kiri"><span> KIRI</span></a>❤</p>
+            </div>
             <div id="friendsx">
                 <style>
-                    
-                    .invert { filter:invert(100%);
+
+                    .invert {
+                        filter: invert(100%);
                     }
-                    .noinvert { filter:invert(0%);
+
+                    .noinvert {
+                        filter: invert(0%);
                     }
+
                     p::selection, span::selection, div::selection {
-                         
                         background: black;
                     }
+
                     #friendsx {
                         position: absolute;
                         width: 34%;
-                        height: 5%; 
+                        height: 5%;
                         right: 9%;
                         top: 54%;
                         mix-blend-mode: difference;
                         filter: invert(100%);
                     }
-                    #ptextfriends { position:absolute; width:48%; font-family:tw; font-size:.4vw; line-height:.4vw; top:55%; text-transform:uppercase; left:40%;
+
+                    #ptextfriends {
+                        position: absolute;
+                        width: 48%;
+                        font-family: tw;
+                        font-size: .4vw;
+                        line-height: .4vw;
+                        top: 55%;
+                        text-transform: uppercase;
+                        left: 40%;
                     }
-                    #arrowsc {  
-                              position:absolute; width:60%; height:60%; left:40%; top:15%;
+
+                    #arrowsc {
+                        position: absolute;
+                        width: 60%;
+                        height: 60%;
+                        left: 40%;
+                        top: 15%;
                     }
-                    .imgarr { position:relative; width:1vw; height:1vw;      float:left; margin-right:.1vw;
+
+                    .imgarr {
+                        position: relative;
+                        width: 1vw;
+                        height: 1vw;
+                        float: left;
+                        margin-right: .1vw;
                     }
+
                     .imgarr2 {
                         position: relative;
                         width: 1vw;
-                        height: 1vw; 
+                        height: 1vw;
                         float: left;
                         margin-right: .1vw;
-                        transform:scaleY(-1);
+                        transform: scaleY(-1);
                     }
-                    .imgr { position:absolute; width:1.6vw; left:-.3vw; top:-.3vw;
+
+                    .imgr {
+                        position: absolute;
+                        width: 1.6vw;
+                        left: -.3vw;
+                        top: -.3vw;
                     }
-                    #barlatimg { position:absolute; transform:rotate(90deg); width:1vw; right:12%;top:30%;
+
+                    #barlatimg {
+                        position: absolute;
+                        transform: rotate(90deg);
+                        width: 1vw;
+                        right: 12%;
+                        top: 30%;
                     }
                 </style>
                 <p id="ptextfriends"> Rien ni personne ne peut arrêter mes rêves, car désormais ma réalité en fait partie depuis le jour où je t'ai rencontré. </p>
@@ -323,7 +451,7 @@
                         position: absolute;
                         color: black;
                         top: 48%;
-                        left: 62%; 
+                        left: 62%;
                         text-shadow: .5vw .5vw 1vw gray;
                         mix-blend-mode: difference;
                         filter: invert(100%);
@@ -338,93 +466,33 @@
                         letter-spacing: -.5vw;
                         text-shadow: .5vw .5vw 1vw black;
                     }
+
                     #fname3 {
                         font-family: tak;
                         position: relative;
                         color: black;
                         top: -3vw;
                         font-size: 3vw;
-                        z-index: 9; 
+                        z-index: 9;
                         text-shadow: .5vw .5vw 1vw black;
                     }
 
                     #fname4 {
                         position: absolute;
                         font-family: kenFont;
-                        letter-spacing:  0;
+                        letter-spacing: 0;
                         text-shadow: .5vw .5vw 1vw black;
-                        font-size: 1vw; 
+                        font-size: 1vw;
                         left: 120%;
                         top: 20%;
-                    } 
-
+                    }
                 </style>
                 I<span id="submain2">N.VEINS</span><span id="fname3">
-                   Kirigan
+                    Krigstid
                 </span><span id="fname4">
                     un.bon.souvenir
                 </span>
-            </p> 
-
-            <div id="profile4">
-                <style>
-                    #profile4 {
-                        position: absolute;
-                        width: 5%;
-                        height: 70%;
-                        top: 38%;
-                       right: -1%;
-                        mix-blend-mode: difference;
-                        filter: invert(100%);
-                    }
-                </style>
-                <div id="contcirc1">
-                    <p id="circles">●<br />●<br />●</p>
-                </div>
-                <p id="star1"> ✦ </p>
-                <div id="contcirc2">
-                    <p id="circles">●<br />●<br />●</p>
-                </div>
-            </div>
-            <div id="prf5">
-                <style>
-                    #prf5 {
-                        position: absolute;
-                        width: 3%;
-                        height: 17%;
-                        top: 51%;
-                        right: 2%;
-                        mix-blend-mode: difference;
-                        filter: invert(100%);
-                    }
-
-                    #l1 {
-                        position: absolute;
-                        width: .8vw;
-                        right: 0;
-                        top: 5%;
-                        filter: invert(100%);
-                    }
-                    #l2 {
-                        position: absolute;
-                        width: .8vw;
-                        right: 0;
-                        top: 40%;
-                        filter: invert(100%);
-                    }
-                    #l3 {
-                        position: absolute;
-                        width: .8vw;
-                        right: 0;
-                        top: 75%;
-                        filter: invert(100%);
-                    }
-                     
-                </style>
-                <img id="l1" src="https://i.postimg.cc/4NNHccxx/1.png" />
-                <img id="l2" src="https://i.postimg.cc/bwZGCjbX/2.png" />
-                <img id="l3" src="https://i.postimg.cc/X7HGkvrc/3.png" />
-            </div>
+            </p>
             <div id="profile3">
                 <style>
                     #profile3 {
@@ -590,37 +658,11 @@
                     Comme des fous dans les sombres allées
                 </p>
                 <p id="crossp">✝✝</p>
-                <p id="barcodep">SONGBIRD</p>
+                <p id="barcodep">HIRONDELLE</p>
                 <img src="https://i.postimg.cc/h4d88CGf/barrcode.png" id="barcode" />
                 <p id="arrows">►►►</p>
             </div>
-            <div id="areamrr">
-                <style>
-                    #areamrr {
-                        position: absolute;
-                        width: 17%;
-                        height: 3%;
-                        top: 51%;
-                        right: 12.3%;
-                        text-shadow: .1vw .1vw .3vw rgba(0,0,0,.5);
-                        mix-blend-mode: difference;
-                        filter: invert(100%);
-                    }
-                    #statusmrr { font-size:.45vw; font-family:tw
-                    }
-                        #statusmrr span { font-size:.8vw;
-                        }
-                            #statusmrr span:hover {
-                                color: #00ffff;
-                                filter: invert(100%);
-                            }
-                            a {
-                                text-decoration: none;
-                                color: black;
-                            }
-                </style>
-                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="https://xat.me/Neige"><span> NEIGE</span></a>❤</p>
-            </div>
+
 
             <div id="divfot">
                 <style>
@@ -672,7 +714,8 @@
                 </p>
                 <div id="textfot">
                     <div id="textpfot">
-                        Ton éclat dans le ciel sombre murmure mon nom, effleurant ma peau pour me rappeler que je suis encore en vie… Comment vivre sans toi ? J'ai tenté de renaître Pour échapper à cette nuit J'ai tenté de renaître Pour vivre avec une âme morte Tu as brisé ces chaînes et tu m'as montré Le monde qui a grandi Autour de mon cœur Un monde où nous pouvons vivre ensemble en murmurant nos noms… Je t’aime, Kirigan.<br /> <b>[ <span style="color:#c80a16; filter:invert(100%)">NEIGE </span>/ LUMIERE ]</b>
+                        Dès le premier jour où je t’ai vu, il y a eu quelque chose en toi qui m’a attirée sans aucune explication. Tu es entré dans ma vie par une simple coïncidence qui s’est transformée en destin. Qui aurait cru que nous serions deux personnes ressentant la même chose en silence, avec la peur de perdre plus que ce que nous n’avions pas encore. Et aujourd’hui, ce crush s’est transformé en le plus bel amour que j’aie jamais vécu. À tes côtés, tout ressemble à un rêve dont je ne veux jamais me réveiller. J’aime ta noblesse, ta façon honnête de dire les choses, ton rire, ta voix et chaque détail qui fait de toi qui tu es. Tu es celui qui apaise mon esprit et donne un sens à ma vie. Merci de m’avoir laissée entrer dans ton monde et de m’avoir choisie comme ta petite amie. S'useront comme les pages qui ne résistent pas Au cadran sinistre qui continue sa loi Il aurait mieux valu oublier beaucoup de choses Les voix du passé déclenchent le battement de cœur de la conscience Qui coule, qui bat au rythme d'une Tu es ma lune, ma vie et l’amour de ma vie… Je t’aime, Neige <br /> <b>[ <span style="color:#c80a16; filter:invert(100%);">KIRI </span>/ LIUNARA ]</b>
+
                     </div>
                 </div>
             </div>
