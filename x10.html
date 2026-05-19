@@ -1,0 +1,2507 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" onload="reproducirAudio();">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="TweenMax.min.js"></script>-->
+    <script type="text/javascript" src="vue.global.js"></script>
+    <script src="mgGlitch.min.js"></script>
+
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script type="text/javascript" src="TweenMax2.min.js"></script>
+    <script type="text/javascript" src="rgbShiftSlider.min.js"></script>
+    <style>
+        body {
+            position: absolute;
+            height: 101%;
+            width: 101%;
+            background: #812134;
+            top: -1%;
+            left: -1%;
+            overflow: hidden;
+        }
+
+        #main {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            
+        }
+    </style>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        *,
+        *:after,
+        *:before {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+  
+       
+    </style>
+
+     
+</head>
+
+
+<body onload="digi()" onclick="digi()" >
+  
+    <div id="main"onload="digi()" onclick="digi()"  >
+
+
+        <style>
+            @keyframes brig {
+
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: .5;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            #canv {
+                opacity: 1;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                animation: brig .3s infinite;
+                /**/
+            }
+
+            nav {
+                position: absolute;
+                top: 4vw;
+                left: 4vw;
+                z-index: 1;
+            }
+
+                nav a {
+                    color: white;
+                    text-decoration: none;
+                    margin-right: 14px;
+                }
+            /* leaf animations */
+            @font-face {
+                font-family: europe;
+                src: url(Europa.otf);
+            }
+
+            @font-face {
+                font-family: tw;
+                src: url(tw.ttf);
+            }
+
+            @font-face {
+                font-family: sten;
+                src: url(sten.ttf);
+            }
+
+            @font-face {
+                font-family: muit;
+                src: url(Mutiara.ttf);
+            }
+            @font-face {
+                font-family: tarot2;
+                src: url(tarot2.otf);
+            }
+
+            @font-face {
+                font-family: ch2;
+                src: url(ch2.ttf);
+            }
+            @font-face {
+                font-family: tarot;
+                src: url(tarot.otf);
+            }
+            @font-face {
+                font-family: ch1;
+                src: url(ch1.ttf);
+            }
+            @font-face {
+                font-family: neigefont3;
+                src: url(PMINGLIU.ttf);
+            }
+
+            @font-face {
+                font-family: textfirmFont;
+                src: url(firm.otf);
+            }
+
+            @font-face {
+                font-family: tak;
+                src: url(tak.otf);
+            }
+
+            @font-face {
+                font-family: fant;
+                src: url(fant.ttf);
+            }
+            @font-face {
+                font-family: migueto;
+                src: url(Migueto.ttf);
+            }
+
+            @font-face {
+                font-family: migueto2;
+                src: url(migueto2.otf);
+            }
+            @font-face {
+                font-family: q1;
+                src: url(q1.otf);
+            }
+
+            @font-face {
+                font-family: q2;
+                src: url(q2.ttf);
+            }
+
+        </style>
+        <div id="backhaori">
+            <style>
+                #backhaori {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    filter: invert(100%);
+                    z-index: -2;
+                    position: fixed;
+                    background: url('https://i.postimg.cc/ZKb0kmXp/b2.png');
+                    
+                    background-attachment: fixed;
+                    background-repeat: repeat;
+                }
+            </style>
+        </div>
+         
+
+        <div id="contmain">
+            <style>
+                #contmain {
+                    position: absolute;
+                    width: 70%;
+                    left: 15%;
+                    height: 70%;
+                    top: 15%;
+                    background-image: url(https://i.postimg.cc/jqPS1wC6/base.jpg);
+                    overflow: hidden;
+                    box-shadow: -1vw 1vw 0 rgba(0,0,0,.4);
+                }
+
+
+                #princrender {
+                    position: absolute;
+                    height: 102%;
+                    bottom: 0;
+                    left: -1%;
+                }
+
+                #princrender2 {
+                    position: absolute;
+                    height: 102%;
+                    bottom: 0;
+                    left: 4%;
+                    top: .5%;
+                    opacity: .5;
+                    filter: blur(5px);
+                }
+
+                #mainname {
+                    position: absolute;
+                    font-size: 5vw;
+                    font-family: q2;
+                    text-align: center;
+                    width: 100%;
+                    top: -5.5vw;
+                    right: -39%;
+                    text-shadow: .3vw .3vw .4vw rgba(0,0,0,.7);
+                    color: #303030;
+                    /*transform: scale(1.2, 1);*/
+                }
+
+                #namered {
+                    position: absolute;
+                    width: 35%;
+                    height: .15vw;
+                    left: 62%;
+                    top: 16.5%;
+                    background: #171717;
+                    box-shadow: 0 0 .4vw #56070c;
+                    filter: grayscale(100%);
+                    opacity: .9;
+                }
+
+                #letchx {
+                    position: absolute;
+                    font-family: ch1;
+                    font-size: 2.5vw;
+                    bottom: -2.2vw;
+                    right: 1%;
+                    letter-spacing: -.8vw
+                }
+
+                #linup1red {
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    top: 2%;
+                    background: #812134;
+                }
+            </style>
+
+
+            <div id="imgprofmain">
+                <style>
+                    #imgprofmain {
+                        position: absolute;
+                        right: 0%;
+                        height: 98%;
+                        width: 26%;
+                        top: 2%;
+                        border-left: 2px solid #812134;
+                    }
+
+                    #kirapng {
+                        position: absolute;
+                        height: 100%;
+                        opacity: .3;
+                    }
+                </style>
+                <img src="https://i.pinimg.com/736x/92/fe/71/92fe71d00b4719b2fd1c1ee6ca225c03.jpg" id="kirapng" />
+            </div>
+
+            <div id="linup1red">
+
+            </div>
+            <div id="bannerlat">
+                <style>
+                    #bannerlat {
+                        position: absolute;
+                        width: 10%;
+                        height: 98%;
+                        top: 2.2%;
+                        font-family: migueto2;
+                        left: -4%;
+                        z-index: 0;
+                        transform: scaleY(-1) scaleX(-1);
+                        opacity: .8;
+                        text-shadow: .2vw -.2vw .3vw rgba(0,0,0,.5);
+                    }
+
+                    .m-scroll {
+                        display: flex;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        margin: auto;
+                        overflow: hidden;
+                        z-index: 1;
+                    }
+
+                    .m-scroll__title {
+                        transform: rotate(-90deg);
+                        display: flex;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: 100%;
+                        height: 100%;
+                        white-space: nowrap;
+                        transition: all 1s ease;
+                    }
+
+                        .m-scroll__title > div {
+                            display: flex;
+                            -webkit-animation: scrollText 30s infinite linear;
+                            animation: scrollText 30s infinite linear;
+                        }
+
+                        .m-scroll__title h1 {
+                            margin: 0;
+                            font-size: 6vw;
+                            color: #ffffff;
+                            transition: all 2s ease;
+                        }
+
+                    .neigep {
+                    }
+
+                    .m-scroll__title a {
+                        text-decoration: none;
+                        color: #171717;
+                    }
+
+                        .m-scroll__title a:hover {
+                            -webkit-text-stroke: .1px #812134;
+                            color: transparent;
+                        }
+                    /*div:hover {
+                      animation-play-state: paused;
+                    }*/
+                    @-webkit-keyframes scrollText {
+                        from {
+                            transform: translateX(0%);
+                        }
+
+                        to {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    @keyframes scrollText {
+                        from {
+                            transform: translateX(0%);
+                        }
+
+                        to {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    #arr {
+                        position: relative;
+                        color: #8a1818;
+                        font-size: 2vw;
+                        left: 1.1vw;
+                        top: -.6vw;
+                    }
+                </style>
+                <div class="m-scroll">
+                    <div class="m-scroll__title">
+                        <div>
+                            <h1>
+                                <a href="#" class="neigep"> I'AM</a>
+                                <a href="#" class="neigep"><span id="arr">▶</span>KIRA</a>
+                                <a href="#" class="neigep"> AND</a>
+                                <a href="#" class="neigep"> THE</a>
+                                <a href="#" class="neigep"> NEW</a>
+                                <a href="#" class="neigep"> GOD</a>
+                                <a href="#" class="neigep"> OF</a>
+                                <a href="#" class="neigep"> THIS</a>
+                                <a href="#" class="neigep"> FUCKING</a>
+                                <a href="#" class="neigep"> ROTTEN</a>
+                                <a href="#" class="neigep">     WORLD</a>  <a href="#" class="neigep"> I'AM</a>
+                                <a href="#" class="neigep"><span id="arr">▶</span>KIRA</a>
+                                <a href="#" class="neigep"> AND</a>
+                                <a href="#" class="neigep"> THE</a>
+                                <a href="#" class="neigep"> NEW</a>
+                                <a href="#" class="neigep"> GOD</a>
+                                <a href="#" class="neigep"> OF</a>
+                                <a href="#" class="neigep"> THIS</a>
+                                <a href="#" class="neigep"> FUCKING</a>
+                                <a href="#" class="neigep"> ROTTEN</a>
+                                <a href="#" class="neigep">     WORLD</a>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div id="linchat">
+        <style>
+            #linchat { position:absolute; width:2%; background:#171717; height:98%; top:2%;
+            }
+        </style>
+    </div>-->
+            <!--<img src="https://i.postimg.cc/hjJmn5Bw/762ce7604e770a360f4a7c6afa25db00-waifu2x-art-scan-noise3-scale.png" id="lune" />-->
+
+            <div id="textarea">
+                <style>
+                    #textarea {
+                        position: absolute;
+                        width: 15%;   
+                        height: 35%;
+                        top: 16%;
+                        left: 6%; text-shadow:.2vw .2vw .3vw rgba(0,0,0,.5);
+                    }
+
+                    #pt1 {
+                        font-size: 3vw;
+                        font-family: sim;
+                        color: #812134;
+                        right: 3%;
+                        position: absolute;
+                        top: -3vw;
+                        letter-spacing: -.15vw;
+                        opacity: .8;
+                    }
+
+                    #pt2 {
+                        font-size: 3vw;
+                        font-family: sim;
+                        color: #171717;
+                        left: 10%;
+                        position: absolute;
+                        letter-spacing: -.15vw;
+                        opacity: .8;
+                    }
+
+                    #number {
+                        position: absolute;
+                        font-size: 9vw;
+                        color: #171717;
+                        font-family: comp2;
+                        opacity: .9;
+                        text-shadow: .2vw .2vw .3vw black;
+                        left: 10%;
+                        top: -6vw;
+                    }
+
+                    
+
+                    #pt1sb {
+                        position: absolute;
+                        color: #171717;
+                        right: 0;
+                        font-family: ch1;
+                        font-size: 1vw;
+                        top: 15%;
+                        letter-spacing: -.2vw;
+                        opacity: .8;
+                    }
+
+                        #pt1sb span {
+                            font-family: sim;
+                            color: #812134;
+                            letter-spacing: 0vw;
+                            font-size: 1vw;
+                        }
+
+                    #pch1 {
+                        position: absolute;
+                        color: #171717;
+                        left: 17%;
+                        font-family: neigefont3;
+                        font-size: .45vw;
+                        letter-spacing: .05vw;
+                        top: 45%;
+                        opacity: .6;
+                    }
+
+                    #pch2 {
+                        position: absolute;
+                        color: #171717;
+                        left: 19%;
+                        font-family: neigefont3;
+                        font-size: .15vw;
+                        letter-spacing: .05vw;
+                        top: 58%;
+                        width: 60%;
+                        opacity: .5;
+                    }
+                </style>
+                <p id="pt1">Black</p><p id="pt1sb">向日葵<span> and</span></p>
+                <p id="pt2">White</p>
+                <p id="pch1"> 个凄凉的时刻，心永远疼痛，<br /> 个哀怨的低语，我无尽的渴望尽的渴望</p>
+                <p id="pch2">玻璃碎片 在我的皮肤下 埋在雪中，我找到了你 被遗弃，被抛弃 埋在雪中，我找到了你 被抛弃，被抛弃 一瞬间的触摸 灵魂永远疼痛 玻璃碎片 在我的皮肤下 埋在雪中，我找到了你 被遗弃，被抛弃 埋在雪中，我找到了你 被抛弃，被抛弃 一瞬间的触摸 灵魂永远疼痛 悲惨的场景 我的世界破碎 一个蓝色的宇宙 你仍然装饰着 埋在雪中，我找到了你 被遗弃，被抛弃 埋在雪中，我找到了你 被抛弃，被抛弃 心碎的情感 萦绕在我逐渐消逝的记忆中 所有最甜蜜的 悲惨的场景 我的世界破碎 一个蓝色的宇宙 你仍然装饰着 埋在雪中，我找到了你 被遗弃，被抛弃 埋在雪中，我找到了你 被抛弃，被抛弃 心碎的情感 萦绕在我逐渐消逝的记忆中 所有最甜蜜的</p>
+            </div>
+
+            <p id="mainname" style="text-transform:uppercase">12,15,2025.67</p>
+
+            <div id="mn1">
+                <style>
+                    #lune {
+                        position: absolute;
+                        width: 30%;
+                        left: 40%;
+                        top: 2%;
+                        filter: grayscale(40%);
+                    }
+
+                    #mn1 {
+                        position: absolute;
+                        width: 20%;
+                        height: 33%;
+                        left: 7.5%;
+                        top: 10%;
+                    }
+
+                    #star7 {
+                        position: absolute;
+                        font-size: 1.3vw;
+                        top: -1.2vw;
+                    }
+
+                    #linesimg {
+                        position: absolute;
+                        left: 30%;
+                        top: .3vw;
+                        filter:  grayscale(40%)
+                    }
+                </style>
+                <p id="star7"> ✦✦✦ </p> <img src="https://i.postimg.cc/V6RcQDGH/lines1.png" id="linesimg" />
+            </div>
+            <div id="areagif">
+                <style>
+                    #areagif {
+                        position: absolute;
+                        width: 30%;
+                        height: 27.5%;
+                        background: red;
+                        top: 50%;
+                        left: 8%;
+                        border: 1px solid #812134;
+                    }
+
+                    #gifmain {
+                        position: absolute;
+                        height: 100%;
+                        filter: grayscale(50%);
+                        box-shadow: .15vw .3vw 0 rgba(0,0,0,.5);
+                    }
+
+                    #latdivgif {
+                        width: 15%;
+                        height: 105%;
+                        background: #812134;
+                        right: -1px;
+                        position: absolute;
+                        top: -5%;
+                        box-shadow: .3vw .3vw 0 rgba(0,0,0,.5);
+                    }
+                </style>
+                <img id="gifmain" src="https://64.media.tumblr.com/95890ea3c18a6122b73c4f5c0cdbe499/tumblr_p01nf5o5Nv1w95z6uo3_500.gif" />
+                <div id="latdivgif"></div>
+            </div>
+            <!--<p id="letchx">
+        有什
+    </p>-->
+            <div id="friendsx">
+                <style>
+
+                    .invert {
+                        filter: invert(100%);
+                    }
+
+                    .noinvert {
+                        filter: invert(0%);
+                    }
+
+                    p::selection, span::selection, div::selection {
+                        background: black;
+                    }
+
+                    #friendsx {
+                        position: absolute;
+                        width: 34%;
+                        height: 5%;
+                        right: 5%;
+                        z-index: 09;
+                        top: 15%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #ptextfriends {
+                        position: absolute;
+                        width: 88%;
+                        font-family: tw;
+                        font-size: .4vw;
+                        line-height: .4vw;
+                        top: 55%;
+                        text-transform: uppercase;
+                        left: 40%;
+                    }
+
+                    #arrowsc {
+                        position: absolute;
+                        width: 60%;
+                        height: 60%;
+                        left: 40%;
+                        top: 15%;
+                    }
+
+                    .imgarr {
+                        position: relative;
+                        width: 1vw;
+                        height: 1vw;
+                        float: left;
+                        margin-right: .1vw;
+                    }
+
+                    .imgarr2 {
+                        position: relative;
+                        width: 1vw;
+                        height: 1vw;
+                        float: left;
+                        margin-right: .1vw;
+                        transform: scaleY(-1);
+                    }
+
+                    .imgr {
+                        position: absolute;
+                        width: 1.6vw;
+                        left: -.3vw;
+                        top: -.3vw;
+                    }
+
+                    #barlatimg {
+                        position: absolute;
+                        transform: rotate(90deg);
+                        width: 1vw;
+                        right: 12%;
+                        top: 30%;
+                    }
+                </style>
+                <div id="contant">
+                    <style>
+                        #contant {
+                            position: absolute;
+                            width: 60%;
+                            height: 60%;
+                            left: 40%;
+                        }
+
+                        #minicn {
+                            position: absolute;
+                            width: 1vw;
+                        }
+
+                        #letch1 {
+                            position: absolute;
+                            font-family: ch1;
+                            top: -2vw;
+                            font-size: 1.4vw;
+                            letter-spacing: -.3vw;
+                            left: 1.5vw;
+                        }
+                    </style>
+                    <img src="https://i.postimg.cc/4nRdnK5t/123.png" id="minicn" /><p id="letch1">没有救赎，世界已经腐烂。</p>
+                </div>
+                <p id="ptextfriends"> Rien ni personne ne peut arrêter mes rêves, car désormais ma réalité en fait partie  <br />depuis le jour où je t'ai rencontré. </p>
+
+
+            </div>
+
+
+            <p id="mainnick2">
+                <style>
+                    #mainnick2 {
+                        font-family: kenFont;
+                        font-size: 6vw;
+                        position: absolute;
+                        color: black;
+                        top: 11%;
+                        left: 22%;
+                        text-shadow: .5vw .5vw 1vw gray;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #submain2 {
+                        font-family: kenFont;
+                        font-size: 3.2vw;
+                        top: 2.7vw;
+                        position: absolute;
+                        text-transform: uppercase;
+                        color: black;
+                        letter-spacing: -.5vw;
+                        text-shadow: .5vw .5vw 1vw black;
+                    }
+
+                    #fname3 {
+                        font-family: tak;
+                        position: relative;
+                        color: black;
+                        top: -2.5vw;
+                        left: -.5vw;
+                        font-size: 3vw;
+                        z-index: 9;
+                        text-shadow: .5vw .5vw 1vw black;
+                    }
+
+                    #fname4 {
+                        text-transform: uppercase;
+                        position: absolute;
+                        font-family: europe;
+                        letter-spacing: 0;
+                        text-shadow: .5vw .5vw 1vw black;
+                        font-size: .7vw;
+                        left: 120%;
+                        top: 24%;
+                    }
+                </style>
+                R<span id="submain2">.uthless</span><span id="fname3">
+                    Krigstid
+                </span><span id="fname4">
+                    Orgueil.et.Préjugés
+                </span>
+            </p>
+
+            <div id="profile4">
+                <style>
+                    #profile4 {
+                        position: absolute;
+                        width: 5%;
+                        height: 70%;
+                        top: 38%;
+                        right: -2.5%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+                </style>
+                <div id="contcirc1">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+                <p id="star1"> ✦ </p>
+                <div id="contcirc2">
+                    <p id="circles">●<br />●<br />●</p>
+                </div>
+            </div>
+
+
+            <div id="lastlateral">
+                <style>
+                    #lastlateral {
+                        position: absolute;
+                        width: 20%;
+                        height: 30%;
+                        left: 49%;
+                        top: 4%;
+                    }
+
+                    #lateralltext {
+                        position: absolute;
+                        width: 65%;
+                        height: 12%;
+                        background: #171717;
+                        box-shadow: .2vw .2vw 0 rgba(0,0,0,.5);
+                    }
+                    #qrdiv {
+                        position: absolute;
+                        width: 3.5vw;
+                        height: 3.5vw;
+                        top: 44%; right:0;
+                        filter: contrast(140%) brightness(100%);
+                    }
+
+                    #backqr {
+                        position: absolute;
+                        width: 3.5vw;
+                        height: 3.5vw;
+                    }
+
+                    #qrimg {
+                        position: absolute;
+                        width: 2.5vw;
+                        left: .5vw;
+                        top: .5vw;
+                        height: 2.5vw; 
+                    }
+                </style>
+                <div id="lateralltext">
+
+                </div>
+                <div id="qrdiv">
+                    <img src="https://i.postimg.cc/P5trzFRq/qrcube.png" id="backqr" />
+                    <img src="https://i.postimg.cc/mDxMSW-JC/qr.png" id="qrimg" />
+                </div>
+                <div id="datexc">
+                    <style>
+                        #datexc {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            left: 0%;
+                        }
+
+                        #clock {
+                            color: dimgray;
+                            text-transform: uppercase;
+                            font-size: .7vw;
+                            letter-spacing: .1vw;
+                            top: 15%;
+                            position: absolute;
+                            width: 70%;
+                            height: 15%;
+                            right: 0;
+                            text-align: right;
+                        }
+
+                        #tt {
+                            position: absolute;
+                            text-transform: uppercase;
+                            font-family: tw;
+                            letter-spacing: .1vw;
+                            font-size: .6vw;
+                            left: -1%;
+                            font-weight: bold;
+                            text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
+                            top: 25%;
+                            width: 100%;
+                            color: #812134;
+                            text-align: right;
+                        }
+
+
+
+                        #nameday {
+                            position: absolute;
+                            text-transform: uppercase;
+                            font-family: tw;
+                            font-size: 1vw;
+                            top: -100%;
+                            text-align: right;
+                            text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
+                            width: 6vw;
+                            right: 0%;
+                            font-weight: bold;
+                            color: #171717;
+                        }
+
+                        #numberday {
+                            text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
+                            text-transform: uppercase;
+                            font-family: tw;
+                            font-weight: bold;
+                            font-size: .8vw;
+                            top: 1.5vw;
+                            color: #171717;
+                        }
+
+                        #nameage {
+                            text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
+                            text-transform: uppercase;
+                            font-family: tw;
+                            font-weight: bold;
+                            font-size: .8vw;
+                            top: -.5vw;
+                            left: 2vw;
+                            color: #171717;
+                        }
+
+
+                        #namemonth {
+                            text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
+                            text-transform: uppercase;
+                            font-family: tw;
+                            font-weight: bold;
+                            font-size: .8vw;
+                            top: 1.5vw;
+                            color: #171717;
+                        }
+                    </style>
+
+                    <div id="clock"></div><p id="tt"></p>
+                    <script>
+                        var mydate = new Date();
+                        var year = mydate.getYear();
+                        if (year < 1000) year += 1900;
+                        var day = mydate.getDay();
+                        var month = mydate.getMonth();
+                        var daym = mydate.getDate();
+                        if (daym < 10) daym = "0" + daym;
+                        var dayarray = new Array(
+                            "星期日",
+                            "周一",
+                            "星期二",
+                            "星期三",
+                            "星期四",
+                            "星期五",
+                            "星期六"
+                        );
+                        var montharray = new Array(
+                            "01",
+                            "02",
+                            "03",
+                            "04",
+                            "05",
+                            "06",
+                            "07",
+                            "08",
+                            "09",
+                            "10",
+                            "11",
+                            "12"
+                        );
+                        document.write(
+                            "<font id='clock'>" +
+                            "<span id='nameage'>2026 年</span>" +
+                            "<span id='namemonth'> " + montharray[month] + "月 </span>" +
+
+                            "<span id='numberday'> " + daym + "日 </span>" +
+
+
+                            "<span id='nameday'>" + dayarray[day] + "</span>" +
+                            "</font>"
+                        );
+                        function digi() {
+                            var date = new Date(),
+                                hour = date.getHours(),
+                                minute = checkTime(date.getMinutes()),
+                                ss = checkTime(date.getSeconds());
+
+                            function checkTime(i) {
+                                if (i < 10) {
+                                    i = "0" + i;
+                                }
+                                return i;
+                            }
+
+                            if (hour > 12) {
+                                hour = hour - 12;
+                                if (hour == 12) {
+                                    hour = checkTime(hour);
+                                    document.getElementById("tt").innerHTML =
+                                        "| " + hour + ":" + minute + ":" + ss + " AM ";
+                                } else {
+                                    hour = checkTime(hour);
+                                    document.getElementById("tt").innerHTML =
+                                        "| " + hour + ":" + minute + ":" + ss + " PM ";
+                                }
+                            } else {
+                                document.getElementById("tt").innerHTML =
+                                    "| " + hour + ":" + minute + ":" + ss + " AM ";
+                            }
+                            var time = setTimeout(digi, 1000);
+                        }
+
+
+                    </script>
+                </div>
+
+
+
+            </div>
+
+            <div id="prf5">
+                <style>
+                    #prf5 {
+                        position: absolute;
+                        width: 3%;
+                        height: 17%;
+                        top: 81%;
+                        right: 1.5%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #l1 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 5%;
+                        filter: invert(100%);
+                    }
+
+                    #l2 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 40%;
+                        filter: invert(100%);
+                    }
+
+                    #l3 {
+                        position: absolute;
+                        width: .8vw;
+                        right: 0;
+                        top: 75%;
+                        filter: invert(100%);
+                    }
+                </style>
+                <img id="l1" src="https://i.postimg.cc/4NNHccxx/1.png" />
+                <img id="l2" src="https://i.postimg.cc/bwZGCjbX/2.png" />
+                <img id="l3" src="https://i.postimg.cc/X7HGkvrc/3.png" />
+            </div>
+
+            <!--<div id="profile3">
+        <style>
+            #profile3 {
+                position: absolute;
+                width: 30%;
+                height: 70%;
+                top: 25%;
+                left: 0%;
+                mix-blend-mode: difference;
+                filter: invert(100%);
+            }
+
+            #barcode {
+                position: absolute;
+                width: 5vw;
+                height: 1.3vw;
+                left: 8%;
+                top: 75%;
+            }
+
+            #arrows {
+                position: absolute;
+                font-size: .8vw;
+                color: black;
+                top: 77%;
+                letter-spacing: -.2vw;
+                left: 8%;
+            }
+
+            #barcodep {
+                position: absolute;
+                left: 8%;
+                font-size: .8vw;
+                font-weight: bold;
+                font-family: tw;
+                top: 68%;
+            }
+
+            #crossp {
+                position: absolute;
+                left: 8%;
+                font-size: 1.2vw;
+                font-weight: bold;
+                font-family: tw;
+                letter-spacing: .2vw;
+                top: 57%;
+            }
+
+            #barcodep2 {
+                position: absolute;
+                left: 8%;
+                font-size: .8vw;
+                font-weight: bold;
+                font-family: tw;
+                top: 20%;
+            }
+
+            #subpcode {
+                position: absolute;
+                color: black;
+                font-size: .4vw;
+                font-weight: bold;
+                left: 8%;
+                width: 60%;
+                text-transform: uppercase;
+                font-family: tw;
+                top: 34%;
+            }
+
+            #lin1prof3 {
+                position: absolute;
+                width: 40%;
+                height: 1px;
+                background: black;
+                left: 5%;
+                top: -30%;
+            }
+
+            #lin2prof3 {
+                position: absolute;
+                width: 1px;
+                height: 16%;
+                background: black;
+                left: 11%;
+                top: -34%;
+            }
+
+            #lin3prof3 {
+                position: absolute;
+                width: 1vw;
+                height: 1px;
+                background: black;
+                left: 78%;
+                top: -30%;
+            }
+
+            #lin4prof3 {
+                position: absolute;
+                width: 1px;
+                height: 15%;
+                background: black;
+                left: 82.5%;
+                top: -42%;
+            }
+
+            #contcirc1 {
+                position: absolute;
+                width: .6vw;
+                height: 2vw;
+                border: 1px solid black;
+                border-radius: 1vw;
+                left: 7%;
+                top: -10%;
+            }
+
+            #contcirc2 {
+                position: absolute;
+                width: .6vw;
+                height: 2vw;
+                border: 1px solid black;
+                border-radius: 1vw;
+                left: 7%;
+                top: 7%;
+            }
+
+            #circles {
+                position: relative;
+                font-size: .9vw;
+                color: black;
+                line-height: .5vw;
+                top: -.7vw;
+            }
+
+            #star1 {
+                font-size: 1vw;
+                color: black;
+                top: -4.5%;
+                left: 6%;
+                position: absolute;
+            }
+        </style>
+        <div id="lin1prof3"></div>
+        <div id="lin2prof3"></div>
+        <div id="lin3prof3"></div>
+        <div id="lin4prof3"></div>
+
+        <div id="contcirc1">
+            <p id="circles">●<br />●<br />●</p>
+        </div>
+        <p id="star1"> ✦ </p>
+        <div id="contcirc2">
+            <p id="circles">●<br />●<br />●</p>
+        </div>
+        <p id="barcodep2"><span style="font-size:1.2vw">●●</span><br />BRILLANT</p>
+        <p id="subpcode">
+            Au détour d'une rue, j'attraperai ta main
+            Pour te montrer les lumières bleues
+            Et verse l'ombre fuyante
+            Au détour d'une rue, j'attraperai ta main
+            <br /> <span style="font-size:1.2vw">○</span><br />
+            Pour ne plus la lâcher
+            Et qu'ensemble nous courrions
+            Comme des fous dans les sombres allées
+        </p>
+        <p id="crossp">✝✝</p>
+        <p id="barcodep">SONGBIRD</p>
+        <img src="https://i.postimg.cc/h4d88CGf/barrcode.png" id="barcode" />
+        <p id="arrows">►►►</p>
+    </div>-->
+            <div id="lotfriends">
+                <style>
+                    #lotfriends {
+                        position: absolute;
+                        width: 28%;
+                        height: 23%;
+                        /*background: red;*/
+                        top: 58%;
+                        left: 40%;
+                    }
+
+                    #linefriend1 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                        top: 14%;
+                    }
+
+                    #linefriend2 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                        bottom: 14%;
+                    }
+
+                    #linefriend3 {
+                        position: absolute;
+                        width: 100%;
+                        height: 35%;
+                        z-index: 9;
+                        top: 32.5%;
+                        left: 7.5%;
+                    }
+
+                    .romb {
+                        position: relative;
+                        height: 2vw;
+                        background: black;
+                        width: 2vw;
+                        transform: rotate(45deg);
+                        top: .5vw;
+                        margin-left: .5vw;
+                        float: left;
+                        margin-right: .4vw;
+                        box-shadow: .1vw .1vw .2vw rgba(0,0,0,.5);
+                        overflow: hidden;
+                    }
+
+                    .romb1 {
+                        background: #7D7D7D
+                    }
+
+                    .romb2 {
+                        background: #8F8F8F;
+                    }
+
+                    .romb3 {
+                        background: #9C9C9C;
+                    }
+
+                    .romb4 {
+                        background: #A8A8A8;
+                    }
+
+                    .romb5 {
+                        background: #B8B8B8;
+                    }
+
+                    #imgf1 {
+                        position: absolute;
+                        width: 300%;
+                        transform: rotate(-45deg);
+                        top: -30%;
+                        left: -90%;
+                        opacity: .6;
+                        filter: grayscale(100%);
+                    }
+                </style>
+                <div id="linefriend1">
+                    <div class="romb romb1"></div> <div class="romb romb2"></div> <div class="romb romb3"></div> <div class="romb romb4"></div> <div class="romb romb5"></div>
+                </div>
+                <div id="linefriend3">
+                    <div class="romb romb1">
+
+                    </div> <div class="romb romb2"> </div> <div class="romb romb3"></div> <div class="romb romb4"></div> <div class="romb romb5"></div>
+                </div>
+                <div id="linefriend2">
+                    <div class="romb romb1"></div> <div class="romb romb2"></div> <div class="romb romb3"></div> <div class="romb romb4"></div> <div class="romb romb5"></div>
+                </div>
+            </div>
+
+            <div id="areachat" class="clsechat" >
+                <script>
+                    function opnchat() {
+                        $("#areachat").removeClass("clsechat"); $("#areachat").addClass("openchat");
+                    } function clchat() {
+                        $("#areachat").removeClass("openchat"); $("#areachat").addClass("clsechat");
+                    }
+                </script>
+                <style>
+                    .openchat { left:0%;
+                    }
+                    .clsechat { left:-30%;
+                    }
+                    #areachat { transition: all 1s ease;
+                        position: absolute;
+                        width: 30%;
+                         
+                        height: 100%;
+                        z-index: 10000;
+                        background-image: linear-gradient(270deg,transparent 0%,rgba(0,0,0,.8) 40%,rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+                        backdrop-filter: blur(2px);
+                    }
+                    #barsepcontacts { position:absolute; width:1px; height:70%; top:15%; left:15%; background:#606060;
+                    }
+                    #contenticon {
+                        border-radius: 50%;
+                        overflow: hidden;
+                        position: absolute;
+                        width: 100%; height:100%;
+                    }
+                    #contact1 { position:absolute; width:2vw; height:2vw;  left:3%; top:35%;
+                    }
+                    .iconcontact { position:absolute; width:100%; 
+                    }
+                    .contactfile {
+                        border: 2px solid dimgray;
+                        filter: grayscale(90%);
+                    }
+
+                        .contactfile:hover {
+                            border: 2px solid darkgray;
+                            filter: grayscale(50%);
+                        }
+                    #contact2 {
+                        position: absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        border-radius: 50%; 
+                        left: 3%;
+                        top: 43%;
+                    }
+                    #contact3 {
+                        position: absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        border-radius: 50%; 
+                        left: 3%;
+                        top: 51%;
+                    }
+                    #contact4 {
+                        position: absolute;
+                        width: 2vw;
+                        height: 2vw;
+                        border-radius: 50%; 
+                        left: 3%;
+                        top: 59%;
+                    }
+                    .txtnamecontact { width:auto; height:1vw; position:absolute; background:#404040; left:170%; top:25%; border-radius:.2vw; opacity:0; transition:all .3s ease;
+                    }
+                    #contact1:hover .txtnamecontact, #contact2:hover .txtnamecontact, #contact3:hover .txtnamecontact, #contact4:hover .txtnamecontact {
+                        opacity: 1;
+                    }
+                    .txtnamecontact p {  position:relative; margin:.2vw;  
+                        color: lightgray;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        width: 100%;  
+                        font-family: Consolas; padding-right:.2vw;
+                    }
+                    #arrow {
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-top: .5vw solid transparent;
+                        border-bottom: .5vw solid transparent;
+                        border-right: .5vw solid #404040;
+                        left: -.44vw; top:0vw;
+                    }
+                    #areatexto { position:absolute; width:80%; height:100%;   right:0;
+                    }
+                </style>
+                <div id="areatexto">
+                    <div id="areachatr">
+                        <div id="barscroll">
+                            <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr1" />
+                            <img src="https://i.postimg.cc/8zb4Nqc1/222.png" id="scr2" />
+                        </div>
+                        <style>
+                            #areachatr {
+                                width: 100%;
+                                left: 0%;
+                                height: 100%;
+                                position: absolute;
+                            }
+
+                            #scr1 {
+                                position: absolute;
+                                width: 1vw;
+                                top: -1vw;
+                                right: -.4vw;
+                            }
+
+                            #scr2 {
+                                transform: rotate(180deg);
+                                position: absolute;
+                                width: 1vw;
+                                bottom: -1vw;
+                                right: -.42vw;
+                            }
+
+                            #areaaddmsn {
+                                position: absolute;
+                                width: 90%;
+                                height: 10%;
+                                bottom: 0;
+                                border-top: .15vw solid rgba(100,100,100,.6);
+                            }
+
+                            #text_bak_in {
+                                position: absolute;
+                                width: 70%;
+                                border: .1vw solid #404040;
+                                height: 2.5vw;
+                                border-radius: .2vw;
+                                left: 0%;
+                                top: 20%;
+                                overflow: hidden;
+                                text-align: left;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+
+                            #textadd {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: transparent;
+                                text-decoration: none;
+                                border: none;
+                                color: rgb(74,82,101);
+                                top: 0;
+                                left: 0; color:lightgray;
+                                padding: .1vw;
+                            }
+
+                            #btn_bak_in {
+                                width: 20%;
+                                height:  1.3vw;
+                                background:  darkgray; box-shadow:-.2vw .2vw .2vw rgba(0,0,0,.5);
+                                left: 80%;
+                                border-radius: .1vw;
+                                position: absolute;
+                                top: 20%;
+                                font-family: 'HYWenHei-85W';
+                                overflow: hidden;
+                            }
+
+                            #btnadd {
+                                margin-left: 10%;
+                                position: absolute;
+                                height: 10%;
+                                top: 2%;
+                                width: 20%;
+                                left: 1%;
+                            }
+
+                            #p_btn_se {
+                                position: relative;
+                                text-align: center;
+                                top:  -.4vw; cursor:pointer;
+                                font-size: .6vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+
+                             
+
+                            #areamensajes {
+                                position: absolute;
+                                width: 97%;
+                                height: 85%;
+                                top: 5%;
+                                overflow: auto;
+                            }
+
+                            #barscroll {
+                                width: .2vw;
+                                height: 80%;
+                                top: 5%;
+                                right: .5vw;
+                                position: absolute;
+                                background: rgba(100,100,100,.2);
+                            }
+
+                            #areamensajes::-webkit-scrollbar {
+                                width: .2vw;
+                                border-radius: .5vw;
+                                background: transparent;
+                            }
+
+                            #areamensajes {
+                                overflow-x: hidden;
+                            }
+
+                                #areamensajes::-webkit-scrollbar-thumb {
+                                    border-radius: 1vw;
+                                    background: gray;
+                                    width: .2vw;
+                                }
+
+                            #msnguest, #msnsaikai {
+                                width: 100%;
+                                height: auto;
+                                position: relative;
+                            }
+
+                                #msnguest:first-child {
+                                    margin-top: 1vw;
+                                }
+
+                            #diviconguest {
+                                width: 2vw;
+                                height: 2vw;
+                                background: rgb(74,82,101);
+                                border-radius: 50%;
+                                overflow: hidden; 
+                            }
+
+                            #diviconsaikai {
+                                width: 2vw;
+                                position: relative;
+                                height: 2vw;
+                                left: 80%;
+                                background: rgb(74,82,101);
+                                border-radius: 50%;
+                                overflow: hidden;
+                                margin-bottom: 5%;
+                            }
+
+                            #iconguest, #iconsaikai {
+                                width: 100%;
+                            }
+
+                            #regname {
+                                color: white;
+                                font-size: .9vw;
+                                position: relative;
+                                top: -2.5vw;
+                                left: 15%;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+
+                            #regname2 {
+                                color: white;
+                                font-size: .9vw;
+                                position: absolute;
+                                top: -.5vw;
+                                left: 69%;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+                            #regname3 {
+                                color: white;
+                                font-size: .9vw;
+                                position: absolute;
+                                top: -.5vw;
+                                left: 64%;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+                            #regname4 {
+                                color: white;
+                                font-size: .9vw;
+                                position: absolute;
+                                top: -.5vw;
+                                left: 62%;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                            }
+                            #areamensaj {
+                                background: lightgray;
+                                height: auto;
+                                border-radius: 0 .3vw .3vw .3vw;
+                                width: auto;
+                                max-width:1vw;
+                                position: relative;
+                                left: 15%; font-size:.5vw; font-family:Consolas; letter-spacing:.05vw;
+                                top: -2.5vw;
+                                padding: .3vw;
+                                color: #171717;
+                            }
+
+                            #areamensaj2 {
+                                background: #303030;
+                                height: auto;
+                                border-radius: .3vw 0vw .3vw .3vw;
+                                width: auto;
+                                position: relative;
+                                left: 24%;
+                                top: -1.9vw;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .1vw;
+                                padding: .3vw;
+                                color: white;
+                            }
+                            #areamensaj3 {
+                                background: #303030;
+                                height: auto;
+                                border-radius: .3vw 0vw .3vw .3vw;
+                                width: auto;
+                                position: relative;
+                                left:  3%;
+                                top: -1.9vw;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .05vw;
+                                padding: .3vw;
+                                color: white;
+                            }
+                            #areamensaj4 {
+                                background: #303030;
+                                height: auto;
+                                border-radius: .3vw 0vw .3vw .3vw;
+                                width: auto;
+                                position: relative;
+                                left: 60%;
+                                top: -1.9vw;
+                                font-size: .5vw;
+                                font-family: Consolas;
+                                letter-spacing: .05vw;
+                                padding: .3vw;
+                                color: white;
+                            }
+                            #areatop {
+                                width: 100%;
+                                height: 10%;
+                                top: 0;
+                                overflow: hidden;
+                                position: absolute;
+                                border-bottom: .15vw solid rgba(74,82,101.6);
+                            }
+                        </style>
+                        <div id="areamensajes">
+                            <div id="msnguest">
+                                <div id="diviconguest">
+                                    <img id="iconguest" src="https://i.pinimg.com/736x/4b/55/b8/4b55b8c004959bdb113c65d110af5cdd.jpg" />
+                                </div>
+                                <p id="regname">Neige</p>
+                                <content id="areamensaj">
+                                    Everything will have to be destroyed
+                                </content>
+                            </div>
+                            <div id="msnsaikai">
+                                <div id="diviconsaikai">
+                                    <img id="iconsaikai" src="https://i.pinimg.com/736x/4d/38/4a/4d384a0f2595363646d112a3806921d9.jpg" />
+                                </div>
+                                <p id="regname2">Kiri</p>
+                                <content id="areamensaj2">
+                                    As brilliant as ever!!
+                                </content>
+
+                            </div>
+                            <div id="msnsaikai">
+                                <div id="diviconsaikai">
+                                    <img id="iconsaikai" src="https://i.redd.it/e818ga6l8im81.jpg" />
+                                </div>
+                                <p id="regname3">Mythes</p>
+                                <content id="areamensaj3">
+                                    Those jokes only make me doubt more.
+                                </content>
+
+                            </div>
+                            <div id="msnguest">
+                                <div id="diviconguest">
+                                    <img id="iconguest" src="https://i.pinimg.com/736x/4b/55/b8/4b55b8c004959bdb113c65d110af5cdd.jpg" />
+                                </div>
+                                <p id="regname">Neige</p>
+                                <content id="areamensaj">
+                                    That's what Kira would say.
+                                </content>
+                            </div>
+                            <div id="msnsaikai">
+                                <div id="diviconsaikai">
+                                    <img id="iconsaikai" src="https://s4.anilist.co/file/anilistcdn/character/large/n3769-QJUZtTvWhOJt.png" />
+                                </div>
+                                <p id="regname4">Saeroyi</p>
+                                <content id="areamensaj4">
+                                    Ajam...
+                                </content>
+
+                            </div>
+                        </div>
+                        <script>
+                            function add_mess() {
+
+                                var textt = $('#textadd').val();
+                                $('#areamensajes').append('<div id="msnguest"> <div id="diviconguest"><img id="iconguest" src="https://i.pinimg.com/originals/7a/a9/94/7aa994070a951eff87715b0f7009c26d.jpg" /></div> <p id="regname">Guest</p><content id="areamensaj">' + textt + '</content>  </div > ');
+
+                            }
+
+
+                            function arriba() {
+                                $("#areamensajes").animate({ scrollTop: 1000 }, 600);
+                                return false;
+                            }
+                        </script>
+                         
+                        <div id="areaaddmsn">
+                            <div id="text_bak_in">
+                                <textarea id="textadd" maxlength="28" placeholder="send message"></textarea>
+                            </div>
+                            <div id="btn_bak_in">
+                                <div id="btnadd" onclick="add_mess(); arriba(); to_bot();"><p id="p_btn_se">Send</p> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="barsepcontacts">
+
+                </div>
+                <div id="contacts">
+                    <div id="contact1">
+                        <div id="contenticon" class="contactfile">
+                            <img src="https://i.pinimg.com/736x/4d/38/4a/4d384a0f2595363646d112a3806921d9.jpg" class="iconcontact" />
+                        </div>
+
+                        <div class="txtnamecontact">
+                            <div id="arrow"></div>
+                            <p>KIRI</p>
+                        </div>
+                    </div>
+                    <div id="contact2" >
+                        <div id="contenticon" class="contactfile">
+                            <img src="https://i.redd.it/e818ga6l8im81.jpg" class="iconcontact" />
+                        </div>
+                        <div class="txtnamecontact">
+                            <div id="arrow"></div>
+                            <p>MYTHES</p>
+                        </div>
+                    </div>
+                    <div id="contact3">
+                        <div id="contenticon" class="contactfile">
+                            <img src="https://s4.anilist.co/file/anilistcdn/character/large/n3769-QJUZtTvWhOJt.png" class="iconcontact" />
+                        </div>
+                        <div class="txtnamecontact">
+                            <div id="arrow"></div>
+                            <p>SAEROYI</p>
+                        </div>
+                    </div>
+                    <div id="contact4">
+                        <div id="contenticon" class="contactfile">
+                            <img src="https://i.pinimg.com/236x/8c/23/3e/8c233eebf5d088d837084af6343da62c.jpg" class="iconcontact" />
+                        </div>
+                        <div class="txtnamecontact">
+                            <div id="arrow"></div>
+                            <p>JADE</p>
+                        </div>
+                    </div>
+                        </div>
+            </div>
+
+            <div id="contactsbar">
+                <style>
+                    #contactsbar {
+                        position: absolute;
+                        width: 4%;
+                        height: 97.7%;
+                        bottom: 0;
+                        right: 26%;
+                        background: #171717;
+                    }
+
+                    #circ1 {
+                        position: absolute;
+                        bottom: 10%;
+                        width: 2vw;
+                        height: 2vw;
+                        border: 2px solid darkgray;
+                        border-radius: 50%;
+                        left: 14%;
+                        overflow: hidden;
+                    }
+
+                    #circ2 {
+                        position: absolute;
+                        bottom: 17%;
+                        width: 2vw;
+                        height: 2vw;
+                        border: 2px solid darkgray;
+                        border-radius: 50%;
+                        left: 14%;
+                        overflow: hidden;
+                    }
+
+                    .circimg {
+                        position: absolute;
+                        width: 100%;
+                        filter: grayscale(50%);
+                    }
+
+                    .glitchimg {
+                        position: absolute;
+                        width: 200%;
+                        opacity: .1;
+                        filter: grayscale(100%);
+                    }
+
+                    #btnesc {
+                        position: absolute;
+                        width: 50%;
+                        height: 1.6vw;
+                        left: 25%;
+                        top: 2%;
+                        cursor: pointer;
+                    }
+
+                    #imgesc {
+                        position: absolute;
+                        width: 140%;
+                        filter: invert(80%);
+                        left: -20%;
+                        transform: scaleY(-1) rotate(90deg);
+                    }
+
+                    #txtesc {
+                        color: lightgray;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        width: 100%;
+                        position: absolute;
+                        top: 70%;
+                        font-family: Consolas;
+                    }
+
+                    #btnesc:hover #imgesc, #btnaddw:hover #imgadd2 {
+                        filter: invert(100%);
+                    }
+
+                    #btnaddw:hover #imgaddx {
+                        border: 1px solid dimgray;
+                        box-shadow: 0 0 .3vw #404040;
+                    }
+
+                    #btnesc:hover #txtesc, #btnaddw:hover #txtadd, #btnedit:hover #txtedt {
+                        text-shadow: 0 0 .3vw white;
+                        color: white;
+                    }
+
+                    #btnedit:hover #imgedt {
+                        filter: invert( 0%);
+                    }
+
+
+
+                    #btnaddw {
+                        position: absolute;
+                        width: 50%;
+                        height: 1.6vw;
+                        z-index: 99999;
+                        left: 25%;
+                        bottom: 4%;
+                        cursor: pointer;
+                    }
+
+                    #imgaddx {
+                        position: absolute;
+                        border: 1px solid #404040;
+                        width: 100%;
+                        height: 85%;
+                        left: 0%;
+                    }
+
+                    #imgadd2 {
+                        position: absolute;
+                        width: 70%;
+                        left: 15%;
+                        top: 14%;
+                        filter: invert(80%);
+                        transform: scaleY(-1) rotate(90deg);
+                    }
+
+                    #txtadd {
+                        color: lightgray;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        width: 100%;
+                        position: absolute;
+                        top: 70%;
+                        font-family: Consolas;
+                    }
+
+                    #btnedit {
+                        position: absolute;
+                        width: 50%;
+                        height: 1.6vw;
+                        left: 25%;
+                        bottom: 13%;
+                        cursor: pointer;
+                    }
+
+                    #imgedt {
+                        position: absolute;
+                        width: 90%;
+                        filter: invert(30%);
+                        left: 5%;
+                        
+                    }
+
+                    #txtedt {
+                        color: lightgray;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        width: 100%;
+                        position: absolute;
+                        top: 65%;
+                        font-family: Consolas;
+                    }
+
+
+                    #btnntf {
+                        position: absolute;
+                        width: 50%;
+                        height: 1.6vw;
+                        left: 25%;
+                        bottom: 22%;
+                        cursor: pointer;
+                    }
+
+                    #imgntf {
+                        position: absolute;
+                        width: 90%;
+                        filter: invert(80%);
+                        left: 5%;
+                    }
+
+                    #txtntf {
+                        color: lightgray;
+                        font-size: .5vw;
+                        letter-spacing: .1vw;
+                        text-align: center;
+                        width: 100%;
+                        position: absolute;
+                        top: 65%;
+                        font-family: Consolas;
+                    }
+                    #ntoficnumber {
+                        position: absolute;
+                        color: white;
+                        background: #812134; top:-.7vw; right:-.3vw;
+                        font-family: Consolas; padding:.1vw; 
+                        font-size: .5vw;    z-index:9; 
+                        border-radius:.2vw;
+                    }
+                </style>
+
+
+                <div id="btnesc" onclick="clchat();">
+                    <img src="https://i.postimg.cc/nLvqVYFH/regreso.png" id="imgesc" />
+                    <p id="txtesc">Esc</p>
+                </div>
+
+                <div id="btnntf">
+                    <p id="ntoficnumber">+99</p>
+                    <img src="https://i.postimg.cc/V6c0BzcB/notificacion.png" id="imgntf" />
+                    <p id="txtntf">Ntf</p>
+                </div>
+
+
+                <div id="btnedit">
+                    <img src="https://i.postimg.cc/5NqGNDwM/sangrado.png" id="imgedt" />
+                    <p id="txtedt">Edt</p>
+                </div>
+
+                <div id="btnaddw" onclick="opnchat();">
+                    <div id="imgaddx">
+                        <img src="https://i.postimg.cc/RVhHjx2B/mas-(1).png" id="imgadd2" />
+                    </div>
+
+                    <p id="txtadd">Add</p>
+                </div>
+            </div>
+            <div id="areamrr">
+                <style>
+                    #areamrr {
+                        position: absolute;
+                        width: 17%;
+                        height: 3%;
+                        top: 94.5%;
+                        left: 8%;
+                        z-index: 99;
+                        text-shadow: .1vw .1vw .3vw rgba(0,0,0,.5);
+                        color: dimgray;
+                    }
+
+                    #statusmrr {
+                        font-size: .45vw;
+                        font-family: tw
+                    }
+
+                        #statusmrr span {
+                            font-size: .8vw;
+                        }
+
+                            #statusmrr span:hover {
+                                color: #00ffff;
+                                filter: invert(100%);
+                            }
+
+                    a {
+                        text-decoration: none;
+                        color: black;
+                    }
+                </style>
+                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="https://xat.me/Neige"><span> KIRI</span></a>❤</p>
+            </div>
+
+            <div id="divfot">
+                <style>
+                    #divfot {
+                        position: absolute;
+                        width: 50%;
+                        height: 20%;
+                        bottom: 0;
+                        left: 8%;
+                        mix-blend-mode: difference;
+                        filter: invert(100%);
+                    }
+
+                    #firmtext {
+                        position: absolute;
+                        font-family: tak;
+                        font-size: 3vw;
+                        top: -3vw;
+                        left: .5vw;
+                        color: #812134;
+                        transform: rotate(-5deg);
+                        text-shadow: .3vw .3vw .2vw rgba(0,0,0,.7);
+                    }
+
+                    #textfot {
+                        position: absolute;
+                        width: 100%;
+                        height: 65%;
+                        top: 35%;
+                        left: 20%;
+                    }
+
+                    #txttt {
+                        border-left: 1px solid gray;
+                        width: 1px;
+                        height: 130%;
+                        position: absolute;
+                        top: -45%;
+                    }
+
+                    #textpfot {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        bottom: 0vw;
+                        font-size: .45vw;
+                        text-transform: uppercase;
+                        overflow: auto;
+                        font-family: tw;
+                        line-height: .5vw;
+                        left: 2%;
+                    }
+
+                    #star8 {
+                        position: absolute;
+                        font-size: 1.1vw;
+                        top: -2.2vw;
+                        left: 51%;
+                    }
+
+                    #linesimg2 {
+                        position: absolute;
+                        left: 34%;
+                        top: -.8vw;
+                        filter: brightness(90%)
+                    }
+                </style>
+                <p id="firmtext">
+                    TheEvangelist
+                </p>
+                <p id="star8"> ✦✦✦ </p> <img src="https://i.postimg.cc/V6RcQDGH/lines1.png" id="linesimg2" />
+                <div id="textfot">
+                    <div id="txttt"></div>
+                    <div id="textpfot">
+                        Dès le premier jour où je t’ai vu, il y a eu quelque chose en toi qui m’a attirée sans aucune explication. Tu es entré dans ma vie par une simple coïncidence qui s’est transformée en destin. Qui aurait cru que nous serions deux personnes ressentant la même chose en silence, avec la peur de perdre plus que ce que nous n’avions pas encore. Et aujourd’hui, ce crush s’est transformé en le plus bel amour que j’aie jamais vécu. À tes côtés, tout ressemble à un rêve dont je ne veux jamais me réveiller. J’aime ta noblesse, ta façon honnête de dire les choses, ton rire, ta voix et chaque détail qui fait de toi qui tu es. Tu es celui qui apaise mon esprit et donne un sens à ma vie. Merci de m’avoir laissée entrer dans ton monde et de m’avoir choisie comme ta petite amie. S'useront comme les pages qui ne résistent pas Au cadran sinistre qui continue sa loi Il aurait mieux valu oublier beaucoup de choses Les voix du passé déclenchent le battement de cœur de la conscience Qui coule, qui bat au rythme d'une Tu es ma lune, ma vie et l’amour de ma vie… Je t’aime, Neige<br /> <b>[ <span style="color:#c80a16; filter:invert(-100%)">KIRI </span>/ LIUNARA ]</b>
+                    </div>
+                </div>
+            </div>
+            <div id="repro">
+                <style>
+                    #repro {
+                        position: absolute;
+                        width: 18%;
+                        height: 20%;
+                        z-index: 91;
+                       right: 11%;
+                        top: 86%;
+                    }
+                </style>
+                <style>
+
+                    .wrapper {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type=range] {
+                        appearance: none;
+                        border-radius: 2px;
+                        outline: none;
+                        flex-grow: 1;
+                        height: 5px;
+                    }
+
+                        input[type=range]::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: .5vw;
+                            height: .5vw;
+                            transform: rotate(45deg);
+                            background-color: black;
+                        }
+
+                        input[type=range]::-moz-range-thumb {
+                            width: 15px;
+                            height: 15px;
+                            border: 2px black solid;
+                            border-radius: 7.5px;
+                            background-color: black;
+                        }
+
+                    .player {
+                    }
+
+                        .player .equalizer {
+                            /*position: absolute;*/
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: right;
+                            justify-content: right;
+                            margin-top: 2.4vw;
+                        }
+
+                            .player .equalizer .vertical {
+                                height: .1vw;
+                                width: .1vw;
+                                margin: .1vw;
+                                background-image: linear-gradient(180deg, #171717 60%, #812134 100%);
+                                border-radius: .3vw;
+                                transition: all 0.01s;
+                                transition-timing-function: ease-in-out;
+                            }
+
+                        .player .controls .line {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                            justify-content: space-between;
+                            margin: 10px 0;
+                        }
+
+                        .player .controls .progress {
+                            font-size: 0.5em;
+                            font-weight: bold;
+                            position: absolute;
+                        }
+
+                            .player .controls .progress .duration {
+                                margin: 0 10px 0 0;
+                            }
+
+                        .player .controls .play-pause {
+                            box-sizing: border-box;
+                            transition: all 0.1s;
+                            transition-timing-function: ease-in-out;
+                            will-change: border-width;
+                            cursor: pointer;
+                            height: 20px;
+                            background: transparent;
+                            width: 20px;
+                            border-color: transparent transparent transparent black;
+                        }
+
+                            .player .controls .play-pause[aria-checked=false] {
+                                border-style: solid;
+                                border-width: 10px 0 10px 15px;
+                            }
+
+                            .player .controls .play-pause[aria-checked=true] {
+                                border-style: double;
+                                border-width: 0 0 0 15px;
+                            }
+
+                        .player .controls .description {
+                            margin: 0 10px;
+                        }
+
+                        .player .controls .volume {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                            .player .controls .volume input[type=range] {
+                                width: 0px;
+                                margin: 0 10px 0 0;
+                                transition: all 0.1s;
+                                transition-timing-function: ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            .player .controls .volume:hover input[type=range] {
+                                display: block;
+                                width: 50px;
+                            }
+
+                            .player .controls .volume input[type=range]::-webkit-slider-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume input[type=range]::-moz-range-thumb {
+                                display: none;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-webkit-slider-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume:hover input[type=range]::-moz-range-thumb {
+                                display: inherit;
+                            }
+
+                            .player .controls .volume input[type=checkbox] {
+                                display: none;
+                            }
+
+                                .player .controls .volume input[type=checkbox]:checked ~ .unmute img, .player .controls .volume input[type=checkbox]:not(:checked) ~ .mute img {
+                                    display: block;
+                                }
+
+                            .player .controls .volume img {
+                                display: none;
+                                cursor: pointer;
+                                height: 20px;
+                                width: 20px;
+                                /*filter: invert(0%) sepia(10%) saturate(7132%) hue-rotate(265deg) brightness(98%) contrast(99%);*/
+                            }
+
+                    #progresss {
+                        background: dimgray;
+                        height: .1vw;
+                        width: 400%;
+                        position: absolute;
+                        top: 1vw;
+                    }
+
+                    #namesongx {
+                        font-family: tw;
+                        font-size: .52vw;
+                        letter-spacing: .05vw;
+                        position: absolute;
+                        top: .95vw;
+                    }
+
+                    #current, .duration {
+                        opacity: 0;
+                    }
+
+                    #playbtn {
+                        position: absolute;
+                        right: -7.7vw;
+                    }
+                </style>
+                <script>
+                    function updateEqualizer(analyser, buffer, columns) {
+                        analyser.getByteFrequencyData(buffer);
+                        for (let i = 0; i < columns.length; i += 1) {
+                            let column = columns[i];
+                            const height = (buffer[i] / 255) * 35 + 2;
+                            column.setAttribute("style", `height: ${height}px`);
+                        }
+                    }
+
+                    function toMinutesAndSeconds(time) {
+                        const minutes = Math.floor(time / 60);
+                        const seconds = Math.floor(time % 60);
+                        if (seconds < 10) {
+                            return `${minutes}:0${seconds}`;
+                        }
+
+                        return `${minutes}:${seconds}`;
+                    }
+
+                    function updateProgressBar(track, progressBar, timeDisplay, durationDisplay) {
+                        const currentTime = track.mediaElement.currentTime.toFixed(1);
+                        const duration = track.mediaElement.duration;
+                        timeDisplay.innerHTML = toMinutesAndSeconds(
+                            currentTime > duration ? duration : currentTime
+                        );
+                        progressBar.value = currentTime > duration ? duration : currentTime;
+                    }
+                    console.clear();
+
+                    // instigate our audio context
+                    let audioElement = new Audio();
+                    audioElement.crossOrigin = "anonymous";
+                    audioElement.src = "https://xcodexneon.github.io/evangelist/hyp.mp3";
+
+                    audioElement.addEventListener(
+                        "loadedmetadata",
+                        (event) => {
+                            // for cross browser
+                            const AudioContext = window.AudioContext || window.webkitAudioContext;
+                            const audioCtx = new AudioContext();
+
+                            // load some sound
+                            const track = audioCtx.createMediaElementSource(audioElement);
+                            const playButton = document.querySelector("button");
+
+                            // play pause audio
+                            playButton.addEventListener(
+                                "click",
+                                function () {
+                                    // check if context is in suspended state (autoplay policy)
+                                    if (audioCtx.state === "suspended") {
+                                        audioCtx.resume();
+                                    }
+
+                                    if (this.dataset.playing === "false") {
+                                        audioElement.play();
+                                        this.dataset.playing = "true";
+                                        // if track is playing pause it
+                                    } else if (this.dataset.playing === "true") {
+                                        audioElement.pause();
+                                        this.dataset.playing = "false";
+                                    }
+
+                                    let state = this.getAttribute("aria-checked") === "true" ? true : false;
+                                    this.setAttribute("aria-checked", state ? "false" : "true");
+                                },
+                                false
+                            );
+
+                            // if track ends
+                            audioElement.addEventListener(
+                                "ended",
+                                () => {
+                                    playButton.dataset.playing = "false";
+                                    playButton.setAttribute("aria-checked", "false");
+                                },
+                                false
+                            );
+
+                            // initialize gain
+                            let gainNode = audioCtx.createGain();
+
+                            // initialize analyser
+                            let analyser = audioCtx.createAnalyser();
+                            analyser.fftSize = 64; //32 bins
+                            const frequencyBinsCount = analyser.frequencyBinCount;
+                            let buffer = new Uint8Array(frequencyBinsCount);
+                            track.connect(gainNode).connect(analyser).connect(audioCtx.destination);
+
+                            // equalizer animation
+                            const equalizer = document.getElementById("equalizer");
+                            // 32 bins -> 32 columns
+                            const columns = document.getElementsByClassName("vertical");
+                            setInterval(updateEqualizer, 16, analyser, buffer, columns);
+
+                            const currentTimeDisplay = document.querySelector(".current-time");
+                            const progressBar = document.querySelector(".progress-bar");
+                            const durationDisplay = document.querySelector(".duration");
+                            durationDisplay.innerHTML = toMinutesAndSeconds(
+                                track.mediaElement.duration
+                            );
+                            progressBar.max = track.mediaElement.duration;
+
+                            setInterval(
+                                updateProgressBar,
+                                100,
+                                track,
+                                progressBar,
+                                currentTimeDisplay,
+                                durationDisplay
+                            );
+
+                            const volumeControl = document.querySelector("#range-volume");
+
+                            volumeControl.addEventListener(
+                                "input",
+                                function () {
+                                    gainNode.gain.value = this.value;
+                                },
+                                false
+                            );
+
+                            // mute button
+                            const mute_button = document.getElementById("mute");
+                            mute_button.addEventListener(
+                                "change",
+                                (event) => {
+                                    if (event.target.checked) {
+                                        audioElement.muted = true;
+                                    } else {
+                                        audioElement.muted = false;
+                                    }
+                                },
+                                false
+                            );
+                        },
+                        false
+                    );
+
+                </script>
+                <div class="wrapper">
+                    <div class="player">
+                        <span class="description" id="namesongx" style="text-transform:uppercase">
+                            Hypnosis -
+                            Sleep Token
+                        </span>
+                        <div class="controls">
+                            <div class="line progress">
+                                <button id="playbtn" class="play-pause" data-playing="false" role="switch" aria-checked="false">
+                                </button>
+
+                                <span class="current-time" id="current">0:00</span>&nbsp;/&nbsp;<span class="duration">2:50</span>
+                                <input type="range" class="progress-bar" id="progresss" name="progress" value=0 min=0 max=100 step="0.1" disabled />
+                            </div>
+
+                            <div class="line">
+
+                                <!--<div class="volume">
+                            <input type="range" name="volume" min="0" max="2" value="1" step="0.01" id="range-volume" />
+                            <input type="checkbox" name="mute" id="mute">
+                            <label for="mute" class="unmute">
+                                <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+                            </label>
+                            <label for="mute" class="mute">
+                                <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+                            </label>
+                        </div>-->
+                            </div>
+                        </div>
+                        <div class="equalizer" id="equalizer">
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                            <div class="vertical"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <style>
+        canvas#mainx {
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+         
+    </style>
+</body>
+</html>
