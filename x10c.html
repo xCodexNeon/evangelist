@@ -57,7 +57,7 @@
 
 <body onload="digi()" onclick="digi()" >
   
-    <div id="main"onload="digi()" onclick="digi()"  >
+    <div id="main" onload="digi()" onclick="digi()">
 
 
         <style>
@@ -118,6 +118,7 @@
                 font-family: muit;
                 src: url(Mutiara.ttf);
             }
+
             @font-face {
                 font-family: tarot2;
                 src: url(tarot2.otf);
@@ -127,14 +128,17 @@
                 font-family: ch2;
                 src: url(ch2.ttf);
             }
+
             @font-face {
                 font-family: tarot;
                 src: url(tarot.otf);
             }
+
             @font-face {
                 font-family: ch1;
                 src: url(ch1.ttf);
             }
+
             @font-face {
                 font-family: neigefont3;
                 src: url(PMINGLIU.ttf);
@@ -154,6 +158,7 @@
                 font-family: fant;
                 src: url(fant.ttf);
             }
+
             @font-face {
                 font-family: migueto;
                 src: url(Migueto.ttf);
@@ -163,6 +168,7 @@
                 font-family: migueto2;
                 src: url(migueto2.otf);
             }
+
             @font-face {
                 font-family: q1;
                 src: url(q1.otf);
@@ -172,7 +178,6 @@
                 font-family: q2;
                 src: url(q2.ttf);
             }
-
         </style>
         <div id="backhaori">
             <style>
@@ -184,16 +189,27 @@
                     z-index: -2;
                     position: fixed;
                     background: url('https://i.postimg.cc/ZKb0kmXp/b2.png');
-                    
                     background-attachment: fixed;
                     background-repeat: repeat;
                 }
             </style>
         </div>
-         
+
 
         <div id="contmain">
+            <div id="pattern">
+
+
+            </div>
             <style>
+                #pattern {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(https://i.postimg.cc/jqPS1wC6/base.jpg);
+                    filter: invert(100%);
+                }
+
                 #contmain {
                     position: absolute;
                     width: 70%;
@@ -224,6 +240,7 @@
                 }
 
                 #mainname {
+                    filter: invert(80%);
                     position: absolute;
                     font-size: 5vw;
                     font-family: q2;
@@ -249,6 +266,7 @@
                 }
 
                 #letchx {
+                    
                     position: absolute;
                     font-family: ch1;
                     font-size: 2.5vw;
@@ -272,7 +290,7 @@
                     #imgprofmain {
                         position: absolute;
                         right: 0%;
-                        height: 98%;
+                        height: 98%; overflow:hidden;
                         width: 26%;
                         top: 2%;
                         border-left: 2px solid #812134;
@@ -280,11 +298,13 @@
 
                     #kirapng {
                         position: absolute;
-                        height: 100%;
-                        opacity: .3;
+                        left: -10%;
+                        height: 120%;
+                        top: -20%;
+                        opacity: .4;
                     }
                 </style>
-                <img src="https://i.pinimg.com/736x/92/fe/71/92fe71d00b4719b2fd1c1ee6ca225c03.jpg" id="kirapng" />
+                <img src="https://i.pinimg.com/736x/dc/09/bd/dc09bdc6428a6950d4c0b0c71d3cadea.jpg" id="kirapng" />
             </div>
 
             <div id="linup1red">
@@ -293,6 +313,7 @@
             <div id="bannerlat">
                 <style>
                     #bannerlat {
+                        filter: invert(80%);
                         position: absolute;
                         width: 10%;
                         height: 98%;
@@ -351,6 +372,7 @@
                     }
 
                         .m-scroll__title a:hover {
+                            filter: invert(100%);   
                             -webkit-text-stroke: .1px #812134;
                             color: transparent;
                         }
@@ -378,6 +400,7 @@
                     }
 
                     #arr {
+                        filter: invert(100%);
                         position: relative;
                         color: #8a1818;
                         font-size: 2vw;
@@ -427,6 +450,7 @@
             <div id="textarea">
                 <style>
                     #textarea {
+                        filter: invert(100%);
                         position: absolute;
                         width: 15%;
                         height: 35%;
@@ -436,6 +460,7 @@
                     }
 
                     #pt1 {
+                        filter: invert(100%);
                         font-size: 3vw;
                         font-family: sim;
                         color: #812134;
@@ -481,6 +506,7 @@
                     }
 
                         #pt1sb span {
+                            filter: invert(100%);
                             font-family: sim;
                             color: #812134;
                             letter-spacing: 0vw;
@@ -529,6 +555,7 @@
                     }
 
                     #mn1 {
+                         
                         position: absolute;
                         width: 20%;
                         height: 33%;
@@ -537,6 +564,7 @@
                     }
 
                     #star7 {
+                        filter: invert(80%);
                         position: absolute;
                         font-size: 1.3vw;
                         top: -1.2vw;
@@ -557,7 +585,6 @@
                         position: absolute;
                         width: 30%;
                         height: 27.5%;
-                        background: red;
                         top: 50%;
                         left: 8%;
                         border: 1px solid #812134;
@@ -567,6 +594,7 @@
                         position: absolute;
                         height: 100%;
                         filter: grayscale(50%);
+                        width: 86%;
                         box-shadow: .15vw .3vw 0 rgba(0,0,0,.5);
                     }
 
@@ -596,7 +624,7 @@
                         font-weight: bold;
                     }
                 </style>
-                <img id="gifmain" src="https://64.media.tumblr.com/95890ea3c18a6122b73c4f5c0cdbe499/tumblr_p01nf5o5Nv1w95z6uo3_500.gif" />
+                <img id="gifmain" src="https://i.postimg.cc/pXJ2mLGG/animesher-com-opening-death-note-misa-amane-940375.gif" />
                 <div id="latdivgif">
                     <!--<p id="pwk">WAKE</p>
             <div id="dibblack"></div>-->
@@ -611,7 +639,7 @@
                         left: 6%;
                         top: 45%;
                         mix-blend-mode: difference;
-                        filter: invert(100%);
+                        
                     }
 
                     #pointspng {
@@ -666,11 +694,12 @@
                         right: 5%;
                         z-index: 09;
                         top: 15%;
-                        mix-blend-mode: difference;
-                        filter: invert(100%);
+                        
+                      
                     }
 
                     #ptextfriends {
+                        filter: invert(80%);
                         position: absolute;
                         width: 88%;
                         font-family: tw;
@@ -724,6 +753,7 @@
                 <div id="contant">
                     <style>
                         #contant {
+                            filter: invert(80%);
                             position: absolute;
                             width: 60%;
                             height: 60%;
@@ -736,6 +766,7 @@
                         }
 
                         #letch1 {
+                            
                             position: absolute;
                             font-family: ch1;
                             top: -2vw;
@@ -766,7 +797,7 @@
                         filter: invert(100%);
                     }
 
-                    #submain2 {
+                    #submain2 { left:42%;
                         font-family: kenFont;
                         font-size: 3.2vw;
                         top: 2.7vw;
@@ -795,12 +826,12 @@
                         letter-spacing: 0;
                         text-shadow: .5vw .5vw 1vw black;
                         font-size: .7vw;
-                        left: 120%;
-                        top: 24%;
+                        left: 110%;
+                        top: 29%;
                     }
                 </style>
-                R<span id="submain2">.uthless</span><span id="fname3">
-                    Krigstid
+                O<span id="submain2">.bsessive</span><span id="fname3">
+                    Kirigan
                 </span><span id="fname4">
                     Orgueil.et.Préjugés
                 </span>
@@ -836,6 +867,7 @@
                         height: 30%;
                         left: 49%;
                         top: 4%;
+                        filter: invert(80%);
                     }
 
                     #lateralltext {
@@ -868,7 +900,16 @@
                         top: .5vw;
                         height: 2.5vw;
                     }
-                    #lateralltext p { position:absolute; width:97%; text-align:right; font-size:.8vw; color:lightgray; top:-.75vw; font-weight:bold; letter-spacing:.1vw;
+
+                    #lateralltext p {
+                        position: absolute;
+                        width: 97%;
+                        text-align: right;
+                        font-size: .8vw;
+                        color: lightgray;
+                        top: -.75vw;
+                        font-weight: bold;
+                        letter-spacing: .1vw;
                     }
                 </style>
                 <div id="lateralltext">
@@ -901,6 +942,7 @@
                         }
 
                         #tt {
+                            filter: invert(100%);
                             position: absolute;
                             text-transform: uppercase;
                             font-family: tw;
@@ -911,7 +953,7 @@
                             text-shadow: .1vw .1vw .2vw rgba(0,0,0,.3);
                             top: 25%;
                             width: 100%;
-                            color: #812134;
+                            color: #c62343;
                             text-align: right;
                         }
 
@@ -1045,7 +1087,7 @@
 
 
             </div>
-            <span id="spn3">NEIGE.<br />▋▉▎▉▋▎▎▍▋▏▋▋</span>
+            <span id="spn3">KIRI.<br />▋▉▎▉▋▎▎▍▋▏▋▋</span>
             <div id="signature">
                 <img id="comas" src="https://i.postimg.cc/DzQ98S00/comillas.png" />
                 <p id="desccomas">
@@ -1059,8 +1101,16 @@
 
             <div id="lotfriends">
                 <style>
-                    #signature { position:absolute; width:15%; height:10%;  left:40%; top:50%; opacity:.7;
+                    #signature {
+                        filter: invert(100%);
+                        position: absolute;
+                        width: 15%;
+                        height: 10%;
+                        left: 40%;
+                        top: 50%;
+                        opacity: .7;
                     }
+
                     #comas {
                         position: absolute;
                         width: .8vw;
@@ -1076,12 +1126,15 @@
                         font-weight: bold;
                         top: -.5vw;
                     }
-                    #spn3 { 
+
+                    #spn3 {
+                        filter: invert(100%);
                         position: absolute;
                         right: .5%;
                         bottom: 1%;
                         font-family: tw;
-                        font-size: .5vw; color:#303030;
+                        font-size: .5vw;
+                        color: #303030;
                         letter-spacing: .1vw;
                         font-weight: bold;
                         text-align: right;
@@ -1090,7 +1143,7 @@
                     #lotfriends {
                         position: absolute;
                         width: 28%;
-                        height: 23%;
+                        height: 23%; filter:brightness(80%);
                         /*background: red;*/
                         top: 58%;
                         left: 40%;
@@ -1399,7 +1452,7 @@
                                 margin-left: 10%;
                                 position: absolute;
                                 height: 10%;
-                                top: 2%;
+                                top: 2%; 
                                 width: 20%;
                                 left: 1%;
                             }
@@ -1730,6 +1783,8 @@
                     }
 
                     #contactsbar {
+                        z-index: 9999999999999999999;
+                        filter: invert(80%);
                         position: absolute;
                         width: 4%;
                         height: 97.7%;
@@ -1915,6 +1970,7 @@
                     }
 
                     #ntoficnumber {
+                        filter: invert(100%);
                         position: absolute;
                         color: white;
                         background: #812134;
@@ -1957,6 +2013,7 @@
             <div id="areamrr">
                 <style>
                     #areamrr {
+                        filter: invert(100%);
                         position: absolute;
                         width: 17%;
                         height: 3%;
@@ -1977,7 +2034,7 @@
                         }
 
                             #statusmrr span:hover {
-                                color: #00ffff;
+                                color: #812134;
                                 filter: invert(100%);
                             }
 
@@ -1986,7 +2043,7 @@
                         color: black;
                     }
                 </style>
-                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="https://xat.me/Neige"><span> KIRI</span></a>❤</p>
+                <p id="statusmrr"><b>STATUS</b>: TAKEN BY <a href="https://xat.me/Neige"><span> NEIGE</span></a>❤</p>
             </div>
 
             <div id="divfot">
@@ -1997,11 +2054,11 @@
                         height: 20%;
                         bottom: 0;
                         left: 8%;
-                        mix-blend-mode: difference;
-                        filter: invert(100%);
+                         
                     }
 
                     #firmtext {
+                       
                         position: absolute;
                         font-family: tak;
                         font-size: 3vw;
@@ -2013,6 +2070,7 @@
                     }
 
                     #textfot {
+                        filter: invert(80%);
                         position: absolute;
                         width: 100%;
                         height: 65%;
@@ -2044,6 +2102,7 @@
                     #star8 {
                         position: absolute;
                         font-size: 1.1vw;
+                        filter: invert(80%);
                         top: -2.2vw;
                         left: 51%;
                     }
@@ -2056,19 +2115,20 @@
                     }
                 </style>
                 <p id="firmtext">
-                    TheEvangelist
+                    Revendreth
                 </p>
                 <p id="star8"> ✦✦✦ </p> <img src="https://i.postimg.cc/V6RcQDGH/lines1.png" id="linesimg2" />
                 <div id="textfot">
                     <div id="txttt"></div>
                     <div id="textpfot">
-                        Dès le premier jour où je t’ai vu, il y a eu quelque chose en toi qui m’a attirée sans aucune explication. Tu es entré dans ma vie par une simple coïncidence qui s’est transformée en destin. Qui aurait cru que nous serions deux personnes ressentant la même chose en silence, avec la peur de perdre plus que ce que nous n’avions pas encore. Et aujourd’hui, ce crush s’est transformé en le plus bel amour que j’aie jamais vécu. À tes côtés, tout ressemble à un rêve dont je ne veux jamais me réveiller. J’aime ta noblesse, ta façon honnête de dire les choses, ton rire, ta voix et chaque détail qui fait de toi qui tu es. Tu es celui qui apaise mon esprit et donne un sens à ma vie. Merci de m’avoir laissée entrer dans ton monde et de m’avoir choisie comme ta petite amie. S'useront comme les pages qui ne résistent pas Au cadran sinistre qui continue sa loi Il aurait mieux valu oublier beaucoup de choses Les voix du passé déclenchent le battement de cœur de la conscience Qui coule, qui bat au rythme d'une Tu es ma lune, ma vie et l’amour de ma vie… Je t’aime, Neige<br /> <b>[ <span style="color:#c80a16; filter:invert(-100%)">KIRI </span>/ LIUNARA ]</b>
+                        Dès le premier jour où je t’ai vu, il y a eu quelque chose en toi qui m’a attirée sans aucune explication. Tu es entré dans ma vie par une simple coïncidence qui s’est transformée en destin. Qui aurait cru que nous serions deux personnes ressentant la même chose en silence, avec la peur de perdre plus que ce que nous n’avions pas encore. Et aujourd’hui, ce crush s’est transformé en le plus bel amour que j’aie jamais vécu. À tes côtés, tout ressemble à un rêve dont je ne veux jamais me réveiller. J’aime ta noblesse, ta façon honnête de dire les choses, ton rire, ta voix et chaque détail qui fait de toi qui tu es. Tu es celui qui apaise mon esprit et donne un sens à ma vie. Merci de m’avoir laissée entrer dans ton monde et de m’avoir choisie comme ta petite amie. S'useront comme les pages qui ne résistent pas Au cadran sinistre qui continue sa loi Il aurait mieux valu oublier beaucoup de choses Les voix du passé déclenchent le battement de cœur de la conscience Qui coule, qui bat au rythme d'une Tu es ma lune, ma vie et l’amour de ma vie… Je t’aime, Neige<br /> <b>[ <span style="color:#c80a16; filter:invert(100%)">KIRI </span>/ LIUNARA ]</b>
                     </div>
                 </div>
             </div>
             <div id="repro">
                 <style>
                     #repro {
+                        filter: invert(100%);
                         position: absolute;
                         width: 18%;
                         height: 20%;
@@ -2127,7 +2187,7 @@
                                 height: .1vw;
                                 width: .1vw;
                                 margin: .1vw;
-                                background-image: linear-gradient(180deg, #171717 60%, #812134 100%);
+                                background-image: linear-gradient(180deg, #171717 60%, #282181 100%);
                                 border-radius: .3vw;
                                 transition: all 0.01s;
                                 transition-timing-function: ease-in-out;
